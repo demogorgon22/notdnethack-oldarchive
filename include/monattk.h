@@ -191,7 +191,7 @@
 #define AD_SAMU		135	/* hits, may steal Amulet (Wizard) */
 #define AD_CURS		136	/* random curse (ex. gremlin) */
 #define AD_SQUE		137	/* hits, may steal Quest Art or Amulet (Nemeses) */
-
+#define AD_ROCK		138 /*Throws a rock, used by Shiro*/
 
 /*
  *  Monster to monster attacks.  When a monster attacks another (mattackm),

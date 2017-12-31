@@ -968,7 +968,7 @@ mattacku(mtmp)
 				if(mtmp->muy - mtmp->my < 0) mdy = -1;
 				else if(mtmp->muy - mtmp->my > 0) mdy = +1;
 				
-				if(mtmp->data == &mons[PM_HOOLOOVOO]){
+				if(mtmp->data == &mons[PM_HOOLOOVOO] || mtmp->data == &mons[PM_ASTAROTH]){
 					if(rn2(4)) mlocal = makemon(&mons[PM_GOLDEN_HEART], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
 					else mlocal = makemon(&mons[PM_ID_JUGGERNAUT], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
 				} else {

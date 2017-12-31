@@ -2796,7 +2796,7 @@ register struct monst *mtmp;
 				(void) mpickobj(mtmp, otmp);
 			}
 		 }
-		}else if((mm == PM_MIND_FLAYER || mm == PM_MASTER_MIND_FLAYER)){
+		}else if((mm == PM_MIND_FLAYER || mm == PM_MASTER_MIND_FLAYER || mm == PM_ADVERSARY)){
 			if(on_level(&rlyeh_level,&u.uz)){
 				otmp = mksobj(BULLWHIP, TRUE, FALSE);
 				otmp->oerodeproof = 1;
@@ -5042,7 +5042,7 @@ register int	mmflags;
 		break;
 		case S_LIGHT:
 		case S_ELEMENTAL:
-			if (mndx == PM_STALKER || mndx == PM_BLACK_LIGHT) {
+			if (mndx == PM_STALKER || mndx == PM_BLACK_LIGHT || mndx == PM_SHIRO) {
 			    mtmp->perminvis = TRUE;
 			    mtmp->minvis = TRUE;
 			}
@@ -5294,7 +5294,7 @@ register int	mmflags;
 		case S_JABBERWOCK:
 		case S_NYMPH:
 			if (rn2(5) && !u.uhave.amulet 
-				&& mndx != PM_NIMUNE && mndx != PM_INTONER && mndx != PM_AGLAOPE 
+				&& mndx != PM_NIMUNE && mndx != PM_INTONER && mndx != PM_AGLAOPE && mndx != PM_EURYNOME && mndx != PM_ECHIDNA 
 				&& !(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz))
 			){
 				mtmp->msleeping = 1;

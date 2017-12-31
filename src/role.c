@@ -25,31 +25,31 @@
  * God names use a leading underscore to flag goddesses.
  */
 const struct Role roles[] = {
-{	{"Archeologist", 0}, {
-	{"Digger",      0},
-	{"Field Worker",0},
-	{"Investigator",0},
-	{"Exhumer",     0},
-	{"Excavator",   0},
-	{"Spelunker",   0},
-	{"Speleologist",0},
-	{"Collector",   0},
-	{"Curator",     0} },
-	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
-	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings",
-	PM_ARCHEOLOGIST, NON_PM, NON_PM,
-	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
-	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
-	ART_ITLACHIAYAQUE,
-	MA_HUMAN|MA_DWARF|MA_GNOME|MA_CLOCK|MA_VAMPIRE|MA_DRAGON, ROLE_MALE|ROLE_FEMALE |
-	  ROLE_LAWFUL|ROLE_NEUTRAL,
+{	{"Anachronounbinder", 		 0}, {
+	{"Loyalist",        0},
+	{"Exorcist",      0},
+	{"Unbinder",      0},
+	{"Spirit Killer",       0},
+	{"Akousmatikoi", 0},
+	{"Mathematikoi", 0},
+	{"Doctor",       0},
+	{"Unbinder",     0},
+	{"Keeper of the Gate",    0} },
+	"Ilsensine", "Crom", "Set",	/* ahahah */
+	"Acu", "The Elder Pool", "The Far Reach",
+	PM_ANACHRONOUNBINDER, NON_PM, PM_BRAIN_GOLEM,
+	PM_ULITHARID, PM_MINDLESS_THRALL, PM_MENZOBERRANZAN,
+	PM_NEOTHELID, PM_ADVERSARY, S_HUMANOID, S_WORM,
+	ART_ELDER_CEREBRAL_FLUID,
+	MA_HUMAN|MA_DWARF|MA_GNOME|MA_ELF|MA_ORC|MA_DRAGON|MA_ANIMAL, ROLE_MALE|ROLE_FEMALE |
+	  ROLE_LAWFUL,
 	/* Str Int Wis Dex Con Cha */
-	{   7, 10, 10,  7,  7,  7 },
-	{  20, 20, 20, 10, 20, 10 },
+	{  10, 10,  7, 10,  7,  7 },
+	{  15, 17, 15, 12, 15, 15 },
 	/* Init   Lower  Higher */
 	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
-	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
-	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -9
+	{  2, 0,  0, 2,  0, 2 },14,	/* Energy */
+	10, 5, 0, 2, 10, A_INT, SPE_SLOW_MONSTER,   -9
 },
 {	{"Anachrononaut", 0}, {
 	{"Survivor",   0},
@@ -184,6 +184,33 @@ const struct Role roles[] = {
 	-10, 5, 0, 2, 10, A_INT, SPE_TELEPORT_AWAY,   -19
 },
 #endif	/* CONVICT */
+{	{"Explorer", 0}, {
+	{"Digger",      0},
+	{"Field Worker",0},
+	{"Investigator",0},
+	{"Exhumer",     0},
+	{"Excavator",   0},
+	{"Spelunker",   0},
+	{"Speleologist",0},
+	{"Collector",   0},
+	{"Curator",     0} },
+	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
+	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings",
+	PM_ARCHEOLOGIST, NON_PM, NON_PM,
+	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
+	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
+	ART_ITLACHIAYAQUE,
+	MA_HUMAN|MA_DWARF|MA_GNOME|MA_CLOCK|MA_VAMPIRE|MA_DRAGON, ROLE_MALE|ROLE_FEMALE |
+	  ROLE_LAWFUL|ROLE_NEUTRAL,
+	/* Str Int Wis Dex Con Cha */
+	{   7, 10, 10,  7,  7,  7 },
+	{  20, 20, 20, 10, 20, 10 },
+	/* Init   Lower  Higher */
+	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
+	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
+	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -9
+},
+
 {	{"Healer", 0}, {
 	{"Rhizotomist",    0},
 	{"Empiric",        0},
@@ -288,6 +315,7 @@ const struct Role roles[] = {
 	{  2, 2,  0, 2,  0, 2 },10,	/* Energy */
 	10, 4,-4, 4, 8, A_INT, SPE_PROTECTION, -1000
 },
+
 {	{"Priest", "Priestess"}, {
 	{"Aspirant",    0},
 	{"Acolyte",     0},

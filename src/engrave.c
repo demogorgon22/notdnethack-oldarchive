@@ -1622,7 +1622,7 @@ register int x,y;
 						pline("There is a seal of %s %s", 
 							sealNames[((int)ep->ward_id)-((int)FIRST_SEAL)],
 							word);
-						if(!Role_if(PM_EXILE) && ep->ward_id < QUEST_SPIRITS){
+						if(!Role_if(PM_ANACHRONOUNBINDER) && !Role_if(PM_EXILE) && ep->ward_id < QUEST_SPIRITS){
 							long wardhere = 1L << (((int)ep->ward_id)-((int)FIRST_SEAL));
 							if( !(u.wardsknown & wardhere) ){
 								You("have learned a new seal!");

@@ -22,6 +22,7 @@ static const char *artifact_names[] = {
 #define     PHYS(a,b)	{0,AD_PHYS,a,b}		/* physical */
 #define     DRLI(a,b)	{0,AD_DRLI,a,b}		/* life drain */
 #define     COLD(a,b)	{0,AD_COLD,a,b}
+#define     DRIN(a,b)	{0,AD_DRIN,a,b}		/* life drain */
 #define     FIRE(a,b)	{0,AD_FIRE,a,b}
 #define     ELEC(a,b)	{0,AD_ELEC,a,b}		/* electrical shock */
 #define     ACID(a,b)	{0,AD_ACID,a,b}
@@ -933,6 +934,14 @@ A("Itlachiayaque", SHIELD_OF_REFLECTION,/*From archeologist patch*/
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
      NO_ATTK, DFNS(AD_FIRE), CARY(AD_MAGM),
 	 SMOKE_CLOUD, A_LAWFUL, PM_ARCHEOLOGIST, NON_PM, 3000L, 
+	0,0,0),
+
+A("The Elder Cerebral Fluid",	DILITHIUM_CRYSTAL,
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DEFN), (SPFX_REFLECT|SPFX_HSPDAM),
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	/* this stone does double damage if used as a projectile weapon */
+	DRIN(10,1),	NO_DFNS,	CARY(AD_MAGM),
+	DRAIN_MEMORIES,	A_LAWFUL, PM_ANACHRONOUNBINDER, NON_PM, 2500L, 
 	0,0,0),
 
 A("The Annulus", CHAKRAM, /*Needs encyc entry*/

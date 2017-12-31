@@ -173,7 +173,7 @@ QUEST_DES = Arch.des Anachrononaut.des Barb.des Bard.des Binder.des Caveman.des 
             Convict.des Drow.des DrowNoble.des Elf.des Erebor.des GnomeRanger.des	\
             Healer.des Hedrow.des HedrowNoble.des Knight.des Monk.des Moria.des	\
             Noble.des Pirate.des Priest.des Ranger.des Rogue.des	\
-            Samurai.des Tourist.des Valkyrie.des Wizard.des
+            Samurai.des Tourist.des Valkyrie.des Wizard.des Anachronounbinder.des \
 
 SPEC_DES = bigroom.des blacktemple.des castle.des chaos.des		\
            endgame.des gehennom.des knox.des labr.des law.des		\

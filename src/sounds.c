@@ -2176,6 +2176,17 @@ int tx,ty;
 			struct trap *t=t_at(tx,ty);
 			//Ahazu requires that his seal be drawn in a pit.
 			if(t && t->ttyp == PIT){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(!(u.spiritSummons&SEAL_AHAZU)){
+						pline("Ahazu, the seizer, greets you with open mouth.");
+						makemon(&mons[PM_AHAZU], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_AHAZU;
+						u.sealsKnown &= ~(SEAL_AHAZU);
+					} else {
+						pline("You have already released this spirit from the void.");
+					}
+					return 0;
+				}
 				pline("The walls of the pit are lifted swiftly away, revealing a vast starry expanse beneath the world.");
 				if(u.sealCounts < numSlots){
 					pline("A voice whispers from bellow:");
@@ -2217,6 +2228,17 @@ int tx,ty;
 					if(IS_ALTAR(levl[curx][cury].typ)){ altarfound=1; cury=ROWNO; curx=COLNO;}//end search
 			
 			if(!altarfound){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(!(u.spiritSummons&SEAL_AMON)){
+						pline("Amon, the shadow before the altar, stands before you.");
+						makemon(&mons[PM_AMON], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_AMON;
+						u.sealsKnown &= ~(SEAL_AMON);
+					} else {
+						pline("You have already released this spirit from the void.");
+					}
+					return 0;
+				}
 				pline("A golden flame roars suddenly to life within the seal, throwning the world into a stark relief of hard-edged shadows and brilliant light.");
 				if(u.sealCounts < numSlots){
 					pline("No sooner are the shadows born than they rise up against their creator, smothering the flame under a tide of darkness.");
@@ -2264,6 +2286,18 @@ int tx,ty;
 			if(isok(tx+(tx-u.ux), ty+(ty-u.uy)) && IS_CORNER(levl[tx+(tx-u.ux)][ty+(ty-u.uy)].typ) && 
 				IS_WALL(levl[tx+(tx-u.ux)][ty].typ) && IS_WALL(levl[tx][ty+(ty-u.uy)].typ)
 			){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(!(u.spiritSummons&SEAL_ANDREALPHUS)){
+						pline("Andrealphus, marquis of angles, steps out of the corner.");
+						makemon(&mons[PM_ANDREALPHUS], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_ANDREALPHUS;
+						u.sealsKnown &= ~(SEAL_ANDREALPHUS);
+					} else {
+						pline("You have already released this spirit from the void.");
+					}
+					return 0;
+				}
+				
 				Your("perspective shifts, and the walls before you take on new depth.");
 				pline("The dim dungeon light refracts oddly, casting the alien figure before you in rainbow hues.");
 				if(u.sealCounts < numSlots){
@@ -2354,6 +2388,18 @@ int tx,ty;
 					else break;
 				}
 			if((o2 || rat) && o1){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(!(u.spiritSummons&SEAL_ANDROMALIUS)){
+						pline("Andromalius, the repetant rogue, comes forth.");
+						makemon(&mons[PM_ANDROMALIUS], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_ANDROMALIUS;
+						u.sealsKnown &= ~(SEAL_ANDROMALIUS);
+					} else {
+						pline("You have already released this spirit from the void.");
+					}
+					return 0;
+				}
+				
 				int i1 = rn2(18), i2 = rn2(18), i3 = rn2(18);
 				
 				while(i1 == t1 || i1 == t2) i1 = rn2(18);
@@ -2571,6 +2617,17 @@ int tx,ty;
 			}
 			//Astaroth requires that his seal be drawn on a square with a damaged item.
 			if(o && u.sealCounts < numSlots){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(!(u.spiritSummons&SEAL_ASTAROTH)){
+						pline("Astaroth, the broken clock maker, springs forth.");
+						makemon(&mons[PM_ASTAROTH], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_ASTAROTH;
+						u.sealsKnown &= ~(SEAL_ASTAROTH);
+					} else {
+						pline("You have already released this spirit from the void.");
+					}
+					return 0;
+				}
 				iscrys = (o->otyp == CRYSKNIFE);
 				if (o->oeroded && !iscrys) {
 					switch (o->oeroded) {
@@ -2658,6 +2715,17 @@ int tx,ty;
 		if(u.sealTimeout[BALAM-FIRST_SEAL] < moves){
 			//Balam requires that her seal be drawn on an icy square.
 			if(levl[tx][ty].typ == ICE && uwep){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(!(u.spiritSummons&SEAL_BALAM)){
+						pline("Balam, the last sacrifice, busts through the ice.");
+						makemon(&mons[PM_BALAM], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_BALAM;
+						u.sealsKnown &= ~(SEAL_BALAM);
+					} else {
+						pline("You have already released this spirit from the void.");
+					}
+					return 0;
+				}
 				You("stab your weapon down into the ice, cracking it.");
 				if(u.sealCounts < numSlots){
 					if(!Blind){
@@ -2722,6 +2790,17 @@ int tx,ty;
 			//Berith also allows the summoner to wear a blessed silver ring on his or her left hand.
 			if(o || (uleft && uleft->otyp == slvring && uleft->blessed)){
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						if(!(u.spiritSummons&SEAL_BERITH)){
+							pline("Berith, the red horseman, canters out.");
+							makemon(&mons[PM_BERITH], tx, ty, MM_ADJACENTOK);
+							u.spiritSummons |= SEAL_BERITH;
+							u.sealsKnown &= ~(SEAL_BERITH);
+						} else {
+							pline("You have already released this spirit from the void.");
+						}
+						return 0;
+					}
 					if(!Blind){
 						pline("Gold rains down within the circumference of the seal, melting slowly to blood where it lands.");
 						pline("A figure takes form within the showering gold, staring down at you from a crimson horse.");
@@ -2767,6 +2846,26 @@ int tx,ty;
 	case BUER:{
 		//Buer's seal may be drawn anywhere.
 		if(u.sealTimeout[BUER-FIRST_SEAL] < moves){
+			if(Role_if(PM_ANACHRONOUNBINDER)){
+				if(!(u.spiritSummons&SEAL_BUER)){
+					pline("You hear hooved footfalls approaching quickly, though you can't make out from what direction.");
+					pline("They set an odd tempo; very regular and faster by far than any animal of four legs could comfortably keep.");
+					if(!Blind){
+						pline("The footfalls reach a crescendo, and an odd creature rolls into the seal in front of you.");
+						pline("The creature's five legs are arranged in a star pattern, and to move it rolls from foot to foot.");
+						pline("At the center of the wheel is a lion's head, complete with a glorious mane.");
+					}
+					pline("The creature speaks to you; and it's voice, though deep, is clearly that of a woman.");
+					pline("\"I am Buer, %s, %s to %s.", buerTitles[rn2(SIZE(buerTitles))], buerSetOne[rn2(SIZE(buerSetOne))], buerSetTwo[rn2(SIZE(buerSetTwo))]);
+					pline("You will pay for your sins.\"");
+					makemon(&mons[PM_BUER], tx, ty, MM_ADJACENTOK);
+					u.spiritSummons |= SEAL_BUER;
+					u.sealsKnown &= ~(SEAL_BUER);
+				} else {
+					pline("You have already released this spirit from the void.");
+				}
+				return 0;
+			}
 			pline("You hear hooved footfalls approaching quickly, though you can't make out from what direction.");
 			pline("They set an odd tempo; very regular and faster by far than any animal of four legs could comfortably keep.");
 			if(!Blind){
@@ -2820,6 +2919,18 @@ int tx,ty;
 				pline("that wrap this world and its inhabitants like silken bindings, and, suddenly,");
 				pline("you know you are in the presence of the Spider.");
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						if(!(u.spiritSummons&SEAL_CHUPOCLOPS)){
+							pline("She approaches.");
+							makemon(&mons[PM_CHUPOCLOPS], tx, ty, MM_ADJACENTOK);
+							u.spiritSummons |= SEAL_CHUPOCLOPS;
+							u.sealsKnown &= ~(SEAL_CHUPOCLOPS);
+						} else {
+							pline("The feeling fades and the universe's phatom pain of a hellbound spirit fades with it.");
+						}
+						return 0;
+					}
+
 					pline("She wraps you tight in her bitter cords and sends you forth, bait within her web.");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[CHUPOCLOPS-FIRST_SEAL] = moves + bindingPeriod;
@@ -2859,12 +2970,24 @@ int tx,ty;
 		if(u.sealTimeout[DANTALION-FIRST_SEAL] < moves){
 			//Spirit requires that his seal be drawn around a throne.
 			if(IS_THRONE(levl[tx][ty].typ)){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_DANTALION){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}	
 				if(!Blind) {
 					You("see a man with many countenances step out from behind the throne.");
 					pline("Below his crown are many faces of %s,", DantalionRace(u.umonster)); /*  */
 					pline("and as he nods and cranes his head, new faces are constantly revealed.");
 				}
 				pline("\"Tremble, for I am Dantalion, king over all the kings of %s\"",urace.coll);
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					makemon(&mons[PM_DANTALION], tx, ty, MM_ADJACENTOK);
+					u.spiritSummons |= SEAL_DANTALION;
+					u.sealsKnown &= ~(SEAL_DANTALION);
+					return 0;
+				}	
 				if(u.sealCounts < numSlots){
 					if(!Blind) {
 						pline("The staring faces seem vaguely familiar...");
@@ -2918,8 +3041,21 @@ int tx,ty;
 			}
 			//Spirit requires that his seal be drawn in a ring of rocks.
 			if(validLocation){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_SHIRO){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}
 				pline("\"I'm shocked. So few ever speak to me, everyone ignores me and passes me by.\"");
 				pline("\"It's 'cause I'm about as impressive as a stone, right?...I'm used to it, though.\"");
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					pline("\"Oh... You want to fight.\"");
+					makemon(&mons[PM_SHIRO], tx, ty, MM_ADJACENTOK);
+					u.spiritSummons |= SEAL_SHIRO;
+					u.sealsKnown &= ~(SEAL_SHIRO);
+					return 0;
+				}	
 				if(u.sealCounts < numSlots){
 					pline("\"You look like a pretty distinctive person.\"");
 					pline("\"Let me follow you and practice standing out.\"");
@@ -2955,6 +3091,12 @@ int tx,ty;
 		if(u.sealTimeout[ECHIDNA-FIRST_SEAL] < moves){
 			//NOT YET IMPLEMENTED: Spirit requires that her seal be drawn in a cave.
 			if(In_cave(&u.uz)){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_ECHIDNA){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}
 				if(!Blind){
 					You("suddenly notice a monstrous nymph reclining in the center of the seal.");
 					pline("She is half a fair woman, with glancing eyes and fair cheeks,");
@@ -2962,6 +3104,13 @@ int tx,ty;
 				}
 				if(u.sealCounts < numSlots){
 					pline("\"I am Echidna, %s.\"",echidnaTitles[rn2(SIZE(echidnaTitles))]);
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("\"You killed my brood. Prepare to die.\"");
+						makemon(&mons[PM_ECHIDNA], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_ECHIDNA;
+						u.sealsKnown &= ~(SEAL_ECHIDNA);
+						return 0;
+					}
 					pline("\"Free me from this place, and I and my brood shall fight for your cause.\"");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[ECHIDNA-FIRST_SEAL] = moves + bindingPeriod;
@@ -2998,6 +3147,12 @@ int tx,ty;
 		if(u.sealTimeout[EDEN-FIRST_SEAL] < moves){
 			//Spirit requires that its seal be drawn by a fountain.
 			if(IS_FOUNTAIN(levl[tx][ty].typ)){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_EDEN){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}	
 				if(!Blind){
 					pline("The water in the fountain begins to bubble.");
 					pline("A dome of cerulean crystal emerges from the center of the fountain,");
@@ -3010,6 +3165,13 @@ int tx,ty;
 				}
 				if(u.sealCounts < numSlots){
 					pline("Radiant light falls upon you,");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("Eden looks unhappy.");
+						makemon(&mons[PM_EDEN], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_EDEN;
+						u.sealsKnown &= ~(SEAL_EDEN);
+						return 0;
+					}
 					pline("blinding you to what lies beyond.");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[EDEN-FIRST_SEAL] = moves + bindingPeriod;
@@ -3052,11 +3214,24 @@ int tx,ty;
 			}
 			//Spirit requires that his seal be drawn in a large open space.
 			if(largeRoom){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_ENKI){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}
 				pline("Water bubbles up inside the seal,");
 				pline("and a figure rises within it.");
 				if(u.sealCounts < numSlots){
-					pline("I am Enki, god of the first city.");
-					pline("Bow to me, and I shall teach the arts of civilzation.");
+					pline("\"I am Enki, god of the first city.");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("You displease me.\"");
+						makemon(&mons[PM_ENKI], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_ENKI;
+						u.sealsKnown &= ~(SEAL_ENKI);
+						return 0;
+					}
+					pline("Bow to me, and I shall teach the arts of civilzation.\"");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[ENKI-FIRST_SEAL] = moves + bindingPeriod;
 				}
@@ -3091,11 +3266,24 @@ int tx,ty;
 			if(isok(tx+(tx-u.ux), ty+(ty-u.uy)) && 
 				IS_POOL(levl[tx+(tx-u.ux)][ty+(ty-u.uy)].typ)
 			){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_EURYNOME){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}
 				if(!Blind)
 					You("see a figure dancing, far out upon the waters.");
 				if(u.sealCounts < numSlots){
 					if(!Blind){
 						pline("She dances up to you and sweeps you up into her dance.");
+						if(Role_if(PM_ANACHRONOUNBINDER)){
+							pline("\"Let us dance!\"");
+							makemon(&mons[PM_EURYNOME], tx, ty, MM_ADJACENTOK);
+							u.spiritSummons |= SEAL_EURYNOME;
+							u.sealsKnown &= ~(SEAL_EURYNOME);
+							return 0;
+						}
 						pline("She is beautiful, like nothing you have ever seen before.");
 						pline("And yet, she reminds you of EVERYTHING you've ever seen before.");
 					} else {

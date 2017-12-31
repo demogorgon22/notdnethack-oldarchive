@@ -302,6 +302,14 @@ newexplevel()
 	    pluslvl(TRUE);
 }
 
+/*Give spirits to anachronounbinder*/
+void
+acuup(){
+	u.sealsKnown |= sealKey[u.sealorder[u.ulevel]];
+}
+
+
+
 /* Grant new spirits to binder */
 /* It reaplies all spirts just for kicks */
 void
@@ -422,6 +430,7 @@ boolean incr;	/* true iff via incremental experience growth */
 	    reset_rndmonst(NON_PM);		/* new monster selection */
 	}
 	if(Role_if(PM_EXILE)) binderup();
+	if(Role_if(PM_ANACHRONOUNBINDER)) acuup();
 	flags.botl = 1;
 }
 

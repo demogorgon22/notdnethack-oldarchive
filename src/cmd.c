@@ -588,7 +588,7 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
-	if(is_mind_flayer(youracedata)){
+	if(is_mind_flayer(youracedata)||Role_if(PM_ANACHRONOUNBINDER)){
 		Sprintf(buf, "Mind Blast");
 		any.a_int = MATTK_MIND;	/* must be non-zero */
 		incntlet = 'm';

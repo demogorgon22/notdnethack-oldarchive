@@ -1680,6 +1680,14 @@ ironball:
 				rngmod = 8;
 				autodestroy = 0;
 			break;
+			case AD_ROCK:
+				ammo_type = ROCK;
+				qvr = mksobj(ammo_type, TRUE, FALSE);
+			    	qvr->blessed = 0;
+			    	qvr->cursed = 0;
+				rngmod = 8;
+				autodestroy = 0;
+			break;
 			case AD_VBLD:
 				ammo_type = HEAVY_IRON_BALL;
 				qvr = mksobj(ammo_type, TRUE, FALSE);

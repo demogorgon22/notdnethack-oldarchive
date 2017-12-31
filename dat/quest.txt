@@ -296,6 +296,251 @@ Amulet on that altar to fulfill your destiny.
 
 "Remember, your path now should always be upwards."
 %E
+
+#
+#      Anachronounbinder
+#
+%Cc Acu 00001
+Something is wrong. You cannot feel the Elder Brain as you have in the past.
+%E
+%Cp Acu 00002
+You return to %H.
+%E
+%Cp Acu 00003
+You are back at %H.
+
+You have an odd feeling this may be the last time you ever come here.
+%E
+%Cp Acu 00005
+"UNITY WAS NEAR"
+%E
+%Cp Acu 00006
+"WE TRIED"
+%E
+%Cp Acu 00007
+"KILL THE LICH"
+%E
+%Cp Acu 00008
+"ILLITHIDS ARE STRONG"
+%E
+%Cp Acu 00009
+"THE ULITHARID IS MIGHTY"
+%E
+%Cp Acu 00010
+"WELCOME TO %H"
+%E
+%Cp Acu 00011
+"We're being overrun!"
+%E
+%Cp Acu 00012
+"We're out of time."
+%E
+%Cp Acu 00013
+"FEAR NO UNDEAD"
+%E
+%Cp Acu 00014
+"THE ELDER GOD WILL RETURN"
+%E
+%Cc Acu 00015
+I see you made it back. The Elder Brain has been attacked.
+We cannot risk another illithid to %nt and his undead rebels. 
+%d's empire is falling. 
+
+Let me see if you are ready for certain death.
+%E
+%Cp Acu 00016
+"You have returned from farther up the time-stream, I see.
+Let me check if you are strong enough now."
+%E
+%Cp Acu 00017
+"You have traveled quite far up the time-stream now.
+Let me check if you are strong enough now."
+%E
+%Cc Acu 00018
+You have betrayed the Elder Brain. Begone. Only %L is pure.
+%E
+%Cc Acu 00019
+"You are weak. You would die.
+Go now, return to the future, and come back to us from farther up
+the time-stream."
+%E
+%Cc Acu 00020
+"You disrespect %d.
+
+What distinguishes you from %n?   Return
+to the future and rededicate yourself to %d."
+%E
+%Cc Acu 00021
+"Illithocyte, you may now be ready to undertake the final preparations
+for your mission."
+
+"I know not how we are remembered. 
+No gith slave could possibly overpower the forces of %d. 
+The void fills with the spirits of our slave races.
+We will fall to the foolish illithids who betray the Elder Brain
+and attempt to seek their own eternity by meddling with The Gate."
+
+"%nt and his spirits of our slaves have just begun attacks on Elder Brains.
+All our knowledge now belongs to %nt and his abominations. 
+You are ready now to attempt to recover %o."
+
+"Should you be successful, you must recover the Amulet of Yendor
+and use it in combination with %o to close The Gate from the Astral Plane."
+
+%E
+%Cp Acu 00025
+"Should you fail, the Illithid Empire will be no more."
+%E
+%Cp Acu 00026
+"%n is an alhoon, a dangerous undead illich."
+%E
+%Cp Acu 00027
+"Villithids will suck your mind and your life. Watch out for those abominations."
+%E
+%Cp Acu 00028
+"With the power of %o you can prevent the fall of the greatest empire ever."
+%E
+%Cp Acu 00029
+"%n's abominations include adversaries, illithids whose host controls them."
+%E
+%Cp Acu 00030
+"Beware of neothelids and their many tentacles. They have committed grave sins."
+%E
+%Cp Acu 00031
+"Beware the Army of Neverweres, or they will steal your
+equipment and your blood."
+%E
+%Cp Acu 00032
+"The remaining Troopers of the Last Bastion will hold the
+line as long as they are able."
+%E
+%Cp Acu 00033
+"Those Changed by exposure to the Far Realms of Insanity
+require isolation suits to exist in our atmosphere.  If
+the suit is breached, the Changed inside will eventually
+boil away into poison mist."
+%E
+%Cp Acu 00034
+"I hope you found luck in the future, for there is surely
+none left in this fading world."
+%E
+%Cc Acu 00035
+You have reached the ruins of a great city, destroyed in
+the rain of falling stars that came after the great defeat
+at the Battle of Heavenfall.  Beyond the city you see the
+ever-expanding Penumbral zone rising into the night sky.
+
+You will have to pass through the city and the nascent 
+Penumbra if you are to reach Ground Zero, where the Annulus
+was lost on the Eve of Falling Stars, on the day of your
+birth.
+%i.
+%E
+%Cp Acu 00036
+Once again, you arrive at the ruins of the city.
+%E
+%Cc Acu 00040
+An overwhelming feeling of being watched fills your mind.
+
+You have reached Ground Zero, where Heaven fell to earth.
+%E
+%Cp Acu 00041
+You have returned to Ground Zero.
+%E
+%Cc Acu 00050
+UNUSED
+%E
+%Cc Acu 00051
+UNUSED
+%E
+%Cp Acu 00052
+UNUSED
+%E
+%Cp Acu 00053
+UNUSED
+%E
+%Cp Acu 00060
+UNUSED
+%E
+%Cp Acu 00061
+UNUSED
+%E
+%Cp Acu 00062
+UNUSED
+%E
+%Cp Acu 00063
+UNUSED
+%E
+%Cp Acu 00064
+UNUSED
+%E
+%Cp Acu 00065
+UNUSED
+%E
+%Cp Acu 00066
+UNUSED
+%E
+%Cp Acu 00067
+UNUSED
+%E
+%Cp Acu 00068
+UNUSED
+%E
+%Cp Acu 00069
+UNUSED
+%E
+%Cc Acu 00070
+You have recovered the Annulus, lost at the Battle of
+Heavenfall on the Eve of Falling Stars.
+
+You must return to Sara, if she yet lives, to learn
+the details of the next and final stage of the plan.
+%E
+%Cp Acu 00080
+UNUSED
+%E
+%Cc Acu 00081
+Sara, the Last Oracle, looks wonderingly at the
+Annulus.
+
+"Well done, %s.  You have succeed where
+all others have failed, and returned hope to
+our world.
+
+"You must now travel deep into the earth, and
+retrieve the Amulet of Yendor, that was stolen by
+Moloch at the beginning of time.
+
+"With the Amulet in your possetion, the gods will
+allow you to climb up to the Astral Plane.  Once
+there, you must use the Annulus to Annul the High
+Altar of Ilsensine and eject her from this
+universe."
+%E
+%Cc Acu 00082
+"The Annulus is the pinnacle of mortal technology, created
+by turning the power of the Bell of Opening upon itself,
+creating a door through the universe through which even
+the great Grey Thought Entity Ilsensine may be ejected.
+
+"You must not loose it or fail to take it with you to
+the Astral Plane, or all our struggles will have been
+for naught."
+%E
+%Cc Acu 00090
+"There is nothing more you can do for this version of me,
+%s.  Go back to the past, seek the Amulet of Yendor, and
+gain entrance to the Astral Plane, where the final confrontation
+with the servants of Ilsensine awaits you."
+%E
+%Cc Acu 00091
+"You've done it!  But there is still nothing you can do for us
+now.  Go back to the past, and bear the Amulet of Yendor up
+to the Astral Plane.  Once there, you must use the Annulus
+to Annul the High Altar of Ilsensine and eject her from
+this universe before she can consume the heavens and the
+earth."
+%E
 #
 #	Anachrononaut
 #

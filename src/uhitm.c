@@ -675,6 +675,14 @@ register struct monst *mtmp;
 			if(keepattacking && u.ulevel == 30 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
 				keepattacking = hitum(mtmp, weptmp-30, youmonst.data->mattk);
 		}
+		if(Role_if(PM_ANACHRONOUNBINDER) && !Upolyd && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp ){
+			static struct attack tentattack[] = 
+			{
+				{AT_TENT,AD_DRIN,1,4},
+				{0,0,0,0}
+			};
+			keepattacking = hmonwith(mtmp, tmp, weptmp, tchtmp, tentattack, 1);
+		}
 	}
 	if((u.sealsActive || u.specialSealsActive) && keepattacking && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp){
 		static int nspiritattacks;

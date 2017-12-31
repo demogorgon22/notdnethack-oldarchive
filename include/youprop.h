@@ -376,6 +376,8 @@
 #define ESlow_digestion		u.uprops[SLOW_DIGESTION].extrinsic
 #define Slow_digestion		(HSlow_digestion || ESlow_digestion)  /* KMH */
 
+
+#define HReflecting 		u.uprops[REFLECTING].extrinsic
 #define HHalf_spell_damage	u.uprops[HALF_SPDAM].intrinsic
 #define EHalf_spell_damage	u.uprops[HALF_SPDAM].extrinsic
 #define Half_spell_damage	(HHalf_spell_damage || EHalf_spell_damage || u.sealsActive&SEAL_BALAM)
