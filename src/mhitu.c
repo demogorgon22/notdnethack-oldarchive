@@ -4549,27 +4549,32 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		}	
 		break;
 */
-		case AD_WISD:{ //Cthulhu's attack
+		case AD_WISD:{ //Cthulhu's attack (and huginn)
 			if(canseemon(mtmp) && couldsee(mtmp->mx, mtmp->my) && !mtmp->mspec_used) {
 				int dmg = d((int)mattk->damn, (int)mattk->damd);
 //				if(!couldsee(mtmp->mx, mtmp->my)) dmg /= 10;
 				if(!dmg) break;
-				pline("Blasphemous geometries assault your sanity!");
+				if(mtmp->data == &mons[PM_HUGINN]){
+					Your("ability to reason weakens!");
+				} else{
+					pline("Blasphemous geometries assault your sanity!");
+				}
 				if(u.sealsActive&SEAL_HUGINN_MUNINN){
 					unbind(SEAL_HUGINN_MUNINN,TRUE);
 				} else {
 					while( !(ABASE(A_WIS) <= ATTRMIN(A_WIS)) && dmg > 0){
 						dmg--;
 						(void) adjattrib(A_WIS, -1, TRUE);
-						forget(10);	/* lose 10% of memory per point lost*/
+						if(mtmp-> data != &mons[PM_HUGINN]) forget(10);	/* lose 10% of memory per point lost*/
 						exercise(A_WIS, FALSE);
 						if(mtmp->data ==  &mons[PM_GREAT_CTHULHU] 
 							&& AMAX(A_WIS) > ATTRMIN(A_WIS))		AMAX(A_WIS) -= 1; //permanently drain wisdom
 
 					}
 					if(dmg > 0){
-						You("tear at yourself in horror!"); //assume always able to damage self
-						mdamageu(mtmp, dmg*10);
+						if(mtmp-> data != &mons[PM_HUGINN])
+							You("tear at yourself in horror!"); //assume always able to damage self
+						mdamageu(mtmp, dmg*((mtmp-> data == &mons[PM_HUGINN])?1:10));
 					}
 				}
 				mtmp->mspec_used = 4; //In practice, this will be zeroed when a new movement ration is handed out, and acts to make sure GC can only use the gaze once per round.
@@ -4590,6 +4595,23 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 				u.ustdy = max(dmg,u.ustdy);
 				dmg = 0;
 			}
+		break;
+		case AD_DRIN:
+			if(canseemon(mtmp) && couldsee(mtmp->mx, mtmp->my) && !is_blind(mtmp)) {	
+				int dmg = d((int)mattk->damn, (int)mattk->damd);
+				mdamageu(mtmp, dmg);
+				if(u.sealsActive&SEAL_HUGINN_MUNINN){
+					unbind(SEAL_HUGINN_MUNINN,TRUE);
+				} else {
+					pline("You catch %s's mind killing glare.", Monnam(mtmp));	
+					(void) adjattrib(A_INT, -dmg, FALSE);
+					while(dmg--){
+					//	forget(10);	/* lose 10% of memory per point lost*/
+						exercise(A_WIS, FALSE);
+					}
+				}
+			}
+
 		break;
 /*		case AD_SUMMON:
 			int count;

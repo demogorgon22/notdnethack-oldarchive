@@ -49,6 +49,7 @@ register struct monst *mtmp;
 	    newsym(u.ux, u.uy);
 	    pline("%s quickly snatches some gold from between your %s!",
 		    Monnam(mtmp), makeplural(body_part(FOOT)));
+	    if(mtmp->data == &mons[PM_FAFNIR]) return;
 	    if(!u.ugold || !rn2(5)) {
 		if (!tele_restrict(mtmp)) (void) rloc(mtmp, FALSE);
 		/* do not set mtmp->mavenge here; gold on the floor is fair game */
@@ -58,6 +59,7 @@ register struct monst *mtmp;
 	    u.ugold -= (tmp = somegold());
 	    Your("purse feels lighter.");
 	    mtmp->mgold += tmp;
+	    if(mtmp->data == &mons[PM_FAFNIR]) return;
 	if (!tele_restrict(mtmp)) (void) rloc(mtmp, FALSE);
 	    mtmp->mavenge = 1;
 	    monflee(mtmp, 0, FALSE, FALSE);

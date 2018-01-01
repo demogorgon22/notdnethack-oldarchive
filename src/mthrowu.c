@@ -1704,6 +1704,12 @@ ironball:
 			break;
 		    default:
 				ammo_type = ARROW;
+				qvr = mksobj(ammo_type, TRUE, FALSE);
+			        qvr->blessed = 0;
+			        qvr->cursed = 0;
+			        qvr->quan = 1;
+			        qvr->spe = 3;//plus 3 arrows is nice enough
+				rngmod = 8;
 			break;
 		}
 		if(!qvr){

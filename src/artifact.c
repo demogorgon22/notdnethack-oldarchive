@@ -1551,6 +1551,8 @@ struct obj *otmp;
 struct monst *mon;
 int tmp;
 {
+	if(!otmp->oartifact) return 0;
+	
 	register const struct artifact *weap = get_artifact(otmp);
 	int damd = (int)weap->attk.damd;
 	

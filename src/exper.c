@@ -5,6 +5,7 @@
 #include "hack.h"
 
 STATIC_DCL void NDECL(binderdown);
+STATIC_DCL void NDECL(acudown);
 STATIC_DCL int FDECL(enermod, (int));
 
 static long expUps[] = {
@@ -286,6 +287,7 @@ boolean expdrain; /* attack drains exp as well */
 		else u.uexp = newuexp(1)/2;
 	}
 	if(Role_if(PM_EXILE)) binderdown();
+	if(Role_if(PM_ANACHRONOUNBINDER)) acudown();
 	flags.botl = 1;
 }
 
@@ -305,10 +307,14 @@ newexplevel()
 /*Give spirits to anachronounbinder*/
 void
 acuup(){
-	u.sealsKnown |= sealKey[u.sealorder[u.ulevel]];
+	if(!(u.spiritSummons & sealKey[u.sealorder[u.ulevel]]))
+		u.sealsKnown |= sealKey[u.sealorder[u.ulevel]];
 }
 
-
+void
+acudown(){
+	u.sealsKnown &= ~(sealKey[u.sealorder[u.ulevel+1]]);
+}
 
 /* Grant new spirits to binder */
 /* It reaplies all spirts just for kicks */

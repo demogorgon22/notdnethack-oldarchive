@@ -686,7 +686,6 @@ dofire()
 	    You("are physically incapable of doing that.");
 	    return 0;
 	}
-	
 	if(uwep && (!uquiver || (is_ammo(uquiver) && !ammo_and_launcher(uquiver, uwep))) && uwep->oartifact && 
 		(
         (uwep->oartifact == ART_KHAKKHARA_OF_THE_MONKEY) ||
@@ -1408,7 +1407,6 @@ int thrown;
 //	if (launcher && launcher->oartifact == ART_PLAGUE &&
 //			ammo_and_launcher(obj, launcher) && is_poisonable(obj))
 //		obj->opoisoned = 1;
-
     obj->was_thrown = 1;
 	if ((obj->cursed || obj->greased || (ammo_and_launcher(obj, launcher) && launcher->otyp == FLINTLOCK)) && (u.dx || u.dy) && !rn2(7)) {
 	    boolean slipok = TRUE;
@@ -1460,7 +1458,8 @@ int thrown;
 				 obj->oartifact == ART_DART_OF_THE_ASSASSIN ||
 				 obj->oartifact == ART_ANNULUS ||
 				 obj->oartifact == ART_KHAKKHARA_OF_THE_MONKEY ||
-				 obj->oartifact == ART_SICKLE_MOON
+				 obj->oartifact == ART_SICKLE_MOON ||
+				 (Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 20)//dirty magic number
 			  ) && !impaired
 		) {
 			pline("%s the %s and returns to your hand!",
@@ -1651,10 +1650,11 @@ int thrown;
 				 obj->oartifact == ART_ANNULUS ||
 				 obj->oartifact == ART_KHAKKHARA_OF_THE_MONKEY ||
 				 obj->oartifact == ART_DART_OF_THE_ASSASSIN ||
-				 obj->oartifact == ART_WINDRIDER
+				 obj->oartifact == ART_WINDRIDER ||
+				 (Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 20)//dirty magic number
 			  )
 		) {
-		    /* we must be wearing Gauntlets of Power to get here */
+		    /* we must be wearing Gauntlets of Power to get here *///haha i see why chris left this in, its funny
 		    if(!is_boomerang(obj)) sho_obj_return_to_u(obj, startX, startY);	    /* display its flight */
 			
 			if(!is_boomerang(obj) && (u.ux != startX || u.uy != startY)){

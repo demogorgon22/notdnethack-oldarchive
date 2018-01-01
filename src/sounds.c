@@ -3278,7 +3278,7 @@ int tx,ty;
 					if(!Blind){
 						pline("She dances up to you and sweeps you up into her dance.");
 						if(Role_if(PM_ANACHRONOUNBINDER)){
-							pline("\"Let us dance!\"");
+							pline("\"Let us dance!\"");//cue epic boss music
 							makemon(&mons[PM_EURYNOME], tx, ty, MM_ADJACENTOK);
 							u.spiritSummons |= SEAL_EURYNOME;
 							u.sealsKnown &= ~(SEAL_EURYNOME);
@@ -3326,10 +3326,23 @@ int tx,ty;
 			if(isok(tx+(tx-u.ux), ty+(ty-u.uy)) && 
 				IS_TREE(levl[tx+(tx-u.ux)][ty+(ty-u.uy)].typ) 
 			){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_EVE){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}
 				You("%s a woman within the seal.", Blind ? "sense" : "see");
 				pline("She is both young and old at once.");
 				pline("She looks hurt.");
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("But ready to hurt you more.");
+						makemon(&mons[PM_EVE], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_EVE;
+						u.sealsKnown &= ~(SEAL_EVE);
+						return 0;
+					}
 					You("help her to her feet.");
 					pline("\"Shall we hunt together?\"");
 					bindspirit(ep->ward_id);
@@ -3371,10 +3384,22 @@ int tx,ty;
 			}
 			//Spirit requires that his seal be drawn in a vault, or on a pile of 1000xyour level coins.
 			if(coins || (*in_rooms(tx,ty,VAULT) && u.uinvault)){
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					if(u.spiritSummons&SEAL_FAFNIR){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
+				}	
 				if(!Blind) You("suddenly notice a dragon %s", coins ? "buired in the coins" : "in the room.");
 				if(u.sealCounts < numSlots){
 					if(!Blind) pline("The dragon lunges forwards to bite you.");
 					else pline("something bites you!");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_FAFNIR], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_FAFNIR;
+						u.sealsKnown &= ~(SEAL_FAFNIR);
+						return 0;
+					}
 					Your("left finger stings!");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[FAFNIR-FIRST_SEAL] = moves + bindingPeriod;
@@ -3407,8 +3432,19 @@ int tx,ty;
 	case HUGINN_MUNINN:{
 		if(u.sealTimeout[HUGINN_MUNINN-FIRST_SEAL] < moves){
 			//Spirit places no restrictions on where their seal is drawn.
+			if(u.spiritSummons&SEAL_HUGINN_MUNINN){
+				pline("You have already released this spirit from the void.");
+				return 0;
+			}
 			You_hear("flapping wings.");
 			if(!Blind) pline("A pair of ravens land in the seal.");
+			if(Role_if(PM_ANACHRONOUNBINDER)){
+				makemon(&mons[PM_HUGINN], tx, ty, MM_ADJACENTOK);
+				makemon(&mons[PM_MUNINN], tx, ty, MM_ADJACENTOK);
+				u.spiritSummons |= SEAL_HUGINN_MUNINN;
+				u.sealsKnown &= ~(SEAL_HUGINN_MUNINN);
+				return 0;
+			}
 			if(u.sealCounts < numSlots){
 				if(!Blind) pline("They hop up to your shoulders and begin to croak raucously in your ears.");
 				else pline("A pair of large birds land on you and begin to croak raucously in your ears.");
