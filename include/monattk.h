@@ -194,6 +194,7 @@
 #define AD_ROCK		138 /*Throws a rock, used by Shiro*/
 #define AD_RNBW		139 /*Iris special attack. */
 #define AD_JACK		140 /*Jack hella huge explosion on death*/
+#define AD_YANK		141 /*yank ya to em marionette*/
 /*
  *  Monster to monster attacks.  When a monster attacks another (mattackm),
  *  any or all of the following can be returned.  See mattackm() for more

@@ -1808,6 +1808,7 @@ get_description_of_damage_type(uchar id)
 	case AD_ROCK: return "rocks";
 	case AD_RNBW: return "Iris special attack, hallu + sick";
 	case AD_JACK: return "big firey explosion, always leaves corpse";
+	case AD_YANK: return "yanks you to them";
 	default:
 			impossible("bug in get_description_of_damage_type(%d)", id);
 			return "<MISSING DESCRIPTION, THIS IS A BUG>";

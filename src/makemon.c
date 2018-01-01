@@ -6667,6 +6667,7 @@ int type;
 		case PM_ARSENAL: return 88;
 		case PM_CENTER_OF_ALL: return 88;
 		case PM_RETRIEVER: return 120;
+		case PM_MARIONETTE: return 200;
 //		case PM_HEAD_OF_THE_UNKNOWN_GOD: return 65;
 //		case PM_BODY_OF_THE_UNKNOWN_GOD: return 65;
 //		case PM_LEGS_OF_THE_UNKNOWN_GOD: return 65;

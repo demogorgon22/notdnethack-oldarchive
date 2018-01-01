@@ -2613,6 +2613,10 @@ const char *fmt, *str;
 	    if (fmt && str)
 	    	pline(fmt, str, "skin");
 	    return TRUE;
+	} else if (Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 14){//bad magic number
+	    if (fmt && str)
+	    	pline(fmt, str, "mind waves");
+	    return TRUE;
 	} else if (EReflecting) {
 	    /* Catchall */
 	    if (fmt && str)

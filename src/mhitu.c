@@ -51,7 +51,21 @@ static const char tools[] = { TOOL_CLASS, 0 };
 
 #ifdef OVL1
 
-
+/*sqrt wihout floating points*/
+STATIC_OVL int
+isqrt(val)
+	int val;
+	{
+	   int rt = 0;
+	   int odd = 1;
+	   while(val >= odd) {
+		val = val-odd;
+		odd = odd+2;
+		rt = rt + 1;
+           }
+	return rt;
+}
+	
 STATIC_OVL void
 hitmsg(mtmp, mattk)
 register struct monst *mtmp;
@@ -90,6 +104,7 @@ register struct attack *mattk;
 			if(mattk->adtyp == AD_SHDW) pline("%s slashes you with bladed shadows!", Monnam(mtmp));
 			else if(mattk->adtyp == AD_STAR) pline("%s slashes you with a starlight rapier!", Monnam(mtmp));
 			else if(mattk->adtyp == AD_BLUD) pline("%s slashes you with a blade of blood!", Monnam(mtmp));
+			else if(mattk->adtyp == AD_YANK) pline("%s yanks you towards them!", Monnam(mtmp));
 			else pline("%s touches you!", Monnam(mtmp));
 			break;
 		case AT_TENT:
@@ -1754,6 +1769,70 @@ hitmu(mtmp, mattk)
             	dmg += rnd(20);
             	pline("The rapier of silver starlight sears your flesh!");
             } else hitmsg(mtmp, mattk);
+		break;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+	   case AD_YANK:
+		pline("");
+		int squares[9];
+		int ttx,tty;
+		int i = 0;
+		for(tty=mtmp->my-1; tty<=mtmp->my+1; tty++){
+                	for(ttx=mtmp->mx-1; ttx<=mtmp->mx+1; ttx++){
+				squares[i] = isqrt(((ttx-u.ux)*(ttx-u.ux))+((tty-u.uy)*(tty-u.uy)));	
+				i++;
+			}
+		}
+		int j = 0;/*find best square to yank you to*/
+		int lowest;
+		int selected = 0;
+		int blacklist[9] = {9,9,9,9,9,9,9,9,9};
+		int c;
+		boolean check;
+		boolean jump;
+		boolean found = FALSE;
+		for(i=0; i<9;i++){
+			lowest = 99;
+			for(j=0;j<9;j++){
+				//pline("The current square (%d) has value %d while the lowest has value %d.",j,squares[j],lowest);
+				check = !rn2(2)?squares[j]<lowest:squares[j]<=lowest;//provide variance in landing spot
+				if(check){
+					jump = FALSE;
+					for(c=0;c<9;c++){
+						if(blacklist[c] == j){
+							//pline("hit a blacklist item");
+							jump = TRUE;
+							break;
+						}
+
+					}
+					if(jump) continue;
+					lowest = squares[j];
+					selected = j;
+				}
+			}		
+			if((selected+1)%3 == 0) ttx = mtmp->mx+1;
+			if(selected%3 == 0) ttx = mtmp->mx-1;
+		       	if((selected+2)%3 == 0) ttx = mtmp->mx;
+			if(selected<9) tty = mtmp->my+1;
+			if(selected<6) tty = mtmp->my;
+			if(selected<3) tty = mtmp->my-1;	
+			if(teleok(ttx,tty,FALSE)){
+				//pline("Position at index %d was chosen with value %d at %d,%d",selected,lowest,ttx,tty);
+				found = TRUE;//yey we can move on
+				break;
+			} else {
+				//pline("Position at index %d was banned with value %d at %d,%d",selected,lowest,ttx,tty);
+				blacklist[i] = selected;//ban this index and try again	
+			}
+
+		}
+		if(found){		
+			pline("%s's wires yank you towards %s!", Monnam(mtmp),mhim(mtmp));
+			teleds(ttx,tty,FALSE);
+		} else {
+			pline("%s's wires rip at your fleshs!", Monnam(mtmp));
+	
+		}
 		break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	    case AD_BLUD:

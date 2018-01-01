@@ -1802,10 +1802,12 @@ stillinwater:;
 				    Blind && !sensemon(mtmp) ?
 				    something : a_monnam(mtmp));
 				mtmp->mpeaceful = 0;
-			} else
-			    pline("%s attacks you by surprise!",
+			} else {
+			    if(mtmp->data != &mons[PM_MARIONETTE])
+			    	pline("%s attacks you by surprise!",
 					Amonnam(mtmp));
 			break;
+			}
 		}
 		mnexto(mtmp); /* have to move the monster */
 	}

@@ -3640,7 +3640,6 @@ int tx,ty;
 						adjalign(5);
 					}
 				}
-				//add block code
 				if(u.spiritSummons&SEAL_MALPHAS){
 					pline("You have already released this spirit from the void.");
 					return 0;
@@ -3653,7 +3652,6 @@ int tx,ty;
 				if(u.sealCounts < numSlots){
 					if(!Blind) pline("A black-feathered humanoid steps forth.");
 					pline("\"I am Malphas. You feed my flock. One way or the other.\"");
-					//add code for if you can summon	
 					if(Role_if(PM_ANACHRONOUNBINDER)){
 						makemon(&mons[PM_MALPHAS], tx, ty, MM_ADJACENTOK);
 						for(i = 0; i<12; i++) makemon(&mons[PM_CROW], tx, ty, MM_ADJACENTOK);	
@@ -3695,11 +3693,21 @@ int tx,ty;
 			//Spirit requires that her seal be drawn in the Valley of the Dead or in a graveyard.
 			boolean in_a_graveyard = rooms[levl[tx][ty].roomno - ROOMOFFSET].rtype == MORGUE;
 			if(in_a_graveyard || on_level(&valley_level, &u.uz)){
+				if(u.spiritSummons&SEAL_MARIONETTE){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				if(!Blind) You("notice metal wires sticking out of the ground within the seal.");
 				if(u.sealCounts < numSlots){
 					if(!Blind) pline("In fact, there are wires sticking up all around you.");
 					if(!Blind) pline("Shreaks and screems echo down from whence the wires come.");
 					else You_hear("screaming!");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_MARIONETTE], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_MARIONETTE;
+						u.sealsKnown &= ~(SEAL_MARIONETTE);
+						return 0;
+					}
 					pline("You feel sharp pains in your elbowes and knees!");
 					if(!Blind) pline("It seems that you, are but a puppet.");
 					bindspirit(ep->ward_id);
