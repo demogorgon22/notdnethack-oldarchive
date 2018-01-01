@@ -951,7 +951,7 @@ dospit()
 									  : ACID_VENOM,
 			TRUE, FALSE);
 	otmp->spe = 1; /* to indicate it's yours */
-	throwit(otmp, 0L, FALSE, 0);
+	throwit(otmp, 0L, FALSE, 0, 0);
 	return(1);
 }
 

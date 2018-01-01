@@ -54,6 +54,12 @@ int thrown;
 
 	multi = 0;		/* reset; it's been used up */
 	
+	/*Figure out where weapon is to pass on to function at the end for use with returning weps*/
+	int objPos = 0;
+	if(obj == uwep) objPos = 1;
+	if(obj == uswapwep) objPos = 2;
+	if(obj == uquiver) objPos = 3;
+
 	if (thrown == 1 && uwep && ammo_and_launcher(obj, uwep)) 
 		launcher = uwep;
 	else if (thrown == 2 && uswapwep && ammo_and_launcher(obj, uswapwep))
@@ -285,7 +291,7 @@ int thrown;
 				remove_worn_item(otmp, FALSE);
 	    }
 	    if(obj->where == OBJ_INVENT) freeinv(otmp);
-	    throwit(otmp, wep_mask, twoweap, thrown);
+	    throwit(otmp, wep_mask, twoweap, thrown, objPos);
 	}
 	m_shot.n = m_shot.i = 0;
 	m_shot.o = STRANGE_OBJECT;
@@ -545,7 +551,7 @@ int shotlimit;
 			} else {
 				tobj = otmp;
 			}
-			throwit(tobj, 0L, u.twoweap, blaster == uwep ? 1 : blaster == uswapwep ? 2 : 0);
+			throwit(tobj, 0L, u.twoweap, blaster == uwep ? 1 : blaster == uswapwep ? 2 : 0, 0);
 		}
 		break_thrown = FALSE; /* state variable, always destroy thrown */
 	} else {
@@ -1388,7 +1394,7 @@ int desty;
 }
 
 void
-throwit(obj, wep_mask, twoweap, thrown)
+throwit(obj, wep_mask, twoweap, thrown, objPos)
 register struct obj *obj;
 long wep_mask;	/* used to re-equip returning boomerang */
 boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
@@ -1466,10 +1472,13 @@ int thrown;
 				  Tobjnam(obj, "hit"), ceiling(u.ux,u.uy));
 			obj = addinv(obj);
 			(void) encumber_msg();
-			if(obj->oartifact == ART_WINDRIDER || obj->oartifact == ART_SICKLE_MOON || obj->oartifact == ART_ANNULUS){
+			if(obj->oartifact == ART_WINDRIDER || obj->oartifact == ART_SICKLE_MOON || obj->oartifact == ART_ANNULUS || objPos == 3){
 				setuqwep(obj);
-			} else{
+			} else if(objPos == 1){
 				setuwep(obj);
+				u.twoweap = twoweap;
+			}else if(objPos == 2){
+				setuswapwep(obj);
 				u.twoweap = twoweap;
 			}
 			return;
@@ -1655,6 +1664,7 @@ int thrown;
 			  )
 		) {
 		    /* we must be wearing Gauntlets of Power to get here *///haha i see why chris left this in, its funny
+		    boolean requiver = FALSE;
 		    if(!is_boomerang(obj)) sho_obj_return_to_u(obj, startX, startY);	    /* display its flight */
 			
 			if(!is_boomerang(obj) && (u.ux != startX || u.uy != startY)){
@@ -1696,10 +1706,13 @@ int thrown;
 			pline("%s to your hand!", Tobjnam(obj, "return"));
 			obj = addinv(obj);
 			(void) encumber_msg();
-			if(obj->oartifact == ART_WINDRIDER || obj->oartifact == ART_SICKLE_MOON){
+			if(obj->oartifact == ART_WINDRIDER || obj->oartifact == ART_SICKLE_MOON || objPos == 3){
 				setuqwep(obj);
-			} else{
+			} else if(objPos == 1){
 				setuwep(obj);
+				u.twoweap = twoweap;
+			} else if(objPos == 2){
+				setuswapwep(obj);
 				u.twoweap = twoweap;
 			}
 			if(cansee(bhitpos.x, bhitpos.y))
