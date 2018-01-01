@@ -192,7 +192,8 @@
 #define AD_CURS		136	/* random curse (ex. gremlin) */
 #define AD_SQUE		137	/* hits, may steal Quest Art or Amulet (Nemeses) */
 #define AD_ROCK		138 /*Throws a rock, used by Shiro*/
-
+#define AD_RNBW		139 /*Iris special attack. */
+#define AD_JACK		140 /*Jack hella huge explosion on death*/
 /*
  *  Monster to monster attacks.  When a monster attacks another (mattackm),
  *  any or all of the following can be returned.  See mattackm() for more

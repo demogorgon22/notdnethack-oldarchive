@@ -3214,11 +3214,9 @@ int tx,ty;
 			}
 			//Spirit requires that his seal be drawn in a large open space.
 			if(largeRoom){
-				if(Role_if(PM_ANACHRONOUNBINDER)){
-					if(u.spiritSummons&SEAL_ENKI){
-						pline("You have already released this spirit from the void.");
-						return 0;
-					}
+				if(u.spiritSummons&SEAL_ENKI){
+					pline("You have already released this spirit from the void.");
+					return 0;
 				}
 				pline("Water bubbles up inside the seal,");
 				pline("and a figure rises within it.");
@@ -3384,12 +3382,10 @@ int tx,ty;
 			}
 			//Spirit requires that his seal be drawn in a vault, or on a pile of 1000xyour level coins.
 			if(coins || (*in_rooms(tx,ty,VAULT) && u.uinvault)){
-				if(Role_if(PM_ANACHRONOUNBINDER)){
-					if(u.spiritSummons&SEAL_FAFNIR){
-						pline("You have already released this spirit from the void.");
-						return 0;
-					}
-				}	
+				if(u.spiritSummons&SEAL_FAFNIR){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				if(!Blind) You("suddenly notice a dragon %s", coins ? "buired in the coins" : "in the room.");
 				if(u.sealCounts < numSlots){
 					if(!Blind) pline("The dragon lunges forwards to bite you.");
@@ -3490,10 +3486,20 @@ int tx,ty;
 		if(u.sealTimeout[IRIS-FIRST_SEAL] < moves){
 			//Spirit requires that her seal be drawn inside a stinking cloud.
 			if(check_stinking_cloud_region((xchar)tx,(xchar)ty)){ 
+				if(u.spiritSummons&SEAL_IRIS){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				You("catch a glimpse of somthing moving in the stinking cloud....");
 				pline("But you can't see what it was.");
 				if(u.sealCounts < numSlots){
 					pline("Something jumps on you from behind!");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_IRIS], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_IRIS;
+						u.sealsKnown &= ~(SEAL_IRIS);
+						return 0;
+					}
 					pline("\"YAY! Lets play together!!\"");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[IRIS-FIRST_SEAL] = moves + bindingPeriod;
@@ -3527,6 +3533,17 @@ int tx,ty;
 			//Spirit requires that his seal be drawn outside of hell and the endgame.
 			if(!In_hell(&u.uz) && !In_endgame(&u.uz)){
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						if(!(u.spiritSummons&SEAL_JACK)){
+							pline("Jack, bearer of the devil's lantern, shambles over.");
+							makemon(&mons[PM_JACK], tx, ty, MM_ADJACENTOK);
+							u.spiritSummons |= SEAL_JACK;
+							u.sealsKnown &= ~(SEAL_JACK);
+						} else {
+							pline("You have already released this spirit from the void.");
+						}
+						return 0;
+					}
 					You("feel something climb onto your back!");
 					pline("\"Will you let me stay with you?\"");
 					bindspirit(ep->ward_id);
@@ -3623,6 +3640,7 @@ int tx,ty;
 						adjalign(5);
 					}
 				}
+				//add block code
 				Your("sacrifice is accepted.");
 				if(!Blind){
 					pline("A murder of crows decends on the seal.");
@@ -3631,6 +3649,7 @@ int tx,ty;
 				if(u.sealCounts < numSlots){
 					if(!Blind) pline("A black-feathered humanoid steps forth.");
 					pline("\"I am Malphas. You feed my flock. One way or the other.\"");
+					//add code for if you can summon	
 					bindspirit(ep->ward_id);
 					u.sealTimeout[MALPHAS-FIRST_SEAL] = moves + bindingPeriod;
 				}
