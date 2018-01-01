@@ -3847,9 +3847,20 @@ int tx,ty;
 			struct trap *t=t_at(tx+(tx-u.ux), ty+(ty-u.uy));
 			//Spirit requires that his seal be drawn in a square with a hole.
 			if(t && t->ttyp == HOLE){
+				if(u.spiritSummons&SEAL_ORTHOS){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				if(!Blind) pline("The hole grows darker, and a whistling occurs at the edge of hearing.");
 				else pline("A whistling occurs at the edge of hearing.");
 				pline("The mournful whistle grows louder, as the air around you flows into the pit.");
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					pline("Before you stands an ancient darkness.");
+					makemon(&mons[PM_ORTHOS], tx, ty, MM_ADJACENTOK);
+					u.spiritSummons |= SEAL_ORTHOS;
+					u.sealsKnown &= ~(SEAL_ORTHOS);
+					return 0;
+				}
 				if(!Blind) pline("But that is all that occurs. Darkness. Wind. And a lonely whistle.");
 				if(u.sealCounts < numSlots){
 					pline("You feel that it will stay with you for a while.");

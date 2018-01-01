@@ -308,6 +308,12 @@ boolean message;
 							Strcpy(blast,
 							" in a blast of frost");
 							break;
+						case AD_FAMN:
+							Strcpy(blast,
+							 " feeling empty.");
+						case AD_SHDW:
+							Strcpy(blast,
+							 " in a blast of shadows.");
 					}
 				} else
 					Strcpy(blast, " with a squelch");
@@ -3548,6 +3554,19 @@ gulpmu(mtmp, mattk)	/* monster swallows you, or damage if u.uswallow */
 			      (u.uswldtim == 1) ? " utterly" : "");
 			exercise(A_STR, FALSE);
 		    }
+		break;
+		case AD_FAMN:
+		You("hunger.");
+		exercise(A_CON, FALSE);
+		if (!is_fainted()){
+			int hungr = rn1(40,40);
+			morehungry(hungr);
+			mtmp->mhp = min(mtmp->mhp+mtmp->m_lev*hungr/30,mtmp->mhpmax); //ie, heal by the amount of HP it would heal by resting for that nutr worth of turns
+		}
+		/* plus the normal damage */
+		break;
+		case AD_SHDW:
+			You("are slashed by shadows from the darkness!");	
 		break;
 		case AD_PHYS:
 		    if (mtmp->data == &mons[PM_FOG_CLOUD]) {

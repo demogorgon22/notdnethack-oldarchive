@@ -841,7 +841,8 @@ struct attack *uattk;
 	int mhit = (tmp > (dieroll = rnd(20)) || u.uswallow);
 	
 	if(mhit && is_displacer(mon->data) && rn2(2)){
-		You("hit a displaced image!");
+		if(mon->data == &mons[PM_ORTHOS]) You("flail around in the darkness!");
+		else You("hit a displaced image!");
 		return TRUE;
 	}
 
@@ -3731,7 +3732,8 @@ register int tmp, weptmp, tchtmp;
 	boolean Old_Upolyd = Upolyd, wepused;
 	
 	if(is_displacer(mon->data) && rn2(2)){
-		You("attack a displaced image!");
+		if(mon->data == &mons[PM_ORTHOS]) You("flail around in the darkness!");
+		else You("attack a displaced image!");
 		return TRUE;
 	}
 	
@@ -3996,7 +3998,8 @@ int nattk;
 	boolean Old_Upolyd = Upolyd;
 	
 	if(is_displacer(mon->data) && rn2(2)){
-		You("attack a displaced image!");
+		if(mon->data == &mons[PM_ORTHOS]) You("flail around in the darkness!");
+		else You("attack a displaced image!");
 		return TRUE;
 	}
 	
