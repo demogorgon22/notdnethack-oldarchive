@@ -3641,6 +3641,10 @@ int tx,ty;
 					}
 				}
 				//add block code
+				if(u.spiritSummons&SEAL_MALPHAS){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				Your("sacrifice is accepted.");
 				if(!Blind){
 					pline("A murder of crows decends on the seal.");
@@ -3650,6 +3654,13 @@ int tx,ty;
 					if(!Blind) pline("A black-feathered humanoid steps forth.");
 					pline("\"I am Malphas. You feed my flock. One way or the other.\"");
 					//add code for if you can summon	
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_MALPHAS], tx, ty, MM_ADJACENTOK);
+						for(i = 0; i<12; i++) makemon(&mons[PM_CROW], tx, ty, MM_ADJACENTOK);	
+						u.spiritSummons |= SEAL_MALPHAS;
+						u.sealsKnown &= ~(SEAL_MALPHAS);
+						return 0;
+					}
 					bindspirit(ep->ward_id);
 					u.sealTimeout[MALPHAS-FIRST_SEAL] = moves + bindingPeriod;
 				}
