@@ -185,6 +185,12 @@ register boolean special;
 		case PM_ARCHEOLOGIST:
 		    if (rn2(2)) weapon = BULLWHIP;
 		break;
+		case PM_ANACHRONOUNBINDER:
+			weapon = QUARTERSTAFF;
+			armor = LEATHER_ARMOR;
+			cloak = LEATHER_CLOAK;
+			shield = STRANGE_OBJECT;
+	   	 break;
 		case PM_ANACHRONONAUT:
 		    if (!rn2(2)) weapon = LIGHTSABER;
 		    else weapon = FORCE_PIKE;

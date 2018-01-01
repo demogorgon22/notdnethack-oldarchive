@@ -3741,8 +3741,19 @@ int tx,ty;
 		if(u.sealTimeout[MOTHER-FIRST_SEAL] < moves){
 			//Spirit requires that her seal addressed while blind.
 			if(Blind){
+				if(u.spiritSummons&SEAL_MOTHER){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				Your("Hands itch painfully.");
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						You_feel("eyes watching you.");
+						makemon(&mons[PM_GREAT_MOTHER], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_MOTHER;
+						u.sealsKnown &= ~(SEAL_MOTHER);
+						return 0;
+					}	
 					You("feel eyes open in your hands!");
 					pline("But you still can't see...");
 					pline("...the eyeballs don't belong to you!");
@@ -3779,12 +3790,22 @@ int tx,ty;
 				ACURR(A_WIS) >= 14 &&
 				(u.udrunken >= u.ulevel || Confusion)
 			){ 
+				if(u.spiritSummons&SEAL_NABERIUS){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				You_hear("a snuffing noise.");
 				if(u.sealCounts < numSlots){
 					if(!Blind){
 						pline("A dog wanders in to the seal, nose to the ground.");
 						pline("It wanders back and forth, then looks up at you.");
 						pline("It looks up at you with all three heads.");
+					}
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_NABERIUS], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_NABERIUS;
+						u.sealsKnown &= ~(SEAL_NABERIUS);
+						return 0;
 					}
 					pline("\"Hello, I am Naberius, the councilor.\"");
 					pline("\"I can smell the weaknesses others try to hide.\"");
