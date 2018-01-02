@@ -322,13 +322,14 @@ acuup(){
 
 void
 acudown(){
-	if(u.ulevel == 7){//magic number
+	if(u.ulevel == 6){//magic number
 		You("can no longer echolocate!");
 		youracedata->mflagsv &= ~MV_ECHOLOCATE;
-	} else if(u.ulevel == 10){
+	} else if(u.ulevel == 9){
 		You_feel("less in control of your altitude.");
 		youracedata->mflagsm &= ~MM_FLY;
-	} else if(u.ulevel == 20){
+		//float_down(0L, 0L);
+	} else if(u.ulevel == 19){
 		You_feel("less in control of the forces around you.");
 	}
 	u.sealsKnown &= ~(sealKey[u.sealorder[u.ulevel+1]]);
