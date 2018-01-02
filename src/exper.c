@@ -307,12 +307,30 @@ newexplevel()
 /*Give spirits to anachronounbinder*/
 void
 acuup(){
+	if(u.ulevel == 7){//magic number
+		You("are able to echolate with your psionic pulses!");
+		youracedata->mflagsv |= MV_ECHOLOCATE;
+	} else if(u.ulevel == 10){
+		You_feel("able to control your altitude with your mind.");
+		youracedata->mflagsm |= MM_FLY;
+	} else if(u.ulevel == 20){
+		You_feel("in control of the forces around you.");
+	}
 	if(!(u.spiritSummons & sealKey[u.sealorder[u.ulevel]]))
 		u.sealsKnown |= sealKey[u.sealorder[u.ulevel]];
 }
 
 void
 acudown(){
+	if(u.ulevel == 7){//magic number
+		You("can no longer echolocate!");
+		youracedata->mflagsv &= ~MV_ECHOLOCATE;
+	} else if(u.ulevel == 10){
+		You_feel("less in control of your altitude.");
+		youracedata->mflagsm &= ~MM_FLY;
+	} else if(u.ulevel == 20){
+		You_feel("less in control of the forces around you.");
+	}
 	u.sealsKnown &= ~(sealKey[u.sealorder[u.ulevel+1]]);
 }
 

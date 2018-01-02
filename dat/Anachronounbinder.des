@@ -12,27 +12,27 @@ MAZE: "Acu-strt",' '
 FLAGS: noteleport,hardfloor
 GEOMETRY:center,center
 MAP
-  T.    T.T                    CC     CC    ##########                      
- T.... ......   ...T  LLL    CCCCCC  CCCC   #       #   ##################. 
-   .T...TTTT.. ..T.. LL LL  CCCCCC   C CCC  # ------.-- #                   
-  ..TTTTT. TT...T..  LL    CCCCCCCC    CCC  # |...-...| #                   
- T.TTTT.TTTTTTTTT.  CCLL  CCCCCCCCCC CCCCC  # |.......| #                   
- ... TT. T T T .T.. CCCLLLCCCCCCCCCCCCCCC   # |...-...| #      .     .      
-  .TTTTTTTTTTTTTTT.  CCCCLLLCCCCCCCCCCC     # --.--...| #                   
-  .T T T T TT. T T.. CCCCCCLL-.-CCCCCC  C   #   # |...| #                   
- ..TTTTTTTTTTTTTTTT.  CCCCLL--.--CCCCC CCCCC##### |...| #   .  C-C-C-C  .   
-T.TT TTT T\T T . T.. CCCCLLL-.{.-CCCC  CC   #   # |...| #      -}}}}}-      
- .TTTT.TTTTTTTTTTT.  CCLLLLL--.--CCCC CCC   # ### |...| #      C}.}.}C      
-..TT T T T T T TT.. CCLLCCCLL---LCCCCCCC    #   # |...| #      -}}.}}-      
-.TTTTTTT.TTTTT.T..  LLL CCCCLLLLLLCCCCCCCC  ##### |...| #      C}.}.}C      
-.T T . TTT . TTT.. LL   CCCCCCLCCLLLCCCCC         |...| #      -}}}}}-      
-.TTTTTTTTTTTTTTTT.  L. CCCCCCLLCCCCLLLCCCCCCC-------.-| #   .  C-C-C-C  .   
-.TT. T T T T T TT..     CCCLLLCCCCCCCLLC  -...-...-...- #                   
- .TTTTTTTTTTTT..TT.. . CCLLLCCCCCCCCCCLCCC.............##                   
- ...TT T .TT TTTTTT... LLLCCCCCCCCC CCLC  -...-...-...- #      .     .      
-  T..TTTTTT....T.TT. .LL  CCCCCCCC   LLCC -------------                     
-    ....TT..  .....  LL    CCCCCC   LL CC               ##                  
-       ....     T.  LL       CC     L   C################                   
+  }.    }.}                    }}     }}    ##########                      
+ }.... ......   ...}  LLL    }}}}}}  }}}}   #       #   ##################. 
+   .}...}}}}.. ..}.. LL LL  }}}}}}   } }}}  # ------.-- #                   
+  ..}}}}}. }}...}..  LL    }}}}}}}}    }}}  # |...-...| #                   
+ }.}}}}.}}}}}}}}}.  }}LL  }}}}}}}}}} }}}}}  # |.......| #                   
+ ... }}. } } } .}.. }}}LLL}}}}}}}}}}}}}}}   # |...-...| #      .     .      
+  .}}}}}}}}}}}}}}}.  }}}}LLL}}}}}}}}}}}     # --.--...| #                   
+  .} } } } }}. } }.. }}}}}}LL-.-}}}}}}  }   #   # |...| #                   
+ ..}}}}}}}}}}}}}}}}.  }}}}LL--.--}}}}} }}}}}##### |...| #   .  }-}-}-}  .   
+}.}} }}} }.} } . }.. }}}}LLL-.{.-}}}}  }}   #   # |...| #      -}}}}}-      
+ .}}}}.}}}}}}}}}}}.  }}LLLLL--.--}}}} }}}   # ### |...| #      }}.}.}}      
+..}} } } } } } }}.. }}LL}}}LL---L}}}}}}}    #   # |...| #      -}}.}}-      
+.}}}}}}}.}}}}}.}..  LLL }}}}LLLLLL}}}}}}}}  ##### |...| #      }}.}.}}      
+.} } . }}} . }}}.. LL   }}}}}}L}}LLL}}}}}         |...| #      -}}}}}-      
+.}}}}}}}}}}}}}}}}.  L. }}}}}}LL}}}}LLL}}}}}}}-------.-| #   .  }-}-}-}  .   
+.}}. } } } } } }}..     }}}LLL}}}}}}}LL}  -...-...-...- #                   
+ .}}}}}}}}}}}}..}}.. . }}LLL}}}}}}}}}}L}}}.............##                   
+ ...}} } .}} }}}}}}... LLL}}}}}}}}} }}L}  -...-...-...- #      .     .      
+  }..}}}}}}....}.}}. .LL  }}}}}}}}   LL}} -------------                     
+    ....}}..  .....  LL    }}}}}}   LL }}               ##                  
+       ....     }.  LL       }}     L   }################                   
 ENDMAP
 #RANDOM_PLACES:(25,02),(21,14),(20,20),(36,20)
 #OBJECT[80%]:'=',"fire resistance",place[0]
@@ -60,6 +60,7 @@ NON_PASSWALL:(69,09,69,13)
 MAZEWALK:(74,01),south
 MAZEWALK:(10,09),south
 
+STAIR:(10,9),down
 # entrance
 REGION:(47,15,49,17),lit,"ordinary"
 #ENGRAVING:(48,16),engrave,"Beware of Dreams come true!"
