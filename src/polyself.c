@@ -1273,12 +1273,13 @@ domindblast()
 		if(mindless_mon(mtmp))
 			continue;
 		u_sen = telepathic(mtmp->data) && is_blind(mtmp);
-		if (u_sen || (telepathic(mtmp->data) && rn2(2)) || !rn2(10)) {
+		 
+		if (u_sen || (telepathic(mtmp->data) && rn2(2)) || !rn2(10) || (Role_if(PM_ANACHRONOUNBINDER) && !rn2(10-(int)(u.ulevel/3)))) {/*acus get an extra cahcne based on level*/
 			You("lock in on %s %s.", s_suffix(mon_nam(mtmp)),
 				u_sen ? "telepathy" :
 				telepathic(mtmp->data) ? "latent telepathy" :
 				"mind");
-			mtmp->mhp -= rnd(15);
+			mtmp->mhp -= Role_if(PM_ANACHRONOUNBINDER)?rnd(15)*(int)(u.ulevel/6):rnd(15);
 			if (mtmp->mhp <= 0)
 				killed(mtmp);
 		}
