@@ -287,7 +287,7 @@ boolean forcecontrol;
 	boolean isvamp = (is_vampire(youracedata));
 	boolean hasmask = (ublindf && ublindf->otyp==MASK && polyok(&mons[ublindf->corpsenm]));
 	boolean was_floating = (Levitation || Flying);
-
+	pline("%d",(int)Flying);
 	if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp && !hasmask && !(u.specialSealsActive&SEAL_ALIGNMENT_THING)) {
 	    if (rn2(20) > ACURR(A_CON)) {
 		You("%s", shudder_for_moment);

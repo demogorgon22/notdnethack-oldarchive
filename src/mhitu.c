@@ -2285,6 +2285,50 @@ dopois:
 		    }
 		}
 		break;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		case AD_LETHE:
+			if(mtmp->data == &mons[PM_OSE]) pline("The waters of a drowned city wash over you!");
+			else	pline("The waters of the Lethe wash over you!");
+			if(u.sealsActive&SEAL_HUGINN_MUNINN){
+				unbind(SEAL_HUGINN_MUNINN,TRUE);
+			} else {
+				(void) adjattrib(A_INT, -1, FALSE);
+				forget(5);
+				water_damage(invent, FALSE, FALSE, TRUE, &youmonst);
+				exercise(A_WIS, FALSE);
+			}
+			if (ABASE(A_INT) <= 3) {
+				int lifesaved = 0;
+				struct obj *wore_amulet = uamul;
+				
+				while(1) {
+				    /* avoid looping on "die(y/n)?" */
+				    if (lifesaved && (discover || wizard)) {
+						if (wore_amulet && !uamul) {
+						    /* used up AMULET_OF_LIFE_SAVING; still
+						       subject to dying from brainlessness */
+						    wore_amulet = 0;
+						} else {
+						    /* explicitly chose not to die;
+						       arbitrarily boost intelligence */
+						    ABASE(A_INT) = ATTRMIN(A_INT) + 2;
+						    You_feel("like a scarecrow.");
+						    break;
+						}
+					}
+					if (lifesaved)
+						pline("Unfortunately your mind is still gone.");
+					else
+						Your("last thought drifts away.");
+					killer = "memmory loss";
+					killer_format = KILLED_BY;
+					done(DIED);
+					lifesaved++;
+				}
+		    }
+
+		break;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case AD_RNBW:
 			hitmsg(mtmp,mattk);

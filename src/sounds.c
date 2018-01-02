@@ -3891,14 +3891,18 @@ int tx,ty;
 			//Spirit requires that its seal be drawn underwater.
 			if(IS_POOL(levl[tx][ty].typ) && IS_POOL(levl[u.ux][u.uy].typ) && u.uinwater && Underwater){ 
 				if(u.sealCounts < numSlots){
+					if(u.spiritSummons&SEAL_OSE){
+						pline("You have already released this spirit from the void.");
+						return 0;
+					}
 					pline("The sea-bottom within the seal fades, as if it were silt settling out of muddy water.");
 					pline("A sleeping %s floats gently up out of the dark seas below the seal.",u.osegen);
 					pline("You supose %s could be called comely,",u.osepro);
 					pline("though to be honest %s is about average among %s you have known.",u.osepro,makeplural(u.osegen));
-					if(!rn2(20)) pline("The %s's eyes open, and you have a long negotiation before achieving a good pact.", u.osegen);
+					if(!rn2(20) && !Role_if(PM_ANACHRONOUNBINDER)) pline("The %s's eyes open, and you have a long negotiation before achieving a good pact.", u.osegen);
 					else pline("You know that this is Ose, despite never having met.");
+					
 					pline("The seabed rises.");
-					bindspirit(ep->ward_id);
 					levl[tx][ty].typ = ROOM;
 					newsym(tx,ty);
 					levl[u.ux][u.uy].typ = ROOM;
@@ -3906,6 +3910,13 @@ int tx,ty;
 					vision_recalc(2);	/* unsee old position */
 					vision_full_recalc = 1;
 					spoteffects(FALSE);
+					if(Role_if(PM_ANACHRONOUNBINDER)){/*currently no way to do this short of drawing the seal then deranking like 15 levels*/
+						makemon(&mons[PM_OSE], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_OSE;
+						u.sealsKnown &= ~(SEAL_OSE);
+						return 0;
+					}		
+					bindspirit(ep->ward_id);
 					u.sealTimeout[OSE-FIRST_SEAL] = moves + bindingPeriod;
 				}
 				else if(uwep && uwep->oartifact == ART_PEN_OF_THE_VOID && (!u.spiritTineA || (!u.spiritTineB && quest_status.killed_nemesis && Role_if(PM_EXILE)))){
@@ -3962,6 +3973,10 @@ int tx,ty;
 		if(u.sealTimeout[OTIAX-FIRST_SEAL] < moves){
 			//Spirit requires that its seal be drawn on a closed door.
 			if(IS_DOOR(levl[tx][ty].typ) && closed_door(tx,ty)){ 
+				if(u.spiritSummons&SEAL_OTIAX){
+					pline("You have already released this spirit from the void.");
+					return 0;
+				}
 				if(!Blind) pline("Thick fingers of mist reach under the door.");
 				if(u.sealCounts < numSlots){
 					pline("BANG!! Something hits the door from the other side!");
@@ -3969,6 +3984,12 @@ int tx,ty;
 					levl[tx][ty].doormask &= ~(D_CLOSED|D_LOCKED);
 					levl[tx][ty].doormask |= D_ISOPEN;
 					newsym(tx,ty);
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_OTIAX], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_OTIAX;
+						u.sealsKnown &= ~(SEAL_OTIAX);
+						return 0;
+					}
 					bindspirit(ep->ward_id);
 					u.sealTimeout[OTIAX-FIRST_SEAL] = moves + bindingPeriod;
 				}
