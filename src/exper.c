@@ -335,7 +335,7 @@ acudown(){
 		youracedata->mflagsm &= ~MM_FLY;
 		float_down(0L, 0L);
 	} else if(u.ulevel == 11){
-		You_feel("Less in mental control.");
+		You_feel("less in mental control.");
 	} else if(u.ulevel == 14){
 		You_feel("unmoving.");
 	} else if(u.ulevel == 19){
