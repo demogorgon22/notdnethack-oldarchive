@@ -597,6 +597,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(Role_if(PM_ANACHRONOUNBINDER)){
+		Sprintf(buf, "Telekinesis");
+		any.a_int = MATTK_TELEK;	/* must be non-zero */
+		incntlet = 't';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(attacktype(youracedata, AT_MAGC)){
 		Sprintf(buf, "Monster Spells");
 		any.a_int = MATTK_MAGIC;	/* must be non-zero */
@@ -796,6 +805,26 @@ domonability()
 	}
 	break;
 	case MATTK_REACH: return use_reach_attack();
+	break;
+	case MATTK_TELEK:
+		pline("");
+		coord cc;
+		cc.x = u.ux;
+	        cc.y = u.uy;
+		if (getpos(&cc, TRUE, "the desired position") < 0)
+			return;
+		if(OBJ_AT(cc.x,cc.y)){
+			if(!cansee(cc.x,cc.y)){
+				Your("forces cannot reach where you cannot see.");
+				return 0;
+			}
+			You("attempt to lift %s from the floor with your mind!",level.objects[cc.x][cc.y]->quan>1?"some items":"an item");
+			pickup_object(level.objects[cc.x][cc.y], level.objects[cc.x][cc.y]->quan, TRUE);
+		} else {
+			pline("There is nothing there for you to pick up!");
+		}
+		return 1;
+			
 	break;
 	}
 	return 0;

@@ -1234,7 +1234,7 @@ boolean telekinesis;
 		prev_encumbr = flags.pickup_burden;
 	next_encumbr = calc_capacity(new_wt - old_wt);
 	if (next_encumbr > prev_encumbr) {
-	    if (telekinesis) {
+	    if (FALSE){//telekinesis) {
 		result = 0;	/* don't lift */
 	    } else {
 		char qbuf[BUFSZ];
@@ -1325,6 +1325,10 @@ boolean telekinesis;	/* not picking it up directly by hand */
 		// if(obj->sknown && !(obj->ostolen) ) obj->sknown = FALSE; /*don't automatically know that you found a stolen item.*/
 		// obj->ostolen = TRUE; /* object was apparently stolen by someone (not necessarily the player) */
 	// }
+	if(obj->shopOwned && telekinesis){
+		pline("The item suddenly falls to the ground.");
+		return 0;
+	}
 	if (obj == uchain) {    /* do not pick up attached chain */
 	    return 0;
 	} else if (obj->oartifact && !touch_artifact(obj, &youmonst, FALSE)) {
@@ -1371,7 +1375,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 #endif
 	} else if (obj->otyp == CORPSE) {
 	    if ( (touch_petrifies(&mons[obj->corpsenm])) && !uarmg
-				&& !Stone_resistance && !telekinesis) {
+				&& !Stone_resistance &&!telekinesis) {
 		if (poly_when_stoned(youracedata) && polymon(PM_STONE_GOLEM))
 		    display_nhwindow(WIN_MESSAGE, FALSE);
 		else {

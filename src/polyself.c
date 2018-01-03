@@ -1279,7 +1279,10 @@ domindblast()
 				u_sen ? "telepathy" :
 				telepathic(mtmp->data) ? "latent telepathy" :
 				"mind");
-			mtmp->mhp -= Role_if(PM_ANACHRONOUNBINDER)?rnd(15)*(int)(u.ulevel/6):rnd(15);
+			int dmg = Role_if(PM_ANACHRONOUNBINDER)?rnd(15)*(int)(u.ulevel/6):rnd(15);
+			dmg = (dmg > 0)?dmg:rnd(15);
+			//pline("Did %d dmg",dmg);
+			mtmp->mhp -= dmg;
 			if (mtmp->mhp <= 0)
 				killed(mtmp);
 		}
