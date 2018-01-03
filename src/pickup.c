@@ -1326,7 +1326,7 @@ boolean telekinesis;	/* not picking it up directly by hand */
 		// obj->ostolen = TRUE; /* object was apparently stolen by someone (not necessarily the player) */
 	// }
 	if(obj->shopOwned && telekinesis){
-		pline("The item suddenly falls to the ground.");
+		pline("The item suddenly falls to the ground!");
 		return 0;
 	}
 	if (obj == uchain) {    /* do not pick up attached chain */

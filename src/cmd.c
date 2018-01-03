@@ -113,6 +113,7 @@ static int NDECL((*timed_occ_fn));
 #endif /* OVL1 */
 
 STATIC_DCL int NDECL(use_reach_attack);
+STATIC_DCL int NDECL(psionic_craze);
 STATIC_PTR int NDECL(doprev_message);
 STATIC_PTR int NDECL(timed_occupation);
 STATIC_PTR int NDECL(doextcmd);
@@ -606,6 +607,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(Role_if(PM_ANACHRONOUNBINDER)){
+		Sprintf(buf, "Psionic Insanity");
+		any.a_int = MATTK_CRAZE;	/* must be non-zero */
+		incntlet = 'i';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(attacktype(youracedata, AT_MAGC)){
 		Sprintf(buf, "Monster Spells");
 		any.a_int = MATTK_MAGIC;	/* must be non-zero */
@@ -812,7 +822,7 @@ domonability()
 		cc.x = u.ux;
 	        cc.y = u.uy;
 		if (getpos(&cc, TRUE, "the desired position") < 0)
-			return;
+			return 0;
 		if(OBJ_AT(cc.x,cc.y)){
 			if(!cansee(cc.x,cc.y)){
 				Your("forces cannot reach where you cannot see.");
@@ -826,8 +836,46 @@ domonability()
 		return 1;
 			
 	break;
+	case MATTK_CRAZE:
+		return psionic_craze();
+	break;
 	}
 	return 0;
+}
+
+STATIC_OVL int
+psionic_craze(){
+	coord cc;
+		cc.x = u.ux;
+	        cc.y = u.uy;
+		if (getpos(&cc, TRUE, "the desired position") < 0)
+			return 0;
+		if(dist2(u.ux,u.uy,cc.x,cc.y) > 40 + u.ulevel){
+			Your("brain waves fade off in the distance.");
+			return 0;
+		}
+		if(u.ux == cc.x && u.uy == cc.y){
+			You("decide not to blast yourself.");
+			return 0;
+		}
+		struct monst *mon = m_at(cc.x, cc.y);
+		if(!mon || !sensemon(mon)){
+			You_feel("no monster there.");
+			return 0;
+		}
+		if(!DEADMONSTER(mon) && !mindless_mon(mon) && !resist(mon, '\0', 0, TELL)) {
+			/*cost pw*/
+			if(u.ulevel >= mon->m_lev-5){
+				mon->mconf = 1;
+				if(u.ulevel >= mon->m_lev+5){
+					 You("drive %s insane with your psionic pulses.", mon_nam(mon));
+					mon->mcrazed = 1;
+				} else You("make %s dizzy with your psionic pulses.", mon_nam(mon));
+			}
+			monflee(mon, d(5,3+(int)u.ulevel/10), FALSE, TRUE);
+		}
+		return 1;
+
 }
 
 STATIC_OVL int
