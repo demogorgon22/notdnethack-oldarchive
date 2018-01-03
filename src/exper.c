@@ -314,6 +314,10 @@ acuup(){
 		You_feel("able to control your altitude with your mind.");
 		You("begin flying!");
 		youracedata->mflagsm |= MM_FLY;
+	} else if(u.ulevel == 12){
+		You("are now able to craze monsters with your mind!");
+	} else if(u.ulevel == 15){
+       		You_feel("telekinetic!");
 	} else if(u.ulevel == 20){
 		You_feel("in control of the forces around you.");
 	}
@@ -330,6 +334,10 @@ acudown(){
 		You_feel("less in control of your altitude.");
 		youracedata->mflagsm &= ~MM_FLY;
 		float_down(0L, 0L);
+	} else if(u.ulevel == 11){
+		You_feel("Less in mental control.");
+	} else if(u.ulevel == 14){
+		You_feel("unmoving.");
 	} else if(u.ulevel == 19){
 		You_feel("less in control of the forces around you.");
 	}

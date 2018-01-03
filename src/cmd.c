@@ -598,7 +598,7 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
-	if(Role_if(PM_ANACHRONOUNBINDER)){
+	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 15){//bad magic number
 		Sprintf(buf, "Telekinesis");
 		any.a_int = MATTK_TELEK;	/* must be non-zero */
 		incntlet = 't';
@@ -607,7 +607,7 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
-	if(Role_if(PM_ANACHRONOUNBINDER)){
+	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 12){//bad magic number
 		Sprintf(buf, "Psionic Insanity");
 		any.a_int = MATTK_CRAZE;	/* must be non-zero */
 		incntlet = 'i';
@@ -817,7 +817,10 @@ domonability()
 	case MATTK_REACH: return use_reach_attack();
 	break;
 	case MATTK_TELEK:
-		pline("");
+		if(u.uen < 15){
+			You("lack the energy.");
+			return 0;
+		}
 		coord cc;
 		cc.x = u.ux;
 	        cc.y = u.uy;
@@ -825,9 +828,10 @@ domonability()
 			return 0;
 		if(OBJ_AT(cc.x,cc.y)){
 			if(!cansee(cc.x,cc.y)){
-				Your("forces cannot reach where you cannot see.");
+				You("cannot see the object to manipulate it towards you.");
 				return 0;
 			}
+			u.uen -= 15;
 			You("attempt to lift %s from the floor with your mind!",level.objects[cc.x][cc.y]->quan>1?"some items":"an item");
 			pickup_object(level.objects[cc.x][cc.y], level.objects[cc.x][cc.y]->quan, TRUE);
 		} else {
@@ -845,36 +849,41 @@ domonability()
 
 STATIC_OVL int
 psionic_craze(){
+	if(u.uen < 5){
+		You("lack the energy.");
+		return 0;
+	}
 	coord cc;
-		cc.x = u.ux;
-	        cc.y = u.uy;
-		if (getpos(&cc, TRUE, "the desired position") < 0)
-			return 0;
-		if(dist2(u.ux,u.uy,cc.x,cc.y) > 40 + u.ulevel){
-			Your("brain waves fade off in the distance.");
-			return 0;
+	cc.x = u.ux;
+	cc.y = u.uy;
+	if (getpos(&cc, TRUE, "the desired position") < 0)
+		return 0;
+	if(dist2(u.ux,u.uy,cc.x,cc.y) > 55 + u.ulevel){
+		Your("brain waves fade off in the distance.");
+		return 0;
+	}
+	if(u.ux == cc.x && u.uy == cc.y){
+		You("decide not to blast yourself.");
+		return 0;
+	}
+	struct monst *mon = m_at(cc.x, cc.y);
+	if(!mon || !sensemon(mon)){
+		You_feel("no monster there.");
+		return 0;
+	}
+	if(!DEADMONSTER(mon) && !mindless_mon(mon) && !resist(mon, '\0', 0, TELL)) {
+		/*cost pw*/
+		u.uen -= 5;
+		if(u.ulevel >= mon->m_lev-5){
+			mon->mconf = 1;
+			if(u.ulevel >= mon->m_lev+5){
+				You("drive %s insane with your psionic pulses.", mon_nam(mon));
+				mon->mcrazed = 1;
+			} else You("make %s dizzy with your psionic pulses.", mon_nam(mon));
 		}
-		if(u.ux == cc.x && u.uy == cc.y){
-			You("decide not to blast yourself.");
-			return 0;
-		}
-		struct monst *mon = m_at(cc.x, cc.y);
-		if(!mon || !sensemon(mon)){
-			You_feel("no monster there.");
-			return 0;
-		}
-		if(!DEADMONSTER(mon) && !mindless_mon(mon) && !resist(mon, '\0', 0, TELL)) {
-			/*cost pw*/
-			if(u.ulevel >= mon->m_lev-5){
-				mon->mconf = 1;
-				if(u.ulevel >= mon->m_lev+5){
-					 You("drive %s insane with your psionic pulses.", mon_nam(mon));
-					mon->mcrazed = 1;
-				} else You("make %s dizzy with your psionic pulses.", mon_nam(mon));
-			}
-			monflee(mon, d(5,3+(int)u.ulevel/10), FALSE, TRUE);
-		}
-		return 1;
+		monflee(mon, d(5,3+(int)u.ulevel/10), FALSE, TRUE);
+	}
+	return 1;
 
 }
 
