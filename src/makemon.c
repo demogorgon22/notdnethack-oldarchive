@@ -4547,6 +4547,12 @@ register struct	monst	*mtmp;
 		otmp->cursed = FALSE;
 		(void) mpickobj(mtmp, otmp);
 	}
+	if(ptr == &mons[PM_ECHIDNA] && !(u.spiritSummons&SEAL_ECHIDNA)){
+		(void) mongets(mtmp, rnd_misc_item(mtmp));//give her some junk cause why not?
+		(void) mongets(mtmp, rnd_misc_item(mtmp));
+		(void) mongets(mtmp, rnd_misc_item(mtmp));
+	}
+	/*eden handled in mon.c*/
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 

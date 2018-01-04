@@ -320,6 +320,10 @@ register struct monst *mtmp;
 		    obj = mksobj_at(SILVER_DRAGON_SCALE_MAIL, x, y, FALSE, FALSE);
 			obj = oname(obj, artiname(ART_DRAGON_PLATE));
 		goto default_1;
+	    case PM_EDEN:
+			obj = mksobj_at(SILVER_DRAGON_SCALES, x, y, FALSE, FALSE);
+			obj = oname(obj, artiname(ART_EDEN_SCALES));
+		goto default_1;
 	    case PM_MANTICORE:
 		if (mtmp->mrevived ? !rn2(6) : TRUE) {
 			obj = mksobj_at(SPIKE, x, y, TRUE, FALSE);
