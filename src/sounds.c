@@ -2183,7 +2183,7 @@ int tx,ty;
 						u.spiritSummons |= SEAL_AHAZU;
 						u.sealsKnown &= ~(SEAL_AHAZU);
 					} else {
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 					}
 					return 0;
 				}
@@ -2235,7 +2235,7 @@ int tx,ty;
 						u.spiritSummons |= SEAL_AMON;
 						u.sealsKnown &= ~(SEAL_AMON);
 					} else {
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 					}
 					return 0;
 				}
@@ -2293,7 +2293,7 @@ int tx,ty;
 						u.spiritSummons |= SEAL_ANDREALPHUS;
 						u.sealsKnown &= ~(SEAL_ANDREALPHUS);
 					} else {
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 					}
 					return 0;
 				}
@@ -2395,7 +2395,7 @@ int tx,ty;
 						u.spiritSummons |= SEAL_ANDROMALIUS;
 						u.sealsKnown &= ~(SEAL_ANDROMALIUS);
 					} else {
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 					}
 					return 0;
 				}
@@ -2624,7 +2624,7 @@ int tx,ty;
 						u.spiritSummons |= SEAL_ASTAROTH;
 						u.sealsKnown &= ~(SEAL_ASTAROTH);
 					} else {
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 					}
 					return 0;
 				}
@@ -2722,7 +2722,7 @@ int tx,ty;
 						u.spiritSummons |= SEAL_BALAM;
 						u.sealsKnown &= ~(SEAL_BALAM);
 					} else {
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 					}
 					return 0;
 				}
@@ -2797,7 +2797,7 @@ int tx,ty;
 							u.spiritSummons |= SEAL_BERITH;
 							u.sealsKnown &= ~(SEAL_BERITH);
 						} else {
-							pline("You have already released this spirit from the void.");
+							You("have already released this spirit from the void.");
 						}
 						return 0;
 					}
@@ -2862,7 +2862,7 @@ int tx,ty;
 					u.spiritSummons |= SEAL_BUER;
 					u.sealsKnown &= ~(SEAL_BUER);
 				} else {
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 				}
 				return 0;
 			}
@@ -2972,7 +2972,7 @@ int tx,ty;
 			if(IS_THRONE(levl[tx][ty].typ)){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_DANTALION){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 				}	
@@ -3043,7 +3043,7 @@ int tx,ty;
 			if(validLocation){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_SHIRO){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 				}
@@ -3093,7 +3093,7 @@ int tx,ty;
 			if(In_cave(&u.uz)){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_ECHIDNA){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 				}
@@ -3149,7 +3149,7 @@ int tx,ty;
 			if(IS_FOUNTAIN(levl[tx][ty].typ)){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_EDEN){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 				}	
@@ -3215,7 +3215,7 @@ int tx,ty;
 			//Spirit requires that his seal be drawn in a large open space.
 			if(largeRoom){
 				if(u.spiritSummons&SEAL_ENKI){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				pline("Water bubbles up inside the seal,");
@@ -3266,7 +3266,7 @@ int tx,ty;
 			){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_EURYNOME){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 				}
@@ -3326,7 +3326,7 @@ int tx,ty;
 			){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_EVE){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 				}
@@ -3383,7 +3383,7 @@ int tx,ty;
 			//Spirit requires that his seal be drawn in a vault, or on a pile of 1000xyour level coins.
 			if(coins || (*in_rooms(tx,ty,VAULT) && u.uinvault)){
 				if(u.spiritSummons&SEAL_FAFNIR){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				if(!Blind) You("suddenly notice a dragon %s", coins ? "buired in the coins" : "in the room.");
@@ -3429,7 +3429,7 @@ int tx,ty;
 		if(u.sealTimeout[HUGINN_MUNINN-FIRST_SEAL] < moves){
 			//Spirit places no restrictions on where their seal is drawn.
 			if(u.spiritSummons&SEAL_HUGINN_MUNINN){
-				pline("You have already released this spirit from the void.");
+				You("have already released this spirit from the void.");
 				return 0;
 			}
 			You_hear("flapping wings.");
@@ -3487,7 +3487,7 @@ int tx,ty;
 			//Spirit requires that her seal be drawn inside a stinking cloud.
 			if(check_stinking_cloud_region((xchar)tx,(xchar)ty)){ 
 				if(u.spiritSummons&SEAL_IRIS){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				You("catch a glimpse of somthing moving in the stinking cloud....");
@@ -3540,7 +3540,7 @@ int tx,ty;
 							u.spiritSummons |= SEAL_JACK;
 							u.sealsKnown &= ~(SEAL_JACK);
 						} else {
-							pline("You have already released this spirit from the void.");
+							You("have already released this spirit from the void.");
 						}
 						return 0;
 					}
@@ -3641,7 +3641,7 @@ int tx,ty;
 					}
 				}
 				if(u.spiritSummons&SEAL_MALPHAS){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				Your("sacrifice is accepted.");
@@ -3694,7 +3694,7 @@ int tx,ty;
 			boolean in_a_graveyard = rooms[levl[tx][ty].roomno - ROOMOFFSET].rtype == MORGUE;
 			if(in_a_graveyard || on_level(&valley_level, &u.uz)){
 				if(u.spiritSummons&SEAL_MARIONETTE){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				if(!Blind) You("notice metal wires sticking out of the ground within the seal.");
@@ -3742,7 +3742,7 @@ int tx,ty;
 			//Spirit requires that her seal addressed while blind.
 			if(Blind){
 				if(u.spiritSummons&SEAL_MOTHER){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				Your("Hands itch painfully.");
@@ -3791,7 +3791,7 @@ int tx,ty;
 				(u.udrunken >= u.ulevel || Confusion)
 			){ 
 				if(u.spiritSummons&SEAL_NABERIUS){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				You_hear("a snuffing noise.");
@@ -3848,7 +3848,7 @@ int tx,ty;
 			//Spirit requires that his seal be drawn in a square with a hole.
 			if(t && t->ttyp == HOLE){
 				if(u.spiritSummons&SEAL_ORTHOS){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				if(!Blind) pline("The hole grows darker, and a whistling occurs at the edge of hearing.");
@@ -3892,7 +3892,7 @@ int tx,ty;
 			if(IS_POOL(levl[tx][ty].typ) && IS_POOL(levl[u.ux][u.uy].typ) && u.uinwater && Underwater){ 
 				if(u.sealCounts < numSlots){
 					if(u.spiritSummons&SEAL_OSE){
-						pline("You have already released this spirit from the void.");
+						You("have already released this spirit from the void.");
 						return 0;
 					}
 					pline("The sea-bottom within the seal fades, as if it were silt settling out of muddy water.");
@@ -3974,7 +3974,7 @@ int tx,ty;
 			//Spirit requires that its seal be drawn on a closed door.
 			if(IS_DOOR(levl[tx][ty].typ) && closed_door(tx,ty)){ 
 				if(u.spiritSummons&SEAL_OTIAX){
-					pline("You have already released this spirit from the void.");
+					You("have already released this spirit from the void.");
 					return 0;
 				}
 				if(!Blind) pline("Thick fingers of mist reach under the door.");
@@ -4034,8 +4034,19 @@ int tx,ty;
 			}
 			//Spirit requires that her seal be drawn around a spellbook. The summoner must face toward the northwest during the ritual.
 			if( o && tx - u.ux < 0 && ty - u.uy < 0){
+					if(u.spiritSummons&SEAL_PAIMON){
+						You("have already released this spirit from the void.");
+						return 0;
+					}
 				pline("The pages of %s begin to turn.", xname(o));
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("Paimon, the fell archivist, appears in the seal.");
+						makemon(&mons[PM_PAIMON], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_PAIMON;
+						u.sealsKnown &= ~(SEAL_PAIMON);
+						return 0;
+					}
 					if(!Blind){
 						pline("A beautiful woman rides into the seal on a camel.");
 						pline("She scoops up the book and begins pouring through it.");

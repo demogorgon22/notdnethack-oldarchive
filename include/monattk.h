@@ -195,6 +195,7 @@
 #define AD_RNBW		139 /*Iris special attack. */
 #define AD_JACK		140 /*Jack hella huge explosion on death*/
 #define AD_YANK		141 /*yank ya to em marionette*/
+#define AD_PAIM		142 /*Paimon exploding book attack*/
 /*
  *  Monster to monster attacks.  When a monster attacks another (mattackm),
  *  any or all of the following can be returned.  See mattackm() for more

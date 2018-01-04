@@ -184,6 +184,9 @@ int x,y;
 	} else if (obj->otyp == BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,6),
 		    0, EXPL_RED);
+	} else if (obj->otyp == SPE_MAGIC_MISSILE){
+		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,10),
+		    0, EXPL_MAGICAL);	
 	} else if (obj->otyp == HEAVY_BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,10),
 		    0, EXPL_FIERY);
@@ -1687,6 +1690,14 @@ ironball:
 			    	qvr->cursed = 0;
 				rngmod = 8;
 				autodestroy = 0;
+			break;
+			case AD_PAIM:
+				ammo_type = SPE_MAGIC_MISSILE;
+				qvr = mksobj(ammo_type, TRUE, FALSE);
+			    	qvr->blessed = 0;
+			    	qvr->cursed = 0;
+				rngmod = 8;
+				autodestroy = 1;
 			break;
 			case AD_VBLD:
 				ammo_type = HEAVY_IRON_BALL;
