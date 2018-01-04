@@ -24,6 +24,7 @@ const static int KURTULMAK_RES[] = {FIRE_RES, FREE_ACTION};
 const static int EREBOR_RES[] = {FIRE_RES, COLD_RES};
 const static int DURIN_RES[] = {FIRE_RES, ACID_RES, POISON_RES};
 const static int REV_PROPS[] = {COLD_RES, REGENERATION, FIXED_ABIL, POISON_RES, SEE_INVIS};
+const static int BUER_PROPS[] = {REGENERATION, FIXED_ABIL};
 
 const struct worn {
 	long w_mask;
@@ -136,8 +137,9 @@ long mask;
 				for(p = 0; p < SIZE(EREBOR_RES); p++) u.uprops[EREBOR_RES[p]].extrinsic = u.uprops[EREBOR_RES[p]].extrinsic & ~wp->w_mask;
 			} else if(oobj->oartifact == ART_CLAWS_OF_THE_REVENANCER){
 				for(p = 0; p < SIZE(REV_PROPS); p++) u.uprops[REV_PROPS[p]].extrinsic = u.uprops[REV_PROPS[p]].extrinsic & ~wp->w_mask;
+			}else if(oobj->oartifact == ART_TALISMAN_OF_BUER){
+				for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic & ~wp->w_mask;
 			}
-			
 			if ((p = w_blocks(oobj,mask)) != 0)
 			    u.uprops[p].blocked &= ~wp->w_mask;
 			if (oobj->oartifact)
@@ -187,7 +189,10 @@ long mask;
 					for(p = 0; p < SIZE(EREBOR_RES); p++) u.uprops[EREBOR_RES[p]].extrinsic = u.uprops[EREBOR_RES[p]].extrinsic | wp->w_mask;
 				} else if(obj->oartifact == ART_CLAWS_OF_THE_REVENANCER){
 					for(p = 0; p < SIZE(REV_PROPS); p++) u.uprops[REV_PROPS[p]].extrinsic = u.uprops[REV_PROPS[p]].extrinsic | wp->w_mask;
+				}else if(obj->oartifact == ART_TALISMAN_OF_BUER){
+					for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic | wp->w_mask;
 				}
+				
 				
 			    if ((p = w_blocks(obj, mask)) != 0)
 				u.uprops[p].blocked |= wp->w_mask;
@@ -253,6 +258,8 @@ register struct obj *obj;
 			for(p = 0; p < SIZE(EREBOR_RES); p++) u.uprops[EREBOR_RES[p]].extrinsic = u.uprops[EREBOR_RES[p]].extrinsic & ~wp->w_mask;
 		} else if(obj->oartifact == ART_CLAWS_OF_THE_REVENANCER){
 			for(p = 0; p < SIZE(REV_PROPS); p++) u.uprops[REV_PROPS[p]].extrinsic = u.uprops[REV_PROPS[p]].extrinsic & ~wp->w_mask;
+		}else if(obj->oartifact == ART_TALISMAN_OF_BUER){
+			for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic & ~wp->w_mask;
 		}
 		
 		if(obj->oartifact == ART_GAUNTLETS_OF_THE_BERSERKER){

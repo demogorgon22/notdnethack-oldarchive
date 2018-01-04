@@ -4483,6 +4483,7 @@ register struct	monst	*mtmp;
 	}
 	if(ptr == &mons[PM_BUER] && !(u.spiritSummons&SEAL_BUER)){
 		struct obj *otmp = mksobj(AMULET_OF_LIFE_SAVING, TRUE, FALSE); //super healing thing
+		otmp = oname(otmp, artiname(ART_TALISMAN_OF_BUER));
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		otmp->obj_material = WOOD;
