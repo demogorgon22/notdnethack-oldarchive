@@ -4443,6 +4443,51 @@ register struct	monst	*mtmp;
 		break;
 	}
 
+	/*Gadget up sprits only once*/
+	if(ptr == &mons[PM_AHAZU]&& !(u.spiritSummons&SEAL_AHAZU)){
+		(void)mongets(mtmp, FOOD_RATION);
+		(void)mongets(mtmp, FOOD_RATION);
+		(void)mongets(mtmp, FOOD_RATION);
+		(void)mongets(mtmp, FOOD_RATION);
+
+	}
+	if(ptr == &mons[PM_AMON]&& !(u.spiritSummons&SEAL_AMON)){
+		struct obj *otmp = mksobj(MACE, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_ROD_OF_THE_RAM));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp,otmp);
+	}
+	if(ptr == &mons[PM_ANDREALPHUS])&& !(u.spiritSummons&SEAL_ANDREALPHUS){
+		(void)mongets(mtmp, SENSOR_PACK);
+	}
+	if(ptr == &mons[PM_ASTAROTH]&& !(u.spiritSummons&SEAL_ASTAROTH)){
+		(void)mongets(mtmp, UPGRADE_KIT);
+		(void)mongets(mtmp, UPGRADE_KIT);
+	}
+	if(ptr == &mons[PM_BALAM]&& !(u.spiritSummons&SEAL_BALAM)){
+		(void)mongets(mtmp, DAGGER);
+		(void)mongets(mtmp, ROBE);
+	}
+	if(ptr == &mons[PM_BERITH]&& !(u.spiritSummons&SEAL_BERITH)){
+		(void)mongets(mtmp, PLATE_MAIL);
+		(void)mongets(mtmp, LONG_SWORD);
+		struct obj *otmp = mksobj(HELMET, TRUE, FALSE); //make articrown
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->obj_material = GOLD;
+		(void) mpickobj(mtmp,otmp);
+		mtmp->mgold =
+		      (long) d(level_difficulty(), mtmp->minvent ? 5 : 10);
+	}
+	if(ptr == &mons[PM_BUER] && !(u.spiritSummons&SEAL_BUER)){
+		struct obj *otmp = mksobj(AMULET_OF_LIFE_SAVING, TRUE, FALSE); //super healing thing
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->obj_material = WOOD;
+		(void) mpickobj(mtmp,otmp);
+		(void)mongets(mtmp, AMULET_OF_LIFE_SAVING);
+	}
 	/* ordinary soldiers rarely have access to magic (or gold :-) */
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 

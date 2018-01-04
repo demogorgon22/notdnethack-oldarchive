@@ -1031,18 +1031,40 @@ register struct monst *mtmp;
 			return 1;
 	}
 	
-	if((is_drow(mtmp->data) || mtmp->data == &mons[PM_LUGRIBOSSK] || mtmp->data == &mons[PM_MAANZECORIAN])
+	if((is_drow(mtmp->data) || mtmp->data == &mons[PM_LUGRIBOSSK] || mtmp->data == &mons[PM_MAANZECORIAN] || mtmp->data == &mons[PM_TENEBROUS])
 		&& (!mtmp->mpeaceful || darksight(youracedata))
 		&& (levl[mtmp->mx][mtmp->my].lit == 1 || viz_array[mtmp->my][mtmp->mx]&TEMP_LIT1)
 		&& !mtmp->mcan && mtmp->mspec_used < 4
 		&& !(mtmp->data->maligntyp < 0 && Is_illregrd(&u.uz))
 		&& !(mindless_mon(mtmp))
 	){
-		if(cansee(mtmp->mx,mtmp->my)) pline("%s invokes the darkness.",Monnam(mtmp));
-	    do_clear_area(mtmp->mx,mtmp->my, 5, set_lit, (genericptr_t)0);
+		if(cansee(mtmp->mx,mtmp->my)) pline("%s %s",Monnam(mtmp),mtmp->data == &mons[PM_TENEBROUS]?"calls on the wrath of shadow.":"invokes the darkness.");
+		if(mtmp->data == &mons[PM_TENEBROUS] && distu(mtmp->mx,mtmp->my)<=5 && !darksight(youracedata)){	
+			pline("The darkness hurts!");
+			mdamageu(mtmp,d(8,levl[u.ux][u.uy].lit?4:2));
+		}
+    		do_clear_area(mtmp->mx,mtmp->my, 5, set_lit, (genericptr_t)0);
 		doredraw();
 	    if(mtmp->data == &mons[PM_HEDROW_WARRIOR]) mtmp->mspec_used += d(4,4);
 		else mtmp->mspec_used += max(10 - mtmp->m_lev,2);
+	}
+
+	if((mtmp->data == &mons[PM_SIMURGH])
+		&& (!mtmp->mpeaceful || !darksight(youracedata))
+		&& (levl[mtmp->mx][mtmp->my].lit == 0 || viz_array[mtmp->my][mtmp->mx]&TEMP_LIT1)
+		&& !mtmp->mcan && mtmp->mspec_used < 4
+		&& !(mtmp->data->maligntyp < 0 && Is_illregrd(&u.uz))
+		&& !(mindless_mon(mtmp))
+	){
+		if(cansee(mtmp->mx,mtmp->my)) pline("%s glows with light!",Monnam(mtmp));
+	    do_clear_area(mtmp->mx,mtmp->my, 5, set_lit, (genericptr_t)1);
+		doredraw();
+		if(cansee(mtmp->mx,mtmp->my)){
+			You("are blinded by %s radiance!", s_suffix(mon_nam(mtmp)));
+			make_blinded((long)d(5,5),FALSE);
+			stop_occupation();
+		}
+		mtmp->mspec_used += max(10 - mtmp->m_lev,2);
 	}
 
 	/* Demonic Blackmail! */

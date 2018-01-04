@@ -1424,6 +1424,14 @@ A("The Hand of Vecna",       SEVERED_HAND,
 	SUMMON_UNDEAD,  A_CHAOTIC, NON_PM, NON_PM, 700L,
 	0,0,0),
 
+/*spirit artifacts*/
+A("Crown of Berith", HELMET, /*Needs encyc entry*/
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	0,	A_NONE, NON_PM, NON_PM, 9999L, 
+	0,SPFX3_NOCNT,0),
+
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,

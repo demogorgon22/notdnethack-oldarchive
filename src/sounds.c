@@ -4092,8 +4092,19 @@ int tx,ty;
 		if(u.sealTimeout[SIMURGH-FIRST_SEAL] < moves){
 			//Spirit requires that her seal be drawn outside.
 			if(In_outdoors(&u.uz)){
+				if(u.spiritSummons&SEAL_SIMURGH){
+					You("have already released this spirit from the void.");
+					return 0;
+				}
 				pline("A brilliantly colored bird with iron claws flies high overhead.");
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("It lands before you.");
+						makemon(&mons[PM_SIMURGH], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_SIMURGH;
+						u.sealsKnown &= ~(SEAL_SIMURGH);
+						return 0;
+					}
 					pline("It swoops down and lands on your shoulder.");
 					pline("Its radiant rainbow feathers reflect in its eyes,");
 					pline("becoming images of roaring flames and sparkling snow,");
@@ -4134,9 +4145,19 @@ int tx,ty;
 				!(levl[u.ux][u.uy].lit) && 
 					!(viz_array[u.uy][u.ux]&TEMP_LIT1 && !(viz_array[u.uy][u.ux]&TEMP_DRK3))
 			){
+				if(u.spiritSummons&SEAL_TENEBROUS){
+					You("have already released this spirit from the void.");
+					return 0;
+				}
 				if(!Blind) pline("Within the seal, darkness takes on its own meaning,");
 				if(!Blind) pline("beyond mere absense of light.");
 				if(u.sealCounts < numSlots){
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_TENEBROUS], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_TENEBROUS;
+						u.sealsKnown &= ~(SEAL_TENEBROUS);
+						return 0;
+					}
 					if(!Blind) pline("The darkness inside the seal flows out to pool around you.");
 					pline("\"None shall rest until my vengeance is complete.");
 					pline("All who stand in my way shall face the wrath of that");
@@ -4187,6 +4208,10 @@ int tx,ty;
 			}
 			//Spirit requires that his seal be drawn around a rotting corpse of a poisonous creature.
 			if(	o ){
+				if(u.spiritSummons&SEAL_YMIR){
+					You("have already released this spirit from the void.");
+					return 0;
+				}
 				if(!Blind){
 					pline("An eye opens on the ground within the seal,");
 					pline("and a voice speaks to you out of the Earth:");
@@ -4202,6 +4227,13 @@ int tx,ty;
 				if(u.sealCounts < numSlots){
 					pline("\"I was Ymir, god of poison,");
 					pline("and you are the maggots in my corpse.");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						pline("\"");
+						makemon(&mons[PM_YMIR], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_YMIR;
+						u.sealsKnown &= ~(SEAL_YMIR);
+						return 0;
+					}
 					pline("But I will make a pact with you,");
 					pline("to throw down the false gods,");
 					pline("that ordered my demise.\"");

@@ -1706,8 +1706,9 @@ u_init()
 	break;
 	case PM_ANACHRONOUNBINDER:
 		ini_inv(Anachronounbinder);
-		//knows_object(DOUBLE_LIGHTSABE);
+		//knows_object(DOUBLE_LIGHTSABER);
 		knows_object(HIGH_BOOTS);
+		knows_object(SENSOR_PACK);
 		knows_object(R_LYEHIAN_FACEPLATE);
 		knows_object(GLOVES);
 		skill_init(Skill_Acu);
