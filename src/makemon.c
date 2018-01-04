@@ -4472,7 +4472,7 @@ register struct	monst	*mtmp;
 	if(ptr == &mons[PM_BERITH]&& !(u.spiritSummons&SEAL_BERITH)){
 		(void)mongets(mtmp, PLATE_MAIL);
 		(void)mongets(mtmp, LONG_SWORD);
-		struct obj *otmp = mksobj(HELMET, TRUE, FALSE); //make articrown
+		struct obj *otmp = mksobj(HELMET, TRUE, FALSE); //make articrown (ok made crown of antisucc)
 		otmp = oname(otmp, artiname(ART_CROWN_OF_BERITH));
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
@@ -4482,7 +4482,7 @@ register struct	monst	*mtmp;
 		      (long) d(level_difficulty(), mtmp->minvent ? 5 : 10);
 	}
 	if(ptr == &mons[PM_BUER] && !(u.spiritSummons&SEAL_BUER)){
-		struct obj *otmp = mksobj(AMULET_OF_LIFE_SAVING, TRUE, FALSE); //super healing thing
+		struct obj *otmp = mksobj(AMULET_OF_LIFE_SAVING, TRUE, FALSE); //super healing thing (ok made amulet of not dying or stat screws and regen)
 		otmp = oname(otmp, artiname(ART_TALISMAN_OF_BUER));
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
@@ -4490,7 +4490,35 @@ register struct	monst	*mtmp;
 		(void) mpickobj(mtmp,otmp);
 		(void)mongets(mtmp, AMULET_OF_LIFE_SAVING);
 	}
-	/* ordinary soldiers rarely have access to magic (or gold :-) */
+	
+	if(ptr == &mons[PM_CHUPOCLOPS] && !(u.spiritSummons&SEAL_CHUPOCLOPS)){
+		struct obj *otmp;
+		for(int i = 0;i < 40; i++){
+			otmp = mksobj(EGG, TRUE, FALSE);
+			otmp->corpsenm = PM_GIANT_SPIDER;
+			attach_egg_hatch_timeout(otmp);
+			(void) mpickobj(mtmp,otmp);
+		}
+		
+	}
+	if(ptr == &mons[PM_DANTALION] && !(u.spiritSummons&SEAL_DANTALION)){
+		struct obj *otmp;
+		otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_DREAD_OF_DANTALION));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 3;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(PLATE_MAIL, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 1;
+		(void) mpickobj(mtmp, otmp);
+		(void) mongets(mtmp, GLOVES);
+		(void) mongets(mtmp, HIGH_BOOTS);
+		(void) mongets(mtmp, HELM_OF_TELEPATHY);
+	}	
+	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 
 	if ((int) mtmp->m_lev > rn2(50))
