@@ -114,6 +114,7 @@ static int NDECL((*timed_occ_fn));
 
 STATIC_DCL int NDECL(use_reach_attack);
 STATIC_DCL int NDECL(psionic_craze);
+STATIC_DCL int NDECL(dotelekinesis);
 STATIC_PTR int NDECL(doprev_message);
 STATIC_PTR int NDECL(timed_occupation);
 STATIC_PTR int NDECL(doextcmd);
@@ -816,35 +817,37 @@ domonability()
 	break;
 	case MATTK_REACH: return use_reach_attack();
 	break;
-	case MATTK_TELEK:
-		if(u.uen < 15){
-			You("lack the energy.");
-			return 0;
-		}
-		coord cc;
-		cc.x = u.ux;
-	        cc.y = u.uy;
-		if (getpos(&cc, TRUE, "the desired position") < 0)
-			return 0;
-		if(OBJ_AT(cc.x,cc.y)){
-			if(!cansee(cc.x,cc.y)){
-				You("cannot see the object to manipulate it towards you.");
-				return 0;
-			}
-			u.uen -= 15;
-			You("attempt to lift %s from the floor with your mind!",level.objects[cc.x][cc.y]->quan>1?"some items":"an item");
-			pickup_object(level.objects[cc.x][cc.y], level.objects[cc.x][cc.y]->quan, TRUE);
-		} else {
-			pline("There is nothing there for you to pick up!");
-		}
-		return 1;
-			
+	case MATTK_TELEK: return dotelekinesis();
 	break;
-	case MATTK_CRAZE:
-		return psionic_craze();
+	case MATTK_CRAZE: return psionic_craze();
 	break;
 	}
 	return 0;
+}
+
+STATIC_OVL int
+dotelekinesis(){
+	if(u.uen < 15){
+		You("lack the energy.");
+		return 0;
+	}
+	coord cc;
+	int cancelled;
+	cc.x = u.ux;
+	cc.y = u.uy;
+	pline("Select an object on the floor to pick up with your mind.");
+	cancelled = getpos(&cc, TRUE, "the desired position");
+	while(cancelled >= 0 && (!OBJ_AT(cc.x,cc.y) || !cansee(cc.x,cc.y))){
+		if(!cansee(cc.x,cc.y)) You("cannot see there to manipulate any object there may be.");
+		 else if(!OBJ_AT(cc.x,cc.y)) pline("There is nothing there for you to pick up!");
+		cancelled = getpos(&cc, TRUE, "the desired position");
+	}
+	if(cancelled < 0) return 0;
+	u.uen -= 15;
+	You("attempt to lift %s from the floor with your mind!",level.objects[cc.x][cc.y]->quan>1?"some items":"an item");
+	pickup_object(level.objects[cc.x][cc.y], level.objects[cc.x][cc.y]->quan, TRUE);
+	return 1;
+
 }
 
 STATIC_OVL int
@@ -854,22 +857,17 @@ psionic_craze(){
 		return 0;
 	}
 	coord cc;
+	int cancelled;
 	cc.x = u.ux;
 	cc.y = u.uy;
-	if (getpos(&cc, TRUE, "the desired position") < 0)
-		return 0;
-	if(dist2(u.ux,u.uy,cc.x,cc.y) > 55 + u.ulevel){
-		Your("brain waves fade off in the distance.");
-		return 0;
-	}
-	if(u.ux == cc.x && u.uy == cc.y){
-		You("decide not to blast yourself.");
-		return 0;
-	}
+	pline("Select a monster to send horrid brain waves.");
+	cancelled = getpos(&cc, TRUE, "the desired position");
 	struct monst *mon = m_at(cc.x, cc.y);
-	if(!mon || !sensemon(mon)){
-		You_feel("no monster there.");
-		return 0;
+	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 55 + u.ulevel || u.ux == cc.x && u.uy == cc.y || (!mon || !sensemon(mon) || mindless_mon(mon)))){
+		if(dist2(u.ux,u.uy,cc.x,cc.y) > 55 + u.ulevel) Your("brain waves cannot reach that far.");
+		else if (mindless_mon(mon)) pline("%s has no brain for you to assault.", Monnam(mon));
+		cancelled = getpos(&cc, TRUE, "the desired position");
+		mon = m_at(cc.x,cc.y);
 	}
 	if(!DEADMONSTER(mon) && !mindless_mon(mon) && !resist(mon, '\0', 0, TELL)) {
 		/*cost pw*/
