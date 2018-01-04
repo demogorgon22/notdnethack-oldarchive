@@ -4486,7 +4486,6 @@ register struct	monst	*mtmp;
 		otmp = oname(otmp, artiname(ART_TALISMAN_OF_BUER));
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
-		otmp->obj_material = WOOD;
 		(void) mpickobj(mtmp,otmp);
 		(void)mongets(mtmp, AMULET_OF_LIFE_SAVING);
 	}
@@ -4517,7 +4516,37 @@ register struct	monst	*mtmp;
 		(void) mongets(mtmp, GLOVES);
 		(void) mongets(mtmp, HIGH_BOOTS);
 		(void) mongets(mtmp, HELM_OF_TELEPATHY);
-	}	
+	}
+	if(ptr == &mons[PM_SHIRO] && !(u.spiritSummons&SEAL_SHIRO)){
+		struct obj *otmp;
+		otmp = mksobj(SPEAR, TRUE, FALSE);
+		otmp->obj_material = MINERAL;
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(GLOVES, TRUE, FALSE);
+		otmp->obj_material = MINERAL;
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(HIGH_BOOTS, TRUE, FALSE);
+		otmp->obj_material = MINERAL;
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(CHAIN_MAIL, TRUE, FALSE);
+		otmp->obj_material = MINERAL;
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(MASK, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_STONE_MASK));
+		otmp->corpsenm = PM_SHIRO;
+		otmp->obj_material = MINERAL;
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+	}
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 
