@@ -1389,17 +1389,17 @@ struct attack *mattk;
 	
 	/* if your cloak/armor is greased, monster slips off; this
 	   protection might fail (33% chance) when the armor is cursed */
-	if (obj && (obj->greased || obj->otyp == OILSKIN_CLOAK) &&
+	if (obj && (obj->greased || obj->otyp == OILSKIN_CLOAK || obj->oartifact == ART_CROWN_OF_BERITH) &&
 		(!obj->cursed || rn2(3))) {
 	    pline("%s %s your %s %s!",
 		  Monnam(mtmp),
 		  (mattk->adtyp == AD_WRAP) ?
 			"slips off of" : "grabs you, but cannot hold onto",
-		  obj->greased ? "greased" : "slippery",
+		  obj->greased ? "greased" : obj->oartifact?"blood dripping":"slippery",
 		  /* avoid "slippery slippery cloak"
 		     for undiscovered oilskin cloak */
 		  (obj->greased || objects[obj->otyp].oc_name_known) ?
-			xname(obj) : cloak_simple_name(obj));
+			xname(obj) : uarmh == obj?"helmet":cloak_simple_name(obj));
 
 	    if (obj->greased && !rn2(2)) {
 		pline_The("grease wears off.");

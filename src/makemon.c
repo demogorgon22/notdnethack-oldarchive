@@ -4458,7 +4458,7 @@ register struct	monst	*mtmp;
 		otmp->cursed = FALSE;
 		(void) mpickobj(mtmp,otmp);
 	}
-	if(ptr == &mons[PM_ANDREALPHUS])&& !(u.spiritSummons&SEAL_ANDREALPHUS){
+	if(ptr == &mons[PM_ANDREALPHUS] && !(u.spiritSummons&SEAL_ANDREALPHUS)){
 		(void)mongets(mtmp, SENSOR_PACK);
 	}
 	if(ptr == &mons[PM_ASTAROTH]&& !(u.spiritSummons&SEAL_ASTAROTH)){
@@ -4473,6 +4473,7 @@ register struct	monst	*mtmp;
 		(void)mongets(mtmp, PLATE_MAIL);
 		(void)mongets(mtmp, LONG_SWORD);
 		struct obj *otmp = mksobj(HELMET, TRUE, FALSE); //make articrown
+		otmp = oname(otmp, artiname(ART_CROWN_OF_BERITH));
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		otmp->obj_material = GOLD;
