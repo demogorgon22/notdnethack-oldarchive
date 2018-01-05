@@ -1236,6 +1236,10 @@ struct monst *mtmp;
 		case AD_DRLI:
 			if((yours ? Drain_resistance : resists_drli(mtmp))) return FALSE;
 		break;
+		case AD_DRIN:
+			if((yours ? mindless(ptr) : mindless(ptr))) return FALSE;
+		break;
+
 		case AD_STON:
 			if((yours ? Stone_resistance : resists_ston(mtmp))) return FALSE;
 		break;
@@ -1366,6 +1370,9 @@ struct monst *mtmp;
 		break;
 		case AD_DRST:
 			if((yours ? Poison_resistance : resists_poison(mtmp))) return FALSE;
+		break;
+		case AD_DRIN:
+			if((yours ? mindless(ptr) : mindless(ptr))) return FALSE;
 		break;
 		case AD_DRLI:
 			if((yours ? Drain_resistance : resists_drli(mtmp))) return FALSE;
@@ -2674,6 +2681,17 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	    if (!rn2(7)) (void) destroy_mitem(mdef, SPBOOK_CLASS, AD_FIRE);
 	    if (youdefend && Slimed) burn_away_slime();
 	    messaged = realizes_damage;
+	}
+	if (attacks(AD_DRIN, otmp)) {
+		if (realizes_damage)
+			pline_The("%s %s %s %s%c", "sparkling", "blade",
+				!spec_dbon_applies ? "hits" : "mentally drains",
+				hittee, !spec_dbon_applies ? '.' : '!');
+		if(spec_dbon_applies && realizes_damage)
+			if(cancel_monst(mdef, otmp, youattack, FALSE, FALSE,0)) pline_The("%s %s %s %s%c", "sparkling", "blade",
+				"cancels",
+				hittee, '!');
+		messaged = realizes_damage;
 	}
 	if (attacks(AD_COLD, otmp) && (get_artifact(otmp)->inv_prop != ICE_SHIKAI || u.SnSd3duration > monstermoves) ) {
 	    if (realizes_damage)

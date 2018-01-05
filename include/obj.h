@@ -444,7 +444,8 @@ struct obj {
 				|| ((otmp)->oartifact == ART_CLEAVER && Role_if(PM_BARBARIAN))\
 				|| ((otmp)->oartifact == ART_KIKU_ICHIMONJI && Role_if(PM_SAMURAI))\
 				|| ((otmp)->oartifact == ART_SNICKERSNEE && (Role_if(PM_SAMURAI) || Role_if(PM_TOURIST) ))\
-				|| ((otmp)->oartifact == ART_MAGICBANE && Role_if(PM_WIZARD)))
+				|| ((otmp)->oartifact == ART_MAGICBANE && Role_if(PM_WIZARD))\
+				|| ((otmp)->oartifact == ART_MEMORY&& uwep && uwep->oartifact==ART_THOUGHT))
 				
 /* Eggs and other food */
 #define MAX_EGG_HATCH_TIME 200	/* longest an egg can remain unhatched */

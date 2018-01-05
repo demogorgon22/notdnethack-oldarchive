@@ -4578,9 +4578,29 @@ register struct	monst	*mtmp;
 		otmp->cursed = FALSE;
 		(void) mpickobj(mtmp, otmp);
 		mtmp->mgold = (long) d(level_difficulty(), mtmp->minvent ? 5 : 10);
+	}	
+	if(ptr == &mons[PM_HUGINN] && !(u.spiritSummons&SEAL_HUGINN_MUNINN)){
+		struct obj *otmp;
+		otmp = mksobj(DAGGER, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_THOUGHT));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 0;
+		(void) mpickobj(mtmp, otmp);
+
+	}
+	if(ptr == &mons[PM_MUNINN] && !(u.spiritSummons&SEAL_HUGINN_MUNINN)){
+		struct obj *otmp;
+		otmp = mksobj(DAGGER, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_MEMORY));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 0;
+		(void) mpickobj(mtmp, otmp);
+
 	}
 
-
+	
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 
