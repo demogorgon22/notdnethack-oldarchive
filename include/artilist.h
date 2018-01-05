@@ -1430,7 +1430,7 @@ A("Crown of Berith", HELMET, /*Needs encyc entry*/
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	0,	A_NONE, NON_PM, NON_PM, 9999L, 
-	0,SPFX3_NOCNT,0),
+	0,SPFX3_NOCNT,WSFX_PLUSSEV),
 A("Talisman of Buer", AMULET_OF_LIFE_SAVING, /*Needs encyc entry*/
 	(SPFX_NOGEN|SPFX_RESTR),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
@@ -1455,8 +1455,15 @@ A("Eden Scales",	SILVER_DRAGON_SCALES,
 	(SPFX_NOGEN|SPFX_RESTR),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
 	NO_ATTK,	NO_DFNS,	NO_CARY,
-	CREATE_PORTAL, A_NONE, NON_PM, NON_PM, 9000L, 
-	0,SPFX3_NOCNT,0),
+	CREATE_PORTAL, A_NONE, NON_PM, NON_PM, 9999L, 
+	0,SPFX3_NOCNT,WSFX_PLUSSEV),
+
+A("Eurynome's Dancing Shoes", SPEED_BOOTS,
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	0, A_NONE, NON_PM, NON_PM, 9999L, 
+	SPFX2_STLTH,SPFX3_NOCNT,WSFX_PLUSSEV|WSFX_FREEACT),
 
 
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/

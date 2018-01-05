@@ -4553,6 +4553,22 @@ register struct	monst	*mtmp;
 		(void) mongets(mtmp, rnd_misc_item(mtmp));
 	}
 	/*eden handled in mon.c*/
+	if(ptr == &mons[PM_ENKI] && !(u.spiritSummons&SEAL_ENKI)){
+		(void) mongets(mtmp, LEATHER_CLOAK);
+		(void) mongets(mtmp, SICKLE);
+	}
+	if(ptr == &mons[PM_EURYNOME] && !(u.spiritSummons&SEAL_EURYNOME)){
+		struct obj *otmp;
+		otmp = mksobj(SPEED_BOOTS, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_EURYNOME_S_DANCING_SHOES));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+	}
+
+
+
+
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 
