@@ -643,6 +643,12 @@ register struct monst *mtmp;
 				obj = mksobj_at(LEATHER_ARMOR, x, y, TRUE, FALSE);
 			mtmp->mnamelth = 0;
 		break;
+	    case PM_MARIONETTE:
+			num = d(2,4);
+			while(num--)
+				obj = mksobj_at(GRAPPLING_HOOK, x, y, TRUE, FALSE);
+			mtmp->mnamelth = 0;
+		break;
 	    case PM_GOLD_GOLEM:
 			/* Good luck gives more coins */
 			obj = mkgold((long)(200 - rnl(101)), x, y);

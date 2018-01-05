@@ -1469,7 +1469,7 @@ A("Ruinous Strike", PICK_AXE,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
 	FIRE(1,0),	FIRE(0,0),	NO_CARY,
-	0, A_NONE, NON_PM, NON_PM, 9999L, 
+	SMOKE_CLOUD, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT, 0),
 
 A("Thought", DAGGER,
@@ -1485,6 +1485,21 @@ A("Memory", DAGGER,
 	DRIN(2,0),	NO_DFNS,	NO_CARY,
 	0, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT, 0),
+
+A("Jack's Torch",			CLUB, /*Needs encyc entry*/
+	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	FIRE(4,1),	NO_DFNS,	FIRE(0,0),
+	0, A_NONE, NON_PM, NON_PM, 3000L, 
+	SPFX2_FIRE2,SPFX3_NOCNT|SPFX3_LIGHT,0),
+
+A("The Puppet Wire", GRAPPLING_HOOK,
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	PHYS(1,0),	NO_DFNS,	NO_CARY,
+	0, A_NONE, NON_PM, NON_PM, 9999L, 
+	0, SPFX3_NOCNT, 0),
+
 
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK),0,

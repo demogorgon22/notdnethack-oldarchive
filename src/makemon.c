@@ -2796,7 +2796,7 @@ register struct monst *mtmp;
 				(void) mpickobj(mtmp, otmp);
 			}
 		 }
-		}else if((mm == PM_MIND_FLAYER || mm == PM_MASTER_MIND_FLAYER || mm == PM_ADVERSARY)){
+		}else if((mm == PM_MIND_FLAYER || mm == PM_MASTER_MIND_FLAYER || mm == PM_ADVERSARY || mm == PM_IRIS)){
 			if(on_level(&rlyeh_level,&u.uz)){
 				otmp = mksobj(BULLWHIP, TRUE, FALSE);
 				otmp->oerodeproof = 1;
@@ -3275,8 +3275,8 @@ register struct monst *mtmp;
  */
 	    default:
 	      {
+		if(mm == PM_MARIONETTE) break;
 		int bias;
-
 		bias = is_lord(ptr) + is_prince(ptr) * 2 + extra_nasty(ptr);
 		switch(rnd(14 - (2 * bias))) {
 		    case 1:
@@ -4599,8 +4599,41 @@ register struct	monst	*mtmp;
 		(void) mpickobj(mtmp, otmp);
 
 	}
+	if(ptr == &mons[PM_IRIS] && !(u.spiritSummons&SEAL_IRIS)){
+		struct obj *otmp;
+		otmp = mksobj(MORNING_STAR, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
+	}
+	if(ptr == &mons[PM_JACK] && !(u.spiritSummons&SEAL_JACK)){
+		struct obj *otmp;
+		otmp = mksobj(POT_BOOZE, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = TRUE;
+		(void) mpickobj(mtmp, otmp);
+		(void) mongets(mtmp, APPLE);
+		otmp = mksobj(CLUB, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_JACK_S_TORCH));
+		otmp->blessed = FALSE;
+		otmp->cursed = TRUE;
+		otmp->spe = 1;
+		(void) mpickobj(mtmp, otmp);
+	}
+	if(ptr == &mons[PM_MARIONETTE] && !(u.spiritSummons&SEAL_MARIONETTE)){
+		struct obj *otmp;
+		otmp = mksobj(GRAPPLING_HOOK, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_PUPPET_WIRE));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
 
-	
+	}
+
+
+
+
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 

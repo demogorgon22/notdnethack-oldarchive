@@ -1237,7 +1237,7 @@ struct monst *mtmp;
 			if((yours ? Drain_resistance : resists_drli(mtmp))) return FALSE;
 		break;
 		case AD_DRIN:
-			if((yours ? mindless(ptr) : mindless(ptr))) return FALSE;
+			if(mindless(ptr)) return FALSE;
 		break;
 
 		case AD_STON:
@@ -1372,7 +1372,7 @@ struct monst *mtmp;
 			if((yours ? Poison_resistance : resists_poison(mtmp))) return FALSE;
 		break;
 		case AD_DRIN:
-			if((yours ? mindless(ptr) : mindless(ptr))) return FALSE;
+			if(mindless(ptr)) return FALSE;
 		break;
 		case AD_DRLI:
 			if((yours ? Drain_resistance : resists_drli(mtmp))) return FALSE;
