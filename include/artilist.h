@@ -1500,6 +1500,12 @@ A("The Puppet Wire", GRAPPLING_HOOK,
 	0, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT, 0),
 
+A("Flickering Outline", CLOAK_OF_DISPLACEMENT,
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_DEFN),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	NO_ATTK,	COLD(0,0),	NO_CARY,
+	SHADOW_FLARE, A_NONE, NON_PM, NON_PM, 9999L, 
+	0, SPFX3_NOCNT, 0),
 
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK),0,

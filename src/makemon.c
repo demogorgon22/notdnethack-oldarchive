@@ -4628,10 +4628,21 @@ register struct	monst	*mtmp;
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		(void) mpickobj(mtmp, otmp);
-
+		(void) mongets(mtmp, BATTLE_AXE);
 	}
-
-
+	if(ptr == &mons[PM_NABERIUS] && !(u.spiritSummons&SEAL_NABERIUS)){
+		for(int i=0;i<8+rnd(3);i++)	
+			(void) mongets(mtmp, POT_BOOZE);
+	}
+	if(ptr == &mons[PM_ORTHOS] && !(u.spiritSummons&SEAL_ORTHOS)){
+		struct obj *otmp;
+		otmp = mksobj(CLOAK_OF_DISPLACEMENT, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_FLICKERING_OUTLINE));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 1;
+		(void) mpickobj(mtmp, otmp);
+	}
 
 
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
