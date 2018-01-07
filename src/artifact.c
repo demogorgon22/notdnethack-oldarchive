@@ -38,6 +38,7 @@ int FDECL(doannulmenu, (const char *,struct obj *));
 int FDECL(doselfpoisonmenu, (const char *,struct obj *));
 int FDECL(doartificemenu, (const char *,struct obj *));
 int FDECL(doprismaticmenu, (const char *,struct obj *));
+int FDECL(doillithidmenu, (const char *,struct obj *));
 
 static NEARDATA schar delay;		/* moves left for this spell */
 static NEARDATA struct obj *artiptr;/* last/current artifact being used */
@@ -405,7 +406,7 @@ register boolean mod;
 				u.SnSd3 = 0;//turn on which you can reuse the third dance
 				u.SnSd3duration = 0;//turn until which the weapon does full damage
 			}
-			if(otmp->oartifact && (get_artifact(otmp)->inv_prop == NECRONOMICON || get_artifact(otmp)->inv_prop == SPIRITNAMES)){
+			if(otmp->oartifact && (get_artifact(otmp)->inv_prop == NECRONOMICON || get_artifact(otmp)->inv_prop == SPIRITNAMES || get_artifact(otmp)->inv_prop == ILLITHID)){
 				otmp->ovar1 = 0;//ovar1 will be used to track special powers, via flags
 				otmp->spestudied = 0;//use to track number of powers discovered
 			} if(otmp->oartifact && get_artifact(otmp)->inv_prop == INFINITESPELLS){
@@ -1237,7 +1238,7 @@ struct monst *mtmp;
 			if((yours ? Drain_resistance : resists_drli(mtmp))) return FALSE;
 		break;
 		case AD_DRIN:
-			if(mindless(ptr)) return FALSE;
+			if((yours ? mindless(ptr) || !has_head(ptr) : mindless_mon(mtmp) || !has_head(ptr))) return FALSE;
 		break;
 
 		case AD_STON:
@@ -1372,7 +1373,7 @@ struct monst *mtmp;
 			if((yours ? Poison_resistance : resists_poison(mtmp))) return FALSE;
 		break;
 		case AD_DRIN:
-			if(mindless(ptr)) return FALSE;
+			if((yours ? mindless(ptr) || !has_head(ptr) : mindless_mon(mtmp) || !has_head(ptr))) return FALSE;
 		break;
 		case AD_DRLI:
 			if((yours ? Drain_resistance : resists_drli(mtmp))) return FALSE;
@@ -2704,10 +2705,11 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if (attacks(AD_DRIN, otmp)) {
 		if (realizes_damage)
-			pline_The("%s %s %s %s%c", "sparkling", "blade",
-				!spec_dbon_applies ? "hits" : "mentally drains",
+			pline_The("%s %s %s %s%c", otmp->oartifact == ART_ILLITHID_STAFF?"tentacled":"sparkling", 
+				otmp->oartifact == ART_ILLITHID_STAFF?"staff":otmp->oartifact == ART_ELDER_CEREBRAL_FLUID?"crystal":"blade",
+				!spec_dbon_applies ? "hits" : otmp->oartifact == ART_ILLITHID_STAFF?"sucks the brain of":"mentally drains",
 				hittee, !spec_dbon_applies ? '.' : '!');
-		if(spec_dbon_applies && realizes_damage)
+		if(spec_dbon_applies && realizes_damage && otmp->oartifact != ART_ILLITHID_STAFF)
 			if(cancel_monst(mdef, otmp, youattack, FALSE, FALSE,0)) pline_The("%s %s %s %s%c", "sparkling", "blade",
 				"cancels",
 				hittee, '!');
@@ -3867,6 +3869,7 @@ arti_invoke(obj)
 		oart->inv_prop != FIRE_SHIKAI && 
 		oart->inv_prop != SEVENFOLD && 
 		oart->inv_prop != ANNUL && 
+		oart->inv_prop != ILLITHID &&
 		oart->inv_prop != LORDLY
 	) {
 	    /* the artifact is tired :-) */
@@ -3878,6 +3881,8 @@ arti_invoke(obj)
 	    pline("%s makes no sound.", The(xname(obj)));
 			return 1;
 		}
+	   
+	    pline("monstermoves: %d, obj age: %d",(int)obj->age,(int)monstermoves);	
 	    You_feel("that %s %s ignoring you.",
 		     the(xname(obj)), otense(obj, "are"));
 	    /* and just got more so; patience is essential... */
@@ -3892,6 +3897,7 @@ arti_invoke(obj)
 		oart->inv_prop != LORDLY &&
 		oart->inv_prop != ANNUL &&
 		oart->inv_prop != VOID_CHIME &&
+		oart->inv_prop != ILLITHID &&
 		oart->inv_prop != SEVENFOLD
 	)obj->age = monstermoves + (long)(rnz(100)*(Role_if(PM_PRIEST) ? .8 : 1));
 
@@ -6160,6 +6166,59 @@ arti_invoke(obj)
 		seffects(otmp);
           	obfree(otmp,(struct obj *)0);
 	} break;
+	case ILLITHID:{ /*Don't need to wield to do*/
+		int illithidFunc = doillithidmenu("Select function.", obj);
+		switch(illithidFunc){
+			case 0:
+			break;
+			case COMMAND_CHARGE:{
+				boolean b_effect;
+				b_effect = obj->blessed &&
+					((Role_switch == oart->role || oart->role == NON_PM) && (Race_switch == oart->race || oart->race == NON_PM));
+				recharge(uwep, b_effect ? 1 : obj->cursed ? -1 : 0);
+				update_inventory();
+			} break;
+			case COMMAND_TENT:{
+				int summon_loop;
+				struct monst *mtmp2;
+				summon_loop = rn2(4) + 4;
+				pline("Tentacles flow from the %s!", xname(obj));
+				do {
+				  mtmp = makemon(&mons[PM_NEOTHELID], u.ux, u.uy, NO_MM_FLAGS);
+				  if ((mtmp2 = tamedog(mtmp, (struct obj *)0)) != 0){
+						mtmp = mtmp2;
+						mtmp->mtame = 30;
+						summon_loop--;
+						mtmp->mvanishes = 100;
+					} else mongone(mtmp);
+				} while (summon_loop);
+			} break;
+			case COMMAND_DETECT:{
+				struct obj *otmp;
+               			otmp = mksobj(POT_MONSTER_DETECTION, TRUE, FALSE);
+         			otmp->blessed = obj->blessed;
+     				otmp->cursed = obj->cursed;
+  			        peffects(otmp);
+         			obfree(otmp,(struct obj *)0);
+			} break;
+			case COMMAND_ENERGY:{
+				int epboost = (u.uenmax + 1 - u.uen) / 2;
+				if(epboost < u.uenmax*.1) epboost = u.uenmax - u.uen;
+				if(epboost > 400) epboost = 400;
+	    			if(epboost) {
+					You_feel("re-energized.");
+					u.uen += epboost;
+					flags.botl = 1;
+	   			 }
+			} break;
+			case COMMAND_ELDER:
+
+			break;
+			
+		}
+
+		if(illithidFunc > COMMAND_CHARGE) obj->ovar1 = monstermoves + (long)(rnz(50)*(Role_if(PM_PRIEST) ? .8 : 1)); /*half the timeout cause you'll need it*/
+	} break;
         case SUMMON_VAMP:{
           if(uamul && uamul == obj){
             /* TODO */
@@ -6842,6 +6901,61 @@ struct obj *obj;
 	destroy_nhwindow(tmpwin);
 	return (n > 0) ? selected[0].item.a_int : 0;
 }
+
+int
+doillithidmenu(prompt, obj)
+const char *prompt;
+struct obj *obj;
+{
+	winid tmpwin;
+	int n, how;
+	char buf[BUFSZ];
+	menu_item *selected;
+	anything any;
+
+	tmpwin = create_nhwindow(NHW_MENU);
+	start_menu(tmpwin);
+	any.a_void = 0;		/* zero out all bits */
+
+	Sprintf(buf, "Function list:");
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+	if(obj->ovar1 < monstermoves){	
+		Sprintf(buf, "Detect Monsters");
+		any.a_int = COMMAND_DETECT;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'd', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		Sprintf(buf, "Tentacle Flow");
+		any.a_int = COMMAND_TENT;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			't', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		Sprintf(buf, "Energy Boost");
+		any.a_int = COMMAND_ENERGY;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'e', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		if(TRUE){//check if elder cerebral fluid is in the illithid
+			Sprintf(buf, "Elder Memories");
+			any.a_int = COMMAND_ELDER;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				'E', 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+		}
+	}
+	Sprintf(buf, "Recharge");
+	any.a_int = COMMAND_CHARGE;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'r', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	end_menu(tmpwin, prompt);
+
+	how = PICK_ONE;
+	n = select_menu(tmpwin, how, &selected);
+	destroy_nhwindow(tmpwin);
+	return (n > 0) ? selected[0].item.a_int : 0;
+}
+
 
 int
 doannulmenu(prompt, obj)

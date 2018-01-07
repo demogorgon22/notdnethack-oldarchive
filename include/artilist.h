@@ -937,11 +937,10 @@ A("Itlachiayaque", SHIELD_OF_REFLECTION,/*From archeologist patch*/
 	0,0,0),
 
 A("The Elder Cerebral Fluid",	DILITHIUM_CRYSTAL,
-	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DEFN|SPFX_ATTK), (SPFX_REFLECT|SPFX_HSPDAM),
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK), (SPFX_EREGEN|SPFX_HSPDAM),
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
-	/* this stone does double damage if used as a projectile weapon */
-	DRIN(10,1),	NO_DFNS,	CARY(AD_MAGM),
-	DRAIN_MEMORIES,	A_LAWFUL, PM_ANACHRONOUNBINDER, NON_PM, 2500L, 
+	DRIN(10,1),	NO_DFNS,	NO_CARY,
+	ENERGY_BOOST,	A_LAWFUL, PM_ANACHRONOUNBINDER, NON_PM, 2500L, 
 	0,0,0),
 
 A("The Annulus", CHAKRAM, /*Needs encyc entry*/
@@ -2060,6 +2059,15 @@ A("The Robe of the Archmagi",			ROBE,
 	NO_ATTK,	DFNS(AD_MAGM),	NO_CARY,	
 	ENERGY_BOOST, A_NONE, PM_WIZARD, NON_PM, 0L, 
 	0,0,WSFX_PLUSSEV),
+
+A("The Illithid Staff",			DOUBLE_LIGHTSABER,
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_WARN|SPFX_INTEL|SPFX_ATTK),SPFX_EREGEN,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	DRIN(5,0),	NO_DFNS,	NO_CARY,	
+	ILLITHID, A_LAWFUL, PM_ANACHRONOUNBINDER, NON_PM, 0L, 
+	0,0,0),
+
+
 
 /* TODO 2x damage vs non-living */
 A("The Forge Hammer of the Artificer",			WAR_HAMMER,

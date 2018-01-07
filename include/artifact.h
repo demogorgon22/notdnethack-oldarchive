@@ -243,7 +243,10 @@
 #define COMMAND_BLUE            52
 #define COMMAND_GREEN           53
 #define COMMAND_YELLOW          54
-
+#define COMMAND_DETECT		55
+#define COMMAND_TENT		56
+#define COMMAND_ELDER		57
+#define COMMAND_ENERGY		58
 struct artifact {
 	int	    otyp;
 	const char  *name;
@@ -335,6 +338,7 @@ struct artifact {
 #define SUMMON_VAMP     (LAST_PROP+65)
 #define COLLECT_TAX     (LAST_PROP+66)
 #define RAND_SCROLL     (LAST_PROP+67)
+#define ILLITHID        (LAST_PROP+68)
 
 #define MASTERY_ARTIFACT_LEVEL 20
 
@@ -395,6 +399,7 @@ struct artifact {
 							(exist_artifact(SKELETON_KEY,artilist[ART_THIRD_KEY_OF_CHAOS].name) \
 							||  u.ualign.type == A_CHAOTIC ) \
 				)\
+			|| (a == &artilist[ART_ILLITHID_STAFF] && Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 30)\
 			)
 #define is_mastery_artifact_nameable(a) (\
             /* Mastery artifacts */\
