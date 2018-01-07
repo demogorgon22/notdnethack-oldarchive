@@ -185,10 +185,10 @@ int x,y;
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,6),
 		    0, EXPL_RED);
 	} else if (obj->otyp == SPE_MAGIC_MISSILE && mon->data == &mons[PM_PAIMON]){
-		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,10),
+		explode(bhitpos.x, bhitpos.y, 10, d(3,10),
 		    0, EXPL_MAGICAL);	
 	} else if (obj->otyp == BOULDER && mon->data == &mons[PM_YMIR]){
-		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,10),
+		explode(bhitpos.x, bhitpos.y, 16, d(3,10),
 		    0, EXPL_NOXIOUS);	
 	} else if (obj->otyp == HEAVY_BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,10),

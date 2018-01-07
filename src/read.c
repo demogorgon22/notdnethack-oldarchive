@@ -1595,7 +1595,7 @@ struct obj	*sobj;
 			if (cval == 1 && sobj->blessed && Luck > 0) ++cval;
 		} else	cval = 1;
 		if(!objects[sobj->otyp].oc_name_known) more_experienced(0,10);
-		useup(sobj);
+		if(sobj->where == OBJ_INVENT) useup(sobj);
 		makeknown(SCR_IDENTIFY);
 	id:
 		if(invent && !confused) {
@@ -1703,7 +1703,8 @@ struct obj	*sobj;
 		cval = bcsign(sobj);
 		if(Fire_resistance) cval *= -1;//if you resist fire, blessed does more damage than cursed
 		if(!objects[sobj->otyp].oc_name_known) more_experienced(0,10);
-		useup(sobj);
+		if(sobj->where == OBJ_INVENT)
+			useup(sobj);
 		makeknown(SCR_FIRE);
 		if(confused) {
 		    if(Fire_resistance) {

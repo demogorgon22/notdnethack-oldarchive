@@ -71,6 +71,7 @@
 #define SPFX3_NOCNT		0x0000008L  /* doesn't count towards  created artifact total */
 #define SPFX3_MANDALA	0x0000010L	/* (r)ead object to benifit as from unihorn ONLY CHECKED FOR SHIRTS */
 #define SPFX3_LIGHT		0x0000040L	/* always lit lightsource */
+#define SPFX3_MAGM		0x0000080L	/* Magic Missile ball */
 
 #define	WSFX_LIGHTEN	0x0000001L	/* when worn, increases the weight you can haul. Currently only includes
 										Shirts, Cloaks, and body armor.  See do_wear.c and hack.c */
@@ -333,6 +334,7 @@ struct artifact {
 #define STEAL           (LAST_PROP+64)
 #define SUMMON_VAMP     (LAST_PROP+65)
 #define COLLECT_TAX     (LAST_PROP+66)
+#define RAND_SCROLL     (LAST_PROP+67)
 
 #define MASTERY_ARTIFACT_LEVEL 20
 

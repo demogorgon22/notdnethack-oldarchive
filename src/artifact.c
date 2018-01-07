@@ -2481,6 +2481,26 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				EXPL_FIERY);
 		}
 	}
+	if(spec_ability3(otmp, SPFX3_MAGM)){
+		if(youattack){
+			explode(mdef->mx, mdef->my,
+				10,
+				d(6,6), 0,
+				EXPL_MAGICAL);
+		}
+		else if(youdefend){
+			explode(u.ux, u.uy,
+				10,
+				d(6,6), 0,
+				EXPL_MAGICAL);
+		}
+		else{
+			explode(mdef->mx, mdef->my,
+				10,
+				d(6,6), 0,
+				EXPL_MAGICAL);
+		}
+	}
 	if(otmp->oartifact == ART_GENOCIDE){
 		struct monst *tmpm, *nmon;
 		int genoburn;
@@ -6121,6 +6141,25 @@ arti_invoke(obj)
             obj->owt = weight(obj);
           } else You_feel("like you should be wearing %s.", The(xname(obj)));
         } break;
+	case RAND_SCROLL:{
+		You("read an incantation from the staff.");/*Feel free to special case by artifact in the future*/
+		struct obj* otmp;
+	      	otmp = mkobj(SCROLL_CLASS,FALSE);
+		while(otmp->otyp == SCR_PUNISHMENT || otmp->otyp == SCR_AMNESIA || otmp->otyp == SCR_CONSECRATION 
+				|| otmp->otyp == SCR_BLANK_PAPER || otmp->otyp == SCR_ANTIMAGIC
+				|| otmp->otyp == SCR_GOLD_SCROLL_OF_LAW
+				|| otmp->otyp == SCR_MAIL)/*Make sure it isnt a scroll that could harsh your mellow*/
+		{
+	      		otmp = mkobj(SCROLL_CLASS,FALSE);
+		}
+		if(otmp->otyp == SCR_ENCHANT_ARMOR || otmp->otyp == SCR_ENCHANT_WEAPON || otmp->otyp == SCR_DESTROY_ARMOR){
+			make_confused(HConfusion+1,FALSE);/*Some scrolls won't harsh your mellow if you are confused so let's be*/	
+		}
+		otmp->blessed = obj->blessed;
+		otmp->cursed = obj->cursed;
+		seffects(otmp);
+          	obfree(otmp,(struct obj *)0);
+	} break;
         case SUMMON_VAMP:{
           if(uamul && uamul == obj){
             /* TODO */

@@ -1489,6 +1489,7 @@ struct obj *
 select_hwep(mtmp)	/* select a hand to hand weapon for the monster */
 register struct monst *mtmp;
 {
+
 	register struct obj *otmp;
 	register int i;
 	boolean strong = strongmonst(mtmp->data);
@@ -1589,7 +1590,6 @@ register struct monst *mon;
 {
 	struct obj *obj;
 	struct obj *mw_tmp = MON_WEP(mon);
-
 	/* This case actually should never happen */
 	if (mon->weapon_check == NO_WEAPON_WANTED) return 0;
 	

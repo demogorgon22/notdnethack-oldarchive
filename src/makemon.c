@@ -4638,12 +4638,37 @@ register struct	monst	*mtmp;
 		struct obj *otmp;
 		otmp = mksobj(CLOAK_OF_DISPLACEMENT, TRUE, FALSE);
 		otmp = oname(otmp, artiname(ART_FLICKERING_OUTLINE));
+		otmp->obj_material = SHADOWSTUFF;
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		otmp->spe = 1;
 		(void) mpickobj(mtmp, otmp);
 	}
-
+	if(ptr == &mons[PM_OSE] && !(u.spiritSummons&SEAL_OSE)){
+		struct obj *otmp;
+		otmp = mksobj(TRIDENT, TRUE, FALSE);
+		otmp->spe = 9;
+		otmp->obj_material = MITHRIL;
+		(void) mpickobj(mtmp, otmp);
+		(void) mongets(mtmp, HIGH_ELVEN_GAUNTLETS);
+		(void) mongets(mtmp, HIGH_ELVEN_PLATE);
+		(void) mongets(mtmp, HIGH_ELVEN_HELM);
+		(void) mongets(mtmp, SHIELD_OF_REFLECTION);
+	}
+	if(ptr == &mons[PM_PAIMON] && !(u.spiritSummons&SEAL_PAIMON)){
+		struct obj *otmp;
+		otmp = mksobj(HELM_OF_BRILLIANCE, TRUE, FALSE);
+		otmp->spe = 3;
+		otmp->obj_material = GEMSTONE;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(KHAKKHARA, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_ARCHIVIST));
+		otmp->blessed = TRUE;
+		otmp->cursed = FALSE;
+		otmp->spe = 3;
+		otmp->obj_material = GEMSTONE;
+		(void) mpickobj(mtmp, otmp);
+	}
 
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
