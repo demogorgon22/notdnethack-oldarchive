@@ -3464,7 +3464,7 @@ boolean was_swallowed;			/* digestion */
 				explode(mon->mx, mon->my, 1, tmp, MON_EXPLODE, EXPL_FIERY);
 			} else if(mdat->mattk[i].adtyp == AD_JACK){
 				big_explode(mon->mx, mon->my, 1, tmp, MON_EXPLODE, EXPL_FIERY,5);
-				return TRUE;	
+				return TRUE;
 			}
 			else if(mdat->mattk[i].adtyp == AD_JAILER){
 				explode(mon->mx, mon->my, 1, tmp, MON_EXPLODE, EXPL_FIERY);
@@ -3851,7 +3851,9 @@ boolean was_swallowed;			/* digestion */
 	/* must duplicate this below check in xkilled() since it results in
 	 * creating no objects as well as no corpse
 	 */
-
+	if(mdat == &mons[PM_JACK]){
+		return TRUE;
+	}
 	if (LEVEL_SPECIFIC_NOCORPSE(mdat))
 		return FALSE;
 

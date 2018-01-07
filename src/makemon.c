@@ -4586,6 +4586,7 @@ register struct	monst	*mtmp;
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		otmp->spe = 0;
+//		otmp->objsize = MZ_TINY;
 		(void) mpickobj(mtmp, otmp);
 
 	}
@@ -4596,6 +4597,7 @@ register struct	monst	*mtmp;
 		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		otmp->spe = 0;
+//		otmp->objsize = MZ_TINY;
 		(void) mpickobj(mtmp, otmp);
 
 	}
@@ -4663,12 +4665,21 @@ register struct	monst	*mtmp;
 		(void) mpickobj(mtmp, otmp);
 		otmp = mksobj(KHAKKHARA, TRUE, FALSE);
 		otmp = oname(otmp, artiname(ART_ARCHIVIST));
-		otmp->blessed = TRUE;
+		otmp->blessed = FALSE;
 		otmp->cursed = FALSE;
 		otmp->spe = 3;
 		otmp->obj_material = GEMSTONE;
 		(void) mpickobj(mtmp, otmp);
 	}
+	if(ptr == &mons[PM_SIMURGH] && !(u.spiritSummons&SEAL_SIMURGH)){
+		struct obj *otmp;
+		otmp = mksobj(FEATHER, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_SIMURGH_S_FEATHER));
+		otmp->blessed = TRUE;
+		otmp->cursed = FALSE;
+		(void) mpickobj(mtmp, otmp);
+	}
+	
 
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;

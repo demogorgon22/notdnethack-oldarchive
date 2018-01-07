@@ -1491,7 +1491,7 @@ A("Jack's Torch",			CLUB, /*Needs encyc entry*/
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	FIRE(4,1),	NO_DFNS,	FIRE(0,0),
 	0, A_NONE, NON_PM, NON_PM, 9999L, 
-	SPFX2_FIRE2,SPFX3_NOCNT|SPFX3_LIGHT,0),
+	SPFX2_FIRE2,SPFX3_NOCNT,0),
 
 A("The Puppet Wire", GRAPPLING_HOOK,
 	(SPFX_NOGEN|SPFX_RESTR),0,
@@ -1513,6 +1513,13 @@ A("The Archivist", KHAKKHARA,
 	PHYS(5,0),	NO_DFNS,	CARY(AD_MAGM),
 	RAND_SCROLL, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT|SPFX3_MAGM, 0),
+
+A("Simurgh's Feather", FEATHER,
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	NO_ATTK,	NO_DFNS,	ELEC(0,0),
+	ARTI_REMOVE_CURSE, A_NONE, NON_PM, NON_PM, 9999L, 
+	0, SPFX3_NOCNT|SPFX3_LIGHT, 0),
 
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK),0,

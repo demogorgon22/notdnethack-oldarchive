@@ -505,9 +505,9 @@ can_twoweapon()
 		!(u.specialSealsActive&SEAL_MISKA) && 
 		!(!Upolyd && uwep && uswapwep && 
 			((artilist[uwep->oartifact].inv_prop == DANCE_DAGGER && artilist[uswapwep->oartifact].inv_prop == SING_SPEAR) ||
-			 (artilist[uswapwep->oartifact].inv_prop == DANCE_DAGGER && artilist[uwep->oartifact].inv_prop == SING_SPEAR))
-		 ) &&
-		!(uwep->oartifact == ART_THOUGHT && uswapwep->oartifact == ART_MEMORY)//thought must come before memory
+			 (artilist[uswapwep->oartifact].inv_prop == DANCE_DAGGER && artilist[uwep->oartifact].inv_prop == SING_SPEAR) ||
+			 (uwep->oartifact == ART_THOUGHT && uswapwep->oartifact == ART_MEMORY))//thought must come before memory
+		 ) 
 	) {
 		if (Upolyd)
 		    You_cant("use two weapons in your current form.");
