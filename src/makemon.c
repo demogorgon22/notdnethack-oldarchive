@@ -4694,7 +4694,44 @@ register struct	monst	*mtmp;
 		(void) mpickobj(mtmp, otmp);
 	}
 	if(ptr == &mons[PM_YMIR] && !(u.spiritSummons&SEAL_YMIR)){
-
+		(void)mongets(mtmp, AMULET_OF_REFLECTION);
+		struct obj *otmp;
+		otmp = mksobj(CRYSTAL_GAUNTLETS, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_GIGANTIC;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(CRYSTAL_HELM, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_GIGANTIC;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(CRYSTAL_BOOTS, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_GIGANTIC;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(CRYSTAL_PLATE_MAIL, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_PLATES_OF_THE_NEAR_VOID));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_GIGANTIC;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(CLOAK_OF_MAGIC_RESISTANCE, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_GIGANTIC;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
+		otmp = mksobj(DOUBLE_LIGHTSABER, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 7;
+		(void) mpickobj(mtmp, otmp);
 	}
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;

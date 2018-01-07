@@ -26,6 +26,7 @@ const static int DURIN_RES[] = {FIRE_RES, ACID_RES, POISON_RES};
 const static int REV_PROPS[] = {COLD_RES, REGENERATION, FIXED_ABIL, POISON_RES, SEE_INVIS};
 const static int BUER_PROPS[] = {REGENERATION, FIXED_ABIL};
 const static int SHIRO_PROPS[] = {STONE_RES, INVIS, STEALTH};
+const static int YMIR_PROPS[] = {HALF_PHDAM, MAGICAL_BREATHING};
 
 const struct worn {
 	long w_mask;
@@ -147,8 +148,9 @@ long mask;
 					else pline("Suddenly you can no longer see through yourself.");
 				}
 				if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("sure are noisy.");
+			}else if(oobj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
+				for(p = 0; p < SIZE(YMIR_PROPS); p++) u.uprops[YMIR_PROPS[p]].extrinsic = u.uprops[YMIR_PROPS[p]].extrinsic & ~wp->w_mask;
 			}
-			
 			if ((p = w_blocks(oobj,mask)) != 0)
 			    u.uprops[p].blocked &= ~wp->w_mask;
 			if (oobj->oartifact)
@@ -207,6 +209,8 @@ long mask;
 					}
 					if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("walk very quietly.");
 					for(p = 0; p < SIZE(SHIRO_PROPS); p++) u.uprops[SHIRO_PROPS[p]].extrinsic = u.uprops[SHIRO_PROPS[p]].extrinsic | wp->w_mask;
+				} else if(obj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
+					for(p = 0; p < SIZE(YMIR_PROPS); p++) u.uprops[YMIR_PROPS[p]].extrinsic = u.uprops[YMIR_PROPS[p]].extrinsic | wp->w_mask;
 				}
 
 				
@@ -278,13 +282,16 @@ register struct obj *obj;
 		} else if(obj->oartifact == ART_TALISMAN_OF_BUER){
 			for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic & ~wp->w_mask;
 		} else if(obj->oartifact == ART_STONE_MASK){
-				for(p = 0; p < SIZE(SHIRO_PROPS); p++) u.uprops[SHIRO_PROPS[p]].extrinsic = u.uprops[SHIRO_PROPS[p]].extrinsic & ~wp->w_mask;
-				if(!u.uprops[INVIS].intrinsic &&  !u.uprops[INVIS].extrinsic){
-					if(!u.uprops[SEE_INVIS].intrinsic &&  !u.uprops[SEE_INVIS].extrinsic) pline("Suddenly you can see yourself.");
-					else pline("Suddenly you can no longer see through yourself.");
-				}
-				if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("sure are noisy.");
+			for(p = 0; p < SIZE(SHIRO_PROPS); p++) u.uprops[SHIRO_PROPS[p]].extrinsic = u.uprops[SHIRO_PROPS[p]].extrinsic & ~wp->w_mask;
+			if(!u.uprops[INVIS].intrinsic &&  !u.uprops[INVIS].extrinsic){
+				if(!u.uprops[SEE_INVIS].intrinsic &&  !u.uprops[SEE_INVIS].extrinsic) pline("Suddenly you can see yourself.");
+				else pline("Suddenly you can no longer see through yourself.");
 			}
+			if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("sure are noisy.");
+		}else if(obj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
+			for(p = 0; p < SIZE(YMIR_PROPS); p++) u.uprops[YMIR_PROPS[p]].extrinsic = u.uprops[YMIR_PROPS[p]].extrinsic & ~wp->w_mask;
+		}
+
 		
 		if(obj->oartifact == ART_GAUNTLETS_OF_THE_BERSERKER){
 //        adj_abon(uarmg, -uarmg->ovar1);
