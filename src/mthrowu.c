@@ -189,7 +189,9 @@ int x,y;
 		    0, EXPL_MAGICAL);	
 	} else if (obj->otyp == BOULDER && mon->data == &mons[PM_YMIR]){
 		explode(bhitpos.x, bhitpos.y, 16, d(3,10),
-		    0, EXPL_NOXIOUS);	
+		    0, EXPL_NOXIOUS);
+		(void) create_gas_cloud(bhitpos.x, bhitpos.y, 1+bcsign(obj),
+	                1*bcsign(obj));
 	} else if (obj->otyp == HEAVY_BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,10),
 		    0, EXPL_FIERY);

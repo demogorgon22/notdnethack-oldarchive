@@ -1521,6 +1521,13 @@ A("Simurgh's Feather", FEATHER,
 	ARTI_REMOVE_CURSE, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT|SPFX3_LIGHT, 0),
 
+A("Touch of the Void", GAUNTLETS_OF_DEXTERITY,
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK|SPFX_DRLI|SPFX_DEFN),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	DRLI(1,1),	DRLI(0,0),	NO_CARY,
+	0, A_NONE, NON_PM, NON_PM, 9999L, 
+	0, SPFX3_NOCNT, WSFX_PLUSSEV),
+
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,

@@ -4460,6 +4460,11 @@ register struct	monst	*mtmp;
 	}
 	if(ptr == &mons[PM_ANDREALPHUS] && !(u.spiritSummons&SEAL_ANDREALPHUS)){
 		(void)mongets(mtmp, SENSOR_PACK);
+		(void)mongets(mtmp, CAN_OF_GREASE);
+	}
+	if(ptr == &mons[PM_ANDROMALIUS] && !(u.spiritSummons&SEAL_ANDROMALIUS)){
+		(void)mongets(mtmp, SACK);
+		m_initthrow(mtmp, DAGGER, 12);
 	}
 	if(ptr == &mons[PM_ASTAROTH]&& !(u.spiritSummons&SEAL_ASTAROTH)){
 		(void)mongets(mtmp, UPGRADE_KIT);
@@ -4679,8 +4684,18 @@ register struct	monst	*mtmp;
 		otmp->cursed = FALSE;
 		(void) mpickobj(mtmp, otmp);
 	}
-	
+	if(ptr == &mons[PM_TENEBROUS] && !(u.spiritSummons&SEAL_TENEBROUS)){
+		struct obj *otmp;
+		otmp = mksobj(GAUNTLETS_OF_DEXTERITY, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_TOUCH_OF_THE_VOID));
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->spe = 3;
+		(void) mpickobj(mtmp, otmp);
+	}
+	if(ptr == &mons[PM_YMIR] && !(u.spiritSummons&SEAL_YMIR)){
 
+	}
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 
