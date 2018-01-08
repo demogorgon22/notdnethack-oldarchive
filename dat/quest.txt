@@ -327,13 +327,13 @@ You have an odd feeling this may be the last time you ever come here.
 "THE ULITHARID IS MIGHTY"
 %E
 %Cp Acu 00010
-"WELCOME TO %H"
+"YOU DID IT"
 %E
 %Cp Acu 00011
-"We're being overrun!"
+"WE WILL BE SAVED"
 %E
 %Cp Acu 00012
-"We're out of time."
+"DEATH TO VESTIGES"
 %E
 %Cp Acu 00013
 "FEAR NO UNDEAD"
@@ -382,17 +382,17 @@ and attempt to seek their own eternity by meddling with The Gate."
 
 "%nt and his spirits of our slaves have just begun attacks on Elder Brains.
 All our knowledge now belongs to %nt and his abominations. 
-You are ready now to attempt to recover %o."
+You are ready now to travel to %i and recover %o."
 
 "Should you be successful, you must recover the Amulet of Yendor
-and use it in combination with %o to close The Gate from the Astral Plane."
+and use it to recover Ilsensine from The Void and close The Gate."
 
 %E
 %Cp Acu 00025
 "Should you fail, the Illithid Empire will be no more."
 %E
 %Cp Acu 00026
-"%n is an alhoon, a dangerous undead illich."
+"%n is an alhoon, a dangerous undead illich. He is mindless."
 %E
 %Cp Acu 00027
 "Villithids will suck your mind and your life. Watch out for those abominations."
@@ -407,101 +407,91 @@ and use it in combination with %o to close The Gate from the Astral Plane."
 "Beware of neothelids and their many tentacles. They have committed grave sins."
 %E
 %Cp Acu 00031
-"Beware the Army of Neverweres, or they will steal your
-equipment and your blood."
+"Be sure to take advantage of the items you have taken from spirits."
 %E
 %Cp Acu 00032
-"The remaining Troopers of the Last Bastion will hold the
-line as long as they are able."
+"The Illithid Cavern is full of abominations. May %d guide your steps."
 %E
 %Cp Acu 00033
-"Those Changed by exposure to the Far Realms of Insanity
-require isolation suits to exist in our atmosphere.  If
-the suit is breached, the Changed inside will eventually
-boil away into poison mist."
+"You will need to name a double lightsaber The Illithid Staff one day."
 %E
 %Cp Acu 00034
 "I hope you found luck in the future, for there is surely
 none left in this fading world."
 %E
 %Cc Acu 00035
-You have reached the ruins of a great city, destroyed in
-the rain of falling stars that came after the great defeat
-at the Battle of Heavenfall.  Beyond the city you see the
-ever-expanding Penumbral zone rising into the night sky.
-
-You will have to pass through the city and the nascent 
-Penumbra if you are to reach Ground Zero, where the Annulus
-was lost on the Eve of Falling Stars, on the day of your
-birth.
-%i.
+You stand before the Illithid Cavern. 
+You hear dripping water echo throughout the cavern.
+A sense of dread hangs over this once great place.
+The knowledge and memories here have deteriorated 
+and this place lays in waste. 
 %E
 %Cp Acu 00036
-Once again, you arrive at the ruins of the city.
+Once again, you arrive at the Illithid Cavern.
 %E
 %Cc Acu 00040
-An overwhelming feeling of being watched fills your mind.
-
-You have reached Ground Zero, where Heaven fell to earth.
+You have reached %i. The air here is heavier.
+You feel closer to the collective suppressed minds of the 
+slaves of the illithid empire. %n will have hell to pay. 
 %E
 %Cp Acu 00041
-You have returned to Ground Zero.
+You have returned to %i.
 %E
 %Cc Acu 00050
-UNUSED
+You will die, %r. %d will never stop the rebellion of civilization.
 %E
 %Cc Acu 00051
-UNUSED
+I will bind your spirit when I finish you.
 %E
 %Cp Acu 00052
-UNUSED
+You blood will feed my villithids.
 %E
 %Cp Acu 00053
-UNUSED
+The knowledge of %o is mine!
 %E
 %Cp Acu 00060
-UNUSED
+The Alignment Thing will dismember you!
 %E
 %Cp Acu 00061
-UNUSED
+You will never use %o to save %d!
 %E
 %Cp Acu 00062
-UNUSED
+I'll bind your spirit to my pet neothelid!
 %E
 %Cp Acu 00063
-UNUSED
+Through death I will live forever!
 %E
 %Cp Acu 00064
-UNUSED
+The knowledge of %o makes me stronger than you.
 %E
 %Cp Acu 00065
-UNUSED
+Defeat is the only end you can meet.
 %E
 %Cp Acu 00066
-UNUSED
+Death means nothing to me.
 %E
 %Cp Acu 00067
-UNUSED
+I fear no god.
 %E
 %Cp Acu 00068
-UNUSED
+You are nothing more than a grunt.
 %E
 %Cp Acu 00069
-UNUSED
+How does it feel to be a pawn for %d?
 %E
 %Cc Acu 00070
-You have recovered the Annulus, lost at the Battle of
-Heavenfall on the Eve of Falling Stars.
+The Elder Cerebral Fluid glows briefly. Your mind opens up in new ways to new
+ideas and you understand the universe differently.
 
-You must return to Sara, if she yet lives, to learn
+You must return to %l, to learn
 the details of the next and final stage of the plan.
 %E
 %Cp Acu 00080
-UNUSED
+%n breathes his dying curses. His body blows away into the wind and
+his spirit cannot survive here.
 %E
 %Cc Acu 00081
-Sara, the Last Oracle, looks wonderingly at the
-Annulus.
+%l looks wonderingly at %o.
 
 "Well done, %s.  You have succeed where
 all others have failed, and returned hope to
@@ -511,35 +501,34 @@ our world.
 retrieve the Amulet of Yendor, that was stolen by
 Moloch at the beginning of time.
 
-"With the Amulet in your possetion, the gods will
-allow you to climb up to the Astral Plane.  Once
-there, you must use the Annulus to Annul the High
-Altar of Ilsensine and eject her from this
-universe."
+"With %o inside The Illithid Staff, a double lightsaber you 
+will have to name as a Keeper of The Gate, you must travel to
+the Astral Plane and perform the Elder Memory invocation on
+the altar of the void."
+
+"From there you must travel through The Gate to The Far Void
+and use the Amulet of Yendor to free her from banishment."
+
+"Should you find yourself needing a double lightsaber after getting
+the amulet you can return here."
 %E
 %Cc Acu 00082
-"The Annulus is the pinnacle of mortal technology, created
-by turning the power of the Bell of Opening upon itself,
-creating a door through the universe through which even
-the great Grey Thought Entity Ilsensine may be ejected.
-
-"You must not loose it or fail to take it with you to
-the Astral Plane, or all our struggles will have been
-for naught."
+"%o's power can help you in your fight against the spirits of the
+near void. Should you lose it this will all be meaningless."
 %E
 %Cc Acu 00090
-"There is nothing more you can do for this version of me,
-%s.  Go back to the past, seek the Amulet of Yendor, and
-gain entrance to the Astral Plane, where the final confrontation
-with the servants of Ilsensine awaits you."
+"You must return to the future and finish the plan."
 %E
 %Cc Acu 00091
 "You've done it!  But there is still nothing you can do for us
-now.  Go back to the past, and bear the Amulet of Yendor up
-to the Astral Plane.  Once there, you must use the Annulus
-to Annul the High Altar of Ilsensine and eject her from
-this universe before she can consume the heavens and the
-earth."
+here in the past."
+
+"With %o inside The Illithid Staff  you must travel to
+the Astral Plane and perform the Elder Memory invocation on
+the high altar of the void."
+
+"From there you must travel through The Gate to The Far Void
+and use the Amulet of Yendor to free her from banishment."
 %E
 #
 #	Anachrononaut
