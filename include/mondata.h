@@ -492,6 +492,8 @@
 				)
 
 #define is_mind_flayer(ptr)	((ptr) == &mons[PM_MIND_FLAYER] || \
+				 (ptr) == &mons[PM_ADVERSARY] || \
+				 (ptr) == &mons[PM_VILLITHID] || \
 				 (ptr) == &mons[PM_MASTER_MIND_FLAYER] || \
 				 (ptr) == &mons[PM_ALHOON] || \
 				 (ptr) == &mons[PM_ELDER_BRAIN] || \

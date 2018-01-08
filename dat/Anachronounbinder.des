@@ -14,22 +14,22 @@ GEOMETRY:center,center
 MAP
   }.    }.}                    }}     }}    ##########                      
  }.... ......   ...}  LLL    }}}}}}  }}}}   #       #   ##################. 
-   .}...}}}}.. ..}.. LL LL  }}}}}}   } }}}  # ------.-- #                   
-  ..}}}}}. }}...}..  LL    }}}}}}}}    }}}  # |...-...| #                   
+   .}...}}}}.. ..}..LLL LL  }}}}}}   } }}}  # ------.-- #                   
+  ..}}}}}. }}...}..  LL    }}}}}}}}    }}}  # |.......| #                   
  }.}}}}.}}}}}}}}}.  }}LL  }}}}}}}}}} }}}}}  # |.......| #                   
- ... }}. } } } .}.. }}}LLL}}}}}}}}}}}}}}}   # |...-...| #      .     .      
+ ... }}. } } } .}.. }}}LLL}}}}}}}}}}}}}}}   # |.......| #      .     .      
   .}}}}}}}}}}}}}}}.  }}}}LLL}}}}}}}}}}}     # --.--...| #                   
   .} } } } }}. } }.. }}}}}}LL-.-}}}}}}  }   #   # |...| #                   
- ..}}}}}}}}}}}}}}}}.  }}}}LL--.--}}}}} }}}}}##### |...| #   .  }-}-}-}  .   
+ ..}}}}}}}}}}}}}}}}.}}}}}}LL--.--}}}}} }}}}}##### |...| #   .  }-}-}-}  .   
 }.}} }}} }.} } . }.. }}}}LLL-.{.-}}}}  }}   #   # |...| #      -}}}}}-      
- .}}}}.}}}}}}}}}}}.  }}LLLLL--.--}}}} }}}   # ### |...| #      }}.}.}}      
-..}} } } } } } }}.. }}LL}}}LL---L}}}}}}}    #   # |...| #      -}}.}}-      
-.}}}}}}}.}}}}}.}..  LLL }}}}LLLLLL}}}}}}}}  ##### |...| #      }}.}.}}      
+ .}}}}.}}}}}}}}}}}.  }}LLLLL--.--}}}} }}}   # ### |...| #      }}}}}}}      
+..}} } } } } } }}..}}}LL}}}LL---L}}}}}}}    #   # |...| #      -}}}}}-      
+.}}}}}}}.}}}}}.}..  LLL }}}}LLLLLL}}}}}}}}  ##### |...| #      }}}}}}}      
 .} } . }}} . }}}.. LL   }}}}}}L}}LLL}}}}}         |...| #      -}}}}}-      
-.}}}}}}}}}}}}}}}}.  L. }}}}}}LL}}}}LLL}}}}}}}-------.-| #   .  }-}-}-}  .   
-.}}. } } } } } }}..     }}}LLL}}}}}}}LL}  -...-...-...- #                   
+.}}}}}}}}}}}}}}}}.LLL. }}}}}}LL}}}}LLL}}}}}}}-------.-| #   .  }-}-}-}  .   
+.}}. } } } } } }}..L    }}}LLL}}}}}}}LL}  -...........| #                   
  .}}}}}}}}}}}}..}}.. . }}LLL}}}}}}}}}}L}}}.............##                   
- ...}} } .}} }}}}}}... LLL}}}}}}}}} }}L}  -...-...-...- #      .     .      
+ ...}} } .}} }}}}}}... LLL}}}}}}}}} }}L}  -...........| #      .     .      
   }..}}}}}}....}.}}. .LL  }}}}}}}}   LL}} -------------                     
     ....}}..  .....  LL    }}}}}}   LL }}               ##                  
        ....     }.  LL       }}     L   }################                   
@@ -63,7 +63,36 @@ MAZEWALK:(10,09),south
 STAIR:(10,9),down
 # entrance
 REGION:(47,15,49,17),lit,"ordinary"
-#ENGRAVING:(48,16),engrave,"Beware of Dreams come true!"
+ENGRAVING:(47,3),burn,"Ahazu will hunger you but carries food."
+ENGRAVING:(48,3),burn,"Amon is capable of dealing rapid damage!"
+ENGRAVING:(49,3),burn,"Protect your eyes from the gaze of Andrealphus and covet his loot."
+ENGRAVING:(50,3),burn,"Andromalius will teleport away your armor, but carries good weapons for training."
+ENGRAVING:(51,3),burn,"Astaroth's creations will shine bright."
+ENGRAVING:(52,3),burn,"Balam's frost can be deadly."
+ENGRAVING:(53,3),burn,"Berith's bloody crown is slippery."
+ENGRAVING:(47,4),burn,"Buer dies twice, as can you."
+ENGRAVING:(48,4),burn,"Chupoclops carries quite the package."
+ENGRAVING:(49,4),burn,"Dantalion wields a dangerous sword and a dangerous mind."
+ENGRAVING:(50,4),burn,"Shiro's Stone mask is elusive. "
+ENGRAVING:(51,4),burn,"Echidna is a thief."
+ENGRAVING:(52,4),burn,"Eden's scales are a transportation utility."
+ENGRAVING:(53,4),burn,"Enki is a moisture master. Protect your inventory."
+ENGRAVING:(47,5),burn,"Finishing Eurynome's dance will earn you her shoes."
+ENGRAVING:(48,5),burn,"Eve is a master of the bow."
+ENGRAVING:(49,5),burn,"Fafnir is out for gold."
+ENGRAVING:(50,5),burn,"Huginn and Muninn bear twin blades that can be wielded together."
+ENGRAVING:(51,5),burn,"Iris's rainbow is deadly."
+ENGRAVING:(52,5),burn,"Jack is forever. Beware his blast."
+ENGRAVING:(53,5),burn,"Malphas never leaves his flock."
+ENGRAVING:(51,6),burn,"Marionette will grab you from a distance and bring you in."
+ENGRAVING:(52,6),burn,"Do not look Mother in the eye. Fear her magic."
+ENGRAVING:(53,6),burn,"Naberius's many heads bite hard."
+ENGRAVING:(51,7),burn,"Orthos moves at the speed of darkness with its same nimbleness."
+ENGRAVING:(52,7),burn,"Otiax is a whispy fellow."
+ENGRAVING:(53,7),burn,"Paimon's fights nearly require magic resistance. Her staff is powerful."
+ENGRAVING:(51,8),burn,"Simurgh's bright light will blind you and her talon's tear but her feather brings help."
+ENGRAVING:(52,8),burn,"Tenebrous will take you down a level."
+ENGRAVING:(53,8),burn,"Fear Ymir. When you do him in name his staff 'The Illithid Staff'"
 #TRAP[60%]:"sleep gas",(48,15)
 #TRAP[60%]:"sleep gas",(47,16)
 #TRAP[60%]:"sleep gas",(49,16)
@@ -94,26 +123,31 @@ MONSTER[50%]:';',"illithid larva",(64,11),peaceful
 MONSTER[50%]:';',"illithid larva",(68,11),peaceful
 
 # cloud
-MONSTER:'@',"mindless thrall",(23,07),peaceful
-MONSTER[60%]:'@',"mindless thrall",(24,08),peaceful
-MONSTER:'@',"mindless thrall",(32,15),peaceful
-MONSTER[60%]:'@',"mindless thrall",(33,16),peaceful
-MONSTER:'@',"mindless thrall",(40,08),peaceful
-MONSTER[60%]:'@',"mindless thrall",(39,09),peaceful
-MONSTER:'@',"mindless thrall",(31,02),peaceful
-MONSTER:'@',"mindless thrall",(32,03),peaceful
-MONSTER:'@',"mindless thrall",(40,03),peaceful
-MONSTER[60%]:'@',"mindless thrall",(39,04),peaceful
+MONSTER:'@',"mindless thrall",random,peaceful
+MONSTER[60%]:'@',"mindless thrall",random,peaceful
+MONSTER:'@',"mindless thrall",random,peaceful
+MONSTER[60%]:'@',"mindless thrall",random,peaceful
+MONSTER:'@',"mindless thrall",random,peaceful
+MONSTER[60%]:'@',"mindless thrall",random,peaceful
+MONSTER:'@',"mindless thrall",random,peaceful
+MONSTER:'@',"mindless thrall",random,peaceful
+MONSTER:'@',"mindless thrall",random,peaceful
+MONSTER[60%]:'@',"mindless thrall",random,peaceful
 #MONSTER[40%]:'E',random,(33,07),hostile
 #MONSTER[40%]:'E',random,(34,08),hostile
 #MONSTER[40%]:'E',random,(25,13),hostile
 #MONSTER[40%]:'E',random,(26,14),hostile
 
 
+CONTAINER:'(',"chest",(30,10)
+OBJECT:'?',"resistance",contained
+OBJECT:'?',"resistance",contained
+OBJECT:'?',"resistance",contained
+
 MONSTER:'h',"Ulitharid",(30,09),peaceful
 MONSTER:'U',"elder brain",(66,11),peaceful
 #MONSTER[80%]:'h',"mind flayer",(31,09),"Emma",hostile
-#MONSTER[60%]:'h',"master mind flayer",(30,08),"Mel C.",hostile
+MONSTER:'h',"master mind flayer",(51,7),"The Vestitoligist",peaceful
 #MONSTER[60%]:'h',"master mind flayer",(30,10),"Mel B.",hostile
 #CONTAINER:'(',"chest",(30,09)
 #OBJECT[70%]:'"',"amulet of flying",contained
@@ -152,74 +186,42 @@ MONSTER:'U',"elder brain",(66,11),peaceful
 #
 #	The "locate" level for the quest.
 #
-#	Here you have to find the Entrance to the Tomb of the Toltec Kings
-#	to go further towards your assigned quest.
+#	Bad, bad place.
+#
 #
 
 MAZE: "Acu-loca",' '
 FLAGS: hardfloor
 GEOMETRY:center,center
 MAP
-............................................................................
-............................................................................
-............................................................................
-........................-------------------------------.....................
-........................|....|.S......................|.....................
-........................|....|.|.|+------------------.|.....................
-........................|....|.|.|.|.........|......|.|.....................
-........................|....|.|.|.|.........|......|.|.....................
-........................|---+-.|.|.|..---....+......|.|.....................
-........................|....|.|.|.---|.|....|......|.|.....................
-........................|....S.|.|.+..S.|--S-----S--|.|.....................
-........................|....|.|.|.---|.|....|......+.|.....................
-........................|---+-.|.|.|..---....|.------.|.....................
-........................|....|.|.|.|.........|.|....+.|.....................
-........................|....|.|.|.|.........|+|....|-|.....................
-........................|....|.|.|------------+------.S.....................
-........................|....|.S......................|.....................
-........................-------------------------------.....................
-............................................................................
-............................................................................
+                                 }}}}                                       
+  ....   ...   ........ ....    }}} }}      . .....              .......    
+  ..       .  ......  ... ..   }} }} }}    . ........          ....    ..   
+   ......  .... ..         ...}} }..}.}}. .   ....  ...       ...     ....  
+     }  ....     ......     .}.}}.}}.}}.}.            ......}...  .  .....  
+    ..}}..            ......}.}..}..}. }.}.        .......}}...  ...  ...   
+   ..  .}}}....      ..  .}}..} }.}}.}  } }...  .......}}}  ..}   ......    
+   ...    .}}}}}... ..}}}}...}..}.}}..} }  }}.....}}}}} ..}}}}         .    
+     ...      ..}}}}}}.    }}..}..}}.}. }.   }}}}}          ..}}   ....     
+    .. ..  ..}}}.     ...}}  .}   }}...  }. .     }}.        ...}.....      
+   ..   ...}}.   .}}..}}}   .}    }}     .}}}... ...}...    ..  ....        
+  ...   ..}..     ..}}.     }.   }}}}     .}.} ... .} .}   ....  ......     
+   ..    ...     ..}.. .   } }. }}}}}}   ..}..   .   }}.  .....    ......   
+    .  ...      ..}..   .    }. }}}}}}   .}.}   ....  .}   ..    ..         
+    . ....      ....   ...  }. .}}}}}}   . .}  ....    .}      .....        
+     ..  ..      ..   ..... .    }}}}.     ..           .   .....}}......   
+    ...   .. .. ..   .....  .     .....     .    ....  .........}}}}......  
+   .....   ......     .... .... ..... ...  .... .......    ....}}}......    
+   ....      ...         ...  ......    ....   ......         .......       
+                                                                            
 ENDMAP
-# Dungeon Description
-REGION:(00,00,75,19),lit,"ordinary"
-REGION:(25,04,28,07),lit,"temple"
-REGION:(25,09,28,11),unlit,"temple"
-REGION:(25,13,28,16),lit,"temple"
-REGION:(30,04,30,16),lit,"ordinary"
-REGION:(32,04,32,16),unlit,"ordinary"
-REGION:(33,04,53,04),unlit,"ordinary",unfilled,true
-REGION:(36,10,37,10),unlit,"ordinary"
-REGION:(39,09,39,11),unlit,"ordinary"
-REGION:(36,06,42,08),unlit,"ordinary",unfilled,true
-REGION:(36,12,42,14),unlit,"ordinary",unfilled,true
-REGION:(46,06,51,09),unlit,"ordinary"
-REGION:(46,11,49,11),unlit,"ordinary",unfilled,true
-REGION:(48,13,51,14),unlit,"ordinary"
-# Doors
-DOOR:closed,(31,04)
-DOOR:closed,(28,08)
-DOOR:locked,(29,10)
-DOOR:closed,(28,12)
-DOOR:closed,(31,16)
-DOOR:locked,(34,05)
-DOOR:locked,(35,10)
-DOOR:locked,(38,10)
-DOOR:closed,(43,10)
-DOOR:closed,(45,08)
-DOOR:locked,(46,14)
-DOOR:locked,(46,15)
-DOOR:locked,(49,10)
-DOOR:locked,(52,11)
-DOOR:closed,(52,13)
-DOOR:closed,(54,15)
+# Regions
+# The whole gulf is dark and quiet
+REGION:(01,01,75,19),unlit,"morgue",unfilled
 # Stairs
-STAIR:(03,17),up
-STAIR:(39,10),down
+STAIR:(03,2),up
+STAIR:(68,16),down
 # Altars - three types.  All are unattended.
-ALTAR:(26,05),align[0],altar
-ALTAR:(26,10),align[1],altar
-ALTAR:(26,15),align[2],altar
 # Non diggable walls
 NON_DIGGABLE:(00,00,75,19)
 # Objects
@@ -238,63 +240,48 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
-# Treasure?
-ENGRAVING:random,engrave,"X marks the spot."
-ENGRAVING:random,engrave,"X marks the spot."
-ENGRAVING:random,engrave,"X marks the spot."
-ENGRAVING:random,engrave,"X marks the spot."
 # Random traps
-TRAP:"spiked pit",(24,02)
-TRAP:"spiked pit",(37,00)
-TRAP:"spiked pit",(23,05)
-TRAP:"spiked pit",(26,19)
-TRAP:"spiked pit",(55,10)
-TRAP:"spiked pit",(55,08)
-TRAP:"pit",(51,01)
-TRAP:"pit",(23,18)
-TRAP:"pit",(31,18)
-TRAP:"pit",(48,19)
-TRAP:"pit",(55,15)
-TRAP:"magic",(60,04)
-TRAP:"statue",(72,07)
+TRAP:"magic",random
 TRAP:"statue",random
 TRAP:"statue",random
-TRAP:"anti magic",(64,12)
+TRAP:"statue",random
+TRAP:"anti magic",random
 TRAP:"sleep gas",random
 TRAP:"sleep gas",random
 TRAP:"dart",random
 TRAP:"dart",random
 TRAP:"dart",random
-TRAP:"rolling boulder",(32,10)
-TRAP:"rolling boulder",(40,16)
+TRAP:"rust",random
+TRAP:"rust",random
 # Random monsters.
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'M',random,random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',random,random
+MONSTER:'w',random,random
+MONSTER:'w',random,random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'V',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'w',random,random
+MONSTER:'V',random,random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'V',random,random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',random,random
 
 #
 #	The "goal" level for the quest.
@@ -305,119 +292,82 @@ MONSTER:'M',random,random
 #
 
 MAZE: "Acu-goal", ' '
+FLAGS: hardfloor,noteleport
 GEOMETRY:center,center
 MAP
-                                                                            
-                                  ---------                                 
-                                  |..|.|..|                                 
-                       -----------|..S.S..|-----------                      
-                       |.|........|+-|.|-+|........|.|                      
-                       |.S........S..|.|..S........S.|                      
-                       |.|........|..|.|..|........|.|                      
-                    ------------------+------------------                   
-                    |..|..........|.......|..........|..|                   
-                    |..|..........+.......|..........S..|                   
-                    |..S..........|.......+..........|..|                   
-                    |..|..........|.......|..........|..|                   
-                    ------------------+------------------                   
-                       |.|........|..|.|..|........|.|                      
-                       |.S........S..|.|..S........S.|                      
-                       |.|........|+-|.|-+|........|.|                      
-                       -----------|..S.S..|-----------                      
-                                  |..|.|..|                                 
-                                  ---------                                 
-                                                                            
+                                 }}}}       }}                              
+ ..  ..   .     .. ....  .... ....}}}}..  .}}}}}}}     .......     ....     
+  .. .   ...   .  ......... ... .}}}}.}  .}}-----}  ....  .. ..   .   .   . 
+   .... ..  . .     ....        }.}}}}...}}}|.S.|}}..  ..    ......      .. 
+ ...  ...    ...             ... }.}}}. }}---.---}}.    ... ...   ...  ..   
+  .    ....  .  ...    .........}.} }.}}.}|.....|}.       ...       ...     
+ ..  ...  ....   .   .... .....} }.} }..}}---.---}}...     ..      ... .    
+ ......  ..  .........      ... } }.}.}.}}}}|.|}}} . ..   ....     ..   ... 
+  ... ....    ........ ...  .....}}}...}}}}}---}}     ...... ..  ...     .  
+  ..    ...  .....   ... .......}.}}}.}}}.} ......      ...   ....  ...  .. 
+   ..  .  .... ...   .    .. . } }.}.}}}.}  ...  ...    ..    .....    ...  
+    ...    ..  ..  ..  }}     ..}...}.}.} }.....   ... ..    .   ... ...    
+   ....   ..   ....  .}}}}}    }.... }.}...}  ...   .....   ..  .. ... .    
+ .... ..  .   ...   .}}---}}  } }.. }.}...}.   ...  ..  ..     ...     ..   
+ ....  .. ......   .}}}|.|}}}} } } }.} }.}.   .......    ..   ......    .   
+ ...    ... ...   . }---.---}}    }.} }.}      ......     .....    ..  ..   
+   ......    ..    .}|.....|}..    }}..}}  ...  ..  ..     ...  ..  ....    
+  ...   .......  .. }---.---}}.. ...}}}}  .......    ...  ..   ......  .. . 
+   .       ...   .. }|.S.|}}} .... }}}}    ....        ....   .....     ... 
+                    }-----}}       }}}}                                     
 ENDMAP
-RANDOM_PLACES:(26,05),(26,14),(50,05),(50,14)
-# Dungeon Description
-REGION:(00,00,75,19),lit,"ordinary"
-REGION:(35,02,36,03),unlit,"ordinary"
-REGION:(40,02,41,03),unlit,"ordinary"
-REGION:(24,04,24,06),unlit,"ordinary"
-REGION:(26,04,33,06),lit,"ordinary"
-REGION:(38,02,38,06),unlit,"ordinary"
-REGION:(43,04,50,06),lit,"ordinary"
-REGION:(52,04,52,06),unlit,"ordinary"
-REGION:(35,05,36,06),unlit,"ordinary"
-REGION:(40,05,41,06),unlit,"ordinary"
-REGION:(21,08,22,11),unlit,"ordinary"
-REGION:(24,08,33,11),lit,"ordinary"
-REGION:(35,08,41,11),unlit,"ordinary"
-REGION:(43,08,52,11),lit,"ordinary"
-REGION:(54,08,55,11),unlit,"ordinary"
-REGION:(24,13,24,15),unlit,"ordinary"
-REGION:(26,13,33,15),unlit,"ordinary"
-REGION:(35,13,36,14),unlit,"ordinary"
-REGION:(35,16,36,17),unlit,"ordinary"
-REGION:(38,13,38,17),unlit,"ordinary"
-REGION:(40,13,41,14),unlit,"ordinary"
-REGION:(40,16,41,17),unlit,"ordinary"
-REGION:(43,13,50,15),unlit,"temple"
-REGION:(52,13,52,15),unlit,"ordinary"
-# Stairs
-STAIR:(38,10),up
-# Non diggable walls
-NON_DIGGABLE:(00,00,75,19)
-# The altar of Huhetotl.  Unattended.
-ALTAR:place[0],chaos,altar
-# Magic chest in another alcove
-OBJECT:'(',"magic chest",place[1]
-# Objects
-OBJECT:'[',"shield of reflection",place[0],uncursed,1,"Itlachiayaque"
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-OBJECT:random,random,random
-# Random traps
-TRAP:random,random
-TRAP:random,random
-TRAP:random,random
-TRAP:random,random
-TRAP:random,random
-TRAP:random,random
-TRAP:"rolling boulder",(30,05)
-TRAP:"rolling boulder",(30,14)
-TRAP:"rolling boulder",(46,05)
-TRAP:"rolling boulder",(46,14)
-# Random monsters.
-MONSTER:'&',"Minion of Huhetotl",place[0]
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'S',random,random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',"human mummy",random
-MONSTER:'M',random,random
+# Regions
+# The whole gulf is dark and quiet
+REGION:(01,01,75,19),unlit,"morgue",unfilled
+# Stairs, Branches and the wizards portal
+STAIR:(03,17),up
+# The alhoon gets a drawbridge...
+DRAWBRIDGE:(28,16),west,closed
+DRAWBRIDGE:(41,05),east,closed
+# One secret door
+DOOR:locked,(23,18)
+MONSTER:'L',"Menzoberranzan",(47,03),asleep,hostile
+OBJECT:'*',"dilithium crystal",(47,03), uncursed,0,"The Elder Cerebral Fluid"
+#ENGRAVING:(22,18),burn,""
+# One sneaky trap
+TRAP:"magic",(24,16)
+TRAP:"magic",(45,05)
+# The alhoon has some guards
+MONSTER:'U',"uvuudaum",(22,16)
+MONSTER:'V',"villithid",(24,14),hostile,asleep
+MONSTER:'w',"neothelid",(24,18),hostile,asleep
+MONSTER:'h',"adversary",(26,16),hostile,asleep
+# And a door bell...
+TRAP:"board",(29,16)
+TRAP:"board",(40,05)
+MONSTER:'w',random,random
+MONSTER:'w',random,random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'V',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'h',random,random
+MONSTER:'w',random,random
+MONSTER:'V',random,random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'V',random,random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',random,random
 
 #
 #	The "fill" levels for the quest.
@@ -428,78 +378,62 @@ MONSTER:'M',random,random
 #	and goal levels.
 #
 
-LEVEL: "Arc-fila"
+MAZE: "Acu-fila" , '}'
+INIT_MAP: 'C' , '}' , false , false , unlit , false
+NOMAP
 #
-ROOM: "ordinary" , random, random, random, random
 STAIR: random, up
-OBJECT: random,random,random
-MONSTER: 'S', random, random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-OBJECT: random,random,random
-MONSTER: 'S', random, random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-TRAP: random, random
-OBJECT: random,random,random
-MONSTER: 'S', random, random
-
-ROOM: "ordinary" , random, random, random, random
 STAIR: random, down
-OBJECT: random, random, random
-TRAP: random, random
-MONSTER: 'S', random, random
-MONSTER: 'M', "human mummy", random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-OBJECT: random, random, random
-TRAP: random, random
-MONSTER: 'S', random, random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-TRAP: random, random
-MONSTER: 'S', random, random
-
-RANDOM_CORRIDORS
-
-LEVEL: "Arc-filb"
 #
-ROOM: "ordinary" , random, random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+#
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',random,random
+TRAP: random, random
+TRAP: random, random
+TRAP: random, random
+TRAP: random, random
+
+MAZE: "Acu-filb" , '}'
+INIT_MAP: 'C' , '}' , false , false , unlit , false
+NOMAP
+#
 STAIR: random, up
-OBJECT: random,random,random
-MONSTER: 'M', random, random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-OBJECT: random,random,random
-MONSTER: 'M', random, random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-TRAP: random, random
-OBJECT: random,random,random
-MONSTER: 'M', random, random
-
-ROOM: "ordinary" , random, random, random, random
 STAIR: random, down
+#
 OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+#
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'h',"adversary",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',random,random
 TRAP: random, random
-MONSTER: 'S', random, random
-MONSTER: 'M', "human mummy", random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
-OBJECT: random, random, random
 TRAP: random, random
-MONSTER: 'S', random, random
-
-ROOM: "ordinary" , random, random, random, random
-OBJECT: random, random, random
 TRAP: random, random
-MONSTER: 'S', random, random
+TRAP: random, random
 
-RANDOM_CORRIDORS
+

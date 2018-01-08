@@ -184,10 +184,10 @@ int x,y;
 	} else if (obj->otyp == BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,6),
 		    0, EXPL_RED);
-	} else if (obj->otyp == SPE_MAGIC_MISSILE && mon->data == &mons[PM_PAIMON]){
+	} else if (mon && obj->otyp == SPE_MAGIC_MISSILE && mon->data == &mons[PM_PAIMON]){
 		explode(bhitpos.x, bhitpos.y, 10, d(3,10),
 		    0, EXPL_MAGICAL);	
-	} else if (obj->otyp == BOULDER && mon->data == &mons[PM_YMIR]){
+	} else if (mon && obj->otyp == BOULDER && mon->data == &mons[PM_YMIR]){
 		explode(bhitpos.x, bhitpos.y, 16, d(3,10),
 		    0, EXPL_NOXIOUS);
 		(void) create_gas_cloud(bhitpos.x, bhitpos.y, 1+bcsign(obj),

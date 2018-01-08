@@ -334,8 +334,11 @@ struct monst *mtmp;
 			mtmp->data == &mons[PM_NIGHTGAUNT] ||
 			mtmp->data == &mons[PM_BYAKHEE] ||
 			(mtmp->data == &mons[PM_HUNTING_HORROR] && complete == 6) ||
-			mtmp->data == &mons[PM_MIND_FLAYER] ||
 			(mtmp->data == &mons[PM_MASTER_MIND_FLAYER] && complete == 6) ||
+			(mtmp->data == &mons[PM_VILLITHID] && complete == 6) ||
+			mtmp->data == &mons[PM_MIND_FLAYER] ||
+			mtmp->data == &mons[PM_ADVERSARY] ||
+			mtmp->data == &mons[PM_NEOTHELID] ||
 			mtmp->data == &mons[PM_DEEP_ONE] ||
 			mtmp->data == &mons[PM_DEEPER_ONE] ||
 			(mtmp->data == &mons[PM_DEEPEST_ONE] && complete == 6) ||
@@ -1176,7 +1179,7 @@ register struct monst *mtmp;
 		} else {
 			register boolean m_sen = tp_sensemon(mtmp);
 			
-			if(mdat == &mons[PM_ELDER_BRAIN]) quest_chat(mtmp);
+			if(mdat == &mons[PM_ELDER_BRAIN] && !Role_if(PM_ANACHRONOUNBINDER)) quest_chat(mtmp);
 			
 			if (m_sen || (Blind_telepat && rn2(2)) || !rn2(10)) {
 				int dmg;

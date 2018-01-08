@@ -2659,12 +2659,12 @@ role_init()
 	    mons[urole.neminum].mflagsg |= MG_NASTY;
 	}
 	
-	if(Role_if(PM_ANACHRONONAUT)){
+	if(Role_if(PM_ANACHRONONAUT) || Role_if(PM_ANACHRONOUNBINDER)){
 		//Drow noble nemesis is regular monster for anachrononauts
 		mons[PM_ELDER_BRAIN].msound = MS_SILENT;
 		mons[PM_ELDER_BRAIN].geno &= ~G_UNIQ;
-		if(flags.questprogress==2) urole.lgod = AnachrononautLgodEnd;
-		else if(flags.questprogress==1) urole.lgod = AnachrononautLgod;
+		if(flags.questprogress==2 && Role_if(PM_ANACHRONONAUT)) urole.lgod = AnachrononautLgodEnd;
+		else if(flags.questprogress==1 && Role_if(PM_ANACHRONONAUT)) urole.lgod = AnachrononautLgod;
 	}
 
 	if(!Role_if(PM_CAVEMAN)){
