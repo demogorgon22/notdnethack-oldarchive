@@ -109,6 +109,12 @@ E struct dgn_topology {		/* special dungeon levels for speed */
 //    d_level	d_asmodeus_level;	/* unused */
     d_level	d_portal_level;		/* only in goto_level() [do.c] */
     d_level	d_sanctum_level;
+	/*Void levels*/
+    d_level	d_ilsensine_level;
+    d_level	d_farvoid_level;
+    d_level	d_alignvoid_level;
+    d_level	d_nearvoid2_level;
+    d_level	d_nearvoid_level;
 	/*Planes*/
     d_level	d_earth_level;
     d_level	d_water_level;
@@ -189,6 +195,13 @@ E struct dgn_topology {		/* special dungeon levels for speed */
 //define asmodeus_level		(dungeon_topology.d_asmodeus_level)
 #define portal_level		(dungeon_topology.d_portal_level)
 #define sanctum_level		(dungeon_topology.d_sanctum_level)
+
+	/*Void*/
+#define ilsensine_level		(dungeon_topology.d_ilsensine_level)
+#define farvoid_level		(dungeon_topology.d_farvoid_level)
+#define alignvoid_level		(dungeon_topology.d_alignvoid_level)
+#define nearvoid2_level		(dungeon_topology.d_nearvoid2_level)
+#define nearvoid_level		(dungeon_topology.d_nearvoid_level)
 	/*Planes*/
 #define earth_level		(dungeon_topology.d_earth_level)
 #define water_level		(dungeon_topology.d_water_level)

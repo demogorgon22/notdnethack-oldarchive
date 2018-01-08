@@ -100,6 +100,13 @@ typedef struct branch {
  *
  * Depth corresponds to the number of floors below the surface.
  */
+
+#define Is_ilsensinelevel(x)	(on_level(x, &ilsensine_level))
+#define Is_alignvoidlevel(x)	(on_level(x, &farvoid_level))
+#define Is_farvoidlevel(x)	(on_level(x, &alignvoid_level))
+#define Is_nearvoid2level(x)		(on_level(x, &nearvoid2_level))
+#define Is_nearvoidlevel(x)		(on_level(x, &nearvoid_level))
+
 #define Is_astralevel(x)	(on_level(x, &astral_level))
 #define Is_earthlevel(x)	(on_level(x, &earth_level))
 #define Is_waterlevel(x)	(on_level(x, &water_level))
