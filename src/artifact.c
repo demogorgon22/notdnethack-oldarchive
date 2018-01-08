@@ -5319,6 +5319,10 @@ arti_invoke(obj)
 		   }
 		break;
 		case SPIRITNAMES:{
+		   if(Role_if(PM_ANACHRONOUNBINDER)){
+			You("have no use for such book.");
+			break;
+		   }
 		   if(yn("Open the Book of Lost Names?")=='y'){
 			if(Blind){
 				You_cant("feel any Braille writing.");
@@ -7481,11 +7485,19 @@ read_necro(VOID_ARGS)
 				u.wardsknown |= WARD_CTHUGHA|WARD_ITHAQUA|WARD_KARAKAL;
 			break;
 			case SELECT_SPIRITS1:{
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					You("see something about whispers but it makes no sense.");
+					break;
+				}
 				int i;
 				You("read the first half of the testament of whispers.");
 				for(i=0; i<16; i++) u.sealsKnown |= sealKey[u.sealorder[i]];
 			}break;
 			case SELECT_SPIRITS2:{
+				if(Role_if(PM_ANACHRONOUNBINDER)){
+					You("see something about whispers but it makes no sense.");
+					break;
+				}
 				int i;
 				You("read the second half of the testament of whispers.");
 				for(i=15; i<31; i++) u.sealsKnown |= sealKey[u.sealorder[i]];

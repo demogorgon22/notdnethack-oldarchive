@@ -26,9 +26,9 @@
  */
 const struct Role roles[] = {
 {	{"Anachronounbinder", 		 0}, {
-	{"Loyalist",        0},
-	{"Exorcist",      0},
+	{"Ecorcist",        0},
 	{"Unbinder",      0},
+	{"Vestige Vanquisher",      0},
 	{"Spirit Killer",       0},
 	{"Illithid", 0},
 	{"Psionaut", 0},

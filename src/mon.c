@@ -3309,7 +3309,7 @@ boolean was_swallowed;			/* digestion */
 		u.uevent.ukilled_illurien = 1;
 		u.ill_cnt = rn1(1000, 250);
 	}
-	if(mdat == &mons[PM_ORCUS]){
+	if(mdat == &mons[PM_ORCUS] && !Role_if(PM_ANACHRONOUNBINDER)){
 		struct engr *oep = engr_at(mon->mx,mon->my);
 		if(!oep){
 			make_engr_at(mon->mx, mon->my,

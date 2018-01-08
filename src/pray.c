@@ -2151,7 +2151,7 @@ dosacrifice()
 			else
 				You_feel("an urge to return to the surface.");
 			return 1;
-		} else {
+		} else if(!Role_if(PM_ANACHRONOUNBINDER)){
 			/* The final Test.	Did you win? */
 			if(uamul == otmp) Amulet_off();
 			u.uevent.ascended = 1;
@@ -2218,6 +2218,8 @@ dosacrifice()
 					done(ASCENDED);
 				}
 			}
+		} else {
+			You("do not give the amulet to this false god. You must use the Elder Memories invocation on the void altar.");
 		}
     } /* real Amulet */
 
