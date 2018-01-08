@@ -178,7 +178,7 @@ QUEST_DES = Arch.des Anachrononaut.des Barb.des Bard.des Binder.des Caveman.des 
 SPEC_DES = bigroom.des blacktemple.des castle.des chaos.des		\
            endgame.des gehennom.des knox.des labr.des law.des		\
            medusa.des mines.des neutrality.des oracle.des sokoban.des	\
-           storage.des sunlesssea.des tomb.des tower.des yendor.des
+           storage.des sunlesssea.des tomb.des tower.des yendor.des void.des 
 
 ALL_TAG = $(QUEST_DES:%.des=dat/%.tag) $(SPEC_DES:%.des=dat/%.tag)
 
