@@ -23,6 +23,7 @@ STATIC_DCL int FDECL(menu_drop, (int));
 #ifdef OVL2
 STATIC_DCL int NDECL(currentlevel_rewrite);
 STATIC_DCL void NDECL(final_level);
+STATIC_DCL boolean NDECL(no_spirits);
 /* static boolean FDECL(badspot, (XCHAR_P,XCHAR_P)); */
 #endif
 
@@ -1096,6 +1097,11 @@ boolean at_stairs, falling, portal;
 		pline("A mysterious force prevents you from descending.");
 		return;
 	}
+	/*Can't move on in spirit land until the dead are dead*/
+	if (In_void(&u.uz) && !newdungeon && !no_spirits()) {
+		pline("A mysterious force prevents you from descending.");
+		return;
+	}
 	// if (on_level(&u.uz, &nemesis_level) && !(quest_status.got_quest) && flags.stag) {
 		// pline("A mysterious force prevents you from leaving.");
 		// return;
@@ -1505,6 +1511,19 @@ boolean at_stairs, falling, portal;
 #ifdef WHEREIS_FILE
         touch_whereis();
 #endif
+}
+
+STATIC_OVL boolean
+no_spirits()
+{
+	struct monst *mtmp;
+	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon){
+		pline("%s has tameness %d",Monnam(mtmp),mtmp->mtame);
+		if(!DEADMONSTER(mtmp) && !(mtmp->mtame)){
+			return FALSE;
+		}
+	}
+	return TRUE;
 }
 
 STATIC_OVL void

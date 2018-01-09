@@ -190,6 +190,7 @@ struct monst {
 #define	ZOMBIFIED	1	/* zombie 'faction' */
 #define	SKELIFIED	2	/* skeleton 'faction' */
 #define	CRYSTALFIED	3	/* crystal dead 'faction' */
+#define WHISPERING	4 	/*voidified 'faction'*/
 /*Note: first drow house is 8*/
 	int mvanishes;
 	//hatching situation

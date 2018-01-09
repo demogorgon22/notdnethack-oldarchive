@@ -508,7 +508,7 @@
 
 #define nonliving_mon(mon)	(mon && (nonliving((mon)->data) || is_undead_mon(mon)))
 
-#define is_unalive(ptr)		(on_level(&valley_level, &u.uz) || (((ptr)->mflagsa & MA_UNLIVING)) )
+#define is_unalive(ptr)		(on_level(&valley_level, &u.uz) || (((ptr)->mflagsa & MA_UNLIVING)) || In_void(&u.uz))
 
 #define is_elemental(ptr)		( (ptr->mflagsa & MA_ELEMENTAL) )
 

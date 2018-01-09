@@ -5287,6 +5287,10 @@ register int	mmflags;
 	} else if(!undeadfaction && (mtmp->data->geno&G_HELL) == 0 && Is_mephisto_level(&u.uz)){
 		undeadfaction = CRYSTALFIED;
 		unsethouse = TRUE;
+	} else if (In_void(&u.uz)){
+		undeadfaction = WHISPERING;
+		mtmp->data->mflagsm |= MM_FLY;
+		mtmp->data->mflagsm |= MM_WALLWALK;
 	} else if(randmonst && !undeadfaction && can_undead_mon(mtmp)){
 		if(In_mines(&u.uz)){
 			if(Race_if(PM_GNOME) && Role_if(PM_RANGER) && rn2(10) <= 5){

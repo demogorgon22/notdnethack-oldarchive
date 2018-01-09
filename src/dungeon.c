@@ -686,12 +686,14 @@ struct level_map {
 	{ "minend",     &mineend_level },
 	{ "soko1",      &sokoend_level },
 #endif
+	/*Void*/
+	{ "ilsensine",	&ilsensine_level },
+	{ "farvoid",	&farvoid_level },
+	{ "alignvoid",	&alignvoid_level },
+	{ "nearvoid2",	&nearvoid2_level },
+	{ "nearvoid",	&nearvoid_level },
 	/*Planes*/
-	{ "ilsensine",	&air_level },
-	{ "farvoid",	&astral_level },
-	{ "alignmentvoid",	&earth_level },
-	{ "nearvoid2",	&fire_level },
-	{ "nearvoid1",	&water_level },
+	
 	{ "air",	&air_level },
 	{ "astral",	&astral_level },
 	{ "earth",	&earth_level },

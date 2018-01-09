@@ -3464,6 +3464,7 @@ boolean was_swallowed;			/* digestion */
 				explode(mon->mx, mon->my, 1, tmp, MON_EXPLODE, EXPL_FIERY);
 			} else if(mdat->mattk[i].adtyp == AD_JACK){
 				big_explode(mon->mx, mon->my, 1, tmp, MON_EXPLODE, EXPL_FIERY,5);
+				doredraw();
 				return TRUE;
 			}
 			else if(mdat->mattk[i].adtyp == AD_JAILER){

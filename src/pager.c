@@ -1865,6 +1865,7 @@ get_description_of_monster_type(struct monst * mtmp, char * description)
 	if (mtmp->mfaction == ZOMBIFIED)		Strcat(name, " zombie");
 	else if (mtmp->mfaction == SKELIFIED)	Strcat(name, " skeleton");
 	else if (mtmp->mfaction == CRYSTALFIED) Strcat(name, " vitrean");
+	else if (mtmp->mfaction == WHISPERING) Strcat(name, " of whispers");
 
 	temp_buf[0] = '\0';
 	sprintf(temp_buf, "Accessing Pokedex entry for %s... ", (!Upolyd || ((int)ptr < NUMMONS)) ? name : "this weird creature");
