@@ -1,0 +1,196 @@
+MAZE: "nearvoid",' '
+FLAGS: hardfloor,noteleport,nommap
+GEOMETRY:center,center
+#0         1         2   	   3	     4		   5		 6	       7
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+MAP
+0LL---------LLLLLLLLL  -----          ...LL         .........                
+9L.|.......|..LLLLLL...|...|        ..LLL...    ...............     .......  
+8L.+.......+...LLLLL...+...|       .  .LL...   ................H##H...LL.... 
+7L.|.......|..LLLLLLL..|...|        .         ...   ...........     .......  
+6LL---------..LLLLLLLLL----- -----  . -----  ...      .......                
+5LLLLLLLLLLL..LLLLLLLLLL|    |...|--S-|...|  ..            ++   ........     
+4LLL..............LLLLLL|    |...|....|...|  .. ......     ....... .. ...    
+3--------...........LLLL|    |...|....|...|--++-S-      ..................   
+2|....LL|............LLL|------+---+----+-|......|   .... ... ... .LL. ...LL 
+1|......+..............L|.................+.LLLL.| ...............LLLL.....L 
+0|......+..............L|.................+.LLLL.| ...............LLLL.....L 
+9|....LL|............LLL|-----+--+----+--S|......|   .... ... ... .LL. ...LL 
+8--------...........LLLL|   |..|....|...|.---++-S-      ..................   
+7LLL..............LLLLLL|   |..|....|...|.   .. ......     ....... .. ...    
+6LLLLLLLLLLL..LLLLLLLLLL|   |..|----|...|.   ..            ++   ........     
+5LL---------..LLLLLLLLL---------    -----.   ...      .......                
+4L.|.......|..LLLLLLL..|...|    ...      .    ...   ...........     .......  
+3L.+.......+...LLLLL...+...|   ..L..  ...      ................H##H...LL.... 
+2L.|.......|..LLLLLL...|...|    ......  . ...   ...............     .......  
+1LL---------LLLLLLLLL  -----            ...L..      .........                
+0LL           LLLLLLLL                    ...                                
+ENDMAP
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+#0          1         2   	  3	      4	    5		  6	      7
+
+# Random Places for Cthulhu, the second Alhoon, and the Silver Key
+#RANDOM_PLACES:(04,09),(04,10),(03,02),(03,17),(34,02),(44,17),(16,02),(16,17)
+
+# Non diggable walls
+NON_DIGGABLE:(00,00,75,20)
+# Invisible barrier separating the left & right halves of the level
+NON_PASSWALL:(26,00,27,20)
+
+# Regions
+#
+# Temple interior  
+REGION:(23,00,75,19),unlit,"ordinary"
+
+# Outer landing  
+REGION:(00,00,22,19),lit,"ordinary"
+
+# Outside Chambers
+REGION:(03,01,09,03),unlit,"ordinary"
+REGION:(01,08,06,11),unlit,"ordinary"
+REGION:(03,16,09,18),unlit,"ordinary"
+
+# Main Temple
+ALTAR:(71,09),noalign,altar
+ALTAR:(71,10),noalign,altar
+REGION:(52,05,74,14),unlit,"temple"
+
+# Northern Temple (Inner)
+ALTAR:(72,02),noalign,altar
+REGION:(66,01,74,03),unlit,"temple"
+
+# Northern Temple (Outer)
+ALTAR:(59,02),noalign,altar
+REGION:(49,00,61,04),unlit,"temple"
+
+# Souther Temple (Inner)
+ALTAR:(72,17),noalign,altar
+REGION:(66,16,74,18),unlit,"temple"
+
+# Southern Temple (Outer)
+ALTAR:(59,17),noalign,altar
+REGION:(49,15,61,19),unlit,"temple"
+
+# North Eastern Temple
+ALTAR:(39,01),noalign,altar
+REGION:(36,00,42,02),unlit,"temple"
+
+# South Eastern Tample
+ALTAR:(31,17),noalign,altar
+REGION:(30,16,35,18),unlit,"temple"
+
+# Stairs and Branch
+STAIR:(74,09),down
+#BRANCH:(69,08,74,11),(00,00,00,00)
+TELEPORT_REGION:(01,08,06,11),(0,0,0,0)
+
+# Drawbridges
+DRAWBRIDGE:(22,09),east,closed
+DRAWBRIDGE:(22,10),east,closed
+
+# Doors 68
+DOOR:closed,(07,09)
+DOOR:closed,(07,10)
+DOOR:locked,(10,02)
+DOOR:locked,(02,02)
+DOOR:locked,(10,17)
+DOOR:locked,(02,17)
+DOOR:closed,(22,02)
+DOOR:closed,(22,17)
+DOOR:closed,(39,08)
+DOOR:closed,(34,08)
+DOOR:closed,(30,08)
+DOOR:closed,(37,11)
+DOOR:closed,(32,11)
+DOOR:closed,(29,11)
+DOOR:locked,(40,11)
+DOOR:locked,(35,05)
+DOOR:locked,(41,09)
+DOOR:locked,(41,10)
+DOOR:locked,(59,05)
+DOOR:locked,(58,05)
+DOOR:locked,(59,14)
+DOOR:locked,(58,14)
+DOOR:locked,(45,07)
+DOOR:locked,(44,07)
+DOOR:locked,(45,12)
+DOOR:locked,(44,12)
+DOOR:locked,(47,07)
+DOOR:locked,(47,12)
+
+# Platform Guardians
+MONSTER:'@',"Andromalius",(16,02)
+
+MONSTER:'B',"Andrealphus",(23,17)
+# Landing Guards
+MONSTER:'q',"Amon",(19,08)
+MONSTER:'C',"Berith",(19,11)
+# Northern barracks
+MONSTER:'n',"Echidna",(04,01)
+
+# Southern barracks
+MONSTER:'@',"Shiro",(4,16)
+MONSTER:'D',"Eden",(06,18)
+
+#59,17 southern inner altar
+MONSTER:'&',"Balam",(59,17)
+
+# Traps on the landing
+#TRAP:"board",(65,08)
+#TRAP:"board",(65,11)
+#TRAP:"board",(61,08)
+#TRAP:"board",(61,11)
+#TRAP:"board",(58,08)
+#TRAP:"board",(58,11)
+#TRAP:"board",(63,02)
+#TRAP:"board",(63,17)
+#TRAP:"board",(55,02)
+#TRAP:"board",(55,17)
+
+
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+TRAP:"board",random
+
+
+## Priests, in the chambers before the temple
+MONSTER:'z',"Buer",(40,06)
+MONSTER:'s',"Chupoclops",(28,13)
+#
+## Door bell for the inner temple
+
+#top right altar
+MONSTER:'@',"Eve",(59,02)
+
+#back two altars
+MONSTER:'@',"Enki",(71,09)
+MONSTER:'n',"Eurynome",(71,10)
+# Main Temple
+MONSTER:'@',"Dantalion",(33,17)
+MONSTER:'&',"Astaroth",(48,06)
+MONSTER:'&',"Ahazu",(50,13)
+
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+
