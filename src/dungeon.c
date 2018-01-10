@@ -687,10 +687,10 @@ struct level_map {
 	{ "soko1",      &sokoend_level },
 #endif
 	/*Void*/
-	{ "ilsensine",	&ilsensine_level },
+	{ "ilsensin",	&ilsensin_level },
 	{ "farvoid",	&farvoid_level },
-	{ "alignvoid",	&alignvoid_level },
-	{ "nearvoid2",	&nearvoid2_level },
+	{ "aligvoid",	&aligvoid_level },
+	{ "nrvoid2",	&nrvoid2_level },
 	{ "nearvoid",	&nearvoid_level },
 	/*Planes*/
 	

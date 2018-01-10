@@ -194,3 +194,54 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
 
+
+MAZE: "nrvoid2",' '
+FLAGS: hardfloor,noteleport,nommap
+GEOMETRY:center,center
+#1234567890123456789012345678901234567890123456789012345678901234567890
+MAP
+..LLLLLLLLLLLL.......LL.........LL.......LLLLLLLLLLLLLL
+.LLLL........ ....... ..LLLLLLL.. ....... ........LLLLL
+LL....LLLLLLLL.......LLLLLLLLLLLLL.......LLLLLLLL....LL
+...LLLL.....LLLLL LLLLLLL.....LLLLLLL LLLLL.....LLLL...
+.LLL. ...... .L.....LL.. ..... ..LL.....L. ..... ..LLL.
+.LL..LL.....L. ..... ..LL.....LL.. ..... .L.....LL..LL.
+.LL.LLLLL LLLLL.....LLLLLLL LLLLLLL.....LLLLL LLLLL.LL.
+.LL.LLL.....LLLLLLLLL.. ....... ..LLLLLLLLL.....LLL.LL.
+.LL.LL...... .........LL.......LL......... ......LL.LL.
+.LL.LLL.....LLLLLLLLLLLL.......LLLLLLLLLLLL.....LLL.LL.
+.LL.LLLLL LLLL......LLLLLLLLLLLLLLL......LLLL LLLLL.LL.
+.LL.LLLLL.... ......LLL         LLL...... ....LLLLL.LL.
+.LL.LLLLLLLLLL...... ...LLLLLLL... ......LLLLLLLLLL.LL.
+.LL..LL.....LLLLL LLLLLLL.....LLLLLLL LLLLL.....LL..LL.
+.LLL.. ..... .L.....LL.. ..... ..LL.....L. ..... ..LLL.
+.LLLLLL.....L. ..... ..LL.....LL.. ..... .L.....LLLLLL.
+.LLLLLLLL LLLLL.....LLLLLLL LLLLLLL.....LLLLL LLLLLLLL.
+...LLL.......LLLLLLLLLLL.......LLLLLLLLLLL.......LLL...
+LL... ....... ..LLLLL.. ....... ..LLLLL. ........ ...LL
+LLLLLL.......LL.......LL.......LL.......LL.......LLLLLL
+ENDMAP
+# Dungeon Description
+#REGION:(00,00,54,19),unlit,"ordinary"
+# Stairs
+STAIR:(00,00),up
+STAIR:(54,19),down
+# Non diggable walls
+NON_DIGGABLE:(00,00,54,19)
+TELEPORT_REGION:(00,00,02,02),(0,0,0,0)
+NON_PASSWALL:(00,00,54,19)
+
+
+
+
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random

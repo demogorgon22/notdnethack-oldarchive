@@ -233,10 +233,10 @@ DUNGEON:	"The Void" "none" (5, 0)
 ALIGNMENT:	unaligned
 DESCRIPTION:	mazelike
 LEVEL:		"nearvoid"  "none" @ (1, 0)
-LEVEL:		"nearvoid2"    "none" @ (2, 0)
-LEVEL:		"alignvoid"   "none" @ (3, 0)
+LEVEL:		"nrvoid2"    "none" @ (2, 0)
+LEVEL:		"aligvoid"   "none" @ (3, 0)
 LEVEL:		"farvoid"  "none" @ (4, 0)
-LEVEL:		"ilsensine" "none" @ (5, 0)
+LEVEL:		"ilsensin" "none" @ (5, 0)
 
 ### The Lost Tomb ###
 DUNGEON:        "The Lost Tomb" "L" (1, 0)

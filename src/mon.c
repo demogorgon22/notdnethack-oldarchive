@@ -3852,13 +3852,11 @@ boolean was_swallowed;			/* digestion */
 	/* must duplicate this below check in xkilled() since it results in
 	 * creating no objects as well as no corpse
 	 */
-	if(mdat == &mons[PM_JACK]){
-		return TRUE;
-	}
+	
 	if (LEVEL_SPECIFIC_NOCORPSE(mdat))
 		return FALSE;
 
-	if (mon->mfaction == SKELIFIED)
+	if (mon->mfaction == SKELIFIED || mon->mfaction == WHISPERING)
 		return FALSE;
 
 	if (mon->mfaction == CRYSTALFIED)

@@ -1845,9 +1845,9 @@ register struct monst *mtmp;
 
 	/* Only rock, trees, and walls fall through to this point. */
 	if ((here->wall_info & W_NONDIGGABLE) != 0) {
-	    impossible("mdig_tunnel:  %s at (%d,%d) is undiggable",
-		       (IS_WALL(here->typ) ? "wall" : "stone"),
-		       (int) mtmp->mx, (int) mtmp->my);
+	    //impossible("mdig_tunnel:  %s at (%d,%d) is undiggable",
+	//	       (IS_WALL(here->typ) ? "wall" : "stone"),
+	//	       (int) mtmp->mx, (int) mtmp->my);
 	    return FALSE;	/* still alive */
 	}
 
