@@ -196,6 +196,11 @@
 #define AD_JACK		140 /*Jack hella huge explosion on death*/
 #define AD_YANK		141 /*yank ya to em marionette*/
 #define AD_PAIM		142 /*Paimon exploding book attack*/
+#define AD_ALIG		143 /*A realigning experience*/
+#define AD_SPIR		144 /*Let out the spirits*/
+#define AD_NUDZ		145 /*Mirror blast*/
+#define AD_COSM		146 /*Let out the spirits*/
+#define AD_CRYS		147 /*throw crystal*/ 
 /*
  *  Monster to monster attacks.  When a monster attacks another (mattackm),
  *  any or all of the following can be returned.  See mattackm() for more

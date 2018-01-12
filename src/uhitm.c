@@ -4310,6 +4310,18 @@ uchar aatyp, adtyp;
 	    }
 	    exercise(A_STR, FALSE);
 	    break;
+	  case AD_POLY:
+		if(mhit){
+			if(!Unchanging){
+				Your("body shifts out of alignment!");
+				polyself(FALSE);
+				if(rnd(100)<15){
+					Your("cellular structure degenerates.");
+					losexp("cellular degeneration",TRUE,TRUE,FALSE);
+				}
+			}
+		}
+	    break;
 	  case AD_STON:
 	    if (mhit) {		/* successful attack */
 		long protector = attk_protection((int)aatyp);

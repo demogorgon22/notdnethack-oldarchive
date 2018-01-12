@@ -1098,7 +1098,7 @@ boolean at_stairs, falling, portal;
 		return;
 	}
 	/*Can't move on in spirit land until the dead are dead*/
-	if (In_void(&u.uz) && !newdungeon && !no_spirits()) {
+	if (In_void(&u.uz) && (!no_spirits() || !u.uhave.amulet)) {
 		pline("A mysterious force prevents you from descending.");
 		return;
 	}

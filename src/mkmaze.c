@@ -228,7 +228,7 @@ bad_location(x, y, lx, ly, hx, hy)
 {
     return((boolean)(occupied(x, y) ||
 	   within_bounded_area(x,y, lx,ly, hx,hy) ||
-	   !((levl[x][y].typ == CORR && level.flags.is_maze_lev) ||
+	   !((levl[x][y].typ == CORR && level.flags.is_maze_lev ) ||
 		   (Is_waterlevel(&u.uz) && levl[x][y].typ == MOAT) ||
 	       levl[x][y].typ == ROOM || levl[x][y].typ == AIR)));
 }

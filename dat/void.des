@@ -1,3 +1,15 @@
+#
+# Big void.des yeah
+# by demo (the cool one not the one(s) that suck if other ones exist)
+#
+
+
+
+
+#
+#
+# it's the lethe patch sanctum but flipped, with an extra corridor, and with LAVA
+#
 MAZE: "nearvoid",' '
 FLAGS: hardfloor,noteleport,nommap
 GEOMETRY:center,center
@@ -172,7 +184,7 @@ MONSTER:'s',"Chupoclops",(28,13)
 ## Door bell for the inner temple
 
 #top right altar
-MONSTER:'@',"Eve",(59,02)
+MONSTER:'B',"Simurgh",(59,02)
 
 #back two altars
 MONSTER:'@',"Enki",(71,09)
@@ -195,6 +207,12 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 
 
+
+
+#
+#This one is neat i call it DONT DIE (actually i call it near void 2)
+#So like its the ranger locate level that got monkeyed up quite a bit
+#
 MAZE: "nrvoid2",' '
 FLAGS: hardfloor,noteleport,nommap
 GEOMETRY:center,center
@@ -231,6 +249,21 @@ NON_DIGGABLE:(00,00,54,19)
 TELEPORT_REGION:(00,00,02,02),(0,0,0,0)
 NON_PASSWALL:(00,00,54,19)
 
+MONSTER:'D',"Fafnir",random
+MONSTER:'B',"Huginn",random
+MONSTER:'B',"Muninn",random
+MONSTER:'h',"Iris",random
+MONSTER:'h',"Malphas",random
+MONSTER:''',"Marionette",random
+MONSTER:'e',"Great Mother",random
+MONSTER:'d',"Naberius",random
+MONSTER:'.',"Orthos",random
+MONSTER:'@',"Ose",random
+MONSTER:'v',"Otiax",random
+MONSTER:'&',"Paimon",random
+MONSTER:'@',"Eve",random
+MONSTER:'v',"Tenebrous",random
+MONSTER:'H',"Ymir",random
 
 
 
@@ -245,3 +278,72 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
+
+
+MAZE: "aligvoid", ' '
+FLAGS: hardfloor,noteleport,nommap
+GEOMETRY:center,center
+#0         1         2   	   3	     4	       5		 6	       7
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+MAP
+9LLL}}}}}}}}}}}}}}}}}}}IIIIIIIIIIIIIIIIIIIIIIIIIIIIITTTTTTTTTTTTIIITTTTTTTTTT
+8L.L}}}}}}}}}}}}}}}}}}IIIIIIIIIIIIIIIIIIIIIIIIIIITIIIITTTTTTTTIIIIIIITTTTTTTT
+7LLL}}}}}}}}}}}}}}}}}}IIIIIIIIIIIIIIIIIIIIIIIIIIIIITIIIIIIIIIIIIIIIIIIIIIITTT
+6}}}}}}}}}}}}}}}}}}}}ITTTTTTTTTTTTTTTTSTTTTTTTTTTTTTTTTITTTTTTTTTTTTTTTTIITTT
+5}}}}}}}}}}}}}}}}}}}IIITTTTTTTTTTTTTTTITTTTTIIIIIIIIIITITTTTTTTTIIIIIITTTITTT
+4}}}}}}}}}}}}}}}}}}}}}IITTTTTTTTTTTTTTITTTTTTIIIIIITTIIITIIIIIIIIIIIIITTTITTT
+3}}}}}}}}}}}}}}}}}}}}}}IIITTTTTTTTTTTTSTTTTTTTIIIITTTTIIIITTTTIIIIIIIIIITITTT
+2}}}}}}}}}}}}}}}}}}}}}}}}IITTTTTTT.........TTTTTTTTTTTTIITTTTTTIIIIIITTTTITTT
+1}}}}}}}}}}}}}}}}TTIII}TTTSTTTTTTT.........TTTTTTTTTTTIITTTTTTIIIIITTTTTTITTT
+0}}}}}}}}}}}}}}}}TIIIIISISIIIIIIIS.........SIIIIIIIISITITTTTTTTTTTTTTTTTTITTT
+9}}}}}}}}}}}}}}}}TTIIITTITTTTTTTTT.........TTTTTTTTTTITITTTTTTTTTTTTTTTTTITTT
+8}}}}}}}}}}}}}}}}}}}}}}TITTTTTTTTT.........TTTISITTTTISIIIIIIIIIIIIIIITTTITTT
+7}}}}}}}}}IIIIIIIII}}}}TITTTIIIITTTTTTSTTTTTTTITIIITTITITTTTTTTTTTTTTIITTITTT
+6}}}}}}}IIIIIIIIIIIITTTTITTIIIIIITTTTTITTTTTTTITTTTTTITITTIIIIIIITTTIITTTITTT
+5}}}}}}IIIIIIIIIIIIIIIIIIIIIIIIIIIIITTITTTTTTTIIIIIIIITITIIIIIIIIIFIITTTTITTT
+4}}}}}}}}}}IIIIIIIIIIITTTTTIIIIIIITTTTITTTTTTTTTTTTTTTTITTIIIIIIITTTTTTTTITTT
+3}}}}}}}}}}}}}}}}}}}}}ITTTTTTTTTTTTTTTSTTTTTTTTTTTTTTTTITTTTTTTTTTTTTTTTIIITT
+2}}}}}}}}}}}}}}}}IIIIIIIIIIIIIIIIITITIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITT
+1}}}}}}}}}}}}}}}}}}}}}}IIIIIIIIIIIITIIITIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITTT
+0}}}}}}}}}}}}}}}}}}}}}}}}IIIIIIIIIIITIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIITTTTT
+ENDMAP
+#RANDOM_PLACES:(49,07),(47,15),(57,06),(61,11)
+# Dungeon Description
+REGION:(00,00,75,19),lit,"ordinary"
+# Altar to ???
+ALTAR:(37,09),align[0],altar
+# Stairs
+STAIR:(01,01),up
+# Non diggable walls
+NON_DIGGABLE:(00,00,75,19)
+NON_PASSWALL:(00,00,75,19)
+#TELEPORT_REGION:(73,00,75,03),(0,0,0,0)
+MONSTER:'&',"The Alignment Thing",(37,09)
+# Objects
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+# doors
+#DOOR:closed,(22,10)
+#DOOR:locked,(24,10)
+#DOOR:closed,(25,11)
+#DOOR:closed,(32,10)
+#DOOR:closed,(37,03)
+#DOOR:closed,(37,07)
+#DOOR:closed,(37,13)
+#DOOR:closed,(37,16)
+#DOOR:closed,(42,10)
+#DOOR:locked,(46,08)
+#DOOR:closed,(51,10)
+#DOOR:locked,(53,08)
+

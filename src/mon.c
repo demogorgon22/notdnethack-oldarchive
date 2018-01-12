@@ -3497,6 +3497,12 @@ boolean was_swallowed;			/* digestion */
 			else if(mdat->mattk[i].adtyp == AD_ELEC){//mdat == &mons[PM_SHOCKING_SPHERE]){
 				explode(mon->mx, mon->my, 5, tmp, MON_EXPLODE, EXPL_MAGICAL);
 			}
+			else if(mdat->mattk[i].adtyp == AD_SPIR){
+				pline("%s realign into three figures!",Monnam(mon));
+				makemon(&mons[PM_MISKA], mon->mx, mon->my, MM_ADJACENTOK);
+				makemon(&mons[PM_NUDZIARTH], mon->mx, mon->my, MM_ADJACENTOK);
+				makemon(&mons[PM_COSMOS], mon->mx, mon->my, MM_ADJACENTOK);
+			}
 			else if(mdat->mattk[i].adtyp == AD_FRWK){
 				int x, y, i;
 				for(i = rn2(3)+2; i > 0; i--){
@@ -3582,7 +3588,7 @@ boolean was_swallowed;			/* digestion */
 			for(i = 0; i<18; i++) makemon(&mons[PM_HORNED_DEVIL], mon->mx, mon->my, MM_ADJACENTOK);
 			for(i = 0; i<30; i++) makemon(&mons[PM_LEMURE], mon->mx, mon->my, MM_ADJACENTOK);
 	    	return (FALSE);
-		}
+		} 
 		else if(mdat->mattk[i].adtyp == AD_KAOS){
 			int x = mon->mx, y = mon->my;
 			struct obj *otmp;

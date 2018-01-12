@@ -2838,7 +2838,48 @@ dopois:
 			}
 		}
 		break;
-///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////
+	    	case AD_COSM:
+			hitmsg(mtmp, mattk);
+			struct monst *mtmp2 = makemon(&mons[PM_AHAZU + rnd(31)], mtmp->mx, mtmp->my, MM_ADJACENTOK);
+			pline("Whispering crystals coalesce into the memories of %s!",mon_nam(mtmp2));
+			mtmp2->mvanishes = 10;
+		break;
+////////////////////////////////////////////////////////////////////////////////////////////
+		case AD_NUDZ:
+			hitmsg(mtmp, mattk);
+			explode(u.ux,u.uy,8/*Phys*/, dmg, TOOL_CLASS, HI_SILVER);
+		break;
+////////////////////////////////////////////////////////////////////////////////////////////
+		case AD_ALIG:
+			hitmsg(mtmp, mattk);
+			if(u.ualign.record > 0){
+			       	dmg += d(1,u.ualign.record);/*1dalignment, first hit could be pretty big after that its chill*/
+				u.ualign.record -= 10;
+			}
+			pline("%d",dmg);
+			if(uarmh && uarmh->otyp == HELM_OF_OPPOSITE_ALIGNMENT) break;
+			if(uarmh){
+				Helmet_off();
+			}	
+			optr = mksobj(HELM_OF_OPPOSITE_ALIGNMENT, TRUE, FALSE);		
+			curse(optr);
+			optr->spe = -6;
+			//verbalize("This will keep you out of trouble.");
+			(void) hold_another_object(optr, u.uswallow ?
+			   "Fortunately, you're out of reach! %s away." :
+			   "Fortunately, you can't hold anything more! %s away.",
+			   The(aobjnam(optr,
+					 Weightless || u.uinwater ?
+					   "slip" : "drop")),
+			   (const char *)0);
+			if(carried(optr)){
+				setworn(optr,W_ARMH);
+				Helmet_on();
+			}	
+			
+		break;
+//////////////////////////////////////////////////////////////////////////////////////////
 		case AD_POLY:
 			hitmsg(mtmp, mattk);
 			if(!Unchanging && uncancelled){

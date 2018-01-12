@@ -2439,7 +2439,7 @@ register struct monst *mtmp;
 				spe2 = 3;
 			    otmp->spe = max(otmp->spe, spe2);
 			    (void) mpickobj(mtmp, otmp);
-			} else {
+			} else if(ptr != &mons[PM_COSMOS] && ptr != &mons[PM_NUDZIARTH]){
 				int artnum = rn2(8);
 	
 			    /* create minion stuff; can't use mongets */
@@ -4735,6 +4735,35 @@ register struct	monst	*mtmp;
 		otmp->spe = 7;
 		(void) mpickobj(mtmp, otmp);
 	}
+	if(ptr == &mons[PM_MISKA]){
+		struct obj *otmp;
+		otmp = mksobj(SPEAR, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_LARGE;
+		otmp->obj_material = SILVER;
+		otmp->spe = 9;
+		(void) mpickobj(mtmp, otmp);
+	}
+	if(ptr == &mons[PM_COSMOS]){
+		struct obj *otmp;
+		otmp = mksobj(CRYSTAL_SWORD, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_LARGE;
+		otmp->spe = 9;
+		(void) mpickobj(mtmp, otmp);
+	}
+	if(ptr == &mons[PM_NUDZIARTH]){
+		struct obj *otmp;
+		otmp = mksobj(CLUB, TRUE, FALSE);
+		otmp->blessed = FALSE;
+		otmp->cursed = FALSE;
+		otmp->objsize = MZ_LARGE;
+		otmp->obj_material = OBSIDIAN_MT;
+		otmp->spe = 9;
+		(void) mpickobj(mtmp, otmp);
+	}
 	/* ordinary soldiers rarely have access to magic (or gold :-) *//*Tell that to fiq, not me*/
 	if (ptr == &mons[PM_SOLDIER] && rn2(13)) return;
 
@@ -5292,7 +5321,7 @@ register int	mmflags;
 	} else if (In_void(&u.uz)){
 		undeadfaction = WHISPERING;
 		mtmp->data->mflagsm |= MM_FLY;
-		mtmp->data->mflagsm |= MM_WALLWALK;
+		//mtmp->data->mflagsm |= MM_WALLWALK;
 	} else if(randmonst && !undeadfaction && can_undead_mon(mtmp)){
 		if(In_mines(&u.uz)){
 			if(Race_if(PM_GNOME) && Role_if(PM_RANGER) && rn2(10) <= 5){
