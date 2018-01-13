@@ -2857,7 +2857,7 @@ dopois:
 			       	dmg += d(1,u.ualign.record);/*1dalignment, first hit could be pretty big after that its chill*/
 				u.ualign.record -= 10;
 			}
-			pline("%d",dmg);
+			//pline("%d",dmg);
 			if(uarmh && uarmh->otyp == HELM_OF_OPPOSITE_ALIGNMENT) break;
 			if(uarmh){
 				Helmet_off();

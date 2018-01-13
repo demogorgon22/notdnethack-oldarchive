@@ -35,7 +35,7 @@ const struct Role roles[] = {
 	{"Void Voider",       0},
 	{"Telekinetic",     0},
 	{"Keeper of the Gate",    0} },
-	"Ilsensine", "Crom", "Set",	/* ahahah */
+	"Ilsensine", "Crom", "the Devil",	/* ahahah */
 	"Acu", "The Elder Pool", "The Far Reach",
 	PM_ANACHRONOUNBINDER, NON_PM, PM_BRAIN_GOLEM,
 	PM_ULITHARID, PM_MINDLESS_THRALL, PM_MENZOBERRANZAN,
@@ -715,7 +715,7 @@ const char *DnDHumLgod = "Saint Cuthbert",
 		   *DnDHumCgod = "_Mask"; /* DnD human pantheon */
 
 //defined in pray.c
-extern const char *Moloch, *Chaos, *DeepChaos, *tVoid, *Demiurge, *Sophia, *Other, *BlackMother, *AllInOne; /*defined in pray*/
+extern const char *Moloch, *Chaos, *DeepChaos, *tVoid, *Demiurge, *Sophia, *Other, *BlackMother, *AllInOne, *AcuL; /*defined in pray*/
 /* The player's role, created at runtime from initial
  * choices.  This may be munged in role_init().
  */

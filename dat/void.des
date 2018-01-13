@@ -210,8 +210,8 @@ OBJECT:random,random,random
 
 
 #
-#This one is neat i call it DONT DIE (actually i call it near void 2)
-#So like its the ranger locate level that got monkeyed up quite a bit
+# This one is neat i call it DONT DIE (actually i call it near void 2)
+# So like its the ranger locate level that got monkeyed up quite a bit
 #
 MAZE: "nrvoid2",' '
 FLAGS: hardfloor,noteleport,nommap
@@ -280,6 +280,12 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 
 
+#
+# I call it the alignment forest. Real neat coimg out of lava into a little lake upon a frozen forest temple
+# This is based on whatever chris based his modified version of the ranger end lvl on
+# This map is pretty neat and it looks good.
+# --Demo
+#
 MAZE: "aligvoid", ' '
 FLAGS: hardfloor,noteleport,nommap
 GEOMETRY:center,center
@@ -314,6 +320,7 @@ REGION:(00,00,75,19),lit,"ordinary"
 ALTAR:(37,09),align[0],altar
 # Stairs
 STAIR:(01,01),up
+STAIR:(49,12),down
 # Non diggable walls
 NON_DIGGABLE:(00,00,75,19)
 NON_PASSWALL:(00,00,75,19)
@@ -333,17 +340,56 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
 OBJECT:random,random,random
-# doors
-#DOOR:closed,(22,10)
-#DOOR:locked,(24,10)
-#DOOR:closed,(25,11)
-#DOOR:closed,(32,10)
-#DOOR:closed,(37,03)
-#DOOR:closed,(37,07)
-#DOOR:closed,(37,13)
-#DOOR:closed,(37,16)
-#DOOR:closed,(42,10)
-#DOOR:locked,(46,08)
-#DOOR:closed,(51,10)
-#DOOR:locked,(53,08)
+
+
+#
+# So this one is neat. Modified random ass level from the law tower that's all flipped around.
+# Blew up initial tower a bit. This level is meant to represent the game itself oh yeah im a super meta artist
+# The player should never be able to see the lava or the secret corridor, just like how the game hide stuff
+# I'm kidding it's not art i just added it cause i thought it was funny
+# --Demo
+#
+MAZE: "farvoid",' '
+FLAGS: noteleport,hardfloor,nommap
+GEOMETRY: center, center
+#0         1         2         3         4         5         6         7     
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+MAP
+0|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL------LL
+1|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL|####|LL
+2|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL|####|LL
+3|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL-----------------------------####---
+4|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL---.........+#############S####|####|
+5|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL--...----------------------|------###|
+6|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL---..---............---LLLLLL|####|####|
+7|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL||...--...----------...||LLLLL---#####---
+8|LLLLLLLLLLLLLL...LLLLLLLLLLLLLLLLL|..---..---........---..|LLLLLLL|#####|LL
+9|LLLLLLLLLLLLL.....LLLLLLLLLLLLLLLL|.--...--...------...--.|LLLLLLL|#####|LL
+0|LLLLLLLLLLLL.......LLLLLLLLLLLLLLL|.|..---..---....---..|.|LLLLLLL-------LL
+1|LLLLLLLLLLLL......................|.|.--...--........--.|.|LLLLLLLLLLLLLLLL
+2|LLLLLLLLLLLL.......LLLLLLLLLLLLLLL|.|.--....-........--.|.|LLLLLLLLLLLLLLLL
+3|LLLLLLLLLLLLL.....LLLLLLLLLLLLLLLL|.|..----.S.....----..|.|LLLLLLLLLLLLLLLL
+4|LLLLLLLLLLLLLL...LLLLLLLLLLLLLLLLL|.--....---...---....--.|LLLLLLLLLLLLLLLL
+5|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL|..----...-----...----..|LLLLLLLLLLLLLLLL
+6|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL||....---...|...---....||LLLLLLLLLLLLLLLL
+7|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL---|...---...---...|---LLLLLLLLLLLLLLLLL
+8|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL||....-----....||LLLLLLLLLLLLLLLLLLLL
+9|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL----.......----LLLLLLLLLLLLLLLLLLLLL
+0|LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL-------------LLLLLLLLLLLLLLLLLLLLLL
+ENDMAP
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+#0         1         2         3         4         5         6         7     
+STAIR: (67,6), up
+STAIR: (53,11), down
+#LADDER: (27,10), up
+NON_DIGGABLE:(00,00,75,20)
+NON_PASSWALL:(00,00,75,20)
+#TELEPORT_REGION:(00,12,08,20),(14,00,50,20)
+DOOR:locked,(51,04)
+# entire tower in a region, constrains monster migration?
+REGION:(24,00,60,20),unlit,"ordinary",unfilled
+ENGRAVING:(16,11),burn,"You lose the game."
+
+#MONSTER:'&',"The Alignment Thing",(49,12)
+
 

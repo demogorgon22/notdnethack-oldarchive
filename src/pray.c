@@ -58,6 +58,7 @@ const char	*Sophia = "Pistis Sophia";
 const char	*Other = "an alien god";
 const char	*BlackMother = "the Black Mother";
 const char	*AllInOne = "Yog-Sothoth";
+const char	*AcuL= "Ilsensine the Banished One";
 
 static const char *godvoices[] = {
     "booms out",
@@ -3084,11 +3085,13 @@ aligntyp alignment;
 						gnam = Demiurge; break;
 		} else if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz) && !quest_status.got_quest){
 			gnam = ""; break;
+		} else if(Role_if(PM_ANACHRONOUNBINDER)){
+			gnam = AcuL; break;
 		} else {
 						gnam = urole.lgod; break;
 		}
      case A_NEUTRAL:	
-		if(Role_if(PM_EXILE) && Is_astralevel(&u.uz)){
+		if(Role_if(PM_EXILE) && Is_astralevel(&u.uz) || Role_if(PM_ANACHRONOUNBINDER)){
 						gnam = tVoid; break;
 		} else if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)){
 			gnam = ""; break;
