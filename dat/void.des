@@ -317,7 +317,8 @@ ENDMAP
 # Dungeon Description
 REGION:(00,00,75,19),lit,"ordinary"
 # Altar to ???
-ALTAR:(37,09),align[0],altar
+BRANCH:(37,10,37,10),(0,0,0,0)
+ALTAR:(37,09),align[1],altar
 # Stairs
 STAIR:(01,01),up
 STAIR:(49,12),down
@@ -345,7 +346,7 @@ OBJECT:random,random,random
 #
 # So this one is neat. Modified random ass level from the law tower that's all flipped around.
 # Blew up initial tower a bit. This level is meant to represent the game itself oh yeah im a super meta artist
-# The player should never be able to see the lava or the secret corridor, just like how the game hide stuff
+# The player should never be able to see the lava or the secret corridor (oh wait clairvoyance), just like how the game hide stuff
 # I'm kidding it's not art i just added it cause i thought it was funny
 # --Demo
 #
@@ -388,8 +389,22 @@ NON_PASSWALL:(00,00,75,20)
 DOOR:locked,(51,04)
 # entire tower in a region, constrains monster migration?
 REGION:(24,00,60,20),unlit,"ordinary",unfilled
-ENGRAVING:(16,11),burn,"You lose the game."
+ENGRAVING:(16,11),burn,"If you got out here in a normal game without abusing magic whistle pet ride or enexto I wanna hear about it."
 
 #MONSTER:'&',"The Alignment Thing",(49,12)
 
+MAZE: "sacris", ' '
+GEOMETRY: center, center
+MAP
+ -------
+ |.|.|.|
+--.....--
+|..-|-..|
+|-..-...|
+|..-|-..|
+--.....--
+ |.|.|.|
+ -------
+ENDMAP
+LADDER: (05,04), down
 

@@ -2136,7 +2136,7 @@ u_init()
 			}
 		} else if(!Role_if(PM_EXILE) && !Role_if(PM_CONVICT)){
 			ini_inv(DrovenCloak);
-			if(!flags.female){
+			if(!flags.female && !Role_if(PM_ANACHRONOUNBINDER)){
 				u.ualignbase[A_CURRENT] = u.ualignbase[A_ORIGINAL] =
 					u.ualign.type = A_NEUTRAL; /* Males are neutral */
 				flags.initalign = 1; // 1 == neutral

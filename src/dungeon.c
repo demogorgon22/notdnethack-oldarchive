@@ -692,6 +692,9 @@ struct level_map {
 	{ "aligvoid",	&aligvoid_level },
 	{ "nrvoid2",	&nrvoid2_level },
 	{ "nearvoid",	&nearvoid_level },
+	
+	/*Sacristy*/
+	{ "sacris",	&sacris_level },
 	/*Planes*/
 	
 	{ "air",	&air_level },

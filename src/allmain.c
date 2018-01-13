@@ -1808,6 +1808,8 @@ newgame()
 			com_pager(219);
 			com_pager(220);
 			com_pager(221);
+		} else if(Role_if(PM_ANACHRONOUNBINDER)){
+			com_pager(222);
 		} else if(Race_if(PM_WORM_THAT_WALKS)){
 			if(Role_if(PM_CONVICT)){
 				com_pager(214);

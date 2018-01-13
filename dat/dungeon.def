@@ -237,6 +237,14 @@ LEVEL:		"nrvoid2"    "none" @ (2, 0)
 LEVEL:		"aligvoid"   "none" @ (3, 0)
 LEVEL:		"farvoid"  "none" @ (4, 0)
 LEVEL:		"ilsensin" "none" @ (5, 0)
+BRANCH:		"Sacristy" @ (3, 0) no_down
+
+
+DUNGEON:	"Sacristy" "none" (1, 0)
+ALIGNMENT:	unaligned
+DESCRIPTION:	mazelike
+LEVEL:		"sacris"  "none" @ (1, 0)
+
 
 ### The Lost Tomb ###
 DUNGEON:        "The Lost Tomb" "L" (1, 0)

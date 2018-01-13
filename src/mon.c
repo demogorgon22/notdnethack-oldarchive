@@ -3512,6 +3512,18 @@ boolean was_swallowed;			/* digestion */
 				explode(mon->mx, mon->my, 5, tmp, MON_EXPLODE, EXPL_MAGICAL);
 			}
 			else if(mdat->mattk[i].adtyp == AD_SPIR){
+				if(Is_alignvoid(&u.uz)){
+					pline("The alignment void's balance falls apart and waves rush in!");
+					pline("Eerie winds begin to blow and the temple's trees wither!");
+					for (int x = 0; x < COLNO; x++) {
+						for (int y = 0; y < ROWNO; y++) {
+							if(levl[x][y].typ == SDOOR || levl[x][y].typ == DOOR) levl[x][y].typ = MOAT;
+							if(levl[x][y].typ == ICE) levl[x][y].typ = MOAT;/*considering only a partial chance of ice melting or trees dying*/
+							if(levl[x][y].typ == TREE) levl[x][y].typ = DEADTREE;
+						}
+					}
+					doredraw();
+				}
 				pline("%s realign into three figures!",Monnam(mon));
 				makemon(&mons[PM_MISKA], mon->mx, mon->my, MM_ADJACENTOK);
 				makemon(&mons[PM_NUDZIARTH], mon->mx, mon->my, MM_ADJACENTOK);

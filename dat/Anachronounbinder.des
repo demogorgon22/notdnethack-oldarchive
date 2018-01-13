@@ -93,27 +93,6 @@ ENGRAVING:(53,7),burn,"Paimon's fights nearly require magic resistance. Her staf
 ENGRAVING:(51,8),burn,"Simurgh's bright light will blind you and her talon's tear but her feather brings help."
 ENGRAVING:(52,8),burn,"Tenebrous will take you down a level."
 ENGRAVING:(53,8),burn,"Fear Ymir. When you do him in name his staff 'The Illithid Staff'"
-#TRAP[60%]:"sleep gas",(48,15)
-#TRAP[60%]:"sleep gas",(47,16)
-#TRAP[60%]:"sleep gas",(49,16)
-#TRAP[60%]:"sleep gas",(48,17)
-
-#MONSTER:'@',random,place[2],hostile
-#MONSTER:'@',random,place[2],hostile
-#MONSTER[80%]:'@',random,place[2],peaceful
-#MONSTER[60%]:'@',random,place[2],asleep
-#MONSTER[60%]:'@',random,place[2],hostile
-#MONSTER[60%]:'@',random,place[2],peaceful
-#MONSTER[60%]:'@',random,place[2],hostile
-#MONSTER[40%]:'@',random,place[2],hostile
-#MONSTER[40%]:'@',random,place[2],peaceful
-
-# boulder path
-#OBJECT:'`',"boulder",(44,0)
-#TRAP:"rolling boulder",(44,01)
-#TRAP:"rolling boulder",(44,07)
-#OBJECT:'/',"striking",(46,10),uncursed,2
-#OBJECT:')',"runesword",(46,10),cursed,0
 
 MONSTER:';',"illithid larva",(66,10),peaceful
 MONSTER:';',"illithid larva",(66,12),peaceful
@@ -133,11 +112,6 @@ MONSTER:'@',"mindless thrall",random,peaceful
 MONSTER:'@',"mindless thrall",random,peaceful
 MONSTER:'@',"mindless thrall",random,peaceful
 MONSTER[60%]:'@',"mindless thrall",random,peaceful
-#MONSTER[40%]:'E',random,(33,07),hostile
-#MONSTER[40%]:'E',random,(34,08),hostile
-#MONSTER[40%]:'E',random,(25,13),hostile
-#MONSTER[40%]:'E',random,(26,14),hostile
-
 
 CONTAINER:'(',"chest",(30,10)
 OBJECT:'?',"resistance",contained
@@ -146,43 +120,9 @@ OBJECT:'?',"resistance",contained
 
 MONSTER:'h',"Ulitharid",(30,09),peaceful
 MONSTER:'U',"elder brain",(66,11),peaceful
-#MONSTER[80%]:'h',"mind flayer",(31,09),"Emma",hostile
+ENGRAVING:(66,11),burn,"A god time has forgotten lurks in the sacristy of the voided temple."
 MONSTER:'h',"master mind flayer",(51,7),"The Vestitoligist",peaceful
-#MONSTER[60%]:'h',"master mind flayer",(30,10),"Mel B.",hostile
-#CONTAINER:'(',"chest",(30,09)
-#OBJECT[70%]:'"',"amulet of flying",contained
-#OBJECT:'/',"cold",contained,uncursed,+16
-#OBJECT[80%]:'/',"digging",contained
 
-# forest
-#MONSTER:'u',"Nightmare",(10,09),asleep
-#MONSTER[60%]:'n',"pixie",(10,09),asleep
-#MONSTER[60%]:'n',"pixie",(10,09),hostile
-#MONSTER[60%]:'n',"quickling",(10,09),asleep
-#MONSTER[60%]:'n',"quickling",(10,09),hostile
-#MONSTER[60%]:'n',"pixie",(10,09),asleep
-#MONSTER[60%]:'n',"pixie",(10,09),hostile
-#MONSTER:'u',"black unicorn",(10,09),hostile
-#MONSTER:'u',"gray unicorn",(10,09),hostile
-#MONSTER:'u',"white unicorn",(10,09),hostile
-#MONSTER:'n',"wood nymph",(10,09),hostile
-#MONSTER:'n',"brownie",(10,09),asleep
-#MONSTER:'n',"pixie",(10,09),asleep
-#MONSTER:'n',"pixie",(10,09),hostile
-#MONSTER:'n',"pixie",(10,09),asleep
-#MONSTER:'n',"pixie",(10,09),hostile
-#MONSTER:'n',"quickling",(10,09),asleep
-#MONSTER:'n',"quickling",(10,09),hostile
-
-# all around
-
-# Monsters
-# Traps
-# Engravings
-#ENGRAVING:random,random,"You can feel eyes on your back."
-#ENGRAVING:random,random,"I can see you..."
-
-# doors
 #
 #	The "locate" level for the quest.
 #
@@ -224,6 +164,13 @@ STAIR:(68,16),down
 # Altars - three types.  All are unattended.
 # Non diggable walls
 NON_DIGGABLE:(00,00,75,19)
+
+#free knowledge
+ENGRAVING:random,burn,"The Alignment Thing will realign you should you get near."
+ENGRAVING:random,burn,"Watch out for Miska's many arms!"
+ENGRAVING:random,burn,"Nudziarth will blast you with obsidian mirrors."
+ENGRAVING:random,burn,"Cosmos will reflect your past."
+
 # Objects
 OBJECT:random,random,random
 OBJECT:random,random,random
@@ -321,6 +268,9 @@ ENDMAP
 REGION:(01,01,75,19),unlit,"morgue",unfilled
 # Stairs, Branches and the wizards portal
 STAIR:(03,17),up
+#free knowledge
+ENGRAVING:random,burn,"Numina's whispers will drive you insane."
+ENGRAVING:random,burn,"The Council of Elements is unpredictable."
 # The alhoon gets a drawbridge...
 DRAWBRIDGE:(28,16),west,closed
 DRAWBRIDGE:(41,05),east,closed

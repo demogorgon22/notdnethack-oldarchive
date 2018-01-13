@@ -30,7 +30,7 @@ const struct Role roles[] = {
 	{"Unbinder",      0},
 	{"Vestige Vanquisher",      0},
 	{"Spirit Killer",       0},
-	{"Illithid", 0},
+	{"Mind Flayer", 0},
 	{"Psionaut", 0},
 	{"Void Voider",       0},
 	{"Telekinetic",     0},
@@ -44,11 +44,11 @@ const struct Role roles[] = {
 	MA_HUMAN|MA_DWARF|MA_GNOME|MA_ELF|MA_ORC|MA_DRAGON|MA_ANIMAL, ROLE_MALE|ROLE_FEMALE |
 	  ROLE_LAWFUL,
 	/* Str Int Wis Dex Con Cha */
-	{  10, 10,  7, 10,  7,  7 },
-	{  15, 17, 15, 12, 15, 15 },
+	{  12, 10,  7, 12,  12,  7 },
+	{  24, 20, 15, 20, 24, 15 },
 	/* Init   Lower  Higher */
 	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
-	{  2, 0,  0, 2,  0, 2 },14,	/* Energy */
+	{  4, 3,  0, 2,  0, 3 },12,	/* Energy */
 	10, 5, 0, 2, 10, A_INT, SPE_SLOW_MONSTER,   -9
 },
 {	{"Anachrononaut", 0}, {
@@ -715,7 +715,7 @@ const char *DnDHumLgod = "Saint Cuthbert",
 		   *DnDHumCgod = "_Mask"; /* DnD human pantheon */
 
 //defined in pray.c
-extern const char *Moloch, *Chaos, *DeepChaos, *tVoid, *Demiurge, *Sophia, *Other, *BlackMother, *AllInOne, *AcuL; /*defined in pray*/
+extern const char *Moloch, *Chaos, *DeepChaos, *tVoid, *Demiurge, *Sophia, *Other, *BlackMother, *AllInOne, *AcuL, *AcuLL; /*defined in pray*/
 /* The player's role, created at runtime from initial
  * choices.  This may be munged in role_init().
  */

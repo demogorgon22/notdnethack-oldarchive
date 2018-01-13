@@ -101,11 +101,13 @@ typedef struct branch {
  * Depth corresponds to the number of floors below the surface.
  */
 
-#define Is_ilsensinelevel(x)	(on_level(x, &ilsensin_level))
-#define Is_alignvoidlevel(x)	(on_level(x, &farvoid_level))
-#define Is_farvoidlevel(x)	(on_level(x, &aligvoid_level))
-#define Is_nearvoid2level(x)		(on_level(x, &nrvoid2_level))
-#define Is_nearvoidlevel(x)		(on_level(x, &nearvoid_level))
+#define Is_ilsensine(x)	(on_level(x, &ilsensin_level))
+#define Is_alignvoid(x)	(on_level(x, &aligvoid_level))
+#define Is_farvoid(x)	(on_level(x, &farvoid_level))
+#define Is_nearvoid2(x)		(on_level(x, &nrvoid2_level))
+#define Is_nearvoid(x)		(on_level(x, &nearvoid_level))
+
+#define Is_sacris(x)	(on_level(x,&sacris_level))
 
 #define Is_astralevel(x)	(on_level(x, &astral_level))
 #define Is_earthlevel(x)	(on_level(x, &earth_level))
@@ -209,7 +211,8 @@ typedef struct branch {
 	       				on_level(x,&nrvoid2_level) || \
 	       				on_level(x,&aligvoid_level) || \
 	       				on_level(x,&farvoid_level) || \
-	       				on_level(x,&ilsensin_level))
+	       				on_level(x,&ilsensin_level) || \
+					on_level(x,&sacris_level))
 #define Inhell			In_hell(&u.uz)	/* now gehennom */
 #define In_endgame(x)		((x)->dnum == astral_level.dnum)
 

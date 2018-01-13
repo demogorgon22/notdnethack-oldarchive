@@ -126,7 +126,7 @@ hack_artifacts()
 	if((Race_if(PM_DROW) || Race_if(PM_MYRKALFR)) && !Role_if(PM_EXILE) && !Role_if(PM_CONVICT) && !flags.initgend){
 		alignmnt = A_NEUTRAL; /* Males are neutral */
 	}
-
+	if(Role_if(PM_ANACHRONOUNBINDER)) alignmnt = A_LAWFUL;
 	int gcircletsa = find_gcirclet();
 	
 	/* Fix up the alignments of "gift" artifacts */

@@ -59,6 +59,7 @@ const char	*Other = "an alien god";
 const char	*BlackMother = "the Black Mother";
 const char	*AllInOne = "Yog-Sothoth";
 const char	*AcuL= "Ilsensine the Banished One";
+const char	*AcuLL= "Ilsensine";
 
 static const char *godvoices[] = {
     "booms out",
@@ -2661,7 +2662,7 @@ dopray()
 		return 0;
 	}
 	if(Role_if(PM_ANACHRONOUNBINDER) && flags.questprogress!=2){
-		pline("Ilsensine, the banished one, cannot hear your prayers.");
+		pline("Ilsensine, the Banished One, cannot hear your prayers.");
 		return 0;
 	}
     if (flags.prayconfirm)
@@ -3085,9 +3086,11 @@ aligntyp alignment;
 						gnam = Demiurge; break;
 		} else if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz) && !quest_status.got_quest){
 			gnam = ""; break;
-		} else if(Role_if(PM_ANACHRONOUNBINDER)){
+		} else if(Role_if(PM_ANACHRONOUNBINDER) && !In_quest(&u.uz)){
 			gnam = AcuL; break;
-		} else {
+		} else if(Role_if(PM_ANACHRONOUNBINDER)){
+			gnam = AcuLL; break;
+    		} else {
 						gnam = urole.lgod; break;
 		}
      case A_NEUTRAL:	

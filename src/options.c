@@ -278,7 +278,7 @@ static struct Bool_Opt
 #else
 	{"UTF8graphics", (boolean *)0, FALSE, SET_IN_FILE},
 #endif
-	{"use_darkgray", &iflags.wc2_darkgray, FALSE, SET_IN_FILE},
+	{"use_darkgray", &iflags.wc2_darkgray, TRUE, SET_IN_FILE},
 #ifdef WIN32CON
 	{"use_inverse",   &iflags.wc_inverse, TRUE, SET_IN_GAME},		/*WC*/
 #else
