@@ -2156,6 +2156,9 @@ struct obj	*sobj;
 		if(Is_astralevel(&u.uz)) pline("This place is already pretty consecrated.");
 		else pline("It would seem base matter alone cannot be consecrated.");
 	break;
+	} else if(In_void(&u.uz)){
+		pline("Whispers begin to form into an altar but suddenly blow away.");
+	break;
 	} else if(Is_sanctum(&u.uz)){
 		pline("This place is much too unholy for the scroll to work.");
 	break;

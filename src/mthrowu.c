@@ -184,6 +184,11 @@ int x,y;
 	} else if (obj->otyp == BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,6),
 		    0, EXPL_RED);
+	
+	} else if (ohit && mon && obj->otyp == PSIONIC_PULSE) {/*shouldnt be handled here bud.*/
+		pline("%s is thrown backwards by the force of your pulse!",Monnam(mon));
+         	mhurtle(mon, u.dx, u.dy, (int)u.ulevel/3);	 
+		pline("x: %d, y: %d",u.dx,u.dy);
 	} else if (mon && obj->otyp == SPE_MAGIC_MISSILE && mon->data == &mons[PM_PAIMON]){
 		explode(bhitpos.x, bhitpos.y, 10, d(3,10),
 		    0, EXPL_MAGICAL);	

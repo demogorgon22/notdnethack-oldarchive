@@ -365,6 +365,7 @@ struct you {
 #define MATTK_REACH 19
 #define MATTK_TELEK 20
 #define MATTK_CRAZE 21
+#define MATTK_PULSE 22
 	struct attribs	macurr,		/* for monster attribs */
 			mamax;		/* for monster attribs */
 	int ulycn;			/* lycanthrope type */

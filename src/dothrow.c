@@ -1104,7 +1104,8 @@ mhurtle_step(arg, x, y)
 	/* TODO: Treat walls, doors, iron bars, pools, lava, etc. specially
 	 * rather than just stopping before.
 	 */
-	if (goodpos(x, y, mon, 0) && m_in_out_region(mon, x, y) && migrating_mons != mon) { /*If knockback causes monster to go fall through a hole, mon will be first migrating mon and hurtle should stop*/
+	//pline("good pos:%d, inregion: %d, not migrating: %d, alive: %d",goodpos(x, y, mon, 0) ,m_in_out_region(mon, x, y), migrating_mons != mon,mon->mhp > 0);
+	if (goodpos(x, y, mon, 0) && m_in_out_region(mon, x, y) && migrating_mons != mon && mon->mhp > 0) { /*If knockback causes monster to go fall through a hole, mon will be first migrating mon and hurtle should stop*/
 	    remove_monster(mon->mx, mon->my);
 	    newsym(mon->mx, mon->my);
 	    place_monster(mon, x, y);
@@ -1399,6 +1400,7 @@ register struct obj *obj;
 long wep_mask;	/* used to re-equip returning boomerang */
 boolean twoweap; /* used to restore twoweapon mode if wielded weapon returns */
 int thrown;
+int objPos;
 {
 	register struct monst *mon;
 	register int range, urange;
@@ -1618,6 +1620,7 @@ int thrown;
 
 		if (obj_gone) return;
 	}
+	if(obj && obj->otyp == PSIONIC_PULSE) return;
 
 //#ifdef FIREARMS
 	/* Handle grenades or rockets */
@@ -1660,7 +1663,7 @@ int thrown;
 				 obj->oartifact == ART_KHAKKHARA_OF_THE_MONKEY ||
 				 obj->oartifact == ART_DART_OF_THE_ASSASSIN ||
 				 obj->oartifact == ART_WINDRIDER ||
-				 (Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 20)//dirty magic number
+				 (Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 20 )//dirty magic number
 			  )
 		) {
 		    /* we must be wearing Gauntlets of Power to get here *///haha i see why chris left this in, its funny
@@ -2176,9 +2179,11 @@ int thrown;
 	    }
 	    return(0);
 	}
+	
 	else if (mon->mtame && mon->mcanmove &&
 			(!is_animal(mon->data)) && (!mindless_mon(mon)) &&
-			!(launcher && ammo_and_launcher(obj, launcher))
+			!(launcher && ammo_and_launcher(obj, launcher)) &&
+			!obj->otyp==PSIONIC_PULSE
 	) {
 		// if (could_use_item(mon, obj, TRUE)) {
 			pline("%s catches %s.", Monnam(mon), the(xname(obj)));
@@ -2251,12 +2256,13 @@ int thrown;
 		     * we still don't want anything to survive unconditionally,
 		     * but we need ammo to stay around longer on average.
 		     */
+		
 		    int broken, chance;
 			if(obj->oartifact && obj->oartifact != ART_HOUCHOU){
 				broken = 0;
 			} else if((launcher && ammo_and_launcher(obj, launcher) && 
 				(launcher->oartifact==ART_HELLFIRE || launcher->oartifact==ART_BOW_OF_SKADI))
-				|| obj->oartifact == ART_HOUCHOU || break_thrown
+				|| obj->oartifact == ART_HOUCHOU || break_thrown 
 			){
 				broken = 1;
 			} else {
@@ -2267,11 +2273,17 @@ int thrown;
 					broken = !rn2(4);
 				if (obj->blessed && rnl(100) < 25)
 					broken = 0;
+				if(obj->otyp == PSIONIC_PULSE) broken = 1;
 			}
 		    if (broken) {
 			if (*u.ushops)
 			    check_shop_obj(obj, bhitpos.x,bhitpos.y, TRUE);
 //#ifdef FIREARMS
+			if(obj->otyp == PSIONIC_PULSE){
+				pline("%s is thrown backwards by the force of your pulse!",Monnam(mon));
+				mhurtle(mon, u.dx, u.dy, (int)u.ulevel/3);
+				//pline("x: %d, y: %d",u.dx,u.dy);
+			}
 			/*
 			 * Thrown grenades and explosive ammo used with the
 			 * relevant launcher explode rather than simply
@@ -2304,6 +2316,7 @@ int thrown;
 		} else passive_obj(mon, obj, (struct attack *)0);
 	    } else {
 		tmiss(obj, mon);
+		if(otyp == PSIONIC_PULSE) return 1;
 	    }
 
 	} else if (otyp == HEAVY_IRON_BALL) {
@@ -2350,7 +2363,7 @@ int thrown;
 		mon->msleeping = 0;
 		mon->mstrategy &= ~STRAT_WAITMASK;
 	    }
-	} else if (guaranteed_hit) {
+	}  else if (guaranteed_hit) {
 	    /* this assumes that guaranteed_hit is due to swallowing */
 	    wakeup(mon, TRUE);
 	    if (obj->otyp == CORPSE && touch_petrifies(&mons[obj->corpsenm])) {

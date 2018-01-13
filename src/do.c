@@ -1519,7 +1519,7 @@ no_spirits()
 	struct monst *mtmp;
 	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon){
 		pline("%s has tameness %d",Monnam(mtmp),mtmp->mtame);
-		if(!DEADMONSTER(mtmp) && !(mtmp->mtame)){
+		if(!DEADMONSTER(mtmp) && !(mtmp->mtame)&& !(mtmp->mpeaceful)){
 			return FALSE;
 		}
 	}

@@ -4582,28 +4582,6 @@ register struct	monst	*mtmp;
 		(void) mpickobj(mtmp, otmp);
 		mtmp->mgold = (long) d(level_difficulty(), mtmp->minvent ? 5 : 10);
 	}	
-	if(ptr == &mons[PM_HUGINN] && !(u.spiritSummons&SEAL_HUGINN_MUNINN)){
-		struct obj *otmp;
-		otmp = mksobj(DAGGER, TRUE, FALSE);
-		otmp = oname(otmp, artiname(ART_THOUGHT));
-		otmp->blessed = FALSE;
-		otmp->cursed = FALSE;
-		otmp->spe = 0;
-//		otmp->objsize = MZ_TINY;
-		(void) mpickobj(mtmp, otmp);
-
-	}
-	if(ptr == &mons[PM_MUNINN] && !(u.spiritSummons&SEAL_HUGINN_MUNINN)){
-		struct obj *otmp;
-		otmp = mksobj(DAGGER, TRUE, FALSE);
-		otmp = oname(otmp, artiname(ART_MEMORY));
-		otmp->blessed = FALSE;
-		otmp->cursed = FALSE;
-		otmp->spe = 0;
-//		otmp->objsize = MZ_TINY;
-		(void) mpickobj(mtmp, otmp);
-
-	}
 	if(ptr == &mons[PM_IRIS] && !(u.spiritSummons&SEAL_IRIS)){
 		struct obj *otmp;
 		otmp = mksobj(MORNING_STAR, TRUE, FALSE);

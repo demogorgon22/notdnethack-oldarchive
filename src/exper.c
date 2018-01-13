@@ -307,7 +307,9 @@ newexplevel()
 /*Give spirits to anachronounbinder*/
 void
 acuup(){
-	if(u.ulevel == 7){//magic number
+	if(u.ulevel == 4){
+		You_feel("psionic!");
+	} else if(u.ulevel == 7){//magic number
 		You("are able to echolate with your psionic pulses!");
 		youracedata->mflagsv |= MV_ECHOLOCATE;
 	} else if(u.ulevel == 10){
@@ -327,7 +329,9 @@ acuup(){
 
 void
 acudown(){
-	if(u.ulevel == 6){//magic number
+	if(u.ulevel == 3){
+		You_feel("unpsionic.");
+	} else if(u.ulevel == 6){//magic number
 		You("can no longer echolocate!");
 		youracedata->mflagsv &= ~MV_ECHOLOCATE;
 	} else if(u.ulevel == 9){

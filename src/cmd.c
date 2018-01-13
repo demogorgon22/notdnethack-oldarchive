@@ -114,6 +114,7 @@ static int NDECL((*timed_occ_fn));
 
 STATIC_DCL int NDECL(use_reach_attack);
 STATIC_DCL int NDECL(psionic_craze);
+STATIC_DCL int NDECL(psionic_pulse);
 STATIC_DCL int NDECL(dotelekinesis);
 STATIC_PTR int NDECL(doprev_message);
 STATIC_PTR int NDECL(timed_occupation);
@@ -617,6 +618,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 4){//bad magic number
+		Sprintf(buf, "Psionic Pulse");
+		any.a_int = MATTK_PULSE;	/* must be non-zero */
+		incntlet = 'p';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(attacktype(youracedata, AT_MAGC)){
 		Sprintf(buf, "Monster Spells");
 		any.a_int = MATTK_MAGIC;	/* must be non-zero */
@@ -821,8 +831,29 @@ domonability()
 	break;
 	case MATTK_CRAZE: return psionic_craze();
 	break;
+	case MATTK_PULSE: return psionic_pulse();
+	break;
 	}
 	return 0;
+}
+
+STATIC_OVL int
+psionic_pulse(){
+	if(u.uen < 5){
+		You("lack the energy.");
+		return 0;
+	}
+	You("concentrate!");
+	if(!getdir((char *)0)) return 0;
+	struct obj *otmp = mksobj(PSIONIC_PULSE, TRUE, FALSE);
+	otmp->blessed = 0;
+	otmp->cursed = 0;
+	otmp->spe = (int)u.ulevel/4;
+	otmp->quan = 1;
+	throwit(otmp,otmp->owornmask,u.twoweap,1,0);
+	nomul(0, NULL);
+	u.uen -= 5;
+	return 1;
 }
 
 STATIC_OVL int

@@ -357,6 +357,8 @@ BULLET("blaster bolt", "ruby bolt",
 		0,  0, 1, 0, 6, 8, 0, WP_BLASTER,   E,   METAL, -P_FIREARM, CLR_RED),/*Needs tile*/
 BULLET("heavy blaster bolt", "scarlet bolt",
 		0,  0, 1, 0,10,12, 0, WP_BLASTER,   E,   METAL, -P_FIREARM, CLR_ORANGE),/*Needs tile*/
+BULLET("psionic pulse", (char *)0,
+		0,  0, 1, 0, 6, 6, 3, WP_BLASTER,   E,   METAL, -P_FIREARM, CLR_BRIGHT_BLUE),
 BULLET("laser beam", "green bolt",
 		0,  0, 1, 0, 1, 1, 0, WP_BLASTER,   S,   METAL, -P_FIREARM, CLR_BRIGHT_GREEN),/*Needs tile*/
 //endif

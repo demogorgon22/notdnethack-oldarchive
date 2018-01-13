@@ -676,14 +676,14 @@ static const struct def_skill Skill_Acu[] = {
     { FFORM_DJEM_SO, P_EXPERT },		{ FFORM_SHIEN,  P_EXPERT },
     { FFORM_NIMAN, P_EXPERT },			{ FFORM_JUYO,  P_BASIC },
     { P_DAGGER, P_EXPERT },		{ P_KNIFE,  P_SKILLED }, 
-    { P_SHORT_SWORD, P_EXPERT },{ P_LANCE,  P_EXPERT },
-    { P_SABER, P_EXPERT },		{ P_LONG_SWORD,  P_BASIC },
+    { P_SHORT_SWORD, P_SKILLED },{ P_LANCE,  P_BASIC },
+    { P_SABER, P_SKILLED },		{ P_LONG_SWORD,  P_BASIC },
     { P_CLUB, P_SKILLED },		{ P_QUARTERSTAFF, P_EXPERT },
 	{ P_BROAD_SWORD, P_EXPERT },{ P_HAMMER, P_BASIC },
 //#ifdef FIREARMS
 //    { P_FIREARM, P_SKILLED },
 //#endif
-    { P_DART, P_BASIC },		{ P_CROSSBOW, P_EXPERT },
+    { P_DART, P_BASIC },		{ P_PICK_AXE, P_BASIC },
     { P_WHIP, P_SKILLED },		 { P_BOOMERANG, P_SKILLED },
     { P_ATTACK_SPELL, P_BASIC },	{ P_HEALING_SPELL, P_BASIC },
     { P_DIVINATION_SPELL, P_SKILLED},	{ P_MATTER_SPELL, P_BASIC},
@@ -1712,6 +1712,7 @@ u_init()
 		knows_object(SENSOR_PACK);
 		knows_object(R_LYEHIAN_FACEPLATE);
 		knows_object(GLOVES);
+		u.ualignbase[A_CURRENT] = u.ualignbase[A_ORIGINAL] = u.ualign.type = A_LAWFUL;
 		skill_init(Skill_Acu);
 	break;
 	case PM_ANACHRONONAUT:

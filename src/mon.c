@@ -324,6 +324,20 @@ register struct monst *mtmp;
 			obj = mksobj_at(SILVER_DRAGON_SCALES, x, y, FALSE, FALSE);
 			obj = oname(obj, artiname(ART_EDEN_SCALES));
 		goto default_1;
+	    case PM_HUGINN:
+			obj = mksobj_at(DAGGER, x, y, FALSE, FALSE);
+			obj = oname(obj, artiname(ART_THOUGHT));		
+			obj->blessed = FALSE;
+			obj->cursed = FALSE;
+			obj->spe = 0;
+		goto default_1;
+	    case PM_MUNINN:
+			obj = mksobj_at(DAGGER, x, y, FALSE, FALSE);
+			obj = oname(obj, artiname(ART_MEMORY));		
+			obj->blessed = FALSE;
+			obj->cursed = FALSE;
+			obj->spe = 0;
+		goto default_1;
 	    case PM_MANTICORE:
 		if (mtmp->mrevived ? !rn2(6) : TRUE) {
 			obj = mksobj_at(SPIKE, x, y, TRUE, FALSE);
@@ -3874,6 +3888,8 @@ boolean was_swallowed;			/* digestion */
 		   || mdat == &mons[PM_SEYLL_AUZKOVYN]
 		   || mdat == &mons[PM_DARUTH_XAXOX]
 		   || mdat == &mons[PM_ORION]
+		   || mdat == &mons[PM_HUGINN]
+		   || mdat == &mons[PM_MUNINN]
 		   || mdat == &mons[PM_VECNA]
 //		   || mdat == &mons[PM_UNICORN_OF_AMBER]
 		   || mdat == &mons[PM_NIGHTMARE]
