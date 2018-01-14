@@ -2017,8 +2017,9 @@ dosacrifice()
 		You("do not give offerings to the God of the future.");
 		return 0;
 	}
-	if(Role_if(PM_ANACHRONOUNBINDER) && otmp->otyp != AMULET_OF_YENDOR && flags.questprogress!=2){
-		You("cannot feel your true god.");
+	if(Role_if(PM_ANACHRONOUNBINDER) && otmp->otyp != AMULET_OF_YENDOR){
+		if(In_quest(&u.uz)) You("wouldn't want to change the future.");
+		else You("cannot feel your true god.");
 		return 0;
 	}	
 #define MAXVALUE 24 /* Highest corpse value (besides Wiz) */
@@ -2661,8 +2662,9 @@ dopray()
 		pline("And to It, you do not pray.");
 		return 0;
 	}
-	if(Role_if(PM_ANACHRONOUNBINDER) && flags.questprogress!=2){
-		pline("Ilsensine, the Banished One, cannot hear your prayers.");
+	if(Role_if(PM_ANACHRONOUNBINDER)){
+		if(In_quest(&u.uz)) You("wouldn't want to change the future.");
+		else pline("Ilsensine, the Banished One, cannot hear your prayers.");
 		return 0;
 	}
     if (flags.prayconfirm)

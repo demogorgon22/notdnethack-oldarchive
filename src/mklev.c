@@ -1264,14 +1264,13 @@ xchar x, y;	/* location */
 
 	if (br->type == BR_PORTAL) {
 	    mkportal(x, y, dest->dnum, dest->dlevel);
-	} else if (make_stairs) {
+	} else if (make_stairs && !Is_nearvoid(&u.uz)) {
 	    sstairs.sx = x;
 	    sstairs.sy = y;
 	    sstairs.up = (char) on_level(&br->end1, &u.uz) ?
 					    br->end1_up : !br->end1_up;
 	    assign_level(&sstairs.tolev, dest);
 	    sstairs_room = br_room;
-
 	    levl[x][y].ladder = sstairs.up ? LA_UP : LA_DOWN;
 	    levl[x][y].typ = STAIRS;
 	}

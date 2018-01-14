@@ -253,6 +253,7 @@ struct obj *otmp;
 		case ART_FLUORITE_OCTAHEDRON: return Hallucination ? hcolor(0) : "burning cerulean";
 		case ART_HEART_OF_AHRIMAN: return Hallucination ? hcolor(0) : "pulsing and shimmering ruby";
 		case ART_GLITTERSTONE: return Hallucination ? hcolor(0) : "glittering gold";
+		case ART_ELDER_CEREBRAL_FLUID: return Hallucination ? hcolor(0) : "tentacled";
 		
 		default: return Hallucination ? hcolor(0) : LightsaberColor[((int)otmp->cobj->otyp) - MAGICITE_CRYSTAL].colorText;
 	}

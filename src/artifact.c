@@ -4016,7 +4016,7 @@ arti_invoke(obj)
 		newlev.dlevel = dungeons[i].entry_lev;
 	    else
 		newlev.dlevel = dungeons[i].dunlev_ureached;
-	    if(u.uhave.amulet || In_endgame(&u.uz) || In_endgame(&newlev) ||
+	    if(u.uhave.amulet || In_endgame(&u.uz) || In_endgame(&newlev) || In_void(&u.uz) || In_void(&newlev) ||
 	       newlev.dnum == u.uz.dnum) {
 		You_feel("very disoriented for a moment.");
 	    } else {
@@ -6179,7 +6179,7 @@ arti_invoke(obj)
 				boolean b_effect;
 				b_effect = obj->blessed &&
 					((Role_switch == oart->role || oart->role == NON_PM) && (Race_switch == oart->race || oart->race == NON_PM));
-				recharge(uwep, b_effect ? 1 : obj->cursed ? -1 : 0);
+				recharge(obj, b_effect ? 1 : obj->cursed ? -1 : 0);
 				update_inventory();
 			} break;
 			case COMMAND_TENT:{
@@ -6216,7 +6216,25 @@ arti_invoke(obj)
 	   			 }
 			} break;
 			case COMMAND_ELDER:
-
+				if(Is_astralevel(&u.uz) && a_align(u.ux,u.uy) == A_NEUTRAL){
+					pline("Ancient knowledge flows from the Elder Cerebral Fluid embedded in the Illithid Staff!");
+					pline("The knowledge begins to form into a dome around the high altar to the void.");
+					pline("Bright lights flash and suddenly the altar expands into a large hole.");
+					pline("You are sucked through!");
+					schedule_goto(&nearvoid_level, FALSE, FALSE, 0, (char *)0, (char *)0);	
+				} else if(Is_alignvoid(&u.uz) &&  a_align(u.ux,u.uy) == A_NEUTRAL){
+					pline("Ancient knowledge flows from the Elder Cerebral Fluid embedded in the Illithid Staff!");
+					pline("The knowledge begins to form into a dome around the whispering altar to the void.");
+					pline("Bright lights flash and suddenly the altar rebuilds into a staircase.");
+					sstairs.sx = u.ux;
+					sstairs.sy = u.uy;
+					assign_level(&sstairs.tolev, &sacris_level);
+					levl[u.ux][u.uy].ladder = LA_UP;
+					levl[u.ux][u.uy].typ = STAIRS;
+				} else {
+					You("feel knowledge coming over you!");
+					identify_pack(rn2(5));
+				}
 			break;
 			
 		}
