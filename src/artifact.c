@@ -6957,7 +6957,7 @@ struct obj *obj;
 		add_menu(tmpwin, NO_GLYPH, &any,
 			'e', 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
-		if(TRUE){//check if elder cerebral fluid is in the illithid
+		if(obj->cobj->oartifact == ART_ELDER_CEREBRAL_FLUID){//check if elder cerebral fluid is in the illithid
 			Sprintf(buf, "Elder Memories");
 			any.a_int = COMMAND_ELDER;	/* must be non-zero */
 			add_menu(tmpwin, NO_GLYPH, &any,

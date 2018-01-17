@@ -1815,6 +1815,7 @@ get_description_of_damage_type(uchar id)
 	case AD_COSM: return "crystal memories";
 	case AD_CRYS: return "dilithium crystals";
 	case AD_NUDZ: return "mirror blast";
+	case AD_WHIS: return "whispers from the void";
 	default:
 			impossible("bug in get_description_of_damage_type(%d)", id);
 			return "<MISSING DESCRIPTION, THIS IS A BUG>";
