@@ -320,9 +320,15 @@ register struct monst *mtmp;
 		    obj = mksobj_at(SILVER_DRAGON_SCALE_MAIL, x, y, FALSE, FALSE);
 			obj = oname(obj, artiname(ART_DRAGON_PLATE));
 		goto default_1;
+	    case PM_AMON:
+			obj = mksobj_at(FIRE_HORN, x, y, FALSE, FALSE);
+			obj->spe = 7;
+			newsym(x, y);
+		goto default_1;
 	    case PM_EDEN:
 			obj = mksobj_at(SILVER_DRAGON_SCALES, x, y, FALSE, FALSE);
 			obj = oname(obj, artiname(ART_EDEN_SCALES));
+			newsym(x,y);
 		goto default_1;
 	    case PM_HUGINN:
 			obj = mksobj_at(DAGGER, x, y, FALSE, FALSE);
@@ -3888,12 +3894,11 @@ boolean was_swallowed;			/* digestion */
 	if (LEVEL_SPECIFIC_NOCORPSE(mdat))
 		return FALSE;
 
-	if (mon->mfaction == SKELIFIED || mon->mfaction == WHISPERING)
+	if (mon->mfaction == SKELIFIED || mon->mfaction == WHISPERING) 
 		return FALSE;
 
 	if (mon->mfaction == CRYSTALFIED)
 		return TRUE;
-
 	if (is_golem(mdat)
 		   || is_mplayer(mdat)
 		   || is_rider(mdat)
@@ -3908,7 +3913,6 @@ boolean was_swallowed;			/* digestion */
 //		   || mdat == &mons[PM_PINK_UNICORN]
 		   )
 		return TRUE;
-	
 	if(In_hell(&u.uz) || In_endgame(&u.uz)) //u.uevent.udemigod || 
 		return FALSE;
 	

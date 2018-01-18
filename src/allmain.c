@@ -790,7 +790,7 @@ moveloop()
 				} else if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz) && Is_qstart(&u.uz)){
 					(void) makemon((struct permonst *)0, xdnstair, ydnstair, MM_ADJACENTOK);
 				}
-				else (void) makemon((struct permonst *)0, 0, 0, NO_MM_FLAGS);
+				else if(!In_void(&u.uz))(void) makemon((struct permonst *)0, 0, 0, NO_MM_FLAGS);
 			}
 			if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz) && !Is_qstart(&u.uz) && !rn2(50)){
 				struct monst* mtmp = makemon(&mons[PM_SEMBLANCE], rn1(COLNO-3,2), rn1(ROWNO-3,2), MM_ADJACENTSTRICT|MM_ADJACENTOK);

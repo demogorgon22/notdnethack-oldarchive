@@ -4451,13 +4451,7 @@ register struct	monst	*mtmp;
 		(void)mongets(mtmp, FOOD_RATION);
 
 	}
-	if(ptr == &mons[PM_AMON]&& !(u.spiritSummons&SEAL_AMON)){
-		struct obj *otmp = mksobj(MACE, TRUE, FALSE);
-		otmp = oname(otmp, artiname(ART_ROD_OF_THE_RAM));
-		otmp->blessed = FALSE;
-		otmp->cursed = FALSE;
-		(void) mpickobj(mtmp,otmp);
-	}
+	/*Amon handled in mon.c dropping fire horn on death*/	
 	if(ptr == &mons[PM_ANDREALPHUS] && !(u.spiritSummons&SEAL_ANDREALPHUS)){
 		(void)mongets(mtmp, SENSOR_PACK);
 		(void)mongets(mtmp, CAN_OF_GREASE);
@@ -5320,7 +5314,7 @@ register int	mmflags;
 	if(undeadfaction){
 		mtmp->mfaction = undeadfaction;
 		newsym(mtmp->mx,mtmp->my);
-		allow_minvent = !rn2(4);
+		if(undeadfaction != WHISPERING) allow_minvent = !rn2(4);
 	}
 	
 	if(Race_if(PM_DROW) && in_mklev && Is_qstart(&u.uz) && 
@@ -7040,6 +7034,8 @@ register struct permonst *ptr;
 	
 	if(ual == A_VOID) return FALSE;
 	
+	if(Role_if(PM_ANACHRONOUNBINDER) && (mndx==PM_MIND_FLAYER || mndx==PM_MASTER_MIND_FLAYER)) return TRUE;
+
 	if (((mndx <= PM_QUINON && mndx >= PM_MONOTON) || mndx == PM_AXUS) && sgn(mal) == sgn(ual)){
 		if(!(u.uevent.uaxus_foe) && u.ualign.record >= 10){
 			return TRUE;

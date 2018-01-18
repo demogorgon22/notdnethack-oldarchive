@@ -1777,8 +1777,7 @@ hitmu(mtmp, mattk)
             } else hitmsg(mtmp, mattk);
 		break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-	   case AD_YANK:
-		pline("");
+	   case AD_YANK:{
 		int squares[9];
 		int ttx,tty;
 		int i = 0;
@@ -1839,7 +1838,7 @@ hitmu(mtmp, mattk)
 			pline("%s's wires rip at your fleshs!", Monnam(mtmp));
 	
 		}
-		break;
+		} break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	    case AD_BLUD:
 			if(has_blood(youracedata)) {

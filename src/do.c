@@ -22,6 +22,7 @@ STATIC_DCL int FDECL(menu_drop, (int));
 #endif
 #ifdef OVL2
 STATIC_DCL int NDECL(currentlevel_rewrite);
+STATIC_DCL int NDECL(acuOK);
 STATIC_DCL void NDECL(final_level);
 STATIC_DCL boolean NDECL(no_spirits);
 /* static boolean FDECL(badspot, (XCHAR_P,XCHAR_P)); */
@@ -919,8 +920,18 @@ doup()
 		return(1);
 	}
 	if(ledger_no(&u.uz) == 1) {
-		if (yn("Beware, there will be no return! Still climb?") != 'y')
-			return(0);
+		if(!Role_if(PM_ANACHRONOUNBINDER)){
+			if (yn("Beware, there will be no return! Still climb?") != 'y')
+				return(0);
+		} else {
+			int items = acuOK();
+			if (yn("Beware, there will be no return! Still climb?") != 'y')
+				return(0);
+			else if(u.uhave.amulet && items){
+				You("require the %s.",items == 1?"Illithid Staff":items == 2?"Elder Cerebral Fluid":"Illithid Staff and the Elder Cerebral Fluid");
+				return 0;
+			}
+		}
 	}
 	if(!next_to_u()) {
 		You("are held back by your pet!");
@@ -954,6 +965,23 @@ doup()
 }
 
 d_level save_dlevel = {0, 0};
+
+STATIC_OVL int
+acuOK()
+{
+	struct obj *otmp;
+	int found = 3;
+	for(otmp = invent; otmp; otmp=otmp->nobj){
+		if(otmp->oartifact == ART_ILLITHID_STAFF){
+			if(otmp->cobj->oartifact == ART_ELDER_CEREBRAL_FLUID) found -=2;
+			found -= 1;
+		} else if(otmp->oartifact == ART_ELDER_CEREBRAL_FLUID){
+			found -=2;
+		}
+	}
+	return found;
+
+}
 
 /* check that we can write out the current level */
 STATIC_OVL int
@@ -1027,7 +1055,7 @@ d_level *newlevel;
 boolean at_stairs, falling, portal;
 {
 	int fd, l_idx;
-	xchar new_ledger;
+	int new_ledger;
 	boolean cant_go_back,
 		up = (depth(newlevel) < depth(&u.uz)),
 		newdungeon = (u.uz.dnum != newlevel->dnum),
@@ -1099,7 +1127,7 @@ boolean at_stairs, falling, portal;
 	}
 	/*Can't move on in spirit land until the dead are dead*/
 	if (In_void(&u.uz) && (!no_spirits() || !u.uhave.amulet)) {
-		pline("A mysterious force prevents you from descending.");
+		pline("A mysterious force prevents you from %s.",up?"ascending":"descending");
 		return;
 	}
 	// if (on_level(&u.uz, &nemesis_level) && !(quest_status.got_quest) && flags.stag) {
@@ -1703,6 +1731,7 @@ int different;
 		mtmp->mfaction = ZOMBIFIED;
 		mtmp->zombify = 0;
 	}
+	if(mtmp->data==&mons[PM_ILSENSINE_THE_FALLEN] || mtmp->data == &mons[PM_UNKNOWN_GOD]) mtmp->mpeaceful = 1;	
 	switch (where) {
 	    case OBJ_INVENT:
 		if (is_uwep) {

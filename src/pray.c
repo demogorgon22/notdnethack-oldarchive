@@ -60,6 +60,7 @@ const char	*BlackMother = "the Black Mother";
 const char	*AllInOne = "Yog-Sothoth";
 const char	*AcuL= "Ilsensine the Banished One";
 const char	*AcuLL= "Ilsensine";
+const char	*UnknownGod = "An Unknown God";
 
 static const char *godvoices[] = {
     "booms out",
@@ -2149,6 +2150,17 @@ dosacrifice()
 
     if (otmp->otyp == AMULET_OF_YENDOR) {
 		if (!Is_astralevel(&u.uz)) {
+			if(Role_if(PM_ANACHRONOUNBINDER) && In_void(&u.uz)){
+				if(Is_sacris(&u.uz)){
+					if(uamul == otmp) Amulet_off();
+					u.uevent.ascended = 1;
+					if(carried(otmp)) useup(otmp); /* well, it's gone now */
+					else useupf(otmp, 1L);
+					You("offer the Amulet of Yendor to %s...", a_gname());
+					done(ESCAPED);
+				}
+			}
+
 			if (Hallucination)
 				You_feel("homesick.");
 			else
@@ -2222,7 +2234,7 @@ dosacrifice()
 				}
 			}
 		} else {
-			You("do not give the amulet to this false god. You must use the Elder Memories invocation on the void altar.");
+			You("do not give the amulet to this %s deity. You must use the Elder Memories invocation on the void altar.",altaralign==A_LAWFUL?"fallen":"false");
 		}
     } /* real Amulet */
 
@@ -3077,6 +3089,7 @@ aligntyp alignment;
 		if(u.uz.dnum == chaos_dnum && !on_level(&chaose_level,&u.uz)) gnam = Chaos;
 		else if(u.uz.dnum == chaos_dnum && on_level(&chaose_level,&u.uz)) gnam = DeepChaos;
 		else if(Role_if(PM_EXILE) && In_quest(&u.uz)) gnam = Demiurge;
+		else if(Is_sacris(&u.uz)) gnam = UnknownGod;
 		else if(In_neu(&u.uz)){
 			if(on_level(&rlyeh_level,&u.uz)) gnam = AllInOne;
 			else gnam = BlackMother;
