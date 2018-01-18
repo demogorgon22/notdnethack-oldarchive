@@ -25,31 +25,31 @@
  * God names use a leading underscore to flag goddesses.
  */
 const struct Role roles[] = {
-{	{"Anachronounbinder", 		 0}, {
-	{"Exorcist",        0},
-	{"Unbinder",      0},
-	{"Vestige Vanquisher",      0},
-	{"Spirit Killer",       0},
-	{"Mind Flayer", 0},
-	{"Psionaut", 0},
-	{"Void Voider",       0},
-	{"Telekinetic",     0},
-	{"Keeper of the Gate",    0} },
-	"Ilsensine", "Crom", "the Devil",	/* ahahah */
-	"Acu", "The Elder Pool", "The Far Reach",
-	PM_ANACHRONOUNBINDER, NON_PM, PM_BRAIN_GOLEM,
-	PM_ULITHARID, PM_MINDLESS_THRALL, PM_MENZOBERRANZAN,
-	PM_NEOTHELID, PM_ADVERSARY, S_HUMANOID, S_WORM,
-	ART_ELDER_CEREBRAL_FLUID,
-	MA_HUMAN|MA_DWARF|MA_GNOME|MA_ELF|MA_ORC|MA_DRAGON|MA_ANIMAL, ROLE_MALE|ROLE_FEMALE |
-	  ROLE_LAWFUL,
+{	{"Archeologist", 0}, {
+	{"Digger",      0},
+	{"Field Worker",0},
+	{"Investigator",0},
+	{"Exhumer",     0},
+	{"Excavator",   0},
+	{"Spelunker",   0},
+	{"Speleologist",0},
+	{"Collector",   0},
+	{"Curator",     0} },
+	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
+	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings",
+	PM_ARCHEOLOGIST, NON_PM, NON_PM,
+	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
+	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
+	ART_ITLACHIAYAQUE,
+	MA_HUMAN|MA_DWARF|MA_GNOME|MA_CLOCK|MA_VAMPIRE|MA_DRAGON, ROLE_MALE|ROLE_FEMALE |
+	  ROLE_LAWFUL|ROLE_NEUTRAL,
 	/* Str Int Wis Dex Con Cha */
-	{  12, 10,  7, 12,  12,  7 },
-	{  24, 20, 15, 20, 24, 15 },
+	{   7, 10, 10,  7,  7,  7 },
+	{  20, 20, 20, 10, 20, 10 },
 	/* Init   Lower  Higher */
 	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
-	{  4, 3,  0, 2,  0, 3 },12,	/* Energy */
-	10, 5, 0, 2, 10, A_INT, SPE_SLOW_MONSTER,   -9
+	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
+	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -9
 },
 {	{"Anachrononaut", 0}, {
 	{"Survivor",   0},
@@ -184,33 +184,6 @@ const struct Role roles[] = {
 	-10, 5, 0, 2, 10, A_INT, SPE_TELEPORT_AWAY,   -19
 },
 #endif	/* CONVICT */
-{	{"Explorer", 0}, {
-	{"Digger",      0},
-	{"Field Worker",0},
-	{"Investigator",0},
-	{"Exhumer",     0},
-	{"Excavator",   0},
-	{"Spelunker",   0},
-	{"Speleologist",0},
-	{"Collector",   0},
-	{"Curator",     0} },
-	"Quetzalcoatl", "Camaxtli", "Huhetotl", /* Central American */
-	"Arc", "the College of Archeology", "the Tomb of the Toltec Kings",
-	PM_ARCHEOLOGIST, NON_PM, NON_PM,
-	PM_LORD_CARNARVON, PM_STUDENT, PM_MINION_OF_HUHETOTL,
-	NON_PM, PM_HUMAN_MUMMY, S_SNAKE, S_MUMMY,
-	ART_ITLACHIAYAQUE,
-	MA_HUMAN|MA_DWARF|MA_GNOME|MA_CLOCK|MA_VAMPIRE|MA_DRAGON, ROLE_MALE|ROLE_FEMALE |
-	  ROLE_LAWFUL|ROLE_NEUTRAL,
-	/* Str Int Wis Dex Con Cha */
-	{   7, 10, 10,  7,  7,  7 },
-	{  20, 20, 20, 10, 20, 10 },
-	/* Init   Lower  Higher */
-	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
-	{  1, 0,  0, 1,  0, 1 },14,	/* Energy */
-	10, 5, 0, 2, 10, A_INT, SPE_MAGIC_MAPPING,   -9
-},
-
 {	{"Healer", 0}, {
 	{"Rhizotomist",    0},
 	{"Empiric",        0},
@@ -235,6 +208,32 @@ const struct Role roles[] = {
 	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
 	{  1, 4,  0, 1,  0, 2 },20,	/* Energy */
 	10, 3,-3, 2, 10, A_WIS, SPE_CURE_SICKNESS,   -14
+},
+{	{"Illithanachronounbinder", 		 0}, {
+	{"Exorcist",        0},
+	{"Unbinder",      0},
+	{"Vestige Vanquisher",      0},
+	{"Spirit Killer",       0},
+	{"Mind Flayer", 0},
+	{"Psionaut", 0},
+	{"Void Voider",       0},
+	{"Telekinetic",     0},
+	{"Keeper of the Gate",    0} },
+	"Ilsensine", "Crom", "the Devil",	/* ahahah */
+	"Acu", "The Elder Pool", "The Far Reach",
+	PM_ANACHRONOUNBINDER, NON_PM, PM_BRAIN_GOLEM,
+	PM_ULITHARID, PM_MINDLESS_THRALL, PM_MENZOBERRANZAN,
+	PM_NEOTHELID, PM_ADVERSARY, S_HUMANOID, S_WORM,
+	ART_ELDER_CEREBRAL_FLUID,
+	MA_HUMAN|MA_DWARF|MA_GNOME|MA_ELF|MA_ORC|MA_DRAGON|MA_ANIMAL, ROLE_MALE|ROLE_FEMALE |
+	  ROLE_LAWFUL,
+	/* Str Int Wis Dex Con Cha */
+	{  12, 10,  7, 12,  12,  7 },
+	{  24, 20, 15, 20, 24, 15 },
+	/* Init   Lower  Higher */
+	{ 11, 0,  0, 4,  1, 0 },	/* Hit points */
+	{  4, 3,  0, 2,  0, 3 },12,	/* Energy */
+	10, 5, 0, 2, 10, A_INT, SPE_DETECT_MONSTERS,   -9
 },
 {	{"Knight", 0}, {
 	{"Gallant",     0},

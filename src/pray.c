@@ -1999,7 +1999,7 @@ dosacrifice()
 		You("worry that you have not yet completed your mission.");
 	}
 	
-    if (In_endgame(&u.uz)) {
+    if (In_endgame(&u.uz) || Is_sacris(&u.uz) || Is_ilsensine(&u.uz)) {
 	if (!(otmp = getobj(sacrifice_types, "sacrifice"))) return 0;
     } else {
 	if (!(otmp = floorfood("sacrifice", 1))) return 0;
@@ -2151,13 +2151,26 @@ dosacrifice()
     if (otmp->otyp == AMULET_OF_YENDOR) {
 		if (!Is_astralevel(&u.uz)) {
 			if(Role_if(PM_ANACHRONOUNBINDER) && In_void(&u.uz)){
-				if(Is_sacris(&u.uz)){
+				if(Is_sacris(&u.uz) || Is_ilsensine(&u.uz)){
 					if(uamul == otmp) Amulet_off();
 					u.uevent.ascended = 1;
 					if(carried(otmp)) useup(otmp); /* well, it's gone now */
 					else useupf(otmp, 1L);
 					You("offer the Amulet of Yendor to %s...", a_gname());
-					done(ESCAPED);
+					if(Is_sacris(&u.uz)){
+						adjalign(20);/*True lawful?*/
+						pline("Strange sounds echo around you!");
+						pline("What happens next?");
+						done(ESCAPED);
+					} else {
+						adjalign(10);
+						pline("The Void collapses as you and Ilsensine are launched toward the heavens.");
+						pline("The Gate closes behind you, no longer able to hold the spirits of the enslaved.");
+						pline("With the amulet's power Ilsensine is restored to his former glory.");
+						You("are blessed by Ilsensine's flowing tentacles and dubbed Maanzecorian.");
+						pline("As time moves at the blink of an eye you watch the illithid empire return to power.");
+						done(ASCENDED);
+					}
 				}
 			}
 

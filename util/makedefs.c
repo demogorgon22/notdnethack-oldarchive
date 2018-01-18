@@ -543,10 +543,10 @@ const char *build_date;
 #endif
 
     if (getenv("COMMIT_DESC") && getenv("COMMIT_DESC")[0])
-        Sprintf(outbuf, "dNetHack v%s (dNAO git %s), last build %s.",
+        Sprintf(outbuf, "notdNetHack v%s (notdNetHack git %s), last build %s.",
                 version_string(versbuf), getenv("COMMIT_DESC"), build_date);
     else
-        Sprintf(outbuf, "dNetHack v%s (dNAO), last build %s.",
+        Sprintf(outbuf, "notdNetHack v%s (notdNetHack), last build %s.",
                 version_string(versbuf), build_date);
     return outbuf;
 }

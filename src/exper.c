@@ -434,6 +434,10 @@ void
 pluslvl(incr)
 boolean incr;	/* true iff via incremental experience growth */
 {		/*	(false for potion of gain level)      */
+	if(Role_if(PM_ANACHRONOUNBINDER) && !(u.spiritSummons & sealKey[u.sealorder[u.ulevel]]) && !wizard){
+		if(!incr) You_feel("an experience adjustment.");
+		return;/*keep acus from leveling up til they beat their spirit*/
+	}
 	register int num;
 
 	if (!incr) You_feel("more experienced.");

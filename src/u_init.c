@@ -39,13 +39,12 @@ static struct trobj Archeologist[] = {
 };
 static struct trobj Anachronounbinder[] = {
 	{ QUARTERSTAFF, 3, WEAPON_CLASS, 1, 0 },
-	{ ATHAME, 0, WEAPON_CLASS, 1, 0 },
+	{ DAGGER, 0, WEAPON_CLASS, 1, 0 },
 	{ LEATHER_ARMOR, 1, ARMOR_CLASS, 1, 0 },
 	{ LEATHER_HELM, 0, ARMOR_CLASS, 1, 0 },
 	{ GLOVES, 0, ARMOR_CLASS, 1, 0 },
 	{ HIGH_BOOTS, 0, ARMOR_CLASS, 1, 0 },
 	{ ROBE, 0, ARMOR_CLASS, 1, 0 },
-	//{ POWER_PACK, 0, TOOL_CLASS, 3, 0 },
 	{ FOOD_RATION, 0, FOOD_CLASS, 3, 0 },
 	{R_LYEHIAN_FACEPLATE,0,TOOL_CLASS,1,0},
 	{ 0, 0, 0, 0, 0 }
@@ -671,10 +670,7 @@ static const struct def_skill Skill_A[] = {
 };
 
 static const struct def_skill Skill_Acu[] = {
-    { FFORM_SHII_CHO, P_EXPERT },		{ FFORM_MAKASHI,  P_EXPERT },
-    { FFORM_SORESU, P_EXPERT },			{ FFORM_ATARU,  P_SKILLED },
-    { FFORM_DJEM_SO, P_EXPERT },		{ FFORM_SHIEN,  P_EXPERT },
-    { FFORM_NIMAN, P_EXPERT },			{ FFORM_JUYO,  P_BASIC },
+    { FFORM_SHII_CHO, P_EXPERT },	
     { P_DAGGER, P_EXPERT },		{ P_KNIFE,  P_SKILLED }, 
     { P_SHORT_SWORD, P_SKILLED },{ P_LANCE,  P_BASIC },
     { P_SABER, P_SKILLED },		{ P_LONG_SWORD,  P_BASIC },
@@ -684,14 +680,14 @@ static const struct def_skill Skill_Acu[] = {
 //    { P_FIREARM, P_SKILLED },
 //#endif
     { P_DART, P_BASIC },		{ P_PICK_AXE, P_BASIC },
-    { P_WHIP, P_SKILLED },		 { P_BOOMERANG, P_SKILLED },
+    { P_WHIP, P_SKILLED },		 { P_BOOMERANG, P_BASIC },
     { P_ATTACK_SPELL, P_BASIC },	{ P_HEALING_SPELL, P_BASIC },
     { P_DIVINATION_SPELL, P_SKILLED},	{ P_MATTER_SPELL, P_BASIC},
 #ifdef STEED
     { P_RIDING, P_BASIC },
 #endif
-    { P_TWO_WEAPON_COMBAT, P_EXPERT },
-    { P_BARE_HANDED_COMBAT, P_BASIC },
+    //{ P_TWO_WEAPON_COMBAT, P_EXPERT },
+    { P_BARE_HANDED_COMBAT, P_EXPERT },{ P_TWO_HANDED_SWORD, P_SKILLED },
     { P_NONE, 0 }
 };
 
