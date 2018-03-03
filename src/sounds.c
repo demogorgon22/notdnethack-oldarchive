@@ -2920,7 +2920,7 @@ int tx,ty;
 		if(u.sealTimeout[CHUPOCLOPS-FIRST_SEAL] < moves){
 			struct obj *o = 0, *otmp;
 			for(otmp = level.objects[tx][ty]; otmp; otmp = otmp->nexthere){
-				if(is_chupodible(otmp)){
+				if(is_chupodible(otmp) || (Role_if(PM_ANACHRONOUNBINDER) && poisonous(&mons[otmp->corpsenm]))){
 					o = otmp;
 			break;
 				}
@@ -2985,7 +2985,7 @@ int tx,ty;
 	case DANTALION:{
 		if(u.sealTimeout[DANTALION-FIRST_SEAL] < moves){
 			//Spirit requires that his seal be drawn around a throne.
-			if(IS_THRONE(levl[tx][ty].typ)){
+			if(IS_THRONE(levl[tx][ty].typ) || Role_if(PM_ANACHRONOUNBINDER)){
 				if(Role_if(PM_ANACHRONOUNBINDER)){
 					if(u.spiritSummons&SEAL_DANTALION){
 						You("have already released this spirit from the void.");

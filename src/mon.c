@@ -321,7 +321,7 @@ register struct monst *mtmp;
 			obj = oname(obj, artiname(ART_DRAGON_PLATE));
 		goto default_1;
 	    case PM_AMON:
-			obj = mksobj_at(FIRE_HORN, x, y, FALSE, FALSE);
+			obj = mksobj_at(FROST_HORN, x, y, FALSE, FALSE);
 			obj->spe = 7;
 			newsym(x, y);
 		goto default_1;
