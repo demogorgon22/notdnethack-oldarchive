@@ -870,6 +870,19 @@ const struct Race races[] = {
 	{  1, 0,  1, 0,  1, 0 },	/* Energy */
 	NIGHTVISION2
 },
+{	"salamander", "salamandic", "Sala-broship", "Sal",
+	{0, 0},
+	PM_SALAMANDER, NON_PM, NON_PM, NON_PM,
+	ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
+	MA_ANIMAL, 0, MA_GNOME|MA_DWARF,
+	/*    Str     Int Wis Dex Con Cha */
+	{      3,      3,  3,  3,  3,  3 },
+	{ STR19(19),  18, 18, 18, 18, 15 },
+	/* Init   Lower  Higher */
+	{  2, 0,  1, 0,  0, 1 },	/* Hit points */
+	{  0, 0,  0, 0,  0, 0 },	/* Energy */
+	NORMALNIGHTVIS
+},
 {	"vampire", "vampiric", "vampirehood", "Vam",
 	{"vampire", "vampiress"},
 	PM_VAMPIRE, NON_PM, PM_HUMAN_MUMMY, PM_ZOMBIE,

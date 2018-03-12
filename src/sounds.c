@@ -3245,7 +3245,7 @@ int tx,ty;
 						u.sealsKnown &= ~(SEAL_ENKI);
 						return 0;
 					}
-					pline("Bow to me, and I shall teach the arts of civilzation.\"");
+					pline("Bow to me, and I shall teach the arts of civilization.\"");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[ENKI-FIRST_SEAL] = moves + bindingPeriod;
 				}
