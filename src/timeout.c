@@ -1688,7 +1688,8 @@ lightsaber_deactivate (obj, timer_attached)
 			    break;
 		}
 	    } else {
-		You_hear("a %s deactivate.",obj->otyp == POWER_ARMOR?"power suit":"lightsaber");
+			if(obj->oartifact != ART_HOLY_MOONLIGHT_SWORD)
+				You_hear("a %s deactivate.",obj->otyp == POWER_ARMOR?"power suit":"lightsaber");
 	    }
 	}
 	// if (obj->otyp == DOUBLE_LIGHTSABER)
