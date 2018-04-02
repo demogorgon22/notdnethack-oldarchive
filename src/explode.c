@@ -302,7 +302,11 @@ boolean yours; /* is it your fault (for killing monsters) */
 		break;
 		default: impossible("explosion base type %d?", type); return;
 	}
-
+	if(type == 169){
+		str = "burst of healing";
+		adtyp = AD_HEAL;
+		//yours = FALSE;//for now this will do, will have to undo if it somehow makes monsters happy at you
+	}
 	any_shield = visible = FALSE;
 	for(i = 0; i < area->nlocations; i++) {
 		explmask = FALSE;
@@ -338,6 +342,8 @@ boolean yours; /* is it your fault (for killing monsters) */
 			case AD_DISE: /*assumes only swamp ferns have disease explosions*/
 				explmask = !!Sick_resistance;
 				diseasemu(&mons[PM_SWAMP_FERN_SPORE]);
+				break;
+			case AD_HEAL:
 				break;
 			default:
 				impossible("explosion type %d?", adtyp);
@@ -385,6 +391,8 @@ boolean yours; /* is it your fault (for killing monsters) */
 				break;
 			case AD_DISE:
 				explmask |= resists_sickness(mtmp);
+				break;
+			case AD_HEAL:
 				break;
 			default:
 				impossible("explosion type %d?", adtyp);
@@ -465,7 +473,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 		idamres = idamnonres = 0;
 
 		/* DS: Allow monster induced explosions also */
-		if (type >= 0 || type <= -10)
+		if (type != 169 && (type >= 0 || type <= -10))
 		    (void)zap_over_floor((xchar)xi, (xchar)yi, type, &shopdamage);
 
 		mtmp = m_at(xi, yi);
@@ -528,7 +536,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 		 */
 			int mdam = dam;
 
-			if (resist(mtmp, olet, 0, FALSE)) {
+			if (type != 169 && resist(mtmp, olet, 0, FALSE)) {
 			    if (!silent && cansee(xi,yi))
 				pline("%s resists the %s!", Monnam(mtmp), str);
 			    mdam = dam/2;
@@ -552,7 +560,13 @@ boolean yours; /* is it your fault (for killing monsters) */
 			/* KMH -- Don't blame the player for pets killing gas spores */
 			if (yours) xkilled(mtmp, (silent ? 0 : 1));
 			else monkilled(mtmp, "", (int)adtyp);
-		} else if (!flags.mon_moving && yours) setmangry(mtmp);
+		} else if (type != 169 && !flags.mon_moving && yours) setmangry(mtmp);
+		else if(type == 169){
+			if(!mtmp->mtame && !(mtmp->data->geno & G_UNIQ)){
+				mtmp->mpeaceful = TRUE;
+				doredraw();
+			}	
+		}
 	}
 
 	/* Do your injury last */
@@ -595,7 +609,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 				u.uhp -= damu;
 		    flags.botl = 1;
 		}
-
+		if(u.uhp > u.uhpmax) u.uhp = u.uhpmax;
 		if (u.uhp <= 0 || (Upolyd && u.mh <= 0)) {
 		    if (Upolyd) {
 			rehumanize();

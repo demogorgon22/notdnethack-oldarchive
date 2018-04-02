@@ -116,6 +116,7 @@ STATIC_DCL int NDECL(use_reach_attack);
 STATIC_DCL int NDECL(psionic_craze);
 STATIC_DCL int NDECL(psionic_pulse);
 STATIC_DCL int NDECL(dotelekinesis);
+STATIC_DCL int NDECL(syringify);
 STATIC_PTR int NDECL(doprev_message);
 STATIC_PTR int NDECL(timed_occupation);
 STATIC_PTR int NDECL(doextcmd);
@@ -627,6 +628,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(Role_if(PM_HEALER)){//let healers make things into syringes
+		Sprintf(buf, "Syringify");
+		any.a_int = MATTK_SYR;	/* must be non-zero */
+		incntlet = 's';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(attacktype(youracedata, AT_MAGC)){
 		Sprintf(buf, "Monster Spells");
 		any.a_int = MATTK_MAGIC;	/* must be non-zero */
@@ -833,9 +843,27 @@ domonability()
 	break;
 	case MATTK_PULSE: return psionic_pulse();
 	break;
+	case MATTK_SYR: return syringify();
+	break;
 	}
 	return 0;
 }
+
+STATIC_OVL int
+syringify(){
+	struct obj *obj;
+	static const char allowall[3] = {ALLOW_NONE,WEAPON_CLASS,0};
+	obj = getobj(allowall,"turn into a syringe");
+	if(obj->otyp == CROSSBOW_BOLT){
+		You("infuse %s with the power of healing!",the(xname(obj)));
+		obj->otyp = SYRINGE;
+	} else {
+		You("aren't quite sure how to turn that into a syringe.");
+		return 0;
+	}
+	return 1;
+}
+
 
 STATIC_OVL int
 psionic_pulse(){

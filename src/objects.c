@@ -108,6 +108,8 @@ PROJECTILE("ya", "bamboo arrow",
 		0, 15, 1, 4, 7, 7, 1, METAL, -P_BOW, HI_METAL),
 PROJECTILE("crossbow bolt", (char *)0,
 		1, 55, 1, 2, 4, 6, 0, IRON, -P_CROSSBOW, HI_METAL),
+PROJECTILE("syringe", (char *)0,
+		1, 0, 1, 2, 0, 0, 0, IRON, -P_CROSSBOW, HI_METAL),
 PROJECTILE("droven bolt", "crossbow bolt", /*Needs encyc entry*/
 		0,  0, 1, 2, 9, 6, 2, OBSIDIAN_MT, -P_CROSSBOW, CLR_BLACK),
 

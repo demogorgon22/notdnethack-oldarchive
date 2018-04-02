@@ -1594,6 +1594,12 @@ int objPos;
 		/* have to do this after bhit() so u.ux & u.uy are correct */
 		if(Weightless || Levitation)
 		    hurtle(-u.dx, -u.dy, urange, TRUE);
+		
+	    	if(obj && obj->otyp == SYRINGE && ammo_and_launcher(obj, launcher)){
+			                explode(bhitpos.x, bhitpos.y, 169,
+						-1 * d(4,4), WEAPON_CLASS, EXPL_LIME);
+					return;
+		}
 
 		if (obj_destroyed) return; /* fixes C343-100 */
 	}
@@ -1621,7 +1627,7 @@ int objPos;
 		if (obj_gone) return;
 	}
 	if(obj && obj->otyp == PSIONIC_PULSE) return;
-
+	
 //#ifdef FIREARMS
 	/* Handle grenades or rockets */
 	if (is_grenade(obj)) {

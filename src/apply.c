@@ -5228,6 +5228,8 @@ doapply()
 		update_inventory();
 	} break;
 	case UNICORN_HORN:
+		/*big_explode(u.ux, u.uy,
+			169, -20, SCROLL_CLASS, EXPL_LIME,2);*/
 		use_unicorn_horn(obj);
 	break;
 	case WOODEN_FLUTE:

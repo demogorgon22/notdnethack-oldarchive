@@ -220,7 +220,8 @@ static struct trobj Convict[] = {
 #endif  /* CONVICT */
 static struct trobj Healer[] = {
 	{ SCALPEL, 0, WEAPON_CLASS, 1, 1 },
-	{ QUARTERSTAFF, 0, WEAPON_CLASS, 1, 1 },
+	{ CROSSBOW, 1, WEAPON_CLASS, 1, 1 },
+	{ SYRINGE, 0, WEAPON_CLASS, 30, UNDEF_BLESS },
 	{ GLOVES, 0, ARMOR_CLASS, 1, UNDEF_BLESS },
 	{ HEALER_UNIFORM, 0, ARMOR_CLASS, 1, 1 },
 	{ STETHOSCOPE, 0, TOOL_CLASS, 1, 0 },
@@ -809,7 +810,7 @@ static const struct def_skill Skill_H[] = {
     { P_JAVELIN, P_BASIC },		{ P_TRIDENT, P_BASIC },
     { P_SLING, P_SKILLED },		{ P_DART, P_EXPERT },
     { P_SHURIKEN, P_SKILLED },		{ P_UNICORN_HORN, P_EXPERT },
-    { P_HEALING_SPELL, P_EXPERT },
+    { P_HEALING_SPELL, P_EXPERT },	{ P_CROSSBOW, P_EXPERT },
     { P_BARE_HANDED_COMBAT, P_BASIC },
     { P_BEAST_MASTERY, P_EXPERT },
     { P_NONE, 0 }
