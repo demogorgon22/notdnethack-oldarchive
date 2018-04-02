@@ -683,6 +683,14 @@ register struct monst *mtmp;
 			};
 			keepattacking = hmonwith(mtmp, tmp, weptmp, tchtmp, tentattack, 1);
 		}
+		if(P_SKILL(P_MARTIAL_ARTS) >= P_GRAND_MASTER && !uwep && !Upolyd && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp ){
+			static struct attack kickattack[] = 
+			{
+				{AT_KICK,AD_PHYS,1,4},
+				{0,0,0,0}
+			};
+			keepattacking = hmonwith(mtmp, tmp, weptmp, tchtmp, kickattack, 1);
+		}
 	}
 	if((u.sealsActive || u.specialSealsActive) && keepattacking && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp){
 		static int nspiritattacks;
@@ -4052,7 +4060,6 @@ use_weapon:
 		// if (i==1 && uwep && (u.umonnum == PM_SUCCUBUS ||
 			// u.umonnum == PM_INCUBUS)) goto use_weapon;
 #endif
-	case AT_KICK:
 	case AT_BITE:
 	case AT_LNCK: /*Note: long reach attacks are being treated as melee only for polymorph purposes*/
 		/* [ALI] Vampires are also smart. They avoid biting
@@ -4107,8 +4114,9 @@ wisp_shdw_dhit2:
 				mon_nam(mon));
 			break;
 			}
-			if (mattk->aatyp == AT_KICK)
+			if (mattk->aatyp == AT_KICK){
 				You("kick %s.", mon_nam(mon));
+			}
 			else if (mattk->aatyp == AT_BITE || mattk->aatyp == AT_LNCK)
 				You("bite %s.", mon_nam(mon));
 			else if (mattk->aatyp == AT_STNG)
@@ -4130,6 +4138,9 @@ wisp_shdw_dhit2:
 		    sum[i] = damageum(mon, mattk);
 		} else
 			missum(mon, mattk);
+	break;
+	case AT_KICK:
+		kick_monster(mon->mx,mon->my);
 	break;
 	case AT_HITS:
 			sum[i] = damageum(mon, mattk);

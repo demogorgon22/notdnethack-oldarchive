@@ -6170,6 +6170,26 @@ arti_invoke(obj)
 		seffects(otmp);
           	obfree(otmp,(struct obj *)0);
 	} break;
+	case BOMB:{//The goal is to hide dynamite random places on level and light it
+		pline("Fire in the hole!");
+		struct obj* otmp;
+		/*for (int x = 0; x < COLNO; x++) {
+			for (int y = 0; y < ROWNO; y++) {
+				if(!rn2(100)){
+					//make and light a red stick
+					otmp = mksobj_at(STICK_OF_DYNAMITE,x,y,TRUE,FALSE);
+					otmp->quan = (obj->spe > 0)?obj->spe:1;
+					begin_burn(otmp,FALSE);	
+				}
+			}
+		}*/
+		for(int i = 0; i < 5 + obj->spe; i++){
+			otmp = mksobj_at(STICK_OF_DYNAMITE,rn2(COLNO),rn2(ROWNO),TRUE,FALSE);
+			otmp->quan = (obj->spe > 0)?obj->spe:1;
+			begin_burn(otmp,FALSE);
+		}
+		doredraw();
+	} break;
 	case ILLITHID:{ /*Don't need to wield to do*/
 		int illithidFunc = doillithidmenu("Select function.", obj);
 		switch(illithidFunc){

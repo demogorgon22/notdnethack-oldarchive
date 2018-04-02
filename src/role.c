@@ -876,8 +876,8 @@ const struct Race races[] = {
 	ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
 	MA_ANIMAL, 0, MA_GNOME|MA_DWARF,
 	/*    Str     Int Wis Dex Con Cha */
-	{      3,      3,  3,  3,  3,  3 },
-	{ STR19(19),  18, 18, 18, 18, 15 },
+	{      3,      3,  3,  3,  3,  3 },//add lava swimming and fire attack
+	{ STR19(19),  18, 18, 18, 18, 15 },//and more
 	/* Init   Lower  Higher */
 	{  2, 0,  1, 0,  0, 1 },	/* Hit points */
 	{  0, 0,  0, 0,  0, 0 },	/* Energy */

@@ -339,6 +339,7 @@ struct artifact {
 #define COLLECT_TAX     (LAST_PROP+66)
 #define RAND_SCROLL     (LAST_PROP+67)
 #define ILLITHID        (LAST_PROP+68)
+#define BOMB        (LAST_PROP+69)
 
 #define MASTERY_ARTIFACT_LEVEL 20
 

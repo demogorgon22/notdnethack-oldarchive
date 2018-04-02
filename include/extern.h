@@ -529,6 +529,7 @@ E boolean FDECL(ship_object, (struct obj *,XCHAR_P,XCHAR_P,BOOLEAN_P));
 E void NDECL(obj_delivery);
 E schar FDECL(down_gate, (XCHAR_P,XCHAR_P));
 E void FDECL(impact_drop, (struct obj *,XCHAR_P,XCHAR_P,XCHAR_P));
+E void FDECL(kick_monster, (XCHAR_P,XCHAR_P));
 
 /* ### dothrow.c ### */
 
