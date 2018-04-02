@@ -637,6 +637,24 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(Race_if(PM_VAMPIRE) && Upolyd){//revert back to vamprie form
+		Sprintf(buf, "Become Vampire");
+		any.a_int = MATTK_VAMP;	/* must be non-zero */
+		incntlet = 'V';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
+	if(Race_if(PM_VAMPIRE) && youracedata != &mons[PM_VAMPIRE_BAT]){//become a cool vampire bat
+		Sprintf(buf, "Become Bat");
+		any.a_int = MATTK_BAT;	/* must be non-zero */
+		incntlet = 'B';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(attacktype(youracedata, AT_MAGC)){
 		Sprintf(buf, "Monster Spells");
 		any.a_int = MATTK_MAGIC;	/* must be non-zero */
@@ -844,6 +862,16 @@ domonability()
 	case MATTK_PULSE: return psionic_pulse();
 	break;
 	case MATTK_SYR: return syringify();
+	break;
+	case MATTK_VAMP:{
+			rehumanize();
+		return 1;
+	}
+	break;
+	case MATTK_BAT:{
+		polymon(PM_VAMPIRE_BAT); 
+		return 1;
+	}
 	break;
 	}
 	return 0;
