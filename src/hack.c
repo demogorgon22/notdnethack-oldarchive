@@ -575,11 +575,21 @@ xchar x, y;
 }
 
 #endif /* OVL1 */
+
+void
+soko1(){
+	pline("Go soko!");
+	return;
+}
+
+
+
 #ifdef OVL3
 
 /* return TRUE if (dx,dy) is an OK place to move
  * mode is one of DO_MOVE, TEST_MOVE or TEST_TRAV
  */
+
 boolean 
 test_move(ux, uy, dx, dy, mode)
 int ux, uy, dx, dy;
@@ -594,6 +604,7 @@ int mode;
     /*
      *  Check for physical obstacles.  First, the place we are going.
      */
+	if(tmpr->typ == TREE && In_sokoban(&u.uz)) soko1();
     if (IS_ROCK(tmpr->typ) || tmpr->typ == IRONBARS) {
 	if (Blind && mode == DO_MOVE) feel_location(x,y);
 	if (Passes_walls && may_passwall(x,y)) {

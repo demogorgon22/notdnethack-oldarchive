@@ -222,7 +222,7 @@ const char *directory;
 {
 	int gfd, lfd, sfd;
 	int lev, savelev, hpid;
-	xchar levc;
+	int levc;
 	struct version_info version_data;
 
 	/* level 0 file contains:
