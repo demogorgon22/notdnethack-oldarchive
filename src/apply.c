@@ -33,6 +33,7 @@ STATIC_DCL void FDECL(light_torch, (struct obj *));
 STATIC_DCL void FDECL(use_tinning_kit, (struct obj *));
 STATIC_DCL void FDECL(use_figurine, (struct obj **));
 STATIC_DCL void FDECL(use_grease, (struct obj *));
+STATIC_DCL void FDECL(vape, (struct obj *));
 STATIC_DCL void FDECL(use_trap, (struct obj *));
 STATIC_DCL void FDECL(use_stone, (struct obj *));
 STATIC_DCL int FDECL(use_sensor, (struct obj *));
@@ -2249,7 +2250,23 @@ struct obj **optr;
 static NEARDATA const char lubricables[] = { ALL_CLASSES, ALLOW_NONE, 0 };
 static NEARDATA const char need_to_remove_outer_armor[] =
 			"need to remove your %s to grease your %s.";
-
+STATIC_OVL void
+vape(obj)
+struct obj *obj;
+{
+	struct obj *otmp;
+	if(obj->spe < 1){
+		pline("The %s is out of juice!",xname(obj));
+		return;
+	}
+	You("smack the %s.",xname(obj));
+	otmp = mksobj(obj->ovar1,FALSE,FALSE);
+	otmp->cursed = obj->cursed;
+	otmp->blessed = obj->blessed;
+	potionbreathe(otmp);
+	obfree(otmp, (struct obj*)0);
+	obj->spe--;
+}
 STATIC_OVL void
 use_grease(obj)
 struct obj *obj;
@@ -2749,6 +2766,10 @@ struct obj *hypo;
 			break;
 		}
 	} else {
+		if(amp->spe <= 0){
+			pline("The ampule is empty!");
+			return 1;
+		}
 		switch(amp->ovar1){
 			case POT_GAIN_ABILITY:
 				if(amp->cursed) {
@@ -4891,6 +4912,9 @@ doapply()
 		break;
 	case CAN_OF_GREASE:
 		use_grease(obj);
+		break;
+	case POTION_VAPORIZER:
+		vape(obj);
 		break;
 	case LOCK_PICK:
 #ifdef TOURIST

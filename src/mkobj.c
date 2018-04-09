@@ -751,6 +751,13 @@ boolean artif;
 		case DRUM_OF_EARTHQUAKE:
 					otmp->spe = rn1(5,4);
 		break;
+	    case POTION_VAPORIZER:
+		otmp->spe = rn1(5,4);
+		struct obj* otmp2;
+		otmp2 = mkobj(POTION_CLASS,FALSE);
+		otmp->ovar1 = otmp2->otyp;
+		obfree(otmp2, (struct obj *)0);
+		break;
 	    case MASK:
 			if(rn2(4)){
 				int tryct2 = 0;
