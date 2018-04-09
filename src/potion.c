@@ -1606,6 +1606,7 @@ register struct obj *obj;
 			}
 			if(++i >= A_MAX) i = 0;
 		    }
+		    You_feel("good.");
 		}
 		break;
 	case POT_FULL_HEALING:
@@ -1620,6 +1621,7 @@ register struct obj *obj;
 		if (Upolyd && u.mh < u.mhmax) u.mh++, flags.botl = 1;
 		if (u.uhp < u.uhpmax) u.uhp++, flags.botl = 1;
 		exercise(A_CON, TRUE);
+		You_feel("better.");
 		break;
 	case POT_SICKNESS:
 		if (!Role_if(PM_HEALER)) {
@@ -1629,11 +1631,16 @@ register struct obj *obj;
 			    if (u.uhp <= 5) u.uhp = 1; else u.uhp -= 5;
 			}
 			flags.botl = 1;
+			You_feel("unwell.");
 			exercise(A_CON, FALSE);
 		}
 		break;
 	case POT_HALLUCINATION:
-		You("have a momentary vision.");
+		if(!Hallucination){
+		(void) make_hallucinated(itimeout_incr(HHallucination,
+					   rnd(5)),
+				  TRUE, 0L);
+		}
 		break;
 	case POT_CONFUSION:
 	case POT_BOOZE:
@@ -1642,11 +1649,12 @@ register struct obj *obj;
 		make_confused(itimeout_incr(HConfusion, rnd(5)), FALSE);
 		break;
 	case POT_INVISIBILITY:
+		if(!Invis) incr_itimeout(&HInvis, rnd(5));
 		if (!Blind && !Invis) {
 		    kn++;
-		    pline("For an instant you %s!",
-			See_invisible ? "could see right through yourself"
-			: "couldn't see yourself");
+		    pline("You barely %s!",
+			See_invisible ? "can see right through yourself"
+			: "can't see yourself");
 		}
 		break;
 	case POT_PARALYSIS:
@@ -1693,6 +1701,7 @@ register struct obj *obj;
 		}
 		break;
 	case POT_STARLIGHT:
+		You("shimmer.");
 		if(u.umonnum == PM_GREMLIN) {
 		    (void)split_mon(&youmonst, (struct monst *)0);
 		} else if (u.ulycn >= LOW_PM) {
@@ -1717,6 +1726,7 @@ register struct obj *obj;
 		break;
 	case POT_ACID:
 	case POT_POLYMORPH:
+		You_feel("tender.");
 		exercise(A_CON, FALSE);
 		break;
 	case POT_BLOOD:
@@ -1726,10 +1736,21 @@ register struct obj *obj;
 		} else
 		    exercise(A_CON, FALSE);
 		break;
-/*
+
 	case POT_GAIN_LEVEL:
+		You_feel("adept.");
+		more_experienced(rnd(5),10);
+		break;
 	case POT_LEVITATION:
-	case POT_FRUIT_JUICE:
+		/* kludge to ensure proper operation of float_up() */
+		HLevitation = 1;
+		float_up();
+		/* reverse kludge */
+		HLevitation = 0;
+		incr_itimeout(&HLevitation, rnd(5)+1);
+		if(obj->blessed) HLevitation |= I_SPECIAL;
+		break;	
+/*	case POT_FRUIT_JUICE:
 	case POT_MONSTER_DETECTION:
 	case POT_OBJECT_DETECTION:
 	case POT_OIL:
@@ -2343,6 +2364,17 @@ dodip()
 	  obj = otmp;
 	}
 	potion->in_use = TRUE;		/* assume it will be used up */
+	if(obj->otyp == POTION_VAPORIZER && !(potion->otyp == POT_WATER && (potion->blessed || potion->cursed))){
+		Your("%s is filled with %s juice.",xname(obj),obj_descr[objects[potion->otyp].oc_name_idx].oc_name);
+		obj->known = potion->known;
+		if(obj->ovar1 == potion->otyp)
+			obj->spe += rn1(5,4); 
+		else 
+			obj->spe = rn1(5,4); 
+		obj->ovar1 = potion->otyp;
+		useup(potion);
+		return 1;
+	}
 	if(potion->otyp == POT_WATER) {
 		boolean useeit = !Blind;
 		if (useeit) (void) Shk_Your(Your_buf, obj);

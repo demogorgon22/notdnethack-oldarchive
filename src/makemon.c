@@ -2516,6 +2516,7 @@ register struct monst *mtmp;
 		}
 		else//Outside the mines, only one in 6 gnomes have hats.
 		    if(!rn2(6)) (void)mongets(mtmp, GNOMISH_POINTY_HAT);
+		    if(!rn2(100)) (void)mongets(mtmp, POTION_VAPORIZER);
 		  } //end case brackets
 
 		break;

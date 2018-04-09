@@ -581,6 +581,7 @@ boolean ignore_oquan;
 				case 8: Strcat(buf, "eight-headed "); break;
 			}
 		}
+		
 		if((obj)->obj_material == WOOD && obj->otyp != MOON_AXE && obj->ovar1) Strcat(buf, "carved ");
 		if(obj->otyp == MOON_AXE && nn){
 			switch(obj->ovar1){
@@ -603,6 +604,10 @@ boolean ignore_oquan;
 		}
 	    case VENOM_CLASS:
 	    case TOOL_CLASS:
+		if(obj->otyp == POTION_VAPORIZER && obj->ovar1 && obj->known){
+			Strcat(buf,obj_descr[objects[obj->ovar1].oc_name_idx].oc_name);
+			Strcat(buf," flavored ");
+		}
 		if (typ == LENSES)
 			Strcat(buf, "pair of ");
 		if(typ == HYPOSPRAY_AMPULE){

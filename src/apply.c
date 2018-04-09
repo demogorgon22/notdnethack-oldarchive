@@ -2255,16 +2255,21 @@ vape(obj)
 struct obj *obj;
 {
 	struct obj *otmp;
+	if(breathless(youracedata)){
+		You("don't have a proper respiratory system!");
+		return;
+	}
 	if(obj->spe < 1){
 		pline("The %s is out of juice!",xname(obj));
 		return;
 	}
-	You("smack the %s.",xname(obj));
+	You("%s the %s.",Hallucination?"smack":"inhale from",xname(obj));
 	otmp = mksobj(obj->ovar1,FALSE,FALSE);
 	otmp->cursed = obj->cursed;
 	otmp->blessed = obj->blessed;
 	potionbreathe(otmp);
 	obfree(otmp, (struct obj*)0);
+	obj->known = 1;
 	obj->spe--;
 }
 STATIC_OVL void
