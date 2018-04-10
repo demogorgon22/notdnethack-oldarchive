@@ -1638,7 +1638,7 @@ register struct obj *obj;
 	case POT_HALLUCINATION:
 		if(!Hallucination){
 		(void) make_hallucinated(itimeout_incr(HHallucination,
-					   rnd(5)),
+					   rnd(5)+1),
 				  TRUE, 0L);
 		}
 		break;
@@ -1646,10 +1646,11 @@ register struct obj *obj;
 	case POT_BOOZE:
 		if(!Confusion)
 			You_feel("somewhat dizzy.");
-		make_confused(itimeout_incr(HConfusion, rnd(5)), FALSE);
+		make_confused(itimeout_incr(HConfusion, rnd(5)+1), FALSE);
 		break;
 	case POT_INVISIBILITY:
-		if(!Invis) incr_itimeout(&HInvis, rnd(5));
+		if(!Invis) incr_itimeout(&HInvis, rnd(5)+1);
+		newsym(u.ux,u.uy);
 		if (!Blind && !Invis) {
 		    kn++;
 		    pline("You barely %s!",
@@ -1677,7 +1678,7 @@ register struct obj *obj;
 		break;
 	case POT_SPEED:
 		if (!Fast) Your("knees seem more flexible now.");
-		incr_itimeout(&HFast, rnd(5));
+		incr_itimeout(&HFast, rnd(5)+1);
 		exercise(A_DEX, TRUE);
 		break;
 	case POT_BLINDNESS:
@@ -1750,6 +1751,10 @@ register struct obj *obj;
 		incr_itimeout(&HLevitation, rnd(5)+1);
 		if(obj->blessed) HLevitation |= I_SPECIAL;
 		break;	
+	case POT_ENLIGHTENMENT:
+		You_feel("thoughtful.");	
+		exercise(A_WIS, TRUE);
+		break;
 /*	case POT_FRUIT_JUICE:
 	case POT_MONSTER_DETECTION:
 	case POT_OBJECT_DETECTION:
@@ -2365,7 +2370,7 @@ dodip()
 	}
 	potion->in_use = TRUE;		/* assume it will be used up */
 	if(obj->otyp == POTION_VAPORIZER && !(potion->otyp == POT_WATER && (potion->blessed || potion->cursed))){
-		Your("%s is filled with %s juice.",xname(obj),obj_descr[objects[potion->otyp].oc_name_idx].oc_name);
+		Your("%s is filled with %s%s.",xname(obj),(potion->known || obj->known)?obj_descr[objects[potion->otyp].oc_name_idx].oc_name:"strange",(potion->otyp != POT_WATER && potion->otyp!=POT_OIL)?" juice":"");
 		obj->known = potion->known;
 		if(obj->ovar1 == potion->otyp)
 			obj->spe += rn1(5,4); 

@@ -2268,6 +2268,10 @@ struct obj *obj;
 	otmp->cursed = obj->cursed;
 	otmp->blessed = obj->blessed;
 	potionbreathe(otmp);
+	if(obj->ovar1 == POT_WATER){
+		You("rip a fat cloud.");
+		makemon(&mons[PM_FOG_CLOUD], u.ux, u.uy, MM_ADJACENTOK);	
+	}
 	obfree(otmp, (struct obj*)0);
 	obj->known = 1;
 	obj->spe--;

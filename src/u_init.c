@@ -231,7 +231,7 @@ static struct trobj Healer[] = {
 	/* always blessed, so it's guaranteed readable */
 	{ SPE_HEALING, 0, SPBOOK_CLASS, 1, 1 },
 	{ SPE_EXTRA_HEALING, 0, SPBOOK_CLASS, 1, 1 },
-	{ SPE_STONE_TO_FLESH, 0, SPBOOK_CLASS, 1, 1 },
+	//{ SPE_STONE_TO_FLESH, 0, SPBOOK_CLASS, 1, 1 },
 	{ APPLE, 0, FOOD_CLASS, 5, 0 },
 	{ EUCALYPTUS_LEAF, 0, FOOD_CLASS, 5, 1 },
 	{ 0, 0, 0, 0, 0 }
@@ -484,7 +484,14 @@ static struct trobj TallowCandles[] = {
 	{ TALLOW_CANDLE, 0, TOOL_CLASS, 1, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
-
+static struct trobj StoneToFlesh[] = {
+	{ SPE_STONE_TO_FLESH, 0, SPBOOK_CLASS, 1, 1 },
+	{ 0, 0, 0, 0, 0 }
+};
+static struct trobj Vape[] = {
+	{ POTION_VAPORIZER, 5, TOOL_CLASS, 1, 0 },
+	{ 0, 0, 0, 0, 0 }
+};
 static struct trobj SleepPotions[] = {
 	{ POT_SLEEPING, 0, POTION_CLASS, 1, 0 },
 	{ 0, 0, 0, 0, 0 }
@@ -1854,6 +1861,7 @@ u_init()
 		u.umoney0 = rn1(1000, 1001);
 #endif
 		ini_inv(Healer);
+		if(!Race_if(PM_GNOME)) ini_inv(StoneToFlesh);
 		ini_inv(Lamp);
 		knows_object(POT_FULL_HEALING);
 		skill_init(Skill_H);
@@ -2211,11 +2219,13 @@ u_init()
 
 	case PM_GNOME:
 	    /* Gnomes can recognize common dwarvish objects */
-	    if (!Role_if(PM_ARCHEOLOGIST)){
+	    if (!Role_if(PM_ARCHEOLOGIST) && !Role_if(PM_ANACHRONOUNBINDER)){
 			ini_inv(GnomishHat);
 		}
 		skill_add(Skill_G);
 		ini_inv(TallowCandles);
+		ini_inv(Vape);
+		knows_object(POTION_VAPORIZER);
 		knows_object(GNOMISH_POINTY_HAT);
 	    knows_object(AKLYS);
 	    knows_object(DWARVISH_HELM);
