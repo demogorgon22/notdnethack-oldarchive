@@ -685,6 +685,7 @@ struct level_map {
 #ifdef RECORD_ACHIEVE
 	{ "minend",     &mineend_level },
 	{ "soko1",      &sokoend_level },
+	{ "soko2",      &sokofun_level },
 #endif
 	/*Void*/
 	{ "ilsensin",	&ilsensin_level },
@@ -977,13 +978,13 @@ init_dungeons()		/* initialize the "dungeon" structs */
 	}
 /*
  *	I hate hardwiring these names. :-(
- */
+ *//*haha lowkey glad you did*/
 	quest_dnum = dname_to_dnum("The Quest");
 	neutral_dnum = dname_to_dnum("Neutral Quest");
 	rlyeh_dnum = dname_to_dnum("The Lost Cities");
 	chaos_dnum = dname_to_dnum("Chaos Quest");
 	law_dnum = dname_to_dnum("Law Quest");
-	sokoban_dnum = dname_to_dnum("Sokoban");
+	sokoban_dnum = dname_to_dnum("Lokoban");
 	mines_dnum = dname_to_dnum("The Gnomish Mines");
 	tower_dnum = dname_to_dnum("Vlad's Tower");
 	tomb_dnum = dname_to_dnum("The Lost Tomb");

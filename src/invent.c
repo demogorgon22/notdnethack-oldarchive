@@ -327,7 +327,7 @@ struct obj *obj;
 			  obj->record_achieve_special) {
 			achieve.finish_sokoban = 1;
 			obj->record_achieve_special = 0;
-			livelog_write_string("completed Sokoban");
+			livelog_write_string("completed Lokoban");
 	}
 #endif /* RECORD_ACHIEVE */
 

@@ -168,6 +168,7 @@ E struct dgn_topology {		/* special dungeon levels for speed */
     d_level     d_mineend_level;
     d_level     d_sokoend_level;
 #endif
+    d_level     d_sokofun_level;
 
 } dungeon_topology;
 /* macros for accesing the dungeon levels by their old names */
@@ -279,6 +280,7 @@ E struct dgn_topology {		/* special dungeon levels for speed */
 #ifdef RECORD_ACHIEVE
 #define mineend_level           (dungeon_topology.d_mineend_level)
 #define sokoend_level           (dungeon_topology.d_sokoend_level)
+#define sokofun_level           (dungeon_topology.d_sokofun_level)
 #endif
 
 E NEARDATA stairway dnstair, upstair;		/* stairs up and down */

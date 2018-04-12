@@ -1677,7 +1677,7 @@ register struct obj *obj;
 		} else You("yawn.");
 		break;
 	case POT_SPEED:
-		if (!Fast) Your("knees seem more flexible now.");
+		if (!HFast) Your("knees seem more flexible now.");
 		incr_itimeout(&HFast, rnd(5)+1);
 		exercise(A_DEX, TRUE);
 		break;
@@ -2370,7 +2370,7 @@ dodip()
 	}
 	potion->in_use = TRUE;		/* assume it will be used up */
 	if(obj->otyp == POTION_VAPORIZER && !(potion->otyp == POT_WATER && (potion->blessed || potion->cursed))){
-		Your("%s is filled with %s%s.",xname(obj),(potion->known || obj->known)?obj_descr[objects[potion->otyp].oc_name_idx].oc_name:"strange",(potion->otyp != POT_WATER && potion->otyp!=POT_OIL)?" juice":"");
+		Your("%s is filled with %s%s.",xname(obj),(potion->known || obj->known)?obj_descr[objects[potion->otyp].oc_name_idx].oc_name:"strange",(potion->otyp != POT_WATER && potion->otyp!=POT_OIL && potion->otyp!=POT_FRUIT_JUICE && potion->otyp!=POT_ACID)?" juice":"");
 		obj->known = potion->known;
 		if(obj->ovar1 == potion->otyp)
 			obj->spe += rn1(5,4); 

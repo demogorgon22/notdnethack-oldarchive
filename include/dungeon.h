@@ -198,6 +198,7 @@ typedef struct branch {
 #define Is_minetown_level(x)     (on_level(x, &minetown_level))
 #define Is_mineend_level(x)     (on_level(x, &mineend_level))
 #define Is_sokoend_level(x)     (on_level(x, &sokoend_level))
+#define Is_sokofun_level(x)     (on_level(x, &sokofun_level))
 
 #define In_sokoban(x)	((x)->dnum == sokoban_dnum)
 #define In_tower(x)		((x)->dnum == tower_dnum)

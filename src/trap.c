@@ -3768,9 +3768,10 @@ struct trap *ttmp;
 
 	bad_tool = (obj->cursed ||
 				(obj->otyp != POT_WATER));
-	fails = try_disarm(ttmp, bad_tool);
-	if (fails < 2) return fails;
-
+	//fails = try_disarm(ttmp, bad_tool);
+//	pline("%d",fails);
+//	if (fails < 2) return fails;
+	if(bad_tool) return 0;
 	useup(obj);
 	makeknown(POT_WATER);
 	You("manage to extinguish the pilot light!");

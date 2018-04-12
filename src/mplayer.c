@@ -116,7 +116,7 @@ xchar x, y;
 register boolean special;
 {
 	register struct monst *mtmp;
-	char nam[PL_NSIZ];
+	char nam[PL_PSIZ];
 
 	if(!is_mplayer(ptr))
 		return((struct monst *)0);

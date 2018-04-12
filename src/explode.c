@@ -307,6 +307,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 		adtyp = AD_HEAL;
 		//yours = FALSE;//for now this will do, will have to undo if it somehow makes monsters happy at you
 	}
+	//pline("%d",area->nlocations);
 	any_shield = visible = FALSE;
 	for(i = 0; i < area->nlocations; i++) {
 		explmask = FALSE;
@@ -405,6 +406,10 @@ boolean yours; /* is it your fault (for killing monsters) */
 		    unmap_object(xi, yi);
 		    newsym(xi, yi);
 		}
+		if(xi > COLNO) xi = COLNO-1;
+		if(xi < 0) xi = 0;
+		if(yi > ROWNO) yi = ROWNO-1;
+		if(yi < 0) yi = 0;
 		if (cansee(xi, yi)) visible = TRUE;
 		if (explmask) any_shield = TRUE;
 		area->locations[i].shielded = explmask;
@@ -440,6 +445,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 			}
 			curs_on_u();	/* will flush screen and output */
 			delay_output();
+			if(area->nlocations != 9) doredraw();
 		    }
 
 		    /* Cover last shield glyph with blast symbol. */
@@ -454,6 +460,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 		} else {		/* delay a little bit. */
 		    delay_output();
 		    delay_output();
+		    if(area->nlocations != 9) doredraw();
 		}
 		tmp_at(DISP_END, 0); /* clear the explosion */
 	} else if (!remote) {
@@ -564,9 +571,9 @@ boolean yours; /* is it your fault (for killing monsters) */
 		else if(type == 169){
 			if(!mtmp->mtame && !(mtmp->data->geno & G_UNIQ)){
 				mtmp->mpeaceful = TRUE;
-				doredraw();
 			}	
 		}
+		doredraw();
 	}
 
 	/* Do your injury last */

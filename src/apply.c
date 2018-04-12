@@ -2268,7 +2268,7 @@ struct obj *obj;
 	otmp->cursed = obj->cursed;
 	otmp->blessed = obj->blessed;
 	potionbreathe(otmp);
-	if(obj->ovar1 == POT_WATER){
+	if(obj->ovar1 == POT_WATER || obj->ovar1 == POT_OIL || obj->ovar1 == POT_FRUIT_JUICE){
 		You("rip a fat cloud.");
 		makemon(&mons[PM_FOG_CLOUD], u.ux, u.uy, MM_ADJACENTOK);	
 	}

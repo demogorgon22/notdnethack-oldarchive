@@ -489,21 +489,21 @@ GEOMETRY:center,center
 #12345678901234567890123456789012345678901234567890
 MAP
 -------------------
-|.................|
-|.................|
-|.....TTTTTTT.....|
-|.....TT...TT.....|
-|.....T.....T.....|
-|.....T.....T.....|
-|.....T.....T.....|
-|.....TT...TT.....|
-|.....TTTTTTT.....|
-|.................|
-|.................|
+|...|.........|...|
+|...|.........|...|
+|...|.TTTTTTT.|...|
+|...|.TT...TT.|...|
+|...|.T.....T.|...|
+|...|.T.....T.|...|
+|...|.T.....T.|...|
+|...|.TT...TT.|...|
+|...|.TTTTTTT.|...|
+|...|.........|...|
+|...|.........|...|
 -------------------
 ENDMAP
 STAIR:(09,06),down
-STAIR:(15,06),up
+STAIR:(16,06),up
 REGION:(00,00,18,12),lit,"ordinary"
 NON_DIGGABLE:(00,00,18,12)
 NON_PASSWALL:(00,00,18,12)
@@ -614,9 +614,9 @@ TRAP:"hole",(17,01)
 TRAP:"hole",(18,01)
 TRAP:"hole",(19,01)
 TRAP:"hole",(20,01)
-TRAP:"hole",(21,01)
-TRAP:"hole",(22,01)
-TRAP:"hole",(23,01)
+#TRAP:"hole",(21,01)
+#TRAP:"hole",(22,01)
+#TRAP:"hole",(23,01)
 
 MONSTER:'m',"giant mimic", random, m_object "massive stone crate"
 MONSTER:'m',"giant mimic", random, m_object "massive stone crate"
@@ -709,9 +709,9 @@ TRAP:"hole",(16,01)
 TRAP:"hole",(17,01)
 TRAP:"hole",(18,01)
 TRAP:"hole",(19,01)
-TRAP:"hole",(20,01)
-TRAP:"hole",(21,01)
-TRAP:"hole",(22,01)
+#TRAP:"hole",(20,01)
+#TRAP:"hole",(21,01)
+#TRAP:"hole",(22,01)
 
 MONSTER:'m',"giant mimic", random, m_object "massive stone crate"
 MONSTER:'m',"giant mimic", random, m_object "massive stone crate"

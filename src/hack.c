@@ -193,8 +193,9 @@ moverock()
 			bury_objs(rx, ry); //Crate handling: Bury everything here (inc boulder item) then free the boulder after
 			if(otmp->otyp == MASSIVE_STONE_CRATE){
 				struct obj *item;
-				if(Blind) pline("Click!");
-				else pline("The crate pops open as it lands.");
+				if(Blind) pline("Boom!");
+				else pline("The crate explodes as it lands.");
+				explode(rx, ry, 10, rn2(10) + 5, TOOL_CLASS, EXPL_MAGICAL);
 				/* drop any objects contained inside the crate */
 				while ((item = otmp->cobj) != 0) {
 					obj_extract_self(item);
@@ -577,8 +578,30 @@ xchar x, y;
 #endif /* OVL1 */
 
 void
-soko1(){
-	pline("Go soko!");
+sokofun(type)
+int type;
+{
+	struct obj *obj;
+	for (int x = 0; x < COLNO; x++) {
+		for (int y = 0; y < ROWNO; y++) {
+			if(type == 1 && levl[x][y].typ == TREE){
+			       	levl[x][y].typ = ROOM;
+				obj = mksobj_at(FRAG_GRENADE, x, y, TRUE, FALSE); 
+				obj->cursed = FALSE;
+				arm_bomb(obj, TRUE);
+				unblock_point(x,y);
+			}
+			if(type == 2 && IS_WALL(levl[x][y].typ)){
+				levl[x][y].typ = ROOM;
+				obj = mksobj_at(FRAG_GRENADE, x, y, TRUE, FALSE); 
+				obj->cursed = FALSE;
+				arm_bomb(obj, TRUE);
+				unblock_point(x,y);
+			}
+			
+		}
+	}
+	doredraw();
 	return;
 }
 
@@ -604,7 +627,8 @@ int mode;
     /*
      *  Check for physical obstacles.  First, the place we are going.
      */
-	if(tmpr->typ == TREE && In_sokoban(&u.uz)) soko1();
+	if((tmpr->typ == TREE) && In_sokoban(&u.uz) && Is_sokofun_level(&u.uz)) sokofun(1);
+	if(IS_WALL(tmpr->typ) && In_sokoban(&u.uz) && Is_sokofun_level(&u.uz)) sokofun(2);
     if (IS_ROCK(tmpr->typ) || tmpr->typ == IRONBARS) {
 	if (Blind && mode == DO_MOVE) feel_location(x,y);
 	if (Passes_walls && may_passwall(x,y)) {
