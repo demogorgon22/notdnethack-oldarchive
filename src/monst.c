@@ -6699,8 +6699,8 @@ is a red right hand
     MON("Menzoberranzan", S_LICH,//25
 	LVL(17, 9, -4, 90, 0), (G_NOGEN|G_NOCORPSE|G_UNIQ),
 	A(ATTK(AT_TUCH, AD_COLD, 3, 6),
-	  ATTK(AT_TENT, AD_DRIN, 1, 4), ATTK(AT_TENT, AD_DRLI, 1, 2),
-	  ATTK(AT_TENT, AD_DRLI, 1, 2), 
+	  ATTK(AT_TENT, AD_DRIN, 1, 4), ATTK(AT_TENT, AD_DRLI, 1, 4),
+	  ATTK(AT_TENT, AD_DRLI, 1, 4), 
 	  ATTK(AT_MAGC, AD_SPEL, 0, 0),
 	  NO_ATTK),
 	SIZ(1200, 100, 0, MS_NEMESIS, MZ_HUMAN),
