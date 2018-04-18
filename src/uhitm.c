@@ -2246,7 +2246,9 @@ defaultvalue:
 		/* note: s_suffix returns a modifiable buffer */
 		if (!noncorporeal(mdat))
 		    whom = strcat(s_suffix(whom), " flesh");
-		pline(fmt, eden_silver ? "silver skin and " : "", whom);
+		if(canspotmon(mon)) 
+			pline(fmt, eden_silver ? "silver skin and " : "", whom);
+		else pline(fmt, whom);
 	}
 	if (ironmsg) {
 		const char *fmt;

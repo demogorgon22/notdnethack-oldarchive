@@ -310,6 +310,15 @@ register boolean special;
 			rwammo = YA;
 		break;
 #ifdef TOURIST
+		case PM_SALAMANDER:
+			if (rn2(4)) weapon = rn2(2) ? QUARTERSTAFF : ATHAME;
+	   	 	armor = rn2(2) ? BLACK_DRAGON_SCALE_MAIL :
+	    			SILVER_DRAGON_SCALE_MAIL;
+	    	cloak = ROBE;
+		    if (rn2(4)) helm = HELM_OF_BRILLIANCE;
+		    shield = STRANGE_OBJECT;
+
+		break;
 		case PM_TOURIST:
 		    if (special && !rn2(4)) weapon = LIGHTSABER;
 		break;

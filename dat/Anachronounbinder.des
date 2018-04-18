@@ -123,6 +123,27 @@ MONSTER:'U',"elder brain",(66,11),peaceful
 ENGRAVING:(66,11),burn,"A god time has forgotten lurks in the sacristy of the voided temple."
 MONSTER:'h',"master mind flayer",(51,7),"The Vestitoligist",peaceful
 
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'w',"neothelid",random
+MONSTER:'V',random,random
+MONSTER:'w',random,random
+MONSTER:'V',random,random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'h',"adversary",random
+MONSTER:'V',random,random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',"villithid",random
+MONSTER:'V',random,random
 #
 #	The "locate" level for the quest.
 #
@@ -208,11 +229,6 @@ MONSTER:'w',"neothelid",random
 MONSTER:'w',"neothelid",random
 MONSTER:'w',"neothelid",random
 MONSTER:'V',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
 MONSTER:'w',random,random
 MONSTER:'V',random,random
 MONSTER:'h',"adversary",random
@@ -297,11 +313,6 @@ MONSTER:'w',"neothelid",random
 MONSTER:'w',"neothelid",random
 MONSTER:'w',"neothelid",random
 MONSTER:'V',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
-MONSTER:'h',random,random
 MONSTER:'w',random,random
 MONSTER:'V',random,random
 MONSTER:'h',"adversary",random
