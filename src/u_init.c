@@ -43,10 +43,16 @@ static struct trobj Anachronounbinder[] = {
 	{ LEATHER_ARMOR, 1, ARMOR_CLASS, 1, 0 },
 	{ LEATHER_HELM, 0, ARMOR_CLASS, 1, 0 },
 	{ GLOVES, 0, ARMOR_CLASS, 1, 0 },
-	{ HIGH_BOOTS, 0, ARMOR_CLASS, 1, 0 },
-	{ ROBE, 0, ARMOR_CLASS, 1, 0 },
 	{ FOOD_RATION, 0, FOOD_CLASS, 3, 0 },
 	{R_LYEHIAN_FACEPLATE,0,TOOL_CLASS,1,0},
+	{ 0, 0, 0, 0, 0 }
+};
+static struct trobj AcuBoots[] = {
+	{ HIGH_BOOTS, 0, ARMOR_CLASS, 1, 0 },
+	{ 0, 0, 0, 0, 0 }
+};
+static struct trobj AcuRobe[] = {
+	{ ROBE, 0, ARMOR_CLASS, 1, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
 static struct trobj Anachrononaut_Hu[] = {
@@ -1710,6 +1716,8 @@ u_init()
 	break;
 	case PM_ANACHRONOUNBINDER:
 		ini_inv(Anachronounbinder);
+		if(!slithy(youracedata) && humanoid(youracedata)) ini_inv(AcuBoots);
+		if(!Race_if(PM_DROW) && ! Race_if(PM_INCANTIFIER)) ini_inv(AcuRobe);
 		knows_object(KHAKKHARA);
 		knows_object(DOUBLE_LIGHTSABER);
 		knows_object(HIGH_BOOTS);

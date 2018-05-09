@@ -117,6 +117,7 @@ STATIC_DCL int NDECL(psionic_craze);
 STATIC_DCL int NDECL(psionic_pulse);
 STATIC_DCL int NDECL(dotelekinesis);
 STATIC_DCL int NDECL(syringify);
+STATIC_DCL int NDECL(lavify);
 STATIC_PTR int NDECL(doprev_message);
 STATIC_PTR int NDECL(timed_occupation);
 STATIC_PTR int NDECL(doextcmd);
@@ -532,7 +533,7 @@ domonability()
 	if(youracedata == &mons[PM_TOVE]){
 		Sprintf(buf, "Bore Hole");
 		any.a_int = MATTK_HOLE;	/* must be non-zero */
-		incntlet = 'B';
+		incntlet = 'H';
 		add_menu(tmpwin, NO_GLYPH, &any,
 			incntlet, 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
@@ -613,7 +614,7 @@ domonability()
 	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 12){//bad magic number
 		Sprintf(buf, "Psionic Insanity");
 		any.a_int = MATTK_CRAZE;	/* must be non-zero */
-		incntlet = 'i';
+		incntlet = 'P';
 		add_menu(tmpwin, NO_GLYPH, &any,
 			incntlet, 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
@@ -650,6 +651,15 @@ domonability()
 		Sprintf(buf, "Become Bat");
 		any.a_int = MATTK_BAT;	/* must be non-zero */
 		incntlet = 'B';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
+	if(youracedata == &mons[PM_SALAMANDER]){//get warm and lava
+		Sprintf(buf, "Secrete Lava");
+		any.a_int = MATTK_LAVA;	/* must be non-zero */
+		incntlet = 'L';
 		add_menu(tmpwin, NO_GLYPH, &any,
 			incntlet, 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
@@ -873,10 +883,27 @@ domonability()
 		return 1;
 	}
 	break;
+	case MATTK_LAVA: return lavify();
+	break;
 	}
 	return 0;
 }
 
+STATIC_OVL int
+lavify(){
+	if(IS_ALTAR(levl[u.ux][u.uy].typ)){
+		aligntyp altaralign = a_align(u.ux,u.uy);
+		pline("Get smote!");
+		return 1;
+
+	}
+	pline("Lava seeps from your pores!");
+	levl[u.ux][u.uy].typ = LAVAPOOL;
+
+	
+
+
+}
 STATIC_OVL int
 syringify(){
 	struct obj *obj;

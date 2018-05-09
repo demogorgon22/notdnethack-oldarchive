@@ -354,6 +354,8 @@ BULLET("rocket", "firework",
 	0,  0,  20, 450,12,20, 0, WP_ROCKET, P, SILVER, -P_FIREARM, CLR_BLUE),/*Needs tile*/
 BULLET("stick of dynamite", "red stick",
 	0,  0,  10, 150, 0, 0, 0,  WP_GENERIC,   B,   PLASTIC, P_NONE, CLR_RED),/*Needs tile*/
+BULLET("nuke", "winged tube",
+	0,  0,  100, 150, 0, 0, 0,  WP_GRENADE,   B,   METAL, -P_FIREARM, CLR_YELLOW),/*Needs tile*/
 
 BULLET("blaster bolt", "ruby bolt",
 		0,  0, 1, 0, 6, 8, 0, WP_BLASTER,   E,   METAL, -P_FIREARM, CLR_RED),/*Needs tile*/

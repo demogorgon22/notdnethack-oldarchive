@@ -212,8 +212,8 @@ DESCRIPTION:    mazelike
 ALIGNMENT:      neutral
 ENTRY:          -1
 RNDLEVEL:		"soko1" "none" @ (1, 0) 2
-LEVEL:		"soko2" "none" @ (2, 0) 1
-LEVEL:		"soko3" "none" @ (3, 0) 1
+LEVEL:		"soko2" "none" @ (2, 0)
+LEVEL:		"soko3" "none" @ (3, 0)
 RNDLEVEL:		"soko4" "none" @ (4, 0) 2
 
 #

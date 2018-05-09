@@ -5382,6 +5382,7 @@ doapply()
 		You("switch %s to %s mode.", yname(obj), 
 			(obj->altmode ? "semi-automatic" : "full automatic"));
 		break;
+	case NUKE:
 	case FRAG_GRENADE:
 	case GAS_GRENADE:
 		if (!obj->oarmed) {
