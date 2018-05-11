@@ -18,7 +18,7 @@ STATIC_DCL void FDECL(at_your_feet, (const char *));
 STATIC_DCL void NDECL(gcrownu);
 #endif	/*ELBERETH*/
 STATIC_DCL void FDECL(pleased,(ALIGNTYP_P));
-STATIC_DCL void FDECL(godvoice,(ALIGNTYP_P,const char*));
+//STATIC_DCL void FDECL(godvoice,(ALIGNTYP_P,const char*));
 STATIC_DCL void FDECL(god_zaps_you,(ALIGNTYP_P));
 STATIC_DCL void FDECL(fry_by_god,(ALIGNTYP_P));
 STATIC_DCL void FDECL(consume_offering,(struct obj *));
@@ -1747,7 +1747,7 @@ water_prayer(bless_water)
     return((boolean)(changed > 0L));
 }
 
-STATIC_OVL void
+void
 godvoice(g_align, words)
     aligntyp g_align;
     const char *words;

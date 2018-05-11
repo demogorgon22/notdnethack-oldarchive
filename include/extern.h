@@ -1943,6 +1943,7 @@ E void FDECL(gods_angry,(ALIGNTYP_P));
 E void FDECL(gods_upset,(ALIGNTYP_P));
 E void FDECL(angrygods,(ALIGNTYP_P));
 E int NDECL(dosacrifice);
+E void FDECL(godvoice,(ALIGNTYP_P,const char*));
 E boolean FDECL(can_pray, (BOOLEAN_P));
 E int NDECL(dopray);
 E const char *NDECL(u_gname);

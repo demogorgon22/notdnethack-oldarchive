@@ -947,7 +947,7 @@ dospit()
 	if (!getdir((char *)0)) return(0);
 	otmp = mksobj(u.umonnum==PM_COBRA ? BLINDING_VENOM 
 									  : (u.umonnum==PM_SPROW || u.umonnum==PM_DRIDER) ? BALL_OF_WEBBING 
-									  : ACID_VENOM,
+									  : (youracedata==&mons[PM_SALAMANDER])? LAVA_BALL:ACID_VENOM,
 			TRUE, FALSE);
 	otmp->spe = 1; /* to indicate it's yours */
 	throwit(otmp, 0L, FALSE, 0, 0);

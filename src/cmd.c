@@ -665,6 +665,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(youracedata == &mons[PM_SALAMANDER] && levl[u.ux][u.uy].typ == LAVAPOOL){//play that funky lava
+		Sprintf(buf, "Splash Lava");
+		any.a_int = MATTK_SPLASH;	/* must be non-zero */
+		incntlet = 'l';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(attacktype(youracedata, AT_MAGC)){
 		Sprintf(buf, "Monster Spells");
 		any.a_int = MATTK_MAGIC;	/* must be non-zero */
@@ -885,6 +894,8 @@ domonability()
 	break;
 	case MATTK_LAVA: return lavify();
 	break;
+	case MATTK_SPLASH: return dospit();
+	break;
 	}
 	return 0;
 }
@@ -893,12 +904,29 @@ STATIC_OVL int
 lavify(){
 	if(IS_ALTAR(levl[u.ux][u.uy].typ)){
 		aligntyp altaralign = a_align(u.ux,u.uy);
-		pline("Get smote!");
+		pline("Lava seeps from your pores towards the altar.");
+		pline("Suddenly your lava evaporates!");
+		if(!Role_if(PM_ANACHRONOUNBINDER)){
+			//godvoice(altaralign,(char *)1);
+			pline("\"Thou %s, %s.\"",
+				(u.ualign.record<0 && altaralign == u.ualign.type)
+				? "hast strayed from the path" :
+					"art arrogant",
+				    youracedata->mlet == S_HUMAN ? "mortal" : "creature");
+			verbalize("Thou must relearn thy lessons!");
+		} else {
+			You_feel("strange echoes of disapprovement from a time past.");
+
+		}
+		(void) adjattrib(A_WIS, -1, FALSE);
+		losexp((char *)0,TRUE,FALSE,TRUE);
 		return 1;
 
 	}
+	losehp(u.uhp/2,"overexertion",KILLED_BY);
 	pline("Lava seeps from your pores!");
 	levl[u.ux][u.uy].typ = LAVAPOOL;
+	return 1;
 
 	
 

@@ -150,6 +150,8 @@ const struct innate {
 
 	hlf_abil[] = { {	14, &(HFlying), "wings sprout from your back", "your wings shrivel and die" },
 		     {	 0, 0, 0, 0 } },
+	sal_abil[] = { {	1, &(HFire_resistance), "cool", "warmer" },
+		     {	 0, 0, 0, 0 } },
 
 	yki_abil[] = { {	1, &(HCold_resistance), "", "" },
 		     {  11, &(HFire_resistance), "cool", "warmer" },
@@ -755,6 +757,7 @@ int oldlevel, newlevel;
 	case PM_INCANTIFIER:	rabil = inc_abil;	break;
 	case PM_VAMPIRE:		rabil = vam_abil;	break;
 	case PM_HALF_DRAGON:	rabil = hlf_abil;	break;
+	case PM_SALAMANDER:	rabil = sal_abil;	break;
 	case PM_YUKI_ONNA:		rabil = yki_abil;	break;
 	case PM_HUMAN:
 	case PM_DWARF:
