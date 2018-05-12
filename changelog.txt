@@ -25,7 +25,15 @@ Added acu role
 	Has extra levels after Astral Plane and must rescue god
 	Full spirit spoiler coming when someone writes one
 	Lots of new artifacts added dropped by spirits
+	Summoning rituals are the same as binder however Dantalion can be
+		summoned anywhere and Chupoclops only needs a poison corpse
+	
 
+
+Artifacts
+	Digout - Dwarvish Mattock that on invoke places random lit dynamite
+		across level
+	
 
 Vampire changes
 	Can #monster to turn into a vampire bat or to rehumanize from any form
@@ -36,6 +44,7 @@ Healer changes
 	Syringes shot from crossbow explode in a healing explosion, pacifying
 		enemies. Unique monsters are immune to this.
 	Can #monster and choose syringify to turn crossbow bolts into syringes
+	Gnomish healers don't get Stone to Flesh
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked
@@ -55,5 +64,14 @@ Salamander race
 	Cannot eat monsters that are too close to amphibians without
 		cannibalism penalty
 	Lava balls burn down any door within heat range of impact
+Dungeon changes
+	Replaced Sokoban branch with Lokoban
+		Levels aren't as much about solving puzzles as they are
+			being cool
+		Same final level and prizes as Sokoban but with an easier
+			puzle
 General changes
 	Can now multishot spears and knives like in vanilla
+	New Tshirt messages
+	Easier to untrap fire traps
+
