@@ -1,12 +1,30 @@
-added acu
+Added acu role
 	Unlocks at levels
 		1
 			tentacle attack
 			mind blast
+			extrinsic telepathy
 		4
 			psionic pulse ability
 		7
 			echolocation
+		10
+			flying
+		12
+			psionic craze ability
+		14
+			reflection
+		15
+			telekinesis ability
+		17
+			teleport control
+		20
+			all thrown items return
+	Cannot reach next level until spirit of your level is summoned
+	God is fallen and cannot pray or sacrifice
+	Has extra levels after Astral Plane and must rescue god
+	Full spirit spoiler coming when someone writes one
+	Lots of new artifacts added dropped by spirits
 
 
 Vampire changes
@@ -14,13 +32,16 @@ Vampire changes
 		at no cost.
 Healer changes
 	No longer start with quarterstaff
-	Start with +1 Crossbow and some syringes
+	Start with +1 crossbow and some syringes
 	Syringes shot from crossbow explode in a healing explosion, pacifying
 		enemies. Unique monsters are immune to this.
 	Can #monster and choose syringify to turn crossbow bolts into syringes
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked
+Gnome changes
+	Starts with potion vaporizer
+	1% of gnome class monsters will start with one
 Salamander race
 	Can secrete a pool of lava at the cost of halving hp
 	Can fling balls of lava that do extra dmg based on xp lvl from pools
@@ -31,6 +52,8 @@ Salamander race
 	Cannot wear boots or even kick things
 	Unlock full salamander attack routine at lvl 14
 	Spear multishot bonus
-	Cannot eat monsters that are too close to amphibians
+	Cannot eat monsters that are too close to amphibians without
+		cannibalism penalty
+	Lava balls burn down any door within heat range of impact
 General changes
 	Can now multishot spears and knives like in vanilla
