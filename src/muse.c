@@ -2528,6 +2528,7 @@ const char *str;
 	    }
 	    return TRUE;
 	} else if (mon->data == &mons[PM_SILVER_DRAGON] ||
+		mon->data == &mons[PM_EDEN] ||
 		mon->data == &mons[PM_CHROMATIC_DRAGON]) {
 	    /* Silver dragons only reflect when mature; babies do not */
 	    if (str)
