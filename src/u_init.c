@@ -883,7 +883,9 @@ static const struct def_skill Skill_G[] = {
     { P_PICK_AXE, P_EXPERT }, { P_CROSSBOW, P_EXPERT },
     { P_CLUB, P_EXPERT }, { P_NONE, 0 }
 };
-
+static const struct def_skill Skill_Sala[] = {
+    { P_SPEAR, P_EXPERT }, { P_NONE, 0 }
+};
 static const struct def_skill Skill_K[] = {
     { P_DAGGER, P_BASIC },		{ P_KNIFE, P_BASIC },
     { P_AXE, P_SKILLED },		{ P_PICK_AXE, P_BASIC },
@@ -2244,6 +2246,9 @@ u_init()
 	    knows_object(DWARVISH_HELM);
 	    knows_object(DWARVISH_MATTOCK);
 	    knows_object(DWARVISH_CLOAK);
+    break;
+	case PM_SALAMANDER:
+		skill_add(Skill_Sala);
     break;
 
 	case PM_ORC:

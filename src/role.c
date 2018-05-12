@@ -872,7 +872,7 @@ const struct Race races[] = {
 },
 {	"salamander", "salamandic", "Sala-broship", "Sal",
 	{0, 0},
-	PM_SALAMANDER, NON_PM, NON_PM, NON_PM,
+	PM_SALAMANDER, NON_PM, PM_HUMAN_MUMMY, PM_ZOMBIE,
 	ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
 	MA_REPTILIAN, 0, MA_GNOME|MA_DWARF,
 	/*    Str     Int Wis Dex Con Cha */

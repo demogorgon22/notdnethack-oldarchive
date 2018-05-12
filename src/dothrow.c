@@ -138,7 +138,8 @@ int thrown;
 	 */
 	skill = objects[obj->otyp].oc_skill;
 	if (((ammo_and_launcher(obj, launcher) && skill != -P_CROSSBOW) || (skill == P_DAGGER && !Role_if(PM_WIZARD)) ||
-			skill == -P_DART || skill == -P_SHURIKEN || skill == -P_BOOMERANG || obj->oartifact == ART_SICKLE_MOON ) &&
+			skill == -P_DART || skill == -P_SHURIKEN || skill == -P_BOOMERANG || skill == P_SPEAR || 
+			skill == P_KNIFE ||obj->oartifact == ART_SICKLE_MOON ) &&
 		!(Confusion || Stunned)) {
 	    /* Bonus if the player is proficient in this weapon... */
 	    switch (P_SKILL(weapon_type(obj))) {
@@ -189,6 +190,9 @@ int thrown;
 			if (obj->otyp == ORCISH_ARROW && launcher &&
 					launcher->otyp == ORCISH_BOW) multishot++;
 		break;
+	    case PM_SALAMANDER:
+			if(skill == P_SPEAR) multishot++;
+	    break;
 	    // case PM_GNOME:
 			// if (obj->otyp == CROSSBOW_BOLT && launcher &&
 					// uwep->otyp == CROSSBOW) multishot++;
@@ -2580,6 +2584,23 @@ boolean from_invent;
 			break;
 		case BALL_OF_WEBBING:
 			dowebgush(x,y, obj->ovar1 ? obj->ovar1 : 2);
+		break;
+		case LAVA_BALL:
+			if(!(x < COLNO && x > 0 && y < ROWNO && y > 0)) break;
+			for(int tx = x-1; tx <= x+1;tx++){
+				for(int ty = y-1; ty <= y+1; ty++){
+					//pline("%d",levl[tx][ty].typ);
+					if(closed_door(tx,ty)){
+						struct rm *lev = &levl[tx][ty];
+					        lev->doormask = D_NODOOR;	
+						unblock_point(tx,ty);
+						if(cansee(tx,ty)){
+							pline("The door burns to a crisp due to nearby heat!"); 
+							newsym(tx,ty);
+						}
+					}
+				}
+			}
 		break;
 	}
 	if (hero_caused) {

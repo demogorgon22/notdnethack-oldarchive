@@ -1,0 +1,36 @@
+added acu
+	Unlocks at levels
+		1
+			tentacle attack
+			mind blast
+		4
+			psionic pulse ability
+		7
+			echolocation
+
+
+Vampire changes
+	Can #monster to turn into a vampire bat or to rehumanize from any form
+		at no cost.
+Healer changes
+	No longer start with quarterstaff
+	Start with +1 Crossbow and some syringes
+	Syringes shot from crossbow explode in a healing explosion, pacifying
+		enemies. Unique monsters are immune to this.
+	Can #monster and choose syringify to turn crossbow bolts into syringes
+Skill changes
+	Grand master martial arts gives extra kick attack
+	AT_KICK for player acts as if you ctrl+D kicked
+Salamander race
+	Can secrete a pool of lava at the cost of halving hp
+	Can fling balls of lava that do extra dmg based on xp lvl from pools
+		of lava
+	Can walk through and play in (and store things in) lava
+	Can reach expert in spear
+	Requires special snakeleg body armour
+	Cannot wear boots or even kick things
+	Unlock full salamander attack routine at lvl 14
+	Spear multishot bonus
+	Cannot eat monsters that are too close to amphibians
+General changes
+	Can now multishot spears and knives like in vanilla

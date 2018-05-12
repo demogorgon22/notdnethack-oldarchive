@@ -949,7 +949,9 @@ dospit()
 									  : (u.umonnum==PM_SPROW || u.umonnum==PM_DRIDER) ? BALL_OF_WEBBING 
 									  : (youracedata==&mons[PM_SALAMANDER])? LAVA_BALL:ACID_VENOM,
 			TRUE, FALSE);
+	//if(youracedata==&mons[PM_SALAMANDER]) otmp = mksobj(LAVA_BALL,TRUE,FALSE);
 	otmp->spe = 1; /* to indicate it's yours */
+	//pline("%s%d",xname(otmp),(int)(youracedata==&mons[PM_SALAMANDER]));
 	throwit(otmp, 0L, FALSE, 0, 0);
 	return(1);
 }

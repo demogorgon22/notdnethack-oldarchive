@@ -2186,8 +2186,7 @@ dopickup()
 	    }
 	}
 	if (is_lava(u.ux, u.uy)) {
-	    if (Wwalking || is_floater(youracedata) || is_clinger(youracedata)
-			|| (Flying && !Breathless)) {
+	    if (Wwalking || is_floater(youracedata) || is_clinger(youracedata)) {
 		You_cant("reach the bottom to pick things up.");
 		return(0);
 	    } else if (!likes_lava(youracedata)) {

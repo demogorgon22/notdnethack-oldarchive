@@ -651,6 +651,7 @@ register struct monst *mtmp;
 		if (Upolyd 
 			|| Race_if(PM_VAMPIRE) 
 			|| Race_if(PM_CHIROPTERAN) 
+			|| (Race_if(PM_SALAMANDER) && u.ulevel > 13)
 			|| (!uwep && Race_if(PM_YUKI_ONNA))
 		){
 			keepattacking = hmonas(mtmp, youracedata, tmp, weptmp, tchtmp);
@@ -1790,6 +1791,7 @@ int thrown;
 						} else {
 							Your("lava burns %s!", mon_nam(mon));
 							tmp = dmgval(obj, mon, 0);
+							tmp += tmp * u.ulevel/10;
 							if(obj && ((is_lightsaber(obj) && obj->lamplit) || arti_shining(obj))) phasearmor = TRUE;
 						}
 						if (thrown) obfree(obj, (struct obj *)0);
