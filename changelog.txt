@@ -51,6 +51,8 @@ Skill changes
 Gnome changes
 	Starts with potion vaporizer
 	1% of gnome class monsters will start with one
+Elf changes
+	Can ride ridable monsters without a saddle
 Salamander race
 	Can secrete a pool of lava at the cost of halving hp
 	Can fling balls of lava that do extra dmg based on xp lvl from pools
@@ -59,7 +61,7 @@ Salamander race
 	Can reach expert in spear
 	Requires special snakeleg body armour
 	Cannot wear boots or even kick things
-	Unlock full salamander attack routine at lvl 14
+	Unlock full salamander attack routine at lvl 20
 	Spear multishot bonus
 	Cannot eat monsters that are too close to amphibians without
 		cannibalism penalty

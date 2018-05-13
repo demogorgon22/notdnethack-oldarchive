@@ -103,6 +103,7 @@
 				 (ptr) == &mons[PM_EARTH_ELEMENTAL] || \
 				 (ptr) == &mons[PM_TERRACOTTA_SOLDIER] || \
 				 (ptr) == &mons[PM_STONE_GOLEM] || \
+				 (ptr) == &mons[PM_SHIRO] || \
 				 (ptr) == &mons[PM_GARGOYLE] || \
 				 (ptr) == &mons[PM_WINGED_GARGOYLE] || \
 				 (ptr) == &mons[PM_XORN])
@@ -386,6 +387,7 @@
 				 (ptr) == &mons[PM_MIRKWOOD_SPIDER] || (ptr) == &mons[PM_MIRKWOOD_ELDER] || \
 				 (ptr) == &mons[PM_SPROW] || (ptr) == &mons[PM_DRIDER] || \
 				 (ptr) == &mons[PM_EDDERKOP] || \
+				 (ptr) == &mons[PM_CHUPOCLOPS] || \
 				 (ptr) == &mons[PM_AVATAR_OF_LOLTH] || (ptr) == &mons[PM_DROW_MUMMY])
 #define is_unicorn(ptr)		((ptr)->mlet == S_UNICORN && likes_gems(ptr))
 #define is_longworm(ptr)	(((ptr) == &mons[PM_BABY_LONG_WORM]) || \
@@ -495,6 +497,8 @@
 				 (ptr) == &mons[PM_ADVERSARY] || \
 				 (ptr) == &mons[PM_VILLITHID] || \
 				 (ptr) == &mons[PM_MASTER_MIND_FLAYER] || \
+				 (ptr) == &mons[PM_ULITHARID] || \
+				 (ptr) == &mons[PM_MENZOBERRANZAN] || \
 				 (ptr) == &mons[PM_ALHOON] || \
 				 (ptr) == &mons[PM_ELDER_BRAIN] || \
 				 (ptr) == &mons[PM_LUGRIBOSSK] || \

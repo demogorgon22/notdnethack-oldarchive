@@ -651,7 +651,7 @@ register struct monst *mtmp;
 		if (Upolyd 
 			|| Race_if(PM_VAMPIRE) 
 			|| Race_if(PM_CHIROPTERAN) 
-			|| (Race_if(PM_SALAMANDER) && u.ulevel > 13)
+			|| (Race_if(PM_SALAMANDER) && u.ulevel > 19)
 			|| (!uwep && Race_if(PM_YUKI_ONNA))
 		){
 			keepattacking = hmonas(mtmp, youracedata, tmp, weptmp, tchtmp);

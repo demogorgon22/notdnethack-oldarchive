@@ -275,7 +275,7 @@ mount_steed(mtmp, force)
 
 	/* Is this a valid monster? */
 	otmp = which_armor(mtmp, W_SADDLE);
-	if (!otmp) {
+	if (!otmp  && !Race_if(PM_ELF)) {
 	    pline("%s is not saddled.", Monnam(mtmp));
 	    return (FALSE);
 	}
@@ -347,7 +347,7 @@ mount_steed(mtmp, force)
 		!strncmp(s, "riding ", 7))
 		/* ... and for "riding boots" */
 		chance += 10;
-	if (!force && (otmp->cursed || chance < rnd(MAXULEV/2+5))) {
+	if (!force && ((otmp && otmp->cursed) || chance < rnd(MAXULEV/2+5))) {
 	    if (Levitation) {
 			pline("%s slips away from you.", Monnam(mtmp));
 			return FALSE;
