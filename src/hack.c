@@ -2537,6 +2537,8 @@ weight_cap()
 	if(u.usteed && u.usteed->data){
 		carrcap = 25L*(acurrstr((int)(u.usteed->mstr)) + u.usteed->mcon) + 50L;
 		mdat = u.usteed->data;
+		carrcap = carrcap* (long)mdat->msize / MZ_HUMAN;
+		maxcap = maxcap < carrcap?carrcap* (long)mdat->msize / MZ_HUMAN:maxcap;
 	}
 #endif
 	
@@ -2558,7 +2560,7 @@ weight_cap()
 	if (Levitation || Weightless    /* pugh@cornell */
 	)
 		carrcap = maxcap;
-	else {
+	//else {
 		if(u.ucarinc < 0) carrcap += u.ucarinc;
 		if(carrcap > maxcap) carrcap = maxcap;
 		/* note that carinc bonues can push you over the normal limit! */
@@ -2576,7 +2578,7 @@ weight_cap()
 			if(EWounded_legs & RIGHT_SIDE) carrcap -= 100;
 		}
 		if (carrcap < 0) carrcap = 0;
-	}
+	//}
 	if(u.sealsActive&SEAL_FAFNIR) carrcap *= 1+((double) u.ulevel)/100;
 	if(arti_lighten(uarm)){
 		if(uarm->blessed) carrcap *= 1.5;

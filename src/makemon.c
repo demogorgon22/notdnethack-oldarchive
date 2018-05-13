@@ -5087,6 +5087,8 @@ register int	mmflags;
 	mtmp->mstr = d(3,6);
 	if(strongmonst(mtmp->data)) mtmp->mstr += 10;
 	mtmp->mdex = d(3,6);
+	/*if(mtmp->data == &mons[PM_GIANT_EAGLE] || mtmp->data == &mons[PM_KI_RIN]
+			|| mtmp->data > &mons[PM*/
 	if(is_elf(mtmp->data) && mtmp->mstr > mtmp->mdex){
 		short swap = mtmp->mstr;
 		mtmp->mstr = mtmp->mdex;
