@@ -3882,7 +3882,7 @@ arti_invoke(obj)
 			return 1;
 		}
 	   
-	    pline("monstermoves: %d, obj age: %d",(int)obj->age,(int)monstermoves);	
+	    //pline("monstermoves: %d, obj age: %d",(int)obj->age,(int)monstermoves);	
 	    You_feel("that %s %s ignoring you.",
 		     the(xname(obj)), otense(obj, "are"));
 	    /* and just got more so; patience is essential... */

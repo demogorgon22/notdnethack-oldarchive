@@ -76,4 +76,6 @@ General changes
 	Can now multishot spears and knives like in vanilla
 	New Tshirt messages
 	Easier to untrap fire traps
+	Riding larger monsters increases your carrying capacity always instead
+	of previously usually decreasing it
 

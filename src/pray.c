@@ -1758,7 +1758,7 @@ godvoice(g_align, words)
     else
 	words = "";
 	
-	if(g_align != A_VOID){
+	if(g_align != A_VOID && !Role_if(PM_ANACHRONOUNBINDER)){
 		pline_The("voice of %s %s: %s%s%s", align_gname(g_align),
 		  godvoices[rn2(SIZE(godvoices))], quot, words, quot);
 	} else {

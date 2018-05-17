@@ -328,6 +328,7 @@ int spec;
 		case HALBERD:
 		case SPETUM:		tmp += rnd(6+2*dmod); break;
 		case ACID_VENOM:
+		case LAVA_BALL:
 			if(otmp->ovar1) tmp = otmp->ovar1;
 			else tmp += rnd(6);
 		break;
@@ -835,7 +836,7 @@ int spec;
 		if (tmp < 0) tmp = 0;
 	}
 
-	if (otmp->obj_material <= LEATHER && (thick_skinned(ptr) || (youdefend && u.sealsActive&SEAL_ECHIDNA)))
+	if (otmp->obj_material <= LEATHER && (thick_skinned(ptr) || (youdefend && u.sealsActive&SEAL_ECHIDNA)) &&otmp->otyp != LAVA_BALL)
 		/* thick skinned/scaled creatures don't feel it */
 		tmp = 0;
 	if (ptr->mlet == S_SHADE && !(
