@@ -817,7 +817,7 @@ makelevel()
 	
 		/* Part four: very late modifications */
 	if (wantasepulcher &&
-		!level.flags.has_vault || TRUE){
+		!level.flags.has_vault){
 		mksepulcher();
 	}
 	if (wantanmivault &&
