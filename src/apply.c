@@ -4935,10 +4935,16 @@ doapply()
 			otmp = getobj(apply_gem, "attach to your spear");
 			if(!otmp) break;
 			You("attach your %s spearhead to your spear.", xname(otmp));
-			long temp = otmp->otyp;
-			otmp->otyp = obj->ovar1;
-			otmp->obj_material = objects[otmp->otyp].oc_material;
-			obj->ovar1 = temp;
+			long temp = obj->ovar1;
+			obj->ovar1 = otmp->otyp;
+			obj_extract_self(otmp);	/* free from inv */
+			obfree(otmp,(struct obj *) 0);
+			otmp = mksobj(temp,TRUE,FALSE);
+			otmp->ovar1 = KNAPPED_SPEAR;
+			otmp = hold_another_object(otmp, "You drop %s!",
+				doname(otmp), (const char *)0);
+			//otmp->obj_material = objects[otmp->otyp].oc_material;
+		//	obj->ovar1 = temp;
 		}
 		break;
 	case GRAPPLING_HOOK:
