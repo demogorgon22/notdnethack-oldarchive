@@ -1057,6 +1057,9 @@ boolean with_price;
 	if (obj->greased) Strcat(prefix, "greased ");
 
 	switch(obj->oclass) {
+	case GEM_CLASS:
+			if(obj->ovar1 & KNAPPED_SPEAR) Sprintf(eos(bp), " spearhead");
+		break;
 	case AMULET_CLASS:
 		if(obj->owornmask & W_AMUL)
 			Strcat(bp, " (being worn)");

@@ -1011,7 +1011,7 @@ psionic_craze(){
 		cancelled = getpos(&cc, TRUE, "the desired position");
 		mon = m_at(cc.x,cc.y);
 	}
-	if(!DEADMONSTER(mon) && !mindless_mon(mon) && !resist(mon, '\0', 0, TELL)) {
+	if(mon && !DEADMONSTER(mon) && !mindless_mon(mon) && !resist(mon, '\0', 0, TELL)) {
 		/*cost pw*/
 		u.uen -= 5;
 		if(u.ulevel >= mon->m_lev-5){

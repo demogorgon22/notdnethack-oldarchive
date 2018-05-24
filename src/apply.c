@@ -2375,8 +2375,8 @@ struct obj *tstone;
     /* when the touchstone is fully known, don't bother listing extra
        junk as likely candidates for rubbing */
     choices = (tstone->otyp == TOUCHSTONE && tstone->dknown &&
-		objects[TOUCHSTONE].oc_name_known) ? justgems : allowall;
-    Sprintf(stonebuf, "rub on the stone%s", plur(tstone->quan));
+		objects[TOUCHSTONE].oc_name_known)||tstone->otyp == ROCK ? justgems : allowall;
+    Sprintf(stonebuf, tstone->otyp == ROCK ? "beat with the stone%s":"rub on the stone%s", plur(tstone->quan));
     if ((obj = getobj(choices, stonebuf)) == 0)
 	return;
 #ifndef GOLDOBJ
@@ -2389,7 +2389,7 @@ struct obj *tstone;
 #endif
 
     if (obj == tstone && obj->quan == 1) {
-	You_cant("rub %s on itself.", the(xname(obj)));
+	You_cant("%s %s %s itself.",obj->otyp == ROCK ? "beat":"rub" ,obj->otyp == ROCK ? "with":"on",the(xname(obj)));
 	return;
     }
 
@@ -2424,16 +2424,37 @@ struct obj *tstone;
     switch (obj->oclass) {
     case GEM_CLASS:	/* these have class-specific handling below */
     case RING_CLASS:
-	if (tstone->otyp != TOUCHSTONE) {
+	if (tstone->otyp != TOUCHSTONE && tstone->otyp != ROCK) {
 	    do_scratch = TRUE;
-	} else if (obj->oclass == GEM_CLASS && (tstone->blessed ||
+	} else if (obj->oclass == GEM_CLASS && obj->otyp == TOUCHSTONE && (tstone->blessed ||
 		(!tstone->cursed &&
 		    (Role_if(PM_ARCHEOLOGIST) || Race_if(PM_GNOME))))) {
 	    makeknown(TOUCHSTONE);
 	    makeknown(obj->otyp);
 	    prinv((char *)0, obj, 0L);
 	    return;
-	} else {
+	} else if(obj->oclass == GEM_CLASS && tstone->otyp == ROCK){
+		if(obj->otyp == ROCK || objects[obj->otyp].oc_tough || obj->oartifact){
+			pline("It's too hard to break!");
+			return;
+		}
+		if(obj->quan > 1){
+			obj = splitobj(obj,1L);
+		}
+		if(Role_if(PM_CAVEMAN)){
+			You("knap the %s into a point!",xname(obj));
+			obj->ovar1 = KNAPPED_SPEAR;
+	   		obj_extract_self(obj);	/* free from inv */
+			obj = hold_another_object(obj, "You drop %s!",
+				doname(obj), (const char *)0);
+		} else {
+			You("break the %s into many pieces!",xname(obj));
+	   		obj_extract_self(obj);	/* free from inv */
+			obfree(obj,(struct obj *) 0);
+
+		}
+		return;
+    	} else {
 	    /* either a ring or the touchstone was not effective */
 	    if (obj->obj_material == GLASS) {
 		do_scratch = TRUE;
@@ -4853,7 +4874,7 @@ doapply()
 
 	if(check_capacity((char *)0)) return (0);
 
-	if (carrying(POT_OIL) || uhave_graystone())
+	if (carrying(POT_OIL) || uhave_graystone() || carrying(ROCK))
 		Strcpy(class_list, tools_too);
 	else
 		Strcpy(class_list, tools);
@@ -5321,6 +5342,7 @@ doapply()
 		if(obj->oartifact == ART_DARKWEAVER_S_CLOAK) res = use_darkweavers_cloak(obj);
 		else res = use_droven_cloak(&obj);
 	break;
+	case ROCK:
 	case FLINT:
 	case LUCKSTONE:
 	case LOADSTONE:

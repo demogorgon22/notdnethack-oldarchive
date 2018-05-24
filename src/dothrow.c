@@ -158,6 +158,7 @@ int thrown;
 	    switch (Role_switch) {
 	    case PM_CAVEMAN:
 		if (skill == -P_SLING) multishot++;
+		if (skill == P_SPEAR) multishot++;
 		break;
 	    case PM_RANGER:
 		multishot++;

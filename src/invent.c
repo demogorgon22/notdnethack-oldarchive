@@ -1075,6 +1075,8 @@ register const char *let,*word;
 		|| (!strncmp(word, "rub on the stone", 16) &&
 		    *let == GEM_CLASS &&	/* using known touchstone */
 		    otmp->dknown && objects[otyp].oc_name_known)
+		//|| (!strcmp(word, "beat with the") &&
+		//	*let == GEM_CLASS && otyp !=ROCK)
 		|| ((!strcmp(word, "use or apply") ||
 			!strcmp(word, "untrap with")) &&
 		     /* Picks, axes, pole-weapons, bullwhips */
@@ -1108,7 +1110,7 @@ register const char *let,*word;
 		      otyp != DWARVISH_HELM &&
 		      otyp != DROVEN_CLOAK &&
 			  otyp != GNOMISH_POINTY_HAT) || 
-		     (otmp->oclass == GEM_CLASS && !is_graystone(otmp))))
+		     (otmp->oclass == GEM_CLASS && (!is_graystone(otmp) && !(otmp->otyp == ROCK) ))))
 		|| (!strcmp(word, "invoke") &&
 		    (!otmp->oartifact && !objects[otyp].oc_unique &&
 		     (otyp != FAKE_AMULET_OF_YENDOR || otmp->known) &&
@@ -1983,6 +1985,9 @@ struct obj *obj;
 	else if (obj->otyp == GRAPPLING_HOOK)
 		add_menu(win, NO_GLYPH, &any, 'a', 0, ATR_NONE,
 				"Grapple something with this hook", MENU_UNSELECTED);
+	else if (obj->otyp == ROCK)
+		add_menu(win, NO_GLYPH, &any, 'a', 0, ATR_NONE,
+				"Beat something with this rock", MENU_UNSELECTED);
 	else if (obj->otyp == BAG_OF_TRICKS && obj->known)
 		add_menu(win, NO_GLYPH, &any, 'a', 0, ATR_NONE,
 				"Reach into this bag", MENU_UNSELECTED);
@@ -3168,6 +3173,7 @@ mergable(otmp, obj)	/* returns TRUE if obj  & otmp can be merged */
 	    obj->cursed != otmp->cursed || obj->blessed != otmp->blessed ||
 	    obj->no_charge != otmp->no_charge ||
 	    obj->obroken != otmp->obroken ||
+	    (obj->oclass == GEM_CLASS && obj->ovar1 !=0) ||
 	    obj->objsize != otmp->objsize ||
 	    obj->otrapped != otmp->otrapped ||
 	    obj->lamplit != otmp->lamplit ||

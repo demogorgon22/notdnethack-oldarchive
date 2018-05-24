@@ -208,6 +208,12 @@ struct obj {
 	long oextra[1];		/* used for name of ordinary objects - length
 				   is flexible; amount for tmp gold objects.  Must be last? */
 };
+//Flintknapping ovar1 flags
+#define KNAPPED_SPEAR	0x0000001L
+#define KNAPPED_ARROW	0x0000002L
+#define KNAPPED_KNIFE	0x0000004L
+#define KNAPPED_RING	0x0000008L
+
 
 //Useful items (ovar1 flags for planned cloak of useful items)
 #define USE_DAGGER	0x0000001L
