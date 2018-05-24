@@ -446,7 +446,6 @@ struct obj *obj;
 
 	/* only consider normal containers */
 	if (!Is_container(obj) || Is_mbag(obj)) return;
-
 	costly = ((shkp = shop_keeper(*in_rooms(x, y, SHOPBASE))) &&
 		  costly_spot(x, y));
 	insider = (*u.ushops && inside_shop(u.ux, u.uy) &&

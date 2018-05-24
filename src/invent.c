@@ -1091,6 +1091,7 @@ register const char *let,*word;
 		      otyp != FRAG_GRENADE &&
 		      otyp != GAS_GRENADE &&
 		      otyp != STICK_OF_DYNAMITE &&
+		      !Is_spear(otmp) &&
 //endif
 		      !is_axe(otmp) && !is_pole(otmp) && otyp != BULLWHIP &&
 			  !is_knife(otmp) && otmp->oartifact != ART_SILVER_STARLIGHT &&
@@ -1123,6 +1124,7 @@ register const char *let,*word;
 		|| (!strcmp(word, "untrap with") &&
 		    ((otmp->oclass == TOOL_CLASS && otyp != CAN_OF_GREASE) ||
 			(otmp->oclass == CHAIN_CLASS)))
+		|| (!strcmp(word, "attach to your spear") && !otmp->ovar1)
 		|| (!strcmp(word, "charge") && !is_chargeable(otmp))
 		|| (!strcmp(word, "upgrade your stove with") &&
 		    (otyp != TINNING_KIT))

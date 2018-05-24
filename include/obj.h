@@ -307,7 +307,7 @@ struct obj {
 			 objects[otmp->otyp].oc_skill <= -P_BOW)
 #define is_grenade(otmp)	(is_ammo(otmp) && \
 			 	 objects[(otmp)->otyp].w_ammotyp == WP_GRENADE)
-#define ammo_and_launcher(otmp,ltmp) \
+/*define ammo_and_launcher(otmp,ltmp) \
 			 (is_ammo(otmp) && (ltmp) && (\
 			  (\
 			   (ltmp->otyp == BFG) ||\
@@ -316,7 +316,8 @@ struct obj {
 			   (otmp->objsize == (ltmp)->objsize || objects[(ltmp)->otyp].oc_skill == P_SLING) &&\
 			    (objects[(otmp)->otyp].w_ammotyp & objects[(ltmp)->otyp].w_ammotyp) && \
 			    (objects[(otmp)->otyp].oc_skill == -objects[(ltmp)->otyp].oc_skill))\
-			   ))
+			   ))*/
+#define ammo_and_launcher(otmp,ltmp)	FALSE
 #define is_missile(otmp)	((otmp->oclass == WEAPON_CLASS || \
 			 otmp->oclass == TOOL_CLASS || otmp->oclass == GEM_CLASS) && \
 			 ((objects[otmp->otyp].oc_skill >= -P_BOOMERANG && \
@@ -472,6 +473,7 @@ struct obj {
 #define Is_box(otmp)	(otmp->otyp == BOX || otmp->otyp == CHEST || otmp->otyp == MAGIC_CHEST)
 #define Is_mbag(otmp)	(otmp->otyp == BAG_OF_HOLDING || \
 			 otmp->otyp == BAG_OF_TRICKS)
+#define Is_spear(otmp)	(otmp->otyp >= SPEAR && otmp->otyp <= DWARVISH_SPEAR)
 
 /* dragon gear */
 #define Is_dragon_scales(obj)	((obj)->otyp >= GRAY_DRAGON_SCALES && \

@@ -12,6 +12,7 @@ static const char tools_too[] = { COIN_CLASS, ALL_CLASSES, TOOL_CLASS, POTION_CL
 				  WEAPON_CLASS, WAND_CLASS, GEM_CLASS, CHAIN_CLASS, 0 };
 static const char apply_armor[] = { ARMOR_CLASS, 0 };
 static const char apply_corpse[] = { FOOD_CLASS, 0 };
+static const char apply_gem[] = { GEM_CLASS, 0 };
 static const char apply_all[] = { ALL_CLASSES, CHAIN_CLASS, 0 };
 
 #ifdef TOURIST
@@ -4924,6 +4925,21 @@ doapply()
 		break;
 	case BULLWHIP:
 		res = use_whip(obj);
+		break;
+	case SPEAR:
+	case ELVEN_SPEAR:
+	case DROVEN_SPEAR:
+	case ORCISH_SPEAR:
+	case DWARVISH_SPEAR:{
+			struct obj *otmp;
+			otmp = getobj(apply_gem, "attach to your spear");
+			if(!otmp) break;
+			You("attach your %s spearhead to your spear.", xname(otmp));
+			long temp = otmp->otyp;
+			otmp->otyp = obj->ovar1;
+			otmp->obj_material = objects[otmp->otyp].oc_material;
+			obj->ovar1 = temp;
+		}
 		break;
 	case GRAPPLING_HOOK:
 		res = use_grapple(obj);

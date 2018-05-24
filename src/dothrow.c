@@ -274,6 +274,7 @@ int thrown;
 	wep_mask = obj->owornmask;
 	m_shot.o = obj->otyp;
 	m_shot.n = multishot;
+
 	for (m_shot.i = 1; m_shot.i <= m_shot.n; m_shot.i++) {
 		if(!obj || 
 			(obj->where != OBJ_INVENT && !(launcher && launcher->oartifact == ART_ROGUE_GEAR_SPIRITS))

@@ -467,6 +467,15 @@ boolean ignore_oquan;
 		else if(obj->objsize == MZ_HUGE) Strcat(buf, "huge ");
 		else if(obj->objsize == MZ_GIGANTIC) Strcat(buf, "gigantic ");
 	}
+	if(Is_spear(obj)){
+			if(!obj->ovar1){
+				Strcat(buf, "pointless ");
+			} else if(objects[obj->ovar1].oc_material == GLASS){
+				Sprintf(eos(buf), "%s glass point ", c_obj_colors[objects[obj->ovar1].oc_color]);
+			} else {
+				Sprintf(eos(buf), "%s point ",OBJ_NAME(objects[obj->ovar1]));
+			}
+		}
 	if(obj->obj_material != objects[obj->otyp].oc_material && !(obj->oartifact && obj->known) && !(is_lightsaber(obj) && obj->lamplit)){
 		if(obj->oartifact == ART_HOLY_MOONLIGHT_SWORD && obj->lamplit){
 			Strcat(buf, "pale moonlight ");
