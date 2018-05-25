@@ -5571,6 +5571,7 @@ arti_invoke(obj)
 						pline("What is this strange command!?");
 					break;
 				}
+				if(Is_spear(obj) && !obj->ovar1) obj->ovar1 = FLINT;
 				if(lordlydictum >= COMMAND_LADDER) obj->age = monstermoves + (long)(rnz(100)*(Role_if(PM_PRIEST) ? .8 : 1)); 
 			} else You_feel("that you should be wielding %s.", the(xname(obj)));;
 		break;

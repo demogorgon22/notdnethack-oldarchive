@@ -4940,6 +4940,7 @@ doapply()
 			obj_extract_self(otmp);	/* free from inv */
 			obfree(otmp,(struct obj *) 0);
 			otmp = mksobj(temp,TRUE,FALSE);
+			otmp->quan = 1;
 			otmp->ovar1 = KNAPPED_SPEAR;
 			otmp = hold_another_object(otmp, "You drop %s!",
 				doname(otmp), (const char *)0);
