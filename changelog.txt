@@ -95,7 +95,7 @@ Spear changes
 		Garnet
 			Fire
 		Amethyst
-			Telepathy + Int
+			Telepathy
 		Jasper
 			Digging
 		Violet Fluorite

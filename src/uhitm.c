@@ -1465,23 +1465,7 @@ int thrown;
 						tmp *= 2;
 						Your("crystal sharp %s deeply into %s!",obj->quan > 1?"spears plunge":"spear plunges",mon_nam(mon));	
 					break;
-					case TURQUOISE:
-					 if (thrown && !tele_restrict(mon)) {
-						boolean vis = (cansee(mon->mx,mon->my) && canspotmon(mon)); 
-						char mdef_Monnam[BUFSZ];
-								                         /* save the name before monster teleports, otherwise
-											  *                        we'll get "it" in the suddenly disappears message */
-						if (vis) Strcpy(mdef_Monnam, Monnam(mon));
-						mon->mstrategy &= ~STRAT_WAITFORU;
-						(void) rloc(mon, FALSE);
-						if (vis && !canspotmon(mon)
-#ifdef STEED
-							&& mon != u.usteed
-#endif
-							)
-							pline("%s suddenly disappears!", mdef_Monnam);
-					}
-					break;
+					
 					case AMBER:
 						mon_adjust_speed(mon, -1, obj);
 
@@ -1497,7 +1481,7 @@ int thrown;
 						if (!rn2(4)) (void) destroy_mitem(mon, SCROLL_CLASS, AD_FIRE);
 						if (!rn2(7)) (void) destroy_mitem(mon, SPBOOK_CLASS, AD_FIRE);
 					break;
-
+					
 
 				}
 			}
@@ -2234,7 +2218,7 @@ defaultvalue:
 		}
 	}
 
-	if (!hittxt &&			/*( thrown => obj exists )*/
+	if (!hittxt &&			/*( thrown => obj exists )*//*hitmsg*/
 	  (!destroyed || (thrown && m_shot.n > 1 && m_shot.o == obj->otyp))) {
 		if (thrown) hit(mshot_xname(obj), mon, exclam(tmp));
 		else if (!flags.verbose) You("hit it.");
@@ -2256,6 +2240,36 @@ defaultvalue:
 		}
 	    }
 	    return TRUE;
+	}
+	if(obj && mon && Is_spear(obj) && mon->mhp>=0){
+		switch(obj->ovar1){
+			case TURQUOISE:
+				if (thrown && !tele_restrict(mon)) {
+				       boolean vis = (cansee(mon->mx,mon->my) && canspotmon(mon)); 
+				       char mdef_Monnam[BUFSZ];
+				       		                         /* save the name before monster teleports, otherwise
+				       					  *                        we'll get "it" in the suddenly disappears message */
+				       if (vis) Strcpy(mdef_Monnam, Monnam(mon));
+				       mon->mstrategy &= ~STRAT_WAITFORU;
+				       (void) rloc(mon, FALSE);
+				       if (vis && !canspotmon(mon)
+#ifdef STEED
+				       	&& mon != u.usteed
+#endif
+				       	)
+				       	pline("%s suddenly disappears!", mdef_Monnam);
+				}
+			break;
+			case VIOLET_FLUORITE:
+				if(!mon->mtame && !(mon->data->geno & G_UNIQ) && !rn2(10)){
+					mon->mpeaceful = TRUE;
+					pline("%s seems calmer", Monnam(mon));
+					newsym(mon->mx,mon->my);
+				}	
+			break;
+		}
+
+
 	}
 	if(lightmsg){
 		const char *fmt;

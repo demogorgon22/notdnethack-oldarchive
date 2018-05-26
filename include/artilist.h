@@ -1534,7 +1534,7 @@ A("The Plates of the Near Void", CRYSTAL_PLATE_MAIL,//half weight
 	PHASING, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT, WSFX_PLUSSEV),
 
-A("Digout", DWARVISH_MATTOCK,//half weight
+A("Digout", DWARVISH_MATTOCK,
 	(SPFX_NOGEN|SPFX_RESTR),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
 	NO_ATTK,	NO_DFNS,	NO_CARY,

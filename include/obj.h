@@ -280,6 +280,7 @@ struct obj {
 #define is_pick(otmp)	(((otmp->oclass == WEAPON_CLASS || \
 			 otmp->oclass == TOOL_CLASS) && \
 			 (objects[otmp->otyp].oc_skill == P_PICK_AXE)) || \
+			 (Is_spear(otmp) && otmp->ovar1 == JASPER) || \
 			  arti_digs(otmp))
 #define is_sword(otmp)	(otmp->oclass == WEAPON_CLASS && \
 			 objects[otmp->otyp].oc_skill >= P_SHORT_SWORD && \
