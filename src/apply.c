@@ -4935,10 +4935,16 @@ doapply()
 				pline("The obsidian point is irremovable from your spear.");
 				break;
 			}
+			boolean addtoinvent = FALSE;
 			struct obj *otmp;
 			boolean rewield;
 			otmp = getobj(apply_gem, "attach to your spear");
 			if(!otmp) break;
+			if(obj->quan > 1 ) {
+				obj = splitobj(obj,1L);
+				obj_extract_self(obj);
+				addtoinvent = TRUE;
+			}
 			You("attach your %s spearhead to your spear.", xname(otmp));
 			if(uwep == obj){
 				uwepgone();
@@ -4948,14 +4954,15 @@ doapply()
 			obj->ovar1 = otmp->otyp;
 			obj_extract_self(otmp);	/* free from inv */
 			obfree(otmp,(struct obj *) 0);
+			//good bye old otmp, hello new otmp!
 			otmp = mksobj(temp,TRUE,FALSE);
 			otmp->quan = 1;
 			otmp->ovar1 = KNAPPED_SPEAR;
 			otmp = hold_another_object(otmp, "You drop %s!",
 				doname(otmp), (const char *)0);
+			if(addtoinvent) obj = hold_another_object(obj, "You drop %s!",
+				doname(obj), (const char *)0);
 			if(rewield) ready_weapon(obj);
-			//otmp->obj_material = objects[otmp->otyp].oc_material;
-		//	obj->ovar1 = temp;
 		}
 		break;
 	case GRAPPLING_HOOK:

@@ -103,8 +103,9 @@ Spear changes
 		Blue Fluorite
 			Sleep resistance + sleeping
 		White Fluorite
-			
+			Energy Regen
 		Green Fluorite
+			Curse Resistance
 		Obsidian
 		Agate
 		Jade

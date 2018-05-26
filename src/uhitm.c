@@ -1463,7 +1463,7 @@ int thrown;
 				switch(obj->ovar1){
 					case DILITHIUM_CRYSTAL:
 						tmp *= 2;
-						Your("crystal sharp spear plunges deeply into %s!",mon_nam(mon));	
+						Your("crystal sharp %s deeply into %s!",obj->quan > 1?"spears plunge":"spear plunges",mon_nam(mon));	
 					break;
 					case TURQUOISE:
 					 if (thrown && !tele_restrict(mon)) {
@@ -1485,6 +1485,17 @@ int thrown;
 					case AMBER:
 						mon_adjust_speed(mon, -1, obj);
 
+					break;
+					case GARNET:
+						if(!resists_fire(mon)){
+							tmp *= 2;
+							Your("garnet embered %s %s!", obj->quan > 1 ? "spears blaze":"spear blazes",mon_nam(mon));
+						} else {
+							Your("garnet embered %s.", obj->quan > 1 ? "spears smokes":"spear smokes");
+						}
+						if (!rn2(4)) (void) destroy_mitem(mon, POTION_CLASS, AD_FIRE);
+						if (!rn2(4)) (void) destroy_mitem(mon, SCROLL_CLASS, AD_FIRE);
+						if (!rn2(7)) (void) destroy_mitem(mon, SPBOOK_CLASS, AD_FIRE);
 					break;
 
 

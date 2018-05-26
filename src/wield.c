@@ -210,6 +210,9 @@ struct obj *wep;
 			case CHRYSOBERYL:
 				ESick_resistance |= W_WEP;	
 			break;
+			case AMETHYST:
+				ETelepat |= W_WEP;
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -651,6 +654,9 @@ struct obj *obj;
 			break;
 			case CHRYSOBERYL:
 				ESick_resistance &= ~W_WEP;	
+			break;
+			case AMETHYST:
+				ETelepat &= ~W_WEP;
 			break;
 
 		}
