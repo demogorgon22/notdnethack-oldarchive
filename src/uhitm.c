@@ -1482,6 +1482,10 @@ int thrown;
 							pline("%s suddenly disappears!", mdef_Monnam);
 					}
 					break;
+					case AMBER:
+						mon_adjust_speed(mon, -1, obj);
+
+					break;
 
 
 				}

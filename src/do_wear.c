@@ -2033,6 +2033,7 @@ find_ac()
 					P_SKILL(weapon_type(uwep))-1
 					)
 				,0);
+		if(uwep->otyp == SPEAR && uwep->ovar1 == JET) uac -= 2 + uwep->spe/2;
 		if(uwep->oartifact == ART_TOBIUME || uwep->oartifact == ART_MASAMUNE ||
 			uwep->oartifact == ART_LANCE_OF_LONGINUS) uac -= max(uwep->spe,0);
 		if(uwep->oartifact == ART_TENSA_ZANGETSU){

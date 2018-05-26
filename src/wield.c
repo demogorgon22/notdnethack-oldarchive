@@ -200,6 +200,9 @@ struct obj *wep;
 					pline("%s to %s%s!", Tobjnam(wep, "begin"),
 						(wep->blessed ? "shine very" : "glow"), (wep->cursed ? "" : " brilliantly"));
 			break;
+			case JET:
+				You("are shrouded in a black mist!");	
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -632,6 +635,10 @@ struct obj *obj;
 				end_burn(obj, FALSE);
 		    		if (!Blind) pline("%s glowing.", Tobjnam(obj, "stop"));
 			break;
+			case JET:
+				pline("The black mist around you dissipates.");	
+			break;
+
 		}
 	}
 
