@@ -4549,7 +4549,7 @@ xkilled(mtmp, dest)
 			    && typ != FIGURINE
 			    && (otmp->owt > 3 ||
 				objects[typ].oc_big /*oc_bimanual/oc_bulky*/ ||
-				is_spear(otmp) || (is_pole(otmp) && otmp->otyp != AKLYS) ||
+				(is_spear(otmp) &&!otmp->ovar1==OBSIDIAN) || (is_pole(otmp) && otmp->otyp != AKLYS) ||
 				typ == MORNING_STAR)
 				&& !is_divider(mdat)
 			) {

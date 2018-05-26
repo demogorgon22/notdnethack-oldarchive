@@ -836,7 +836,7 @@ int spec;
 		if (tmp < 0) tmp = 0;
 	}
 
-	if (otmp->obj_material <= LEATHER && (thick_skinned(ptr) || (youdefend && u.sealsActive&SEAL_ECHIDNA)) &&otmp->otyp != LAVA_BALL)
+	if (otmp->obj_material <= LEATHER && (thick_skinned(ptr) || (youdefend && u.sealsActive&SEAL_ECHIDNA)) && otmp->otyp != LAVA_BALL && !(Is_spear(otmp) && otmp->ovar1 == OBSIDIAN))
 		/* thick skinned/scaled creatures don't feel it */
 		tmp = 0;
 	if (ptr->mlet == S_SHADE && !(

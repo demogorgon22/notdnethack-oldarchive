@@ -375,6 +375,9 @@ rndcurse()			/* curse a few inventory items at random! */
 	if (uamul && (uamul->otyp == AMULET_VERSUS_CURSES)) {
 	    You(mal_aura, "your amulet");
 	    return;
+	} else if(uwep && (Is_spear(uwep) && uwep->ovar1 == GREEN_FLUORITE)){
+		You(mal_aura, "the green fluorite point of your spear");
+		return;
 	} else if (uwep && (uwep->oartifact == ART_MAGICBANE) && rn2(20)) {
 	    You(mal_aura, "the magic-absorbing blade");
 	    return;

@@ -1288,8 +1288,7 @@ int thrown;
 			else if(obj == uwep && uwep->oartifact == ART_PEN_OF_THE_VOID && uwep->ovar1&SEAL_MARIONETTE)
 				tmp = dmgval(obj, mon, SPEC_MARIONETTE);
 			else tmp = dmgval(obj, mon, 0);
-			
-			if(obj && ((is_lightsaber(obj) && obj->lamplit) || arti_shining(obj))) phasearmor = TRUE;
+			if(obj && ((is_lightsaber(obj) && obj->lamplit) || arti_shining(obj) || (Is_spear(obj)&&obj->ovar1==OBSIDIAN))) phasearmor = TRUE;
 		    
 			/* a minimal hit doesn't exercise proficiency */
 			valid_weapon_attack = (tmp > 1 || (obj && obj->otyp == SPOON && Role_if(PM_CONVICT)));

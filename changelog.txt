@@ -107,6 +107,7 @@ Spear changes
 		Green Fluorite
 			Curse Resistance
 		Obsidian
+			Ignore thick skin and AC
 		Agate
 		Jade
 		Luckstone
