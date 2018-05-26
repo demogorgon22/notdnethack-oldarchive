@@ -1297,6 +1297,7 @@ long timeout;
 	}
 	need_newsym = FALSE;
 
+
 	if(obj->oartifact == ART_HOLY_MOONLIGHT_SWORD){	
 	        if ((obj->where == OBJ_FLOOR) || 
 		    (obj->where == OBJ_MINVENT && 
@@ -1729,6 +1730,7 @@ begin_burn(obj, already_lit)
 		obj->otyp != MAGIC_LAMP && 
 		obj->otyp != POT_STARLIGHT && 
 		obj->otyp != CHUNK_OF_FOSSILE_DARK && 
+		obj->otyp != SPEAR &&
 		!artifact_light(obj) && 
 		!arti_light(obj) && 
 		obj->oartifact != ART_HOLY_MOONLIGHT_SWORD &&
@@ -1833,7 +1835,7 @@ begin_burn(obj, already_lit)
 
 	    default:
                 /* [ALI] Support artifact light sources */
-        if (artifact_light(obj) || arti_light(obj)) {
+        if (artifact_light(obj) || arti_light(obj) || (obj->otyp == SPEAR && obj->ovar1 == CITRINE)) {
 		    obj->lamplit = 1;
 		    do_timer = FALSE;
 			radius = (obj->blessed ? 3 : (obj->cursed ? 1 : 2));
@@ -1886,6 +1888,7 @@ end_burn(obj, timer_attached)
 	if (obj->otyp == MAGIC_LAMP 
 		|| obj->otyp == POT_STARLIGHT
 		|| obj->otyp == CHUNK_OF_FOSSILE_DARK
+		|| obj->otyp == SPEAR
 		|| artifact_light(obj)
 	) timer_attached = FALSE;
 

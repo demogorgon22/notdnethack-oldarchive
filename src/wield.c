@@ -194,7 +194,12 @@ struct obj *wep;
 			case MORGANITE:
 				ERegeneration |= W_WEP;
 			break;
-
+			case CITRINE:
+				begin_burn(wep,FALSE);
+				if (!Blind)
+					pline("%s to %s%s!", Tobjnam(wep, "begin"),
+						(wep->blessed ? "shine very" : "glow"), (wep->cursed ? "" : " brilliantly"));
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -622,6 +627,10 @@ struct obj *obj;
 		switch(obj->ovar1){
 			case MORGANITE:
 				ERegeneration &= ~W_WEP;
+			break;
+			case CITRINE:
+				end_burn(obj, FALSE);
+		    		if (!Blind) pline("%s glowing.", Tobjnam(obj, "stop"));
 			break;
 		}
 	}
