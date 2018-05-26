@@ -1103,7 +1103,9 @@ register const char *let,*word;
 		     /* only applicable potion is oil, and it will only
 			be offered as a choice when already discovered */
 		     (otyp != POT_OIL || !otmp->dknown ||
-		      !objects[POT_OIL].oc_name_known)) ||
+		      !objects[POT_OIL].oc_name_known) &&
+		     (otyp != POT_WATER || !otmp->dknown ||
+		      !objects[POT_WATER].oc_name_known || strcmp(word,"untrap with"))) ||
 		     (otmp->oclass == FOOD_CLASS &&
 		      otyp != CREAM_PIE && otyp != EUCALYPTUS_LEAF) ||
 		     /* MRKR: mining helmets */
