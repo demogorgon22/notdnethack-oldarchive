@@ -4931,10 +4931,19 @@ doapply()
 	case DROVEN_SPEAR:
 	case ORCISH_SPEAR:
 	case DWARVISH_SPEAR:{
+			if(obj->oartifact == ART_SCEPTRE_OF_LOLTH){
+				pline("The obsidian point is irremovable from your spear.");
+				break;
+			}
 			struct obj *otmp;
+			boolean rewield;
 			otmp = getobj(apply_gem, "attach to your spear");
 			if(!otmp) break;
 			You("attach your %s spearhead to your spear.", xname(otmp));
+			if(uwep == obj){
+				uwepgone();
+				rewield = TRUE;
+			}
 			long temp = obj->ovar1;
 			obj->ovar1 = otmp->otyp;
 			obj_extract_self(otmp);	/* free from inv */
@@ -4944,6 +4953,7 @@ doapply()
 			otmp->ovar1 = KNAPPED_SPEAR;
 			otmp = hold_another_object(otmp, "You drop %s!",
 				doname(otmp), (const char *)0);
+			if(rewield) ready_weapon(obj);
 			//otmp->obj_material = objects[otmp->otyp].oc_material;
 		//	obj->ovar1 = temp;
 		}

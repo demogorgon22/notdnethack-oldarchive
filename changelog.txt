@@ -72,6 +72,48 @@ Dungeon changes
 			being cool
 		Same final level and prizes as Sokoban but with an easier
 			puzle
+Spear changes
+	Spears now all have changable points that can be changed to other
+	spearheads.
+	Gem spearheads have special effects.
+		Dilithium Crystal
+			Double Damage
+		Turquoise
+			Thrown spears teleport hittee
+		Morganite
+			Regeneration
+		Citrine
+			Bright Light
+		Amber
+			Slow monster
+		Jet
+			Protection - shrouds you in a black mist
+		Opal
+			Reflection
+		Chrysoberyl
+			Disease resistance
+		Garnet
+			Fire
+		Amethyst
+			Telepathy + Int
+		Jasper
+			Digging
+		Violet Fluorite
+			Pacification rarely
+		Blue Fluorite
+		White Fluorite
+		Green Fluorite
+		Obsidian
+		Agate
+		Jade
+		Luckstone
+			Luck and tohit
+		Loadstone
+			Heavy and steals iron items.
+		Touchstone
+			Some sort of identify?
+		Fossile dark
+			drain life
 General changes
 	Can now multishot spears and knives like in vanilla
 	New Tshirt messages

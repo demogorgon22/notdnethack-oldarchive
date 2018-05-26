@@ -5413,6 +5413,7 @@ arti_invoke(obj)
 					break;
 					case COMMAND_DROVEN_SPEAR:
 						uwep->otyp = DROVEN_SPEAR;
+						uwep->ovar1 = OBSIDIAN;
 					break;
 					case COMMAND_D_LANCE:
 						uwep->otyp = DROVEN_LANCE;

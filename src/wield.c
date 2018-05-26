@@ -52,7 +52,6 @@
  */
 
 
-STATIC_DCL int FDECL(ready_weapon, (struct obj *));
 
 /* used by will_weld() */
 /* probably should be renamed */
@@ -97,6 +96,7 @@ register struct obj *obj;
 	    end_burn(olduwep, FALSE);
 	    if (!Blind) pline("%s glowing.", Tobjnam(olduwep, "stop"));
 	}
+	if(uwep == obj && olduwep && Is_spear(olduwep)) spearoff(olduwep);
 	/* Note: Explicitly wielding a pick-axe will not give a "bashing"
 	 * message.  Wielding one via 'a'pplying it will.
 	 * 3.2.2:  Wielding arbitrary objects will give bashing message too.
@@ -124,7 +124,7 @@ register struct obj *obj;
         }
 }
 
-STATIC_OVL int
+int
 ready_weapon(wep)
 struct obj *wep;
 {
@@ -189,7 +189,14 @@ struct obj *wep;
 
 	    /* KMH -- Talking artifacts are finally implemented */
 	    arti_speak(wep);
+	    if(Is_spear(wep) && wep->ovar1){
+		switch(wep->ovar1){
+			case MORGANITE:
+				ERegeneration |= W_WEP;
+			break;
 
+		}
+	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
 			begin_burn(wep, FALSE);
 		if (!Blind)
@@ -597,6 +604,7 @@ void
 uwepgone()
 {
 	if (uwep) {
+		spearoff(uwep);
 		if (artifact_light(uwep) && uwep->lamplit) {
 		    end_burn(uwep, FALSE);
 		    if (!Blind) pline("%s glowing.", Tobjnam(uwep, "stop"));
@@ -606,7 +614,19 @@ uwepgone()
 		update_inventory();
 	}
 }
+void
+spearoff(obj)
+struct obj *obj;
+{
+	if(Is_spear(obj) && obj->ovar1){
+		switch(obj->ovar1){
+			case MORGANITE:
+				ERegeneration &= ~W_WEP;
+			break;
+		}
+	}
 
+}
 void
 uswapwepgone()
 {

@@ -1459,6 +1459,33 @@ int thrown;
 					hittxt = TRUE;
 				}
 			}
+			if(Is_spear(obj)){
+				switch(obj->ovar1){
+					case DILITHIUM_CRYSTAL:
+						tmp *= 2;
+						Your("crystal sharp spear plunges deeply into %s!",mon_nam(mon));	
+					break;
+					case TURQUOISE:
+					 if (thrown && !tele_restrict(mon)) {
+						boolean vis = (cansee(mon->mx,mon->my) && canspotmon(mon)); 
+						char mdef_Monnam[BUFSZ];
+								                         /* save the name before monster teleports, otherwise
+											  *                        we'll get "it" in the suddenly disappears message */
+						if (vis) Strcpy(mdef_Monnam, Monnam(mon));
+						mon->mstrategy &= ~STRAT_WAITFORU;
+						(void) rloc(mon, FALSE);
+						if (vis && !canspotmon(mon)
+#ifdef STEED
+							&& mon != u.usteed
+#endif
+							)
+							pline("%s suddenly disappears!", mdef_Monnam);
+					}
+					break;
+
+
+				}
+			}
 		    if (obj->oartifact &&
 				artifact_hit(&youmonst, mon, obj, &tmp, dieroll)) {
 				if(mon->mhp <= 0 || migrating_mons == mon) /* artifact killed or levelported monster */
