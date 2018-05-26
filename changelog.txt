@@ -101,7 +101,9 @@ Spear changes
 		Violet Fluorite
 			Pacification rarely
 		Blue Fluorite
+			Sleep resistance + sleeping
 		White Fluorite
+			
 		Green Fluorite
 		Obsidian
 		Agate

@@ -3174,7 +3174,16 @@ signs_enlightenment()
 		putstr(en_win, 0, "You are invisible.");
 		message = TRUE;
 	}
-	
+	if(uwep && uwep->otyp == SPEAR){
+		switch(uwep->ovar1){
+			case JET:
+				putstr(en_win, 0, "You are protected by a dark mist.");
+			break;
+			case OPAL:
+				putstr(en_win, 0, "You are surrounded by resonating motes of light.");
+			break;
+		}
+	}
 	// if(u.sealsActive&SEAL_AHAZU && !(ublindf && ublindf->otyp==MASK));
 	if(u.sealsActive&SEAL_AMON && !Invis){
 //		if(!(uarmh && is_metallic(uarmh))){
@@ -3466,7 +3475,16 @@ signs_mirror()
 		putstr(en_win, 0, "You are invisible.");
 		message = TRUE;
 	}
-	
+	if(uwep && uwep->otyp == SPEAR){
+		switch(uwep->ovar1){
+			case JET:
+				putstr(en_win, 0, "You are protected by a dark mist.");
+			break;
+			case OPAL:
+				putstr(en_win, 0, "You are surrounded by resonating motes of light.");
+			break;
+		}
+	}	
 	if(u.sealsActive&SEAL_AHAZU && !NoBInvis){
 		if(!(ublindf && ublindf->otyp==MASK)){
 			putstr(en_win, 0, "There is a starry void in your throat.");

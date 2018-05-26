@@ -203,6 +203,13 @@ struct obj *wep;
 			case JET:
 				You("are shrouded in a black mist!");	
 			break;
+			case OPAL:
+				You("are surrounded by colorful lights.");
+				EReflecting |= W_WEP;
+			break;
+			case CHRYSOBERYL:
+				ESick_resistance |= W_WEP;	
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -637,6 +644,13 @@ struct obj *obj;
 			break;
 			case JET:
 				pline("The black mist around you dissipates.");	
+			break;
+			case OPAL:
+				pline("The lights around you fade out.");
+				EReflecting &= ~W_WEP;	
+			break;
+			case CHRYSOBERYL:
+				ESick_resistance &= ~W_WEP;	
 			break;
 
 		}
