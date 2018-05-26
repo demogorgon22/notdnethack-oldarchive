@@ -2227,6 +2227,7 @@ int final;	/* 0 => still in progress; 1 => over, survived; 2 => dead */
 	if (u.udaminc)
 	    you_have(enlght_combatinc("damage", u.udaminc, final, buf));
 	if (Slow_digestion) you_have("slower digestion");
+	if (Energy_regeneration) you_have("improved energy regeneration");
 	if (Regeneration) enl_msg("You regenerate", "", "d", "");
 	if (u.uspellprot || Protection) {
 	    int prot = 0;
@@ -2828,6 +2829,7 @@ int final;
 	    dump(youhad,
 		enlght_combatinc("damage", u.udaminc, final, buf));
 	if (Slow_digestion) dump(youhad, "slower digestion");
+	if (Energy_regeneration) dump(youhad,"improved energy regeneration");
 	if (Regeneration) dump("  ", "You regenerated");
 	if (u.uspellprot || Protection) {
 	    int prot = 0;

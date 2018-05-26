@@ -2261,11 +2261,17 @@ defaultvalue:
 				}
 			break;
 			case VIOLET_FLUORITE:
-				if(!mon->mtame && !(mon->data->geno & G_UNIQ) && !rn2(10)){
+				if(!mon->mtame && !(mon->data->geno & G_UNIQ) && !rn2(20)){
 					mon->mpeaceful = TRUE;
 					pline("%s seems calmer", Monnam(mon));
 					newsym(mon->mx,mon->my);
 				}	
+			break;
+			case BLUE_FLUORITE:
+				if(!rn2(10) && sleep_monst(mon, 12 + rnd(12), WEAPON_CLASS)){
+					pline("%s falls asleep.", Monnam(mon));
+					slept_monst(mon);
+				}
 			break;
 		}
 

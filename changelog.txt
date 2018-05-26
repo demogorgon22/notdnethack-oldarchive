@@ -99,9 +99,9 @@ Spear changes
 		Jasper
 			Digging
 		Violet Fluorite
-			Pacification rarely
+			Pacification 1/20 attacks
 		Blue Fluorite
-			Sleep resistance + sleeping
+			Sleeping attack 1/10
 		White Fluorite
 			Energy Regen
 		Green Fluorite

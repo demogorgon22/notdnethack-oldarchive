@@ -213,6 +213,9 @@ struct obj *wep;
 			case AMETHYST:
 				ETelepat |= W_WEP;
 			break;
+			case WHITE_FLUORITE:
+				EEnergy_regeneration |= W_WEP;
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -657,6 +660,9 @@ struct obj *obj;
 			break;
 			case AMETHYST:
 				ETelepat &= ~W_WEP;
+			break;
+			case WHITE_FLUORITE:
+				EEnergy_regeneration &= ~!W_WEP;
 			break;
 
 		}
