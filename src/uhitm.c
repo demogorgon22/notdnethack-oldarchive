@@ -2272,6 +2272,12 @@ defaultvalue:
 					slept_monst(mon);
 				}
 			break;
+			case JADE:
+				if(!rn2(5)){
+					pline("Toxic gasses billow from your spear point!");
+					create_gas_cloud(mon->mx, mon->my, 2, 4);	
+				}
+			break;
 		}
 
 

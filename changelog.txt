@@ -109,13 +109,15 @@ Spear changes
 		Obsidian
 			Ignore thick skin and AC
 		Agate
+			Free Action
 		Jade
+			Stinking cloud 1/5
 		Luckstone
 			Luck and tohit
 		Loadstone
 			Heavy and steals iron items.
 		Touchstone
-			Some sort of identify?
+			Probing
 		Fossile dark
 			drain life
 General changes

@@ -216,6 +216,9 @@ struct obj *wep;
 			case WHITE_FLUORITE:
 				EEnergy_regeneration |= W_WEP;
 			break;
+			case AGATE:
+				u.uprops[FREE_ACTION].extrinsic |= W_WEP;
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -663,6 +666,9 @@ struct obj *obj;
 			break;
 			case WHITE_FLUORITE:
 				EEnergy_regeneration &= ~!W_WEP;
+			break;
+			case AGATE:
+				u.uprops[FREE_ACTION].extrinsic &= ~!W_WEP;
 			break;
 
 		}
