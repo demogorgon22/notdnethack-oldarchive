@@ -209,7 +209,7 @@ long sealKey[34] = {SEAL_AHAZU, SEAL_AMON, SEAL_ANDREALPHUS, SEAL_ANDROMALIUS, S
 				};
 static struct trobj Cave_man[] = {
 #define C_AMMO	2
-	{ CLUB, 1, WEAPON_CLASS, 1, UNDEF_BLESS },
+	{ SPEAR, 1, WEAPON_CLASS, 1, UNDEF_BLESS },
 	{ SLING, 2, WEAPON_CLASS, 1, UNDEF_BLESS },
 	{ FLINT, 0, GEM_CLASS, 15, UNDEF_BLESS },	/* quan is variable */
 	{ ROCK, 0, GEM_CLASS, 3, 0 },			/* yields 18..33 */

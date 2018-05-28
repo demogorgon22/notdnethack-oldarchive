@@ -113,9 +113,9 @@ Spear changes
 		Jade
 			Stinking cloud 1/5
 		Luckstone
-			Luck and tohit
+			Tohit +7
 		Loadstone
-			Heavy and steals iron items.
+			Heavy and steals items. 1/5 of time
 		Touchstone
 			Probing
 		Fossile dark

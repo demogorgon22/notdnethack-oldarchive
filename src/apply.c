@@ -2439,12 +2439,17 @@ struct obj *tstone;
 			pline("It's too hard to break!");
 			return;
 		}
+		if(obj->otyp == LOADSTONE && obj->cursed){
+			Your("rock sticks to the loadstone!");/*How iron-ic*/
+			return;
+		}
 		if(obj->quan > 1){
 			obj = splitobj(obj,1L);
 		}
 		if(Role_if(PM_CAVEMAN)){
 			You("knap the %s into a point!",xname(obj));
 			obj->ovar1 = KNAPPED_SPEAR;
+			if(obj->otyp == LOADSTONE) obj->owt /= 10;
 	   		obj_extract_self(obj);	/* free from inv */
 			obj = hold_another_object(obj, "You drop %s!",
 				doname(obj), (const char *)0);
@@ -4951,13 +4956,17 @@ doapply()
 				rewield = TRUE;
 			}
 			long temp = obj->ovar1;
+			if(otmp->otyp == LOADSTONE) obj->owt += otmp->owt; /*when removing loadstone point decrease weight of spear*/
 			obj->ovar1 = otmp->otyp;
 			obj_extract_self(otmp);	/* free from inv */
 			obfree(otmp,(struct obj *) 0);
 			//good bye old otmp, hello new otmp!
 			otmp = mksobj(temp,TRUE,FALSE);
+			if(otmp->quan > 1) otmp->owt /= otmp->quan;
 			otmp->quan = 1;
 			otmp->ovar1 = KNAPPED_SPEAR;
+			if(otmp->otyp == LOADSTONE) otmp->owt /= 10;
+			if(otmp->otyp == LOADSTONE) obj->owt -= otmp->owt;/*when adding loadstone point increase weight of spear*/
 			otmp = hold_another_object(otmp, "You drop %s!",
 				doname(otmp), (const char *)0);
 			if(addtoinvent) obj = hold_another_object(obj, "You drop %s!",

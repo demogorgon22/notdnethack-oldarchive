@@ -2278,6 +2278,38 @@ defaultvalue:
 					create_gas_cloud(mon->mx, mon->my, 2, 4);	
 				}
 			break;
+			case LOADSTONE:
+				if(!thrown && !rn2(2)){
+					struct obj *otmp2;
+					long unwornmask;
+					if((otmp2 = mon->minvent) != 0) {
+						while(otmp2 && 
+						  otmp2->owornmask&W_ARMOR && 
+						  !( (otmp2->owornmask&W_WEP) && !rn2(10))
+						) otmp2 = otmp2->nobj;
+					}
+					if(otmp2 != 0){
+						/* take the object away from the monster */
+						if(otmp2->quan > 1L){
+							otmp2 = splitobj(otmp2, 1L);
+							obj_extract_self(otmp2); //wornmask is cleared by splitobj
+						} else {
+							obj_extract_self(otmp2);
+							if ((unwornmask = otmp2->owornmask) != 0L) {
+								mon->misc_worn_check &= ~unwornmask;
+								if (otmp2->owornmask & W_WEP) {
+									setmnotwielded(mon,otmp2);
+									MON_NOWEP(mon);
+								}
+								otmp2->owornmask = 0L;
+								update_mon_intrinsics(mon, otmp2, FALSE, FALSE);
+							}
+						}
+						otmp2 = hold_another_object(otmp2, "Your spear point attracts but drops %s.",
+								   doname(otmp2), "You spear point attracts an object: ");
+					}
+				}
+			break;
 		}
 
 

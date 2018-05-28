@@ -205,6 +205,7 @@ struct monst *mon;
 	}
 	if (is_spear(otmp) &&
 	   index(kebabable, ptr->mlet)) tmp += (ptr == &mons[PM_SMAUG]) ? 20 : 2;
+	if(Is_spear(otmp) && otmp->ovar1 == LUCKSTONE) tmp+=7;
 
 	if (is_farm(otmp) &&
 	    ptr->mlet == S_PLANT) tmp += 6;
