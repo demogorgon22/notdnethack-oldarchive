@@ -115,11 +115,11 @@ Spear changes
 		Luckstone
 			Tohit +7
 		Loadstone
-			Heavy and steals items. 1/5 of time
+			Heavy and steals items. 1/2 of time
 		Touchstone
-			Probing
+			Probing + d5 extra dmg
 		Fossile dark
-			drain life
+			2x dmg drain xp
 General changes
 	Can now multishot spears and knives like in vanilla
 	New Tshirt messages

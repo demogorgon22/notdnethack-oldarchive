@@ -1480,8 +1480,13 @@ int thrown;
 						if (!rn2(4)) (void) destroy_mitem(mon, SCROLL_CLASS, AD_FIRE);
 						if (!rn2(7)) (void) destroy_mitem(mon, SPBOOK_CLASS, AD_FIRE);
 					break;
-					
-
+					case TOUCHSTONE:
+						if(!thrown && !rn2(5)){
+							Your("%s probes %s.",xname(obj),mon_nam(mon));
+							mon->mstdy += rnd(5);
+							probe_monster(mon);
+						}
+					break;	
 				}
 			}
 		    if (obj->oartifact &&
@@ -2183,7 +2188,20 @@ defaultvalue:
 	
 	/*Now apply damage*/
 	// pline("Damage: %d",tmp);
-	
+	if(Is_spear(obj) && obj->ovar1 == CHUNK_OF_FOSSILE_DARK){
+		if(!resists_drli(mon)){
+			pline("%s draws the life from %s!",
+			  The(xname(obj)),
+			  mon_nam(mon));
+			if(!mon->m_lev){
+				tmp = mon->mhp;
+				phasearmor = TRUE;
+			} else {
+				mon->m_lev--;
+				tmp *= 2;
+			}
+		}
+	}
 	if(tmp && !phasearmor){
 		int mac = full_marmorac(mon);
 		if(mac < 0){
@@ -2310,6 +2328,7 @@ defaultvalue:
 					}
 				}
 			break;
+
 		}
 
 

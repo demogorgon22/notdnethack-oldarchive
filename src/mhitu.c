@@ -1738,6 +1738,36 @@ hitmu(mtmp, mattk)
 					poisoned(buf, A_CON, mdat->mname, 30, otmp->opoisoned);
 				}
 			}
+			/*apply spear powers*/
+			if(Is_spear(otmp)){
+				switch(otmp->ovar1){
+					case DILITHIUM_CRYSTAL:
+						dmg *= 2;
+						pline("%s crystal sharp %s deeply into you!",s_suffix(Monnam(mtmp)),otmp->quan > 1?"spears plunge":"spear plunges");	
+					break;
+					
+					case AMBER:
+
+					break;
+					case GARNET:
+				/*		if(!resists_fire(mon)){
+							tmp *= 2;
+							Your("garnet embered %s %s!", obj->quan > 1 ? "spears blaze":"spear blazes",mon_nam(mon));
+						} else {
+							Your("garnet embered %s.", obj->quan > 1 ? "spears smokes":"spear smokes");
+						}
+						if (!rn2(4)) (void) destroy_mitem(mon, POTION_CLASS, AD_FIRE);
+						if (!rn2(4)) (void) destroy_mitem(mon, SCROLL_CLASS, AD_FIRE);
+						if (!rn2(7)) (void) destroy_mitem(mon, SPBOOK_CLASS, AD_FIRE);
+			*/		break;
+					case TOUCHSTONE:
+						if(!rn2(5)){
+							pline("%s %s probes you.",s_suffix(Monnam(mtmp)),xname(otmp));
+						}
+						u.ustdy += rnd(5);
+					break;	
+				}
+			}
 			if (dmg <= 0) dmg = 1;
 			if (!(otmp->oartifact &&
 				artifact_hit(mtmp, &youmonst, otmp, &dmg,dieroll)))
