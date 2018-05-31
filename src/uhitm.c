@@ -1458,7 +1458,7 @@ int thrown;
 					hittxt = TRUE;
 				}
 			}
-			if(Is_spear(obj)){
+			if(obj && Is_spear(obj)){
 				switch(obj->ovar1){
 					case DILITHIUM_CRYSTAL:
 						tmp *= 2;
@@ -2188,7 +2188,7 @@ defaultvalue:
 	
 	/*Now apply damage*/
 	// pline("Damage: %d",tmp);
-	if(Is_spear(obj) && obj->ovar1 == CHUNK_OF_FOSSILE_DARK){
+	if(obj && Is_spear(obj) && obj->ovar1 == CHUNK_OF_FOSSILE_DARK){
 		if(!resists_drli(mon)){
 			pline("%s draws the life from %s!",
 			  The(xname(obj)),
