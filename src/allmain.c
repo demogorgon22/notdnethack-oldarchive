@@ -778,6 +778,7 @@ moveloop()
 			}
 			
 		    if(!(Is_illregrd(&u.uz) && u.ualign.type == A_LAWFUL && !u.uevent.uaxus_foe) && /*Turn off random generation on axus's level if lawful*/
+				!In_void(&u.uz) &&
 				!rn2(u.uevent.udemigod ? 25 :
 				(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)) ? 35 :
 			    (depth(&u.uz) > depth(&stronghold_level)) ? 50 : 70)
@@ -790,7 +791,7 @@ moveloop()
 				} else if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz) && Is_qstart(&u.uz)){
 					(void) makemon((struct permonst *)0, xdnstair, ydnstair, MM_ADJACENTOK);
 				}
-				else if(!In_void(&u.uz))(void) makemon((struct permonst *)0, 0, 0, NO_MM_FLAGS);
+				else (void) makemon((struct permonst *)0, 0, 0, NO_MM_FLAGS);
 			}
 			if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz) && !Is_qstart(&u.uz) && !rn2(50)){
 				struct monst* mtmp = makemon(&mons[PM_SEMBLANCE], rn1(COLNO-3,2), rn1(ROWNO-3,2), MM_ADJACENTSTRICT|MM_ADJACENTOK);
