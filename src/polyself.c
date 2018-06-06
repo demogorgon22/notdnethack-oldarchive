@@ -50,7 +50,7 @@ init_uasmon()
 
 	upermonst.mflagsv &= ~(mons[PM_HUMAN].mflagsv);
 	upermonst.mflagsv |= (mons[urace.malenum].mflagsv);
-	
+		
 	/* Fix up the attacks */
 	/* crude workaround, needs better general solution */
 	if (Race_if(PM_VAMPIRE)) {
