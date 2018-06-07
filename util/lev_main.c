@@ -247,6 +247,7 @@ char **argv;
 				":dat:medusa.des",
 				":dat:mines.des",
 				":dat:oracle.des",
+				":dat:sacristy.des",
 				":dat:sokoban.des",
 				":dat:tower.des",
 				":dat:void.des",
