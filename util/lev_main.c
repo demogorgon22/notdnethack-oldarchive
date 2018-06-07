@@ -226,6 +226,7 @@ char **argv;
 #if defined(MAC) && (defined(THINK_C) || defined(__MWERKS__))
 	static char *mac_argv[] = {	"lev_comp",	/* dummy argv[0] */
 				":dat:Arch.des",
+				":dat:Anachronounbinder.des",
 				":dat:Barb.des",
 				":dat:Caveman.des",
 				":dat:Healer.des",
@@ -248,6 +249,7 @@ char **argv;
 				":dat:oracle.des",
 				":dat:sokoban.des",
 				":dat:tower.des",
+				":dat:void.des",
 				":dat:yendor.des"
 				};
 
