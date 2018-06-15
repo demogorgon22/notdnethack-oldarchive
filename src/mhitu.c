@@ -1837,7 +1837,7 @@ hitmu(mtmp, mattk)
 						}
 					break;
 					case CHUNK_OF_FOSSILE_DARK:
-			    			if(!Drain_resistance && !rn2(10)){
+			    			if(!Drain_resistance){
 							losexp("life force drain",TRUE,FALSE,FALSE);
 						}
 					break;

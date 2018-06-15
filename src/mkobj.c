@@ -452,7 +452,13 @@ boolean artif;
 			container_weight(otmp);
 		}
 		else if(Is_spear(otmp)){
-			otmp->ovar1 = CHUNK_OF_FOSSILE_DARK;
+			otmp->ovar1 = FLINT;
+			if(!rn2(100) && !flags.beginner){
+				otmp->ovar1 = DILITHIUM_CRYSTAL + rn2(42);
+				while(otmp->ovar1 == ROCK || objects[otmp->ovar1].oc_tough){
+					otmp->ovar1 = DILITHIUM_CRYSTAL + rn2(42);
+				}
+			}
 		}
 		else if(is_blaster(otmp)){ //Rayguns and mass-shadow pistols are also blasters, so this has to go under that case
 			otmp->ovar1 = 80L + rnd(20);

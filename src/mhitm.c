@@ -1345,9 +1345,73 @@ physical:{
 					tmp += rnd(9);
 			} else {
 				tmp += dmgval(otmp, mdef, 0);
-				if(otmp && ((is_lightsaber(otmp) && otmp->lamplit) || arti_shining(otmp))) phasearmor = TRUE;
+				if(otmp && ((is_lightsaber(otmp) && otmp->lamplit) || arti_shining(otmp) || (Is_spear(otmp) && otmp->ovar1 == OBSIDIAN))) phasearmor = TRUE;
 			}
-			
+			if(otmp && Is_spear(otmp)){
+				switch(otmp->ovar1){
+					case DILITHIUM_CRYSTAL:
+						tmp *= 2;
+						pline("%s crystal sharp %s deeply into %s!",s_suffix(Monnam(magr)),
+								otmp->quan > 1?"spears plunge":"spear plunges",mon_nam(mdef));	
+					break;	
+					case AMBER:
+						if(!rn2(2)) mon_adjust_speed(mdef, -1, otmp);
+					break;
+					case GARNET:
+						if(!resists_fire(mdef)){
+							tmp *= 2;
+							pline("%s garnet embered %s %s!",s_suffix(Monnam(magr)), otmp->quan > 1 ? "spears blaze":"spear blazes",mon_nam(mdef));
+						} else {
+							pline("%s garnet embered %s.",s_suffix(Monnam(magr)),otmp->quan > 1 ? "spears smokes":"spear smokes");
+						}
+						if (!rn2(4)) (void) destroy_mitem(mdef, POTION_CLASS, AD_FIRE);
+						if (!rn2(4)) (void) destroy_mitem(mdef, SCROLL_CLASS, AD_FIRE);
+						if (!rn2(7)) (void) destroy_mitem(mdef, SPBOOK_CLASS, AD_FIRE);
+					break;
+					case TOUCHSTONE:
+						if(!rn2(5)){
+							pline("%s %s probes %s.",s_suffix(Monnam(magr)),xname(otmp),mon_nam(magr));
+							mdef->mstdy += rnd(5);
+						}
+					break;
+					case VIOLET_FLUORITE:
+						if(!rn2(10)){
+							if (vis) pline("%s looks confused.", Monnam(mdef));
+		   					mdef->mconf = 1;
+		    					mdef->mstrategy &= ~STRAT_WAITFORU;
+						}	
+					break;
+					case BLUE_FLUORITE:
+						if(!rn2(10) && sleep_monst(mdef, 12 + rnd(12), WEAPON_CLASS)){
+							pline("%s falls asleep.", Monnam(mdef));
+							slept_monst(mdef);
+						}
+					break;
+					case JADE:
+						if(!rn2(5)){
+							pline("Toxic gasses billow from %s spear point!",s_suffix(mon_nam(magr)));
+							create_gas_cloud(mdef->mx, mdef->my, 2, 4);	
+						}
+					break;
+					case CHUNK_OF_FOSSILE_DARK:
+						if(!resists_drli(mdef)){
+							pline("%s draws the life from %s!",
+							  The(xname(otmp)),
+							  mon_nam(mdef));
+							if(!mdef->m_lev){
+								tmp = mdef->mhp;
+								phasearmor = TRUE;
+							} else {
+								mdef->m_lev--;
+								tmp *= 2;
+							}
+						}
+
+					break;
+
+				}
+
+			}	
 			if(resist_attacks(mdef->data))
 				tmp = 0;
             /* WAC Weres get seared */

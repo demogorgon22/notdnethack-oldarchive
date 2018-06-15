@@ -2280,7 +2280,7 @@ defaultvalue:
 			case VIOLET_FLUORITE:
 				if(!mon->mtame && !(mon->data->geno & G_UNIQ) && !rn2(20)){
 					mon->mpeaceful = TRUE;
-					pline("%s seems calmer", Monnam(mon));
+					pline("%s seems calmer.", Monnam(mon));
 					newsym(mon->mx,mon->my);
 				}	
 			break;
