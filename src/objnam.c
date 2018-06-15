@@ -472,6 +472,8 @@ boolean ignore_oquan;
 				Strcat(buf, "pointless ");
 			} else if(objects[obj->ovar1].oc_material == GLASS){
 				Sprintf(eos(buf), "%s glass point ", c_obj_colors[objects[obj->ovar1].oc_color]);
+			} else if (obj->ovar1 == CHUNK_OF_FOSSILE_DARK){
+				Sprintf(eos(buf), "fossile dark point ");
 			} else if(obj->ovar1 != FLINT){
 				Sprintf(eos(buf), "%s point ",OBJ_NAME(objects[obj->ovar1]));
 			}

@@ -1701,7 +1701,8 @@ hitmu(mtmp, mattk)
 				) dmg += rnd(9);
 			} else {
 				dmg += dmgval(otmp, &youmonst, 0);
-				if(otmp && ((is_lightsaber(otmp) && otmp->lamplit) || arti_shining(otmp))) phasearmor = TRUE;
+				if(otmp && ((is_lightsaber(otmp) && otmp->lamplit) || arti_shining(otmp)
+					|| (Is_spear(otmp) && otmp->ovar1 == OBSIDIAN))) phasearmor = TRUE;
 			}
 			
 			if(oarm && dmg && oarm->otyp == GAUNTLETS_OF_POWER){
@@ -1745,21 +1746,46 @@ hitmu(mtmp, mattk)
 						dmg *= 2;
 						pline("%s crystal sharp %s deeply into you!",s_suffix(Monnam(mtmp)),otmp->quan > 1?"spears plunge":"spear plunges");	
 					break;
-					
 					case AMBER:
-
+						if (uncancelled && HFast &&
+							!defends(AD_SLOW, uwep) && !rn2(4))
+		    				u_slow_down();
 					break;
 					case GARNET:
-				/*		if(!resists_fire(mon)){
-							tmp *= 2;
-							Your("garnet embered %s %s!", obj->quan > 1 ? "spears blaze":"spear blazes",mon_nam(mon));
-						} else {
-							Your("garnet embered %s.", obj->quan > 1 ? "spears smokes":"spear smokes");
+					    pline("You're %s!", on_fire(youracedata, mattk));
+						if (Fire_resistance) {
+							pline_The("fire doesn't feel hot!");
+						} else if (youracedata == &mons[PM_STRAW_GOLEM] ||
+					        youracedata == &mons[PM_PAPER_GOLEM] ||
+					        youracedata == &mons[PM_SPELL_GOLEM]) {
+						    You("burn up!");
+							if((int) mtmp->m_lev > rn2(20))
+							destroy_item(SCROLL_CLASS, AD_FIRE);
+							if((int) mtmp->m_lev > rn2(20))
+							destroy_item(POTION_CLASS, AD_FIRE);
+							if((int) mtmp->m_lev > rn2(25))
+							destroy_item(SPBOOK_CLASS, AD_FIRE);
+						    /* KMH -- this is okay with unchanging */
+						    rehumanize();
+						    break;
+					    } else if (youracedata == &mons[PM_MIGO_WORKER]) {
+						    You("melt!");
+						    /* KMH -- this is okay with unchanging */
+						    rehumanize();
+						    break;
+					    } else {
+						dmg *= 2;
+					    } 
+						if(!EFire_resistance){
+							if((int) mtmp->m_lev > rn2(20))
+							destroy_item(SCROLL_CLASS, AD_FIRE);
+							if((int) mtmp->m_lev > rn2(20))
+							destroy_item(POTION_CLASS, AD_FIRE);
+							if((int) mtmp->m_lev > rn2(25))
+							destroy_item(SPBOOK_CLASS, AD_FIRE);
 						}
-						if (!rn2(4)) (void) destroy_mitem(mon, POTION_CLASS, AD_FIRE);
-						if (!rn2(4)) (void) destroy_mitem(mon, SCROLL_CLASS, AD_FIRE);
-						if (!rn2(7)) (void) destroy_mitem(mon, SPBOOK_CLASS, AD_FIRE);
-			*/		break;
+					    burn_away_slime();
+					break;
 					case TOUCHSTONE:
 						if(!rn2(5)){
 							pline("%s %s probes you.",s_suffix(Monnam(mtmp)),xname(otmp));
@@ -1773,6 +1799,50 @@ hitmu(mtmp, mattk)
 				artifact_hit(mtmp, &youmonst, otmp, &dmg,dieroll)))
 			     hitmsg(mtmp, mattk);
 			if (!dmg) break;
+			if(otmp && Is_spear(otmp)){
+				switch(otmp->ovar1){
+					case TURQUOISE:
+						if(flags.verbose)
+							Your("position suddenly seems very uncertain!");
+						tele();
+						return 3;
+					break;
+					case VIOLET_FLUORITE:
+						if(!rn2(10)){
+							if(Confusion)
+								You("are getting even more confused.");
+		  					else You("are getting confused.");
+		   					make_confused(HConfusion + dmg, FALSE);
+						}
+					break;
+					case BLUE_FLUORITE:
+						if(!rn2(10)){
+							if (Sleep_resistance) break;
+							fall_asleep(-rnd(10), TRUE);
+							if (Blind) You("are put to sleep!");
+							else You("are put to sleep by %s spear!", s_suffix(mon_nam(mtmp)));
+
+						}
+					break;
+					case JADE:
+						if(!rn2(5)){        
+	                                        	pline("Toxic gasses billow from %s spear point!", s_suffix(mon_nam(mtmp)));             
+							create_gas_cloud(mtmp->mx, mtmp->my, 2, 4);                        
+						}
+					break;
+					case LOADSTONE:
+						if(!(u.sealsActive&SEAL_ANDROMALIUS) && !rn2(5)){
+							steal(mtmp, buf, FALSE, FALSE);
+
+						}
+					break;
+					case CHUNK_OF_FOSSILE_DARK:
+			    			if(!Drain_resistance && !rn2(10)){
+							losexp("life force drain",TRUE,FALSE,FALSE);
+						}
+					break;
+				}
+			}
 			if (u.mh > 1 && u.mh > ((u.uac>=0) ? dmg : dmg+AC_VALUE(u.uac+u.uspellprot)-u.uspellprot) &&
 				   otmp->obj_material == IRON &&
 					(u.umonnum==PM_BLACK_PUDDING
