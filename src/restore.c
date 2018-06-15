@@ -736,6 +736,7 @@ register int fd;
 #endif /* RECORD_REALTIME || REALTIME_ON_BOTL */
 
 	/* Success! */
+	welcome(FALSE);
 	//if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 7) upermonst.mflagsv |= MV_ECHOLOCATE;//begone magic nmbers
 	//if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 10) upermonst.mflagsm |= MM_FLY;//begone magic nmbers      welcome(FALSE);
 	return(1);
