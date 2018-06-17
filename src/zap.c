@@ -1388,15 +1388,35 @@ poly_obj(obj, id)
 	if (obj->otyp == BOULDER && In_sokoban(&u.uz))
 	    change_luck(-1);	/* Sokoban guilt, boulders only */
 	if (id == STRANGE_OBJECT) { /* preserve symbol */
-	    int try_limit = 3;
-	    /* Try up to 3 times to make the magic-or-not status of
-	       the new item be the same as it was for the old one. */
-	    otmp = (struct obj *)0;
-	    do {
-		if (otmp) delobj(otmp);
-		otmp = mkobj(obj->oclass, FALSE);
-	    } while (--try_limit > 0 &&
-		  objects[obj->otyp].oc_magic != objects[otmp->otyp].oc_magic);
+		if(obj->otyp == SPE_BLANK_PAPER || obj->otyp == SCR_BLANK_PAPER){
+			otmp = mksobj(rn2(2) ? SPE_BLANK_PAPER : SCR_BLANK_PAPER, FALSE, FALSE);
+		} else if(obj->otyp == POT_BLOOD){
+			otmp = mksobj(POT_BLOOD, FALSE, FALSE);
+		} else if(obj->otyp == POT_WATER || obj->otyp == POT_AMNESIA){
+			if(!rn2(3)){
+				obj->blessed = 0;
+				obj->cursed = 1;
+			} else if(rn2(2)){
+				obj->cursed = 0;
+				obj->blessed = 1;
+			} else {
+				obj->blessed = 0;
+				obj->cursed = 0;
+			}
+			return obj;
+		} else if(obj->otyp == HYPOSPRAY_AMPULE){
+			otmp = mksobj(HYPOSPRAY_AMPULE, FALSE, FALSE);
+		} else {
+		    int try_limit = 3;
+		    /* Try up to 3 times to make the magic-or-not status of
+		       the new item be the same as it was for the old one. */
+		    otmp = (struct obj *)0;
+		    do {
+			if (otmp) delobj(otmp);
+			otmp = mkobj(obj->oclass, FALSE);
+		    } while (--try_limit > 0 &&
+			  objects[obj->otyp].oc_magic != objects[otmp->otyp].oc_magic);
+		}
 	} else {
 	    /* literally replace obj with this new thing */
 	    otmp = mksobj(id, FALSE, FALSE);
