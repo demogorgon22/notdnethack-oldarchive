@@ -359,6 +359,19 @@ chat_with_leader()
 				}
 				Your("%s chains itself to you!", xname(obj));
 			}
+		} else if(Role_if(PM_CAVEMAN)){
+			struct obj *obj;
+			obj = mksobj(SPEAR, TRUE, FALSE);
+			obj = oname(obj, artiname(ART_SCEPTRE_OF_MIGHT));
+			obj->oerodeproof = TRUE;
+			obj->blessed = TRUE;
+			obj->cursed = FALSE;
+			obj->ovar1 = OBSIDIAN;
+			pline("\"My spear, may you have it to guide you on your quest.\"");
+			pline("He hands %s to you.", the(xname(obj)));
+			obj = addinv(obj);	/* into your inventory */
+			(void) encumber_msg();
+			
 		}
 	  }
 	}

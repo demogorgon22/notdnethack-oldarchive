@@ -1641,7 +1641,7 @@ off our access to the outer world."
 "Peace has returned, give thanks to %d!"
 %E
 %Cp Cav 00012
-"Welcome back!  Did you find %o?"
+"Welcome back!  Did you slay %n?"
 %E
 %Cp Cav 00013
 "So, %p, tell us the story of your fight with %n."
@@ -1697,16 +1697,15 @@ the creatures sent against us by %n.
 
 "She, herself, could not attack us due to her great size, but her minions
 have harassed us ever since.  In the first attacks, many died, and the
-minions of %n managed to steal %o.
-They took it to %i and there, none of our
+minions of %n layed waste to our cave.
+They fled to %i and there, none of our
 %g warriors have been able to go.
 
-"You must find %i, and within it wrest
-%o from %n.  She guards it as
-jealously as she guards all treasures she attains.  But with it,
-we can make our caves safe once more.
+"You must find %i, and within it 
+slay %n. Else, %n and her minions
+will return and finish off the rest of our people.
 
-"Please, %p, recover %o for us, and return it here."
+"Please, %p, slay %n for us, and return here."
 %E
 %Cp Cav 00025
 "%nC is immune to her own breath weapons.
@@ -1723,10 +1722,10 @@ You should use magic upon her that she does not use herself."
 %E
 %Cp Cav 00029
 "Do not be distracted by the great treasures in %ns lair.
-Concentrate on %o."
+Concentrate on her."
 %E
 %Cp Cav 00030
-"%oC is the only object that %n truly fears."
+"The Sceptre of Might is the only object that %n truly fears."
 %E
 %Cp Cav 00031
 "Do not be fooled by %ns size.  She is fast, and it is
@@ -1789,7 +1788,7 @@ Now I shall kill you."
 "Join me for lunch?  You're the main course, %c."
 %E
 %Cp Cav 00063
-"With %o, I am invincible!  You cannot succeed."
+"I am invincible!  You cannot succeed."
 %E
 %Cp Cav 00064
 "Your mentor, %l has failed.  You are nothing to fear."

@@ -967,12 +967,12 @@ A("The Lyre of Orpheus",	MAGIC_HARP,
 	0,0,0),
 #endif
 
-A("The Sceptre of Might",	MACE,
+A("The Sceptre of Might",	SPEAR,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DALIGN|SPFX_CON_OR|SPFX_DEFN),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	PHYS(5,0),	NO_DFNS,	CARY(AD_MAGM),
 	CONFLICT,	A_LAWFUL, PM_CAVEMAN, NON_PM, 2500L, 
-	SPFX2_RAM,0,0),
+	0,0,0),
 #ifdef CONVICT
 // A("The Iron Ball of Liberation", HEAVY_IRON_BALL,
 	// (SPFX_NOGEN|SPFX_RESTR|SPFX_LUCK|SPFX_INTEL),
