@@ -627,7 +627,7 @@ mon_tele:
 			int nlev;
 			d_level flev;
 
-			if (mon_has_amulet(mtmp) || In_endgame(&u.uz)) {
+			if (mon_has_amulet(mtmp) || In_endgame(&u.uz) || In_void(&u.uz)) {
 			    if (vismon)
 				pline("%s seems very disoriented for a moment.",
 					Monnam(mtmp));
