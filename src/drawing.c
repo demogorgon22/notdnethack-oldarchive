@@ -180,7 +180,7 @@ const char * const monexplain[MAXMCLASSES] = {
     "piercer",			"quadruped",		"rodent",
     "arachnid or centipede",	"trapper, lurker, or metroid", "unicorn or horse",
     "vortex",		"worm", "xan or other mythical/fantastic insect",
-    "light",			"zruty or ammit",
+    "light",			"amalgamation",
 
     "lawful angelic being",	"neutral angelic being",	"chaotic angelic being",
 	"bat or bird",		"centaur",
@@ -251,7 +251,7 @@ const struct symdef defsyms[MAXPCHARS] = {
 #else
 	{'#', "",		C(CLR_GRAY)},	/* sink */
 #endif
-/*30*/	{'{', "fountain",	C(CLR_BLUE)},	/* fountain */
+/*30*/	{'{', "fountain",	C(CLR_BRIGHT_BLUE)},	/* fountain */
 	{'}', "water",		C(CLR_BLUE)},	/* pool */
 	{'.', "ice",		C(CLR_CYAN)},	/* ice */
 	{'}', "molten lava",	C(CLR_RED)},	/* lava */
