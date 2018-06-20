@@ -131,4 +131,5 @@ General changes
 	Easier to untrap fire traps
 	Riding larger monsters increases your carrying capacity always instead
 	of previously usually decreasing it
-
+	Uncontrolled teleportation while able to swim or breathe underwater
+	made drastically less dangerous.

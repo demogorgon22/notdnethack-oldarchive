@@ -59,19 +59,18 @@ unsigned gpflags;
 	    mdat = mtmp->data;
 	    if (is_3dwater(x,y) && !ignorewater) {
 			if (mtmp == &youmonst)
-				return !!(Amphibious);
+				return FALSE;
 			else return (is_swimmer(mdat) || breathless_mon(mtmp) || amphibious(mdat));
 	    } else if (is_pool(x,y) && !ignorewater) {
 			if (mtmp == &youmonst)
-				return !!(HLevitation || Flying || Wwalking ||
-						Swimming || Amphibious);
+				return !!(HLevitation || Flying || Wwalking);
 			else	return (is_flyer(mdat) || breathless_mon(mtmp) || is_swimmer(mdat) ||
 								is_clinger(mdat) || amphibious(mdat));
 	    } else if (mdat->mlet == S_EEL && !ignorewater) {
 			return FALSE;
 	    } else if (is_lava(x,y)) {
 			if (mtmp == &youmonst)
-				return !!HLevitation;
+				return !!(HLevitation || Flying);
 			else
 				return (is_flyer(mdat) || likes_lava(mdat));
 	    }
@@ -84,6 +83,37 @@ unsigned gpflags;
 	if (closed_door(x, y) && (!mdat || !amorphous(mdat)))
 		return FALSE;
 	if (boulder_at(x, y) && (!mdat || !throws_rocks(mdat)))
+		return FALSE;
+	return TRUE;
+}
+/*Don't ever throw a monster in here only your monster data*/
+boolean
+goodcontrolpos(x, y)
+int x,y;
+{
+
+	if (!isok(x, y)) return FALSE;
+
+	    struct monst *mtmp = m_at(x,y);
+
+	    if (mtmp && (mtmp != &youmonst))
+		return FALSE;
+
+	    if (is_3dwater(x,y)) {
+			return !!(Amphibious);
+	    } else if (is_pool(x,y)) {
+			return !!(HLevitation || Flying || Wwalking || Swimming || Amphibious);
+	    } else if (is_lava(x,y)) {
+			return !!(HLevitation || Flying || likes_lava(youracedata));
+	    }
+	    if (passes_walls(youracedata) && may_passwall(x,y)) return TRUE;
+	if (!ACCESSIBLE(levl[x][y].typ)) {
+		if (!is_pool(x,y)) return FALSE;
+	}
+
+	if (closed_door(x, y) && !amorphous(youracedata))
+		return FALSE;
+	if (boulder_at(x, y) && !throws_rocks(youracedata))
 		return FALSE;
 	return TRUE;
 }
@@ -441,6 +471,17 @@ boolean trapok;
 	return TRUE;
 }
 
+boolean
+controlledteleok(x, y)
+register int x, y;
+{
+	if (t_at(x, y)) return FALSE;
+	if (!goodcontrolpos(x, y)) return FALSE;
+	if (!tele_jump_ok(u.ux, u.uy, x, y)) return FALSE;
+	if (!in_out_region(x, y)) return FALSE;
+	return TRUE;
+}
+
 void
 teleds(nux, nuy, allow_drag)
 register int nux,nuy;
@@ -676,7 +717,7 @@ tele()
 			return;	/* abort */
 		    /* possible extensions: introduce a small error if
 		       magic power is low; allow transfer to solid rock */
-		    if (teleok(cc.x, cc.y, FALSE)) {
+		    if (controlledteleok(cc.x, cc.y, FALSE)) {
 			teleds(cc.x, cc.y, FALSE);
 			return;
 		    }

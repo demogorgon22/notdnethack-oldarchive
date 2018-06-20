@@ -319,7 +319,7 @@ ENDMAP
 REGION:(00,00,75,19),lit,"ordinary"
 # Altar to ???
 BRANCH:(37,10,37,10),(0,0,0,0)
-ALTAR:(37,09),align[1],altar
+ALTAR:(37,09),neutral,altar
 # Stairs
 STAIR:(01,01),up
 STAIR:(49,12),down
