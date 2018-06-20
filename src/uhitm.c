@@ -684,7 +684,7 @@ register struct monst *mtmp;
 			};
 			keepattacking = hmonwith(mtmp, tmp, weptmp, tchtmp, tentattack, 1);
 		}
-		if(P_SKILL(P_MARTIAL_ARTS) >= P_GRAND_MASTER && !uwep && !Upolyd && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp ){
+		if(P_SKILL(P_MARTIAL_ARTS) >= P_GRAND_MASTER && !uwep && !Upolyd && !Race_if(PM_SALAMANDER) && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp ){
 			static struct attack kickattack[] = 
 			{
 				{AT_KICK,AD_PHYS,1,4},
