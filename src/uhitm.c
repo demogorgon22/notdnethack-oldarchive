@@ -4017,7 +4017,7 @@ wisp_shdw_dhit:
 			    else if (mattk->aatyp == AT_WHIP)
 				    Your("barbed whips lash %s.", mon_nam(mon));
 				else if(mattk->adtyp == AT_SHDW) {
-					Your("bladed shadow srikes %s.", mon_nam(mon));
+					Your("bladed shadow strikes %s.", mon_nam(mon));
 				} else if(mattk->adtyp == AT_SHDW) {
 					You("slash %s with a starlight rapier.", mon_nam(mon));
 				} else if(mattk->aatyp == AT_WISP) 
@@ -4270,7 +4270,7 @@ wisp_shdw_dhit2:
 				Your("barbed whips lash %s.", mon_nam(mon));
 			else if(mattk->adtyp == AT_SHDW) {
 				if(youracedata == &mons[PM_EDDERKOP]) You("slash %s with bladed shadows.", mon_nam(mon));
-				else Your("bladed shadow srikes %s.", mon_nam(mon));
+				else Your("bladed shadow strikes %s.", mon_nam(mon));
 			} else if(mattk->aatyp == AT_WISP) 
 				Your("mist tendrils lash %s.", mon_nam(mon));
 			else You("hit %s.", mon_nam(mon));
@@ -4717,6 +4717,7 @@ dobpois:
 				if(mndx <= PM_QUINON && mndx >= PM_MONOTON && mtmp->mpeaceful){
 					pline("%s gets angry...", Amonnam(mtmp));
 					mtmp->mpeaceful = 0;
+					mtmp->mtame = 0;
 				}
 			}
 		} break;

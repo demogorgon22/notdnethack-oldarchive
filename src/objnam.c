@@ -100,8 +100,8 @@ STATIC_OVL char *SaberHilts[] = {
 /*07*/"This %s has a smooth hilt with a recessed emitter disk.",
 /*08*/"Six little claws grip the emitter disk of this %s.",
 /*09*/"This %s's grip is composed of a hard, woody substance.",
-/*10*/"This %s's grip is a set of verticle black ridges.",
-/*11*/"This %s is fasioned to appear much like a branch of coral.",
+/*10*/"This %s's grip is a set of vertical black ridges.",
+/*11*/"This %s is fashioned to appear much like a branch of coral.",
 /*12*/"This %s is a single long spiral.",
 /*13*/"This %s's emitter disk is set into the jaws of a white tiger.",
 /*14*/"This %s's emitter disk is held by the coils of a green dragon.",
@@ -117,7 +117,7 @@ STATIC_OVL char *SaberHilts[] = {
 /*24*/"This %s has a ornate golden diskguard.",
 /*25*/"The focusing chamber of this %s can be seen through a viewport.",
 /*26*/"A thin red ribbon hangs from the pommel of this %s.",
-/*27*/"This %s has a crude hilt fashoned from crystalized metal.",
+/*27*/"This %s has a crude hilt fashioned from crystallized metal.",
 /*28*/"There is a winged blade of light carved into the pommel of this %s.",
 /*29*/"The Galactic Roundel is carved into this %s's pommel.",
 /*30*/"A crimson starbird is set the pommel of this %s.",
@@ -2416,6 +2416,7 @@ struct alt_spellings {
 	{ "scroll of enchant armour", SCR_ENCHANT_ARMOR },
 	{ "scroll of destroy armour", SCR_DESTROY_ARMOR },
 	{ "leather armour", LEATHER_ARMOR },
+	{ "leather gloves", GLOVES },
 	{ "studded leather armour", STUDDED_LEATHER_ARMOR },
 	{ "iron ball", HEAVY_IRON_BALL },
 	{ "lantern", BRASS_LANTERN },
@@ -2498,6 +2499,7 @@ struct alt_spellings {
 	{ "armored dress", NOBLE_S_DRESS },
 	{ "armored black dress", NOBLE_S_DRESS },
 	{ "droven dress", NOBLE_S_DRESS },
+	{ "armored boots", ARMORED_BOOTS },
 	{ (const char *)0, 0 },
 };
 
@@ -3029,6 +3031,7 @@ boolean from_user;
 	if (strncmpi(bp, "vampire killer", 11)) /* not the "vampire" monster! */
 	if (strncmpi(bp, "ninja-to", 8)) /* not the "ninja" rank */
 	if (strncmpi(bp, "master key", 10)) /* not the "master" rank */
+	if (strncmpi(bp, "scroll of stinking cloud", 24)) /* not the "stinking cloud" monster */
 	if (strncmpi(bp, "rod of lordly might", 19)) /* not the "lord" rank */
 	if (strncmpi(bp, "magenta", 7)) /* not the "mage" rank */
 	if (strncmpi(bp, "chromatic dragon scales", 23)) /* not a "dragon" */

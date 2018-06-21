@@ -219,7 +219,7 @@ boolean forced;
 	
 	if(spir==SEAL_JACK && forced && !gnosis && u.ulevel == 1){
 		Your("life is saved!");
-		pline("Unfortunatly, your soul is torn to shreds.");
+		pline("Unfortunately, your soul is torn to shreds.");
 	}
 	if(forced && !gnosis){
 		if(spir == SEAL_ORTHOS && Hallucination) losexp("being eaten by a grue",TRUE,TRUE,TRUE);
