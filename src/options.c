@@ -181,9 +181,9 @@ static struct Bool_Opt
 	{"menu_glyphs", &iflags.use_menu_glyphs, FALSE, SET_IN_GAME},
 #ifdef WIZARD
 	/* for menu debugging only*/
-	{"menu_tab_sep", &iflags.menu_tab_sep, FALSE, SET_IN_GAME},
+//	{"menu_tab_sep", &iflags.menu_tab_sep, FALSE, SET_IN_GAME},
 #else
-	{"menu_tab_sep", (boolean *)0, FALSE, SET_IN_FILE},
+//	{"menu_tab_sep", (boolean *)0, FALSE, SET_IN_FILE},
 #endif
 #ifdef CURSES_GRAPHICS
 	{"mouse_support", &iflags.wc_mouse_support, FALSE, DISP_IN_GAME},	/*WC*/

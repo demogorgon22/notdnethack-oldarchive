@@ -5370,7 +5370,7 @@ arti_invoke(obj)
 			if(!turnpage){
 				pline("The endless pages of the book cover the material of a spellbook of %s in exhaustive detail.",OBJ_NAME(objects[obj->ovar1]));
 				pline("Following the instructions on the pages, you cast the spell!");
-				spelleffects(0,FALSE,obj->ovar1);
+				spelleffects(0,0,FALSE,obj->ovar1);
 			}
 			if(turnpage || !rn2(20)){
 				obj->ovar1 = rn2(SPE_BLANK_PAPER - SPE_DIG) + SPE_DIG;

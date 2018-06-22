@@ -31,11 +31,11 @@ STATIC_DCL boolean FDECL(cursed_book, (struct obj *bp));
 STATIC_DCL boolean FDECL(confused_book, (struct obj *));
 STATIC_DCL void FDECL(deadbook, (struct obj *));
 STATIC_PTR int NDECL(learn);
-STATIC_DCL boolean FDECL(getspell, (int *));
+STATIC_DCL boolean FDECL(getspell, (int *,int *));
 STATIC_DCL boolean FDECL(getspirit, (int *));
 STATIC_DCL boolean FDECL(spiritLets, (char *));
 STATIC_DCL int FDECL(dospiritmenu, (const char *, int *));
-STATIC_DCL boolean FDECL(dospellmenu, (const char *,int,int *, boolean));
+STATIC_DCL boolean FDECL(dospellmenu, (const char *,int,int *,int *, boolean));
 STATIC_DCL void FDECL(describe_spell, (int));
 STATIC_DCL int FDECL(percent_success, (int));
 STATIC_DCL int NDECL(throwspell);
@@ -883,8 +883,9 @@ age_spells()
  * parameter.  Otherwise return FALSE.
  */
 STATIC_OVL boolean
-getspell(spell_no)
+getspell(spell_no,overload_percent)
 	int *spell_no;
+	int *overload_percent;
 {
 	int nspells, idx;
 	char ilet, lets[BUFSZ], qbuf[QBUFSZ];
@@ -921,7 +922,7 @@ getspell(spell_no)
 		}
 	}
 	return dospellmenu("Choose which spell to cast",
-				SPELLMENU_CAST, spell_no, FALSE);
+				SPELLMENU_CAST, spell_no, overload_percent, FALSE);
 }
 /*
  * Return TRUE if a spell was picked, with the spell index in the return
@@ -1151,7 +1152,7 @@ int
 docast()
 {
 	int spell_no;
-	
+	int overload_percent = 0;	
 	if(uarmh && uarmh->oartifact == ART_STORMHELM){
 		int i;
 		for (i = 0; i < MAXSPELL; i++) {
@@ -1195,8 +1196,8 @@ docast()
 		}
 	}
 	
-	if (getspell(&spell_no))
-					return spelleffects(spell_no, FALSE, 0);
+	if (getspell(&spell_no, &overload_percent))
+					return spelleffects(spell_no, overload_percent, FALSE, 0);
 	return 0;
 }
 
@@ -3110,7 +3111,7 @@ spiriteffects(power, atme)
 				You("read from the spellbook in your hands.");
 				// uwep->spestudied++;
 				// costly_cancel(uwep);
-				spelleffects(0,FALSE,uwep->otyp);
+				spelleffects(0,0,FALSE,uwep->otyp);
 	    	    // if(uwep->spestudied > MAX_SPELL_STUDY){
 					// pline("The magical energy within %s is exhausted.",the(xname(uwep)));
 					// uwep->otyp = SPE_BLANK_PAPER;
@@ -3641,8 +3642,8 @@ choose_crystal_summon()
 
 
 int
-spelleffects(spell, atme, spelltyp)
-int spell, spelltyp;
+spelleffects(spell, overload_percent,atme, spelltyp)
+int spell, spelltyp, overload_percent;
 boolean atme;
 {
 	int energy, damage, chance, n, intell;
@@ -3682,7 +3683,7 @@ boolean atme;
 			}
 		}
 		energy = (spellev(spell) * 5);    /* 5 <= energy <= 35 */
-
+		if(overload_percent) energy = (spellev(spell) * 5) + ((spellev(spell) * 5)*(overload_percent/100));
 		if (!Race_if(PM_INCANTIFIER) && u.uhunger <= 10 && spellid(spell) != SPE_DETECT_FOOD) {
 			You("are too hungry to cast that spell.");
 			return(0);
@@ -3764,6 +3765,7 @@ boolean atme;
 			    cc.x=u.dx;cc.y=u.dy;
 			    n=rnd(8)+1;
 				if(u.sealsActive&SEAL_NABERIUS) n *= 1.5;
+				if(overload_percent > 100) n *= overload_percent/100;
 			    while(n--) {
 					if(!u.dx && !u.dy && !u.dz) {
 					    if ((damage = zapyourself(pseudo, TRUE)) != 0) {
@@ -4038,10 +4040,10 @@ dovspell()
 	    You("don't know any spells right now.");
 	else {
 	    while (dospellmenu("Currently known spells",
-			       SPELLMENU_VIEW, &splnum, FALSE)) {
+			       SPELLMENU_VIEW, &splnum, 0, FALSE)) {
 		Sprintf(qbuf, "Reordering spells; swap '%c' with",
 			spellet(splnum));
-		if (!dospellmenu(qbuf, splnum, &othnum, FALSE)) break;
+		if (!dospellmenu(qbuf, splnum, &othnum, 0, FALSE)) break;
 
 		spl_tmp = spl_book[splnum];
 		spl_book[splnum] = spl_book[othnum];
@@ -4129,10 +4131,11 @@ int *power_no;
 }
 
 STATIC_OVL boolean
-dospellmenu(prompt, splaction, spell_no, describe)
+dospellmenu(prompt, splaction, spell_no, overload_percent, describe)
 const char *prompt;
 int splaction;	/* SPELLMENU_CAST, SPELLMENU_VIEW, or spl_book[] index */
 int *spell_no;
+int *overload_percent;
 boolean describe;
 {
 	winid tmpwin;
@@ -4155,16 +4158,17 @@ boolean describe;
 	 * in the window-ports (say via a tab character).
 	 */
 	if (!iflags.menu_tab_sep)
-		Sprintf(buf, "%-20s     Level  %-12s Fail   Memory", "    Name", "Category");
+		Sprintf(buf, "%-20s     Level  %-12s Cost  Fail   Memory", "    Name", "Category");
 	else
-		Sprintf(buf, "Name\tLevel\tCategory\tFail\tMemory");
+		Sprintf(buf, "Name\tLevel\tCategory\tCost\tFail\tMemory");
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 	for (i = 0; i < MAXSPELL && spellid(i) != NO_SPELL; i++) {
 		Sprintf(buf, iflags.menu_tab_sep ?
-			"%s\t%-d%s\t%s\t%-d%%\t%-d%%" : "%-20s  %2d%s   %-12s %3d%%     %3d%%",
+			"%s\t%-d%s\t%s\t%-d%%\t%-d%%" : "%-20s  %2d%s   %-12s  %3d  %3d%%     %3d%%",
 			spellname(i), spellev(i),
 			spellknow(i) ? " " : "*",
 			spelltypemnemonic(spell_skilltype(spellid(i))),
+			(spellev(i) * 5) + ((spellev(i) * 5)  * (*overload_percent/100)),
 			100 - percent_success(i),
 			(spellknow(i) * 100 + (KEEN - 1)) / KEEN
 		);
@@ -4189,6 +4193,13 @@ boolean describe;
 			'!', 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
 	}
+	if(!*overload_percent && splaction != SPELLMENU_VIEW && Role_if(PM_WIZARD)){
+		Sprintf(buf, "Overload a spell instead");
+		any.a_int = -2;					/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'+', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
 		
 	end_menu(tmpwin, describe ? "Choose spell to describe:" : prompt);
 
@@ -4198,11 +4209,27 @@ boolean describe;
 	n = select_menu(tmpwin, how, &selected);
 	destroy_nhwindow(tmpwin);
 	if (n > 0 && selected[0].item.a_int == -1){
-		return dospellmenu(prompt, splaction, spell_no, !describe);
+		*overload_percent = 0;
+		return dospellmenu(prompt, splaction, spell_no, overload_percent, !describe);
+	}
+	if(n>0 && selected[0].item.a_int == -2){
+		char qbuf[BUFSZ];
+		char buf[BUFSZ];
+		Strcpy(qbuf, "Overload by what percent?"); 
+		getlin(qbuf, buf);
+	//	pline("%s,%d",buf,atoi(buf));
+		//if (!strcmp(buf,"\033")) {      /* cancelled */    
+			if(atoi(buf) != 0){
+				*overload_percent = atoi(buf);
+				return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
+			}
+		//}
+		return dospellmenu(prompt, splaction, spell_no, overload_percent, describe);
 	}
 	if (n > 0 && describe){
+		*overload_percent = 0;
 		describe_spell(selected[0].item.a_int - 1);
-		return dospellmenu(prompt, splaction, spell_no, describe);
+		return dospellmenu(prompt, splaction, spell_no, overload_percent, describe);
 	}
 	if (n > 0) {
 		*spell_no = selected[0].item.a_int - 1;

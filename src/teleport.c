@@ -810,7 +810,7 @@ dotele()
 
 	    if (castit) {
 		exercise(A_WIS, TRUE);
-		if (spelleffects(sp_no, TRUE, 0))
+		if (spelleffects(sp_no, 0, TRUE, 0))
 			return(1);
 		else
 #ifdef WIZARD

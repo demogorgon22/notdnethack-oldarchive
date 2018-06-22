@@ -2311,7 +2311,7 @@ E int NDECL(spiritDsize);
 E int NDECL(dospirit);
 E int FDECL(spell_skilltype, (int));
 E int FDECL(spiriteffects, (int,BOOLEAN_P));
-E int FDECL(spelleffects, (int,BOOLEAN_P,int));
+E int FDECL(spelleffects, (int,int,BOOLEAN_P,int));
 E void FDECL(losespells, (int));
 E int NDECL(dovspell);
 E void FDECL(initialspell, (struct obj *));
