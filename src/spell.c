@@ -3682,8 +3682,7 @@ boolean atme;
 				Your("knowledge of this spell is growing faint.");
 			}
 		}
-		energy = (spellev(spell) * 5);    /* 5 <= energy <= 35 */
-		if(overload_percent) energy = (int)((float)(spellev(spell) * 5) + (float)((spellev(spell) * 5)  * ((float)overload_percent/(float)100)));
+		energy = (int)((float)(spellev(spell) * 5) + (float)((spellev(spell) * 5)  * ((float)overload_percent/(float)100)));
 		if (!Race_if(PM_INCANTIFIER) && u.uhunger <= 10 && spellid(spell) != SPE_DETECT_FOOD) {
 			You("are too hungry to cast that spell.");
 			return(0);
@@ -3765,7 +3764,9 @@ boolean atme;
 			    cc.x=u.dx;cc.y=u.dy;
 			    n=rnd(8)+1;
 				if(u.sealsActive&SEAL_NABERIUS) n *= 1.5;
-				if(overload_percent > 100) n *= overload_percent/100;
+				pline("n:%d",n);
+				if(overload_percent > 100) n *= (float)overload_percent/(float)100;
+				pline("n:%d",n);
 			    while(n--) {
 					if(!u.dx && !u.dy && !u.dz) {
 					    if ((damage = zapyourself(pseudo, TRUE)) != 0) {
@@ -3774,7 +3775,7 @@ boolean atme;
 							losehp(damage, buf, NO_KILLER_PREFIX);
 					    }
 					} else {
-						if(u.sealsActive&SEAL_NABERIUS) explode2(u.dx, u.dy,
+						if(u.sealsActive&SEAL_NABERIUS || overload_percent >= 100) explode2(u.dx, u.dy,
 						    pseudo->otyp - SPE_MAGIC_MISSILE + 10,
 						    u.ulevel/2 + 1 + spell_damage_bonus(), 0,
 							(pseudo->otyp == SPE_CONE_OF_COLD) ?
@@ -3852,17 +3853,21 @@ boolean atme;
 
 	/* these are all duplicates of scroll effects */
 	case SPE_REMOVE_CURSE:
-	case SPE_CONFUSE_MONSTER:
 	case SPE_DETECT_FOOD:
+	case SPE_MAGIC_MAPPING:
 	case SPE_CAUSE_FEAR:
 		/* high skill yields effect equivalent to blessed scroll */
-		if (role_skill >= P_SKILLED) pseudo->blessed = 1;
-		/* fall through */
+		if (role_skill >= P_SKILLED || overload_percent >= 100) pseudo->blessed = 1;
+		(void) seffects(pseudo);
+		break;
 	case SPE_CHARM_MONSTER:
-	case SPE_MAGIC_MAPPING:
 	case SPE_CREATE_MONSTER:
+	case SPE_CONFUSE_MONSTER:
 	case SPE_IDENTIFY:
 		(void) seffects(pseudo);
+		for(int i = 0;i < overload_percent/100;i++){
+			(void) seffects(pseudo);
+		}
 		break;
 
 	/* these are all duplicates of potion effects */
@@ -3871,7 +3876,7 @@ boolean atme;
 	case SPE_LEVITATION:
 	case SPE_RESTORE_ABILITY:
 		/* high skill yields effect equivalent to blessed potion */
-		if (role_skill >= P_SKILLED) pseudo->blessed = 1;
+		if (role_skill >= P_SKILLED || overload_percent >= 100) pseudo->blessed = 1;
 		/* fall through */
 	case SPE_INVISIBILITY:
 		(void) peffects(pseudo);
@@ -4144,7 +4149,6 @@ boolean describe;
 	char buf[BUFSZ];
 	menu_item *selected;
 	anything any;
-	boolean renormal = FALSE;
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
 	any.a_void = 0;		/* zero out all bits */
@@ -4210,22 +4214,26 @@ boolean describe;
 	n = select_menu(tmpwin, how, &selected);
 	destroy_nhwindow(tmpwin);
 	if (n > 0 && selected[0].item.a_int == -1){
-		renormal = *overload_percent?FALSE:!describe;
+		boolean renormal = *overload_percent?FALSE:!describe;
 		*overload_percent = 0;
 		return dospellmenu(prompt, splaction, spell_no, overload_percent, renormal);
 	}
 	if(n>0 && selected[0].item.a_int == -2){
 		char qbuf[BUFSZ];
 		char buf[BUFSZ];
+		int overloadcap = 10*u.ulevel;
 		Strcpy(qbuf, "Overload by what percent?"); 
 		getlin(qbuf, buf);
-		pline("%s,%d",buf,atoi(buf));
+		//pline("%s,%d",buf,atoi(buf));
 		//if (!strcmp(buf,"\033")) {      /* cancelled */    
-			if(atoi(buf) >= 0 ){//&& atoi(buf) < overloadcap){
+			if(atoi(buf) >= 0 && atoi(buf) <= overloadcap){
 				*overload_percent = atoi(buf);
 				return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
 			}
 		//}
+		if(atoi(buf)>=0){
+			pline("Sorry, you can't go higher than %d percent.",overloadcap);
+		}
 		return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
 	}
 	if (n > 0 && describe){

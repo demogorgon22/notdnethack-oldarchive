@@ -117,6 +117,7 @@ Spear changes
 			Free Action
 		Jade
 			Stinking cloud 1/5
+			Poison resistance
 		Luckstone
 			Tohit +7
 		Loadstone
