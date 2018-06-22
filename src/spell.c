@@ -4179,7 +4179,7 @@ boolean describe;
 			 spellet(i), 0, ATR_NONE, buf,
 			 (i == splaction) ? MENU_SELECTED : MENU_UNSELECTED);
 	}
-	if (!describe){
+	if (!describe && !*overload_percent){
 		// Describe a spell
 		Sprintf(buf, "Describe a spell instead");
 		any.a_int = -1;					/* must be non-zero */
@@ -4222,10 +4222,10 @@ boolean describe;
 		//if (!strcmp(buf,"\033")) {      /* cancelled */    
 			if(atoi(buf) != 0){
 				*overload_percent = atoi(buf);
-				return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
+				return dospellmenu(prompt, splaction, spell_no, overload_percent, !describe);
 			}
 		//}
-		return dospellmenu(prompt, splaction, spell_no, overload_percent, describe);
+		return dospellmenu(prompt, splaction, spell_no, overload_percent, !describe);
 	}
 	if (n > 0 && describe){
 		*overload_percent = 0;
