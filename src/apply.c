@@ -2451,6 +2451,7 @@ struct obj *tstone;
 			obj->ovar1 = KNAPPED_SPEAR;
 			if(obj->otyp == LOADSTONE) obj->owt /= 10;
 	   		obj_extract_self(obj);	/* free from inv */
+			if(obj->otyp == LOADSTONE) obj->cursed = 0;
 			obj = hold_another_object(obj, "You drop %s!",
 				doname(obj), (const char *)0);
 		} else {
@@ -4969,6 +4970,9 @@ doapply()
 			otmp->ovar1 = KNAPPED_SPEAR;
 			if(otmp->otyp == LOADSTONE) otmp->owt /= 10;
 			if(otmp->otyp == LOADSTONE) obj->owt -= otmp->owt;/*when adding loadstone point increase weight of spear*/
+			otmp->bknown = obj->bknown;
+			otmp->blessed = obj->blessed;
+			otmp->cursed = obj->cursed;
 			otmp = hold_another_object(otmp, "You drop %s!",
 				doname(otmp), (const char *)0);
 			if(addtoinvent) obj = hold_another_object(obj, "You drop %s!",
