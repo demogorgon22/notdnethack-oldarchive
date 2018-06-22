@@ -4144,7 +4144,7 @@ boolean describe;
 	char buf[BUFSZ];
 	menu_item *selected;
 	anything any;
-
+	boolean renormal = FALSE;
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
 	any.a_void = 0;		/* zero out all bits */
@@ -4210,8 +4210,9 @@ boolean describe;
 	n = select_menu(tmpwin, how, &selected);
 	destroy_nhwindow(tmpwin);
 	if (n > 0 && selected[0].item.a_int == -1){
+		renormal = *overload_percent?FALSE:!describe;
 		*overload_percent = 0;
-		return dospellmenu(prompt, splaction, spell_no, overload_percent, !describe);
+		return dospellmenu(prompt, splaction, spell_no, overload_percent, renormal);
 	}
 	if(n>0 && selected[0].item.a_int == -2){
 		char qbuf[BUFSZ];
@@ -4220,12 +4221,12 @@ boolean describe;
 		getlin(qbuf, buf);
 		pline("%s,%d",buf,atoi(buf));
 		//if (!strcmp(buf,"\033")) {      /* cancelled */    
-			if(atoi(buf) != 0){
+			if(atoi(buf) >= 0 ){//&& atoi(buf) < overloadcap){
 				*overload_percent = atoi(buf);
-				return dospellmenu(prompt, splaction, spell_no, overload_percent, !describe);
+				return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
 			}
 		//}
-		return dospellmenu(prompt, splaction, spell_no, overload_percent, !describe);
+		return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
 	}
 	if (n > 0 && describe){
 		*overload_percent = 0;
