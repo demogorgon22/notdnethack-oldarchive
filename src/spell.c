@@ -3683,7 +3683,7 @@ boolean atme;
 			}
 		}
 		energy = (spellev(spell) * 5);    /* 5 <= energy <= 35 */
-		if(overload_percent) energy = (spellev(spell) * 5) + ((spellev(spell) * 5)*(overload_percent/100));
+		if(overload_percent) energy = (int)((float)(spellev(spell) * 5) + (float)((spellev(spell) * 5)  * ((float)overload_percent/(float)100)));
 		if (!Race_if(PM_INCANTIFIER) && u.uhunger <= 10 && spellid(spell) != SPE_DETECT_FOOD) {
 			You("are too hungry to cast that spell.");
 			return(0);
@@ -4034,16 +4034,17 @@ dovspell()
 {
 	char qbuf[QBUFSZ];
 	int splnum, othnum;
+	int overload_percent = 0;//dummy int so that we don't have to special case the shit out of everything
 	struct spell spl_tmp;
 
 	if (spellid(0) == NO_SPELL)
 	    You("don't know any spells right now.");
 	else {
 	    while (dospellmenu("Currently known spells",
-			       SPELLMENU_VIEW, &splnum, 0, FALSE)) {
+			       SPELLMENU_VIEW, &splnum, &overload_percent, FALSE)) {
 		Sprintf(qbuf, "Reordering spells; swap '%c' with",
 			spellet(splnum));
-		if (!dospellmenu(qbuf, splnum, &othnum, 0, FALSE)) break;
+		if (!dospellmenu(qbuf, splnum, &othnum, &overload_percent, FALSE)) break;
 
 		spl_tmp = spl_book[splnum];
 		spl_book[splnum] = spl_book[othnum];
@@ -4168,7 +4169,7 @@ boolean describe;
 			spellname(i), spellev(i),
 			spellknow(i) ? " " : "*",
 			spelltypemnemonic(spell_skilltype(spellid(i))),
-			(spellev(i) * 5) + ((spellev(i) * 5)  * (*overload_percent/100)),
+			(int)((float)(spellev(i) * 5) + (float)((spellev(i) * 5)  * ((float)*overload_percent/(float)100))),
 			100 - percent_success(i),
 			(spellknow(i) * 100 + (KEEN - 1)) / KEEN
 		);
@@ -4217,7 +4218,7 @@ boolean describe;
 		char buf[BUFSZ];
 		Strcpy(qbuf, "Overload by what percent?"); 
 		getlin(qbuf, buf);
-	//	pline("%s,%d",buf,atoi(buf));
+		pline("%s,%d",buf,atoi(buf));
 		//if (!strcmp(buf,"\033")) {      /* cancelled */    
 			if(atoi(buf) != 0){
 				*overload_percent = atoi(buf);
