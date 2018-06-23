@@ -188,6 +188,10 @@ struct obj {
 			/* 	Records remaining ammo for blasters and force pikes */
 			/* 	Records the hilt-type for lightsabers */
 			/* 	Records the ema of damage taken for gloves of the berserker */
+			/*Records spear point object type for spears*/
+			/*Records potion type for vapes*/
+			/*Records pseudo object spellbook overload percent*/
+			/*Records point type on gemstones*/
 			
 #define ECLIPSE_MOON	0
 #define CRESCENT_MOON	1

@@ -2777,13 +2777,21 @@ register struct	obj	*obj;
 	} else {
 	    /* neither immediate nor directionless */
 
-	    if (otyp == WAN_DIGGING || otyp == SPE_DIG)
-		zap_dig(-1,-1,-1);//-1-1-1 = "use defaults"
+	    if (otyp == WAN_DIGGING || otyp == SPE_DIG){
+		    if(obj->ovar1 && otyp == SPE_DIG){/*are we overloading?*/
+			int base = rn1(18,8);
+			zap_dig(-1,-1,base+ (float)base *((float)obj->ovar1/(float)100));//-1-1-1 = "use defaults"
+		    }else zap_dig(-1,-1,-1);//-1-1-1 = "use defaults"
+		}
 	    else if (otyp >= SPE_MAGIC_MISSILE && otyp <= SPE_ACID_BLAST){
+		int range = rn1(7,7);
+		if(obj->ovar1) range += (float)range * ((float)obj->ovar1/(float)100);
+		int dmg = u.ulevel / 2 + 1;
+		if(obj->ovar1) dmg += (float)dmg * ((float)obj->ovar1/(float)100);
 		if(u.sealsActive&SEAL_BUER && (otyp == SPE_FINGER_OF_DEATH || otyp == WAN_DEATH )) unbind(SEAL_BUER,TRUE);
 		buzz(otyp - SPE_MAGIC_MISSILE + 10,
-		     u.ulevel / 2 + 1,
-		     u.ux, u.uy, u.dx, u.dy,0,0);
+		     dmg,
+		     u.ux, u.uy, u.dx, u.dy,range,0);
 	    } else if (otyp >= WAN_MAGIC_MISSILE && otyp <= WAN_LIGHTNING)
 		buzz(otyp - WAN_MAGIC_MISSILE,
 		     (otyp == WAN_MAGIC_MISSILE) ? 2 : 6,

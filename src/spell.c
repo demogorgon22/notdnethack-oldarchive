@@ -3734,10 +3734,12 @@ boolean atme;
 		pseudo = mksobj(spellid(spell), FALSE, FALSE);
 		pseudo->blessed = pseudo->cursed = 0;
 		pseudo->quan = 20L;			/* do not let useup get it */
+		pseudo->ovar1 = (long)overload_percent;
 	} else {
 		pseudo = mksobj(spelltyp, FALSE, FALSE);
 		pseudo->blessed = pseudo->cursed = 0;
 		pseudo->quan = 20L;			/* do not let useup get it */
+		pseudo->ovar1 = (long)overload_percent;
 	}
 	/*
 	 * Find the skill the hero has in a spell type category.
@@ -3764,9 +3766,9 @@ boolean atme;
 			    cc.x=u.dx;cc.y=u.dy;
 			    n=rnd(8)+1;
 				if(u.sealsActive&SEAL_NABERIUS) n *= 1.5;
-				pline("n:%d",n);
-				if(overload_percent > 100) n *= (float)overload_percent/(float)100;
-				pline("n:%d",n);
+			//	pline("n:%d",n);
+				if(overload_percent) n += n*(float)overload_percent/(float)100;
+			//	pline("n:%d",n);
 			    while(n--) {
 					if(!u.dx && !u.dy && !u.dz) {
 					    if ((damage = zapyourself(pseudo, TRUE)) != 0) {
@@ -3872,14 +3874,19 @@ boolean atme;
 
 	/* these are all duplicates of potion effects */
 	case SPE_DETECT_TREASURE:
+	case SPE_RESTORE_ABILITY:
+		if (role_skill >= P_SKILLED || overload_percent >= 100) pseudo->blessed = 1;
+	break;
 	case SPE_DETECT_MONSTERS:
 	case SPE_LEVITATION:
-	case SPE_RESTORE_ABILITY:
 		/* high skill yields effect equivalent to blessed potion */
 		if (role_skill >= P_SKILLED || overload_percent >= 100) pseudo->blessed = 1;
 		/* fall through */
 	case SPE_INVISIBILITY:
 		(void) peffects(pseudo);
+		for(int i = 0;i < overload_percent/100;i++){
+			(void) peffects(pseudo);
+		}
 		break;
 
 	case SPE_CURE_BLINDNESS:
@@ -3896,16 +3903,21 @@ boolean atme;
 		break;
 	case SPE_CREATE_FAMILIAR:
 		(void) make_familiar((struct obj *)0, u.ux, u.uy, FALSE);
+		for(int i = 0;i < overload_percent/100;i++){
+			(void) make_familiar((struct obj *)0, u.ux, u.uy, FALSE);
+		}
 		break;
 	case SPE_CLAIRVOYANCE:
 		if (!BClairvoyant) {
-		    if (role_skill >= P_SKILLED) {
-			coord cc;
-			pline(where_to_cast);
-			cc.x = u.ux;
-			cc.y = u.uy;
-			if (getpos(&cc, TRUE, "the desired position") >= 0)
-		    	    do_vicinity_map(cc.x,cc.y);
+		    if (role_skill >= P_SKILLED || overload_percent >= 100) {
+			for(int i = -1; i<overload_percent/100;i++){
+				coord cc;
+				pline(where_to_cast);
+				cc.x = u.ux;
+				cc.y = u.uy;
+				if (getpos(&cc, TRUE, "the desired position") >= 0)
+		    	    	do_vicinity_map(cc.x,cc.y);
+			}
 		    } else do_vicinity_map(u.ux,u.uy);
 		/* at present, only one thing blocks clairvoyance */
 		} else if (uarmh && uarmh->otyp == CORNUTHAUM)
@@ -3913,11 +3925,23 @@ boolean atme;
 			body_part(HEAD));
 		break;
 	case SPE_PROTECTION:
-		cast_protection();
+		for(int i = -1;i < overload_percent/100;i++){
+			cast_protection();
+		}
 		break;
 	case SPE_JUMPING:
-		if (!jump(max(role_skill,1)))
-			pline1(nothing_happens);
+		for(int i = -1;i < overload_percent/100;i++){
+			if (!jump(max(role_skill,1)))
+				pline1(nothing_happens);
+		}
+		if(overload_percent >= 100){
+			pline("You pull a muscle!");
+			set_wounded_legs(LEFT_SIDE, rnd(30-ACURR(A_DEX)));                                 
+			exercise(A_STR, FALSE);         
+			exercise(A_DEX, FALSE);         
+								
+		}
+		if(overload_percent >= 200) set_wounded_legs(RIGHT_SIDE, rnd(30-ACURR(A_DEX)));                                        
 		break;
 	default:
 		impossible("Unknown spell %d attempted.", spell);

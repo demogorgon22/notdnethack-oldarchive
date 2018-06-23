@@ -2377,11 +2377,14 @@ do_it:
 		rooms[rnum].rlit = on;
 	    }
 	    /* hallways remain dark on the rogue level */
-	} else
+	} else{
 #endif
+		int radius = (obj && obj->oclass==SCROLL_CLASS && obj->blessed) ? 9 : 5;
+		if(obj && obj->otyp == SPE_LIGHT && obj->ovar1) radius = (float)5 + ((float)4/(float)3) * ((float)obj->ovar1/(float)100);
 	    do_clear_area(u.ux,u.uy,
-		(obj && obj->oclass==SCROLL_CLASS && obj->blessed) ? 9 : 5,
+		radius,
 		set_lit, (genericptr_t)(on ? &is_lit : (char *)0));
+	}
 
 	/*
 	 *  If we are not blind, then force a redraw on all positions in sight
