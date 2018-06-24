@@ -1742,11 +1742,12 @@ int magic; /* 0=Physical, otherwise skill level */
 	}
 #endif
 
-	pline("Where do you want to jump?");
+	pline("Where do you want to jump?");//%d",(magic ? 6+magic*3 : 9));
 	cc.x = u.ux;
 	cc.y = u.uy;
 	if (getpos(&cc, TRUE, "the desired position") < 0)
 		return 0;	/* user pressed ESC */
+	//pline("distu:%d",distu(cc.x, cc.y));
 	if (!magic && !(HJumping & ~INTRINSIC) && !EJumping && !(u.sealsActive&SEAL_OSE) &&
 			distu(cc.x, cc.y) != 5) {
 		/* The Knight jumping restriction still applies when riding a

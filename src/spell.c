@@ -3930,10 +3930,9 @@ boolean atme;
 		}
 		break;
 	case SPE_JUMPING:
-		for(int i = -1;i < overload_percent/100;i++){
-			if (!jump(max(role_skill,1)))
-				pline1(nothing_happens);
-		}
+		//pline("%d",(int)(max(role_skill,1) *overload_percent?((float)overload_percent/(float)10):1));
+		if (!jump((int)(max(role_skill,1) *overload_percent?((float)overload_percent/(float)10):1)))
+			pline1(nothing_happens);
 		if(overload_percent >= 100){
 			pline("You pull a muscle!");
 			set_wounded_legs(LEFT_SIDE, rnd(30-ACURR(A_DEX)));                                 
