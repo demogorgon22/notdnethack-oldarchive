@@ -359,7 +359,8 @@ struct obj *otmp;
 			mtmp->m_lev--;
 			if(otmp->ovar1 >= 200) mtmp->m_lev--;
 			if (canseemon(mtmp))
-			    pline("%s suddenly seems weaker!", Monnam(mtmp));
+			    pline("%s suddenly seems%s weaker!", 
+				Monnam(mtmp), otmp->ovar1 >=200?" much":"");
 		    }
 		} else if(cansee(mtmp->mx,mtmp->my)) shieldeff(mtmp->mx, mtmp->my);
 		makeknown(otyp);
@@ -2329,12 +2330,15 @@ boolean ordinary;
 			You("shudder in dread.");
 		    break;
 		case SPE_HEALING:
-		case SPE_EXTRA_HEALING:
-		    healup(d((uarm && uarm->oartifact == ART_GAUNTLETS_OF_THE_HEALING_H) ?
-                  12 : 6, obj->otyp == SPE_EXTRA_HEALING ? 8 : 4),
-			   0, FALSE, (obj->otyp == SPE_EXTRA_HEALING));
+		case SPE_EXTRA_HEALING:{
+		    int heal = d((uarm && uarm->oartifact == ART_GAUNTLETS_OF_THE_HEALING_H) ?
+        	          12 : 6, obj->otyp == SPE_EXTRA_HEALING ? 8 : 4);
+		    heal += (float)heal*((float)obj->ovar1/(float)100);
+		    healup(heal, 0, (obj->ovar1 >= 200), 
+			(obj->otyp == SPE_EXTRA_HEALING || obj->ovar1>=100));
 		    You_feel("%sbetter.",
 			obj->otyp == SPE_EXTRA_HEALING ? "much " : "");
+			}
 		    break;
 		case WAN_DARKNESS:	/* (broken wand) */
 		 /* assert( !ordinary ); */
