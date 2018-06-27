@@ -305,7 +305,7 @@ doit:
 			    newsym(x, y);
 			}
 			pline("%s %s, %s evading your %skick.", Monnam(mon),
-				(can_teleport(mon->data) ? "teleports" :
+				((can_teleport(mon->data) && !level.flags.noteleport) ? "teleports" :
 				 is_floater(mon->data) ? "floats" :
 				 is_flyer(mon->data) ? "swoops" :
 				 (nolimbs(mon->data) || slithy(mon->data)) ?

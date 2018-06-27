@@ -131,18 +131,19 @@ struct obj *otmp;
 		/* fall through */
 	case SPE_FORCE_BOLT:
 		reveal_invis = TRUE;
+		int missAC = (otyp == SPE_FORCE_BOLT)?(10 + (float)10*(float)otmp->ovar1/(float)100):10;
 		if (resists_magm(mtmp)) {	/* match effect on player */
 			shieldeff(mtmp->mx, mtmp->my);
 			break;	/* skip makeknown */
-		} else if (u.uswallow || otyp == WAN_STRIKING || rnd(20) < 10 + find_mac(mtmp)) {
+		} else if (u.uswallow || otyp == WAN_STRIKING || (rnd(20) < missAC + find_mac(mtmp) || !rn2(2))) {
 			dmg = d(2,12);
 			if (!flags.mon_moving && otyp == SPE_FORCE_BOLT && (uwep && uwep->oartifact == ART_ANNULUS && uwep->otyp == CHAKRAM))
 				dmg += d((u.ulevel+1)/2, 12);
 			if(dbldam) dmg *= 2;
+			if(otyp == SPE_FORCE_BOLT) dmg *= (float)1 + (float)otmp->ovar1/(float)200; 
 			if(!flags.mon_moving && u.sealsActive&SEAL_NABERIUS) dmg *= 1.5;
 			if (otyp == SPE_FORCE_BOLT)
 			    dmg += spell_damage_bonus();
-			
 			hit(zap_type_text, mtmp, exclam(dmg));
 			(void) resist(mtmp, otmp->oclass, dmg, TELL);
 		} else if(!flags.mon_moving || cansee(mtmp->mx, mtmp->my)) miss(zap_type_text, mtmp);
@@ -177,8 +178,10 @@ struct obj *otmp;
 			dmg = rnd(8);
 			if(dbldam) dmg *= 2;
 			if(!flags.mon_moving && u.sealsActive&SEAL_NABERIUS) dmg *= 1.5;
-			if (otyp == SPE_TURN_UNDEAD)
+			if (otyp == SPE_TURN_UNDEAD){
 				dmg += spell_damage_bonus();
+				dmg += (float)dmg * (float)otmp->ovar1/200;
+			}
 			flags.bypasses = TRUE;	/* for make_corpse() */
 			if (!resist(mtmp, otmp->oclass, dmg, TELL)) {
 			    if (mtmp->mhp > 0) monflee(mtmp, 0, FALSE, TRUE);
@@ -273,7 +276,9 @@ struct obj *otmp;
 		reveal_invis = TRUE;
 	    if (mtmp->data != &mons[PM_PESTILENCE]) {
 		wake = FALSE;		/* wakeup() makes the target angry */
-		mtmp->mhp += d(6, otyp == SPE_EXTRA_HEALING ? 8 : 4);
+		int heal = d(6, otyp == SPE_EXTRA_HEALING ? 8 : 4);
+		if(otmp->oclass = SPBOOK_CLASS) heal += (float)heal*((float)otmp->ovar1/(float)200);
+		mtmp->mhp += heal;
 		if (mtmp->mhp > mtmp->mhpmax)
 		    mtmp->mhp = mtmp->mhpmax;
 		if (mtmp->mblinded) {
@@ -337,8 +342,10 @@ struct obj *otmp;
 		dmg = rnd(8);
 		if(dbldam) dmg *= 2;
 		if(!flags.mon_moving && u.sealsActive&SEAL_NABERIUS) dmg *= 1.5;
-		if (otyp == SPE_DRAIN_LIFE)
+		if (otyp == SPE_DRAIN_LIFE){
 			dmg += spell_damage_bonus();
+			dmg += (float)dmg*((float)otmp->ovar1/(float)200);
+		}
 		if (resists_drli(mtmp)){
 		    shieldeff(mtmp->mx, mtmp->my);
 	break;	/* skip makeknown */
@@ -350,6 +357,7 @@ struct obj *otmp;
 			xkilled(mtmp, 1);
 		    else {
 			mtmp->m_lev--;
+			if(otmp->ovar1 >= 200) mtmp->m_lev--;
 			if (canseemon(mtmp))
 			    pline("%s suddenly seems weaker!", Monnam(mtmp));
 		    }
@@ -2004,7 +2012,9 @@ register struct obj *obj;
 					makeplural(body_part(LEG)));
 			}
 			exercise(A_DEX, TRUE);
-			incr_itimeout(&HFast, rn1(10, 100 + 60 * bcsign(obj)));
+			int time = rn1(10, 100 + 60 * bcsign(obj));
+			time += time*((float)obj->ovar1/(float)100);
+			incr_itimeout(&HFast, time);
 		break;
 		default:
 			pline("Bad zapnodir item: %d", obj->otyp);
@@ -2765,7 +2775,9 @@ register struct	obj	*obj;
 	    } else if (u.dz) {
 		disclose = zap_updown(obj);
 	    } else {
-		(void) bhit(u.dx,u.dy, rn1(8,6),ZAPPED_WAND, bhitm,bhito, obj, NULL);
+		int range = rn1(8,6);
+		range += (float)range * ((float)obj->ovar1/(float)100);
+		(void) bhit(u.dx,u.dy, range, ZAPPED_WAND, bhitm,bhito, obj, NULL);
 	    }
 	    /* give a clue if obj_zapped */
 	    if (obj_zapped)

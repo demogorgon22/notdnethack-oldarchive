@@ -459,7 +459,10 @@ char *buf;
 		Sprintf(buf, "Arcadia %d ", (path1_level.dlevel - u.uz.dlevel)+1);
 	else if (In_neu(&u.uz)){
 		if(In_depths(&u.uz)) Sprintf(buf, "Depths %d ", dunlev(&u.uz)+dungeons[neutral_dnum].num_dunlevs-1);
-		else Sprintf(buf, "Outlands %d ", dunlev(&u.uz));
+		else if(dunlev(&u.uz) == 1) Sprintf(buf,"Gatetown ");
+		else if(dunlev(&u.uz) == 6) Sprintf(buf,"Spire ");
+		else if(dunlev(&u.uz) == 7) Sprintf(buf,"Sum of All ");
+		else Sprintf(buf, "Outlands %d ", dunlev(&u.uz)-1);
 	} else if (In_cha(&u.uz))
 		if(dungeons[chaos_dnum].entry_lev == u.uz.dlevel) Sprintf(buf, "Ruined Temple ");
 		else Sprintf(buf, "Temple %d ", dunlev(&u.uz));
