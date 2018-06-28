@@ -227,7 +227,7 @@ mattackm(magr, mdef)
     if ((pa == &mons[PM_GRID_BUG] || pa == &mons[PM_BEBELITH]) && magr->mx != mdef->mx
 						&& magr->my != mdef->my) return(MM_MISS);
 	
-	if(pa == &mons[PM_CLOCKWORK_SOLDIER] || pa == &mons[PM_CLOCKWORK_DWARF] || 
+	if(pa == &mons[PM_CLOCKWORK_FIGHTER] || pa == &mons[PM_CLOCKWORK_DWARF] || 
 	   pa == &mons[PM_FABERGE_SPHERE] || pa == &mons[PM_FIREWORK_CART] || 
 	   pa == &mons[PM_JUGGERNAUT] || pa == &mons[PM_ID_JUGGERNAUT]
 	) if(magr->mx + xdir[(int)magr->mvar1] != mdef->mx || 
@@ -600,7 +600,7 @@ meleeattack:
 				if(mdef->my - magr->my < 0) mdy = -1;
 				else if(mdef->my - magr->my > 0) mdy = +1;
 				
-				mlocal = makemon(&mons[PM_CLOCKWORK_SOLDIER+rn2(3)], magr->mx + mdx, magr->my + mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT);
+				mlocal = makemon(&mons[PM_CLOCKWORK_FIGHTER+rn2(3)], magr->mx + mdx, magr->my + mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT);
 				
 				if(mlocal){
 					for(i=0;i<8;i++) if(xdir[i] == mdx && ydir[i] == mdy) break;

@@ -497,6 +497,9 @@ register struct monst *mtmp;
 	case MS_NEIGH:
 	    ret = "neigh";
 	    break;
+	case MS_CLOCK:
+	    ret="click";
+	    break;
 	case MS_WAIL:
 	    ret = "wail";
 	    break;
@@ -563,6 +566,9 @@ register struct monst *mtmp;
 	    break;
 	case MS_WAIL:
 	    yelp_verb = "wail";
+	    break;
+	case MS_CLOCK:
+	    yelp_verb = "clack";
 	    break;
     }
     if (yelp_verb) {
@@ -1537,6 +1543,9 @@ asGuardian:
 	    break;
 	case MS_MUMBLE:
 	    pline_msg = "mumbles incomprehensibly.";
+	    break;
+	case MS_CLOCK:
+	    pline_msg = "churns its gears.";
 	    break;
 	case MS_DJINNI:
 		if(Role_if(PM_EXILE) && In_quest(&u.uz) && ptr == &mons[PM_PRISONER]){

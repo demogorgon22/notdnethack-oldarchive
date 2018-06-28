@@ -724,7 +724,7 @@ moveloop()
 				if(mtmp->data == &mons[PM_GREAT_CTHULHU] || mtmp->data == &mons[PM_ZUGGTMOY] 
 					|| mtmp->data == &mons[PM_SWAMP_FERN]) mtmp->mspec_used = 0;
 				if(is_weeping(mtmp->data)) mtmp->mspec_used = 0;
-				if(mtmp->data == &mons[PM_CLOCKWORK_SOLDIER] || mtmp->data == &mons[PM_CLOCKWORK_DWARF] || 
+				if(mtmp->data == &mons[PM_CLOCKWORK_FIGHTER] || mtmp->data == &mons[PM_CLOCKWORK_DWARF] || 
 				   mtmp->data == &mons[PM_FABERGE_SPHERE] || mtmp->data == &mons[PM_FIREWORK_CART] ||
 				   mtmp->data == &mons[PM_ID_JUGGERNAUT]
 				) if(rn2(2)) mtmp->mvar1 = ((int)mtmp->mvar1 + rn2(3)-1)%8;

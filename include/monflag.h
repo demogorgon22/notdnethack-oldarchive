@@ -55,6 +55,7 @@
 #define MS_INTONE	45	/* regular songs plus black flower's songs */
 #define MS_FLOWER	46	/* black flower's songs */
 #define MS_TRUMPET	47	/* Archon's trumpet */
+#define MS_CLOCK	48	/* Clockwork */
 
 
 #define MR_FIRE		0x001	/* 1 resists fire */

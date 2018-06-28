@@ -508,7 +508,7 @@ register struct monst *mtmp;
 			obj->owt = weight(obj);
 			mtmp->mnamelth = 0;
 		break;
-	    case PM_CLOCKWORK_SOLDIER:
+	    case PM_CLOCKWORK_FIGHTER:
 			obj = mksobj_at(CLOCKWORK_COMPONENT, x, y, TRUE, FALSE);
 			obj->quan = d(1,3);
 			obj->owt = weight(obj);
@@ -2586,7 +2586,7 @@ nexttry:	/* eels prefer the water, but if there is no water nearby,
 #endif
 	       ))
 			continue;
-		if(mdat == &mons[PM_CLOCKWORK_SOLDIER] || mdat == &mons[PM_CLOCKWORK_DWARF] || 
+		if(mdat == &mons[PM_CLOCKWORK_FIGHTER] || mdat == &mons[PM_CLOCKWORK_DWARF] || 
 		   mdat == &mons[PM_FABERGE_SPHERE] || mdat == &mons[PM_FIREWORK_CART] || 
 		   mdat == &mons[PM_JUGGERNAUT] || mdat == &mons[PM_ID_JUGGERNAUT]
 		) if(x + xdir[(int)mon->mvar1] != nx || 
@@ -2991,7 +2991,7 @@ struct monst *magr,	/* monster that is currently deciding where to move */
 		u.ukinghill)
 	    return ALLOW_M|ALLOW_TM;
 	else if (mdef->data != &mons[PM_TINKER_GNOME] && mdef->data != &mons[PM_HOOLOOVOO] &&  
-			(magr->data == &mons[PM_CLOCKWORK_SOLDIER] || magr->data == &mons[PM_CLOCKWORK_DWARF] || 
+			(magr->data == &mons[PM_CLOCKWORK_FIGHTER] || magr->data == &mons[PM_CLOCKWORK_DWARF] || 
 			 magr->data == &mons[PM_FABERGE_SPHERE] || magr->data == &mons[PM_FIREWORK_CART] || 
 			 magr->data == &mons[PM_JUGGERNAUT] || magr->data == &mons[PM_ID_JUGGERNAUT]))
 	    return ALLOW_M|ALLOW_TM;
@@ -3009,7 +3009,7 @@ register int x,y;
 {
 	register int distance = dist2(mon->mx, mon->my, x, y);
 	if (distance==2 && (mon->data==&mons[PM_GRID_BUG] || mon->data==&mons[PM_BEBELITH])) return 0;
-	if(mon->data == &mons[PM_CLOCKWORK_SOLDIER] || mon->data == &mons[PM_CLOCKWORK_DWARF] || 
+	if(mon->data == &mons[PM_CLOCKWORK_FIGHTER] || mon->data == &mons[PM_CLOCKWORK_DWARF] || 
 	   mon->data == &mons[PM_FABERGE_SPHERE]
 	) if(mon->mx + xdir[(int)mon->mvar1] != x || 
 		   mon->my + ydir[(int)mon->mvar1] != y 

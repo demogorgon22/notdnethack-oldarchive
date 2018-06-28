@@ -2479,6 +2479,15 @@ register struct monst *mtmp;
 		case S_GNOME:
 	      {
 		int bias;
+		if(is_clock_army(ptr)){
+			if(ptr == &mons[PM_CLOCKWORK_SOLDIER]){
+				otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+			}
+			break;
+
+		}
 
 		bias = is_lord(ptr) + is_prince(ptr) * 2 + extra_nasty(ptr);
 		switch(rnd(10 - (2 * bias))) {
@@ -5464,7 +5473,7 @@ register int	mmflags;
 			}
 		break;
 		case S_GNOME:
-			if(mndx == PM_CLOCKWORK_SOLDIER || mndx == PM_CLOCKWORK_DWARF || 
+			if(mndx == PM_CLOCKWORK_FIGHTER || mndx == PM_CLOCKWORK_DWARF || 
 			   mndx == PM_FABERGE_SPHERE || mndx == PM_FIREWORK_CART || 
 			   mndx == PM_JUGGERNAUT || mndx == PM_ID_JUGGERNAUT
 			) mtmp->mvar1 = rn2(8);
@@ -5472,6 +5481,9 @@ register int	mmflags;
 			if(mndx == PM_ID_JUGGERNAUT) {
 				mtmp->perminvis = TRUE;
 				mtmp->minvis = TRUE;
+			}
+			if(is_clock_army(&mons[mndx])){
+				mtmp->mvar1 = COPPER;
 			}
 		break;
 		case S_WRAITH:

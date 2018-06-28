@@ -4392,8 +4392,8 @@ struct obj *obj;
 	Sprintf(buf, "Clockwork types");
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 	if(obj->otyp == CLOCKWORK_COMPONENT){
-		Sprintf(buf, "clockwork soldier");
-		any.a_int = PM_CLOCKWORK_SOLDIER;	/* must be non-zero */
+		Sprintf(buf, "clockwork fighter");
+		any.a_int = PM_CLOCKWORK_FIGHTER;	/* must be non-zero */
 		add_menu(tmpwin, NO_GLYPH, &any,
 			incntlet, 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
@@ -4534,7 +4534,7 @@ struct obj **optr;
 			mm->mhp =  mm->mhpmax;
 			mm->mtame = 10;
 			mm->mpeaceful = 1;
-			if((u.dx || u.dy) && (mm->data == &mons[PM_CLOCKWORK_SOLDIER] || mm->data == &mons[PM_CLOCKWORK_DWARF] || 
+			if((u.dx || u.dy) && (mm->data == &mons[PM_CLOCKWORK_FIGHTER] || mm->data == &mons[PM_CLOCKWORK_DWARF] || 
 				mm->data == &mons[PM_FABERGE_SPHERE] || mm->data == &mons[PM_FIREWORK_CART] || 
 				mm->data == &mons[PM_JUGGERNAUT] || mm->data == &mons[PM_ID_JUGGERNAUT])
 			){

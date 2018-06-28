@@ -370,7 +370,7 @@ struct monst *mtmp;
 		if (isok(xx,yy))
 		if (xx != u.ux && yy != u.uy)
 		if ((mtmp->data != &mons[PM_GRID_BUG] && mtmp->data != &mons[PM_BEBELITH]) || xx == x || yy == y)
-		if((mtmp->data != &mons[PM_CLOCKWORK_SOLDIER] && mtmp->data != &mons[PM_CLOCKWORK_DWARF] && 
+		if((mtmp->data != &mons[PM_CLOCKWORK_FIGHTER] && mtmp->data != &mons[PM_CLOCKWORK_DWARF] && 
 		   mtmp->data != &mons[PM_FABERGE_SPHERE] && mtmp->data != &mons[PM_FIREWORK_CART] && 
 		   mtmp->data != &mons[PM_JUGGERNAUT] && mtmp->data != &mons[PM_ID_JUGGERNAUT]) ||
 			(x + xdir[(int)mtmp->mvar1] == xx && 
@@ -1850,7 +1850,7 @@ struct monst *mtmp;
 	    for(yy = y-1; yy <= y+1; yy++)
 		if (isok(xx,yy) && (xx != u.ux || yy != u.uy))
 		    if ((mdat != &mons[PM_GRID_BUG] && mtmp->data != &mons[PM_BEBELITH]) || xx == x || yy == y)
-			if((mtmp->data != &mons[PM_CLOCKWORK_SOLDIER] && mtmp->data != &mons[PM_CLOCKWORK_DWARF] && 
+			if((mtmp->data != &mons[PM_CLOCKWORK_FIGHTER] && mtmp->data != &mons[PM_CLOCKWORK_DWARF] && 
 			   mtmp->data != &mons[PM_FABERGE_SPHERE] && mtmp->data != &mons[PM_FIREWORK_CART] && 
 			   mtmp->data != &mons[PM_JUGGERNAUT] && mtmp->data != &mons[PM_ID_JUGGERNAUT]) ||
 				(x + xdir[(int)mtmp->mvar1] == xx && 

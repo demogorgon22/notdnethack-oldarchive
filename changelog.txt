@@ -77,6 +77,19 @@ Dungeon changes
 			being cool
 		Same final level and prizes as Sokoban but with an easier
 			puzle
+	Law Quest changes
+		replaced soldiers on law quest with clockwork enemies
+		Clockwork Soldier
+			weapons and stuff
+		Clockwork Assassin
+			stealthy boy thats sneaks and kills
+		Clockwork Engineer
+			has some gear
+			makes clockwork fighters
+		Clockwork Trooper
+			Blaster
+			Serious armor
+
 Spear changes
 	Spears now all have changable points that can be changed to other
 	spearheads.

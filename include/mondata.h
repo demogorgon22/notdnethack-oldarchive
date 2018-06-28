@@ -306,6 +306,7 @@
 				 (ptr) == &mons[PM_MAYOR_CUMMERBUND])
 #define is_golem(ptr)		((ptr)->mlet == S_GOLEM)
 #define is_clockwork(ptr)	(((ptr)->mflagsa & MA_CLOCK) != 0L)
+#define is_clock_army(ptr)	(ptr >= &mons[PM_CLOCKWORK_SOLDIER] && ptr <= &mons[PM_CLOCKWORK_TROOPER])
 #define is_domestic(ptr)	(((ptr)->mflagst & MT_DOMESTIC) != 0L)
 #define is_fey(ptr)			(((ptr)->mflagsa & MA_FEY) != 0L)
 #define is_demon(ptr)		(((ptr)->mflagsa & MA_DEMON) != 0L)

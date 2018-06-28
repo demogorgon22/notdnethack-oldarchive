@@ -264,7 +264,7 @@ char *
 lightsaber_hiltText(otmp)
 struct obj *otmp;
 {
-	if(otmp->oartifact == ART_ANNULUS) return "This %s is just a hollow silver pipe.";
+	if(otmp->oartifact == ART_ANNULUS) return "This %s is just a bent hollow silver pipe.";
 	return SaberHilts[(int)otmp->ovar1];
 }
 
