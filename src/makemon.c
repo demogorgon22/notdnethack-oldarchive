@@ -2484,6 +2484,100 @@ register struct monst *mtmp;
 				otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
 				otmp->obj_material = mtmp->mvar1; 
 				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(RING_MAIL, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(HELMET, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(LOW_BOOTS, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(KNIFE, TRUE, FALSE);
+				otmp->quan = rnd(5);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+
+			}
+			if(ptr == &mons[PM_CLOCKWORK_ASSASSIN]){
+				otmp = mksobj(STILETTO, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(LEATHER_ARMOR, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(ELVEN_CLOAK, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(LOW_BOOTS, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(SHURIKEN, TRUE, FALSE);
+				otmp->quan = rnd(10)+20;
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+
+			}
+			if(ptr == &mons[PM_CLOCKWORK_ENGINEER]){
+				if(!rn2(3)) otmp = mksobj(MACE, TRUE, FALSE);
+				else if(!rn2(3)) otmp = mksobj(SPEAR, TRUE, FALSE);
+				else otmp = mksobj(LONG_SWORD, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(CHAIN_MAIL, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				if(!rn2(2)) otmp = mksobj(HELMET, TRUE, FALSE);
+				else otmp = mksobj(WAR_HAT, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(LOW_BOOTS, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(KNIFE, TRUE, FALSE);
+				otmp->quan = rnd(5);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(BUCKLER, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(GAUNTLETS, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+
+
+
+			}
+			if(ptr == &mons[PM_CLOCKWORK_TROOPER]){
+				if(!rn2(3)) otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
+				else if(!rn2(3)) otmp = mksobj(BATTLE_AXE, TRUE, FALSE);
+				else otmp = mksobj(BROADSWORD, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				if(otmp->otyp == BROADSWORD){
+				otmp = mksobj(KITE_SHIELD, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+
+				}
+				otmp = mksobj(PLATE_MAIL, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(WAR_HAT, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(HIGH_BOOTS, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(KNIFE, TRUE, FALSE);
+				otmp->quan = rnd(7);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(GAUNTLETS, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+
+
 			}
 			break;
 
