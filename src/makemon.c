@@ -2484,6 +2484,9 @@ register struct monst *mtmp;
 				otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
 				otmp->obj_material = mtmp->mvar1; 
 				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(!rn2(4) ? PARTISAN : !rn2(3) ? HALBERD : rn2(2) ? BILL_GUISARME : BEC_DE_CORBIN, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
 				otmp = mksobj(RING_MAIL, TRUE, FALSE);
 				otmp->obj_material = mtmp->mvar1; 
 				(void) mpickobj(mtmp, otmp);
@@ -2499,7 +2502,7 @@ register struct monst *mtmp;
 				(void) mpickobj(mtmp, otmp);
 
 			}
-			if(ptr == &mons[PM_CLOCKWORK_ASSASSIN]){
+			if(ptr == &mons[PM_CLOCKWORK_ESPION]){
 				otmp = mksobj(STILETTO, TRUE, FALSE);
 				otmp->obj_material = mtmp->mvar1; 
 				(void) mpickobj(mtmp, otmp);
@@ -2522,6 +2525,9 @@ register struct monst *mtmp;
 				if(!rn2(3)) otmp = mksobj(MACE, TRUE, FALSE);
 				else if(!rn2(3)) otmp = mksobj(SPEAR, TRUE, FALSE);
 				else otmp = mksobj(LONG_SWORD, TRUE, FALSE);
+				otmp->obj_material = mtmp->mvar1; 
+				(void) mpickobj(mtmp, otmp);
+				otmp = mksobj(!rn2(4) ? PARTISAN : !rn2(3) ? HALBERD : rn2(2) ? BILL_GUISARME : BEC_DE_CORBIN, TRUE, FALSE);
 				otmp->obj_material = mtmp->mvar1; 
 				(void) mpickobj(mtmp, otmp);
 				otmp = mksobj(CHAIN_MAIL, TRUE, FALSE);

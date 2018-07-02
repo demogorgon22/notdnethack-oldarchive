@@ -202,6 +202,7 @@
 #define AD_COSM		146 /*Let out the spirits*/
 #define AD_CRYS		147 /*throw crystal*/ 
 #define AD_WHIS		148 /*whisper your darkest fears*/
+#define AD_BOLT		149 /*fire explosive bolts*/
 
 
 

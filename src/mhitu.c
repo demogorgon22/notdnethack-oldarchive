@@ -992,6 +992,8 @@ mattacku(mtmp)
 				if(mtmp->data == &mons[PM_HOOLOOVOO]){
 					if(rn2(4)) mlocal = makemon(&mons[PM_GOLDEN_HEART], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
 					else mlocal = makemon(&mons[PM_ID_JUGGERNAUT], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
+				} else if(mtmp->data == &mons[PM_CLOCKWORK_ENGINEER]){
+					mlocal = makemon(&mons[PM_CLOCKWORK_FIGHTER], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
 				} else {
 					if(u.ulevel > 10 && !rn2(10)) mlocal = makemon(&mons[PM_FIREWORK_CART], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
 					else mlocal = makemon(&mons[PM_CLOCKWORK_FIGHTER+rn2(3)], mtmp->mx+mdx, mtmp->my+mdy, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
