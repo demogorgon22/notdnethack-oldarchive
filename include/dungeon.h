@@ -134,6 +134,9 @@ typedef struct branch {
 						 on_level(x, &arcadia2_level) ||\
 						 on_level(x, &arcadia3_level)\
 						)
+
+#define Is_arcadiatower(x)	(on_level(x, &tower1_level) || on_level(x, &tower2_level) ||\
+					on_level(x, &tower3_level) || on_level(x, &towertop_level))
 #define Is_arcadia3(x)	(on_level(x, &arcadia3_level))
 
 #define Is_arcadiatower1(x)	(on_level(x, &tower1_level))

@@ -5584,6 +5584,7 @@ register int	mmflags;
 			}
 			if(is_clock_army(&mons[mndx])){
 				mtmp->mvar1 = COPPER;
+				if(Is_arcadiatower(&u.uz) && dungeon_topology.alt_tower) mtmp->mvar1 = PLATINUM;
 			}
 		break;
 		case S_WRAITH:

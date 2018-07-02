@@ -1175,10 +1175,10 @@ MONSTER:'a',random,random
 MONSTER:'a',random,random
 MONSTER:'a',random,random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"sergeant",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork espion",random
 
 OBJECT:random,random,random
 OBJECT:random,random,random
@@ -1237,15 +1237,15 @@ MONSTER:'a',random,random
 MONSTER:'a',random,random
 MONSTER:'a',random,random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"sergeant",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork espion",random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"sergeant",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork espion",random
 
 OBJECT:random,random,random
 OBJECT:random,random,random
@@ -1305,25 +1305,25 @@ MAZEWALK:(04,10),east
 
 DRAWBRIDGE:(67,11),east,open
 
-MONSTER:'@',"soldier",(69,02)
+MONSTER:'G',"clockwork soldier",(69,02)
 
-MONSTER:'@',"sergeant",(69,06)
-MONSTER:'@',"soldier",(69,06)
-MONSTER:'@',"soldier",(69,06)
-MONSTER:'@',"soldier",(69,06)
-MONSTER:'@',"soldier",(69,06)
-MONSTER:'@',"soldier",(69,06)
-MONSTER:'@',"soldier",(69,06)
+MONSTER:'G',"clockwork espion",(69,06)
+MONSTER:'G',"clockwork soldier",(69,06)
+MONSTER:'G',"clockwork soldier",(69,06)
+MONSTER:'G',"clockwork soldier",(69,06)
+MONSTER:'G',"clockwork soldier",(69,06)
+MONSTER:'G',"clockwork soldier",(69,06)
+MONSTER:'G',"clockwork soldier",(69,06)
 
-MONSTER:'@',"sergeant",(69,16)
-MONSTER:'@',"soldier",(69,16)
-MONSTER:'@',"soldier",(69,16)
-MONSTER:'@',"soldier",(69,16)
-MONSTER:'@',"soldier",(69,16)
-MONSTER:'@',"soldier",(69,16)
-MONSTER:'@',"soldier",(69,16)
+MONSTER:'G',"clockwork espion",(69,16)
+MONSTER:'G',"clockwork soldier",(69,16)
+MONSTER:'G',"clockwork soldier",(69,16)
+MONSTER:'G',"clockwork soldier",(69,16)
+MONSTER:'G',"clockwork soldier",(69,16)
+MONSTER:'G',"clockwork soldier",(69,16)
+MONSTER:'G',"clockwork soldier",(69,16)
 
-MONSTER:'@',"soldier",(69,20)
+MONSTER:'G',"clockwork soldier",(69,20)
 
 ##Arcadian Fortress
 MAZE: "arcward",' '
@@ -1398,45 +1398,45 @@ DOOR:closed,(24,17)
 DOOR:closed,(32,16)
 DOOR:locked,(51,12)
 
-MONSTER:'@',"sergeant",(12,04)
-MONSTER:'@',"soldier",(12,04)
-MONSTER:'@',"soldier",(12,04)
-MONSTER:'@',"soldier",(12,04)
+MONSTER:'G',"clockwork espion",(12,04)
+MONSTER:'G',"clockwork soldier",(12,04)
+MONSTER:'G',"clockwork soldier",(12,04)
+MONSTER:'G',"clockwork soldier",(12,04)
 
-MONSTER:'@',"sergeant",(20,04)
-MONSTER:'@',"soldier",(20,04)
-MONSTER:'@',"soldier",(20,04)
-MONSTER:'@',"soldier",(20,04)
+MONSTER:'G',"clockwork engineer",(20,04)
+MONSTER:'G',"clockwork soldier",(20,04)
+MONSTER:'G',"clockwork soldier",(20,04)
+MONSTER:'G',"clockwork soldier",(20,04)
 
-MONSTER:'@',"sergeant",(27,04)
-MONSTER:'@',"soldier",(27,04)
-MONSTER:'@',"soldier",(27,04)
-MONSTER:'@',"soldier",(27,04)
+MONSTER:'G',"clockwork trooper",(27,04)
+MONSTER:'G',"clockwork soldier",(27,04)
+MONSTER:'G',"clockwork soldier",(27,04)
+MONSTER:'G',"clockwork soldier",(27,04)
 
-MONSTER:'@',"sergeant",(12,16)
-MONSTER:'@',"soldier",(12,16)
-MONSTER:'@',"soldier",(12,16)
-MONSTER:'@',"soldier",(12,16)
+MONSTER:'G',"clockwork espion",(12,16)
+MONSTER:'G',"clockwork soldier",(12,16)
+MONSTER:'G',"clockwork soldier",(12,16)
+MONSTER:'G',"clockwork soldier",(12,16)
 
-MONSTER:'@',"sergeant",(20,16)
-MONSTER:'@',"soldier",(20,16)
-MONSTER:'@',"soldier",(20,16)
-MONSTER:'@',"soldier",(20,16)
+MONSTER:'G',"clockwork espion",(20,16)
+MONSTER:'G',"clockwork soldier",(20,16)
+MONSTER:'G',"clockwork soldier",(20,16)
+MONSTER:'G',"clockwork soldier",(20,16)
 
-MONSTER:'@',"sergeant",(27,16)
-MONSTER:'@',"soldier",(27,16)
-MONSTER:'@',"soldier",(27,16)
-MONSTER:'@',"soldier",(27,16)
+MONSTER:'G',"clockwork engineer",(27,16)
+MONSTER:'G',"clockwork soldier",(27,16)
+MONSTER:'G',"clockwork soldier",(27,16)
+MONSTER:'G',"clockwork soldier",(27,16)
 
-MONSTER:'@',"sergeant",(62,03)
-MONSTER:'@',"soldier",(62,03)
-MONSTER:'@',"soldier",(62,03)
-MONSTER:'@',"soldier",(62,03)
+MONSTER:'G',"clockwork espion",(62,03)
+MONSTER:'G',"clockwork soldier",(62,03)
+MONSTER:'G',"clockwork soldier",(62,03)
+MONSTER:'G',"clockwork soldier",(62,03)
 
-MONSTER:'@',"sergeant",(62,09)
-MONSTER:'@',"soldier",(62,09)
-MONSTER:'@',"soldier",(62,09)
-MONSTER:'@',"soldier",(62,09)
+MONSTER:'G',"clockwork espion",(62,09)
+MONSTER:'G',"clockwork soldier",(62,09)
+MONSTER:'G',"clockwork soldier",(62,09)
+MONSTER:'G',"clockwork soldier",(62,09)
 
 REGION:(70,02,70,02),  lit,"barracks",filled,true
 REGION:(70,10,70,10),  lit,"barracks",filled,true
@@ -1510,10 +1510,10 @@ MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 
 GEOMETRY: center, center
 #0          1         2   	  3	      4	    5		  6	      7
@@ -1654,10 +1654,10 @@ MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 
 MAZE: "atower2",' '
 FLAGS: noteleport
@@ -1694,10 +1694,10 @@ MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 
 GEOMETRY: center, center
 #0          1         2   	  3	      4	    5		  6	      7
@@ -1771,11 +1771,11 @@ MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"sergeant",random
-MONSTER:'@',"lieutenant",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork espion",random
+MONSTER:'G',"clockwork engineer",random
 
 
 MAZE: "towrtop",' '
@@ -1950,10 +1950,10 @@ MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 
 GEOMETRY: center, center
 #0         1         2         3         4         5         6         7     
@@ -1990,16 +1990,16 @@ MONSTER:'D',"half-dragon",random
 MONSTER:'D',"half-dragon",random
 MONSTER:'D',"half-dragon",random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 MONSTER:'@',"knight",random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"sergeant",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork espion",random
 MONSTER:'@',"knight",random
 
 GEOMETRY: center, center
@@ -2074,11 +2074,11 @@ MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
 MONSTER:'a',"soldier ant",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"sergeant",random
-MONSTER:'@',"lieutenant",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork espion",random
+MONSTER:'G',"clockwork engineer",random
 
 GEOMETRY: center, center
 #0         1         2         3         4         5         6         7     
@@ -2363,17 +2363,17 @@ MONSTER:'@',"knight",random
 MONSTER:'@',"knight",random
 MONSTER:'@',"knight",random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
-MONSTER:'@',"soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
+MONSTER:'G',"clockwork soldier",random
 
 GEOMETRY: center, center
 #0         1         2         3         4         5         6         7     
@@ -2424,11 +2424,11 @@ MONSTER:'D',"silver dragon",(28,09), asleep
 MONSTER:'D',"gray dragon",(28,08), asleep
 MONSTER:'D',"orange dragon",(28,07), asleep
 
-MONSTER:'@',"sergeant",(25,08), asleep
-MONSTER:'@',"lieutenant",(25,09), asleep
-MONSTER:'@',"captain",(25,10), asleep
-MONSTER:'@',"lieutenant",(25,11), asleep
-MONSTER:'@',"sergeant",(25,12), asleep
+MONSTER:'G',"clockwork espion",(25,08), asleep
+MONSTER:'G',"clockwork engineer",(25,09), asleep
+MONSTER:'G',"clockwork trooper",(25,10), asleep
+MONSTER:'G',"clockwork engineer",(25,11), asleep
+MONSTER:'G',"clockwork espion",(25,12), asleep
 
 MONSTER:'D',"half-dragon",(24,08), asleep
 MONSTER:'@',"knight",(24,09), asleep

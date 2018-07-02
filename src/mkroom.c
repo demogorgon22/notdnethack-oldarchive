@@ -39,6 +39,7 @@ STATIC_DCL void FDECL(liquify, (XCHAR_P,XCHAR_P,BOOLEAN_P));
 STATIC_DCL struct permonst * NDECL(morguemon);
 STATIC_DCL struct permonst * NDECL(antholemon);
 STATIC_DCL struct permonst * NDECL(squadmon);
+STATIC_DCL struct permonst * NDECL(law_squadmon);
 STATIC_DCL void FDECL(save_room, (int,struct mkroom *));
 STATIC_DCL void FDECL(rest_room, (int,struct mkroom *));
 #endif /* OVLB */
@@ -1518,7 +1519,7 @@ struct mkroom *sroom;
 		if(!(Role_if(PM_NOBLEMAN) && In_quest(&u.uz) )){
 		mon = makemon(
 		    (type == COURT) ? courtmon(ctype) :
-		    (type == BARRACKS) ? squadmon() :
+		    (type == BARRACKS) ? (Is_arcadia(&u.uz)||Is_path(&u.uz))?law_squadmon():squadmon():
 		    (type == MORGUE) ? morguemon() :
 		    (type == BEEHIVE) ?
 			(sx == tx && sy == ty ? &mons[PM_QUEEN_BEE] :
@@ -2745,6 +2746,8 @@ static struct {
     unsigned	prob;
 } squadprob[NSTYPES] = {
     {PM_SOLDIER, 80}, {PM_SERGEANT, 15}, {PM_LIEUTENANT, 4}, {PM_CAPTAIN, 1}
+},law_squadprob[NSTYPES] = {
+    {PM_CLOCKWORK_SOLDIER, 25}, {PM_CLOCKWORK_ESPION, 25}, {PM_CLOCKWORK_ENGINEER, 25}, {PM_CLOCKWORK_TROOPER, 25}
 };
 
 STATIC_OVL struct permonst *
@@ -2769,6 +2772,27 @@ gotone:
 	else			    return((struct permonst *) 0);
 }
 
+STATIC_OVL struct permonst *
+law_squadmon()		/* return soldier types. */
+{
+	int sel_prob, i, cpro, mndx;
+
+	sel_prob = rnd(80+level_difficulty());
+
+	cpro = 0;
+	for (i = 0; i < NSTYPES; i++) {
+	    cpro += law_squadprob[i].prob;
+	    if (cpro > sel_prob) {
+		mndx = law_squadprob[i].pm;
+		goto gotone;
+	    }
+	}
+	mndx = law_squadprob[rn2(NSTYPES)].pm;
+gotone:
+//	if (!(mvitals[mndx].mvflags & G_GONE && !In_quest(&u.uz))) return(&mons[mndx]);
+	if (!(mvitals[mndx].mvflags & G_GENOD && !In_quest(&u.uz))) return(&mons[mndx]);//empty if genocided
+	else			    return((struct permonst *) 0);
+}
 /*
  * save_room : A recursive function that saves a room and its subrooms
  * (if any).

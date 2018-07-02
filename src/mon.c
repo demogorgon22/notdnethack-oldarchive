@@ -490,6 +490,19 @@ register struct monst *mtmp;
 			}
 			mtmp->mnamelth = 0;
 		goto default_1;
+	    case PM_CLOCKWORK_SOLDIER:
+	    case PM_CLOCKWORK_ESPION:
+	    case PM_CLOCKWORK_ENGINEER:
+	    case PM_CLOCKWORK_TROOPER:
+			obj = mksobj_at(CLOCKWORK_COMPONENT, x, y, TRUE, FALSE);
+			obj->quan = d(1,4);
+			obj->owt = weight(obj);
+			mtmp->mnamelth = 0;
+			if(!mtmp->mrevived && !rn2(20)){
+				obj = mksobj_at(UPGRADE_KIT, x, y, TRUE, FALSE);
+			}
+
+		break;
 	    case PM_CLOCKWORK_DWARF:
 			obj = mksobj_at(CLOCKWORK_COMPONENT, x, y, TRUE, FALSE);
 			obj->quan = d(1,4);
