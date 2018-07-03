@@ -1349,7 +1349,9 @@ physical:{
 				else if(otmp->oartifact == ART_ROGUE_GEAR_SPIRITS)
 					tmp = 2*(rnd(bigmonst(mdef->data) ? 2 : 5) + otmp->spe);
 				else tmp = rnd(2);
-				
+				if(resist_attacks(mdef->data))
+					tmp = 0;
+				/* WAC Weres get seared */
 				if(otmp && (otmp->obj_material == SILVER || arti_silvered(otmp)) && hates_silver(pd) &&
 					!(is_lightsaber(otmp) && otmp->lamplit)
 				)

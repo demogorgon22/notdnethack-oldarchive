@@ -161,6 +161,8 @@ struct obj {
 #define OPOISON_BLIND	 8 /* Blinding Poison */
 #define OPOISON_PARAL	16 /* Paralysis Poison */
 #define OPOISON_AMNES	32 /* Amnesia Poison */
+#define OPOISON_ACID	0x40 /* Acid coating */
+#define OPOISON_SILVER	0x80 /* Silver coating */
 
 #ifdef RECORD_ACHIEVE
 #define record_achieve_special corpsenm
