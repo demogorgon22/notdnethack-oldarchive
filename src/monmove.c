@@ -638,7 +638,8 @@ boolean digest_meal;
 			}
 		}
 	}
-	if(mon->mhp < mon->mhpmax && regenerates(mon->data)) mon->mhp++;
+	if(mon->mhp < mon->mhpmax && (regenerates(mon->data)
+			|| (likes_lava(mon->data) && levl[mon->mx][mon->my].typ == LAVAPOOL))) mon->mhp++;
 	if(!nonliving_mon(mon)){
 		if (mon->mhp < mon->mhpmax){
 			//recover 1/30th hp per turn:

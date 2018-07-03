@@ -1157,7 +1157,7 @@ moveloop()
 					if(u.mh < u.mhmax){
 						if (u.mh < 1)
 							rehumanize();
-						if(Regeneration){
+						if(Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)){
 							flags.botl = 1;
 							u.mh++;
 						}
@@ -1173,7 +1173,7 @@ moveloop()
 						if(u.mh > u.mhmax) u.mh = u.mhmax;
 					}
 				} else if (u.uhp < u.uhpmax){
-					if(Regeneration){
+					if(Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)){
 						flags.botl = 1;
 						u.uhp++;
 					}

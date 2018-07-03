@@ -71,6 +71,8 @@ Salamander race
 	Cannot eat monsters that are too close to amphibians without
 		cannibalism penalty
 	Lava balls burn down any door within heat range of impact
+	Monsters that likes_lava (including you as a salamander)
+		regenerate hungerlessly while in lava
 Dungeon changes
 	Replaced Sokoban branch with Lokoban
 		Levels aren't as much about solving puzzles as they are
