@@ -174,6 +174,7 @@ struct obj {
 	/* in order to prevent alignment problems oextra should
 	   be (or follow) a long int */
 	long owornmask;
+	long oward;
 	long ovar1;		/* extra variable. Specifies: */
 			/*Records the contents of Books of Secrets*/
 			/*Records the warding sign of spellbooks. */
@@ -182,7 +183,6 @@ struct obj {
 			/*Records the tatteredness level of droven cloaks. */
 			/*Records the cracked level of masks. */
 			/*Records special features for weapons. */
-			/* 	Records runes for wooden weapons */
 			/* 	Records moon phase for moon axes */
 			/* 	Records theft type for stealing artifacts (reaver (scimitar) and averice (shortsword) */
 			/* 	Records remaining ammo for blasters and force pikes */

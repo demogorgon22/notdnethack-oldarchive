@@ -4683,6 +4683,22 @@ arti_invoke(obj)
 				awaken_monsters(ROWNO * COLNO);
 			   }
 	break;
+	/*Only ever use the following on spears*/
+	case SMOKE_MIRROR:
+		if(obj->ovar1 == GARNET){
+			otmp = mksobj(STRANGE_OBJECT,FALSE,FALSE);
+			otmp->oartifact = ART_FIRE_CRYSTAL;
+			otmp->spe = 1;
+			arti_invoke(otmp);
+			obfree(otmp, (struct obj *)0);
+		} else if(obj->ovar1 == OBSIDIAN){
+			otmp = mksobj(STRANGE_OBJECT,FALSE,FALSE);
+			otmp->oartifact = ART_RUINOUS_STRIKE;
+			arti_invoke(otmp);
+			obfree(otmp, (struct obj *)0);
+		}
+
+	break;
 	case FALLING_STARS:{
 		int starfall = rnd(u.ulevel/10+1), x, y, n;
 		coord cc;

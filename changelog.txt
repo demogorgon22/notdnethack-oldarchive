@@ -50,6 +50,7 @@ Caveman changes
 	Start with spear instead of club
 	Can apply rocks to knap soft stones into spear points 
 		which can be attached to their spear.
+	Sceptre of Might is now a bone spear
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked

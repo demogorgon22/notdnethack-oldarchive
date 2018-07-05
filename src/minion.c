@@ -187,7 +187,7 @@ boolean talk;
 		
 		for(otmp = mon->minvent; otmp; otmp = otmp->nobj){
 			if(otmp->otyp == find_signet_ring() || otmp->otyp == DROVEN_CHAIN_MAIL || otmp->otyp == DROVEN_PLATE_MAIL || otmp->otyp == NOBLE_S_DRESS){
-				otmp->ovar1 = faction;
+				otmp->oward = faction;
 			}
 		}
 	}

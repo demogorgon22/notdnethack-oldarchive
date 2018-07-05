@@ -340,6 +340,7 @@ struct artifact {
 #define RAND_SCROLL     (LAST_PROP+67)
 #define ILLITHID        (LAST_PROP+68)
 #define BOMB        (LAST_PROP+69)
+#define SMOKE_MIRROR        (LAST_PROP+70)/*Only use on stuff where ovar1 is the point*/
 
 #define MASTERY_ARTIFACT_LEVEL 20
 

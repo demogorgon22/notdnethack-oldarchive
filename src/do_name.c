@@ -640,6 +640,7 @@ const char *name;
 		else if(obj->oartifact == ART_RUINOUS_STRIKE) obj->obj_material = DRAGON_HIDE;
 		else if(obj->oartifact >= ART_SWORD_OF_ERATHAOL && obj->oartifact <= ART_HAMMER_OF_BARQUIEL) obj->obj_material = SILVER;
 		else if(obj->oartifact == ART_SOL_VALTIVA) obj->obj_material = OBSIDIAN_MT;
+		else if(obj->oartifact == ART_SMOKING_MIRROR) obj->obj_material = OBSIDIAN_MT;
 		else if(obj->otyp == SABER) obj->obj_material = SILVER;
 		else if(obj->otyp == KHAKKHARA) obj->obj_material = SILVER;
 		else if(obj->otyp == CHAKRAM) obj->obj_material = SILVER;
@@ -920,7 +921,7 @@ boolean called;
 			for (otmp = mtmp->minvent; otmp; otmp = otmp->nobj) {
 				if ((otmp->otyp == DROVEN_PLATE_MAIL || otmp->otyp == DROVEN_CHAIN_MAIL || otmp->otyp == CONSORT_S_SUIT) 
 					&& otmp->owornmask & mtmp->misc_worn_check){
-						Sprintf(eos(buf), "%s ", getDrowHouse(otmp->ovar1));
+						Sprintf(eos(buf), "%s ", getDrowHouse(otmp->oward));
 						name_at_start = FALSE;
 					}
 			}
@@ -984,7 +985,7 @@ boolean called;
 				for (otmp = mtmp->minvent; otmp; otmp = otmp->nobj) {
 					if ((otmp->otyp == DROVEN_PLATE_MAIL || otmp->otyp == DROVEN_CHAIN_MAIL || otmp->otyp == CONSORT_S_SUIT) 
 						&& otmp->owornmask & mtmp->misc_worn_check){
-							Sprintf(eos(buf), "%s ", getDrowHouse(otmp->ovar1));
+							Sprintf(eos(buf), "%s ", getDrowHouse(otmp->oward));
 							name_at_start = FALSE;
 						}
 				}
@@ -1052,7 +1053,7 @@ boolean called;
 			for (otmp = mtmp->minvent; otmp; otmp = otmp->nobj) {
 				if ((otmp->otyp == DROVEN_PLATE_MAIL || otmp->otyp == DROVEN_CHAIN_MAIL || otmp->otyp == CONSORT_S_SUIT) 
 					&& otmp->owornmask & mtmp->misc_worn_check){
-						Sprintf(eos(buf), "%s ", getDrowHouse(otmp->ovar1));
+						Sprintf(eos(buf), "%s ", getDrowHouse(otmp->oward));
 						name_at_start = FALSE;
 					}
 			}

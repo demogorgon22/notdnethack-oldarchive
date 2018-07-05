@@ -963,13 +963,15 @@ register struct obj *obj;
 		costly_cancel(obj);
 		obj->otyp = SCR_BLANK_PAPER;
 		obj->spe = 0;
-		obj->ovar1 = 0;
+		obj->oward = 0;
 		break;
 	      case SPBOOK_CLASS:
 		if (obj->otyp != SPE_CANCELLATION &&
 			obj->otyp != SPE_BOOK_OF_THE_DEAD) {
 		    costly_cancel(obj);
 		    obj->otyp = SPE_BLANK_PAPER;
+		    obj->spe = 0;
+		    obj->oward = 0;
 		}
 		break;
 	      case POTION_CLASS:

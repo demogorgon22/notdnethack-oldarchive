@@ -620,7 +620,7 @@ register struct monst *mtmp;
 				){
 					otmp = mksobj(DROVEN_CHAIN_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					(void) mongets(mtmp, DROVEN_CLOAK);
 					if (rn2(2)) (void)mongets(mtmp, DROVEN_HELM);
@@ -711,7 +711,7 @@ register struct monst *mtmp;
 					(void) mpickobj(mtmp, otmp);
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					(void) mongets(mtmp, DROVEN_CLOAK);
 					(void)mongets(mtmp, DROVEN_HELM);
@@ -745,7 +745,7 @@ register struct monst *mtmp;
 					/*Plate Mail*/
 					otmp = mksobj(CRYSTAL_PLATE_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = LOLTH_SYMBOL;
+					otmp->oward = LOLTH_SYMBOL;
 					otmp->blessed = TRUE;
 					otmp->cursed = FALSE;
 					otmp->spe = 3;
@@ -760,7 +760,7 @@ register struct monst *mtmp;
 					/*Ring*/
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					/*Cloak*/
 					otmp = mksobj(CLOAK_OF_MAGIC_RESISTANCE, TRUE, FALSE);
@@ -800,7 +800,7 @@ register struct monst *mtmp;
 					/*Ring*/
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					/*Cloak*/
 					otmp = mksobj(CLOAK_OF_MAGIC_RESISTANCE, TRUE, FALSE);
@@ -841,7 +841,7 @@ register struct monst *mtmp;
 					/*Ring*/
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					/*Cloak*/
 					otmp = mksobj(CLOAK_OF_PROTECTION, TRUE, FALSE);
@@ -868,7 +868,7 @@ register struct monst *mtmp;
 					/*Plate Mail*/
 					otmp = mksobj(DROVEN_CHAIN_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					otmp->blessed = FALSE;
 					otmp->cursed = TRUE;
 					otmp->oerodeproof = TRUE;
@@ -877,7 +877,7 @@ register struct monst *mtmp;
 					/*Ring*/
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					/*Cloak*/
 					otmp = mksobj(CLOAK_OF_MAGIC_RESISTANCE, TRUE, FALSE);
@@ -918,7 +918,7 @@ register struct monst *mtmp;
 					/*Plate Mail*/
 					otmp = mksobj(DROVEN_CHAIN_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = LOLTH_SYMBOL;
+					otmp->oward = LOLTH_SYMBOL;
 					otmp->blessed = TRUE;
 					otmp->cursed = FALSE;
 					otmp->spe = 2;
@@ -933,7 +933,7 @@ register struct monst *mtmp;
 					/*Ring*/
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					/*Cloak*/
 					otmp = mksobj(CLOAK_OF_MAGIC_RESISTANCE, TRUE, FALSE);
@@ -959,7 +959,7 @@ register struct monst *mtmp;
 				} else if(mm == PM_HEDROW_MASTER_WIZARD){
 					otmp = mksobj(DROVEN_CHAIN_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					otmp->oerodeproof = TRUE;
 					otmp->spe = 3;
 					(void) mpickobj(mtmp, otmp);
@@ -971,13 +971,13 @@ register struct monst *mtmp;
 				} else if(mm == PM_SISTER){
 					otmp = mksobj(NOBLE_S_DRESS, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					otmp->oerodeproof = TRUE;
 					otmp->spe = 0;
 					(void) mpickobj(mtmp, otmp);
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					(void) mongets(mtmp, DROVEN_CLOAK);
 					(void) mongets(mtmp, DROVEN_HELM);
@@ -997,13 +997,13 @@ register struct monst *mtmp;
 				} else if(mm == PM_MOTHER){
 					otmp = mksobj(NOBLE_S_DRESS, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					otmp->oerodeproof = TRUE;
 					otmp->spe = 5;
 					(void) mpickobj(mtmp, otmp);
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					otmp = mksobj(DROVEN_CLOAK, TRUE, FALSE);
 					otmp->blessed = TRUE;
@@ -1061,11 +1061,11 @@ register struct monst *mtmp;
 				} else if(mm == PM_STJARNA_ALFR){
 					otmp = mksobj(DROVEN_PLATE_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = EILISTRAEE_SYMBOL;
+					otmp->oward = EILISTRAEE_SYMBOL;
 					(void) mpickobj(mtmp, otmp);
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					(void) mongets(mtmp, ELVEN_CLOAK);
 					(void)mongets(mtmp, DROVEN_HELM);
@@ -1086,11 +1086,11 @@ register struct monst *mtmp;
 				} else {
 					otmp = mksobj(DROVEN_PLATE_MAIL, TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = LOLTH_SYMBOL;
+					otmp->oward = LOLTH_SYMBOL;
 					(void) mpickobj(mtmp, otmp);
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = curhouse;
+					otmp->oward = curhouse;
 					(void) mpickobj(mtmp, otmp);
 					(void) mongets(mtmp, DROVEN_CLOAK);
 					(void)mongets(mtmp, DROVEN_HELM);
@@ -1207,7 +1207,7 @@ register struct monst *mtmp;
 					
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = LAST_BASTION_SYMBOL;
+					otmp->oward = LAST_BASTION_SYMBOL;
 					(void) mpickobj(mtmp, otmp);
 					
 					(void)mongets(mtmp, DROVEN_CLOAK);
@@ -1233,7 +1233,7 @@ register struct monst *mtmp;
 					
 					otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 					otmp->ohaluengr = TRUE;
-					otmp->ovar1 = LAST_BASTION_SYMBOL;
+					otmp->oward = LAST_BASTION_SYMBOL;
 					(void) mpickobj(mtmp, otmp);
 					
 					(void)mongets(mtmp, CLOAK_OF_MAGIC_RESISTANCE);
@@ -3175,7 +3175,7 @@ register struct monst *mtmp;
 			
 			otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 			otmp->ohaluengr = TRUE;
-			otmp->ovar1 = LAST_BASTION_SYMBOL;
+			otmp->oward = LAST_BASTION_SYMBOL;
 			(void) mpickobj(mtmp, otmp);
 			
 			(void)mongets(mtmp, CLOAK_OF_MAGIC_RESISTANCE);
@@ -3997,11 +3997,11 @@ register struct	monst	*mtmp;
 			/*Plate Mail*/
 			otmp = mksobj(DROVEN_PLATE_MAIL, TRUE, FALSE);
 			otmp->ohaluengr = TRUE;
-			otmp->ovar1 = LOLTH_SYMBOL;
+			otmp->oward = LOLTH_SYMBOL;
 			otmp->blessed = TRUE;
 			otmp->cursed = FALSE;
 			otmp->spe = 9;
-			otmp->ovar1 = curhouse;
+			otmp->oward = curhouse;
 			(void) mpickobj(mtmp, otmp);
 			/*Dress*/
 			otmp = mksobj(BLACK_DRESS, TRUE, FALSE);
@@ -4013,7 +4013,7 @@ register struct	monst	*mtmp;
 			/*Ring*/
 			otmp = mksobj(find_signet_ring(), TRUE, FALSE);
 			otmp->ohaluengr = TRUE;
-			otmp->ovar1 = curhouse;
+			otmp->oward = curhouse;
 			(void) mpickobj(mtmp, otmp);
 			/*Cloak*/
 			otmp = mksobj(CLOAK_OF_MAGIC_RESISTANCE, TRUE, FALSE);
@@ -4049,7 +4049,7 @@ register struct	monst	*mtmp;
 			if(!rn2(10)){
 				otmp = mksobj(find_signet_ring(), FALSE, FALSE);
 				otmp->ohaluengr = TRUE;
-				otmp->ovar1 = mtmp->mfaction;
+				otmp->oward = mtmp->mfaction;
 				(void) mpickobj(mtmp, otmp);
 			}
 		}
@@ -4058,7 +4058,7 @@ register struct	monst	*mtmp;
 			if(ptr == &mons[PM_HEDROW_ZOMBIE] && !rn2(10)){
 				otmp = mksobj(find_signet_ring(), FALSE, FALSE);
 				otmp->ohaluengr = TRUE;
-				otmp->ovar1 = mtmp->mfaction;
+				otmp->oward = mtmp->mfaction;
 				(void) mpickobj(mtmp, otmp);
 			} else if(ptr == &mons[PM_HUNGRY_DEAD]){
 				struct monst *blbtmp;
@@ -4209,7 +4209,7 @@ register struct	monst	*mtmp;
 				/*Plate Mail*/
 				otmp = mksobj(CRYSTAL_PLATE_MAIL, TRUE, FALSE);
 				otmp->ohaluengr = TRUE;
-				otmp->ovar1 = LOLTH_SYMBOL;
+				otmp->oward = LOLTH_SYMBOL;
 				otmp->blessed = TRUE;
 				otmp->cursed = FALSE;
 				otmp->spe = 7;
@@ -5229,7 +5229,7 @@ register int	mmflags;
 		}
 		if(ptr == &mons[PM_SPROW] || ptr == &mons[PM_DRIDER]){
 			otmp = mksobj(DROVEN_PLATE_MAIL, TRUE, FALSE);
-			otmp->ovar1 = (long)u.start_house;
+			otmp->oward = (long)u.start_house;
 			otmp->oerodeproof = TRUE;
 			otmp->blessed = FALSE;
 			otmp->cursed = TRUE;
