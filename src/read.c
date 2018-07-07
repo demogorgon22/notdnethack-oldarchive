@@ -381,6 +381,8 @@ doread()
     "Great Cthulhu for President -- why settle for the lesser evil?",
     "I ascended FIQhack and didn't get FIQd over and all I got was made fun of.",
     "Defund slex development!",
+    "#BlackLightsMatter",
+    "Grunthack isn't hard. You're just bad at it.",
 	    };
 	    char buf[BUFSZ];
 	    int erosion;

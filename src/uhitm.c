@@ -2113,7 +2113,7 @@ defaultvalue:
 			if (get_dmg_bonus) tmp = 1;
 	    }
 	}
-
+	if(thrown && obj->otyp == SYRINGE) tmp = 0;
 #ifdef STEED
 	if (jousting) {
 	    tmp += d(2, (obj == uwep) ? 10 : 2);	/* [was in dmgval()] */
