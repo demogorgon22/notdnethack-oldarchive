@@ -1078,13 +1078,13 @@ mcalcdistress()
 					nonliving_mon(tmpm)
 					? "is destroyed" : "dies");
 				tmpm->mhp = 0;
-				grow_up(mtmp,tmpm);
+				//grow_up(mtmp,tmpm);
 				mondied(tmpm);
 			}
 			mtmp->mhp += damage;
 			if(mtmp->mhp > mtmp->mhpmax){
 				mtmp->mhp = mtmp->mhpmax;
-				grow_up(mtmp,mtmp);
+				//grow_up(mtmp,mtmp);
 			}
 			mtmp->mspec_used = 0;
 			mtmp->mcan = 0;
@@ -1104,7 +1104,7 @@ mcalcdistress()
 			mtmp->mhp += damage;
 			if(mtmp->mhp > mtmp->mhpmax){
 				mtmp->mhp = mtmp->mhpmax;
-				grow_up(mtmp,mtmp);
+			//	grow_up(mtmp,mtmp);
 			}
 			mtmp->mspec_used = 0;
 			mtmp->mcan = 0;
@@ -1193,7 +1193,7 @@ mcalcdistress()
 					nonliving_mon(tmpm)
 					? "is destroyed" : "dies");
 				tmpm->mhp = 0;
-				grow_up(mtmp,tmpm);
+				//grow_up(mtmp,tmpm);
 				mondied(tmpm);
 			}
 			mtmp->mhp += damage;
@@ -1219,7 +1219,7 @@ mcalcdistress()
 			mtmp->mhp += damage;
 			if(mtmp->mhp > mtmp->mhpmax){
 				mtmp->mhp = mtmp->mhpmax;
-				grow_up(mtmp,mtmp);
+			//	grow_up(mtmp,mtmp);
 			}
 			mtmp->mspec_used = 0;
 			mtmp->mcan = 0;
@@ -1278,7 +1278,7 @@ mcalcdistress()
 								nonliving_mon(targ)
 								? "is destroyed" : "dies");
 							targ->mhp = 0;
-							grow_up(mtmp,targ);
+						//	grow_up(mtmp,targ);
 							mondied(targ);
 						}
 					} else if(targ->mhp >= 100){
@@ -1289,7 +1289,7 @@ mcalcdistress()
 								nonliving_mon(targ)
 								? "is destroyed" : "dies");
 							targ->mhp = 0;
-							grow_up(mtmp,targ);
+						//	grow_up(mtmp,targ);
 							mondied(targ);
 						}
 					} else {
@@ -1298,7 +1298,7 @@ mcalcdistress()
 							nonliving_mon(targ)
 							? "is destroyed" : "dies");
 						targ->mhp = 0;
-						grow_up(mtmp,targ);
+						//grow_up(mtmp,targ);
 						mondied(targ);
 					}
 				}
