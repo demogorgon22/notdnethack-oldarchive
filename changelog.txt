@@ -74,6 +74,34 @@ Salamander race
 	Lava balls burn down any door within heat range of impact
 	Monsters that likes_lava (including you as a salamander)
 		regenerate hungerlessly while in lava
+Salamander Convict and Rogue quest
+	New Pantheon - 
+		Lawful - Utu, some fallen sun disk diety
+		Neutral - Kossuth, technically not a diety but an old elemental
+		Chaotic - Garyx, actualy a fire dragon god but whatever
+	Quest leader - Salamander Mage
+		Salamander who has learned the way of magic from stealthily
+		studying his efreet overlords for years. Respected by
+		underling slaves and wants to rebel and lead his own opressive
+		colony.
+	Quest nemesis - Efreet Sultan
+		Bad dangerous efreet turbolord, spews fire, very bad.
+	Quest friendly - Salamander Slave
+		Weaker salamander that are oppressed by efreet overlords
+	Salamander slaves vs efreet
+	Levels are some sort of lava planes into like some sort of aladin like
+		castle
+	Fire elementals
+		Slaves of the Efreet
+	Efreet
+		Evil djinni that cast some fire based and other spells and
+			wield scimitars and they are mean.
+	Efreet Overseer
+		Eviler djinni that cast some fire based and other spells and
+			wield scimitars and they are meaner.
+	Various fire plane enemies
+	Journey to the Charcoal palace
+	
 Dungeon changes
 	Replaced Sokoban branch with Lokoban
 		Levels aren't as much about solving puzzles as they are

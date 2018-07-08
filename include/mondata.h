@@ -464,8 +464,21 @@
 #define Is_darklight_monster(ptr)	((ptr) == &mons[PM_EDDERKOP])
 /*	[note: the light ranges above were reduced to 1 for performance...] */
 #define likes_lava(ptr)		(ptr == &mons[PM_FIRE_ELEMENTAL] || \
-				 ptr == &mons[PM_FIRE_SNAKE] || \
+				 is_salamander(ptr))
+
+#define is_salamander(ptr)	(ptr == &mons[PM_FIRE_SNAKE] || \
+				 ptr == &mons[PM_SALAMANDER_SLAVE] ||\
+				 ptr == &mons[PM_SALAMANDER_PRISONER] ||\
+				 ptr == &mons[PM_SALAMANDER_MAGE] ||\
 				 ptr == &mons[PM_SALAMANDER])
+
+#define is_efreeti(ptr)		(ptr == &mons[PM_EFREET] || \
+				 ptr == &mons[PM_EFREET_OVERSEER] ||\
+				 ptr == &mons[PM_EFREET_GUARDIAN] ||\
+				 ptr == &mons[PM_EFREET_MERCHANT] ||\
+				 ptr == &mons[PM_EFREET_SULTAN])
+
+
 #define pm_invisible(ptr) ((ptr) == &mons[PM_STALKER] || \
 			   (ptr) == &mons[PM_BLACK_LIGHT] ||\
 			   (ptr) == &mons[PM_PHANTOM_FUNGUS] ||\

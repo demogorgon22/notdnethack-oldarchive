@@ -2868,6 +2868,13 @@ struct monst *magr,	/* monster that is currently deciding where to move */
 	/* and vice versa */
 	if(is_dwarf(md) && (is_orc(ma) || is_ogre(ma) || is_troll(ma)) && !is_undead_mon(mdef))
 		return ALLOW_M|ALLOW_TM;
+	
+	/* salamanders vs. efreeti */
+	if(is_salamander(ma) && (is_efreeti(md) && !is_undead_mon(magr)) && flags.questprogress >= 2)
+		return ALLOW_M|ALLOW_TM;
+	/* and vice versa */
+	if(is_efreeti(md) && (is_salamander(ma)  && !is_undead_mon(mdef)) && flags.questprogress >= 2)
+		return ALLOW_M|ALLOW_TM;
 
 	/* elves vs. drow */
 	if(is_elf(ma) && is_drow(md) && mdef->mfaction != EILISTRAEE_SYMBOL)

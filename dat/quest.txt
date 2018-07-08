@@ -6829,6 +6829,222 @@ trinket you've got there up to the Astral Plane.  From there, %d will
 show you what to do with it.  Once that's done, we will be invincible!"
 %E
 #
+#	Salamander Rogue/Convict
+#
+%Cc Sal 00001
+You find yourself in the slave camp you escaped from, %H. 
+Cruel memories spin around your head. You must find %l.
+%E
+%Cp Sal 00002
+Once again, you find yourself in the slave camp you escaped from, %H. 
+Cruel memories spin around your head. You must find %l.
+%E
+%Cp Sal 00003
+You are back at %H. Perhaps for the last time.
+%E
+%Cp Sal 00005
+"Curse the wretched efreeti!"
+%E
+%Cp Sal 00006
+"The City of Brass will fall!"
+%E
+%Cp Sal 00007
+"We toil all day and keep nothing for ourselves."
+%E
+%Cp Sal 00008
+"%o is our only hope."
+%E
+%Cp Sal 00009
+"%l has learned magic from watching the efreeti. 
+I wonder if we could do the same?"
+%E
+%Cp Sal 00010
+"You did it?"
+%E
+%Cp Sal 00011
+"May %d bless us all."
+%E
+%Cp Sal 00012
+"%o will guide us to our freedom!"
+%E
+%Cp Sal 00013
+"%n is dead?"
+%E
+%Cp Sal 00014
+"What will we do without our efreeti rulers?"
+%E
+%Cc Sal 00015
+%l stares at you blankly for a moment and then recognizes you.
+"%p, you have returned? We have been waiting patiently and are ready to 
+strike when you are. Let me make sure you are ready..."
+%E
+%Cp Sal 00016
+%l stares at you blankly for a moment and then recognizes you.
+"%p, you have returned? We have been waiting patiently and are ready to 
+strike when you are. Let me make sure you are ready..."
+%E
+%Cp Sal 00017
+%l stares at you blankly for a moment and then recognizes you.
+"%p, you have returned? We have been waiting patiently and are ready to 
+strike when you are. Let me make sure you are ready..."
+%E
+%Cc Sal 00018
+"No %p. You are one of them. You would surely turn us in.
+Begone."
+%E
+%Cc Sal 00019
+"You are not yet ready. Prepare yourself better. %l is a serious adversary. 
+One does not simply walk into %i."
+%E
+%Cc Sal 00020
+"You are not ready. Follow the path of %d more closely."
+%E
+%Cc Sal 00021
+"It is time for the rebellion, %p. You must head through %H to 
+%i and locate the Charcoal Palace. There resides %l who has stolen %o, 
+an artifact of our ancestors that kept them free from efreeti enslavement."
+%E
+%Cp Sal 00025
+"%i is the oldest city in all creation."
+%E
+%Cp Sal 00026
+"Efreeti fear no fire but are weak to much else."
+%E
+%Cp Sal 00027
+"Beware the magical spells of our efreeti overlords."
+%E
+%Cp Sal 00028
+"If you can, free any salamander slaves you see along the way."
+%E
+%Cp Sal 00029
+"Glory will be returned to our primordial race!"
+%E
+%Cp Sal 00030
+"Like a phoenix, we will rise from our fiery lives of death."
+%E
+%Cp Sal 00031
+"Obsidian, as much as it is our bane, is a good sharp material."
+%E
+%Cp Sal 00032
+"Lava is a good place for us heat loving salamanders to be."
+%E
+%Cp Sal 00033
+"It is said the nine lords of hell trade with %i."
+%E
+%Cp Sal 00034
+"Efreeti grant wishes for no one but themselves."
+%E
+%Cc Sal 00035
+%iC, a place you had only ever heard stories of before stands before you. You must 
+infiltrate the city and recover %o. You hear the bustling sounds of foreign merchants.
+%E
+%Cp Sal 00036
+You hear the bustling sounds of foreign merchants.
+%E
+%Cc Sal 00040
+%l's palace. You feel fear of the likes you haven't felt since you were a 
+young fire snake.
+%E
+%Cp Sal 00041
+You return to the Charcoal Palace.
+%E
+%Cc Sal 00050
+"Ah!  You must be %ls ... er, `hero'.  A pleasure
+to meet you."
+%E
+%Cp Sal 00051
+"We meet again.  Please reconsider your actions."
+%E
+%Cp Sal 00052
+"Surely, %p, you have learned that you cannot trust any bargains
+that %l has made.  I can show you how to continue on
+your quest without having to run into him again."
+%E
+%Cp Sal 00053
+"Please, think for a moment about what you are doing.  Do you truly
+believe that %d would want %l to have
+%o?"
+%E
+%Cp Sal 00060
+"May I suggest a compromise.  Are you interested in gold or gems?"
+%E
+%Cp Sal 00061
+"Please don't force me to kill you."
+%E
+%Cp Sal 00062
+"Grim times are upon us all.  Will you not see reason?"
+%E
+%Cp Sal 00063
+"I knew %l, and you're no %lt, thankfully."
+%E
+%Cp Sal 00064
+"It is a shame that we are not meeting under more pleasant circumstances."
+%E
+%Cp Sal 00065
+"I was once like you are now, %p.  Believe in me -- our way
+is better."
+%E
+%Cp Sal 00066
+"Stay with me, and I will make you %os guardian."
+%E
+%Cp Sal 00067
+"When you return, with or without %o,
+%l will have you killed."
+%E
+%Cp Sal 00068
+"Do not be fooled; I am prepared to kill to defend %o."
+%E
+%Cp Sal 00069
+"I can reunite you with the Twain.  Oh, the stories you can swap."
+%E
+%Cc Sal 00070
+As you pick up %o, the hairs on the back of your
+neck fall out.  At once you realize why %n was
+willing to die to keep it out of %ls hands.  Somehow
+you know that you must do likewise.
+%E
+%Cc Sal 00080
+"I know what you are thinking, %p.  It is not too late for you
+to use %o wisely.  For the sake of your guild
+%sp, do what is right."
+
+You sit and wait for death to come for %n, and then you
+brace yourself for your next meeting with %l!
+%E
+%Cc Sal 00081
+"Well, I'll be damned.  You got it.  I am proud of you, a fine %r
+you've turned out to be.
+
+"While you were gone I got to thinking, you and %o
+together could bring me more treasure than either of you apart, so why don't
+you take it with you.  All I ask is a cut of whatever loot you come by.
+That is a better deal than I offered %n.
+
+"But, you see what happened to %n when he refused.
+Don't make me find another to send after you this time."
+%E
+# assumes Master Key of Thievery (small object)
+%Cc Sal 00082
+%l seems tempted to swap %o for
+the mundane one you detect in his pocket, but noticing your alertness,
+evidently chickens out.
+
+"Go filch the Amulet before someone else beats you to it.
+%Z are back the way you came, through the magic portal."
+%E
+%Cc Sal 00090
+"Quite the little thief, aren't we, %p.  Can I interest you in a
+swap for %o.  Look around, anything in the keep
+is yours for the asking."
+%E
+%Cc Sal 00091
+"I see that with your abilities, and my brains, we could rule this world.
+
+"All that we would need to be all-powerful is for you to take that little
+trinket you've got there up to the Astral Plane.  From there, %d will
+show you what to do with it.  Once that's done, we will be invincible!"
+%E
+#
 #	Samurai
 #
 %Cc Sam 00001

@@ -697,6 +697,10 @@ const char *DwarfLgod = "Mahal",
 		   *DwarfNgod = "Holashner",
 		   *DwarfCgod = "Armok"; /* Dwarven */
 
+const char *SalamanderLgod = "Utu",
+		   *SalamanderNgod = "Kossuth",
+		   *SalamanderCgod = "Garyx"; /* Salamandish */
+
 const char *GnomeLgod = "Kurtulmak",
 		   *GnomeNgod = "Garl Glittergold",
 		   *GnomeCgod = "Urdlen"; /* Gnomish */
@@ -2601,6 +2605,28 @@ role_init()
 		urole.enemy2num = PM_ORC_SHAMAN;
 		urole.enemy1sym = S_TROLL;
 		urole.enemy2sym = S_ORC;
+
+	} else if ((Race_if(PM_SALAMANDER) || Pantheon_if(PM_SALAMANDER)) && (Role_if(PM_ROGUE) || Role_if(PM_CONVICT)) ) {
+		flags.racial_pantheon = PM_SALAMANDER;
+		urole.filecode = "Sal";
+		
+		urole.homebase = "the Obsidian Fields";
+		urole.intermed = "the City of Brass";
+		urole.questarti = ART_SMOKING_MIRROR;
+		
+		urole.ldrnum = PM_SALAMANDER_MAGE;
+		urole.guardnum = PM_SALAMANDER_SLAVE;
+		urole.neminum = PM_EFREET_SULTAN;
+		
+		urole.lgod = SalamanderLgod;
+		urole.ngod = SalamanderNgod;
+		urole.cgod = SalamanderCgod;
+		
+		urole.enemy1num = NON_PM;
+		urole.enemy2num = NON_PM;
+		urole.enemy1sym = NON_PM;
+		urole.enemy2sym = NON_PM;
+
 	} else if ((Race_if(PM_GNOME) || Pantheon_if(PM_GNOME)) && (Role_if(PM_RANGER)) ) {
 		flags.racial_pantheon = PM_GNOME;
 		urole.filecode = "Gnr";
