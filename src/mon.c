@@ -1868,6 +1868,8 @@ meatmetal(mtmp)
 		    }
 		/* KMH -- Don't eat indigestible/choking objects */
 		} else if (otmp->otyp != AMULET_OF_STRANGULATION &&
+				otmp->otyp != MAGIC_CHEST &&
+				!otmp->oartifact &&
 				otmp->otyp != RIN_SLOW_DIGESTION) {
 		    if (cansee(mtmp->mx,mtmp->my) && flags.verbose)
 			pline("%s eats %s!", Monnam(mtmp),
@@ -2870,10 +2872,10 @@ struct monst *magr,	/* monster that is currently deciding where to move */
 		return ALLOW_M|ALLOW_TM;
 	
 	/* salamanders vs. efreeti */
-	if(is_salamander(ma) && (is_efreeti(md) && !is_undead_mon(magr)) && flags.questprogress >= 2)
+	if(is_salamander(ma) && (is_efreeti(md) && !is_undead_mon(magr)) && (flags.questprogress >= 1 || !Pantheon_if(PM_SALAMANDER)))
 		return ALLOW_M|ALLOW_TM;
 	/* and vice versa */
-	if(is_efreeti(md) && (is_salamander(ma)  && !is_undead_mon(mdef)) && flags.questprogress >= 2)
+	if(is_efreeti(md) && (is_salamander(ma)  && !is_undead_mon(mdef)) && (flags.questprogress >= 1 || !Pantheon_if(PM_SALAMANDER)))
 		return ALLOW_M|ALLOW_TM;
 
 	/* elves vs. drow */
@@ -3736,8 +3738,9 @@ boolean was_swallowed;			/* digestion */
 		  for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 			mndx = monsndx(mtmp->data);
 			if(mndx <= PM_QUINON && mndx >= PM_MONOTON && mtmp->mpeaceful){
-				if(canseemon(mtmp)) pline("%s gets angry...", mon_nam(mtmp));
+				if(canseemon(mtmp)) pline("%s gets angry...", Monnam(mtmp));
 				mtmp->mpeaceful = 0;
+				newsym(mtmp->mx,mtmp->my);
 			}
 		   }
 //			The dungeon of ill regard, where Axus is found, now spawns only Modrons.  So this is uneeded

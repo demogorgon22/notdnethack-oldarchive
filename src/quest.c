@@ -333,6 +333,25 @@ chat_with_leader()
 		} else if(Role_if(PM_ANACHRONONAUT)){
 			flags.questprogress = 1;
 			urole.lgod = getAnachrononautLgod();
+		} else if(Pantheon_if(PM_SALAMANDER)){
+			flags.questprogress = 1;
+			struct monst *mtmp;
+			int mndx = 0;
+			for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
+				mndx = monsndx(mtmp->data);
+				if(mndx <= PM_EFREET_GUARDIAN && mndx >= PM_EFREET && mtmp->mpeaceful){
+					if(canseemon(mtmp)) pline("%s gets angry...", Monnam(mtmp));
+					mtmp->mpeaceful = 0;
+					newsym(mtmp->mx,mtmp->my);
+				}
+			}
+			struct obj *obj;
+			obj = mksobj(JADE, TRUE, FALSE);
+			obj->ovar1 = KNAPPED_SPEAR;
+			pline("\"May this jeweled spear point help you along your way.\"");
+			pline("He hands %s to you.", the(xname(obj)));
+			obj = addinv(obj);	/* into your inventory */
+			(void) encumber_msg();
 		} else if(Role_if(PM_CONVICT)){
 			struct obj *obj;
 			obj = mksobj(HEAVY_IRON_BALL, TRUE, FALSE);

@@ -235,6 +235,7 @@ char **argv;
 				":dat:Priest.des",
 				":dat:Ranger.des",
 				":dat:Rogue.des",
+				":dat:Salamander.des",
 				":dat:Samurai.des",
 				":dat:Tourist.des",
 				":dat:Valkyrie.des",

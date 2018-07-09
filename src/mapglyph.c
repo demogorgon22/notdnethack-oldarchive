@@ -247,6 +247,13 @@ unsigned *ospecial;
 				if(offset >= S_drkroom && offset <= S_litcorr){
 					color = CLR_BRIGHT_GREEN;
 				}
+			} else if(Pantheon_if(PM_SALAMANDER) && In_quest(&u.uz)){
+				if(offset >= S_litroom && offset <= S_dnladder){
+					color = offset == S_litroom ? CLR_GRAY : CLR_BLACK;
+				}
+				if(offset >= S_vwall && offset <= S_trwall){
+					color = CLR_ORANGE;
+				}
 			} else if(Is_peanut(&u.uz)){
 				if(offset >= S_vwall && offset <= S_trwall){
 					color = CLR_BROWN;

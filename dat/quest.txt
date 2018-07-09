@@ -6855,7 +6855,7 @@ You are back at %H. Perhaps for the last time.
 "%o is our only hope."
 %E
 %Cp Sal 00009
-"%l has learned magic from watching the efreeti. 
+"%lC has learned magic from watching the efreeti. 
 I wonder if we could do the same?"
 %E
 %Cp Sal 00010
@@ -6868,24 +6868,24 @@ I wonder if we could do the same?"
 "%o will guide us to our freedom!"
 %E
 %Cp Sal 00013
-"%n is dead?"
+"%nC is dead?"
 %E
 %Cp Sal 00014
 "What will we do without our efreeti rulers?"
 %E
 %Cc Sal 00015
-%l stares at you blankly for a moment and then recognizes you.
-"%p, you have returned? We have been waiting patiently and are ready to 
+%lC stares at you blankly for a moment and then recognizes you.
+"%pC, you have returned? We have been waiting patiently and are ready to 
 strike when you are. Let me make sure you are ready..."
 %E
 %Cp Sal 00016
 %l stares at you blankly for a moment and then recognizes you.
-"%p, you have returned? We have been waiting patiently and are ready to 
+"%pC, you have returned? We have been waiting patiently and are ready to 
 strike when you are. Let me make sure you are ready..."
 %E
 %Cp Sal 00017
 %l stares at you blankly for a moment and then recognizes you.
-"%p, you have returned? We have been waiting patiently and are ready to 
+"%pC, you have returned? We have been waiting patiently and are ready to 
 strike when you are. Let me make sure you are ready..."
 %E
 %Cc Sal 00018
@@ -6901,11 +6901,13 @@ One does not simply walk into %i."
 %E
 %Cc Sal 00021
 "It is time for the rebellion, %p. You must head through %H to 
-%i and locate the Charcoal Palace. There resides %l who has stolen %o, 
-an artifact of our ancestors that kept them free from efreeti enslavement."
+%i and locate the Charcoal Palace. There resides %n who has stolen 
+%o, an artifact of our ancestors that kept them free from efreeti enslavement."
+
+"Salamander brethern, now is the time to overthrow our cruel rulers!"
 %E
 %Cp Sal 00025
-"%i is the oldest city in all creation."
+"%iC is the oldest city in all creation."
 %E
 %Cp Sal 00026
 "Efreeti fear no fire but are weak to much else."
@@ -6914,7 +6916,7 @@ an artifact of our ancestors that kept them free from efreeti enslavement."
 "Beware the magical spells of our efreeti overlords."
 %E
 %Cp Sal 00028
-"If you can, free any salamander slaves you see along the way."
+"If you can, free any salamander prisoners you see along the way."
 %E
 %Cp Sal 00029
 "Glory will be returned to our primordial race!"
@@ -6923,7 +6925,7 @@ an artifact of our ancestors that kept them free from efreeti enslavement."
 "Like a phoenix, we will rise from our fiery lives of death."
 %E
 %Cp Sal 00031
-"Obsidian, as much as it is our bane, is a good sharp material."
+"Obsidian, as much as it represents our chains, is a good and sharp material."
 %E
 %Cp Sal 00032
 "Lava is a good place for us heat loving salamanders to be."
@@ -6942,7 +6944,7 @@ infiltrate the city and recover %o. You hear the bustling sounds of foreign merc
 You hear the bustling sounds of foreign merchants.
 %E
 %Cc Sal 00040
-%l's palace. You feel fear of the likes you haven't felt since you were a 
+%nC's palace. You feel fear of the likes you haven't felt since you were a 
 young fire snake.
 %E
 %Cp Sal 00041
