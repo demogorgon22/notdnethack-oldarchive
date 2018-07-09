@@ -753,6 +753,7 @@ struct monst *mdef;
 	/* Pick a weapon */
 	otmp = select_rwep(magr);
     if (!otmp) return MM_MISS;
+    if(Is_spear(otmp) && is_salamander(magr->data)) return MM_MISS;
 
 	if (is_pole(otmp)) {
 		int dam, hitv, vis = canseemon(magr);

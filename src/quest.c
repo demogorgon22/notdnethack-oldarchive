@@ -348,6 +348,7 @@ chat_with_leader()
 			struct obj *obj;
 			obj = mksobj(JADE, TRUE, FALSE);
 			obj->ovar1 = KNAPPED_SPEAR;
+			obj->quan = 1L;
 			pline("\"May this jeweled spear point help you along your way.\"");
 			pline("He hands %s to you.", the(xname(obj)));
 			obj = addinv(obj);	/* into your inventory */

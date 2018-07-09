@@ -458,6 +458,19 @@ fixup_special()
 		if (!rn2(3) && !is_pool(x,y))
 		    (void)maketrap(x, y, rn2(3) ? LANDMINE : SPIKED_PIT);
 	    }
+
+    } else if(Pantheon_if(PM_SALAMANDER) && In_quest(&u.uz) && Is_nemesis(&u.uz)) {
+	/* using an unfilled morgue for rm id */
+	croom = search_special(MORGUE);
+	/* avoid inappropriate morgue-related messages */
+	level.flags.graveyard = level.flags.has_morgue = 0;
+	croom->rtype = OROOM;	/* perhaps it should be set to VAULT? */
+	/* stock the main vault */
+	for(x = croom->lx; x <= croom->hx; x++)
+	    for(y = croom->ly; y <= croom->hy; y++) {
+		if(levl[x][y].typ == ROOM) (void) mkgold((long) rn1(100, 300), x, y);
+	    }
+    
     } else if(urole.neminum == PM_BOLG && In_quest(&u.uz) && Is_qlocate(&u.uz)) {
 	int rmn, piled, disty, distx;
 	/* using an unfilled morgue for rm id */

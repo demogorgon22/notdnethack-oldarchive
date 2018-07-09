@@ -1019,7 +1019,6 @@ struct monst *mtmp;
 	}
 	/* Pick a weapon */
 	otmp = select_rwep(mtmp);
-	if (!Is_spear(otmp)) return;
 	if (!otmp) return;
 
 	if (is_pole(otmp)) {
