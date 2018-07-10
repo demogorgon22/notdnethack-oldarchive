@@ -557,6 +557,7 @@ register const char *s;
 	s_level	*sp = Is_special(&u.uz);
 	coord mm;
 	int levvar = 0;
+	struct obj* otmp;
 	if(*s) {
 	    if(sp && sp->rndlevs){
 			levvar = rnd((int) sp->rndlevs);
@@ -658,7 +659,14 @@ register const char *s;
 			int x, y;
 			for(x = 0; x<COLNO; x++){
 				for(y = 0; y<ROWNO; y++){
-					if(levl[x][y].typ == STONE) levl[x][y].typ = LAVAPOOL;
+					if(levl[x][y].typ == STONE){
+						levl[x][y].typ = LAVAPOOL;
+						if(!rn2(100)){
+							otmp = mksobj_at(GARNET, x, y, TRUE, FALSE);
+							otmp->quan = 1L;
+							otmp->ovar1 = KNAPPED_SPEAR;
+						}
+					}
 				}
 			}
 		}

@@ -206,6 +206,7 @@ RANDOM_PLACES:(07,06),(07,12),(02,09),(72,09),(67,06),(67,12)
 TELEPORT_REGION:(34,16,40,17),(01,03,73,15),down
 TELEPORT_REGION:(14,08,60,10),(24,07,50,11),up
 
+REGION:(00,00,74,18),lit,"ordinary"
 NON_DIGGABLE:(00,00,74,18)
 #Epic loot kludge get owned anyone that doesnt not wanna die
 REGION:(25,04,49,06),unlit,"morgue",unfilled
@@ -231,13 +232,15 @@ DOOR:locked,(61,09)
 # What would a palace be without fountains? Probably not very cool.
 FOUNTAIN:(07,09)
 FOUNTAIN:(67,09)
+# Arti
+OBJECT:')',"spear",(37,09),blessed,0,"Smoking Mirror"
 # Foes
 MONSTER:'&',"Efreet Sultan",(37,09),hostile
 MONSTER:'&',"efreet guardian",(36,09),hostile
 MONSTER:'&',"efreet guardian",(38,09),hostile
 MONSTER:'&',"efreet guardian",(18,09),hostile
 MONSTER:'&',"efreet guardian",(56,09),hostile
-#Random bros
+#Random monsters
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
@@ -249,6 +252,13 @@ MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
+# Rebels
+MONSTER:':',"salamander slave",random,peaceful
+MONSTER:':',"salamander slave",random,peaceful
+MONSTER:':',"salamander slave",random,peaceful
+MONSTER:':',"salamander slave",random,peaceful
+MONSTER:':',"salamander slave",random,peaceful
+MONSTER:':',"salamander slave",random,peaceful
 # The treasures of the City of Brass
 OBJECT:'(',"magic chest",(37,08)
 # Northwest Storeroom
@@ -407,6 +417,12 @@ INIT_MAP: '.' , ' ' , true , true , lit , true
 NOMAP
 STAIR: random, up
 STAIR: random, down
+#
+#
+FOUNTAIN:random
+FOUNTAIN:random
+FOUNTAIN:random
+ALTAR:random,noalign,altar
 #
 OBJECT: random, random, random
 OBJECT: random, random, random

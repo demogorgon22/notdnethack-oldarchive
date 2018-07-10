@@ -1867,7 +1867,13 @@ register struct monst *mtmp;
 			    break;
 			}
 			trap->once = 1;
+
+		    	if(In_quest(&u.uz) && Pantheon_if(PM_SALAMANDER)){
+				otmp = mksobj(OBSIDIAN, TRUE, FALSE);
+				otmp->ovar1 = KNAPPED_SPEAR;
+			} else
 			otmp = mksobj(ROCK, TRUE, FALSE);
+
 			otmp->quan = 1L;
 			otmp->owt = weight(otmp);
 			if (in_sight) seetrap(trap);

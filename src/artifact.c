@@ -4683,7 +4683,7 @@ arti_invoke(obj)
 				awaken_monsters(ROWNO * COLNO);
 			   }
 	break;
-	/*Only ever use the following on spears*/
+	/*Only ever use the following on pointables*/
 	case SMOKE_MIRROR:
 		if(obj->ovar1 == GARNET){
 			otmp = mksobj(STRANGE_OBJECT,FALSE,FALSE);
@@ -4691,11 +4691,41 @@ arti_invoke(obj)
 			otmp->spe = 1;
 			arti_invoke(otmp);
 			obfree(otmp, (struct obj *)0);
-		} else if(obj->ovar1 == OBSIDIAN){
+		} else if(obj->ovar1 == JADE){
 			otmp = mksobj(STRANGE_OBJECT,FALSE,FALSE);
 			otmp->oartifact = ART_RUINOUS_STRIKE;
 			arti_invoke(otmp);
 			obfree(otmp, (struct obj *)0);
+		} else if(obj->ovar1 == OBSIDIAN){
+			if(throweffect()){
+				exercise(A_WIS, TRUE);
+				cc.x=u.dx;cc.y=u.dy;
+				n=3;
+				while(n--) {
+					explode(u.dx, u.dy,
+						8, //8 = AD_PHYS, explode uses nonstandard damage type flags...
+						u.ulevel + 10 + spell_damage_bonus(), 0,
+						CLR_BLACK);
+					u.dx = cc.x+rnd(3)-2; u.dy = cc.y+rnd(3)-2;
+					if (!isok(u.dx,u.dy) || !cansee(u.dx,u.dy) ||
+						IS_STWALL(levl[u.dx][u.dy].typ) || u.uswallow) {
+						/* Spell is reflected back to center */
+							u.dx = cc.x;
+							u.dy = cc.y;
+					}
+				}
+			}
+
+		} else {
+			obj->cursed = 0;
+			obj->blessed = 1;
+			obj->oeroded = 0;
+			obj->oeroded2= 0;
+			obj->oerodeproof = 1;
+			if(obj->spe < 3){
+				obj->spe = 3;
+			}
+
 		}
 
 	break;

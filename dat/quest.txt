@@ -6945,107 +6945,87 @@ You hear the bustling sounds of foreign merchants.
 You hear the bustling sounds of foreign merchants.
 %E
 %Cc Sal 00040
-%nC's palace. You feel fear of the likes you haven't felt since you were a 
+The Charcoal Palace, %nC's abide. 
+You feel fear of the likes you haven't felt since you were a 
 young fire snake.
 %E
 %Cp Sal 00041
 You return to the Charcoal Palace.
 %E
 %Cc Sal 00050
-"Ah!  You must be %ls ... er, `hero'.  A pleasure
-to meet you."
+"Get back to %H you good for nothing slave!
+%dC has no love for you!"
 %E
 %Cp Sal 00051
-"We meet again.  Please reconsider your actions."
+"Begone slave!"
 %E
 %Cp Sal 00052
-"Surely, %p, you have learned that you cannot trust any bargains
-that %l has made.  I can show you how to continue on
-your quest without having to run into him again."
+"%lC's little rebellion ends now!"
 %E
 %Cp Sal 00053
-"Please, think for a moment about what you are doing.  Do you truly
-believe that %d would want %l to have
-%o?"
+"%oC cannot save you!"
 %E
 %Cp Sal 00060
-"May I suggest a compromise.  Are you interested in gold or gems?"
+"Salamanders have been the slaves of the efreeti since the dawn of time!"
 %E
 %Cp Sal 00061
-"Please don't force me to kill you."
+"An empire that has slain Kostchtchie can slay a measly %r."
 %E
 %Cp Sal 00062
-"Grim times are upon us all.  Will you not see reason?"
+"Your kind is cut from a worse cloth than mine."
 %E
 %Cp Sal 00063
-"I knew %l, and you're no %lt, thankfully."
+"Go back to %H and pick some qamah."
 %E
 %Cp Sal 00064
-"It is a shame that we are not meeting under more pleasant circumstances."
+"Gods never die."
 %E
 %Cp Sal 00065
-"I was once like you are now, %p.  Believe in me -- our way
-is better."
+"Salamanders are the pond scum of lava pools."
 %E
 %Cp Sal 00066
-"Stay with me, and I will make you %os guardian."
+"%lC and all his rebels will be put to death."
 %E
 %Cp Sal 00067
-"When you return, with or without %o,
-%l will have you killed."
+"The Lords of the Nine support us.
+You really think you can overthrow that?"
 %E
 %Cp Sal 00068
-"Do not be fooled; I am prepared to kill to defend %o."
+"This rebellion means nothing."
 %E
 %Cp Sal 00069
-"I can reunite you with the Twain.  Oh, the stories you can swap."
+"Killing me will not end the efreeti rule!"
 %E
 %Cc Sal 00070
-As you pick up %o, the hairs on the back of your
-neck fall out.  At once you realize why %n was
-willing to die to keep it out of %ls hands.  Somehow
-you know that you must do likewise.
+%oC fills you with a burning feeling of primordial power.
+You know that with it an end can be put to the salamander enslavement.
 %E
 %Cc Sal 00080
-"I know what you are thinking, %p.  It is not too late for you
-to use %o wisely.  For the sake of your guild
-%sp, do what is right."
+%nC bellows
+"No! Death is impossible!"
+As %n blows away into the dust, you realize it is time
+to return to %l with %o.
 
-You sit and wait for death to come for %n, and then you
-brace yourself for your next meeting with %l!
 %E
 %Cc Sal 00081
-"Well, I'll be damned.  You got it.  I am proud of you, a fine %r
-you've turned out to be.
-
-"While you were gone I got to thinking, you and %o
-together could bring me more treasure than either of you apart, so why don't
-you take it with you.  All I ask is a cut of whatever loot you come by.
-That is a better deal than I offered %n.
-
-"But, you see what happened to %n when he refused.
-Don't make me find another to send after you this time."
+"You've done it! This is the biggest step in the rebellion yet!"
+%lC takes %o and with it ends the efreeti overseer invasion.
+"You should hold onto %o, %p. You can do much more for the 
+rebellion with it."
 %E
-# assumes Master Key of Thievery (small object)
 %Cc Sal 00082
-%l seems tempted to swap %o for
-the mundane one you detect in his pocket, but noticing your alertness,
-evidently chickens out.
-
-"Go filch the Amulet before someone else beats you to it.
-%Z are back the way you came, through the magic portal."
+"You've done it! This is the biggest step in the rebellion yet!"
+%lC takes %o and with it ends the efreeti overseer invasion.
+"You should hold onto %o, %p. You can do much more for the 
+rebellion with it."
 %E
 %Cc Sal 00090
-"Quite the little thief, aren't we, %p.  Can I interest you in a
-swap for %o.  Look around, anything in the keep
-is yours for the asking."
+"Return to %Z and seek out the Amulet of Yendor so that %d 
+can set us all truly free!"
 %E
 %Cc Sal 00091
-"I see that with your abilities, and my brains, we could rule this world.
-
-"All that we would need to be all-powerful is for you to take that little
-trinket you've got there up to the Astral Plane.  From there, %d will
-show you what to do with it.  Once that's done, we will be invincible!"
+"Head to the Astral Plane with the amulet and offer it to 
+%d so we can be truly free."
 %E
 #
 #	Samurai
