@@ -513,7 +513,8 @@ register struct mkroom *sroom;
 		      (sx == sroom->hx && doors[sh].x == sx+1) ||
 		      (sy == sroom->ly && doors[sh].y == sy-1) ||
 		      (sy == sroom->hy && doors[sh].y == sy+1)) continue;
-	    mkshobj_at(shp, sx, sy);
+	    if(!((Pantheon_if(PM_SALAMANDER) && In_quest(&u.uz) && Is_qlocate(&u.uz)) && levl[sx][sy].typ != ROOM))
+			    mkshobj_at(shp, sx, sy);
 	}
 
     /*

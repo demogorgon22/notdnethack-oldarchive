@@ -6937,8 +6937,9 @@ One does not simply walk into %i."
 "Efreeti grant wishes for no one but themselves."
 %E
 %Cc Sal 00035
-%iC, a place you had only ever heard stories of before stands before you. You must 
-infiltrate the city and recover %o. You hear the bustling sounds of foreign merchants.
+%iC, a place you had only ever heard stories of before stands before you. 
+You must infiltrate the city and recover %o. 
+You hear the bustling sounds of foreign merchants.
 %E
 %Cp Sal 00036
 You hear the bustling sounds of foreign merchants.

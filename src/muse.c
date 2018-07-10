@@ -930,9 +930,9 @@ struct monst *mtmp;
 		case 0: case 1:
 			return SCR_TELEPORTATION;
 		case 8: case 10:
-			if (!rn2(3) && !In_void(&u.uz)) return WAN_CREATE_MONSTER;
+			if (!rn2(3) && !In_void(&u.uz) && !(In_quest(&u.uz)&&Role_if(PM_ANACHRONONAUT))) return WAN_CREATE_MONSTER;
 			/* else FALLTHRU */
-		case 2: if(!In_void(&u.uz)) return SCR_CREATE_MONSTER;
+		case 2: if(!In_void(&u.uz)&& !(In_quest(&u.uz)&&Role_if(PM_ANACHRONONAUT))) return SCR_CREATE_MONSTER;
 		case 3: return POT_HEALING;
 		case 4: return POT_EXTRA_HEALING;
 		case 5: return (mtmp->data != &mons[PM_PESTILENCE]) ?

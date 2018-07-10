@@ -63,6 +63,7 @@ Salamander race
 	Can secrete a pool of lava at the cost of halving hp
 	Can fling balls of lava that do extra dmg based on xp lvl from pools
 		of lava
+	Slithy (can go slink through iron bars)
 	Can walk through and play in (and store things in) lava
 	Can reach expert in spear
 	Requires special snakeleg body armour
@@ -99,8 +100,13 @@ Salamander Convict and Rogue quest
 	Efreet Overseer
 		Eviler djinni that cast some fire based and other spells and
 			wield scimitars and they are meaner.
+	Efreet Merchant
+		More dangerous but no whip and less firey than overseer
+	Efreet Guardian
+		A slammer and a half of an efreet. Beware.
 	Various fire plane enemies
 	Journey to the Charcoal palace
+		Epic loot
 	
 Dungeon changes
 	Replaced Sokoban branch with Lokoban
@@ -178,3 +184,4 @@ General changes
 	of previously usually decreasing it
 	Uncontrolled teleportation while able to swim or breathe underwater
 	made drastically less dangerous.
+	Ana quest enemies wont spawn with create monster.

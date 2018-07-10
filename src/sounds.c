@@ -1561,7 +1561,7 @@ asGuardian:
 				verbl_msg = "I'm free!";
 	    } else if(ptr == &mons[PM_A_GONE]) verbl_msg = agonePrisoner[rn2(SIZE(agonePrisoner))];
 	    else if(ptr == &mons[PM_MINDLESS_THRALL]) verbl_msg = thrallPrisoners[rn2(SIZE(thrallPrisoners))];
-	    else if(ptr != &mons[PM_PRISONER]) verbl_msg = "This will teach you not to disturb me!";
+	    else if(ptr != &mons[PM_PRISONER] && ptr != &mons[PM_SALAMANDER_PRISONER]) verbl_msg = "This will teach you not to disturb me!";
 	    break;
 	case MS_BOAST:	/* giants */
 	    if (!mtmp->mpeaceful) {
