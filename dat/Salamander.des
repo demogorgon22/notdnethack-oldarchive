@@ -113,7 +113,7 @@ MAP
 ---------------------         -------LLLLLL
 ENDMAP
 # Regions
-NON_DIGGABLE:(00,00,41,20),lit,"ordinary"
+NON_DIGGABLE:(00,00,41,20)
 REGION:(00,00,41,20),lit,"ordinary"
 REGION:(28,00,38,05),lit,"food shop"
 # Arabian lamp dealer
@@ -402,10 +402,9 @@ TRAP: "falling rock", random
 TRAP: "falling rock", random
 TRAP: "falling rock", random
 TRAP: "falling rock", random
-MAZE: "Acu-filb" , '}'
-INIT_MAP: 'C' , '}' , false , false , unlit , false
+MAZE: "Sal-filb" , ' '
+INIT_MAP: '.' , ' ' , true , true , lit , true
 NOMAP
-#
 STAIR: random, up
 STAIR: random, down
 #
@@ -418,19 +417,10 @@ OBJECT: random, random, random
 OBJECT: random, random, random
 OBJECT: random, random, random
 #
-MONSTER:'w',"neothelid",random
-MONSTER:'w',"neothelid",random
-MONSTER:'h',"adversary",random
-MONSTER:'w',"neothelid",random
-MONSTER:'w',"neothelid",random
-MONSTER:'h',"adversary",random
-MONSTER:'h',"adversary",random
-MONSTER:'V',"villithid",random
-MONSTER:'V',"villithid",random
-MONSTER:'V',random,random
-TRAP: random, random
-TRAP: random, random
-TRAP: random, random
-TRAP: random, random
-
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
 

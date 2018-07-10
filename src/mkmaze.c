@@ -651,6 +651,17 @@ register const char *s;
 				}
 			}
 		}
+		if(Pantheon_if(PM_SALAMANDER) && 
+			In_quest(&u.uz) && 
+			(!Is_qlocate(&u.uz) && !Is_qstart(&u.uz) && !Is_nemesis(&u.uz))
+		){
+			int x, y;
+			for(x = 0; x<COLNO; x++){
+				for(y = 0; y<ROWNO; y++){
+					if(levl[x][y].typ == STONE) levl[x][y].typ = LAVAPOOL;
+				}
+			}
+		}
 		if(Is_lolth_level(&u.uz)){
 			int x, y;
 			place_lolth_vaults();
