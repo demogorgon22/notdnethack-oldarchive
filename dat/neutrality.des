@@ -169,7 +169,8 @@ ENDMAP
 # Dungeon Description
 
 BRANCH:(03,03,72,17),(14,04,61,16)
-PORTAL:(00,20,00,20),(00,00,00,00),"out1"
+PORTAL:(05,03,05,03),(00,00,00,00),"out1"
+PORTAL:(00,20,00,20),(00,00,00,00),"lethe-b"
 
 DOOR:closed,(20,07)
 DOOR:closed,(20,10)
@@ -916,6 +917,8 @@ OBJECT:'!',"water",(43,03),blessed,0
 OBJECT:'!',"gain ability",(49,08)
 MONSTER:'p',"iron piercer",(47,03)
 MONSTER:'p',random,(52,08)
+# Portal
+PORTAL:(68,15,68,15),(00,00,00,00),"gatetwn"
 
 #
 #	The Ogre Stockade for the Lethe branch.
