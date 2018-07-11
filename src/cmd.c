@@ -114,7 +114,6 @@ static int NDECL((*timed_occ_fn));
 
 STATIC_DCL int NDECL(use_reach_attack);
 STATIC_DCL int NDECL(psionic_craze);
-STATIC_DCL int NDECL(psionic_pulse);
 STATIC_DCL int NDECL(dotelekinesis);
 STATIC_DCL int NDECL(syringify);
 STATIC_DCL int NDECL(lavify);
@@ -566,6 +565,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(attacktype(youracedata, AT_ARRW)){
+		Sprintf(buf, "Ranged");
+		any.a_int = MATTK_ARRW;	/* must be non-zero */
+		incntlet = 'f';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(is_hider(youracedata)){
 		Sprintf(buf, "Hide");
 		any.a_int = MATTK_HIDE;	/* must be non-zero */
@@ -896,6 +904,8 @@ domonability()
 	break;
 	case MATTK_SPLASH: return dospit();
 	break;
+	case MATTK_ARRW: return poly_arrow();
+	break;
 	}
 	return 0;
 }
@@ -932,6 +942,33 @@ lavify(){
 
 
 }
+
+int
+poly_arrow(){
+	if(!getdir((char *)0)) return 0;
+	struct obj *qvr = NULL;
+	struct monst *mtmp = NULL;
+	struct attack *mattk; 
+	int ammo_type, autodestroy = 1;
+	int yadj, xadj, rngmod;
+	yadj = xadj = 0;
+	rngmod = 0;
+	for (int i = 0; i < NATTK; i++) {
+	    if(youracedata->mattk[i].aatyp == AT_ARRW) {
+		mattk = &youracedata->mattk[i];
+		break;
+	    }
+	}
+	for(int i = 0; i<d(mattk->damn,mattk->damd);i++){
+		init_arrow(mtmp,mattk,&qvr,&ammo_type,&yadj,&xadj,&rngmod,&autodestroy);
+		if(!qvr) return 0;
+		set_destroy_thrown(autodestroy);
+		m_throw(&youmonst, u.ux, u.uy, u.dx, u.dy, BOLT_LIM+rngmod, qvr,TRUE);
+		set_destroy_thrown(FALSE);
+		set_bypassDR(FALSE);
+	}
+	return 1;
+}
 STATIC_OVL int
 syringify(){
 	struct obj *obj;
@@ -948,7 +985,7 @@ syringify(){
 }
 
 
-STATIC_OVL int
+int
 psionic_pulse(){
 	if(u.uen < 5){
 		You("lack the energy.");

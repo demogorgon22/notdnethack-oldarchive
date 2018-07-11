@@ -194,6 +194,8 @@ E int NDECL(wiz_where);
 E int NDECL(wiz_wish);
 # endif /* WIZARD */
 #endif /* USE_TRAMPOLI */
+E int NDECL(psionic_pulse);
+E int NDECL(poly_arrow);
 E void NDECL(reset_occupations);
 E void FDECL(set_occupation, (int (*)(void),const char *,int));
 #ifdef REDO
@@ -1551,6 +1553,7 @@ E void FDECL(thrwmu, (struct monst *));
 E int FDECL(spitmu, (struct monst *,struct attack *));
 E int FDECL(firemu, (struct monst *,struct attack *));
 E int FDECL(firemm, (struct monst *,struct monst *,struct attack *));
+E void FDECL(init_arrow, (struct monst *,struct attack *,struct obj **pqvr,int *pammo_type,int *pyadj,int *pxadj,int *prngmod,int*pautodestroy));
 /*E int FDECL(firemm, (struct monst *,struct attack *));*/
 E int FDECL(spitmm, (struct monst *,struct monst *,struct attack *));
 E int FDECL(breamu, (struct monst *,struct attack *));

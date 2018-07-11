@@ -622,6 +622,8 @@ int	mntmp;
 		pline(use_thec,monsterc,"remove an iron ball");
 	    if (attacktype(youmonst.data, AT_GAZE))
 		pline(use_thec,monsterc,"gaze at monsters");
+	    if (attacktype(youmonst.data, AT_ARRW))
+		pline(use_thec,monsterc,"fire your ranged weapon");
 	    if (is_hider(youmonst.data))
 		pline(use_thec,monsterc,"hide");
 	    if (is_were(youmonst.data))

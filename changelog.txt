@@ -185,3 +185,5 @@ General changes
 	Uncontrolled teleportation while able to swim or breathe underwater
 	made drastically less dangerous.
 	Ana quest enemies wont spawn with create monster.
+	Actually implemented gaze attacks for polyself.
+	Can use polyd monster form AT_ARRW attacks.

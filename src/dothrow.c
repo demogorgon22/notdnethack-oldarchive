@@ -694,7 +694,7 @@ dofire()
 {
 	int result, shotlimit;
 
-	if (notake(youracedata)) {
+	if (notake(youracedata) && !attacktype(youracedata,AT_SPIT)&& !attacktype(youracedata,AT_ARRW)) {
 	    You("are physically incapable of doing that.");
 	    return 0;
 	}
@@ -800,6 +800,18 @@ dofire()
 			result = fire_blaster(uswapwep, shotlimit);
 			return(result);
 		}
+	} else if(attacktype(youracedata, AT_ARRW) && (!uquiver || nohands(youracedata))){
+		poly_arrow();
+		return 1;
+	} else if(attacktype(youracedata, AT_SPIT) && (!uquiver || nohands(youracedata))){
+		dospit();
+		return 1;
+	} else if(youracedata == &mons[PM_SALAMANDER] && levl[u.ux][u.uy].typ == LAVAPOOL && !uquiver){
+		dospit();
+		return 1;
+	} else if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 4 && !uquiver){//magic number
+		psionic_pulse();
+		return 1;
 	}
 	
 	if(check_capacity((char *)0)) return(0);

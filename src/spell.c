@@ -3544,10 +3544,13 @@ spiriteffects(power, atme)
 			qvr->opoisoned = (OPOISON_BASIC|OPOISON_BLIND);
 			set_bypassDR(1);  //state variable referenced in drop_throw
 			set_destroy_thrown(1); //state variable referenced in drop_throw
-				m_throw(&youmonst, mon->mx + (-u.dx), mon->my + (-u.dy), u.dx, u.dy,
-					1, qvr,TRUE);
-				ttmp2 = maketrap(mon->mx, mon->my, WEB);
+			setmangry(mon);
+			m_throw(&youmonst, mon->mx + (-u.dx), mon->my + (-u.dy), u.dx, u.dy,
+				1, qvr,TRUE);
+			ttmp2 = maketrap(mon->mx, mon->my, WEB);
+			if(mon->mhp > 0){
 				if (ttmp2) mintrap(mon);
+			}
 			set_destroy_thrown(0);  //state variable referenced in drop_throw
 			set_bypassDR(0);  //state variable referenced in drop_throw
 		}break;

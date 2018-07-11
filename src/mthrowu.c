@@ -184,11 +184,6 @@ int x,y;
 	} else if (obj->otyp == BLASTER_BOLT) {
 		explode(bhitpos.x, bhitpos.y, flags.mon_moving ? -8 : 8, d(3,6),
 		    0, EXPL_RED);
-	
-	} else if (ohit && mon && obj->otyp == PSIONIC_PULSE) {/*shouldnt be handled here bud.*/
-		pline("%s is thrown backwards by the force of your pulse!",Monnam(mon));
-         	mhurtle(mon, u.dx, u.dy, (int)u.ulevel/3);	 
-		pline("x: %d, y: %d",u.dx,u.dy);
 	} else if (mon && obj->otyp == SPE_MAGIC_MISSILE && mon->data == &mons[PM_PAIMON]){
 		explode(bhitpos.x, bhitpos.y, 10, d(3,10),
 		    0, EXPL_MAGICAL);	
@@ -635,6 +630,7 @@ m_throw(mon, x, y, dx, dy, range, obj, verbose)
 		bhitpos.x += dx;
 		bhitpos.y += dy;
 		if ((mtmp = m_at(bhitpos.x, bhitpos.y)) != 0) {
+			setmangry(mtmp);
 			if((singleobj->otyp == LASER_BEAM || singleobj->otyp == BLASTER_BOLT || singleobj->otyp == HEAVY_BLASTER_BOLT) && mon_reflects(mtmp, (char *)0)){
 				dx *= -1;
 				dy *= -1;
@@ -1603,7 +1599,7 @@ firemu(mtmp, mattk)		/* monster fires arrows at you */
 register struct monst *mtmp;
 register struct attack *mattk;
 {
-	register struct obj *qvr = NULL;
+	struct obj *qvr = NULL;
 	int ammo_type, autodestroy = 1;
 	
 
@@ -1615,140 +1611,7 @@ register struct attack *mattk;
 		yadj = xadj = 0;
 		rngmod = 0;
 		bypassDR = 0;
-		switch (mattk->adtyp) {
-		    case AD_SHDW:
-				if(onscary(mtmp->mux,mtmp->muy,mtmp)) return 0; //Warded
-				ammo_type = DROVEN_BOLT;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = 8;
-				qvr->opoisoned = (OPOISON_BASIC|OPOISON_BLIND);
-				bypassDR = 1;
-			break;
-		    case AD_PEST:
-				ammo_type = ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = d(7,8)+1; //same as touch
-				qvr->opoisoned = OPOISON_FILTH;
-				bypassDR = 1;
-			break;
-		    case AD_PLYS:
-				ammo_type = SPIKE;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-				qvr->opoisoned = (OPOISON_PARAL);
-			break;
-		    case AD_SOLR:
-				ammo_type = SILVER_ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 1;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = 7;
-				rngmod = 1000; /* Fly until it strikes something */
-				bypassDR = 1;
-			break;
-		    case AD_SURY:
-				ammo_type = SILVER_ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-				// qvr->oartifact = ART_ARROW_OF_SLAYING;
-			    qvr->blessed = 1;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = 7 + 50; //Arrows of slaying actually just get +50 damage anyway :/
-				rngmod = 1000; /* Fly until it strikes something */
-				bypassDR = 1;
-			break;
-			case AD_SLVR:
-				ammo_type = SILVER_ARROW;
-			break;
-			case AD_BALL:
-ironball:
-				ammo_type = HEAVY_IRON_BALL;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-				rngmod = 8;
-			break;
-			case AD_LOAD:
-				if(near_capacity()>UNENCUMBERED) goto ironball;
-				ammo_type = LOADSTONE;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 1;
-				rngmod = 8;
-			break;
-			case AD_BLDR:
-				ammo_type = BOULDER;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-				rngmod = 8;
-				autodestroy = 0;
-			break;
-			case AD_ROCK:
-				ammo_type = ROCK;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    	qvr->blessed = 0;
-			    	qvr->cursed = 0;
-				rngmod = 8;
-				autodestroy = 0;
-			break;
-			case AD_CRYS:
-				ammo_type = DILITHIUM_CRYSTAL;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    	qvr->blessed = 0;
-			    	qvr->cursed = 0;
-				rngmod = 8;
-				autodestroy = 1;
-			break;
-			case AD_BOLT:
-				ammo_type = BLASTER_BOLT;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-				qvr->blessed = 0;
-				qvr->cursed = 0;
-				rngmod = 2;
-				autodestroy = 1;
-			break;
-			case AD_PAIM:
-				ammo_type = SPE_MAGIC_MISSILE;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    	qvr->blessed = 0;
-			    	qvr->cursed = 0;
-				rngmod = 8;
-				autodestroy = 1;
-			break;
-			case AD_VBLD:
-				ammo_type = HEAVY_IRON_BALL;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-				rngmod = 8;
-				if(mtmp->muy == mtmp->my) yadj = d(1,3)-2;
-				else if(mtmp->mux == mtmp->mx) xadj = d(1,3)-2;
-				else if(mtmp->mux - mtmp->mx == mtmp->muy - mtmp->my){
-					xadj = d(1,3)-2;
-					yadj = -1*xadj;
-				}
-				else xadj = yadj = d(1,3)-2;
-			break;
-		    default:
-				ammo_type = ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			        qvr->blessed = 0;
-			        qvr->cursed = 0;
-			        qvr->quan = 1;
-			        qvr->spe = 3;//plus 3 arrows is nice enough
-				rngmod = 8;
-			break;
-		}
+		init_arrow(mtmp,mattk,&qvr,&ammo_type,&yadj,&xadj,&rngmod,&autodestroy);
 		if(!qvr){
 			for(qvr = mtmp->minvent; qvr; qvr=qvr->nobj){
 					if(qvr->otyp==ammo_type) break;
@@ -1795,11 +1658,11 @@ ironball:
 }
 
 int
-firemm(mtmp, mdef, mattk)		/* monster fires arrows at you */
+firemm(mtmp, mdef, mattk)		/* monster fires arrows at monster */
 register struct monst *mtmp, *mdef;
 register struct attack *mattk;
 {
-	register struct obj *qvr = NULL;
+	struct obj *qvr = NULL;
 	int ammo_type, autodestroy = 1;
 
 	if(mlined_up(mtmp, mdef, FALSE)) {
@@ -1807,90 +1670,7 @@ register struct attack *mattk;
 		yadj = xadj = 0;
 		rngmod = 0;
 		bypassDR = 0;
-		switch (mattk->adtyp) {
-		    case AD_SHDW:
-				if(onscary(mdef->mx,mdef->my,mtmp)) return 0; //Warded
-				ammo_type = DROVEN_BOLT;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = 8;
-				qvr->opoisoned = (OPOISON_BASIC|OPOISON_BLIND);
-				bypassDR = 1;
-			break;
-		    case AD_PEST:
-				ammo_type = ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = d(7,8)+1; //same as touch
-				qvr->opoisoned = OPOISON_FILTH;
-				bypassDR = 1;
-			break;
-		    case AD_SOLR:
-				ammo_type = SILVER_ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 1;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = 7;
-				rngmod = 1000; /* Fly until it strikes something */
-			break;
-		    case AD_SURY:
-				ammo_type = SILVER_ARROW;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-				// qvr->oartifact = ART_ARROW_OF_SLAYING;
-			    qvr->blessed = 1;
-			    qvr->cursed = 0;
-			    qvr->quan = 1;
-			    qvr->spe = 7 + 50;
-				rngmod = 1000; /* Fly until it strikes something */
-			break;
-			case AD_SLVR:
-				ammo_type = SILVER_ARROW;
-			break;
-			case AD_BALL:
-				ammo_type = HEAVY_IRON_BALL;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-				rngmod = 8;
-			break;
-			case AD_LOAD:
-				ammo_type = LOADSTONE;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 1;
-				rngmod = 8;
-			break;
-			case AD_BLDR:
-				ammo_type = BOULDER;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-				rngmod = 8;
-				autodestroy = 0;
-			break;
-			case AD_VBLD:
-				ammo_type = HEAVY_IRON_BALL;
-				qvr = mksobj(ammo_type, TRUE, FALSE);
-			    qvr->blessed = 0;
-			    qvr->cursed = 0;
-				rngmod = 8;
-				if(mdef->my == mtmp->my) yadj = d(1,3)-2;
-				else if(mdef->mx == mtmp->mx) xadj = d(1,3)-2;
-				else if(mdef->mx - mtmp->mx == mdef->my - mtmp->my){
-					xadj = d(1,3)-2;
-					yadj = -1*xadj;
-				}
-				else xadj = yadj = d(1,3)-2;
-			break;
-		    default:
-				ammo_type = ARROW;
-			break;
-		}
+		init_arrow(mtmp,mattk,&qvr,&ammo_type,&yadj,&xadj,&rngmod,&autodestroy);
 		if(!qvr){
 			for(qvr = mtmp->minvent; qvr; qvr=qvr->nobj){
 					if(qvr->otyp==ammo_type) break;
@@ -1920,6 +1700,154 @@ register struct attack *mattk;
 		bypassDR = 0;
 	}
 	return 0;
+}
+
+void
+init_arrow(mtmp,mattk,qvr,ammo_type,yadj,xadj,rngmod,autodestroy) /* sort up stuff*/
+register struct monst *mtmp;
+register struct attack *mattk;
+struct obj **qvr;
+int *ammo_type;
+int *yadj, *xadj, *rngmod, *autodestroy;
+{
+		switch (mattk->adtyp) {
+		    case AD_SHDW:
+				*ammo_type = DROVEN_BOLT;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 0;
+			    (*qvr)->cursed = 0;
+			    (*qvr)->quan = 1;
+			    (*qvr)->spe = 8;
+				(*qvr)->opoisoned = (OPOISON_BASIC|OPOISON_BLIND);
+				bypassDR = 1;
+			break;
+		    case AD_PEST:
+				*ammo_type = ARROW;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 0;
+			    (*qvr)->cursed = 0;
+			    (*qvr)->quan = 1;
+			    (*qvr)->spe = d(7,8)+1; //same as touch
+				(*qvr)->opoisoned = OPOISON_FILTH;
+				bypassDR = 1;
+			break;
+		    case AD_PLYS:
+				*ammo_type = SPIKE;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 0;
+			    (*qvr)->cursed = 0;
+			    (*qvr)->quan = 1;
+				(*qvr)->opoisoned = (OPOISON_PARAL);
+			break;
+		    case AD_SOLR:
+				*ammo_type = SILVER_ARROW;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 1;
+			    (*qvr)->cursed = 0;
+			    (*qvr)->quan = 1;
+			    (*qvr)->spe = 7;
+				*rngmod = 1000; /* Fly until it strikes something */
+				bypassDR = 1;
+			break;
+		    case AD_SURY:
+				*ammo_type = SILVER_ARROW;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+				// qvr->oartifact = ART_ARROW_OF_SLAYING;
+			    (*qvr)->blessed = 1;
+			    (*qvr)->cursed = 0;
+			    (*qvr)->quan = 1;
+			    (*qvr)->spe = 7 + 50; //Arrows of slaying actually just get +50 damage anyway :/
+				*rngmod = 1000; /* Fly until it strikes something */
+				bypassDR = 1;
+			break;
+			case AD_SLVR:
+				*ammo_type = SILVER_ARROW;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			        (*qvr)->blessed = 0;
+			        (*qvr)->cursed = 0;
+			        (*qvr)->quan = 1;
+			        (*qvr)->spe = 0;
+			break;
+			case AD_BALL:
+ironball:
+				*ammo_type = HEAVY_IRON_BALL;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 0;
+			    (*qvr)->cursed = 0;
+				*rngmod = 8;
+			break;
+			case AD_LOAD:
+				if(near_capacity()>UNENCUMBERED) goto ironball;
+				*ammo_type = LOADSTONE;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 0;
+			    (*qvr)->cursed = 1;
+				*rngmod = 8;
+			break;
+			case AD_BLDR:
+				*ammo_type = BOULDER;
+				*(qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    (*qvr)->blessed = 0;
+			    (*qvr)->cursed = 0;
+				*rngmod = 8;
+				*autodestroy = 0;
+			break;
+			case AD_ROCK:
+				*ammo_type = ROCK;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    	(*qvr)->blessed = 0;
+			    	(*qvr)->cursed = 0;
+				*rngmod = 8;
+				*autodestroy = 0;
+			break;
+			case AD_CRYS:
+				*ammo_type = DILITHIUM_CRYSTAL;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    	(*qvr)->blessed = 0;
+			    	(*qvr)->cursed = 0;
+				*rngmod = 8;
+				*autodestroy = 1;
+			break;
+			case AD_BOLT:
+				*ammo_type = BLASTER_BOLT;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+				(*qvr)->blessed = 0;
+				(*qvr)->cursed = 0;
+				*rngmod = 2;
+				*autodestroy = 1;
+			break;
+			case AD_PAIM:
+				*ammo_type = SPE_MAGIC_MISSILE;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			    	(*qvr)->blessed = 0;
+			    	(*qvr)->cursed = 0;
+				*rngmod = 8;
+				*autodestroy = 1;
+			break;
+			case AD_VBLD:
+				*ammo_type = HEAVY_IRON_BALL;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+				    (*qvr)->blessed = 0;
+				    (*qvr)->cursed = 0;
+				*rngmod = 8;
+				if(mtmp->muy == mtmp->my) *yadj = d(1,3)-2;
+				else if(mtmp->mux == mtmp->mx) *xadj = d(1,3)-2;
+				else if(mtmp->mux - mtmp->mx == mtmp->muy - mtmp->my){
+					*xadj = d(1,3)-2;
+					*yadj = -1**xadj;
+				}
+				else *xadj = *yadj = d(1,3)-2;
+			break;
+		    default:
+				*ammo_type = ARROW;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+			        (*qvr)->blessed = 0;
+			        (*qvr)->cursed = 0;
+			        (*qvr)->quan = 1;
+			        (*qvr)->spe = 3;//plus 3 arrows is nice enough
+				*rngmod = 8;
+			break;
+		}
 }
 #endif /* OVLB */
 #ifdef OVL1

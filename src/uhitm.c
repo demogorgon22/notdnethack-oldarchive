@@ -4102,6 +4102,7 @@ wisp_shdw_dhit:
 		case AT_BREA:
 		case AT_BEAM:
 		case AT_SPIT:
+		case AT_ARRW:
 		case AT_GAZE:	/* all done using #monster command */
 			dhit = 0;
 			break;

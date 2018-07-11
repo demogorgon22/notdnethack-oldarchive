@@ -5024,6 +5024,7 @@ register struct monst *mtmp;
 		if (humanoid(mtmp->data) || mtmp->isshk || mtmp->isgd)
 		    pline("%s gets angry!", Monnam(mtmp));
 		else if (flags.verbose && flags.soundok) growl(mtmp);
+		newsym(mtmp->mx,mtmp->my);
 		if(flags.stag && (mtmp->data == &mons[PM_DROW_MATRON_MOTHER] || mtmp->data == &mons[PM_ECLAVDRA])){
 			struct monst *tm;
 			for(tm = fmon; tm; tm = tm->nmon){
