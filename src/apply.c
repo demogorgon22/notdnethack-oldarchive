@@ -5164,6 +5164,34 @@ doapply()
 			break;
 			case SHOTGUN_SHELL:
 				obj_extract_self(otmp);
+				otmp = poly_obj(otmp,FRAG_GRENADE);
+				otmp = hold_another_object(otmp, u.uswallow ?
+						   "Oops!  %s out of your reach!" :
+						(Weightless ||
+						 Is_waterlevel(&u.uz) ||
+						 levl[u.ux][u.uy].typ < IRONBARS ||
+						 levl[u.ux][u.uy].typ >= ICE) ?
+							   "Oops!  %s away from you!" :
+							   "Oops!  %s to the floor!",
+							   The(aobjnam(otmp, "slip")),
+							   (const char *)0);
+			break;
+			case FRAG_GRENADE:
+				obj_extract_self(otmp);
+				otmp = poly_obj(otmp,GAS_GRENADE);
+				otmp = hold_another_object(otmp, u.uswallow ?
+						   "Oops!  %s out of your reach!" :
+						(Weightless ||
+						 Is_waterlevel(&u.uz) ||
+						 levl[u.ux][u.uy].typ < IRONBARS ||
+						 levl[u.ux][u.uy].typ >= ICE) ?
+							   "Oops!  %s away from you!" :
+							   "Oops!  %s to the floor!",
+							   The(aobjnam(otmp, "slip")),
+							   (const char *)0);
+			break;
+			case GAS_GRENADE:
+				obj_extract_self(otmp);
 				otmp = poly_obj(otmp,BULLET);
 				otmp = hold_another_object(otmp, u.uswallow ?
 						   "Oops!  %s out of your reach!" :
@@ -5182,6 +5210,7 @@ doapply()
 				rocket->blessed = otmp->blessed;
 				rocket->cursed = otmp->cursed;
 				rocket->quan = (otmp->quan)/10;
+				/*if(rocket->quan < 1) rocket->quan = 1L;*/
 				rocket->spe = otmp->spe;
 				rocket->dknown = TRUE;
 				rocket->known = otmp->known;

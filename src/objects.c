@@ -325,7 +325,7 @@ GUN("sniper rifle", "broken crossbow",	   			0,  1, 0,  50, 4000, 25, -3,  0, WP
 GUN("shotgun", "broken crossbow",	   	   			0,  0, 0,  35,  200,  3, -1,  3,  WP_SHELL, IRON, P_FIREARM, HI_METAL), /*Needs tile*/
 GUN("auto shotgun", "strange broken crossbow",	   	0,  1, 0,  60, 1500,  3,  2,  0,  WP_SHELL, IRON, P_FIREARM, HI_METAL), /*Needs tile*/
 GUN("rocket launcher", "metal tube",  				0,  1, 0, 100, 3500, 20, -5, -4, WP_ROCKET, IRON, P_FIREARM, HI_METAL), /*Needs tile*/
-GUN("grenade launcher", "strange broken crossbow", 	0,  0, 0,  55, 1500,  6, -3, -3,WP_GRENADE, IRON, P_FIREARM, HI_METAL), /*Needs tile*/
+GUN("grenade launcher", "strange broken crossbow", 	0,  0, 0,  55, 1500,  6, 0, -3,WP_GRENADE, IRON, P_FIREARM, HI_METAL), /*Needs tile*/
 
 GUN("BFG", "ovoid device", 			   		0,  1, 0, 100, 3000,100,  3,  0,WP_ROCKET|WP_GRENADE|WP_BULLET|WP_SHELL|WP_ROCKET,
 																								SILVER, P_FIREARM, HI_SILVER), /*Needs tile*/

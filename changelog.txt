@@ -51,6 +51,11 @@ Caveman changes
 	Can apply rocks to knap soft stones into spear points 
 		which can be attached to their spear.
 	Sceptre of Might is now a bone spear
+Anachrononaut changes
+	Ana quest enemies wont spawn with create monster.
+	New salamander ana race, demolition expert.
+	Grenade launchers multishot with skill lvl now.
+	Fabber sequence a bit different now.
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked
@@ -184,6 +189,7 @@ General changes
 	of previously usually decreasing it
 	Uncontrolled teleportation while able to swim or breathe underwater
 	made drastically less dangerous.
-	Ana quest enemies wont spawn with create monster.
 	Actually implemented gaze attacks for polyself.
 	Can use polyd monster form AT_ARRW attacks.
+	'f' to fire is now a useful shortcut for salamander lava splash,
+	monster spit, monster arrow attack, and acu psionic pulse.
