@@ -800,7 +800,7 @@ dofire()
 			result = fire_blaster(uswapwep, shotlimit);
 			return(result);
 		}
-	} else if(attacktype(youracedata, AT_ARRW) && (!uquiver || nohands(youracedata))){
+	} else if((attacktype(youracedata, AT_ARRW) || (uarm && uarm->otyp == POWER_ARMOR && uarm->lamplit)) && (!uquiver || nohands(youracedata))){
 		poly_arrow();
 		return 1;
 	} else if(attacktype(youracedata, AT_SPIT) && (!uquiver || nohands(youracedata))){

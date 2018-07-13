@@ -512,7 +512,7 @@ ARMOR("gentleman's suit", "expensive clothes", /*Needs encyc entry*/
 ARMOR("gentlewoman's dress", "expensive dress", /*Needs encyc entry*/
 	0, 0, 1, 0,	0, 6,150, 1000,   9, 3, ARM_SUIT, BONE, CLR_RED), /*Specifically, whale bone*/
 ARMOR("crystal plate mail", (char *)0, /*Needs encyc entry*/
-	1, 0, 1, 0,	10, 5, 250, 2000,  -6, 0, ARM_SUIT, GLASS, CLR_CYAN), /*Best armor, AC wise*/
+	1, 0, 1, 0,	10, 5, 250, 2000,  0, 0, ARM_SUIT, GLASS, CLR_CYAN), /*Best armor, AC wise*/
 #ifdef TOURIST
 ARMOR("bronze plate mail", (char *)0, /*Needs encyc entry*/
 	1, 0, 1, 0,	20, 5, 225, 400,  3, 3, ARM_SUIT, COPPER, HI_COPPER),
@@ -522,6 +522,8 @@ ARMOR("bronze plate mail", (char *)0,
 #endif
 ARMOR("plasteel armor", "hard white armor", /*Needs encyc entry*//*Needs tile*/
 	0, 0, 1, 0,	 0, 5, 100,  500, 4, 3, ARM_SUIT, PLASTIC, CLR_WHITE),
+ARMOR("power armor", "strange metal armor", /*Needs encyc entry*//*Needs tile*/
+	0, 0, 1, 0,	 0, 3, 500,  5000, 4, 3, ARM_SUIT, METAL, CLR_MAGENTA),
 // ARMOR("force armor", "gemstone-adorned clothing",
 	// 0, 0, 1, 0,	 0, 5,  50, 1000, 9, 3, ARM_SUIT, GEMSTONE, CLR_BRIGHT_GREEN),
 ARMOR("splint mail", (char *)0,

@@ -565,7 +565,7 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
-	if(attacktype(youracedata, AT_ARRW)){
+	if(attacktype(youracedata, AT_ARRW) || (uarm && uarm->otyp == POWER_ARMOR && uarm->lamplit)){
 		Sprintf(buf, "Ranged");
 		any.a_int = MATTK_ARRW;	/* must be non-zero */
 		incntlet = 'f';
@@ -953,11 +953,18 @@ poly_arrow(){
 	int yadj, xadj, rngmod;
 	yadj = xadj = 0;
 	rngmod = 0;
-	for (int i = 0; i < NATTK; i++) {
-	    if(youracedata->mattk[i].aatyp == AT_ARRW) {
-		mattk = &youracedata->mattk[i];
-		break;
-	    }
+	if(uarm && uarm->otyp == POWER_ARMOR && uarm->lamplit){
+		mattk = &youracedata->mattk[0];
+		mattk->damn = 1;
+		mattk->damd = 2 + uarm->spe/2;
+		mattk->adtyp = AD_BOLT;
+	} else {
+		for (int i = 0; i < NATTK; i++) {
+		    if(youracedata->mattk[i].aatyp == AT_ARRW) {
+			mattk = &youracedata->mattk[i];
+			break;
+		    }
+		}
 	}
 	for(int i = 0; i<d(mattk->damn,mattk->damd);i++){
 		init_arrow(mtmp,mattk,&qvr,&ammo_type,&yadj,&xadj,&rngmod,&autodestroy);

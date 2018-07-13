@@ -1413,6 +1413,9 @@ struct obj *obj;
 		    }
 		    lightsaber_deactivate(obj, TRUE);
 		    return;
+		} else if(obj->otyp == POWER_ARMOR){
+			lightsaber_deactivate(obj,TRUE);
+			return;
 		} else
 		    You("snuff out %s.", yname(obj));
 		end_burn(obj, TRUE);
@@ -1425,7 +1428,8 @@ struct obj *obj;
 		) {
 		if (obj->otyp == BRASS_LANTERN || 
 			obj->otyp == DWARVISH_HELM || 
-			is_lightsaber(obj)
+			is_lightsaber(obj) ||
+			obj->otyp == POWER_ARMOR
 		)
 			Your("%s has run out of power.", xname(obj));
 		else pline("This %s has no %s.", xname(obj), obj->otyp != GNOMISH_POINTY_HAT ? "oil" : "wax");
@@ -1442,7 +1446,7 @@ struct obj *obj;
 			obj->cursed = FALSE;
 		}
 	}
-	if (obj->cursed && !rn2(2) && obj->oartifact != ART_HOLY_MOONLIGHT_SWORD) {
+	if (obj->cursed && !rn2(2) && obj->oartifact != ART_HOLY_MOONLIGHT_SWORD && obj->otyp != POWER_ARMOR) {
 		pline("%s for a moment, then %s.",
 		      Tobjnam(obj, "flicker"), otense(obj, "die"));
 	} else {
@@ -1453,6 +1457,8 @@ struct obj *obj;
 		} else if (is_lightsaber(obj)) {
 		    You("ignite %s.", yname(obj));
 		    unweapon = FALSE;
+		} else if (obj->otyp == POWER_ARMOR){
+		    Your("%s powers on.",xname(obj));
 		} else if (obj->oartifact == ART_HOLY_MOONLIGHT_SWORD) {
 			int biman;
 			obj->lamplit = 1;
@@ -4890,7 +4896,7 @@ doapply()
 	if (carrying(CREAM_PIE) || carrying(EUCALYPTUS_LEAF))
 		add_class(class_list, FOOD_CLASS);
 	if (carrying(DWARVISH_HELM) || carrying(GNOMISH_POINTY_HAT) 
-		|| carrying(DROVEN_CLOAK))
+		|| carrying(DROVEN_CLOAK) || carrying(POWER_ARMOR))
 		add_class(class_list, ARMOR_CLASS);
 
 
@@ -5288,6 +5294,11 @@ doapply()
  * From an idea posted to RGRN by "Dr Darth"
  * Code by Malcom Ryan
  */
+	case POWER_ARMOR:
+		if(!(uarm && uarm == obj)){
+			You("must be wearing your power armor to turn it on.");
+			break;
+		}
 	case DWARVISH_HELM: 
 	case OIL_LAMP:
 	case MAGIC_LAMP:

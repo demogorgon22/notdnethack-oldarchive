@@ -71,7 +71,7 @@ static struct trobj Anachrononaut_Hu[] = {
 };
 static struct trobj Anachrononaut_Sal[] = {
 	{ GRENADE_LAUNCHER, 5, WEAPON_CLASS, 1, 0 },
-	{ FORCE_PIKE,  0, WEAPON_CLASS, 1, 0 },
+	{ VIBROBLADE,  0, WEAPON_CLASS, 1, 0 },
 	{ FRAG_GRENADE, 2, WEAPON_CLASS, 50, 0 },
 	{ GAS_GRENADE, 2, WEAPON_CLASS, 10, 0 },
 	{ CUTTING_LASER,  0, WEAPON_CLASS, 1, 0 },

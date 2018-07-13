@@ -1188,8 +1188,15 @@ plus:
 		if(obj->owornmask & W_ARMOR)
 			Strcat(bp, (obj == uskin) ? " (embedded in your skin)" :
 				" (being worn)");
-		if(obj->lamplit)
-			Strcat(bp, " (lit)");
+		if(obj->otyp == POWER_ARMOR){
+			if(obj->lamplit)
+				Strcat(bp, " (on)");
+			else
+				Strcat(bp, " (off)");
+		} else {
+			if(obj->lamplit)
+				Strcat(bp, " (lit)");
+		}
 		if(obj->oartifact == ART_CHROMATIC_DRAGON_SCALES){
 			if(Is_dragon_mail(obj)) Sprintf(eos(bp), " (mail)");
 			if(Is_dragon_scales(obj)) Sprintf(eos(bp), " (scales)");
@@ -3152,6 +3159,7 @@ boolean from_user;
 	   strncmpi(bp, "ring mail", 9) &&
 	   strncmpi(bp, "potion vaporizer", 16) &&
 	   strncmpi(bp, "studded leather arm", 19) &&
+	   strncmpi(bp, "power arm", 9) &&
 	   strncmpi(bp, "leather arm", 11) &&
 	   strncmpi(bp, "tooled horn", 11) &&
 	   strncmpi(bp, "food ration", 11) &&

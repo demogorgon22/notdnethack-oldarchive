@@ -2,7 +2,7 @@
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
-/* NetHack 3.4.3, dNethack version 3.15.1 */
+/* NetHack 3.4.3, notdNethack version 3.15.1 */
 #define VERSION_MAJOR	3
 /* Started at 3.4.3, for the nethack version. Incremented straight 
    to 3.6 with the advent of the Noble role, counting the initial

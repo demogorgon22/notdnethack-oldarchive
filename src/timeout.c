@@ -1620,6 +1620,7 @@ long timeout;
 		    pline("%s %s reverts to single blade mode!",
 			    whose, xname(obj));
 	    	}
+	    case POWER_ARMOR:
 	    case LIGHTSABER: 
 	    case BEAMSWORD:
 	        /* Callback is checked every 1 turns - 
@@ -1630,6 +1631,7 @@ long timeout;
 		    	(!MON_WEP(obj->ocarry) || MON_WEP(obj->ocarry) != obj)) ||
 		    (obj->where == OBJ_INVENT &&
 		    	((!uwep || uwep != obj) &&
+			 (obj->otyp != POWER_ARMOR) &&
 		    	 (!u.twoweap || !uswapwep || obj != uswapwep))))
 	            lightsaber_deactivate(obj, FALSE);
 			if(obj->age <= 0){
@@ -1676,7 +1678,7 @@ lightsaber_deactivate (obj, timer_attached)
 			    break;
 		}
 	    } else {
-		You_hear("a lightsaber deactivate.");
+		You_hear("a %s deactivate.",obj->otyp == POWER_ARMOR?"power suit":"lightsaber");
 	    }
 	}
 	// if (obj->otyp == DOUBLE_LIGHTSABER)
@@ -1730,7 +1732,6 @@ begin_burn(obj, already_lit)
 		obj->otyp != MAGIC_LAMP && 
 		obj->otyp != POT_STARLIGHT && 
 		obj->otyp != CHUNK_OF_FOSSILE_DARK && 
-		Is_spear(obj) &&
 		!artifact_light(obj) && 
 		!arti_light(obj) && 
 		obj->oartifact != ART_HOLY_MOONLIGHT_SWORD &&
@@ -1772,6 +1773,10 @@ begin_burn(obj, already_lit)
 			if(obj->cobj && obj->cobj->oartifact == obj->oartifact && arti_light(obj->cobj)) 
 				radius = (obj->cobj->blessed ? 3 : (obj->cobj->cursed ? 1 : 2));
     	    else radius = 1;
+		break;
+	    case POWER_ARMOR:
+		turns = obj->age;
+		radius = 0;
 		break;
 
 	    case POT_OIL:
@@ -1864,8 +1869,9 @@ begin_burn(obj, already_lit)
 	if (obj->lamplit && !already_lit) {
 	    xchar x, y;
 
-	    if (get_obj_location(obj, &x, &y, CONTAINED_TOO|BURIED_TOO))
-		new_light_source(x, y, radius, LS_OBJECT, (genericptr_t) obj);
+	    if (get_obj_location(obj, &x, &y, CONTAINED_TOO|BURIED_TOO)){
+		if(radius) new_light_source(x, y, radius, LS_OBJECT, (genericptr_t) obj);
+	    }
 	    else
 		impossible("begin_burn: can't get obj position");
 	}
@@ -1894,7 +1900,7 @@ end_burn(obj, timer_attached)
 
 	if (!timer_attached) {
 	    /* [DS] Cleanup explicitly, since timer cleanup won't happen */
-	    del_light_source(LS_OBJECT, (genericptr_t)obj, FALSE);
+	    if(obj->otyp != POWER_ARMOR) del_light_source(LS_OBJECT, (genericptr_t)obj, FALSE);
 	    obj->lamplit = 0;
 	    if (obj->where == OBJ_INVENT)
 		update_inventory();
@@ -1922,7 +1928,7 @@ cleanup_burn(arg, expire_time)
 	return;
     }
 
-    del_light_source(LS_OBJECT, arg, FALSE);
+    if(obj->otyp != POWER_ARMOR) del_light_source(LS_OBJECT, arg, FALSE);
 
     /* restore unused time */
     obj->age += expire_time - monstermoves;

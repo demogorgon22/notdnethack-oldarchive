@@ -727,6 +727,8 @@ Armor_off()
 	else if((uarm->otyp == GENTLEWOMAN_S_DRESS || uarm->otyp == GENTLEMAN_S_SUIT) && !cancelled_don){
 		ABON(A_CHA) -= 2*(1+uarm->spe);
 		flags.botl = 1;
+	} else if(uarm->otyp == POWER_ARMOR && uarm->lamplit){
+		lightsaber_deactivate(uarm,TRUE);
 	}
     setworn((struct obj *)0, W_ARM);
 	if(checkweight) inv_weight();
@@ -1995,7 +1997,7 @@ find_ac()
 	if(uarm){
 		if(uarm->oartifact == ART_STEEL_SCALES_OF_KURTULMAK) uac -= ARM_BONUS(uarm)*2;
 		else uac -= ARM_BONUS(uarm);
-		
+		if(uarm->otyp == POWER_ARMOR && uarm->lamplit) uac -= 10; 
 		if(uarm->otyp == CRYSTAL_PLATE_MAIL) uac -= uarm->spe;
 	}
 	if(uarmc){
@@ -2033,7 +2035,7 @@ find_ac()
 					P_SKILL(weapon_type(uwep))-1
 					)
 				,0);
-		if(uwep->otyp == SPEAR && uwep->ovar1 == JET) uac -= 2 + uwep->spe/2;
+		if(Is_spear(uwep) && uwep->ovar1 == JET) uac -= 2 + uwep->spe/2;
 		if(uwep->oartifact == ART_TOBIUME || uwep->oartifact == ART_MASAMUNE ||
 			uwep->oartifact == ART_LANCE_OF_LONGINUS) uac -= max(uwep->spe,0);
 		if(uwep->oartifact == ART_TENSA_ZANGETSU){

@@ -1113,6 +1113,7 @@ register const char *let,*word;
 		     (otmp->oclass == ARMOR_CLASS &&
 		      otyp != DWARVISH_HELM &&
 		      otyp != DROVEN_CLOAK &&
+		      otyp != POWER_ARMOR &&
 			  otyp != GNOMISH_POINTY_HAT) || 
 		     (otmp->oclass == GEM_CLASS && (!is_graystone(otmp) && !(otmp->otyp == ROCK) ))))
 		|| (!strcmp(word, "invoke") &&

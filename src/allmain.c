@@ -826,6 +826,7 @@ moveloop()
 			moveamt = youmonst.data->mmove;
 			if(!Upolyd && Race_if(PM_HALF_DRAGON)) moveamt = (moveamt*2)/3;
 			if(uarmf && uarmf->otyp == STILETTOS && !Flying && !Levitation) moveamt = (moveamt*5)/6;
+			if(uarm && uarm->otyp == POWER_ARMOR && uarm->lamplit) moveamt += 2;
 			
 			if(u.sealsActive&SEAL_EURYNOME && IS_POOL(levl[u.ux][u.uy].typ)){
 				if (Very_fast) {	/* speed boots or potion */

@@ -56,6 +56,12 @@ Anachrononaut changes
 	New salamander ana race, demolition expert.
 	Grenade launchers multishot with skill lvl now.
 	Fabber sequence a bit different now.
+	Power armor - 
+		When on +2 movement points, 25 str, -16 ac, carries its
+		own weight and +100 carry cap. When off -6 ac, weighs 500.
+		Can fire 1d(2+spe/2) blaster bolts from it.
+		Is made of metal so hinders spellcasting.
+		Cannot squeeze around boulders or do tight corners while worn.
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked

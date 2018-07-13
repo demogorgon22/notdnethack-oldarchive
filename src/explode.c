@@ -445,7 +445,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 			}
 			curs_on_u();	/* will flush screen and output */
 			delay_output();
-			if(area->nlocations != 9) doredraw();
+			if(area->nlocations > 9) doredraw();
 		    }
 
 		    /* Cover last shield glyph with blast symbol. */
@@ -460,7 +460,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 		} else {		/* delay a little bit. */
 		    delay_output();
 		    delay_output();
-		    if(area->nlocations != 9) doredraw();
+		    if(area->nlocations > 9) doredraw();
 		}
 		tmp_at(DISP_END, 0); /* clear the explosion */
 	} else if (!remote) {
