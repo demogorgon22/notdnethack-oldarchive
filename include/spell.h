@@ -20,6 +20,7 @@ struct spell {
 /* Zap types, also used for explosions */
 #define ZT_MAGIC_MISSILE        (AD_MAGM-1)
 #define ZT_FIRE                 (AD_FIRE-1)
+#define ZT_FLAME                 (AD_MAGM-2)
 #define ZT_COLD                 (AD_COLD-1)
 #define ZT_SLEEP                (AD_SLEE-1)
 #define ZT_DEATH                (AD_DISN-1)     /* or disintegration */

@@ -54,6 +54,8 @@ Caveman changes
 Anachrononaut changes
 	Ana quest enemies wont spawn with create monster.
 	New salamander ana race, demolition expert.
+		Grenade launcher and nades
+		Fireproof armor
 	Grenade launchers multishot with skill lvl now.
 	Fabber sequence a bit different now.
 	Power armor - 
@@ -62,6 +64,10 @@ Anachrononaut changes
 		Can fire 1d(2+spe/2) blaster bolts from it.
 		Is made of metal so hinders spellcasting.
 		Cannot squeeze around boulders or do tight corners while worn.
+	Clockwork ana -
+		Starts with silver armor/weapons and is made of silver.
+		Force Pike
+		Power armor and some lame armor
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked
@@ -135,7 +141,7 @@ Dungeon changes
 			has some gear
 			makes clockwork fighters
 		Clockwork Trooper
-			Blaster
+			Crossbow blaster
 			Serious armor
 
 Spear changes

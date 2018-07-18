@@ -1816,6 +1816,15 @@ ironball:
 				*rngmod = 2;
 				*autodestroy = 1;
 			break;
+			case AD_CLKW:
+				*ammo_type = CROSSBOW_BOLT;
+				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);
+				(*qvr)->blessed = 0;
+				(*qvr)->cursed = 0;
+				*rngmod = 2;
+				(*qvr)->obj_material = COPPER;
+				if(mtmp) (*qvr)->obj_material = mtmp->mfaction;
+			break;
 			case AD_PAIM:
 				*ammo_type = SPE_MAGIC_MISSILE;
 				(*qvr) = mksobj(*ammo_type, TRUE, FALSE);

@@ -770,6 +770,18 @@ int curse_bless;
 			else if(is_cursed) obj->ovar1 = 10L;
 			else obj->ovar1 = 80L + rn2(20);
 		break;
+	    case FLAMETHROWER:
+			if(Role_if(PM_ANACHRONONAUT) || Role_if(PM_TOURIST)){
+				if(is_blessed) obj->ovar1 = 35L;
+				else if(is_cursed) obj->ovar1 = 10L;
+				else obj->ovar1 = (8 + rn2(8))*2L;
+			} else {
+				//The Flamethrowers's is damaged:
+				if(is_blessed) obj->ovar1 = 5L;
+				else if(is_cursed) obj->ovar1 = 2L;
+				else obj->ovar1 = rnd(3);
+			}
+		break;
 	    case RAYGUN:
 			if(Role_if(PM_ANACHRONONAUT) || Role_if(PM_TOURIST)){
 				if(is_blessed) obj->ovar1 = 160L;

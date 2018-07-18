@@ -444,6 +444,10 @@ boolean artif;
 			otmp->ovar1 = (8 + rnd(8))*10L;
 			otmp->altmode = ZT_SLEEP;
 		}
+		else if(otmp->otyp == FLAMETHROWER){
+			otmp->ovar1 = (8 + rnd(8))*2L;
+			otmp->altmode = ZT_FIRE;
+		}
 		else if(otmp->otyp == MASS_SHADOW_PISTOL){
 			struct obj *stone = mksobj(ROCK, TRUE, FALSE);
 			otmp->ovar1 = 800L + rnd(200);

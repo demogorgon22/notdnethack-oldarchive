@@ -69,9 +69,20 @@ static struct trobj Anachrononaut_Hu[] = {
 	{ PROTEIN_PILL, 0, FOOD_CLASS, 10, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
+static struct trobj Anachrononaut_Clk[] = {
+	{ FORCE_PIKE,  0, WEAPON_CLASS, 1, 0 },
+	{ POWER_ARMOR, -7, ARMOR_CLASS, 1, 0 },
+	{ BODYGLOVE, 0, ARMOR_CLASS, 1, 0 },
+	{ HELMET, 0, ARMOR_CLASS, 1, 0 },
+	{ GAUNTLETS, 0, ARMOR_CLASS, 1, 0 },
+	{ LOW_BOOTS, 0, ARMOR_CLASS, 1, 0 },
+	{ POWER_PACK, 0, TOOL_CLASS, 5, 0 },
+	{ POT_OIL, 0, POTION_CLASS, 5, 0 },
+	{ 0, 0, 0, 0, 0 }
+};
 static struct trobj Anachrononaut_Sal[] = {
+	{ FLAMETHROWER,  0, WEAPON_CLASS, 1, 0 },
 	{ GRENADE_LAUNCHER, 5, WEAPON_CLASS, 1, 0 },
-	{ VIBROBLADE,  0, WEAPON_CLASS, 1, 0 },
 	{ FRAG_GRENADE, 2, WEAPON_CLASS, 50, 0 },
 	{ GAS_GRENADE, 2, WEAPON_CLASS, 10, 0 },
 	{ CUTTING_LASER,  0, WEAPON_CLASS, 1, 0 },
@@ -1761,6 +1772,7 @@ u_init()
 		else if(Race_if(PM_VAMPIRE)) ini_inv(Anachrononaut_Vam);
 		else if(Race_if(PM_DWARF)) ini_inv(Anachrononaut_Dw);
 		else if(Race_if(PM_SALAMANDER)) ini_inv(Anachrononaut_Sal);
+		else if(Race_if(PM_CLOCKWORK_AUTOMATON)) ini_inv(Anachrononaut_Clk);
 		else ini_inv(Anachrononaut_Hu);
 		knows_object(FLINTLOCK);
 		knows_object(PISTOL);
@@ -1799,6 +1811,7 @@ u_init()
 		knows_object(VIBROBLADE);
 		knows_object(SEISMIC_HAMMER);
 		knows_object(LIGHTSABER);
+		knows_object(POWER_ARMOR);
 		knows_object(BEAMSWORD);
 		knows_object(DOUBLE_LIGHTSABER);
 		skill_init(Skill_Ana);
@@ -2803,6 +2816,7 @@ register struct trobj *trop;
 				obj->ovar1 = 1;
 				fix_object(obj);
 			}
+			if(obj->otyp == POWER_ARMOR) begin_burn(obj,FALSE);
 			if(obj->otyp == HEAVY_MACHINE_GUN && Role_if(PM_ANACHRONONAUT) && Race_if(PM_DWARF)){
 				obj->obj_material = MITHRIL;
 				fix_object(obj);
@@ -2811,6 +2825,8 @@ register struct trobj *trop;
 				obj->oerodeproof = 1;
 				obj->rknown = 1;
 			}
+			if((obj->oclass == ARMOR_CLASS || obj->oclass == WEAPON_CLASS) &&
+				Role_if(PM_ANACHRONONAUT) && Race_if(PM_CLOCKWORK_AUTOMATON)) obj->obj_material = SILVER;
 			if(obj->oclass == ARMOR_CLASS && Role_if(PM_ANACHRONONAUT) && Race_if(PM_SALAMANDER)){
 				obj->oerodeproof = 1;
 				obj->rknown = 1;

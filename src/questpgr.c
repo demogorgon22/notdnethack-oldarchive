@@ -1018,8 +1018,8 @@ law_montype()
 		}
 		else if(chance <= 98){
 			chance = d(1,6);
-			if(chance <= 5) return !(mvitals[PM_SOLDIER].mvflags & G_GENOD) ? &mons[PM_SOLDIER] : mkclass(S_HUMAN, 0);
-			else return !(mvitals[PM_SERGEANT].mvflags & G_GENOD) ? &mons[PM_SERGEANT] : mkclass(S_HUMAN, 0);
+			if(chance <= 5) return !(mvitals[PM_CLOCKWORK_SOLDIER].mvflags & G_GENOD) ? &mons[PM_CLOCKWORK_SOLDIER] : mkclass(S_HUMAN, 0);
+			else return !(mvitals[PM_CLOCKWORK_ESPION].mvflags & G_GENOD) ? &mons[PM_CLOCKWORK_ESPION] : mkclass(S_HUMAN, 0);
 		} else {
 			return &mons[PM_ARCADIAN_AVENGER];
 		}
@@ -1037,8 +1037,8 @@ law_montype()
 		}
 		else if(chance <= 90){
 			chance = d(1,6);
-			if(chance <= 5) return !(mvitals[PM_SOLDIER].mvflags & G_GENOD) ? &mons[PM_SOLDIER] : mkclass(S_HUMAN, 0);
-			else return !(mvitals[PM_SERGEANT].mvflags & G_GENOD) ? &mons[PM_SERGEANT] : mkclass(S_HUMAN, 0);
+			if(chance <= 5) return !(mvitals[PM_CLOCKWORK_SOLDIER].mvflags & G_GENOD) ? &mons[PM_CLOCKWORK_SOLDIER] : mkclass(S_HUMAN, 0);
+			else return !(mvitals[PM_CLOCKWORK_ESPION].mvflags & G_GENOD) ? &mons[PM_CLOCKWORK_ESPION] : mkclass(S_HUMAN, 0);
 		} else {
 			return &mons[PM_ARCADIAN_AVENGER];
 		}
@@ -1053,8 +1053,8 @@ law_montype()
 		}
 		else if(chance <= 80){
 			chance = d(1,6);
-			if(chance <= 5) return !(mvitals[PM_SOLDIER].mvflags & G_GENOD) ? &mons[PM_SOLDIER] : mkclass(S_HUMAN, 0);
-			else return !(mvitals[PM_SERGEANT].mvflags & G_GENOD) ? &mons[PM_SERGEANT] : mkclass(S_HUMAN, 0);
+			if(chance <= 5) return !(mvitals[PM_CLOCKWORK_SOLDIER].mvflags & G_GENOD) ? &mons[PM_CLOCKWORK_SOLDIER] : mkclass(S_HUMAN, 0);
+			else return !(mvitals[PM_CLOCKWORK_ESPION].mvflags & G_GENOD) ? &mons[PM_CLOCKWORK_ESPION] : mkclass(S_HUMAN, 0);
 		} else {
 			return &mons[PM_ARCADIAN_AVENGER];
 		}

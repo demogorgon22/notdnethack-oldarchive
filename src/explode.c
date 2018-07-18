@@ -242,6 +242,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 			str =   olet == BURNING_OIL ?	"burning oil" :
 				olet == SCROLL_CLASS ?	"tower of flame" :
 							"fireball";
+			if(flags.flaming) str = "burning oil";
 		break;
 		case 2:
 			str = "ball of cold";
@@ -468,7 +469,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 		str = "explosion";
 		generic = TRUE;
 	    }
-	    if (flags.soundok)
+	    if (flags.soundok && ! flags.flaming)
 		You_hear(is_pool(x, y) ? "a muffled explosion." : "a blast.");
 	}
 
@@ -656,7 +657,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 	/* explosions are noisy */
 	i = dam * dam;
 	if (i < 50) i = 50;	/* in case random damage is very small */
-	wake_nearto_noisy(x, y, 2*i);
+	if(!flags.flaming) wake_nearto_noisy(x, y, 2*i);
 }
 #endif /* OVL0 */
 #ifdef OVL1

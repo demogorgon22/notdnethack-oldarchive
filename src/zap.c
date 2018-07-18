@@ -3835,6 +3835,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
     spell_type = is_hero_spell(type) ? SPE_MAGIC_MISSILE + abstype : 0;
 
     fltxt = flash_types[(type <= -30 && type > -40) ? abstype : abs(type)];
+    if(flags.flaming) fltxt = "flame";
     if(u.uswallow) {
 	register int tmp;
 
@@ -3886,8 +3887,10 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 		/* hit() and miss() need bhitpos to match the target */
 		bhitpos.x = sx,  bhitpos.y = sy;
 		/* Fireballs and Acid Blasts only damage when they explode */
-		if (type != ZT_SPELL(ZT_FIRE) && type != ZT_SPELL(ZT_ACID))
+		if (type != ZT_SPELL(ZT_FIRE) && type != ZT_SPELL(ZT_ACID)){
+			if(flags.flaming) flags.flame = TRUE;
 			range += zap_over_floor(sx, sy, type, &shopdamage);
+		}
 
 		if (mon) {
 			if (type == ZT_SPELL(ZT_FIRE) || type == ZT_SPELL(ZT_ACID)) break;
@@ -4267,6 +4270,10 @@ boolean *shopdamage;
 
 	if(abstype == ZT_FIRE) {
 	    struct trap *t = t_at(x, y);
+	    if(flags.flame){
+		    flags.flame = FALSE;
+		    explode(x, y, 11, d(2,2), WAND_CLASS, EXPL_FIERY);
+	    }
 
 	    if (t && t->ttyp == WEB && !Is_lolth_level(&u.uz) && !(u.specialSealsActive&SEAL_BLACK_WEB)) {
 		/* a burning web is too flimsy to notice if you can't see it */

@@ -355,8 +355,8 @@ int shots, shotlimit;
 {
 	int cost;
 	boolean clicky = FALSE;
-	
-	if(raygun->altmode == ZT_LIGHTNING) cost = 15;
+	if(raygun->otyp == FLAMETHROWER) cost = 1;
+	else if(raygun->altmode == ZT_LIGHTNING) cost = 15;
 	else if(raygun->altmode == ZT_DEATH) cost = 10;
 	else if(raygun->altmode == ZT_FIRE) cost = 2;
 	else cost = 1;
@@ -400,6 +400,12 @@ int shots, shotlimit;
 				   pline("The bugs on the %s stop moving!", surface(u.ux, u.uy));
 				}
 			} else if(raygun->altmode == ZT_FIRE){
+					if(raygun->otyp == FLAMETHROWER){
+						if(!Blind)
+				   			pline("The bugs on the %s burn to a crisp!", surface(u.ux, u.uy));
+						else You("smell burnt bugs.");
+						return 1;
+					}
 					struct engr *oep;
 					if(!Blind){
 						pline("A heat ray shoots from the raygun and melts into the %s!",surface(u.ux, u.uy));
@@ -422,7 +428,7 @@ int shots, shotlimit;
 			}
 			return 1;
 		} else {
-			if(Hallucination) pline1(Ronnie_ray_gun[rn2(SIZE(Ronnie_ray_gun))]);
+			if(Hallucination && raygun->otyp != FLAMETHROWER) pline1(Ronnie_ray_gun[rn2(SIZE(Ronnie_ray_gun))]);
 			raygun->ovar1 -= cost;
 			buzz(raygun->altmode+40, 6, u.ux, u.uy, u.dx, u.dy, 1,0);
 			return 1;
@@ -436,9 +442,11 @@ int shots, shotlimit;
 	}
 	
 	while(shots){
-		if(Hallucination) pline1(Ronnie_ray_gun[rn2(SIZE(Ronnie_ray_gun))]);
+		if(Hallucination && raygun->otyp != FLAMETHROWER) pline1(Ronnie_ray_gun[rn2(SIZE(Ronnie_ray_gun))]);
 		raygun->ovar1 -= cost;
-		buzz(raygun->altmode+40, 6, u.ux, u.uy, u.dx, u.dy, objects[(raygun->otyp)].oc_range,0);
+		flags.flaming = TRUE; /*State machine stuff*/
+		buzz(raygun->altmode+40, 6, u.ux + u.dx, u.uy + u.dy, u.dx, u.dy, BOLT_LIM/2,0);
+		flags.flaming = FALSE; /*State machine stuff*/
 		shots--;
 	}
 	
@@ -507,15 +515,13 @@ int shotlimit;
 	}
 	/* single shot, don't add anything */
 
-	if(blaster->otyp == RAYGUN)
+	if(blaster->otyp == RAYGUN || blaster->otyp == FLAMETHROWER)
 		return zap_raygun(blaster,multishot,shotlimit); 
 	
 	if ((long)multishot > blaster->ovar1) multishot = (int)blaster->ovar1;
 
 	if (multishot < 1) multishot = 1;
 	
-	blaster->ovar1 -= multishot;
-
 	/* give a message if shooting more than one, or if player
 	   attempted to specify a count */
 	m_shot.s = TRUE;
