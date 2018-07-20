@@ -3901,7 +3901,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 #endif
 			if (zap_hit(find_mac(mon), spell_type) || (abs(type) >= 20 && abs(type) < 30)) {
 				if (mon_reflects(mon, (char *)0) && (abs(type) < 20 || abs(type) >= 30)) {
-					if(cansee(mon->mx,mon->my)) {
+					if(cansee(mon->mx,mon->my) && !DEADMONSTER(mon)) {
 					hit(fltxt, mon, exclam(0));
 					shieldeff(mon->mx, mon->my);
 					(void) mon_reflects(mon, "But it reflects from %s %s!");
@@ -3913,7 +3913,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 					int tmp = zhitm(mon, type, nd, flat, &otmp);
 
 					if ( is_rider(mon->data) && (abs(type) == ZT_BREATH(ZT_DEATH) || abs(type) == ZT_RAYGUN(ZT_LIGHTNING))) {
-						if (canseemon(mon)) {
+						if (canseemon(mon) && !DEADMONSTER(mon)) {
 							hit(fltxt, mon, ".");
 							pline("%s disintegrates.", Monnam(mon));
 							pline("%s body reintegrates before your %s!",
@@ -4023,7 +4023,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 				}
 				range -= 2;
 			} else {
-				if(type > 0 || cansee(mon->mx, mon->my)) miss(fltxt,mon);
+				if(type > 0 || cansee(mon->mx, mon->my) && !DEADMONSTER(mon)) miss(fltxt,mon);
 			}
 		} else if (sx == u.ux && sy == u.uy && range >= 0) {
 	    nomul(0, NULL);
