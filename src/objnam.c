@@ -1193,6 +1193,7 @@ plus:
 				Strcat(bp, " (on)");
 			else
 				Strcat(bp, " (off)");
+			if(obj->obroken) Strcat(prefix, "time fluxed ");
 		} else {
 			if(obj->lamplit)
 				Strcat(bp, " (lit)");

@@ -71,7 +71,7 @@ static struct trobj Anachrononaut_Hu[] = {
 };
 static struct trobj Anachrononaut_Clk[] = {
 	{ FORCE_PIKE,  0, WEAPON_CLASS, 1, 0 },
-	{ POWER_ARMOR, -7, ARMOR_CLASS, 1, 0 },
+	{ POWER_ARMOR, 0, ARMOR_CLASS, 1, 0 },
 	{ BODYGLOVE, 0, ARMOR_CLASS, 1, 0 },
 	{ HELMET, 0, ARMOR_CLASS, 1, 0 },
 	{ GAUNTLETS, 0, ARMOR_CLASS, 1, 0 },
@@ -2816,7 +2816,10 @@ register struct trobj *trop;
 				obj->ovar1 = 1;
 				fix_object(obj);
 			}
-			if(obj->otyp == POWER_ARMOR) begin_burn(obj,FALSE);
+			if(obj->otyp == POWER_ARMOR){
+				begin_burn(obj,FALSE);
+				obj->obroken = 1;
+			}
 			if(obj->otyp == HEAVY_MACHINE_GUN && Role_if(PM_ANACHRONONAUT) && Race_if(PM_DWARF)){
 				obj->obj_material = MITHRIL;
 				fix_object(obj);

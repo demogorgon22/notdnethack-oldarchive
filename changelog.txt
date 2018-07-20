@@ -53,9 +53,11 @@ Caveman changes
 	Sceptre of Might is now a bone spear
 Anachrononaut changes
 	Ana quest enemies wont spawn with create monster.
+	Ana quest 
 	New salamander ana race, demolition expert.
 		Grenade launcher and nades
 		Fireproof armor
+		Flamethrower
 	Grenade launchers multishot with skill lvl now.
 	Fabber sequence a bit different now.
 	Power armor - 
@@ -68,6 +70,9 @@ Anachrononaut changes
 		Starts with silver armor/weapons and is made of silver.
 		Force Pike
 		Power armor and some lame armor
+		Power armor starts time fluxed, doesn't give extra AC when on
+		until repaired with an upgrade kit resized to fit you or
+		another monster.
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked
