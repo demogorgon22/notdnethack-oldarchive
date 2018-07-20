@@ -486,6 +486,7 @@ Gloves_on()
 	case CRYSTAL_GAUNTLETS:
 	case PLASTEEL_GAUNTLETS:
 	case ORIHALCYON_GAUNTLETS:
+	case KNUCKLE_DUSTERS:
 		break;
 	case GAUNTLETS_OF_FUMBLING:
 		if (!oldprop && !(HFumbling & ~TIMEOUT))
@@ -519,6 +520,7 @@ Gloves_off()
 	case CRYSTAL_GAUNTLETS:
 	case PLASTEEL_GAUNTLETS:
 	case ORIHALCYON_GAUNTLETS:
+	case KNUCKLE_DUSTERS:
 	    break;
 	case GAUNTLETS_OF_FUMBLING:
 	    if (!oldprop && !(HFumbling & ~TIMEOUT))

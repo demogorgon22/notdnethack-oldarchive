@@ -657,6 +657,8 @@ GLOVES("crystal gauntlets", "glass gauntlets", /*Needs encyc entry*//*Needs tile
 		0, 0,  0,	   0, 2, 50, 400, 7, 0, GLASS, CLR_CYAN),
 GLOVES("gauntlets", "metal gauntlets", /*Needs encyc entry*//*Needs tile*/
 		0, 0,  0,	   4, 2, 25, 10, 8, 0, IRON, HI_METAL),
+GLOVES("knuckle dusters", "spikey rings", /*Needs encyc entry*//*Needs tile*/
+		0, 0,  0,	   0, 2, 25, 10, 8, 0, IRON, HI_METAL),
 GLOVES("bronze gauntlets", "metal gauntlets", /*Needs encyc entry*//*Needs tile*/
 		0, 0,  0,	   0, 1, 25, 10, 8, 0, COPPER, HI_COPPER),
 GLOVES("high-elven gauntlets", "runed gauntlets", /*Needs encyc entry*//*Needs tile*/

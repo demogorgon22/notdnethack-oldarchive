@@ -70,7 +70,8 @@ Anachrononaut changes
 		Cannot squeeze around boulders or do tight corners while worn.
 	Clockwork ana -
 		Starts with silver armor/weapons and is made of silver.
-		Force Pike
+		Silver knuckle dusters, allow you to attack barehanded as a
+		half dragon as well as doing +5d4 dmg.
 		Power armor and some lame armor
 		Power armor starts time fluxed, doesn't give extra AC when on
 		until repaired with an upgrade kit resized to fit you or

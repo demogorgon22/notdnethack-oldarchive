@@ -70,11 +70,10 @@ static struct trobj Anachrononaut_Hu[] = {
 	{ 0, 0, 0, 0, 0 }
 };
 static struct trobj Anachrononaut_Clk[] = {
-	{ FORCE_PIKE,  0, WEAPON_CLASS, 1, 0 },
 	{ POWER_ARMOR, 0, ARMOR_CLASS, 1, 0 },
 	{ BODYGLOVE, 0, ARMOR_CLASS, 1, 0 },
 	{ HELMET, 0, ARMOR_CLASS, 1, 0 },
-	{ GAUNTLETS, 0, ARMOR_CLASS, 1, 0 },
+	{ KNUCKLE_DUSTERS, 0, ARMOR_CLASS, 1, 0 },
 	{ LOW_BOOTS, 0, ARMOR_CLASS, 1, 0 },
 	{ POWER_PACK, 0, TOOL_CLASS, 5, 0 },
 	{ POT_OIL, 0, POTION_CLASS, 5, 0 },
@@ -755,7 +754,7 @@ static const struct def_skill Skill_Ana[] = {
     { P_RIDING, P_BASIC },
 #endif
     { P_TWO_WEAPON_COMBAT, P_EXPERT },
-    { P_BARE_HANDED_COMBAT, P_BASIC },
+    { P_BARE_HANDED_COMBAT, P_EXPERT },
     { P_NONE, 0 }
 };
 
@@ -1812,6 +1811,8 @@ u_init()
 		knows_object(SEISMIC_HAMMER);
 		knows_object(LIGHTSABER);
 		knows_object(POWER_ARMOR);
+		knows_object(FLAMETHROWER);
+		knows_object(KNUCKLE_DUSTERS);
 		knows_object(BEAMSWORD);
 		knows_object(DOUBLE_LIGHTSABER);
 		skill_init(Skill_Ana);
