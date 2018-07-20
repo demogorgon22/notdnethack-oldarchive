@@ -2899,7 +2899,8 @@ const struct def_skill *class_skill;
 	}
 
 	/* High potential fighters already know how to use their hands. */
-	if (OLD_P_MAX_SKILL(P_BARE_HANDED_COMBAT) > P_EXPERT)
+	if (OLD_P_MAX_SKILL(P_BARE_HANDED_COMBAT) > P_EXPERT || 
+		(Role_if(PM_ANACHRONONAUT) && Race_if(PM_CLOCKWORK_AUTOMATON)))
 	    OLD_P_SKILL(P_BARE_HANDED_COMBAT) = P_BASIC;
 	
 	/*

@@ -76,6 +76,8 @@ Anachrononaut changes
 		Power armor starts time fluxed, doesn't give extra AC when on
 		until repaired with an upgrade kit resized to fit you or
 		another monster.
+		Start with wood stove and 5 waters. Need to probably eat some
+		wood for nutrition.
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked

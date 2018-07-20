@@ -76,7 +76,8 @@ static struct trobj Anachrononaut_Clk[] = {
 	{ KNUCKLE_DUSTERS, 0, ARMOR_CLASS, 1, 0 },
 	{ LOW_BOOTS, 0, ARMOR_CLASS, 1, 0 },
 	{ POWER_PACK, 0, TOOL_CLASS, 5, 0 },
-	{ POT_OIL, 0, POTION_CLASS, 5, 0 },
+	{ POT_WATER, 0, POTION_CLASS, 5, 0 },
+	{ TINNING_KIT, UNDEF_SPE, TOOL_CLASS, 1, UNDEF_BLESS },
 	{ 0, 0, 0, 0, 0 }
 };
 static struct trobj Anachrononaut_Sal[] = {
@@ -1771,7 +1772,10 @@ u_init()
 		else if(Race_if(PM_VAMPIRE)) ini_inv(Anachrononaut_Vam);
 		else if(Race_if(PM_DWARF)) ini_inv(Anachrononaut_Dw);
 		else if(Race_if(PM_SALAMANDER)) ini_inv(Anachrononaut_Sal);
-		else if(Race_if(PM_CLOCKWORK_AUTOMATON)) ini_inv(Anachrononaut_Clk);
+		else if(Race_if(PM_CLOCKWORK_AUTOMATON)){
+			ini_inv(Anachrononaut_Clk);
+			u.clockworkUpgrades |= WOOD_STOVE;
+		}
 		else ini_inv(Anachrononaut_Hu);
 		knows_object(FLINTLOCK);
 		knows_object(PISTOL);
