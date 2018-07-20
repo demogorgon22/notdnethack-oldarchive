@@ -3996,7 +3996,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 					} else {
 						if (!otmp) {
 							/* normal non-fatal hit */
-							hit(fltxt, mon, exclam(tmp));
+							if(!DEADMONSTER(mon)) hit(fltxt, mon, exclam(tmp));
 						} else {
 							/* some armor was damaged or destroyed; no damage done */
 							 int i;
