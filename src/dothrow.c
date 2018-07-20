@@ -436,9 +436,12 @@ int shots, shotlimit;
 	}
 	
 	if ((shots > 1 || shotlimit > 0) && !Hallucination) {
-		You("fire %d %s.",
+		if(raygun->otyp != FLAMETHROWER) You("fire %d %s.",
 		shots,	/* (might be 1 if player gave shotlimit) */
 		(shots == 1) ? "ray" : "rays");
+		else You("fire %d %s.",
+		shots,	/* (might be 1 if player gave shotlimit) */
+		(shots == 1) ? "flame burst" : "flame bursts");
 	}
 	
 	while(shots){

@@ -242,7 +242,7 @@ boolean yours; /* is it your fault (for killing monsters) */
 			str =   olet == BURNING_OIL ?	"burning oil" :
 				olet == SCROLL_CLASS ?	"tower of flame" :
 							"fireball";
-			if(flags.flaming) str = "burning oil";
+			if(flags.flaming) str = "flame";
 		break;
 		case 2:
 			str = "ball of cold";

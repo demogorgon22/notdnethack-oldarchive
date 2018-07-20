@@ -3279,6 +3279,7 @@ zhitm(mon, type, nd, flat, ootmp)			/* returns damage to mon */
 		}
 		if(!flat) tmp = d(nd,6);
 		else tmp = flat;
+		if(flags.flaming) tmp = 0;
 		if (resists_cold(mon)) tmp *= 1.5;
 		if (spellcaster)
 		    tmp += spell_damage_bonus();
@@ -3987,7 +3988,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 							monkilled(mon, (char *)0, -AD_RBRE);
 						else
 							xkilled(mon, 2);
-					} else if(mon->mhp < 1) {
+					} else if(mon->mhp < 1 && !DEADMONSTER(mon)) {
 						if(type < 0)
 							monkilled(mon, fltxt, AD_RBRE);
 						else
@@ -4272,7 +4273,7 @@ boolean *shopdamage;
 	    struct trap *t = t_at(x, y);
 	    if(flags.flame){
 		    flags.flame = FALSE;
-		    explode(x, y, 11, d(2,2), WAND_CLASS, EXPL_FIERY);
+		    explode(x, y, 11, d(4,6), WAND_CLASS, EXPL_FIERY);
 	    }
 
 	    if (t && t->ttyp == WEB && !Is_lolth_level(&u.uz) && !(u.specialSealsActive&SEAL_BLACK_WEB)) {

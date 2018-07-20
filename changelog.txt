@@ -54,6 +54,8 @@ Caveman changes
 Anachrononaut changes
 	Ana quest enemies wont spawn with create monster.
 	Ana quest 
+		Blaster chest now has a flamethrower.
+		Now a random power armor on ground zero, good luck.
 	New salamander ana race, demolition expert.
 		Grenade launcher and nades
 		Fireproof armor
