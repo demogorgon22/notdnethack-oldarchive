@@ -27,6 +27,8 @@ Added acu role
 	Lots of new artifacts added dropped by spirits
 	Summoning rituals are the same as binder however Dantalion can be
 		summoned anywhere and Chupoclops only needs a poison corpse
+	While summoned spirit is alive you have its active and passive powers.
+	Can only have one spirit monster summoned alive at a time usually.
 	
 
 
@@ -203,6 +205,10 @@ Spear changes
 			Probing + d5 extra dmg
 		Fossile dark
 			2x dmg drain xp
+Spell changes
+	Added spell overloading
+		Wizards can now overload spells by a percent based on their XP
+		level. 
 General changes
 	Can now multishot spears and knives like in vanilla
 	New Tshirt messages

@@ -3341,7 +3341,8 @@ struct monst *magr;			/* killer, if swallowed */
 boolean was_swallowed;			/* digestion */
 {
 	struct permonst *mdat = mon->data;
-	int i, tmp;
+	int i, tmp, mndx;
+	mndx = monsndx(mdat);
 	if(Race_if(PM_DROW) && !Role_if(PM_NOBLEMAN) && mdat == &mons[urole.neminum] && !flags.made_bell){
 		(void) mksobj_at(BELL_OF_OPENING, mon->mx, mon->my, TRUE, FALSE);
 		flags.made_bell = TRUE;
@@ -3350,6 +3351,12 @@ boolean was_swallowed;			/* digestion */
 	if(mdat == &mons[PM_ILLURIEN_OF_THE_MYRIAD_GLIMPSES] && !(u.uevent.ukilled_illurien)){
 		u.uevent.ukilled_illurien = 1;
 		u.ill_cnt = rn1(1000, 250);
+	}
+	if(mndx >= PM_AHAZU && mndx <= PM_YMIR){
+		if(mndx<PM_MUNINN)
+			unbind(sealKey[(mndx-PM_AHAZU)],FALSE);
+		else
+			unbind(sealKey[(mndx-PM_AHAZU)-1],FALSE);
 	}
 	if(mdat == &mons[PM_ORCUS] && !Role_if(PM_ANACHRONOUNBINDER)){
 		struct engr *oep = engr_at(mon->mx,mon->my);
@@ -3388,7 +3395,7 @@ boolean was_swallowed;			/* digestion */
 	else if (mdat == &mons[PM_CHAOS] && mvitals[PM_CHAOS].died == 1) {
 		if(Hallucination) livelog_write_string("perpetuated an asinine paradigm");
 		else livelog_write_string("destroyed Chaos");
-	} else if(mdat->geno & G_UNIQ && mvitals[monsndx(mdat)].died == 1){
+	} else if(mdat->geno & G_UNIQ && mvitals[monsndx(mdat)].died == 1 && mndx <= PM_AHAZU && mndx >= PM_YMIR){
 		char buf[BUFSZ];
 		buf[0]='\0';
 		if(nonliving(mdat)) Sprintf(buf,"destroyed %s",noit_nohalu_mon_nam(mon));

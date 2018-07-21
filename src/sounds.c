@@ -2207,6 +2207,7 @@ int tx,ty;
 						makemon(&mons[PM_AHAZU], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_AHAZU;
 						u.sealsKnown &= ~(SEAL_AHAZU);
+						bindspirit(ep->ward_id);
 					} else {
 						You("have already released this spirit from the void.");
 					}
@@ -2259,6 +2260,7 @@ int tx,ty;
 						makemon(&mons[PM_AMON], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_AMON;
 						u.sealsKnown &= ~(SEAL_AMON);
+						bindspirit(ep->ward_id);
 					} else {
 						You("have already released this spirit from the void.");
 					}
@@ -2301,7 +2303,7 @@ int tx,ty;
 					altar_wrath(tx, ty);
 					angrygods(a_align(tx,ty));
 				}
-				u.sealTimeout[AMON-FIRST_SEAL] = moves + bindingPeriod; // invoking amon on a level with an altar still triggers the binding period.
+				if(!Role_if(PM_ANACHRONOUNBINDER))u.sealTimeout[AMON-FIRST_SEAL] = moves + bindingPeriod; // invoking amon on a level with an altar still triggers the binding period.
 			}
 		} else pline("You can't feel the spirit.");
 	}break;
@@ -2317,6 +2319,7 @@ int tx,ty;
 						makemon(&mons[PM_ANDREALPHUS], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_ANDREALPHUS;
 						u.sealsKnown &= ~(SEAL_ANDREALPHUS);
+						bindspirit(ep->ward_id);
 					} else {
 						You("have already released this spirit from the void.");
 					}
@@ -2419,6 +2422,7 @@ int tx,ty;
 						makemon(&mons[PM_ANDROMALIUS], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_ANDROMALIUS;
 						u.sealsKnown &= ~(SEAL_ANDROMALIUS);
+						bindspirit(ep->ward_id);
 					} else {
 						You("have already released this spirit from the void.");
 					}
@@ -2648,6 +2652,7 @@ int tx,ty;
 						makemon(&mons[PM_ASTAROTH], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_ASTAROTH;
 						u.sealsKnown &= ~(SEAL_ASTAROTH);
+						bindspirit(ep->ward_id);
 					} else {
 						You("have already released this spirit from the void.");
 					}
@@ -2746,6 +2751,7 @@ int tx,ty;
 						makemon(&mons[PM_BALAM], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_BALAM;
 						u.sealsKnown &= ~(SEAL_BALAM);
+						bindspirit(ep->ward_id);
 					} else {
 						You("have already released this spirit from the void.");
 					}
@@ -2821,6 +2827,7 @@ int tx,ty;
 							makemon(&mons[PM_BERITH], tx, ty, MM_ADJACENTOK);
 							u.spiritSummons |= SEAL_BERITH;
 							u.sealsKnown &= ~(SEAL_BERITH);
+							bindspirit(ep->ward_id);
 						} else {
 							You("have already released this spirit from the void.");
 						}
@@ -2886,6 +2893,7 @@ int tx,ty;
 					makemon(&mons[PM_BUER], tx, ty, MM_ADJACENTOK);
 					u.spiritSummons |= SEAL_BUER;
 					u.sealsKnown &= ~(SEAL_BUER);
+					bindspirit(ep->ward_id);
 				} else {
 					You("have already released this spirit from the void.");
 				}
@@ -2950,6 +2958,7 @@ int tx,ty;
 							makemon(&mons[PM_CHUPOCLOPS], tx, ty, MM_ADJACENTOK);
 							u.spiritSummons |= SEAL_CHUPOCLOPS;
 							u.sealsKnown &= ~(SEAL_CHUPOCLOPS);
+							bindspirit(ep->ward_id);
 						} else {
 							pline("The feeling fades and the universe's phatom pain of a hellbound spirit fades with it.");
 						}
@@ -3011,6 +3020,7 @@ int tx,ty;
 					makemon(&mons[PM_DANTALION], tx, ty, MM_ADJACENTOK);
 					u.spiritSummons |= SEAL_DANTALION;
 					u.sealsKnown &= ~(SEAL_DANTALION);
+					bindspirit(ep->ward_id);
 					return 0;
 				}	
 				if(u.sealCounts < numSlots){
@@ -3079,6 +3089,7 @@ int tx,ty;
 					makemon(&mons[PM_SHIRO], tx, ty, MM_ADJACENTOK);
 					u.spiritSummons |= SEAL_SHIRO;
 					u.sealsKnown &= ~(SEAL_SHIRO);
+					bindspirit(ep->ward_id);
 					return 0;
 				}	
 				if(u.sealCounts < numSlots){
@@ -3134,6 +3145,7 @@ int tx,ty;
 						makemon(&mons[PM_ECHIDNA], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_ECHIDNA;
 						u.sealsKnown &= ~(SEAL_ECHIDNA);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("\"Free me from this place, and I and my brood shall fight for your cause.\"");
@@ -3195,6 +3207,7 @@ int tx,ty;
 						makemon(&mons[PM_EDEN], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_EDEN;
 						u.sealsKnown &= ~(SEAL_EDEN);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("blinding you to what lies beyond.");
@@ -3252,6 +3265,7 @@ int tx,ty;
 						makemon(&mons[PM_ENKI], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_ENKI;
 						u.sealsKnown &= ~(SEAL_ENKI);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("Bow to me, and I shall teach the arts of civilization.\"");
@@ -3305,6 +3319,7 @@ int tx,ty;
 							makemon(&mons[PM_EURYNOME], tx, ty, MM_ADJACENTOK);
 							u.spiritSummons |= SEAL_EURYNOME;
 							u.sealsKnown &= ~(SEAL_EURYNOME);
+							bindspirit(ep->ward_id);
 							return 0;
 						}
 						pline("She is beautiful, like nothing you have ever seen before.");
@@ -3364,6 +3379,7 @@ int tx,ty;
 						makemon(&mons[PM_EVE], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_EVE;
 						u.sealsKnown &= ~(SEAL_EVE);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					You("help her to her feet.");
@@ -3419,6 +3435,7 @@ int tx,ty;
 						makemon(&mons[PM_FAFNIR], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_FAFNIR;
 						u.sealsKnown &= ~(SEAL_FAFNIR);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					Your("left finger stings!");
@@ -3464,6 +3481,7 @@ int tx,ty;
 				makemon(&mons[PM_MUNINN], tx, ty, MM_ADJACENTOK);
 				u.spiritSummons |= SEAL_HUGINN_MUNINN;
 				u.sealsKnown &= ~(SEAL_HUGINN_MUNINN);
+				bindspirit(ep->ward_id);
 				return 0;
 			}
 			if(u.sealCounts < numSlots){
@@ -3523,6 +3541,7 @@ int tx,ty;
 						makemon(&mons[PM_IRIS], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_IRIS;
 						u.sealsKnown &= ~(SEAL_IRIS);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("\"YAY! Lets play together!!\"");
@@ -3564,6 +3583,7 @@ int tx,ty;
 							makemon(&mons[PM_JACK], tx, ty, MM_ADJACENTOK);
 							u.spiritSummons |= SEAL_JACK;
 							u.sealsKnown &= ~(SEAL_JACK);
+							bindspirit(ep->ward_id);
 						} else {
 							You("have already released this spirit from the void.");
 						}
@@ -3682,6 +3702,7 @@ int tx,ty;
 						for(i = 0; i<12; i++) makemon(&mons[PM_CROW], tx, ty, MM_ADJACENTOK);	
 						u.spiritSummons |= SEAL_MALPHAS;
 						u.sealsKnown &= ~(SEAL_MALPHAS);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					bindspirit(ep->ward_id);
@@ -3731,6 +3752,7 @@ int tx,ty;
 						makemon(&mons[PM_MARIONETTE], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_MARIONETTE;
 						u.sealsKnown &= ~(SEAL_MARIONETTE);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("You feel sharp pains in your elbowes and knees!");
@@ -3777,6 +3799,7 @@ int tx,ty;
 						makemon(&mons[PM_GREAT_MOTHER], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_MOTHER;
 						u.sealsKnown &= ~(SEAL_MOTHER);
+						bindspirit(ep->ward_id);
 						return 0;
 					}	
 					You("feel eyes open in your hands!");
@@ -3830,6 +3853,7 @@ int tx,ty;
 						makemon(&mons[PM_NABERIUS], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_NABERIUS;
 						u.sealsKnown &= ~(SEAL_NABERIUS);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("\"Hello, I am Naberius, the councilor.\"");
@@ -3884,6 +3908,7 @@ int tx,ty;
 					makemon(&mons[PM_ORTHOS], tx, ty, MM_ADJACENTOK);
 					u.spiritSummons |= SEAL_ORTHOS;
 					u.sealsKnown &= ~(SEAL_ORTHOS);
+					bindspirit(ep->ward_id);
 					return 0;
 				}
 				if(!Blind) pline("But that is all that occurs. Darkness. Wind. And a lonely whistle.");
@@ -3939,6 +3964,7 @@ int tx,ty;
 						makemon(&mons[PM_OSE], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_OSE;
 						u.sealsKnown &= ~(SEAL_OSE);
+						bindspirit(ep->ward_id);
 						return 0;
 					}		
 					bindspirit(ep->ward_id);
@@ -4013,6 +4039,7 @@ int tx,ty;
 						makemon(&mons[PM_OTIAX], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_OTIAX;
 						u.sealsKnown &= ~(SEAL_OTIAX);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					bindspirit(ep->ward_id);
@@ -4070,6 +4097,7 @@ int tx,ty;
 						makemon(&mons[PM_PAIMON], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_PAIMON;
 						u.sealsKnown &= ~(SEAL_PAIMON);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					if(!Blind){
@@ -4128,6 +4156,7 @@ int tx,ty;
 						makemon(&mons[PM_SIMURGH], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_SIMURGH;
 						u.sealsKnown &= ~(SEAL_SIMURGH);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("It swoops down and lands on your shoulder.");
@@ -4181,6 +4210,7 @@ int tx,ty;
 						makemon(&mons[PM_TENEBROUS], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_TENEBROUS;
 						u.sealsKnown &= ~(SEAL_TENEBROUS);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					if(!Blind) pline("The darkness inside the seal flows out to pool around you.");
@@ -4257,6 +4287,7 @@ int tx,ty;
 						makemon(&mons[PM_YMIR], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_YMIR;
 						u.sealsKnown &= ~(SEAL_YMIR);
+						bindspirit(ep->ward_id);
 						return 0;
 					}
 					pline("But I will make a pact with you,");

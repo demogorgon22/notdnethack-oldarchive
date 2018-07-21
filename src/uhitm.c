@@ -741,7 +741,7 @@ register struct monst *mtmp;
 	}
 	
 	if(keepattacking && !DEADMONSTER(mtmp) && u.sealsActive&SEAL_AHAZU){
-		if(mtmp->mhp < .1*mtmp->mhpmax){
+		if(mtmp->mhp < .1*mtmp->mhpmax && FALSE){
 #define MAXVALUE 24
 			extern const int monstr[];
 			int value = min(monstr[monsndx(mtmp->data)] + 1,MAXVALUE);
@@ -761,7 +761,7 @@ register struct monst *mtmp;
 				if(u.ublesscnt < 0) u.ublesscnt = 0;
 			}
 			mongone(mtmp);
-		} else if(!rn2(5)){
+		} else if(!rn2(5) && !DEADMONSTER(mtmp)){
 			Your("deep black shadow pools under %s.", mon_nam(mtmp));
 			mtmp->movement -= 12;
 		}

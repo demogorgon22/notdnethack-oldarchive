@@ -5298,15 +5298,17 @@ doapply()
  * From an idea posted to RGRN by "Dr Darth"
  * Code by Malcom Ryan
  */
+	case DWARVISH_HELM: 
+	case OIL_LAMP:
+	case MAGIC_LAMP:
+	case BRASS_LANTERN:
+		use_lamp(obj);
+	break;
 	case POWER_ARMOR:
 		if(!(uarm && uarm == obj)){
 			You("must be wearing your power armor to turn it on.");
 			break;
 		}
-	case DWARVISH_HELM: 
-	case OIL_LAMP:
-	case MAGIC_LAMP:
-	case BRASS_LANTERN:
 		use_lamp(obj);
 	break;
 	case POT_OIL:
