@@ -99,6 +99,11 @@ Gnome changes
 			Drink for scroll of resistance but with 1 element
 			random.
 			Throw for 3 4d6 elemental dmgs of the oona elements.
+		Potion of luck
+			Gives 3/1/-3 luck depending on B/U/C when quaffed.
+		Potion of phasing
+			Gives 50+rnd(100)|30+rnd(100)|30 turns of phasing
+			based on B|U|C	
 
 Elf changes
 	Can ride ridable monsters without a saddle

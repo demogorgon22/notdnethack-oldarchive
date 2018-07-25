@@ -1108,6 +1108,22 @@ as_extra_healing:
 		Your("sanity begins to slip away.");
 
 	break;
+	case POT_LUCK:
+		You_feel("%s",otmp->blessed?"very lucky":otmp->cursed?"unlucky":"lucky");
+		change_luck(otmp->blessed?3:otmp->cursed?-3:1);
+	break;
+	case POT_PHASING:
+		if(!Passes_walls){
+       			if (!Hallucination) {    
+       			   Your("body begins to feel less solid.");
+       			} else {
+       			    You_feel("one with the spirit world.");
+       			}
+        		incr_itimeout(&Phasing, ((otmp->blessed?50:30) + (otmp->cursed?rnd(100):0)));
+		} else {
+			You("loosen up a little bit.");
+		}
+	break;
 	default:
 		impossible("What a funny potion! (%u)", otmp->otyp);
 		return(0);
@@ -1256,7 +1272,7 @@ boolean your_fault;
 	}
 
 	/* oil and blood don't instantly evaporate */
-	if (obj->otyp != POT_OIL && obj->otyp != POT_BLOOD && cansee(mon->mx,mon->my))
+	if (obj->otyp != POT_OIL && obj->otyp != POT_BLOOD  && obj->otyp != POT_LAVA && cansee(mon->mx,mon->my))
 		pline("%s.", Tobjnam(obj, "evaporate"));
 
     if (isyou) {
@@ -1960,6 +1976,18 @@ register struct obj *obj;
 		You_feel("strange thoughts bubbling up.");
 		exercise(A_WIS, FALSE);
 		break;
+	case POT_PHASING:
+		if(!Passes_walls){
+       			if (!Hallucination) {    
+       			   Your("body begins to feel less solid.");
+       			} else {
+       			    You_feel("one with the spirit world.");
+       			}
+        		incr_itimeout(&Phasing, ((obj->blessed?4:2) + (obj->cursed?rnd(2):0)));
+		} else {
+			You("loosen up a little bit.");
+		}
+	break;
 	case POT_GAIN_LEVEL:
 		You_feel("adept.");
 		more_experienced(rnd(5),10);

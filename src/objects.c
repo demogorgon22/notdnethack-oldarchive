@@ -1043,6 +1043,8 @@ POTION("force", "turbulent",            1, 0,          0, 300,  CLR_GRAY),
 POTION("excavation", "dirty",            1, 0,          0, 300,  CLR_BROWN),
 POTION("elements", "rainbow",            1, 0,          0, 300,  CLR_WHITE),
 POTION("insanity", "frothing",            1, 0,          0, 300,  CLR_MAGENTA),
+POTION("luck", "clover",            1, 0,          0, 300,  CLR_GREEN),
+POTION("phasing", "ethereal",            1, 0,          0, 300,  CLR_BLACK),
 #undef POTION
 
 /* scrolls ... */
