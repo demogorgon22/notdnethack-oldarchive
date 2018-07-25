@@ -223,6 +223,8 @@ Spell changes
 	Added spell overloading
 		Wizards can now overload spells by a percent based on their XP
 		level. 
+		Overloaded spells have some unique effects, go play and find
+		out.
 General changes
 	Can now multishot spears and knives like in vanilla
 	New Tshirt messages
@@ -235,3 +237,4 @@ General changes
 	Can use polyd monster form AT_ARRW attacks.
 	'f' to fire is now a useful shortcut for salamander lava splash,
 	monster spit, monster arrow attack, and acu psionic pulse.
+	Red dragon scale based armor now grants flying.
