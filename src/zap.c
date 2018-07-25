@@ -3988,7 +3988,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 							monkilled(mon, (char *)0, -AD_RBRE);
 						else
 							xkilled(mon, 2);
-					} else if(mon->mhp < 1 && !DEADMONSTER(mon)) {
+					} else if(mon->mhp < 1 && (!DEADMONSTER(mon) || !flags.flaming)) {
 						if(type < 0)
 							monkilled(mon, fltxt, AD_RBRE);
 						else
