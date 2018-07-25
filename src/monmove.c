@@ -1063,7 +1063,7 @@ register struct monst *mtmp;
 		if(cansee(mtmp->mx,mtmp->my)) pline("%s glows with light!",Monnam(mtmp));
 	    do_clear_area(mtmp->mx,mtmp->my, 5, set_lit, (genericptr_t)1);
 		doredraw();
-		if(cansee(mtmp->mx,mtmp->my)){
+		if(cansee(mtmp->mx,mtmp->my) && !resists_blnd(&youmonst)){
 			You("are blinded by %s radiance!", s_suffix(mon_nam(mtmp)));
 			make_blinded((long)d(5,5),FALSE);
 			stop_occupation();

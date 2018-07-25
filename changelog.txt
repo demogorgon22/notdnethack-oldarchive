@@ -86,6 +86,12 @@ Skill changes
 Gnome changes
 	Starts with potion vaporizer
 	1% of gnome class monsters will start with one
+	4 + level/3 rounded down bonus tohit with thrown potions
+	Unique potions
+		Potion of lava
+			Does 4d16 fire damage and leaves a pool of lava when thrown
+		Potion of force
+			Does 4d6 physical damage and knocks back enemies
 Elf changes
 	Can ride ridable monsters without a saddle
 Salamander race

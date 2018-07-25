@@ -2034,6 +2034,7 @@ int thrown;
 	    case GAUNTLETS_OF_POWER:    /* metal */
 		case GAUNTLETS:
 		case CRYSTAL_GAUNTLETS:
+		case KNUCKLE_DUSTERS:
 		tmp -= 2;
 		break;
 	    case GAUNTLETS_OF_FUMBLING:
@@ -2269,7 +2270,6 @@ int thrown;
 		   by WEAPON_SKILLS once ammo objects have been excluded */
 		tmp += weapon_hit_bonus(obj);
 	    }
-
 	    if (tmp >= rnd(20)) {
 		if (hmon(mon,obj,1)) {	/* mon still alive */
 		    cutworm(mon, bhitpos.x, bhitpos.y, obj);
@@ -2382,7 +2382,7 @@ int thrown;
 	    return 1;	/* hmon used it up */
 
 	} else if (obj->oclass == POTION_CLASS &&
-		(guaranteed_hit || ACURR(A_DEX) > rnd(25))) {
+		(guaranteed_hit || ACURR(A_DEX) + Race_if(PM_GNOME)?4 + u.ulevel/3:0 > rnd(25))) {
 	    potionhit(mon, obj, TRUE);
 	    return 1;
 
@@ -2581,6 +2581,10 @@ boolean from_invent;
 		case POT_WATER:		/* really, all potions */
 			if (obj->otyp == POT_OIL && obj->lamplit) {
 			    splatter_burning_oil(x,y);
+			} else if (obj->otyp == POT_LAVA){
+				levl[x][y].typ = LAVAPOOL;
+				del_engr_ward_at(x, y);
+				newsym(x,y);
 			} else if (distu(x,y) <= 2) {
 			    if (!breathless(youracedata) || haseyes(youracedata)) {
 				if (obj->otyp != POT_WATER) {

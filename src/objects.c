@@ -1038,6 +1038,8 @@ POTION("amnesia", "sparkling",          1, 0,          8,  100, CLR_CYAN),
 POTION("starlight", "dimly-shining",    1, 0,          4,  250, CLR_BRIGHT_CYAN),
 POTION("water", "clear",                0, 0,          80, 100, CLR_CYAN),
 POTION("blood", "blood-red",            0, 0,          18, 50,  CLR_RED),
+POTION("lava", "glowing-red",            0, 0,          0, 300,  CLR_RED),
+POTION("force", "turbulent",            0, 0,          0, 300,  CLR_GRAY),
 #undef POTION
 
 /* scrolls ... */

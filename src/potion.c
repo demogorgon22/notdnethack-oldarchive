@@ -1079,6 +1079,19 @@ as_extra_healing:
 		cprefx(otmp->corpsenm, TRUE, FALSE);
 	    cpostfx(otmp->corpsenm, FALSE, FALSE, FALSE);
 	break;
+	case POT_LAVA:
+		if (!Fire_resistance) {
+		    pline("This burns%s!", otmp->blessed ? " a little" :
+				    otmp->cursed ? " a lot" : "");
+		    losehp(d(otmp->cursed ? 4 : 2, otmp->blessed ? 8 : 16),
+				    "potion of lava", KILLED_BY_AN);
+		}
+	break;
+	case POT_FORCE:
+		pline("A wall of force hits you!");	
+		losehp(d(4,6),
+				    "potion of force", KILLED_BY_AN);
+	break;
 	default:
 		impossible("What a funny potion! (%u)", otmp->otyp);
 		return(0);
@@ -1195,6 +1208,25 @@ boolean your_fault;
 		    losehp(d(obj->cursed ? 2 : 1, obj->blessed ? 4 : 8),
 				    "potion of acid", KILLED_BY_AN);
 		}
+	break;
+	case POT_LAVA:
+		if (!Fire_resistance) {
+		    pline("This burns%s!", obj->blessed ? " a little" :
+				    obj->cursed ? " a lot" : "");
+		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 8 : 16),
+				    "potion of lava", KILLED_BY_AN);
+		}
+		if(IS_LAVABLE(levl[u.ux][u.uy].typ)){
+			levl[u.ux][u.uy].typ = LAVAPOOL;
+			del_engr_ward_at(u.ux, u.uy);
+			if (!(Levitation || Flying)) (void) lava_effects();
+			newsym(u.ux, u.uy);
+		}
+	break;
+	case POT_FORCE:
+		pline("A wall of force hits you!");	
+		losehp(d(4,6),
+				    "potion of force", KILLED_BY_AN);
 	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
@@ -1490,6 +1522,40 @@ boolean your_fault;
 		    }
 		}
 		break;
+	case POT_LAVA:
+		if (!resists_fire(mon) && !resist(mon, POTION_CLASS, 0, NOTELL)) {
+		    pline("%s burns!", Monnam(mon));
+		    mon->mhp -= d(4,16);
+		    if (mon->mhp < 1) {
+			if (your_fault)
+			    killed(mon);
+			else
+			    monkilled(mon, "", AD_FIRE);
+		    }
+		}
+		if(IS_LAVABLE(levl[mon->mx][mon->my].typ)){
+			levl[mon->mx][mon->my].typ = LAVAPOOL;
+			del_engr_ward_at(mon->mx, mon->my);
+			if(!DEADMONSTER(mon)){
+				minliquid(mon);
+			}
+			newsym(mon->mx, mon->my);
+		}
+		break;
+	case POT_FORCE:
+		    pline("A wall of force hits %s!", mon_nam(mon));
+		    if(your_fault && !obj->cursed){
+		    	if(bigmonst(mon->data)) mhurtle(mon, u.dx, u.dy, 1);
+		   	 else mhurtle(mon, u.dx, u.dy, obj->blessed?10:7);
+		    }
+		    mon->mhp -= d(4,6);
+		    if (mon->mhp < 1) {
+			if (your_fault)
+			    killed(mon);
+			else
+			    monkilled(mon, "", AD_FIRE);
+		    }
+	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
 		if(acidic(&mons[mnum]) && !resists_acid(mon)){
@@ -1737,7 +1803,13 @@ register struct obj *obj;
 		} else
 		    exercise(A_CON, FALSE);
 		break;
-
+	case POT_LAVA:
+		You_feel("warm.");
+		break;
+	case POT_FORCE:
+		You_feel("something push against you.");
+		exercise(A_STR, TRUE);
+		break;
 	case POT_GAIN_LEVEL:
 		You_feel("adept.");
 		more_experienced(rnd(5),10);
@@ -2740,6 +2812,40 @@ dodip()
 			obj->opoisonchrgs = 30;
 			goto poof;
 	    }
+	}
+	if(potion->otyp == POT_LAVA){
+		int omat = obj->obj_material;
+		/* the code here should be merged with fire_damage */
+		if (catch_lit(obj)) {
+		    /* catch_lit does all the work if true */
+		} else if (obj->oerodeproof || obj_resists(obj, 5, 95) ||
+			   !is_flammable(obj) || obj->oclass == FOOD_CLASS) {
+		    pline("%s %s to burn for a moment.",
+			  Yname2(obj), otense(obj, "seem"));
+		} else {
+		    if ((omat == PLASTIC || omat == PAPER) && !obj->oartifact)
+			obj->oeroded = MAX_ERODE;
+		    pline_The("lava %s %s.",
+			    obj->oeroded == MAX_ERODE ? "destroys" : "damages",
+			    yname(obj));
+		    if (obj->oeroded == MAX_ERODE) {
+			setnotworn(obj);
+			obj_extract_self(obj);
+			obfree(obj, (struct obj *)0);
+			obj = (struct obj *) 0;
+		    } else {
+			/* we know it's carried */
+			if (obj->unpaid) {
+			    /* create a dummy duplicate to put on bill */
+			    verbalize("You burnt it, you bought it!");
+			    bill_dummy_object(obj);
+			}
+			obj->oeroded++;
+		    }
+		}
+	    makeknown(potion->otyp);
+	    useup(potion);
+	    return 1;
 	}
 
 	if (potion->otyp == POT_OIL) {
