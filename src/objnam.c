@@ -2298,6 +2298,7 @@ const char *oldstr;
 			   !BSTRCMPI(bp, p-9, "gauntlets") ||
 			   !BSTRCMPI(bp, p-6, "tricks") ||
 			   !BSTRCMPI(bp, p-9, "paralysis") ||
+			   !BSTRCMPI(bp, p-8, "elements") ||
 			   !BSTRCMPI(bp, p-5, "glass") ||
 			   !BSTRCMP(bp, p-4, "ness") ||
 			   !BSTRCMPI(bp, p-14, "shape changers") ||

@@ -13,6 +13,7 @@ static NEARDATA const char beverages[] = { POTION_CLASS, 0 };
 STATIC_DCL long FDECL(itimeout, (long));
 STATIC_DCL void NDECL(ghost_from_bottle);
 STATIC_DCL short FDECL(mixtype, (struct obj *,struct obj *));
+STATIC_DCL void FDECL(elemental_resistance, (struct obj *,long));
 
 /* force `val' to be within valid range for intrinsic timeout value */
 STATIC_OVL long
@@ -1083,7 +1084,7 @@ as_extra_healing:
 		if (!Fire_resistance) {
 		    pline("This burns%s!", otmp->blessed ? " a little" :
 				    otmp->cursed ? " a lot" : "");
-		    losehp(d(otmp->cursed ? 4 : 2, otmp->blessed ? 8 : 16),
+		    losehp(d(otmp->cursed ? 4 : 2, otmp->blessed ? 6 : 8),
 				    "potion of lava", KILLED_BY_AN);
 		}
 	break;
@@ -1096,6 +1097,10 @@ as_extra_healing:
 		pline("A hole digs out in your stomach!");	
 		losehp(d(3,6),
 				    "potion of excavtion", KILLED_BY_AN);
+	break;
+	case POT_ELEMENTS:
+		elemental_resistance(otmp,otmp->blessed ? 5000L : otmp->cursed ? 5L : 250L);
+		pline("That was tasty.");
 	break;
 	default:
 		impossible("What a funny potion! (%u)", otmp->otyp);
@@ -1122,6 +1127,58 @@ healup(nhp, nxtra, curesick, cureblind)
 	if(curesick)	make_sick(0L, (char *) 0, TRUE, SICK_ALL);
 	flags.botl = 1;
 	return;
+}
+STATIC_OVL void
+elemental_resistance(obj,rturns)
+register struct obj *obj;
+register long rturns;
+{
+	switch(rn2(3)){
+		case 0:
+			if( !(HFire_resistance) ) {
+				You(Hallucination ? "be chillin'." :
+				    "feel a momentary chill.");
+			}
+			if( (HFire_resistance & TIMEOUT) + rturns < TIMEOUT) {
+				long timer = (HFire_resistance & TIMEOUT) + rturns;
+				HFire_resistance &= ~TIMEOUT; //wipe old timer, leaving higher bits in place
+				HFire_resistance |= timer; //set new timer
+			}
+			else{
+				HFire_resistance |= TIMEOUT; //set timer to max value
+			}
+		break;
+		case 1:
+			if( !(HCold_resistance) ) {
+				You_feel("full of hot air.");
+			}
+			if( (HCold_resistance & TIMEOUT) + rturns < TIMEOUT) {
+				long timer = (HCold_resistance & TIMEOUT) + rturns;
+				HCold_resistance &= ~TIMEOUT; //wipe old timer, leaving higher bits in place
+				HCold_resistance |= timer; //set new timer
+			}
+			else{
+				HCold_resistance |= TIMEOUT; //set timer to max value
+			}
+		break;
+		case 2:	
+			if( !(HShock_resistance) ) {
+				if (Hallucination)
+					rn2(2) ? You_feel("grounded in reality.") : Your("health currently feels amplified!");
+				else
+					You_feel("well grounded.");
+			}
+			if( (HShock_resistance & TIMEOUT) + rturns < TIMEOUT) {
+				long timer = (HShock_resistance & TIMEOUT) + rturns;
+				HShock_resistance &= ~TIMEOUT; //wipe old timer, leaving higher bits in place
+				HShock_resistance |= timer; //set new timer
+			}
+			else{
+				HShock_resistance |= TIMEOUT; //set timer to max value
+			}
+		break;
+	}
+
 }
 
 void
@@ -1218,7 +1275,7 @@ boolean your_fault;
 		if (!Fire_resistance) {
 		    pline("This burns%s!", obj->blessed ? " a little" :
 				    obj->cursed ? " a lot" : "");
-		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 8 : 16),
+		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8),
 				    "potion of lava", KILLED_BY_AN);
 		}
 		if(IS_LAVABLE(levl[u.ux][u.uy].typ)){
@@ -1235,6 +1292,27 @@ boolean your_fault;
 	break;
 	case POT_EXCAVATION:
 			explode(u.ux,u.uy,8/*Phys*/, d(3,6), POTION_CLASS, CLR_BROWN);
+	break;
+	case POT_ELEMENTS:
+		if (!Fire_resistance) {
+		    pline("This burns%s!", obj->blessed ? " a little" :
+			    obj->cursed ? " a lot" : "");
+		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8),
+			    "potion of elements", KILLED_BY_AN);
+		}
+		if (!Cold_resistance) {
+		    pline("This freezes%s!", obj->blessed ? " a little" :
+			    obj->cursed ? " a lot" : "");
+		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8),
+			    "potion of elements", KILLED_BY_AN);
+		}
+		if (!Shock_resistance) {
+		    pline("This freezes%s!", obj->blessed ? " a little" :
+			    obj->cursed ? " a lot" : "");
+		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8),
+			    "potion of elements", KILLED_BY_AN);
+		}
+	
 	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
@@ -1533,7 +1611,7 @@ boolean your_fault;
 	case POT_LAVA:
 		if (!resists_fire(mon) && !resist(mon, POTION_CLASS, 0, NOTELL)) {
 		    pline("%s burns!", Monnam(mon));
-		    mon->mhp -= d(4,16);
+		    mon->mhp -= d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8);
 		    if (mon->mhp < 1) {
 			if (your_fault)
 			    killed(mon);
@@ -1566,6 +1644,38 @@ boolean your_fault;
 	break;
 	case POT_EXCAVATION:
 		explode(mon->mx,mon->my,8/*Phys*/, d(3,6), POTION_CLASS, CLR_BROWN);
+	break;
+	case POT_ELEMENTS:
+		if (!resists_fire(mon) && !resist(mon, POTION_CLASS, 0, NOTELL)) {
+		    pline("%s burns!", Monnam(mon));
+		    mon->mhp -= d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8);
+		    if (mon->mhp < 1) {
+			if (your_fault)
+			    killed(mon);
+			else
+			    monkilled(mon, "", AD_FIRE);
+		    }
+		}
+		if (!DEADMONSTER(mon) && !resists_cold(mon) && !resist(mon, POTION_CLASS, 0, NOTELL)) {
+		    pline("%s freezes!", Monnam(mon));
+		    mon->mhp -= d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8);
+		    if (mon->mhp < 1) {
+			if (your_fault)
+			    killed(mon);
+			else
+			    monkilled(mon, "", AD_COLD);
+		    }
+		}
+		if (!DEADMONSTER(mon) && !resists_elec(mon) && !resist(mon, POTION_CLASS, 0, NOTELL)) {
+		    pline("%s electrifies!", Monnam(mon));
+		    mon->mhp -= d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8);
+		    if (mon->mhp < 1) {
+			if (your_fault)
+			    killed(mon);
+			else
+			    monkilled(mon, "", AD_ELEC);
+		    }
+		}
 	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
@@ -1823,6 +1933,9 @@ register struct obj *obj;
 		break;
 	case POT_EXCAVATION:
 		if(!breathless(youracedata))You("smell something earthy");
+		break;
+	case POT_ELEMENTS:
+		elemental_resistance(obj, 5L);
 		break;
 	case POT_GAIN_LEVEL:
 		You_feel("adept.");

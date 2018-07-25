@@ -89,12 +89,16 @@ Gnome changes
 	4 + level/3 rounded down bonus tohit with thrown potions
 	Unique potions
 		Potion of lava
-			Does 4d16 fire damage and leaves a pool of lava when thrown
+			Does 4d6 fire damage and leaves a pool of lava when thrown
 		Potion of force
 			Does 4d6 physical damage and knocks back enemies
 		Potion of excavation
 			Does 3d6 physical damage in a physical digging
 			explosion
+		Potion of elements
+			Drink for scroll of resistance but with 1 element
+			random.
+			Throw for 3 4d6 elemental dmgs of the oona elements.
 
 Elf changes
 	Can ride ridable monsters without a saddle
