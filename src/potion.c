@@ -1102,6 +1102,12 @@ as_extra_healing:
 		elemental_resistance(otmp,otmp->blessed ? 5000L : otmp->cursed ? 5L : 250L);
 		pline("That was tasty.");
 	break;
+	case POT_INSANITY:
+		if(!otmp->blessed && !(ABASE(A_WIS) <= ATTRMIN(A_WIS)))
+			(void) adjattrib(A_WIS, -1, TRUE);
+		Your("sanity begins to slip away.");
+
+	break;
 	default:
 		impossible("What a funny potion! (%u)", otmp->otyp);
 		return(0);
@@ -1313,6 +1319,12 @@ boolean your_fault;
 			    "potion of elements", KILLED_BY_AN);
 		}
 	
+	break;
+	case POT_INSANITY:
+		if(!obj->blessed && !(ABASE(A_WIS) <= ATTRMIN(A_WIS)))
+			(void) adjattrib(A_WIS, -1, TRUE);
+		Your("sanity begins to slip away.");
+
 	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
@@ -1677,6 +1689,13 @@ boolean your_fault;
 		    }
 		}
 	break;
+	case POT_INSANITY:
+		if(!mindless_mon(mon) && !resist(mon, '\0', 0, TELL)){
+			if(canseemon(mon)) pline("%s goes insane.", Monnam(mon));
+			mon->mcrazed = 1;
+			monflee(mon, d(obj->blessed?5:4,obj->cursed?3:5), FALSE, TRUE);
+		}
+	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
 		if(acidic(&mons[mnum]) && !resists_acid(mon)){
@@ -1936,6 +1955,10 @@ register struct obj *obj;
 		break;
 	case POT_ELEMENTS:
 		elemental_resistance(obj, 5L);
+		break;
+	case POT_INSANITY:
+		You_feel("strange thoughts bubbling up.");
+		exercise(A_WIS, FALSE);
 		break;
 	case POT_GAIN_LEVEL:
 		You_feel("adept.");

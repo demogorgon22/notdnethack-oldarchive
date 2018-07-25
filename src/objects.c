@@ -1042,6 +1042,7 @@ POTION("lava", "glowing-red",            1, 0,          0, 300,  CLR_RED),
 POTION("force", "turbulent",            1, 0,          0, 300,  CLR_GRAY),
 POTION("excavation", "dirty",            1, 0,          0, 300,  CLR_BROWN),
 POTION("elements", "rainbow",            1, 0,          0, 300,  CLR_WHITE),
+POTION("insanity", "frothing",            1, 0,          0, 300,  CLR_MAGENTA),
 #undef POTION
 
 /* scrolls ... */
