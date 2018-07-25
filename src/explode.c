@@ -483,6 +483,14 @@ boolean yours; /* is it your fault (for killing monsters) */
 		/* DS: Allow monster induced explosions also */
 		if (type != 169 && (type >= 0 || type <= -10))
 		    (void)zap_over_floor((xchar)xi, (xchar)yi, type, &shopdamage);
+		if(olet == POTION_CLASS){
+			if(isok(xi,yi) && IS_ROCK(levl[xi][yi].typ) && may_dig(xi,yi)){
+				levl[xi][yi].typ = CORR;
+				unblock_point(xi,yi);
+		       		watch_dig((struct monst *)0, xi,yi, TRUE);
+				doredraw();
+			}
+		}
 
 		mtmp = m_at(xi, yi);
 #ifdef STEED

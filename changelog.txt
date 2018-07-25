@@ -92,6 +92,10 @@ Gnome changes
 			Does 4d16 fire damage and leaves a pool of lava when thrown
 		Potion of force
 			Does 4d6 physical damage and knocks back enemies
+		Potion of excavation
+			Does 3d6 physical damage in a physical digging
+			explosion
+
 Elf changes
 	Can ride ridable monsters without a saddle
 Salamander race

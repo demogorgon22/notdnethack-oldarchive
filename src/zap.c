@@ -4418,6 +4418,11 @@ boolean *shopdamage;
 		    see_txt = "The door splinters!";
 		    hear_txt = "crackling.";
 		    break;
+		case 8:
+		    new_doormask = D_BROKEN;
+		    see_txt = "The door buckles under force!";
+		    hear_txt = "snapping.";
+		    break;
 		default:
 		def_case:
 		    if(cansee(x,y)) {

@@ -2382,7 +2382,7 @@ int thrown;
 	    return 1;	/* hmon used it up */
 
 	} else if (obj->oclass == POTION_CLASS &&
-		(guaranteed_hit || ACURR(A_DEX) + Race_if(PM_GNOME)?4 + u.ulevel/3:0 > rnd(25))) {
+		(guaranteed_hit || ACURR(A_DEX) + (Race_if(PM_GNOME)?4 + u.ulevel/3:0) > rnd(25))) {
 	    potionhit(mon, obj, TRUE);
 	    return 1;
 
@@ -2585,6 +2585,9 @@ boolean from_invent;
 				levl[x][y].typ = LAVAPOOL;
 				del_engr_ward_at(x, y);
 				newsym(x,y);
+			} else if(obj->otyp == POT_EXCAVATION){
+				explode(x,y,8/*Phys*/, d(3,6), POTION_CLASS, CLR_BROWN);
+
 			} else if (distu(x,y) <= 2) {
 			    if (!breathless(youracedata) || haseyes(youracedata)) {
 				if (obj->otyp != POT_WATER) {

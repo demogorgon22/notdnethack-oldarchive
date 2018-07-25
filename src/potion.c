@@ -1092,6 +1092,11 @@ as_extra_healing:
 		losehp(d(4,6),
 				    "potion of force", KILLED_BY_AN);
 	break;
+	case POT_EXCAVATION:
+		pline("A hole digs out in your stomach!");	
+		losehp(d(3,6),
+				    "potion of excavtion", KILLED_BY_AN);
+	break;
 	default:
 		impossible("What a funny potion! (%u)", otmp->otyp);
 		return(0);
@@ -1227,6 +1232,9 @@ boolean your_fault;
 		pline("A wall of force hits you!");	
 		losehp(d(4,6),
 				    "potion of force", KILLED_BY_AN);
+	break;
+	case POT_EXCAVATION:
+			explode(u.ux,u.uy,8/*Phys*/, d(3,6), POTION_CLASS, CLR_BROWN);
 	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
@@ -1556,6 +1564,9 @@ boolean your_fault;
 			    monkilled(mon, "", AD_FIRE);
 		    }
 	break;
+	case POT_EXCAVATION:
+		explode(mon->mx,mon->my,8/*Phys*/, d(3,6), POTION_CLASS, CLR_BROWN);
+	break;
 	case POT_BLOOD:{
 		int mnum = obj->corpsenm;
 		if(acidic(&mons[mnum]) && !resists_acid(mon)){
@@ -1809,6 +1820,9 @@ register struct obj *obj;
 	case POT_FORCE:
 		You_feel("something push against you.");
 		exercise(A_STR, TRUE);
+		break;
+	case POT_EXCAVATION:
+		if(!breathless(youracedata))You("smell something earthy");
 		break;
 	case POT_GAIN_LEVEL:
 		You_feel("adept.");

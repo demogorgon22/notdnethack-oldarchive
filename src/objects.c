@@ -1040,6 +1040,7 @@ POTION("water", "clear",                0, 0,          80, 100, CLR_CYAN),
 POTION("blood", "blood-red",            0, 0,          18, 50,  CLR_RED),
 POTION("lava", "glowing-red",            0, 0,          0, 300,  CLR_RED),
 POTION("force", "turbulent",            0, 0,          0, 300,  CLR_GRAY),
+POTION("excavation", "dirty",            0, 0,          0, 300,  CLR_BROWN),
 #undef POTION
 
 /* scrolls ... */
