@@ -120,6 +120,18 @@ struct objclass {
 #define WP_GRENADE	16
 #define WP_BLASTER	32
 
+
+/* Potion type fields*/
+#define PT_NONE		0x00000000L
+#define PT_LAVA		0x00000001L
+#define PT_FORCE	0x00000002L
+#define PT_EXCAV	0x00000004L
+#define PT_ELEM		0x00000008L
+#define PT_INSANE	0x00000010L
+#define PT_LUCK		0x00000020L
+#define PT_ACID		0x00000040L
+#define PT_PHASE	0x00000080L
+
 #define a_ac		oc_oc1	/* armor class, used in ARM_BONUS in do.c */
 #define a_can		oc_oc2		/* armor: used in mhitu.c */
 #define oc_level	oc_oc2		/* books: spell level */

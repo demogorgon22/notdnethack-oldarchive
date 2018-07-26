@@ -34,6 +34,7 @@ STATIC_DCL void FDECL(light_torch, (struct obj *));
 STATIC_DCL void FDECL(use_tinning_kit, (struct obj *));
 STATIC_DCL void FDECL(use_figurine, (struct obj **));
 STATIC_DCL void FDECL(use_grease, (struct obj *));
+STATIC_DCL void FDECL(use_alchemy_kit, (struct obj *));
 STATIC_DCL void FDECL(vape, (struct obj *));
 STATIC_DCL void FDECL(use_trap, (struct obj *));
 STATIC_DCL void FDECL(use_stone, (struct obj *));
@@ -2258,6 +2259,106 @@ struct obj **optr;
 static NEARDATA const char lubricables[] = { ALL_CLASSES, ALLOW_NONE, 0 };
 static NEARDATA const char need_to_remove_outer_armor[] =
 			"need to remove your %s to grease your %s.";
+
+STATIC_OVL void
+use_alchemy_kit(obj)
+register struct obj *obj;
+{
+	register struct obj *corpse;
+	struct obj *pot;
+	long potion = PT_NONE;
+	long pchosen;
+
+	if (!(corpse = floorfood("do alchemy with", 2))) return;
+	if (!tinnable(corpse)) {
+		You_cant("do alchemy with that!");
+		return;
+	}
+	if (touch_petrifies(&mons[corpse->corpsenm])
+		&& !Stone_resistance && !uarmg) {
+	    char kbuf[BUFSZ];
+
+	    if (poly_when_stoned(youracedata))
+		You("touch %s without wearing gloves.",
+			an(mons[corpse->corpsenm].mname));
+	    else {
+		pline("Touching %s without wearing gloves is a fatal mistake...",
+			an(mons[corpse->corpsenm].mname));
+		Sprintf(kbuf, "touching %s without gloves",
+			an(mons[corpse->corpsenm].mname));
+	    }
+	    instapetrify(kbuf);
+	}
+	if (is_rider(&mons[corpse->corpsenm])) {
+		(void) revive_corpse(corpse, REVIVE_MONSTER);
+		return;
+	}
+	if((&mons[corpse->corpsenm])->mresists&MR_FIRE) potion |= (PT_ELEM|PT_LAVA);
+	if((&mons[corpse->corpsenm])->mresists&MR_COLD) potion |= PT_ELEM;
+	if((&mons[corpse->corpsenm])->mresists&MR_ELEC) potion |= PT_ELEM;
+	if(acidic(&mons[corpse->corpsenm])) potion |= PT_ACID;
+	if(passes_walls(&mons[corpse->corpsenm])) potion |= PT_PHASE;
+	if(tunnels(&mons[corpse->corpsenm])) potion |= PT_EXCAV;
+	if(strongmonst(&mons[corpse->corpsenm])) potion |= PT_FORCE;
+	if(has_mind_blast(&mons[corpse->corpsenm]) || is_mind_flayer(&mons[corpse->corpsenm])) potion |= PT_INSANE;
+	if(is_unicorn(&mons[corpse->corpsenm])) potion |= PT_LUCK;
+	pot = mksobj(POT_WATER,FALSE,FALSE);
+	if(potion&PT_PHASE)
+		pot = mksobj(POT_PHASING,FALSE,FALSE);
+	if(potion&PT_INSANE)
+		pot = mksobj(POT_INSANITY,FALSE,FALSE);
+	if(potion&PT_LUCK)
+		pot = mksobj(POT_LUCK,FALSE,FALSE);
+	if(potion&PT_EXCAV)
+		pot = mksobj(POT_EXCAVATION,FALSE,FALSE);
+	if(pot->otyp == POT_WATER && potion){
+		pchosen = (1 << rn2(PT_PHASE));
+		while(!(potion&pchosen)){
+			pchosen = (1 << rn2(PT_PHASE));
+		}
+//		pline("pchosen: %ld",pchosen);
+		switch(pchosen){
+			case PT_ELEM:
+				pot = mksobj(POT_ELEMENTS,FALSE,FALSE);
+			break;
+			case PT_LAVA:
+				pot = mksobj(POT_LAVA,FALSE,FALSE);
+			break;
+			case PT_ACID:
+				pot = mksobj(POT_ACID,FALSE,FALSE);
+			break;
+			case PT_FORCE:
+				pot = mksobj(POT_FORCE,FALSE,FALSE);
+			break;
+			default:
+				pot = mksobj(POT_WATER,FALSE,FALSE);
+			break;
+	
+		}
+	}
+//	pline("pool: %ld",potion);
+	if (pot) {
+		if(pot->otyp == POT_WATER){
+			You("can't do alchemy with this.");
+			obfree(pot,(struct obj*)0);
+			return;
+		}
+		static const char you_buy_it[] = "You use it, you bought it!";
+		pot->cursed = obj->cursed;
+		pot->blessed = obj->blessed;
+		if (carried(corpse)) {
+		if (corpse->unpaid)
+			verbalize(you_buy_it);
+		useup(corpse);
+		} else {
+		if (costly_spot(corpse->ox, corpse->oy) && !corpse->no_charge)
+			verbalize(you_buy_it);
+		useupf(corpse, 1L);
+		}
+		pot = hold_another_object(pot, "You make, but cannot pick up, %s.",
+					  doname(pot), (const char *)0);
+	} else You("can't do alchemy with this.");
+}
 STATIC_OVL void
 vape(obj)
 struct obj *obj;
@@ -5029,6 +5130,9 @@ doapply()
 		break;
 	case TINNING_KIT:
 		use_tinning_kit(obj);
+		break;
+	case ALCHEMY_KIT:
+		use_alchemy_kit(obj);
 		break;
 	case LEASH:
 		use_leash(obj);
