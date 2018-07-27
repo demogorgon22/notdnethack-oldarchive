@@ -28,9 +28,9 @@ RNDLEVEL:	"bgrmb" "G" @ (15, 10) 50 4
 BRANCH:		"Fort Ludios" @ (14, 8) portal
 
 RNDLEVEL:	"stor" "S" @ (5, 20) 90 7
-BRANCH: 	"The Lost Tomb" @ (5, 25)
-BRANCH:	"The Sunless Sea" @ (5, 25)
-BRANCH: 	"The Temple of Moloch" @ (5, 25)
+BRANCH: 	"The Lost Tomb" @ (10, 20)
+BRANCH:	"The Sunless Sea" @ (10, 20)
+BRANCH: 	"The Temple of Moloch" @ (10, 20)
 
 BRANCH:		"The Void" @ (10, 25) no_down 
 RNDLEVEL:	"medusa" "none" @ (-5, 4) 4
