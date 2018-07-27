@@ -2575,6 +2575,9 @@ weight_cap()
 		if(Race_if(PM_ORC)){
 			carrcap += (u.ulevel/3)*10;
 		}
+		if(youracedata == &mons[PM_GNOME]){
+			carrcap += 400;
+		}
 		static int hboots = 0;
 		if (!hboots) hboots = find_hboots();
 		if (uarmf && uarmf->otyp == hboots) carrcap += uarmf->cursed ? 0 : 100; 

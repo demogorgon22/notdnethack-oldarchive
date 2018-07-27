@@ -139,13 +139,18 @@ int thrown;
 	skill = objects[obj->otyp].oc_skill;
 	if (((ammo_and_launcher(obj, launcher) && skill != -P_CROSSBOW) || (skill == P_DAGGER && !Role_if(PM_WIZARD)) ||
 			skill == -P_DART || skill == -P_SHURIKEN || skill == -P_BOOMERANG || skill == P_SPEAR || 
-			skill == P_KNIFE ||obj->oartifact == ART_SICKLE_MOON ) &&
+			skill == P_KNIFE ||obj->oartifact == ART_SICKLE_MOON || (Race_if(PM_GNOME) && obj->oclass == POTION_CLASS)) &&
 		!(Confusion || Stunned)) {
 	    /* Bonus if the player is proficient in this weapon... */
+	    if(!(Race_if(PM_GNOME) && obj->oclass == POTION_CLASS)){
 	    switch (P_SKILL(weapon_type(obj))) {
 	    default:	break; /* No bonus */
 	    case P_SKILLED:	multishot++; break;
 	    case P_EXPERT:	multishot += 2; break;
+	    }
+	    } else {
+		multishot++;
+		if(u.ulevel> 10) multishot++;
 	    }
 		/*Increase skill related rof for heavy machine gun*/
 		if(launcher && launcher->otyp == HEAVY_MACHINE_GUN) multishot *= 2;

@@ -523,6 +523,7 @@ static struct trobj StoneToFlesh[] = {
 };
 static struct trobj Vape[] = {
 	{ POTION_VAPORIZER, 5, TOOL_CLASS, 1, 0 },
+	{ ALCHEMY_KIT, 0, TOOL_CLASS, 1, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
 static struct trobj SleepPotions[] = {
@@ -1911,7 +1912,7 @@ u_init()
 		u.umoney0 = rn1(1000, 1001);
 #endif
 		ini_inv(Healer);
-		if(!Race_if(PM_GNOME)) ini_inv(StoneToFlesh);
+		ini_inv(StoneToFlesh);
 		ini_inv(Lamp);
 		knows_object(POT_FULL_HEALING);
 		skill_init(Skill_H);
@@ -2281,6 +2282,7 @@ u_init()
 	    knows_object(DWARVISH_HELM);
 	    knows_object(DWARVISH_MATTOCK);
 	    knows_object(DWARVISH_CLOAK);
+	    knows_object(ALCHEMY_KIT);
     break;
 	case PM_SALAMANDER:
 		skill_add(Skill_Sala);

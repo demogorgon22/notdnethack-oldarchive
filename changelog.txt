@@ -87,6 +87,17 @@ Gnome changes
 	Starts with potion vaporizer
 	1% of gnome class monsters will start with one
 	4 + level/3 rounded down bonus tohit with thrown potions
+	Gnome gets +400 carry cap so max ends up being around 800
+	Gnomes get thrown potion multishot and an additional one after lvl 10.
+	Alchemy kit
+		Strong corpses make force
+		Elemental resistant corspes make elemental
+		Fire resistant make lava
+		Mindflayers and mind blasties make insanity
+		Unicorns make luck
+		Phasing make phasing
+		Tunnelers make excavation
+		Acidic make acid
 	Unique potions
 		Potion of lava
 			Does 4d6 fire damage and leaves a pool of lava when thrown
