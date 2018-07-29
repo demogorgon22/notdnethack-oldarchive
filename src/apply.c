@@ -2268,6 +2268,10 @@ register struct obj *obj;
 	struct obj *pot;
 	long potion = PT_NONE;
 	long pchosen;
+	if(!(Race_if(PM_GNOME) || Role_if(PM_WIZARD))){
+		You("aren't too sure how to do alchemy with this.");
+		return;
+	}
 
 	if (!(corpse = floorfood("do alchemy with", 2))) return;
 	if (!tinnable(corpse)) {

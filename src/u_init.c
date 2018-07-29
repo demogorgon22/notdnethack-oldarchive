@@ -521,9 +521,11 @@ static struct trobj StoneToFlesh[] = {
 	{ SPE_STONE_TO_FLESH, 0, SPBOOK_CLASS, 1, 1 },
 	{ 0, 0, 0, 0, 0 }
 };
-static struct trobj Vape[] = {
+static struct trobj Gnome_Invent[] = {
 	{ POTION_VAPORIZER, 5, TOOL_CLASS, 1, 0 },
 	{ ALCHEMY_KIT, 0, TOOL_CLASS, 1, 0 },
+	{ POT_EXCAVATION, 0, TOOL_CLASS, 1, 0 },
+	{ POT_FORCE, 0, TOOL_CLASS, 1, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
 static struct trobj SleepPotions[] = {
@@ -2275,7 +2277,7 @@ u_init()
 		}
 		skill_add(Skill_G);
 		ini_inv(TallowCandles);
-		ini_inv(Vape);
+		ini_inv(Gnome_Invent);
 		knows_object(POTION_VAPORIZER);
 		knows_object(GNOMISH_POINTY_HAT);
 	    knows_object(AKLYS);
