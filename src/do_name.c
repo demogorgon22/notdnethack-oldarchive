@@ -641,6 +641,7 @@ const char *name;
 		else if(obj->oartifact >= ART_SWORD_OF_ERATHAOL && obj->oartifact <= ART_HAMMER_OF_BARQUIEL) obj->obj_material = SILVER;
 		else if(obj->oartifact == ART_SOL_VALTIVA) obj->obj_material = OBSIDIAN_MT;
 		else if(obj->oartifact == ART_SMOKING_MIRROR) obj->obj_material = OBSIDIAN_MT;
+		else if(obj->oartifact == ART_ROD_OF_LORDLY_MIGHT && Race_if(PM_DROW) && !flags.initgend) obj->obj_material = OBSIDIAN_MT;
 		else if(obj->otyp == SABER) obj->obj_material = SILVER;
 		else if(obj->otyp == KHAKKHARA) obj->obj_material = SILVER;
 		else if(obj->otyp == CHAKRAM) obj->obj_material = SILVER;
