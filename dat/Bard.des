@@ -179,6 +179,8 @@ OBJECT:random,random,random
 OBJECT:random,random,random
 # some boulders and stones for the ruins.
 OBJECT:'`',"boulder",(38,07)
+OBJECT:'%',"corpse",(38,07),"bard",0
+OBJECT:')',"shotgun",(38,07)
 OBJECT:'`',"boulder",(37,10)
 OBJECT:'*',"rock",(38,10)
 OBJECT:'`',"boulder",(26,06)

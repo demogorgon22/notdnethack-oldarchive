@@ -3395,7 +3395,7 @@ boolean was_swallowed;			/* digestion */
 	else if (mdat == &mons[PM_CHAOS] && mvitals[PM_CHAOS].died == 1) {
 		if(Hallucination) livelog_write_string("perpetuated an asinine paradigm");
 		else livelog_write_string("destroyed Chaos");
-	} else if(mdat->geno & G_UNIQ && mvitals[monsndx(mdat)].died == 1 && mndx <= PM_AHAZU && mndx >= PM_YMIR){
+	} else if(mdat->geno & G_UNIQ && mvitals[monsndx(mdat)].died == 1 && (mndx <= PM_AHAZU && mndx >= PM_YMIR || !rn2(7))){
 		char buf[BUFSZ];
 		buf[0]='\0';
 		if(nonliving(mdat)) Sprintf(buf,"destroyed %s",noit_nohalu_mon_nam(mon));
