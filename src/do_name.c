@@ -953,7 +953,10 @@ boolean called;
 	/* Put the actual monster name or type into the buffer now */
 	/* Be sure to remember whether the buffer starts with a name */
 	if (do_hallu) {
-	    Strcat(buf, rndmonnam());
+	    if(mdat == &mons[PM_DAIN_II_IRONFOOT])
+	    	Strcat(buf, "Violent h");
+	    else
+		Strcat(buf, rndmonnam());
 	    name_at_start = FALSE;
 	} else if (mtmp->mnamelth) {
 	    char *name = NAME(mtmp);
