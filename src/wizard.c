@@ -552,10 +552,12 @@ nasty(mcast)
 				else /* makemon failed for some reason */
 					mtmp = makemon((struct permonst *)0,
 							bypos.x, bypos.y, NO_MM_FLAGS);
-				mtmp->msleeping = mtmp->mpeaceful = mtmp->mtame = 0;
-				set_malign(mtmp);
-				count++;
-				break;
+				if(mtmp){
+					mtmp->msleeping = mtmp->mpeaceful = mtmp->mtame = 0;
+					set_malign(mtmp);
+					count++;
+					break;
+				}
 			}
 	    }
     }

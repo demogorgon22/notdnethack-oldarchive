@@ -1017,8 +1017,10 @@ rock:
 	    if (hates_unholy(mon->data) &&
 		obj->cursed)
 		return(TABU);
-	    if (herbi && (obj->otyp == SHEAF_OF_HAY || obj->otyp == SEDGE_HAT))
-		return CADAVER;
+	    if (herbi && (obj->otyp == SHEAF_OF_HAY))
+		return DOGFOOD;
+	    if (herbi && (obj->otyp == SEDGE_HAT))
+		return ACCFOOD;
 	    if (mon->data == &mons[PM_GELATINOUS_CUBE] && is_organic(obj))
 		return(ACCFOOD);
 	    if (metallivorous(mon->data) && is_metallic(obj) && (is_rustprone(obj) || mon->data != &mons[PM_RUST_MONSTER])) {
