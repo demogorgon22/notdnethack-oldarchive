@@ -4282,6 +4282,10 @@ boolean *shopdamage;
 		(void) delfloortrap(t);
 		if (cansee(x,y)) newsym(x,y);
 	    }
+	    if(IS_GRASS(lev->typ)){
+		if(cansee(x,y)) pline("The grass burns away!");
+		lev->typ = ROOM;
+	    }
 	    if(is_ice(x, y)) {
 		melt_ice(x, y);
 	    } else if(is_pool(x,y)) {

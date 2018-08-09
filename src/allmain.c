@@ -1304,7 +1304,7 @@ moveloop()
 				if (u.uen > u.uenmax)  u.uen = u.uenmax;
 				flags.botl = 1;
 		    }
-			if(Energy_regeneration && u.uen < u.uenmax){
+			if((Energy_regeneration || (u.umartial && !uarmf && IS_GRASS(levl[u.ux][u.uy].typ)))&& u.uen < u.uenmax){
 				u.uen++;
 				/*Note: at +1 per turn this never goes over max*/
 				flags.botl = 1;

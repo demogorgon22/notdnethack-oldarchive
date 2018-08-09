@@ -1585,6 +1585,7 @@ register const char *str;
 	if (strncmpi(str, "the ", 4) &&
 	    strcmp(str, "molten lava") &&
 	    strcmp(str, "iron bars") &&
+	    strcmp(str, "grass") &&
 	    strcmp(str, "ice")) {
 		if (index(vowels, *str) &&
 		    strncmp(str, "one-", 4) &&
@@ -3477,6 +3478,12 @@ srch:
 			del_engr_ward_at(u.ux, u.uy);
 			pline("A pool of molten lava.");
 			if (!(Levitation || Flying)) (void) lava_effects();
+			newsym(u.ux, u.uy);
+			return &zeroobj;
+		}
+		if (!BSTRCMP(bp, p-5, "grass")) {  /* also matches "wild grass" */
+			levl[u.ux][u.uy].typ = GRASS;
+			pline("A patch of grass.");
 			newsym(u.ux, u.uy);
 			return &zeroobj;
 		}

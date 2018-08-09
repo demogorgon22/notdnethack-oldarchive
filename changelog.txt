@@ -185,6 +185,11 @@ Dungeon changes
 		Clockwork Trooper
 			Crossbow blaster
 			Serious armor
+	Added grass
+		green .
+		Can be burned up by fire
+		Standing in grass while barefoot and a martial artist is
+		equivalent to having energy regen
 
 Spear changes
 	Spears now all have changable points that can be changed to other

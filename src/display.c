@@ -1708,6 +1708,7 @@ back_to_glyph(x,y)
 	case THRONE:		idx = S_throne;   break;
 	case LAVAPOOL:		idx = S_lava;	  break;
 	case ICE:		idx = S_ice;      break;
+	case GRASS:		idx = S_grass;    break;
 	case AIR:		idx = S_air;	  break;
 	case CLOUD:		idx = S_cloud;	  break;
 	case WATER:		idx = S_water;	  break;
@@ -1822,7 +1823,7 @@ static const char *type_names[MAX_TYPE] = {
 	"MOAT",		"WATER",	"DRAWBRIDGE_UP","LAVAPOOL",
 	"DEADTREE", "DOOR",		"CORR",		"ROOM",		"STAIRS",
 	"LADDER",	"FOUNTAIN",	"THRONE",	"SINK",
-	"ALTAR",	"ICE",		"DRAWBRIDGE_DOWN","AIR",
+	"ALTAR",	"ICE",		"GRASS",	"DRAWBRIDGE_DOWN","AIR",
 	"CLOUD"
 };
 
