@@ -747,6 +747,7 @@ gcrownu()
 		}
 	} else if(Role_if(PM_EXILE)){
 		u.uevent.uhand_of_elbereth = 2; /* Alignment of emissary is treated as neutral */
+		expert_weapon_skill(P_DAGGER);
 		You("suddenly perceive 15 pairs of star-like eyes, staring at you from within your head.");
 		pline("<<We are the Council of Elements>>");
 		pline("<<Guardians of the Material world>>");

@@ -53,6 +53,8 @@ Caveman changes
 	Can apply rocks to knap soft stones into spear points 
 		which can be attached to their spear.
 	Sceptre of Might is now a bone spear
+Binder changes
+	Crowning grants expert with dagger
 Anachrononaut changes
 	Ana quest enemies wont spawn with create monster.
 	Ana quest 
