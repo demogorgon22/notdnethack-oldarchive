@@ -379,7 +379,7 @@ doread()
     "I'd rather be pudding farming",
 	
     "Great Cthulhu for President -- why settle for the lesser evil?",
-    "I ascended FIQhack and didn't get FIQd over and all I got was made fun of.",
+    "Hey, don't insult people!",
     "Defund slex development!",
     "#BlackLightsMatter",
     "Grunthack isn't hard. You're just bad at it.",
