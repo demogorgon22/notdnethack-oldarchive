@@ -61,6 +61,8 @@ const char	*AllInOne = "Yog-Sothoth";
 const char	*AcuL= "Ilsensine the Banished One";
 const char	*AcuLL= "Ilsensine";
 const char	*UnknownGod = "An Unknown God";
+const char	*Aameul = "Aameul";
+const char	*Hethradiah = "Hethradiah";
 
 static const char *godvoices[] = {
     "booms out",
@@ -2682,17 +2684,19 @@ boolean praying;	/* false means no messages should be given */
 int
 dopray()
 {
+	if(!(Invocation_lev(&u.uz) && on_altar() && a_align(u.ux,u.uy) == A_NONE && !mvitals[PM_DEMOGORGON].born)){
+		if(Role_if(PM_ANACHRONONAUT) && flags.questprogress!=2){
+			pline("There is but one God in the future.");
+			pline("And to It, you do not pray.");
+			return 0;
+		}
+		if(Role_if(PM_ANACHRONOUNBINDER)){
+			if(In_quest(&u.uz)) You("wouldn't want to change the future.");
+			else pline("Ilsensine, the Banished One, cannot hear your prayers.");
+			return 0;
+		}
+	}
     /* Confirm accidental slips of Alt-P */
-	if(Role_if(PM_ANACHRONONAUT) && flags.questprogress!=2){
-		pline("There is but one God in the future.");
-		pline("And to It, you do not pray.");
-		return 0;
-	}
-	if(Role_if(PM_ANACHRONOUNBINDER)){
-		if(In_quest(&u.uz)) You("wouldn't want to change the future.");
-		else pline("Ilsensine, the Banished One, cannot hear your prayers.");
-		return 0;
-	}
     if (flags.prayconfirm)
 	if (yn("Are you sure you want to pray?") == 'n')
 	    return 0;
@@ -2704,6 +2708,50 @@ dopray()
        can be heard.  So, in case the player has used the 'O' command
        to toggle this accessible flag off, force it to be on. */
     flags.soundok = 1;
+	if(Invocation_lev(&u.uz) && on_altar() && a_align(u.ux,u.uy) == A_NONE && !mvitals[PM_DEMOGORGON].born){
+		if(level.flags.lethe){
+			/*Hethradiah*/
+			You("feel a great force welling up around you.");
+			pline("Primodial energy in the dungeon around you begins flowing into a strange entity.");
+			if(!Drain_resistance){
+				while(u.ulevel != 1){
+					losexp("contacting Hethradiah",TRUE,FALSE,FALSE);
+				}
+			} 
+			pline("Fire wells up from the entity and flows throughout the dungeon.");
+			for (int x = 0; x < COLNO; x++)
+	                	for (int y = 0; y < ROWNO; y++)
+					if(levl[x][y].typ == MOAT) levl[x][y].typ = LAVAPOOL;
+			pline("The destructive energy of Hethradiah merges with that of Aameul.");
+			pline("Beneath you, the stone and the altar begin to boil.");
+			makemon(&mons[PM_DEMOGORGON],u.ux,u.uy,MM_ADJACENTOK);
+			levl[u.ux][u.uy].typ = LAVAPOOL;
+			spoteffects(TRUE);
+			doredraw();
+			
+
+		} else {
+			/*Aameul*/
+			pline("Dark whispers chatter around you.");
+			You("feel alone but surrounded all at once.");
+			You("are mesmerized by the flickering beast in the shadows.");
+			nomovemsg = 0; //default, you can move again
+			if(!Free_action && !Sleep_resistance) nomul(-rn1(5,2), "mesmerized by Aameul");
+			else if(!Free_action || !Sleep_resistance) nomul(-1, "mesmerized by Aameul");
+			else youmonst.movement -= 6;
+			exercise(A_DEX, FALSE);
+			You("hear a strange sloshing");
+			for (int x = 0; x < COLNO; x++)
+	                	for (int y = 0; y < ROWNO; y++)
+					if(levl[x][y].typ == LAVAPOOL) levl[x][y].typ = MOAT;
+			level.flags.lethe = 1;
+			pline("The altar melts away into a pool of water.");
+			levl[u.ux][u.uy].typ = POOL;
+			spoteffects(TRUE);
+			doredraw();
+		}
+		return 1;
+	}
 
     /* set up p_type and p_alignment */
     if (!can_pray(TRUE)) return 0;
@@ -3104,6 +3152,7 @@ aligntyp alignment;
 		else if(u.uz.dnum == chaos_dnum && on_level(&chaose_level,&u.uz)) gnam = DeepChaos;
 		else if(Role_if(PM_EXILE) && In_quest(&u.uz)) gnam = Demiurge;
 		else if(Is_sacris(&u.uz)) gnam = UnknownGod;
+		else if(Invocation_lev(&u.uz)) gnam = mvitals[PM_DEMOGORGON].born?Moloch:level.flags.lethe?Hethradiah:Aameul; 
 		else if(In_neu(&u.uz)){
 			if(on_level(&rlyeh_level,&u.uz)) gnam = AllInOne;
 			else gnam = BlackMother;

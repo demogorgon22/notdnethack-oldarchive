@@ -192,6 +192,13 @@ Dungeon changes
 		Can be burned up by fire
 		Standing in grass while barefoot and a martial artist is
 		equivalent to having energy regen
+	Endgame sequence change
+		Vibrating square level is no longer a random maze and now a
+		consistent pretty unthreatening level with temples to the
+		heads of demogorgon on which you can pray to summon him, but
+		beware!
+		In general this change makes the vibrating square search less
+		annoying.
 
 Spear changes
 	Spears now all have changable points that can be changed to other
