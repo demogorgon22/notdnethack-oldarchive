@@ -268,3 +268,4 @@ General changes
 	'f' to fire is now a useful shortcut for salamander lava splash,
 	monster spit, monster arrow attack, and acu psionic pulse.
 	Red dragon scale based armor now grants flying.
+	New wizard mode command, killemall, blessed genocide * effect

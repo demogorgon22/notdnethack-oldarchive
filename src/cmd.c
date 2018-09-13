@@ -130,6 +130,7 @@ STATIC_PTR int NDECL(wiz_map);
 STATIC_PTR int NDECL(wiz_genesis);
 STATIC_PTR int NDECL(wiz_where);
 STATIC_PTR int NDECL(wiz_detect);
+STATIC_PTR int NDECL(wiz_killemall);
 STATIC_PTR int NDECL(wiz_panic);
 STATIC_PTR int NDECL(wiz_polyself);
 STATIC_PTR int NDECL(wiz_level_tele);
@@ -1503,6 +1504,22 @@ wiz_detect()
 {
 	if(wizard)  (void) findit();
 	else	    pline("Unavailable command '^E'.");
+	return 0;
+}
+
+STATIC_PTR int
+wiz_killemall()
+{
+	if(!wizard)  return 0;
+	register struct monst *mtmp, *mtmp2;
+	int gonecnt = 0;
+	for (mtmp = fmon; mtmp; mtmp = mtmp2) {
+	    	mtmp2 = mtmp->nmon;
+	        	if (DEADMONSTER(mtmp)) continue;
+	    	mongone(mtmp);
+	    	gonecnt++;
+	}
+	pline("Eliminated %d monster%s.", gonecnt, plur(gonecnt));
 	return 0;
 }
 
@@ -4432,6 +4449,7 @@ static struct ext_func_tab debug_extcmdlist[] = {
 	{"levelchange", "change experience level", wiz_level_change, IFBURIED, AUTOCOMPLETE},
 	{"lightsources", "show mobile light sources", wiz_light_sources, IFBURIED, AUTOCOMPLETE},
 	{"detect", "do wizard detection", wiz_detect, IFBURIED, AUTOCOMPLETE},
+	{"killemall", "remove all monsters", wiz_killemall, IFBURIED, AUTOCOMPLETE},
 	{"map", "map the current level", wiz_map, IFBURIED, AUTOCOMPLETE},
 #ifdef DEBUG_MIGRATING_MONS
 	{"migratemons", "migrate n random monsters", wiz_migrate_mons, IFBURIED, AUTOCOMPLETE},
