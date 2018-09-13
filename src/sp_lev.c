@@ -1039,6 +1039,11 @@ struct mkroom	*croom;
 	    mongone(was);
 	}
 	}
+	if((otmp->otyp == LOKOBAN_TROPHY) && 
+			  Is_sokoend_level(&u.uz)) {
+			otmp->spe = 10;
+	}
+
 
 #ifdef RECORD_ACHIEVE
 	/* Nasty hack here: try to determine if this is the Mines or Sokoban
@@ -1047,8 +1052,7 @@ struct mkroom	*croom;
 	 * the player obtained the prize. */
 	if(otmp->otyp == LUCKSTONE && Is_mineend_level(&u.uz)) {
 			otmp->record_achieve_special = 1;
-	} else if((otmp->otyp == AMULET_OF_REFLECTION ||
-			   otmp->otyp == BAG_OF_HOLDING) && 
+	} else if((otmp->otyp == LOKOBAN_TROPHY) && 
 			  Is_sokoend_level(&u.uz)) {
 			otmp->record_achieve_special = 1;
 	}

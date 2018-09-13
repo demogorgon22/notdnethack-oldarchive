@@ -937,7 +937,7 @@ E int FDECL(merged, (struct obj **,struct obj **));
 #ifdef USE_TRAMPOLI
 E int FDECL(ckunpaid, (struct obj *));
 #endif
-E void FDECL(addinv_core1, (struct obj *));
+E void FDECL(addinv_core1, (struct obj **));
 E void FDECL(addinv_core2, (struct obj *));
 E struct obj *FDECL(addinv, (struct obj *));
 E struct obj *FDECL(hold_another_object,

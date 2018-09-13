@@ -252,9 +252,10 @@ in-place.
 It may be valid to merge this code with with addinv_core2().
 */
 void
-addinv_core1(obj)
-struct obj *obj;
+addinv_core1(obj2)
+struct obj **obj2;
 {
+	struct obj *obj = *obj2;
 	if (obj->oclass == COIN_CLASS) {
 #ifndef GOLDOBJ
 		u.ugold += obj->quan;
@@ -285,6 +286,32 @@ struct obj *obj;
 #ifdef RECORD_ACHIEVE
 		achieve.get_book = 1;
 #endif
+	} else if(obj->otyp == LOKOBAN_TROPHY && obj->spe == 10){
+		boolean canBoH = TRUE;
+		boolean canAoR = TRUE;
+#ifdef RECORD_ACHIEVE
+		int achiever = obj->record_achieve_special;
+#endif
+		if(carrying(BAG_OF_HOLDING)) canBoH = FALSE;
+		if(Reflecting) canAoR = FALSE;
+		//strcpy(nambuf, Yname2(obj));
+		//if everything breaks blame this!
+		if(canBoH && canAoR){
+			*obj2 = mksobj(rn2(2)?BAG_OF_HOLDING:AMULET_OF_REFLECTION,TRUE,FALSE);	
+		} else {
+			if(canAoR) *obj2 = mksobj(AMULET_OF_REFLECTION,TRUE,FALSE);
+			if(canBoH) *obj2 = mksobj(BAG_OF_HOLDING,TRUE,FALSE);
+		}
+		if(canAoR || canBoH){
+#ifdef RECORD_ACHIEVE
+			bless(*obj2);
+			if(achiever)
+				(*obj2)->record_achieve_special = 1;
+#endif
+			pline("%s turns into a %s!",Yname2(obj),xname(*obj2));
+			obj = *obj2;
+		}
+
 	} else if (obj->oartifact) {
 		if (is_quest_artifact(obj)) {
 		    if (u.uhave.questart){
@@ -321,12 +348,13 @@ struct obj *obj;
 #ifdef RECORD_ACHIEVE
 	if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
 			achieve.get_luckstone = 1;
-			obj->record_achieve_special = 0;
+			(*obj2)->record_achieve_special = 0;
 	} else if((obj->otyp == AMULET_OF_REFLECTION ||
-			   obj->otyp == BAG_OF_HOLDING) &&
+			   obj->otyp == BAG_OF_HOLDING ||
+			   obj->otyp == LOKOBAN_TROPHY) &&
 			  obj->record_achieve_special) {
 			achieve.finish_sokoban = 1;
-			obj->record_achieve_special = 0;
+			(*obj2)->record_achieve_special = 0;
 			livelog_write_string("completed Lokoban");
 	}
 #endif /* RECORD_ACHIEVE */
@@ -367,7 +395,7 @@ struct obj *obj;
 	    panic("addinv: obj not free");
 	obj->no_charge = 0;	/* not meaningful for invent */
 
-	addinv_core1(obj);
+	addinv_core1(&obj);
 #ifndef GOLDOBJ
 	/* if handed gold, we're done */
 	if (obj->oclass == COIN_CLASS)

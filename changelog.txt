@@ -175,6 +175,10 @@ Dungeon changes
 			being cool
 		Same final level and prizes as Sokoban but with an easier
 			puzle
+		Blessed potion of luck is placed with prize
+		Prize is now a lokoban trophy that becomes whichever loko
+			prize on pickup based on what you need.
+			If you need neither it stays as a high value trophy.
 	Law Quest changes
 		replaced soldiers on law quest with clockwork enemies
 		Clockwork Soldier

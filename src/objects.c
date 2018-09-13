@@ -861,6 +861,8 @@ TOOL("crystal ball", "glass orb",
 								0, 0, 1, 1,  15, 50, 200, GLASS, HI_GLASS),
 TOOL("sensor pack", "rigid box", /*Needs encyc entry*//*Needs tile*/
 								0, 0, 1, 1,   0, 15,2000, PLASTIC,CLR_WHITE),
+TOOL("lokoban trophy", (char *)0, /*Needs encyc entry*//*Needs tile*/
+								0, 0, 1, 0,   0, 15, 5000, GOLD,CLR_YELLOW),
 TOOL("hypospray", "hammer-shaped device", /*Needs encyc entry*//*Needs tile*/
 								0, 0, 1, 0,   0, 15, 500, PLASTIC,CLR_GRAY),
 TOOL("hypospray ampule", "hard grey bottle", /*Needs encyc entry*//*Needs tile*/
