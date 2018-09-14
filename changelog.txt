@@ -195,7 +195,9 @@ Dungeon changes
 		green .
 		Can be burned up by fire
 		Standing in grass while barefoot and a martial artist is
-		equivalent to having energy regen
+			equivalent to having energy regen
+		Can be cut away with a polearm and has a 1/3 chance of leaving
+			hay
 	Endgame sequence change
 		Vibrating square level is no longer a random maze and now a
 		consistent pretty unthreatening level with temples to the
