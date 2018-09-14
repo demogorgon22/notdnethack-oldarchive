@@ -6283,6 +6283,20 @@ arti_invoke(obj)
 					flags.botl = 1;
 	   			 }
 			} break;
+			case COMMAND_CANCEL:{
+				struct monst *mtmp, *mtmp2;
+				boolean notCancelled = TRUE;
+				for (mtmp = fmon; mtmp; mtmp = mtmp2) {
+					mtmp2 = mtmp->nmon;
+					//cancel monster (or try to)
+					if(!mtmp->mpeaceful && !mtmp->mtame){
+						if(!mtmp->mcan) notCancelled = TRUE; 
+		    				(void) cancel_monst(mtmp, obj, TRUE, TRUE, FALSE,0);
+						if(mtmp->mcan && notCancelled && canseemon(mtmp)) 
+							pline("Glittering lights surround %s and are drawn into %s",mon_nam(mtmp),xname(obj));
+					}
+				}
+			} break;
 			case COMMAND_ELDER:
 				if(Is_astralevel(&u.uz) && a_align(u.ux,u.uy) == A_NEUTRAL){
 					pline("Ancient knowledge flows from the Elder Cerebral Fluid embedded in the Illithid Staff!");
@@ -7024,6 +7038,11 @@ struct obj *obj;
 		any.a_int = COMMAND_ENERGY;	/* must be non-zero */
 		add_menu(tmpwin, NO_GLYPH, &any,
 			'e', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		Sprintf(buf, "Psionic Cancellation");
+		any.a_int = COMMAND_CANCEL;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'c', 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
 		if(obj->cobj->oartifact == ART_ELDER_CEREBRAL_FLUID){//check if elder cerebral fluid is in the illithid
 			Sprintf(buf, "Elder Memories");

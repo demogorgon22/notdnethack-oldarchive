@@ -245,8 +245,9 @@
 #define COMMAND_YELLOW          54
 #define COMMAND_DETECT		55
 #define COMMAND_TENT		56
-#define COMMAND_ELDER		57
-#define COMMAND_ENERGY		58
+#define COMMAND_ENERGY		57
+#define COMMAND_CANCEL		58
+#define COMMAND_ELDER		59
 struct artifact {
 	int	    otyp;
 	const char  *name;
