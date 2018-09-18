@@ -5495,6 +5495,18 @@ register int	mmflags;
 			if(hides_under(ptr) && OBJ_AT(x, y))
 			    mtmp->mundetected = TRUE;
 		break;
+		case S_CENTAUR:
+			if(mndx == PM_MISKA){
+				mtmp->mhpmax = 10*mtmp->mhpmax;
+				mtmp->mhp = mtmp->mhpmax;
+			}
+		break;
+		case S_VORTEX:
+			if(mndx == PM_TENEBROUS){
+				mtmp->mhpmax = 3*mtmp->mhpmax;
+				mtmp->mhp = mtmp->mhpmax;
+			}
+		break;
 		case S_LIGHT:
 		case S_ELEMENTAL:
 			if (mndx == PM_STALKER || mndx == PM_BLACK_LIGHT || mndx == PM_SHIRO) {
@@ -5565,7 +5577,12 @@ register int	mmflags;
 			} else if(mndx == PM_KETO){ 
 				mtmp->mhpmax = 3*mtmp->mhpmax;
 				mtmp->mhp = mtmp->mhpmax;
+			} else if(mndx == PM_COSMOS || mndx == PM_NUDZIARTH){
+				mtmp->mhpmax = 10*mtmp->mhpmax;
+				mtmp->mhp = mtmp->mhpmax;
 			}
+
+			
 		break;
 	    case S_GIANT:
 			if(!(mmflags & MM_EDOG)){
@@ -5574,6 +5591,11 @@ register int	mmflags;
 				for(num = rn1(10,10); num >= 0; num--) makemon(&mons[PM_DEEP_ONE], mtmp->mx, mtmp->my, MM_ADJACENTOK);
 			}
 			}
+			if(mndx == PM_YMIR){
+				mtmp->mhpmax = 5*mtmp->mhpmax;
+				mtmp->mhp = mtmp->mhpmax;
+			}
+
 		break;
 		case S_HUMAN:
 			if(!(mmflags & MM_EDOG)){
@@ -5594,6 +5616,11 @@ register int	mmflags;
 				}
 			}
 			}
+			if(mndx == PM_NUMINA){
+				mtmp->mhpmax = 10*mtmp->mhpmax;
+				mtmp->mhp = mtmp->mhpmax;
+			}
+
 		break;
 		case S_HUMANOID:
 			if(!(mmflags & MM_EDOG)){
@@ -5875,6 +5902,10 @@ register int	mmflags;
 			}
 			else if(mndx == PM_PALE_NIGHT){
 				mtmp->mvar1 = 0;
+			}
+			else if(mndx == PM_THE_ALIGNMENT_THING){
+				mtmp->mhpmax = 15*mtmp->mhpmax;
+				mtmp->mhp = mtmp->mhpmax;
 			}
 			if(mndx == PM_ANCIENT_OF_DEATH){
 			    mtmp->minvis = TRUE;
