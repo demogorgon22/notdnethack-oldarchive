@@ -1008,6 +1008,7 @@ psionic_pulse(){
 	otmp->quan = 1;
 	throwit(otmp,otmp->owornmask,u.twoweap,1,0);
 	nomul(0, NULL);
+	flags.botl = 1;
 	u.uen -= 5;
 	return 1;
 }
@@ -1030,6 +1031,7 @@ dotelekinesis(){
 		cancelled = getpos(&cc, TRUE, "the desired position");
 	}
 	if(cancelled < 0) return 0;
+	flags.botl = 1;
 	u.uen -= 15;
 	You("attempt to lift %s from the floor with your mind!",level.objects[cc.x][cc.y]->quan>1?"some items":"an item");
 	pickup_object(level.objects[cc.x][cc.y], level.objects[cc.x][cc.y]->quan, TRUE);
