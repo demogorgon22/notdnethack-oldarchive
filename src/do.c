@@ -271,6 +271,26 @@ doaltarobj(obj)  /* obj is an object dropped on an altar */
 			otense(obj, "land"));
 		obj->bknown = 1;
 	}
+	/*BUC containers yey*/
+	if (Has_contents(obj) && !is_lightsaber(obj) && 
+			obj->otyp != STATUE && obj->otyp != MASSIVE_STONE_CRATE) {
+	        int bcucount = 0;
+	        struct obj *otmp;
+	        for (otmp = obj->cobj; otmp; otmp = otmp->nobj) {
+	            if (otmp->blessed || otmp->cursed)
+	                bcucount++;
+	            if (!Hallucination)
+	                otmp->bknown = 1;
+	        }
+	        if (bcucount == 1) {
+	            pline("Looking inside %s, you see a colored flash.",
+	                          the(xname(obj)));
+	        } else if (bcucount > 1) {
+	            pline("Looking inside %s, you see colored flashes.",
+	                          the(xname(obj)));
+	        }
+	}
+
 }
 
 #ifdef SINKS

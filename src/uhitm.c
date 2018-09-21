@@ -1461,6 +1461,8 @@ int thrown;
 				}
 			}
 			if(obj && Is_spear(obj)){
+				if(!rn2(20) && !objects[obj->ovar1].oc_name_known)
+					objects[obj->ovar1].oc_name_known = 1;
 				switch(obj->ovar1){
 					case DILITHIUM_CRYSTAL:
 						tmp *= 2;

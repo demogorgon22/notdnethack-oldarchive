@@ -275,3 +275,5 @@ General changes
 	monster spit, monster arrow attack, and acu psionic pulse.
 	Red dragon scale based armor now grants flying.
 	New wizard mode command, killemall, blessed genocide * effect
+	Added a modified version of NH4 dropping bags on altars and getting
+		BUC of contents patch
