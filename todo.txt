@@ -1,0 +1,45 @@
+whispering faction mindless_mon?
+fix versioning
+barb beat self to shit to drive monsters insane
+caveman/gnome tinker patch?
+prevent from livelogging spirit kills
+make acu summon level u up if u can then
+call acuup and acudown on poly newform
+dont secrete lava on stairs or ladders
+Racial two levels
+	dwarf - fight trolls, get digout, broad pick, invoke for dynamite spam
+Pimp out hfd ranger?
+fix astral crash lol
+Elves ride fighting monsters
+racial gloves more common earlier
+so much acu crap, fix altar messages for other gods, returning items is pretty broken 
+special imbuement levels for getting new spell schools
+look into crom minion issue for barvamp
+Steal a medusa vision fix commit from chris for infinite medusa dying
+make acu weapon return work with weapons leaving hand and returning (i.e. stop glow and check on spear intriniscs)
+fix pen burning after andrealphus timeout
+remove quest banishment and instead have it send you to quest nemesis and punish you and maybe something else negative?
+End neutral quest at deep one castle and have cthulhu as an evil ending option?
+Tower of babel evil option for cavemen?
+Cool idea for extended skills:
+	Portal under oracle to skill zone
+	can choose one of fourth paths
+		masonry
+		golemry
+		wandmaking
+		alchemy
+Flashlight for anas.
+Make bard more epic rocker.
+Grass terrain
+	Herbivorous pets can graze (not lose nutrituion while on grass)
+	Herbivorous pets if starving can eat a grass tile for a lot of nutrition and it turns to regular tile
+Cool bard? artifact that is a super useful weapon or tool or something but can invoke to turn to pet and is named
+divine ac/10 chances to resist beheading
+add some cool nitrohack shit idk
+The village
+	dlvl 4?
+	Special level with a bunch of peaceful of your race.
+		Special messages they say to you when chatted.
+		Tell about the places you can choose.
+	Some elder wizard guy that will open a portal to a location of your choice.
+	
