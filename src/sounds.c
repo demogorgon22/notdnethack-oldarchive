@@ -686,6 +686,10 @@ boolean chatting;
 			}
 		}
 	}
+	if(Is_village_level(&u.uz) && Race_if(monsndx(ptr))){
+		pline("Welcome to the village.");
+		return 1;
+	}
 	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : ptr->msound) {
 	case MS_ORACLE:
 	    return doconsult(mtmp);

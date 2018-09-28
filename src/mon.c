@@ -2811,6 +2811,18 @@ struct monst *magr,	/* monster that is currently deciding where to move */
 	if (ma == &mons[PM_PURPLE_WORM] &&
 		md == &mons[PM_SHRIEKER])
 			return ALLOW_M|ALLOW_TM;
+/*	if(Is_village_level(&u.uz)){
+		//pets be nice!
+		if((Race_if(monsndx(md)) && mdef->mpeaceful) && magr->mtame){
+			char n1[BUFSZ];
+			strcpy(n1,mon_nam(magr));
+			pline("%s wont hurt %s because first's mtame is %d",n1,mon_nam(mdef),magr->mtame);
+		       	return 0L;
+		}
+		//be nice to pets!
+		if(mdef->mtame && (Race_if(monsndx(magr->data)) && magr->mpeaceful)) return 0L;
+		
+	}*/
 
 #ifdef ATTACK_PETS
         /* pets attack hostile monsters */

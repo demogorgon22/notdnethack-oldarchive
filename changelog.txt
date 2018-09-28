@@ -277,3 +277,5 @@ General changes
 	New wizard mode command, killemall, blessed genocide * effect
 	Added a modified version of NH4 dropping bags on altars and getting
 		BUC of contents patch
+	Half dragon and incantifier are no longer player monsters, idk why
+		they even were in the first place.

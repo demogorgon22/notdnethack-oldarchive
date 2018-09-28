@@ -36,10 +36,42 @@ Grass terrain
 Cool bard? artifact that is a super useful weapon or tool or something but can invoke to turn to pet and is named
 divine ac/10 chances to resist beheading
 add some cool nitrohack shit idk
+implement failed ceremorph on acu quest
 The village
 	dlvl 4?
 	Special level with a bunch of peaceful of your race.
 		Special messages they say to you when chatted.
 		Tell about the places you can choose.
 	Some elder wizard guy that will open a portal to a location of your choice.
+	Different villages based on race 
+		Caves
+			Drow
+			Orc
+			Bat
+			Vamp
+			Gnome
+			Dwarf
+		Roost
+			Bat
+			Hfd
+			Vamp
+		Grassy Gnoll
+			A big grassy field with some shacks and hills
+			All except 
+				Vamp
+				Drow
+		Fishing Lake
+			Big old lake with some trees around it and maybe some grass
+			All except 
+				Vamp
+				Drow
+		Forest 
+			All except 
+				Drow
+				Clockwork
+				Salamander
+	Bat and hfd forced to roost
+	Drow forced to Caves
+	Elf forced to forest
+				
 	

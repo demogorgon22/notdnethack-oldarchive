@@ -5620,6 +5620,14 @@ register int	mmflags;
 				mtmp->mhpmax = 10*mtmp->mhpmax;
 				mtmp->mhp = mtmp->mhpmax;
 			}
+			if(mndx == PM_VILLAGE_WIZARD){
+				struct monst *mtmp2;
+				for(int i = 0;i<8+rnd(4);i++){
+					mtmp2 = makemon(&mons[urace.malenum], mtmp->mx, mtmp->my, MM_ADJACENTOK);
+					mtmp2->mpeaceful = 1;
+					rloc(mtmp2,FALSE);
+				}
+			}
 
 		break;
 		case S_HUMANOID:
