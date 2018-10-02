@@ -338,6 +338,7 @@ int spec;
 		
 		case AXE:
 			if(otmp->oartifact == ART_GIANTSLAYER) tmp += d(2,4+2*dmod);
+			else if(otmp->oartifact == ART_DURIN_S_AXE) tmp += d(1,ldie);
 		break;
 		case BATTLE_AXE:
 		case BARDICHE:
@@ -606,6 +607,7 @@ int spec;
 		
 		case AXE:
 			if(otmp->oartifact == ART_GIANTSLAYER) tmp += d(1,4+2*dmod);
+			else if(otmp->oartifact == ART_DURIN_S_AXE) tmp += d(1,sdie);
 		break;
 		
 		case BATTLE_AXE:

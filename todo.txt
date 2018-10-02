@@ -75,3 +75,6 @@ The village
 	Elf forced to forest
 				
 	
+Take in the medusa commits after they are actually playtested and bugs are found cause i dont trust them
+	8c17a5e2f1c77f320cbc15855c8acba66f08b158	
+	39009d7953651b77561549619611b09afe00e996
