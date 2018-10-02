@@ -4125,7 +4125,7 @@ wisp_shdw_dhit:
 	    else {
 		(void) passive(mon, sum[i], 1, mattk->aatyp, mattk->adtyp);
 		if (DEADMONSTER(mon))
-			return TRUE;
+			return FALSE;
 		nsum |= sum[i];
 	    }
 	    if (Upolyd != Old_Upolyd)
@@ -4133,7 +4133,7 @@ wisp_shdw_dhit:
 	    if (multi < 0)
 		break; /* If paralyzed while attacking, i.e. floating eye */
 	}
-	return((boolean)(nsum != 0));
+	return(!DEADMONSTER(mon));
 }
 
 boolean
@@ -4380,6 +4380,8 @@ wisp_shdw_dhit2:
 						/* defender dead */
 	else {
 		(void) passive(mon, sum[i], 1, mattk->aatyp, mattk->adtyp);
+		if(DEADMONSTER(mon))
+			return FALSE;
 		nsum |= sum[i];
 	}
 	if (Upolyd != Old_Upolyd)
@@ -4387,7 +4389,7 @@ wisp_shdw_dhit2:
 	if (multi < 0)
 		break; /* If paralyzed while attacking, i.e. floating eye */
 	}
-	return((boolean)(nsum != 0));
+	return(!DEADMONSTER(mon));
 }
 
 /*	Special (passive) attacks on you by monsters done here.		*/

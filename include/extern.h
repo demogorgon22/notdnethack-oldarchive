@@ -2791,6 +2791,7 @@ E void FDECL(mon_adjust_speed, (struct monst *,int,struct obj *));
 E void FDECL(update_mon_intrinsics,
 		(struct monst *,struct obj *,BOOLEAN_P,BOOLEAN_P));
 E int FDECL(base_mac, (struct monst *));
+E int FDECL(m_wearing_white_DSA, (struct monst *));
 E int FDECL(find_mac, (struct monst *));
 E int FDECL(full_mac, (struct monst *));
 E int FDECL(full_marmorac, (struct monst *));
