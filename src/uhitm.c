@@ -3223,7 +3223,7 @@ register struct attack *mattk;
 		    } else if(u.ustuck == mdef) {
 			/* Monsters don't wear amulets of magical breathing */
 			if (is_pool(u.ux,u.uy) && !is_swimmer(mdef->data) &&
-			    !amphibious(mdef->data)) {
+			    !amphibious_mon(mdef)) {
 			    You("drown %s...", mon_nam(mdef));
 			    tmp = mdef->mhp;
 			} else if(mattk->aatyp == AT_HUGS)
@@ -3722,7 +3722,7 @@ register struct attack *mattk;
 			if (youracedata == &mons[PM_FOG_CLOUD]) {
 			    pline("%s is laden with your moisture.",
 				  Monnam(mdef));
-			    if (amphibious(mdef->data) &&
+			    if (amphibious_mon(mdef) &&
 				!flaming(mdef->data)) {
 				dam = 0;
 				pline("%s seems unharmed.", Monnam(mdef));
