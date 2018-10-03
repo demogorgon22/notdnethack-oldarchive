@@ -597,6 +597,8 @@ register const char *s;
 		dungeon_topology.brine_variant = levvar;
 	} else if(In_sea(&u.uz)){
 		dungeon_topology.sea_variant = levvar;
+	} else if(Is_village_level(&u.uz)){
+		dungeon_topology.village_variant = levvar;
 	}
 	
 	if(dungeon_topology.alt_tower){
