@@ -563,6 +563,8 @@ register const char *s;
 	if(*s) {
 	    if(sp && sp->rndlevs){
 			levvar = rnd((int) sp->rndlevs);
+			/*add a function here for village variant forcing*/
+			if(Is_village_level(&u.uz)) levvar = 3;
 			Sprintf(protofile, "%s-%d", s, levvar);
 		}
 	    else Strcpy(protofile, s);

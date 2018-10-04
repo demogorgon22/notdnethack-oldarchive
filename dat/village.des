@@ -125,3 +125,54 @@ MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
+
+#Forest village
+MAZE:"villag-3",' '
+INIT_MAP: '.' , 'T', false, true, lit, true
+GEOMETRY:center,center
+MAP
+...............................
+................----......----.
+................|..|......+..|.
+.....------.....|..|.-----|..|.
+.---+|....|.....--+-.|...|----.
+.|...|....+..........|...|.....
+.|...|....|....{.....|...|.....
+.|...|-----..........--+--.....
+.|...|.........................
+.--------+-..--+---+------.....
+..|.......|..|...|.......|.....
+..|.......|..|...|.......|.....
+..---------..-------------.....
+...............................
+ENDMAP
+RANDOM_PLACES: (02,08), (07,04), (03,10), (15,11), (24,11), (22,06)
+REGION:(00,00,30,12),lit,"ordinary"
+# Stairs
+STAIR:levregion(02,01,05,20),(12,12,13,13),up
+STAIR:levregion(72,01,05,20),(0,0,0,0),down
+# Doors
+DOOR:open,(04,04)
+DOOR:open,(10,05)
+DOOR:open,(09,09)
+DOOR:open,(15,09)
+DOOR:open,(19,09)
+DOOR:open,(18,04)
+DOOR:open,(23,07)
+DOOR:open,(26,02)
+# Objects
+# A candle, a cursed bell, a wafer, a snack, a scroll, an armour, lost treasure
+OBJECT: '(', "wax candle", place[0]
+OBJECT: '(', "bell", place[1],cursed,+0
+OBJECT: '%', "lembas wafer", place[2]
+OBJECT: '%', random, place[3]
+OBJECT: '?', random, place[4]
+OBJECT: ')',"axe",place[5],uncursed,+3
+OBJECT:random,random,random
+OBJECT:random,random,random
+# Monsters.
+MONSTER:'@',"Village Wizard",(28,03)
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
