@@ -56,6 +56,7 @@ E struct dgn_topology {		/* special dungeon levels for speed */
 #define GRASS_VILLAGE 1
 #define LAKE_VILLAGE 2
 #define FOREST_VILLAGE 3
+#define CAVE_VILLAGE 4
     d_level	d_oracle_level;
     d_level	d_bigroom_level;	/* unused */
     d_level	d_bigroomb_level;	/* unused */

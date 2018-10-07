@@ -30,7 +30,7 @@ GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
 ENDMAP
 RANDOM_PLACES: (12,08), (22,06), (22,13), (45,13), (31,02), (58,11)
 # Dungeon Description
-REGION:(01,01,73,16),lit,"ordinary"
+REGION:(00,00,74,17),lit,"ordinary"
 # Stairs
 STAIR:levregion(02,01,05,20),(12,12,13,13),up
 STAIR:levregion(72,01,05,20),(0,0,0,0),down
@@ -161,7 +161,7 @@ DOOR:open,(18,04)
 DOOR:open,(23,07)
 DOOR:open,(26,02)
 # Objects
-# A candle, a cursed bell, a wafer, a snack, a scroll, an armour, lost treasure
+# A candle, a cursed bell, a wafer, a snack, a scroll, an armour, an axe
 OBJECT: '(', "wax candle", place[0]
 OBJECT: '(', "bell", place[1],cursed,+0
 OBJECT: '%', "lembas wafer", place[2]
@@ -176,3 +176,53 @@ MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
+
+# Cave village
+MAZE:"villag-4",' '
+INIT_MAP: '.' , ' ', false, true, unlit, true
+GEOMETRY:center,center
+MAP
+...............................
+................----......----.
+................|..|......+..|.
+.....------.....|..|.-----|..|.
+.---+|....|.....--+-.|...|----.
+.|...|....+..........|...|.....
+.|...|....|....{.....|...|.....
+.|...|-----..........--+--.....
+.|...|.........................
+.--------+-..--+---+------.....
+..|.......|..|...|.......|.....
+..|.......|..|...|.......|.....
+..---------..-------------.....
+...............................
+ENDMAP
+# Stairs
+STAIR:levregion(02,01,05,20),(12,12,13,13),up
+STAIR:levregion(72,01,05,20),(0,0,0,0),down
+# Doors
+DOOR:open,(04,04)
+DOOR:open,(10,05)
+DOOR:open,(09,09)
+DOOR:open,(15,09)
+DOOR:open,(19,09)
+DOOR:open,(18,04)
+DOOR:open,(23,07)
+DOOR:open,(26,02)
+# Objects
+# A candle, a cursed bell, a wafer, a snack, a scroll, an armour, an axe
+OBJECT: '(', "tallow candle", place[0]
+OBJECT: ')', "droven dagger", place[1]
+OBJECT: '%', "slime mold", place[2]
+OBJECT: '?', random, place[3]
+OBJECT: '!', random, place[4]
+OBJECT: ')',"droven lance",place[5],uncursed,+3
+OBJECT:random,random,random
+OBJECT:random,random,random
+# Monsters.
+MONSTER:'@',"Village Wizard",(28,03)
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
+MONSTER:random,random,random
+

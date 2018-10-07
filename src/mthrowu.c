@@ -630,7 +630,7 @@ m_throw(mon, x, y, dx, dy, range, obj, verbose)
 		bhitpos.x += dx;
 		bhitpos.y += dy;
 		if ((mtmp = m_at(bhitpos.x, bhitpos.y)) != 0) {
-			setmangry(mtmp);
+			if(mon && mon == &youmonst) setmangry(mtmp);
 			if((singleobj->otyp == LASER_BEAM || singleobj->otyp == BLASTER_BOLT || singleobj->otyp == HEAVY_BLASTER_BOLT) && mon_reflects(mtmp, (char *)0)){
 				dx *= -1;
 				dy *= -1;

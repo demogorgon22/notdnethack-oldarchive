@@ -550,6 +550,29 @@ static const int angelnums[] = {PM_JUSTICE_ARCHON, PM_SWORD_ARCHON, PM_SHIELD_AR
 						  PM_DAUGHTER_OF_BEDLAM, PM_MARILITH,
 						  PM_ERINYS, PM_FALLEN_ANGEL, PM_ANCIENT_OF_ICE, PM_ANCIENT_OF_DEATH
 						 };
+int 
+init_village(rndlevs)
+int rndlevs;
+{
+	if(Race_if(PM_ELF))
+		return FOREST_VILLAGE;
+	int levvar;
+	boolean levelBad = TRUE;
+	while(levelBad){
+		levvar = rnd(rndlevs);
+		levelBad = FALSE;
+		if(levvar == GRASS_VILLAGE && (Race_if(PM_DROW) || Race_if(PM_VAMPIRE) || Race_if(PM_ORC)))
+			levelBad = TRUE;
+		if(levvar == LAKE_VILLAGE && (Race_if(PM_DROW) || Race_if(PM_VAMPIRE) || Race_if(PM_ORC) || Race_if(PM_SALAMANDER)))
+			levelBad = TRUE;
+		if(levvar == FOREST_VILLAGE && (Race_if(PM_DROW) || Race_if(PM_SALAMANDER) || Race_if(PM_CLOCKWORK_AUTOMATON)))
+			levelBad = TRUE;
+		if(levvar == CAVE_VILLAGE && !(Race_if(PM_DROW) || Race_if(PM_GNOME) || Race_if(PM_CHIROPTERAN) || Race_if(PM_ORC) || Race_if(PM_VAMPIRE)))
+			levelBad = TRUE;
+	}
+	return levvar;
+
+}
 void
 makemaz(s)
 register const char *s;
@@ -564,7 +587,7 @@ register const char *s;
 	    if(sp && sp->rndlevs){
 			levvar = rnd((int) sp->rndlevs);
 			/*add a function here for village variant forcing*/
-			if(Is_village_level(&u.uz)) levvar = 3;
+			if(Is_village_level(&u.uz)) levvar = init_village((int) sp->rndlevs);
 			Sprintf(protofile, "%s-%d", s, levvar);
 		}
 	    else Strcpy(protofile, s);
