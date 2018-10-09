@@ -691,6 +691,10 @@ boolean chatting;
 		return 1;
 	}
 	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : ptr->msound) {
+	case MS_PORTAL:{
+			int selection = doportalmenu("Open a portal to where?");
+		}
+		break;
 	case MS_ORACLE:
 	    return doconsult(mtmp);
 	case MS_PRIEST: /*Most (all?) things with this will have ispriest set*/
@@ -1919,6 +1923,59 @@ humanoid_sound:
     return(1);
 }
 
+int
+doportalmenu(prompt)
+const char *prompt;
+{
+	winid tmpwin;
+	int n, how;
+	char buf[BUFSZ];
+	menu_item *selected;
+	anything any;
+
+	tmpwin = create_nhwindow(NHW_MENU);
+	start_menu(tmpwin);
+	any.a_void = 0;		/* zero out all bits */
+
+	Sprintf(buf, "Locations: ");
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+	Sprintf(buf, "Detect Monsters");
+	any.a_int = 1;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'd', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Tentacle Flow");
+	any.a_int = 2;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		't', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Energy Boost");
+	any.a_int = 3;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'e', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Psionic Cancellation");
+	any.a_int = 4;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'c', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Elder Memories");
+	any.a_int = 5;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'E', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Recharge");
+	any.a_int = 6;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'r', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	end_menu(tmpwin, prompt);
+
+	how = PICK_ONE;
+	n = select_menu(tmpwin, how, &selected);
+	destroy_nhwindow(tmpwin);
+	return (n > 0) ? selected[0].item.a_int : 0;
+}
 
 int
 dotalk()
