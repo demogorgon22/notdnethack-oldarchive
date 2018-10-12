@@ -1106,7 +1106,7 @@ bound_digging()
 	    }
 }
 
-void
+struct trap *
 mkportal(x, y, todnum, todlevel)
 register xchar x, y;
 register int todnum, todlevel;

@@ -90,6 +90,8 @@ Mystic class monk refactor
 			3x3 magic explosion with punch, centered on target, a lot of pw
 		Flicker punch
 			Does that lightsaber skill thing where you jump around	
+		Absortive strikes
+			Halved dmg but regains pw, this can't be on with other modes
 	Can set with #monster and some sort of menu
 	Get MR and teleport control earlier?
 	Premium heart blocks special mystic punches
@@ -98,4 +100,6 @@ Mystic class monk refactor
 	Early teleport control and/or teleportation?
 	Some sort of nerf to make up for the above average dmg output?
 	Some sort of energy form unlocked at a certain level OR
-	A form that scales with XP
+	A form that scales with XP lvl
+	
+	

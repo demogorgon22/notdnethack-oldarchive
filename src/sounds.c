@@ -14,6 +14,7 @@
 
 static const char *FDECL(DantalionRace,(int));
 int FDECL(dobinding,(int, int));
+int FDECL(doportalmenu,(const char *));
 
 static const char tools[] = { TOOL_CLASS, 0 };
 
@@ -692,7 +693,37 @@ boolean chatting;
 	}
 	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : ptr->msound) {
 	case MS_PORTAL:{
+			if(!Is_village_level(&u.uz)){
+				pline("%s mumbles about the village.",Monnam(mtmp));
+				return 1;
+			}
+			/*some flavor text bullshit*/
 			int selection = doportalmenu("Open a portal to where?");
+			int landings[5][2];
+			int dnum;
+			struct trap *portal;
+			// x,y coords of portal landing based on different maps
+			landings[GRASS_VILLAGE][0] = 35;
+			landings[GRASS_VILLAGE][1] = 11;
+			landings[LAKE_VILLAGE][0] = 29;
+			landings[LAKE_VILLAGE][1] = 20;
+			landings[FOREST_VILLAGE][0] = 40;
+			landings[FOREST_VILLAGE][1] = 11;
+			landings[CAVE_VILLAGE][0] = 40;
+			landings[CAVE_VILLAGE][1] = 11;
+			switch(selection){
+				case 1:
+					dnum = ice_dnum;
+
+				break;
+				default:
+					dnum = ice_dnum;
+				break;
+			}
+			portal = mkportal(landings[dungeon_topology.village_variant][0], landings[dungeon_topology.village_variant][1], dnum, 1);
+			portal->tseen = 1;
+			You_hear("a woosh!");
+
 		}
 		break;
 	case MS_ORACLE:
@@ -1939,10 +1970,10 @@ const char *prompt;
 
 	Sprintf(buf, "Locations: ");
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
-	Sprintf(buf, "Detect Monsters");
+	Sprintf(buf, "The Ice Caves");
 	any.a_int = 1;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
-		'd', 0, ATR_NONE, buf,
+		'i', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "Tentacle Flow");
 	any.a_int = 2;	/* must be non-zero */
