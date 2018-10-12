@@ -4088,6 +4088,14 @@ register struct	monst	*mtmp;
 			if(ptr == &mons[PM_GUG]){
 				mongets(mtmp, CLUB);
 			}
+			else if(ptr == &mons[PM_ABOMINABLE_SNOWMAN]){
+				struct obj *otmp = mksobj(CLOAK_OF_DISPLACEMENT, TRUE, FALSE); //make articrown (ok made crown of antisucc)
+				otmp = oname(otmp, artiname(ART_ABOMINABLE_VEIL));
+				otmp->blessed = FALSE;
+				otmp->cursed = FALSE;
+				otmp->spe = 0;
+				(void) mpickobj(mtmp,otmp);
+			}
 		break;
 	    case S_MUMMY:
 		(void)mongets(mtmp, ptr == &mons[PM_DROW_MUMMY] ? DROVEN_CLOAK : MUMMY_WRAPPING);
@@ -5481,6 +5489,13 @@ register int	mmflags;
 	else mtmp->mpeaceful = (mmflags & MM_ANGRY) ? FALSE : (peace_minded(ptr) && !is_derived_undead_mon(mtmp));
 	
 	switch(ptr->mlet) {
+		case S_DOG:
+			if(In_icecaves(&u.uz) && mndx == PM_WINTER_WOLF_CUB){
+				mtmp->mhp = d(2,5);
+				mtmp->mhpmax = mtmp->mhp;
+				mtmp->mcan = 1;
+			}
+			break;
 		case S_MIMIC:
 			set_mimic_sym(mtmp);
 			break;
@@ -5505,6 +5520,10 @@ register int	mmflags;
 			if(mndx == PM_TENEBROUS){
 				mtmp->mhpmax = 3*mtmp->mhpmax;
 				mtmp->mhp = mtmp->mhpmax;
+			}
+			if(In_icecaves(&u.uz) && mndx == PM_ICE_VORTEX){
+				mtmp->mhp = d(2,5);
+				mtmp->mhpmax = mtmp->mhp;
 			}
 		break;
 		case S_LIGHT:
@@ -6274,7 +6293,7 @@ rndmonst()
 		//else continue to random generation
 	}
 	else if (In_icecaves(&u.uz)){
-		return icecave_montype();
+		return icecaves_montype();
 	}
 	else if (In_neu(&u.uz) && 
 		(Is_rlyeh(&u.uz) ||  Is_sumall(&u.uz) || Is_gatetown(&u.uz))){

@@ -34,111 +34,117 @@ MONSTER: random, random, random
 MONSTER: random, random, random
 MONSTER: random, random, random
 #
-TRAP: random, random
-TRAP: random, random
 
 
 # Ice cave frozen settlement
 #
-LEVEL: "icetown"
+MAZE: "icetown", ' '
+GEOMETRY:center,center
+MAP
+-----         ---------                                                    
+|III---  ------IIIIIII--    -------                       ---------------  
+|IIIII----IIIIIIIII--II|    |.....|          -------      |IIIIIIIIIIIII|  
+--II-IIII-I----------II|    |.....|          |IIIII|     --+---+--I----+-  
+ --I--IIIII----     ----    |.....|  ------  --IIII----  |II-III--I-I+II|  
+  ---IIIIIIIII----  -----   ---+---  |II+I|   ---II-II----II---+-II---II|  
+    ----I-IIII|II----III--    |I|    |II|I|    ---+-IIIII-+--IIIIIIII--+-  
+       -----II|IIII-IIIII---- |I|    |II|I------IIIIII--IIIIIIIIIIIIIIII|  
+    ------ |II|IIIIIIIIIIIII---I--   ----I+II|-IIIIIII--II--------+--II--  
+    |....| --IIIIII---IIIIIIIIIII-----  |I|II|-III{IIII---|.........|II--  
+    |....|  |IIIIIIII-III-IIIIIIIIIII----I|II|--IIIIIII|  |.........|III|  
+    ---+--------IIII-------III---IIIIII--I-------IIII---- -----------III|  
+ ------I---III--III--II-II--III-II---III|I--II-III-IIII------- |IIIIIII--  
+ |II|-IIIIIIIII-II---II-II---IIIII--IIII|IIIIIIII---III-|....| |I-------   
+ |II+IIIIIIIIIIIIIII-+---+-----II--II...IIIII--IIII--III+....| |I|IIISI    
+-----IIIII{IIII----IIIIIIIIIIIIIII-II...IIIIII--III-III-|....| |I|III|     
+|IIIIIIIIIIIIII-- --+--I---------IIII...II--II-IIIIIIII------- |I--+-------
+-+-----IIIIIIIII| |III|I|....|  --IIIIIII------III|IIII---------IIIII|IIII|
+|III| --II------- |III|I+....|   ---III---    --II|III--IIIIII-III{II+II-+|
+|III|  ----       ------|....|     -----       -----IIIII----IIIIIIII|II|I|
+-----                   ------                     -------  ---------------
+ENDMAP
 
-ROOM: "ordinary" , lit, (3,3), (center,center), (31,15)
-NAME: "town"
-FOUNTAIN: (13, 7)
-FOUNTAIN: (20, 7)
+STAIR:(01,01),up
+STAIR:(46,03),down
+FOUNTAIN:(50,09)
+FOUNTAIN:(10,15)
+FOUNTAIN:(66,18)
 
-# The Town Watch
-MONSTER: '@', "watchman", random, peaceful
-MONSTER: '@', "watchman", random, peaceful
-MONSTER: '@', "watchman", random, peaceful
-MONSTER: '@', "watchman", random, peaceful
-MONSTER: '@', "watch captain", random, peaceful
+REGION:(00,00,74,20),lit,"ordinary"
 
-SUBROOM: "shop" , lit, (2,2), (3,4), "town"
-CHANCE: 90
-DOOR: false, closed, south, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
 
-SUBROOM: "tool shop", lit, (2,9), (3,4), "town"
-CHANCE: 90
-DOOR: false, closed, north, random
-
-SUBROOM: "ordinary", unlit, (6,2), (3,4), "town"
-DOOR: false, closed, south, random
-
-SUBROOM: "ordinary", lit, (6,9), (3,4), "town"
-DOOR: false, closed, north, random
-
-SUBROOM: "food shop", lit, (10,2), (2,3), "town"
-CHANCE: 90
-DOOR: false, closed, south, random
-
-SUBROOM: "candle shop", lit, (22,2), (3,3), "town"
-DOOR: false, closed, south, random
-
-SUBROOM: "ordinary", unlit, (10,10), (2,3), "town"
-DOOR: false, locked, east, random
-MONSTER: 'G', "gnome", random
-
-SUBROOM: "ordinary", lit, (19,2),  (2,3), "town"
-DOOR: false, locked, west, random
-MONSTER: 'G', "gnome", random
-
-SUBROOM: "temple", lit, (15,9), (4,4), "town"
-DOOR: false, closed, north, random
-ALTAR:(02,02),align[0],shrine
-MONSTER: 'G', "gnomish wizard", random
-MONSTER: 'G', "gnomish wizard", random
-
-SUBROOM: "ordinary", lit, (22,10), (2,3), "town"
-DOOR: false, locked, west, random
-
-SUBROOM: "ordinary", lit, (26,2), (3,3), "town"
-DOOR: false, closed, south, random
-MONSTER: 'G', "gnome lord", random
-
-SUBROOM: "ordinary", unlit, (25,10), (4,3), "town"
-DOOR: false, closed, north, random
-
-ROOM: "ordinary" , random, random, random, random
-STAIR: random, up
-
-ROOM: "ordinary" , random, random, random, random
-STAIR: random, down
-TRAP: random, random
-MONSTER: 'G', "gnome", random
-MONSTER: 'G', "gnome", random
-
-ROOM: "ordinary" , random, random, random, random
-MONSTER: 'h', "dwarf", random
-
-ROOM: "ordinary" , random, random, random, random
-TRAP: random, random
-MONSTER: 'G', "gnome", random
-
-RANDOM_CORRIDORS
+# The shops
+REGION:(25,17,28,19),lit,"potion shop"
+DOOR:closed,(24,18)
+REGION:(59,9,67,10),lit,"shop"
+DOOR:closed,(66,08)
+REGION:(57,13,60,15),lit,"tool shop"
+DOOR:closed,(56,14)
+REGION:(05,09,08,10),lit,"food shop"
+DOOR:closed,(07,11)
+REGION:(29,02,33,04),lit,"weapon shop"
+DOOR:closed,(31,05)
+# Gnome homes
+DOOR:closed,(04,14)
+DOOR:locked,(01,17)
+DOOR:locked,(20,16)
+MONSTER: random, random, (20,18)
+DOOR:random,(21,14)
+DOOR:random,(25,14)
+DOOR:random,(42,08)
+DOOR:locked,(40,05)
+MONSTER: random, random, (38,07)
+DOOR:random,(59,03)
+DOOR:random,(58,06)
+DOOR:random,(63,03)
+DOOR:random,(63,05)
+DOOR:locked,(71,03)
+DOOR:locked,(71,06)
+DOOR:closed,(69,04)
+DOOR:closed,(67,16)
+OBJECT: '=', random, (70,14)
+DOOR:locked,(69,18)
+DOOR:locked,(73,18)
+OBJECT: '(', "chest", (73,19)
+DOOR:locked,(50,06)
+OBJECT: '(', random, (50,03)
+OBJECT: '`', "statue", (38,15), "ice devil", 1
+# Temple
 
 MAZE: "iceboss", ' '
 GEOMETRY:center,center
 MAP
                                                                             
-                          .....................                             
-                         .......................                            
-                        .........................                           
-                       ...........................                          
-                      .............................                         
-                     ...............................                        
-                    .................................                       
-                   ...................................                      
-                  .....................................                     
-                 .......................................                    
-                  .....................................                     
-                   ...................................                      
-                    .................................                       
-                     ...............................                        
-                      .............................                         
-                       ...........................                          
-                        .........................                           
-                         .......................                            
+                          IIIIIIIIIIIIIIIIIIIII                             
+                         IIIIIIIIIIIIIIIIIIIIIII                            
+                        IIIIIIIIIIIIIIIIIIIIIIIII                           
+                       IIIIIIIIIIIIIIIIIIIIIIIIIII                          
+                      IIIIIIIIIIIIIIIIIIIIIIIIIIIII                         
+                     IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                        
+                    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                       
+                   IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                      
+                  IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                     
+                 .IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII.                    
+                  IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                     
+                   IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                      
+                    IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                       
+                     IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII                        
+                      IIIIIIIIIIIIIIIIIIIIIIIIIIIII                         
+                       IIIIIIIIIIIIIIIIIIIIIIIIIII                          
+                        IIIIIIIIIIIIIIIIIIIIIIIII                           
+                         IIIIIIIIIIIIIIIIIIIIIII                            
                                                                             
 ENDMAP
 # Dungeon Description
@@ -166,4 +172,5 @@ OBJECT:random,random,random
 MONSTER:'F',"shrieker",(26,13)
 MONSTER:'F',"shrieker",(25,8)
 MONSTER:'F',"shrieker",(45,11)
+MONSTER:'Y',"Abominable Snowman",(23,10)
 WALLIFY

@@ -261,7 +261,10 @@ unsigned *ospecial;
 				if(offset >= S_vwall && offset <= S_trwall){
 					color = CLR_GREEN;
 				}
-
+			} else if(In_icecaves(&u.uz)){
+				if(offset >= S_vwall && offset <= S_trwall){
+					color = CLR_WHITE;
+				}
 			} else if(Is_peanut(&u.uz)){
 				if(offset >= S_vwall && offset <= S_trwall){
 					color = CLR_BROWN;

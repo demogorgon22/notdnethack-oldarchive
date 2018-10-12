@@ -1052,7 +1052,7 @@ domove()
 		    if ((uarmf && uarmf->otyp == skates)
 			    || resists_cold(&youmonst) || Flying
 			    || is_floater(youracedata) || is_clinger(youracedata)
-			    || is_whirly(youracedata))
+			    || is_whirly(youracedata ) || In_icecaves(&u.uz))
 			on_ice = FALSE;
 		    else if (!rn2(Cold_resistance ? 3 : 2)) {
 			HFumbling |= FROMOUTSIDE;

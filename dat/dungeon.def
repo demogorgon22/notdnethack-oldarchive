@@ -16,9 +16,9 @@
 
 DUNGEON:	"The Dungeons of Doom" "D" (25, 5)
 ALIGNMENT:	unaligned
-BRANCH:		"The Gnomish Mines" @ (2, 3)
+BRANCH:		"The Gnomish Mines" @ (11, 0)
 RNDLEVEL:	"villag" "O" @ (4, 0) 4
-BRANCH:		"The Ice Caves" @ (4, 0)
+BRANCH:		"The Ice Caves" @ (4, 0) portal
 %REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
 LEVALIGN:	neutral

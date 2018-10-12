@@ -1413,6 +1413,12 @@ A("The Chromatic Dragon Scales",	BLACK_DRAGON_SCALES,
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	0, A_NONE, NON_PM, NON_PM, 9000L, 
 	0,0,0),
+A("The Abominable Veil",	CLOAK_OF_DISPLACEMENT,
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	NO_ATTK,	COLD(0,0),	NO_CARY,
+	0, A_NONE, NON_PM, NON_PM, 9000L, 
+	0,0,0),
 
 A("The Eye of Vecna", EYEBALL,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_HSPDAM),0,

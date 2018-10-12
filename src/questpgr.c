@@ -609,9 +609,21 @@ qt_montype()
 	}
 }
 struct permonst *
-icecave_montype()
+icecaves_montype()
 {
-	return mkclass(S_GNOME, G_NOHELL);
+	int chance = rn2(100);
+	if(chance < 10)
+		return &mons[PM_WINTER_WOLF_CUB];
+	if(chance < 30)
+		return &mons[PM_BABY_WHITE_DRAGON];
+	if(chance < 60)
+		return &mons[PM_BLUE_JELLY];
+	if(chance < 80)
+		return &mons[PM_BROWN_MOLD];
+	if(chance < 90)
+		return &mons[PM_ICE_VORTEX];
+	if(chance < 100)
+		return &mons[PM_FREEZING_SPHERE];
 }
 
 struct permonst *
