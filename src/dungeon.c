@@ -682,6 +682,9 @@ struct level_map {
 	
 	{ "sanctum",	&sanctum_level },
 
+	{ "icetown",	&icetown_level },
+	{ "iceboss",	&iceboss_level },
+
 	{ "minetn",     &minetown_level },
 #ifdef RECORD_ACHIEVE
 	{ "minend",     &mineend_level },
@@ -987,6 +990,7 @@ init_dungeons()		/* initialize the "dungeon" structs */
 	law_dnum = dname_to_dnum("Law Quest");
 	sokoban_dnum = dname_to_dnum("Lokoban");
 	mines_dnum = dname_to_dnum("The Gnomish Mines");
+	ice_dnum = dname_to_dnum("The Ice Caves");
 	tower_dnum = dname_to_dnum("Vlad's Tower");
 	tomb_dnum = dname_to_dnum("The Lost Tomb");
 	sea_dnum = dname_to_dnum("The Sunless Sea");

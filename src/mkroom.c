@@ -2271,6 +2271,7 @@ somexy(croom, c)
 struct mkroom *croom;
 coord *c;
 {
+	//pline("[x:%d,y:%d]",c->x,c->y);
 	int try_cnt = 0;
 	int i;
 

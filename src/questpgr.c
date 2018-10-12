@@ -608,6 +608,11 @@ qt_montype()
 		}
 	}
 }
+struct permonst *
+icecave_montype()
+{
+	return mkclass(S_GNOME, G_NOHELL);
+}
 
 struct permonst *
 chaos_montype()

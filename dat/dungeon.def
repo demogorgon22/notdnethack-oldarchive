@@ -18,6 +18,7 @@ DUNGEON:	"The Dungeons of Doom" "D" (25, 5)
 ALIGNMENT:	unaligned
 BRANCH:		"The Gnomish Mines" @ (2, 3)
 RNDLEVEL:	"villag" "O" @ (4, 0) 4
+BRANCH:		"The Ice Caves" @ (4, 0)
 %REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
 LEVALIGN:	neutral
@@ -114,6 +115,17 @@ RNDLEVEL:	"minetn" "T" @ (4, 1) 7
 LEVELDESC:	town
 RNDLEVEL:	"minend" "E" @ (-1, 0) 4
 ENTRY:          2
+
+#
+#	The ice caves
+#
+DUNGEON:	"The Ice Caves" "I" (5, 0)
+ALIGNMENT:	lawful
+DESCRIPTION:	mazelike
+LEVEL:	"icetown" "T" @ (-2, 0) 
+LEVELDESC:	town
+LEVEL:	"iceboss" "B" @ (-1, 0) 
+ENTRY:		1
 
 # Law Quest
 

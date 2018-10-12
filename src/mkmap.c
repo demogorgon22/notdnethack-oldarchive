@@ -257,7 +257,7 @@ wallify_map()
 	    if(levl[x][y].typ == STONE) {
 		for(yy = y - 1; yy <= y+1; yy++)
 		    for(xx = x - 1; xx <= x+1; xx++)
-			if(isok(xx,yy) && levl[xx][yy].typ == ROOM) {
+			if(isok(xx,yy) && (levl[xx][yy].typ == ROOM || (In_icecaves(&u.uz) && levl[xx][yy].typ == ICE))) {
 			    if(yy != y)	levl[x][y].typ = HWALL;
 			    else	levl[x][y].typ = VWALL;
 			}
@@ -275,7 +275,7 @@ join_map(bg_typ, fg_typ)
     coord sm, em;
 
     /* first, use flood filling to find all of the regions that need joining */
-    for(i=2; i<=WIDTH; i++)
+    for(i=2; i<=WIDTH; i++){
 	for(j=1; j<HEIGHT; j++) {
 	    if(levl[i][j].typ == fg_typ && levl[i][j].roomno == NO_ROOM) {
 		min_rx = max_rx = i;
@@ -303,6 +303,7 @@ join_map(bg_typ, fg_typ)
 		}
 	    }
 	}
+    }
 
 joinm:
     /*
@@ -322,7 +323,6 @@ joinm:
 	    em.x = croom2->lx + ((croom2->hx - croom2->lx) / 2);
 	    em.y = croom2->ly + ((croom2->hy - croom2->ly) / 2);
 	}
-
 	(void) dig_corridor(&sm, &em, FALSE, fg_typ, bg_typ);
 
 	/* choose next region to join */

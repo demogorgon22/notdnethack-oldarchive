@@ -668,6 +668,9 @@ makelevel()
 	    } else if (In_mines(&u.uz)) {
 		    makemaz("minefill");
 		    return;
+	    } else if (In_icecaves(&u.uz)) {
+		    makemaz("icefill");
+		    return;
 	    } else if (In_quest(&u.uz)) {
 		    char	fillname[9];
 		    s_level	*loc_lev;
@@ -1206,7 +1209,8 @@ find_branch_room(mp)
 	    if (!somexy(croom, mp))
 		impossible("Can't place branch!");
 	} while(occupied(mp->x, mp->y) ||
-	    (levl[mp->x][mp->y].typ != CORR && levl[mp->x][mp->y].typ != ROOM));
+	    (levl[mp->x][mp->y].typ != CORR && levl[mp->x][mp->y].typ != ROOM && 
+	     (In_icecaves(&u.uz)?levl[mp->x][mp->y].typ != ICE:TRUE)));
     }
     return croom;
 }

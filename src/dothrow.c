@@ -452,9 +452,9 @@ int shots, shotlimit;
 	while(shots){
 		if(Hallucination && raygun->otyp != FLAMETHROWER) pline1(Ronnie_ray_gun[rn2(SIZE(Ronnie_ray_gun))]);
 		raygun->ovar1 -= cost;
-		flags.flaming = TRUE; /*State machine stuff*/
+		if(raygun->otyp == FLAMETHROWER) flags.flaming = TRUE; /*State machine stuff*/
 		buzz(raygun->altmode+40, 6, u.ux + u.dx, u.uy + u.dy, u.dx, u.dy, BOLT_LIM/2,0);
-		flags.flaming = FALSE; /*State machine stuff*/
+		if(raygun->otyp == FLAMETHROWER) flags.flaming = FALSE; /*State machine stuff*/
 		shots--;
 	}
 	

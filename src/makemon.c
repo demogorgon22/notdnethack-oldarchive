@@ -5450,7 +5450,7 @@ register int	mmflags;
 		unsethouse = TRUE;
 	} else if (In_void(&u.uz)){
 		undeadfaction = WHISPERING;
-		mtmp->data->mflagsm |= MM_FLY;
+		//mtmp->data->mflagsm |= MM_FLY; This wont preserve in saves, sorry
 		//mtmp->data->mflagsm |= MM_WALLWALK;
 	} else if(randmonst && !undeadfaction && can_undead_mon(mtmp)){
 		if(In_mines(&u.uz)){
@@ -6272,6 +6272,9 @@ rndmonst()
 		if((int)ptr < 0) return (struct permonst *) 0;
 	    else if(Role_if(PM_ANACHRONONAUT) || rn2(7)) return ptr;
 		//else continue to random generation
+	}
+	else if (In_icecaves(&u.uz)){
+		return icecave_montype();
 	}
 	else if (In_neu(&u.uz) && 
 		(Is_rlyeh(&u.uz) ||  Is_sumall(&u.uz) || Is_gatetown(&u.uz))){
