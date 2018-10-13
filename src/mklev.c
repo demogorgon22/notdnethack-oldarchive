@@ -671,6 +671,9 @@ makelevel()
 	    } else if (In_icecaves(&u.uz)) {
 		    makemaz("icefill");
 		    return;
+	    } else if (In_blackforest(&u.uz)) {
+		    makemaz("bffill");
+		    return;
 	    } else if (In_quest(&u.uz)) {
 		    char	fillname[9];
 		    s_level	*loc_lev;

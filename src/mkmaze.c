@@ -699,6 +699,18 @@ register const char *s;
 				}
 			}
 		}
+		if(In_blackforest(&u.uz)){
+			for(x = 0; x<COLNO; x++){
+				for(y = 0; y<ROWNO; y++){
+					if(levl[x][y].typ == TREE){
+						if(!rn2(2)) levl[x][y].typ = DEADTREE;
+					}
+					if(levl[x][y].typ == ROOM){
+						if(!rn2(10)) levl[x][y].typ = CLOUD;
+					}
+				}
+			}
+		}
 		if(Is_lolth_level(&u.uz)){
 			int x, y;
 			place_lolth_vaults();
@@ -1117,7 +1129,7 @@ register int todnum, todlevel;
 
 	if (!ttmp) {
 		impossible("portal on top of portal??");
-		return;
+		return ttmp;
 	}
 #ifdef DEBUG
 	pline("mkportal: at (%d,%d), to %s, level %d",
@@ -1125,7 +1137,7 @@ register int todnum, todlevel;
 #endif
 	ttmp->dst.dnum = todnum;
 	ttmp->dst.dlevel = todlevel;
-	return;
+	return ttmp;
 }
 
 /*

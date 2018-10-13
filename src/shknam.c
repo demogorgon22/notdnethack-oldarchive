@@ -451,6 +451,9 @@ struct mkroom	*sroom;
 	if (shp->shknms == shkrings)
 	    (void) mongets(shk, TOUCHSTONE);
 	nameshk(shk, shp->shknms);
+	if(In_blackforest(&u.uz)){
+		newcham(shk,&mons[PM_VAMPIRE_LORD],FALSE,FALSE);
+	}
 
 	return(sh);
 }

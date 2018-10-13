@@ -716,6 +716,9 @@ boolean chatting;
 					dnum = ice_dnum;
 
 				break;
+				case 2:
+					dnum = blackforest_dnum;
+				break;
 				default:
 					dnum = ice_dnum;
 				break;
@@ -1975,10 +1978,10 @@ const char *prompt;
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'i', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-	Sprintf(buf, "Tentacle Flow");
+	Sprintf(buf, "The Black Forest");
 	any.a_int = 2;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
-		't', 0, ATR_NONE, buf,
+		'f', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "Energy Boost");
 	any.a_int = 3;	/* must be non-zero */

@@ -608,6 +608,27 @@ qt_montype()
 		}
 	}
 }
+
+struct permonst *
+blackforest_montype()
+{
+	int chance = rn2(100);
+	if(chance < 10)
+		return &mons[PM_COYOTE];
+	if(chance < 30)
+		return &mons[PM_BUGBEAR];
+	if(chance < 50)
+		return &mons[PM_RAZORVINE];
+	if(chance < 60)
+		return &mons[PM_GIANT_BAT];
+	if(chance < 80)
+		return &mons[PM_WEEPING_WILLOW];
+	if(chance < 90)
+		return &mons[PM_WEREJACKAL];
+	if(chance < 100)
+		return &mons[PM_BLACK_UNICORN];
+
+}
 struct permonst *
 icecaves_montype()
 {

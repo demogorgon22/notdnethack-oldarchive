@@ -19,6 +19,7 @@ ALIGNMENT:	unaligned
 BRANCH:		"The Gnomish Mines" @ (11, 0)
 RNDLEVEL:	"villag" "O" @ (4, 0) 4
 BRANCH:		"The Ice Caves" @ (4, 0) portal
+BRANCH:		"The Black Forest" @ (4, 0) portal
 %REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
 LEVALIGN:	neutral
@@ -125,6 +126,17 @@ DESCRIPTION:	mazelike
 LEVEL:	"icetown" "T" @ (-2, 0) 
 LEVELDESC:	town
 LEVEL:	"iceboss" "B" @ (-1, 0) 
+ENTRY:		1
+
+#
+#	The black forest
+#
+DUNGEON:	"The Black Forest" "B" (5, 0)
+ALIGNMENT:	chaotic
+DESCRIPTION:	mazelike
+LEVEL:	"bftemple" "T" @ (-2, 0) 
+LEVELDESC:	town
+LEVEL:	"bfboss" "B" @ (-1, 0) 
 ENTRY:		1
 
 # Law Quest
