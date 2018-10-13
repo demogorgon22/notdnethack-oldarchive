@@ -1,0 +1,162 @@
+
+#
+
+#	The "fill" level for the ice caves.
+#
+#	This level is used to fill out any levels not occupied by
+#	specific levels as defined below.
+#
+MAZE: "bffill" , ' '
+INIT_MAP: '.' , 'T' , true , true , unlit , false
+NOMAP
+#
+STAIR: random, up
+STAIR: random, down
+#
+OBJECT: '*', random, random
+OBJECT: '*', random, random
+OBJECT: '*', random, random
+OBJECT: '!', random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+OBJECT: random, random, random
+#
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+#
+TRAP:random,random
+TRAP:random,random
+TRAP:random,random
+
+
+# Ice cave frozen settlement
+#
+MAZE: "bftemple", 'T'
+GEOMETRY:center,center
+MAP
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTT-------TTTTTTTTTTTTTTTT............................TTTTTT...TTTTTTT....TT
+TTT|.....|TTTTTTTTTTTTTTT..TTTTTTTTT.......TTT...TTTT............TTTT......T
+TTT|.....+...TTTTTTTTTTT..TTTTTTTTTTTTTT.TTTTTT.TTTTT.TTTTT.......TTT.....TT
+TTT|.....|TT.............TT..............TTTTTT.TTTTT..TTTTTT....TTTTT...TTT
+TTT-------TTTTTTT.TTTTTTTTT.TTTTTTTTT......TTTTTTTTTTT...TTTTT.TTTTTTTT....T
+TTTTTTTTTTTTTTTT..TTTTT........TTCCCCCCCCCCCCCTTTT....TT.TTTTT..TTTTT......T
+TTTTTTTTTTTTTTTT.TTT........CCCCCCCCCCCCCCCCCCCCCCCT.....TTTTTT.TTTTT.TT..TT
+TTTTTTTTTTTTT...........T.CCCCCCCCCCCCCCCCCCCCCCCCCCCC...TTTT...TTTTT.TTTTTT
+TTTTTTTTTTTTT.TTTTTT...CCCCCCCCCC...........CCCCCCCCCCCCCCTTT.TTTTTTT...TTTT
+TTTTTTTTTT....TTTTTTT.CCCCCCCCCC.....-........CCCCCCCCCCCCCTT.TTTTTTTTT.TTTT
+TTTTTTTTTT.TTTTTTTTTTTTTCCCCCCCCCCC......-...CCCCCCCCCCCCCCC...TTTTTTTT.TTTT
+TTTTTTTT.....TTTTTTTTTCCCCCCCCCCCCCCCCCCCCCCCCCCCCTT..TTCCCCC.....TTT.....TT
+TTTTTTT.......TTTCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC..........CCCCCC......-....T
+TTTTT........CCCCCTTTTCCCCCCCCCCCCCCCCCCCCCCCC....TTTTTTTT.CCCCCCCCCCCCCCCCC
+TTTTT.........CTTTTTTTTT..CCCCCCTTTCCCCCCCT.....TTTTTTTTTTT..CCCCCCCCCCCCCCC
+TTTTTT.......TTTTTTT........TTTTTTTTT........-TTTTTT....TTTTT..CCCCCCCCCCCCC
+TTTTTTTTT.............TTTTT....TTTTTTTTT.TTTTTTTTTT......TTTTTT...........TT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT...........TTTTTTTTTTT..................TTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+ENDMAP
+
+ALTAR:(35,10),chaos,altar
+STAIR:(72,02),down
+STAIR:(10,13),up
+REGION:(00,00,74,18),unlit,"ordinary"
+DOOR:closed,(09,03)
+
+REGION:(04,02,08,04), unlit,"shop"
+# Random traps
+TRAP:"rust",random
+TRAP:"magic",random
+TRAP:"magic",random
+TRAP:"pit",random
+TRAP:"pit",random
+TRAP:random,random
+TRAP:random,random
+TRAP:random,random
+
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+
+
+MAZE: "bfboss", 'T'
+GEOMETRY:center,center
+MAP
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTT.........TTTT......TTTTTTTTTTTTTTTTTTTTTTTT.............TTTTTT
+TTTTTTTTTT..................TTTT.......TTTTTT.....TTT.......T.....T....TTTTT
+TTTTTTT.........T.......TTTTTTTTTTTTTT........TTT.......T..............TTTTT
+TTTT..................CCCCCCCCCCCCCCCTTTT..C..TTTTT..T........T....T....TTTT
+TT.................CCCCCCCCCCCCCCCCCCCTTTT...TTTTTTT............T....CCCCCCC
+T.....T.....T....CCCCCCCCCCCCCCCCCCCCCCTTTTT...TTTTTT....T.........CCCCCCCCC
+T....T.........CCCCCCCCTT......TCCCCCCCCTTTTTT.TTTTTTT.......T...CCCCCCCCCCC
+TT............CCCCCCCCTTTT..TT.TTCCCCCCCCCTTTT.....TTTT...T....CCCCCCCCCCCCT
+TTT.......T..CCCCCCCCTTTTTTTTT..TTCCCCCCCCCCTTTT....TTTT.....CCCCCCCCCCTTTTT
+TTTTT..T.....CCCCCCCCC.TTTTTTTT....CCC..CCCC..TTT....TTTTT..CCCCCCCCTTTTTTTT
+TTTTTTT.......CCCCCCCCC.TTTTTTTTTTT.CCC..CCCCC..T.T...TTTTCCCCCCTTTTTTTTTTTT
+TTTTTTT.TTT....T.CCCCCC..TTTTTTTTTTT.CC.T.CCCCC...TTTTTTTCCCCCTTTTTTTTTTTTTT
+TTTTTT..TTT.T......CCCCC.TTTTTTTTTTTT..CC..CCC.CCT..TTTTCCCCCTTTTTTTTTTTTTTT
+TTTTT..TTTT.TTTTTTTTCCCC..TTTTTTT...TTCC.CCCC..CCCCC.CTCCCCCTTTTTTTTTTTTTTTT
+TTTTT.TTT....TT....TTCCCC......TT.T..TT.C.CCC.C.CCCCC.CCCCCTTTTTTTTTTTTTTTTT
+TTTT......TT.......TTCCCC.TTTT..T.TT.....C.C.CCC.CCCCC.CCTTTTTTTTTTTTTTTTTTT
+TT.....TTTTTTT....TTTCCCCTTT......TTTTTT..C.TTCCC.CCCCC..TTTTTTTTTTTTTTTTTTT
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+ENDMAP
+# Dungeon Description
+REGION:(00,00,74,18),unlit,"ordinary"
+# Stairs
+STAIR:(10,07),up
+# Objects
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+
+# traps
+TRAP:random,random
+TRAP:random,random
+TRAP:random,random
+
+# monsters.
+MONSTER:'{',"Thrashing Tulip Poplar",(65,04)
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+MONSTER: random, random, random
+WALLIFY
