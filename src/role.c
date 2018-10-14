@@ -1097,7 +1097,7 @@ god_minions(gptr)
 			galign = A_CHAOTIC;
 		}
 	}
-	pline("%d",role);
+	//pline("%d",role);
 	
 	if(role != -1) switch(role){
 		case PM_ARCHEOLOGIST:

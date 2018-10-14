@@ -22,6 +22,7 @@ BRANCH:		"The Ice Caves" @ (4, 0) portal
 BRANCH:		"The Black Forest" @ (4, 0) portal
 %REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
+CHAINBRANCH:	"Vlad's Tower" "oracle" + (0,0) up
 LEVALIGN:	neutral
 CHAINBRANCH:	"Lokoban" "oracle" + (1, 0) up
 CHAINLEVEL:	"qstlb" "none" "oracle" + (6, 2)
@@ -111,7 +112,6 @@ LEVEL:		"fakewiz3" "G" @ (-12,9)
 DUNGEON:	"The Gnomish Mines" "M" (9, 1)
 ALIGNMENT:	lawful
 DESCRIPTION:	mazelike
-BRANCH:		"Vlad's Tower" @ (1, 0) up
 RNDLEVEL:	"minetn" "T" @ (4, 1) 7
 LEVELDESC:	town
 RNDLEVEL:	"minend" "E" @ (-1, 0) 4

@@ -329,6 +329,11 @@ register struct monst *mtmp;
 			obj = oname(obj, artiname(ART_EDEN_SCALES));
 			newsym(x,y);
 		goto default_1;
+	    case PM_THRASHING_TULIP_POPLAR:
+			obj = mksobj_at(QUARTERSTAFF, x, y, FALSE, FALSE);
+			obj = oname(obj, artiname(ART_POPLAR_PUNISHER));
+			newsym(x,y);
+		goto default_1;
 	    case PM_HUGINN:
 			obj = mksobj_at(DAGGER, x, y, FALSE, FALSE);
 			obj = oname(obj, artiname(ART_THOUGHT));		
