@@ -150,8 +150,10 @@ E struct dgn_topology {		/* special dungeon levels for speed */
     xchar	d_mines_dnum;
     	/*Ice caves*/
     xchar	d_ice_dnum;
-    	/*Ice caves*/
+    	/*Black forest*/
     xchar	d_blackforest_dnum;
+    	/*Dismal swamp*/
+    xchar	d_dismalswamp_dnum;
 	/*Quest Levels*/
 	xchar	d_quest_dnum;
     d_level	d_qstart_level, d_qlocate_level, d_nemesis_level;
@@ -177,6 +179,8 @@ E struct dgn_topology {		/* special dungeon levels for speed */
     d_level	d_iceboss_level;
     d_level	d_bftemple_level;
     d_level	d_bfboss_level;
+    d_level	d_dsbog_level;
+    d_level	d_dsboss_level;
 	d_level d_minetown_level;
 #ifdef RECORD_ACHIEVE
     d_level     d_mineend_level;
@@ -249,6 +253,8 @@ E struct dgn_topology {		/* special dungeon levels for speed */
 #define ice_dnum		(dungeon_topology.d_ice_dnum)
 	/*Black forest*/
 #define blackforest_dnum		(dungeon_topology.d_blackforest_dnum)
+	/*Dismal swamp*/
+#define dismalswamp_dnum		(dungeon_topology.d_dismalswamp_dnum)
 	/*Quest Levels*/
 #define quest_dnum		(dungeon_topology.d_quest_dnum)
 #define qstart_level		(dungeon_topology.d_qstart_level)
@@ -301,6 +307,9 @@ E struct dgn_topology {		/* special dungeon levels for speed */
 /*Black forest*/
 #define bftemple_level           (dungeon_topology.d_bftemple_level)
 #define bfboss_level           (dungeon_topology.d_bfboss_level)
+/*Dismal swamp*/
+#define dsbog_level           (dungeon_topology.d_dsbog_level)
+#define dsboss_level           (dungeon_topology.d_dsboss_level)
 
 #define minetown_level           (dungeon_topology.d_minetown_level)
 #ifdef RECORD_ACHIEVE

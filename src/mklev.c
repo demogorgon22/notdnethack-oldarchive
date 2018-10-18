@@ -674,6 +674,9 @@ makelevel()
 	    } else if (In_blackforest(&u.uz)) {
 		    makemaz("bffill");
 		    return;
+	    } else if (In_dismalswamp(&u.uz)) {
+		    makemaz("dsfill");
+		    return;
 	    } else if (In_quest(&u.uz)) {
 		    char	fillname[9];
 		    s_level	*loc_lev;

@@ -75,7 +75,7 @@ void NDECL(monst_init);
  *	  fire-resistent ones.
  *
  *	* Try to reserve purple (magenta) for powerful `ruler' monsters (queen
- *	  bee, kobold lord, &c.).
+ *	  bee, kobold king, &c.).
  *
  *	* Subject to all these constraints, try to use color to make as many
  *	  distinctions as the / command (that is, within a monster letter
@@ -1010,6 +1010,14 @@ NEARDATA struct permonst mons[] = {
 	0 /*MM*/, MT_OMNIVORE|MT_HOSTILE|MT_COLLECT /*MT*/,
 	MB_HUMANOID|MB_POIS|MB_OVIPAROUS /*MB*/, MG_LORD|MG_TRACKER /*MG*/,
 	MA_REPTILIAN /*MA*/,  MV_INFRAVISION|MV_NORMAL|MV_SCENT /*MV*/, HI_LORD),
+    MON("swamp kobold", S_KOBOLD,//3
+	LVL(3, 9, 10, 0, -3), (G_GENO|1),
+	A(ATTK(AT_WEAP, AD_PHYS, 1, 8),
+	  NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK),
+	SIZ(450, 150, 0, MS_ORC, MZ_SMALL), MR_POISON, 0,
+	0 /*MM*/, MT_OMNIVORE|MT_HOSTILE|MT_COLLECT /*MT*/,
+	MB_HUMANOID|MB_POIS|MB_OVIPAROUS /*MB*/, MG_TRACKER /*MG*/,
+	MA_REPTILIAN /*MA*/,  MV_INFRAVISION|MV_NORMAL|MV_SCENT /*MV*/, CLR_GREEN),
     MON("kobold shaman", S_KOBOLD,//4
 	LVL(2, 6, 6, 10, -4), (G_GENO|1),
 	A(ATTK(AT_MAGC, AD_SPEL, 0, 0),
@@ -1027,6 +1035,23 @@ NEARDATA struct permonst mons[] = {
 	MM_FLY /*MM*/, MT_OMNIVORE|MT_HOSTILE|MT_MAGIC|MT_GREEDY|MT_JEWELS /*MT*/,
 	MB_HUMANOID|MB_WINGS|MB_POIS|MB_OVIPAROUS /*MB*/, MG_LORD|MG_TRACKER /*MG*/,
 	MA_REPTILIAN|MA_DRAGON /*MA*/,  MV_INFRAVISION|MV_NORMAL|MV_SCENT /*MV*/, CLR_BLUE),
+    MON("rock kobold", S_KOBOLD,//4 /*Needs tile*/
+	LVL(5, 9, 4, 0, -3), (G_GENO|1),
+	A(ATTK(AT_WEAP, AD_PHYS, 2, 6),
+	  NO_ATTK, 
+	  NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK),
+	SIZ(450, 150, 0, MS_ORC, MZ_SMALL), MR_POISON, 0,
+	0 /*MM*/, MT_OMNIVORE|MT_HOSTILE|MT_COLLECT /*MT*/,
+	MB_HUMANOID|MB_POIS|MB_OVIPAROUS /*MB*/, MG_LORD|MG_TRACKER /*MG*/,
+	MA_REPTILIAN /*MA*/,  MV_INFRAVISION|MV_NORMAL|MV_SCENT /*MV*/, CLR_BLACK),
+    MON("Kroo the Kobold King", S_KOBOLD,//3
+	LVL(13, 9, 0, 0, -3), (G_NOGEN|G_UNIQ),
+	A(ATTK(AT_WEAP, AD_PHYS, 2, 6),ATTK(AT_WEAP, AD_PHYS, 2, 6),
+	   NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK),
+	SIZ(500, 200, 0, MS_ORC, MZ_SMALL), MR_POISON|MR_STONE, 0,
+	0 /*MM*/, MT_OMNIVORE|MT_HOSTILE|MT_COLLECT|MT_JEWELS|MT_GREEDY /*MT*/,
+	MB_HUMANOID|MB_POIS|MB_OVIPAROUS /*MB*/, MG_LORD|MG_TRACKER|MG_NOPOLY|MG_NOTAME|MG_PNAME|MG_PRINCE /*MG*/,
+	MA_REPTILIAN /*MA*/,  MV_INFRAVISION|MV_NORMAL|MV_SCENT /*MV*/, CLR_YELLOW),
 /*
  * leprechauns
  */
@@ -4719,7 +4744,7 @@ MON("villithid", S_VAMPIRE,//14
 	A(ATTK(AT_NONE, AD_MAGM, 0, 4),
 	  NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK, NO_ATTK),
 	SIZ(WT_HUMAN, 400, 0, MS_PORTAL, MZ_HUMAN), 0, 0,
-	0 /*MM*/, MT_OMNIVORE|MT_PEACEFUL /*MT*/,
+	0 /*MM*/, MT_OMNIVORE|MT_PEACEFUL|MT_STALK /*MT*/,
 	MB_HUMANOID|MB_MALE /*MB*/, MG_NOWISH|MG_NOTAME|MG_NOPOLY|MG_INFRAVISIBLE /*MG*/,
 	MA_HUMAN /*MA*/,  MV_NORMAL /*MV*/, HI_ZAP),
     MON("aligned priest", S_HUMAN,//15

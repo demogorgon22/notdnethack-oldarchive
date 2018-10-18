@@ -699,6 +699,7 @@ boolean chatting;
 			}
 			/*some flavor text bullshit*/
 			int selection = doportalmenu("Open a portal to where?");
+			if(!selection) return 1;
 			int landings[5][2];
 			int dnum;
 			struct trap *portal;
@@ -722,8 +723,12 @@ boolean chatting;
 				case 3:
 					dnum = mines_dnum;
 				break;
+				case 4:
+					dnum = dismalswamp_dnum;
+				break;
 				default:
 					dnum = ice_dnum;
+					impossible("Improper branch selected?");
 				break;
 			}
 			portal = mkportal(landings[dungeon_topology.village_variant][0], landings[dungeon_topology.village_variant][1], dnum, 1);
@@ -1991,20 +1996,15 @@ const char *prompt;
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'm', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-	Sprintf(buf, "Psionic Cancellation");
+	Sprintf(buf, "The Dismal Swamp");
 	any.a_int = 4;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
-		'c', 0, ATR_NONE, buf,
+		's', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "Elder Memories");
 	any.a_int = 5;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'E', 0, ATR_NONE, buf,
-		MENU_UNSELECTED);
-	Sprintf(buf, "Recharge");
-	any.a_int = 6;	/* must be non-zero */
-	add_menu(tmpwin, NO_GLYPH, &any,
-		'r', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	end_menu(tmpwin, prompt);
 

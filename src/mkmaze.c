@@ -711,6 +711,18 @@ register const char *s;
 				}
 			}
 		}
+		if(In_dismalswamp(&u.uz)){
+			for(x = 0; x<COLNO; x++){
+				for(y = 0; y<ROWNO; y++){
+					if(levl[x][y].typ == TREE){
+						if(rn2(5)) levl[x][y].typ = POOL;
+					}
+					if(levl[x][y].typ == ROOM){
+						if(!rn2(2)) levl[x][y].typ = GRASS;
+					}
+				}
+			}
+		}
 		if(Is_lolth_level(&u.uz)){
 			int x, y;
 			place_lolth_vaults();

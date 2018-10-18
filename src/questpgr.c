@@ -610,6 +610,24 @@ qt_montype()
 }
 
 struct permonst *
+dismalswamp_montype()
+{
+	int chance = rn2(100);
+	if(chance < 40)
+		return mkclass(S_KOBOLD, G_NOHELL);
+	if(chance < 60)
+		return mkclass(S_SNAKE, G_NOHELL);
+	if(chance < 70)
+		return &mons[PM_LEPRECHAUN];
+	if(chance < 80)
+		return mkclass(S_NYMPH, G_NOHELL);
+	if(chance < 90)
+		return mkclass(S_RODENT, G_NOHELL);
+	if(chance < 100)
+		return mkclass(S_DOG, G_NOHELL);
+
+}
+struct permonst *
 blackforest_montype()
 {
 	int chance = rn2(100);
