@@ -699,6 +699,15 @@ register const char *s;
 				}
 			}
 		}
+		if(In_icecaves(&u.uz)){
+			for(x = 0; x<COLNO; x++){
+				for(y = 0; y<ROWNO; y++){
+					if(levl[x][y].typ == ICE){
+						if(!rn2(20)) levl[x][y].typ = ROOM;
+					}
+				}
+			}
+		}
 		if(In_blackforest(&u.uz)){
 			for(x = 0; x<COLNO; x++){
 				for(y = 0; y<ROWNO; y++){
