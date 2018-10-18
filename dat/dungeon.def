@@ -16,7 +16,7 @@
 
 DUNGEON:	"The Dungeons of Doom" "D" (25, 5)
 ALIGNMENT:	unaligned
-BRANCH:		"The Gnomish Mines" @ (11, 0)
+BRANCH:		"The Gnomish Mines" @ (4, 0) portal
 RNDLEVEL:	"villag" "O" @ (4, 0) 4
 BRANCH:		"The Ice Caves" @ (4, 0) portal
 BRANCH:		"The Black Forest" @ (4, 0) portal
@@ -109,13 +109,13 @@ LEVEL:		"fakewiz3" "G" @ (-12,9)
 #
 #	The Mines of the Gnomes of Zurich.
 #
-DUNGEON:	"The Gnomish Mines" "M" (9, 1)
+DUNGEON:	"The Gnomish Mines" "M" (5, 0)
 ALIGNMENT:	lawful
 DESCRIPTION:	mazelike
-RNDLEVEL:	"minetn" "T" @ (4, 1) 7
+RNDLEVEL:	"minetn" "T" @ (-2, 1) 7
 LEVELDESC:	town
 RNDLEVEL:	"minend" "E" @ (-1, 0) 4
-ENTRY:          2
+ENTRY:          1
 
 #
 #	The ice caves

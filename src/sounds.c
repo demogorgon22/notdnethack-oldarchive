@@ -719,6 +719,9 @@ boolean chatting;
 				case 2:
 					dnum = blackforest_dnum;
 				break;
+				case 3:
+					dnum = mines_dnum;
+				break;
 				default:
 					dnum = ice_dnum;
 				break;
@@ -1983,10 +1986,10 @@ const char *prompt;
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'f', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-	Sprintf(buf, "Energy Boost");
+	Sprintf(buf, "The Gnomish Mines");
 	any.a_int = 3;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
-		'e', 0, ATR_NONE, buf,
+		'm', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "Psionic Cancellation");
 	any.a_int = 4;	/* must be non-zero */
