@@ -272,6 +272,13 @@ unsigned *ospecial;
 						(y%4 == 0 && x%3 ==0) ||
 						(y%3 == 0 && x%4 ==0)) 
 						color = CLR_GREEN;
+			} else if(In_tower(&u.uz) && dunlev(&u.uz) == 4 && u.ubranch == DISMAL_SWAMP){
+				if (offset == S_pool)
+					/*no fleecy colors here!*/
+					if((y%4 == 0 && x%4 == 0) || 
+						(y%4 == 0 && x%3 ==0) ||
+						(y%3 == 0 && x%4 ==0)) 
+						color = CLR_GREEN;
 			} else if(Is_peanut(&u.uz)){
 				if(offset >= S_vwall && offset <= S_trwall){
 					color = CLR_BROWN;

@@ -768,6 +768,59 @@ register const char *s;
 				}
 			}
 		}
+		if(In_adventure_branch(&u.uz) && dunlev(&u.uz) == 1){
+			branch *br = dungeon_branch("Vlad's Tower");
+			br->end1 = u.uz;
+			place_branch(br,0,0);
+			
+		}
+		if(In_tower(&u.uz) && dunlev(&u.uz) == 4 && u.ubranch){
+			if(u.ubranch == ICE_CAVES){
+				for(x = 21; x<COLNO; x++){
+					for(y = 0; y<ROWNO; y++){
+						if(levl[x][y].typ == ROOM){
+							if(rn2(80)) levl[x][y].typ = ICE;
+						}
+						if(levl[x][y].typ == TREE){
+							levl[x][y].typ = VWALL;
+						}
+					}
+				}
+
+			}
+			if(u.ubranch == BLACK_FOREST){
+				for(x = 21; x<COLNO; x++){
+					for(y = 0; y<ROWNO; y++){
+						if(levl[x][y].typ == POOL){
+							levl[x][y].typ = TREE;
+						}
+						if(levl[x][y].typ == TREE){
+							if(!rn2(2)) levl[x][y].typ = DEADTREE;
+						}
+						if(levl[x][y].typ == ROOM){
+							if(!rn2(10)) levl[x][y].typ = CLOUD;
+						}
+					}
+				}
+
+			}
+			if(u.ubranch == DISMAL_SWAMP){
+				for(x = 21; x<COLNO; x++){
+					for(y = 0; y<ROWNO; y++){
+						if(levl[x][y].typ == STONE){
+							levl[x][y].typ = TREE;
+						}
+						if(levl[x][y].typ == TREE){
+							if(rn2(5)) levl[x][y].typ = POOL;
+						}
+						if(levl[x][y].typ == ROOM){
+							if(!rn2(2)) levl[x][y].typ = GRASS;
+						}
+					}
+				}
+
+			}
+		}
 		if(Is_lolth_level(&u.uz)){
 			int x, y;
 			place_lolth_vaults();
