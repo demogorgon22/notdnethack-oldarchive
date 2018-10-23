@@ -1343,6 +1343,8 @@ ring:
 				s_suffix(mons[obj->corpsenm].mname));
 			Strcat(prefix, tmpbuf);
 		    } else {
+			if(obj->corpsenm == PM_MINER && In_icecaves(&u.uz))
+				Strcat(prefix, "frozen ");
 			Strcat(prefix, mons[obj->corpsenm].mname);
 			Strcat(prefix, " ");
 		    }

@@ -23,7 +23,7 @@ BRANCH:		"The Dismal Swamp" @ (4, 0) portal
 BRANCH:		"The Black Forest" @ (4, 0) portal
 %REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
-CHAINBRANCH:	"Vlad's Tower" "oracle" + (0,0) up
+CHAINBRANCH:	"Vlad's Tower" "oracle" + (0,0) no_up up
 LEVALIGN:	neutral
 CHAINBRANCH:	"Lokoban" "oracle" + (1, 0) up
 CHAINLEVEL:	"qstlb" "none" "oracle" + (6, 2)

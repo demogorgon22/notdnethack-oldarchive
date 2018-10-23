@@ -704,6 +704,16 @@ register const char *s;
 				for(y = 0; y<ROWNO; y++){
 					if(levl[x][y].typ == ICE){
 						if(!rn2(20)) levl[x][y].typ = ROOM;
+						if(!rn2(500)){
+							mksobj_at(PICK_AXE, x, y, TRUE, FALSE);
+							mksobj_at(HELMET, x, y, TRUE, FALSE);
+							if(!rn2(2)) mksobj_at(LEATHER_ARMOR, x, y, TRUE, FALSE);
+							else mksobj_at(STUDDED_LEATHER_ARMOR, x, y, TRUE, FALSE);
+							if(!rn2(4)) mksobj_at(HIGH_BOOTS, x, y, TRUE, FALSE);
+							else mksobj_at(LOW_BOOTS, x, y, TRUE, FALSE);
+							(void) mkcorpstat(CORPSE, (struct monst *) 0, 
+								&mons[PM_MINER], x, y, TRUE);
+						}
 					}
 				}
 			}
@@ -716,6 +726,32 @@ register const char *s;
 					}
 					if(levl[x][y].typ == ROOM){
 						if(!rn2(10)) levl[x][y].typ = CLOUD;
+						if(!rn2(500)){
+							switch(rn2(6)){
+								case 0:
+									mksobj_at(SICKLE, x, y, TRUE, FALSE);
+								break;
+								case 1:
+									mksobj_at(SCYTHE, x, y, TRUE, FALSE);
+								break;
+								case 2:
+									mksobj_at(KNIFE, x, y, TRUE, FALSE);
+								break;
+								case 3:
+									mksobj_at(CLUB, x, y, TRUE, FALSE);
+								break;
+								case 4:
+									mksobj_at(AXE, x, y, TRUE, FALSE);
+								break;
+								case 5:
+									mksobj_at(VOULGE, x, y, TRUE, FALSE);
+								break;
+							}
+							mksobj_at(LEATHER_CLOAK, x, y, TRUE, FALSE);
+							mksobj_at(GLOVES, x, y, TRUE, FALSE);
+							(void) mkcorpstat(CORPSE, (struct monst *) 0, 
+								&mons[PM_PEASANT], x, y, TRUE);
+						}
 					}
 				}
 			}

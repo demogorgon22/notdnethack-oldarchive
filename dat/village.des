@@ -1,5 +1,5 @@
 #village.des
-#Village maps
+#Travelling maps
 
 #
 #Grass Plain village
@@ -55,7 +55,7 @@ OBJECT: ')',"scythe",place[5],uncursed,+3
 OBJECT:random,random,random
 OBJECT:random,random,random
 # Monsters.
-MONSTER:'@',"Village Wizard",(54,06)
+MONSTER:'@',"Travelling Wizard",(54,06)
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
@@ -120,7 +120,7 @@ OBJECT:random,random,random
 #way back
 TRAP:"teleport",(70,16)
 # Monsters.
-MONSTER:'@',"Village Wizard",(22,03)
+MONSTER:'@',"Travelling Wizard",(22,03)
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
@@ -171,7 +171,7 @@ OBJECT: ')',"axe",place[5],uncursed,+3
 OBJECT:random,random,random
 OBJECT:random,random,random
 # Monsters.
-MONSTER:'@',"Village Wizard",(28,03)
+MONSTER:'@',"Travelling Wizard",(28,03)
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random
@@ -220,7 +220,7 @@ OBJECT: ')',"droven lance",place[5],uncursed,+3
 OBJECT:random,random,random
 OBJECT:random,random,random
 # Monsters.
-MONSTER:'@',"Village Wizard",(28,03)
+MONSTER:'@',"Travelling Wizard",(28,03)
 MONSTER:random,random,random
 MONSTER:random,random,random
 MONSTER:random,random,random

@@ -485,6 +485,12 @@ struct you {
 	long	ucleansed;	/* to record moves when player was cleansed */
 	long	usleep;		/* sleeping; monstermove you last started */
 	int 	ustdy;		/* to record extra damage to be delt due to having been studied */
+	uchar	ubranch;	/* record which branch the village wizard opened up for you*/
+#define ICE_CAVES	1
+#define BLACK_FOREST	2
+#define GNOMISH_MINES	3
+#define DISMAL_SWAMP	4
+#define MOUNTAIN	5
 	uchar 	wimage;		/* to record if you have the image of a Weeping Angel in your mind */
 	int uinvault;
 	struct monst *ustuck;

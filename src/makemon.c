@@ -3142,6 +3142,16 @@ register struct monst *mtmp;
 			if (!rn2(4)) m_initthrow(mtmp, DART, 12);
 			else if(!rn2(3)) (void)mongets(mtmp, SHORT_SWORD);
 			else if(!rn2(2)) (void)mongets(mtmp, CLUB);
+			if(In_dismalswamp(&u.uz)){
+				(void)mongets(mtmp,ORCISH_HELM);
+				(void)mongets(mtmp,ORCISH_CLOAK);
+				if(ptr == &mons[PM_KOBOLD_LORD])
+					(void)mongets(mtmp,ORCISH_RING_MAIL);
+				if(ptr == &mons[PM_ROCK_KOBOLD])
+					(void)mongets(mtmp,ORCISH_CHAIN_MAIL);
+				if(ptr == &mons[PM_SWAMP_KOBOLD])
+					(void)mongets(mtmp,ORCISH_SHIELD);
+			}
 		}
 		break;
 	    case S_CENTAUR:
@@ -5417,6 +5427,8 @@ register int	mmflags;
 					else curhouse = rn2(LAST_FALLEN_HOUSE+1-FIRST_FALLEN_HOUSE)+FIRST_FALLEN_HOUSE;
 				}
 				else curhouse = rn2(LAST_FALLEN_HOUSE+1-FIRST_FALLEN_HOUSE)+FIRST_FALLEN_HOUSE;
+			} else if(Is_village_level(&u.uz)){
+				curhouse = u.uhouse;
 			} else if(In_quest(&u.uz)){
 				if(Race_if(PM_DROW) && Role_if(PM_EXILE)){
 					curhouse = PEN_A_SYMBOL;
@@ -5639,7 +5651,7 @@ register int	mmflags;
 				mtmp->mhpmax = 10*mtmp->mhpmax;
 				mtmp->mhp = mtmp->mhpmax;
 			}
-			if(mndx == PM_VILLAGE_WIZARD){
+			if(mndx == PM_TRAVELLING_WIZARD){
 				struct monst *mtmp2;
 				for(int i = 0;i<8+rnd(4);i++){
 					mtmp2 = makemon(&mons[urace.malenum], mtmp->mx, mtmp->my, MM_ADJACENTOK);

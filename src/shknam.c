@@ -454,6 +454,10 @@ struct mkroom	*sroom;
 	if(In_blackforest(&u.uz)){
 		newcham(shk,&mons[PM_VAMPIRE_LORD],FALSE,FALSE);
 	}
+	if(In_icecaves(&u.uz)){
+		if(!rn2(2)) newcham(shk,&mons[PM_FROST_GIANT],FALSE,FALSE);
+		else newcham(shk,&mons[PM_ICE_TROLL],FALSE,FALSE);
+	}
 
 	return(sh);
 }

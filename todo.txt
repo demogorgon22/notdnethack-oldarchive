@@ -101,5 +101,6 @@ Mystic class monk refactor
 	Some sort of nerf to make up for the above average dmg output?
 	Some sort of energy form unlocked at a certain level OR
 	A form that scales with XP lvl
-	
+Add a mountain early branch
+Move vlad back to from mines but for each early branch and reskin based on one selected	
 	

@@ -698,8 +698,13 @@ boolean chatting;
 				return 1;
 			}
 			/*some flavor text bullshit*/
-			int selection = doportalmenu("Open a portal to where?");
+			int selection;
+			if(Role_if(PM_RANGER) && Race_if(PM_GNOME))
+				selection = GNOMISH_MINES;
+			else
+				selection = doportalmenu("Open a portal to where?");
 			if(!selection) return 1;
+			u.ubranch = selection;
 			int landings[5][2];
 			int dnum;
 			struct trap *portal;
@@ -713,17 +718,17 @@ boolean chatting;
 			landings[CAVE_VILLAGE][0] = 40;
 			landings[CAVE_VILLAGE][1] = 11;
 			switch(selection){
-				case 1:
+				case ICE_CAVES:
 					dnum = ice_dnum;
 
 				break;
-				case 2:
+				case BLACK_FOREST:
 					dnum = blackforest_dnum;
 				break;
-				case 3:
+				case GNOMISH_MINES:
 					dnum = mines_dnum;
 				break;
-				case 4:
+				case DISMAL_SWAMP:
 					dnum = dismalswamp_dnum;
 				break;
 				default:
@@ -1982,27 +1987,27 @@ const char *prompt;
 	Sprintf(buf, "Locations: ");
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 	Sprintf(buf, "The Ice Caves");
-	any.a_int = 1;	/* must be non-zero */
+	any.a_int = ICE_CAVES;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'i', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "The Black Forest");
-	any.a_int = 2;	/* must be non-zero */
+	any.a_int = BLACK_FOREST;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'f', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "The Gnomish Mines");
-	any.a_int = 3;	/* must be non-zero */
+	any.a_int = GNOMISH_MINES;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'm', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "The Dismal Swamp");
-	any.a_int = 4;	/* must be non-zero */
+	any.a_int = DISMAL_SWAMP;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		's', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-	Sprintf(buf, "Elder Memories");
-	any.a_int = 5;	/* must be non-zero */
+	Sprintf(buf, "??????");
+	any.a_int = MOUNTAIN;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'E', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);

@@ -1425,7 +1425,7 @@ A("The Poplar Punisher", QUARTERSTAFF, /*Needs encyc entry*/
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	PHYS(4,10),	NO_DFNS,	NO_CARY,
 	0,	A_NONE, NON_PM, NON_PM, 500L, 
-	SPFX2_SHATTER,SPFX3_NOCNT,0),
+	SPFX2_SHATTER|SPFX2_DIG,SPFX3_NOCNT,0),
 
 A("The Eye of Vecna", EYEBALL,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_HSPDAM),0,
