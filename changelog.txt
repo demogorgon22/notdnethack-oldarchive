@@ -170,6 +170,15 @@ Salamander Convict and Rogue quest
 		Epic loot
 	
 Dungeon changes
+	Added adventure branches and the village
+		Dlvl4 is now a village of friendlies of your race
+			4 different variants that race helps select
+		Talk to the travelling wizard to open a portal to a branch
+		Five branches with unique prizes and enemies
+			Ice Caves
+			Black Forest
+			Gnomish Mines
+			Dismal Swamp
 	Replaced Sokoban branch with Lokoban
 		Levels aren't as much about solving puzzles as they are
 			being cool

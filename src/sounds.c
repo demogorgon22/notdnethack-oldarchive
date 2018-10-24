@@ -629,6 +629,33 @@ register struct monst *mtmp;
 	verbalize("I'm hungry.");
     }
 }
+static const char *branch_info[] ={
+	/* Ice Caves*/
+	"Miners are known to freeze to death in The Ice Caves.",
+	"There is a frozen settlement a ways into The Ice Caves.",
+	"It is said a great beast lives at the bottom of The Ice Caves.",
+	"The Ice Caves are full of dangerous cold based monsters.",
+	"The ice in The Ice Caves has unusual traction.",
+	/* black forest*/
+	"The Black Forest is inhabited by many plants and beasts.",
+	"Peasants tend to wander into The Black Forest and meet their demise.",
+	"There is said to be a strange shrine in the heart of The Black Forest.",
+	"The Black Forest is dark, as well as foggy.",
+	"A legendary poplar tree lives deep in The Black Forest",
+	/*Gnomish Mines*/
+	"The Gnomish Mines are full of gnomes and dwarves.",
+	"A town is established deep in the Gnomish Mines",
+	"It is said there is a luckstone at the bottom of the Gnomish Mines.",
+	"The inhabitants of the Gnomish Mines are well armed and armored.",
+	"The town in the Gnomish Mines is full of shopkeepers.",
+	/* Dismal Swamp*/
+	"The Dismal Swamp is full of water, trees, and grass.",
+	"It is rumored there is a kobold fortress deep in The Dismal Swamp.",
+	"There is a temple deep in The Dismal Swamp.",
+	"The beasts of The Dismal Swamp include armored kobolds.",
+	"The kobolds of The Dismal Swamp are said to have hoarded treasure."
+};
+
 
 int
 domonnoise(mtmp, chatting)
@@ -688,21 +715,28 @@ boolean chatting;
 		}
 	}
 	if(Is_village_level(&u.uz) && Race_if(monsndx(ptr))){
-		pline("Welcome to the village.");
+		if(u.ubranch){
+			verbalize("%s",branch_info[rn2(5) + ((u.ubranch-1)*5)]);
+		} else {
+			verbalize("%s",branch_info[rn2(SIZE(branch_info))]);
+		}
 		return 1;
 	}
 	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : ptr->msound) {
 	case MS_PORTAL:{
-			if(!Is_village_level(&u.uz)){
+			if(!Is_village_level(&u.uz) || u.ubranch){
 				pline("%s mumbles about the village.",Monnam(mtmp));
 				return 1;
 			}
 			/*some flavor text bullshit*/
 			int selection;
-			if(Role_if(PM_RANGER) && Race_if(PM_GNOME))
+			if(Role_if(PM_RANGER) && Race_if(PM_GNOME)){
 				selection = GNOMISH_MINES;
-			else
+			}
+			else{
+				verbalize("Could you tell me where the Amulet of Yendor is?");
 				selection = doportalmenu("Open a portal to where?");
+			}
 			if(!selection) return 1;
 			u.ubranch = selection;
 			int landings[5][2];
@@ -736,9 +770,12 @@ boolean chatting;
 					impossible("Improper branch selected?");
 				break;
 			}
+			verbalize("I must leave now!");
 			portal = mkportal(landings[dungeon_topology.village_variant][0], landings[dungeon_topology.village_variant][1], dnum, 1);
 			portal->tseen = 1;
+			mongone(mtmp);
 			You_hear("a woosh!");
+			return 1;
 
 		}
 		break;
