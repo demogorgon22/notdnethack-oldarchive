@@ -1536,6 +1536,7 @@ u_init()
 	 * necessary when aborting from a failed restore */
 	(void) memset((genericptr_t)&u, 0, sizeof(u));
 	u.ustuck = (struct monst *)0;
+	u.umystic = 0x0;
 
 	u.summonMonster = FALSE;
 	u.uleadamulet = FALSE;

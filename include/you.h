@@ -511,6 +511,14 @@ struct you {
 	struct skills weapon_skills[P_NUM_SKILLS];
 	boolean twoweap;		/* KMH -- Using two-weapon combat */
 	int divetimer;			/* how long you can stay under water */
+	int umystic;	/*Monk mystic attacks active*/
+#define SURGE_PUNCH		0x0001
+#define FORCE_PUNCH		0x0002
+#define CHI_HEALING		0x0004
+#define SPIRIT_PUNCH		0x0008
+#define FLICKER_PUNCH		0x0010
+#define ABSORBATIVE_PUNCH	0x0020
+#define ENERGY_FORM		0x0040
 
 	long	wardsknown;	/* known wards */
 #define	WARD_ELBERETH		0x0000001L

@@ -2192,6 +2192,15 @@ defaultvalue:
 	
 	/*Now apply damage*/
 	// pline("Damage: %d",tmp);
+	
+
+	if(u.umystic & ABSORBATIVE_PUNCH){
+		tmp /= 2;
+		u.uen += tmp;
+		if(u.uen > u.uenmax) u.uen = u.uenmax;
+		flags.botl = 1;
+
+	}
 	if(obj && Is_spear(obj) && obj->ovar1 == CHUNK_OF_FOSSILE_DARK){
 		if(!resists_drli(mon)){
 			pline("%s draws the life from %s!",

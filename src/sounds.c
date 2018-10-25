@@ -734,8 +734,8 @@ boolean chatting;
 				selection = GNOMISH_MINES;
 			}
 			else{
-				verbalize("Could you tell me where the Amulet of Yendor is?");
-				selection = doportalmenu("Open a portal to where?");
+				verbalize("Could you tell me which way the Amulet of Yendor is?");
+				selection = doportalmenu("Have a portal opened to where?");
 			}
 			if(!selection) return 1;
 			u.ubranch = selection;

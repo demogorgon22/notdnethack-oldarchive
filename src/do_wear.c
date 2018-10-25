@@ -477,6 +477,10 @@ Gloves_on()
     if (!uarmg) return 0;
     oldprop =
 	u.uprops[objects[uarmg->otyp].oc_oprop].extrinsic & ~WORN_GLOVES;
+    if(Role_if(PM_MONK) && is_metallic(uarmg) && u.umystic){
+	    pline("Your metal gloves block your mystic abilities!");
+	    u.umystic = 0;
+    }
 
     switch(uarmg->otyp) {
 	case GLOVES:

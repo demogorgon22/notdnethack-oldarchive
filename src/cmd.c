@@ -1144,185 +1144,290 @@ dofightingform()
 	menu_item *selected;
 	anything any;
 	
-	if(!(uwep && is_lightsaber(uwep))){
-		pline("You don't know any special fighting styles for use in this situation.");
-		return 0;
-	}
-	
-	if(P_SKILL(weapon_type(uwep)) < P_BASIC){
-		pline("You must have at least some basic skill in the use of your weapon before you can employ special fighting styles.");
-		return 0;
+	if(Role_if(PM_MONK)){
+		if(uwep || uswapwep){
+			pline("You must not be wielding any weapons to use mystic combat.");
+			return 0;
+		} else if (uarmg && is_metallic(uarmg)){
+			pline("Your metal gloves block your power.");
+			return 0;
+		}
+	} else {
+		if(!(uwep && is_lightsaber(uwep))){
+			pline("You don't know any special fighting styles for use in this situation.");
+			return 0;
+		}
+		
+		if(P_SKILL(weapon_type(uwep)) < P_BASIC){
+			pline("You must have at least some basic skill in the use of your weapon before you can employ special fighting styles.");
+			return 0;
+		}
 	}
 
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
 	any.a_void = 0;		/* zero out all bits */
-	
-	Sprintf(buf,	"Known Forms");
-	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
-	if(P_SKILL(FFORM_SHII_CHO) >= P_BASIC){
-		if(u.fightingForm == FFORM_SHII_CHO) {
-			Sprintf(buf,	"Shii-Cho (active)");
-		} else {
-			Sprintf(buf,	"Shii-Cho");
+	if(Role_if(PM_MONK) && !uwep){
+		Sprintf(buf,	"Known Forms");
+		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+		if(TRUE){
+			if(u.umystic & SURGE_PUNCH) {
+				Sprintf(buf,	"Surge Punch (active)");
+			} else {
+				Sprintf(buf,	"Surge Punch");
+			}
+			any.a_int = SURGE_PUNCH;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		any.a_int = FFORM_SHII_CHO;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_MAKASHI) >= P_BASIC){
-		if(u.fightingForm == FFORM_MAKASHI) {
-			if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
-				Sprintf(buf,	"Makashi (selected; blocked by armor)");
+		if(u.ulevel >= 2){
+			if(u.umystic & ABSORBATIVE_PUNCH) {
+				Sprintf(buf,	"Absorbative Punch (active)");
 			} else {
-				Sprintf(buf,	"Makashi (active)");
+				Sprintf(buf,	"Absorbative Punch");
 			}
-		} else {
-			if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
-				Sprintf(buf,	"Makashi (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Makashi");
-			}
+			any.a_int = ABSORBATIVE_PUNCH;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		any.a_int = FFORM_MAKASHI;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_SORESU) >= P_BASIC){
-		if(u.fightingForm == FFORM_SORESU) {
-			if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
-				Sprintf(buf,	"Soresu (selected; blocked by armor)");
+		if(u.ulevel >= 4){
+			if(u.umystic & FORCE_PUNCH) {
+				Sprintf(buf,	"Force Punch (active)");
 			} else {
-				Sprintf(buf,	"Soresu (active)");
+				Sprintf(buf,	"Force Punch");
 			}
-		} else {
-			if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
-				Sprintf(buf,	"Soresu (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Soresu");
-			}
+			any.a_int = FORCE_PUNCH;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		any.a_int = FFORM_SORESU;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_ATARU) >= P_BASIC){
-		if(u.fightingForm == FFORM_ATARU) {
-			if(uarm && !(is_light_armor(uarm))){
-				Sprintf(buf,	"Ataru (selected; blocked by armor)");
+		if(u.ulevel >= 6){
+			if(u.umystic & CHI_HEALING) {
+				Sprintf(buf,	"Chi Healing (active)");
 			} else {
-				Sprintf(buf,	"Ataru (active)");
+				Sprintf(buf,	"Chi Healing");
 			}
-		} else {
-			if(uarm && !(is_light_armor(uarm))){
-				Sprintf(buf,	"Ataru (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Ataru");
-			}
-		}
-		any.a_int = FFORM_ATARU;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_SHIEN) >= P_BASIC){
-		if(u.fightingForm == FFORM_SHIEN) {
-			if(uarm && !(is_light_armor(uarm))){
-				Sprintf(buf,	"Shien (selected; blocked by armor)");
-			} else {
-				Sprintf(buf,	"Shien (active)");
-			}
-		} else {
-			if(uarm && !(is_light_armor(uarm))){
-				Sprintf(buf,	"Shien (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Shien");
-			}
-		}
-		any.a_int = FFORM_SHIEN;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_DJEM_SO) >= P_BASIC){
-		if(u.fightingForm == FFORM_DJEM_SO) {
-			if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
-				Sprintf(buf,	"Djem So (selected; blocked by armor)");
-			} else {
-				Sprintf(buf,	"Djem So (active)");
-			}
-		} else {
-			if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
-				Sprintf(buf,	"Djem So (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Djem So");
-			}
-		}
-		any.a_int = FFORM_DJEM_SO;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_NIMAN) >= P_BASIC){
-		if(u.fightingForm == FFORM_NIMAN) {
-			if(uarm && (is_metallic(uarm))){
-				Sprintf(buf,	"Niman (selected; blocked by armor)");
-			} else {
-				Sprintf(buf,	"Niman (active)");
-			}
-		} else {
-			if(uarm && (is_metallic(uarm))){
-				Sprintf(buf,	"Niman (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Niman");
-			}
-		}
-		any.a_int = FFORM_NIMAN;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	if(P_SKILL(FFORM_JUYO) >= P_BASIC){
-		if(u.fightingForm == FFORM_JUYO) {
-			if(uarm && !(is_light_armor(uarm))){
-				Sprintf(buf,	"Juyo (selected; blocked by armor)");
-			} else {
-				Sprintf(buf,	"Juyo (active)");
-			}
-		} else {
-			if(uarm && !(is_light_armor(uarm))){
-				Sprintf(buf,	"Juyo (blocked by armor)");
-			} else {
-				Sprintf(buf,	"Juyo");
-			}
-		}
-		any.a_int = FFORM_JUYO;	/* must be non-zero */
-		add_menu(tmpwin, NO_GLYPH, &any,
-			incntlet, 0, ATR_NONE, buf,
-			MENU_UNSELECTED);
-		incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-	}
-	end_menu(tmpwin,	"Choose fighting style:");
+			any.a_int = CHI_HEALING;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 
-	how = PICK_ONE;
-	n = select_menu(tmpwin, how, &selected);
-	destroy_nhwindow(tmpwin);
-	
-	if(n <= 0 || u.fightingForm == selected[0].item.a_int){
-		return 0;
-	} else {
-		u.fightingForm = selected[0].item.a_int;
-		return 0;
+		}
+		if(u.ulevel >= 8){
+			if(u.umystic & FLICKER_PUNCH) {
+				Sprintf(buf,	"Flicker Punch (active)");
+			} else {
+				Sprintf(buf,	"Flicker Punch");
+			}
+			any.a_int = FLICKER_PUNCH;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+
+		}
+		if(u.ulevel >= 10){
+			if(u.umystic & SPIRIT_PUNCH) {
+				Sprintf(buf,	"Spirit Punch (active)");
+			} else {
+				Sprintf(buf,	"Spirit Punch");
+			}
+			any.a_int = SPIRIT_PUNCH;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+
+		}
+		end_menu(tmpwin,	"Choose fighting style:");
+		how = PICK_ONE;
+		n = select_menu(tmpwin, how, &selected);
+		destroy_nhwindow(tmpwin);
+			
+		if(n <= 0){
+			return 0;
+		} else {
+			if(u.umystic & selected[0].item.a_int) 
+				u.umystic &= ~(selected[0].item.a_int);
+			else 
+				u.umystic |= selected[0].item.a_int;
+			
+			return 0;
+		}
+	}
+	if(uwep && is_lightsaber(uwep) && P_SKILL(weapon_type(uwep)) >= P_BASIC){
+		Sprintf(buf,	"Known Forms");
+		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+		if(P_SKILL(FFORM_SHII_CHO) >= P_BASIC){
+			if(u.fightingForm == FFORM_SHII_CHO) {
+				Sprintf(buf,	"Shii-Cho (active)");
+			} else {
+				Sprintf(buf,	"Shii-Cho");
+			}
+			any.a_int = FFORM_SHII_CHO;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_MAKASHI) >= P_BASIC){
+			if(u.fightingForm == FFORM_MAKASHI) {
+				if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
+					Sprintf(buf,	"Makashi (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Makashi (active)");
+				}
+			} else {
+				if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
+					Sprintf(buf,	"Makashi (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Makashi");
+				}
+			}
+			any.a_int = FFORM_MAKASHI;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_SORESU) >= P_BASIC){
+			if(u.fightingForm == FFORM_SORESU) {
+				if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
+					Sprintf(buf,	"Soresu (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Soresu (active)");
+				}
+			} else {
+				if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
+					Sprintf(buf,	"Soresu (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Soresu");
+				}
+			}
+			any.a_int = FFORM_SORESU;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_ATARU) >= P_BASIC){
+			if(u.fightingForm == FFORM_ATARU) {
+				if(uarm && !(is_light_armor(uarm))){
+					Sprintf(buf,	"Ataru (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Ataru (active)");
+				}
+			} else {
+				if(uarm && !(is_light_armor(uarm))){
+					Sprintf(buf,	"Ataru (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Ataru");
+				}
+			}
+			any.a_int = FFORM_ATARU;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_SHIEN) >= P_BASIC){
+			if(u.fightingForm == FFORM_SHIEN) {
+				if(uarm && !(is_light_armor(uarm))){
+					Sprintf(buf,	"Shien (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Shien (active)");
+				}
+			} else {
+				if(uarm && !(is_light_armor(uarm))){
+					Sprintf(buf,	"Shien (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Shien");
+				}
+			}
+			any.a_int = FFORM_SHIEN;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_DJEM_SO) >= P_BASIC){
+			if(u.fightingForm == FFORM_DJEM_SO) {
+				if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
+					Sprintf(buf,	"Djem So (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Djem So (active)");
+				}
+			} else {
+				if(uarm && !(is_light_armor(uarm) || is_medium_armor(uarm))){
+					Sprintf(buf,	"Djem So (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Djem So");
+				}
+			}
+			any.a_int = FFORM_DJEM_SO;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_NIMAN) >= P_BASIC){
+			if(u.fightingForm == FFORM_NIMAN) {
+				if(uarm && (is_metallic(uarm))){
+					Sprintf(buf,	"Niman (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Niman (active)");
+				}
+			} else {
+				if(uarm && (is_metallic(uarm))){
+					Sprintf(buf,	"Niman (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Niman");
+				}
+			}
+			any.a_int = FFORM_NIMAN;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(P_SKILL(FFORM_JUYO) >= P_BASIC){
+			if(u.fightingForm == FFORM_JUYO) {
+				if(uarm && !(is_light_armor(uarm))){
+					Sprintf(buf,	"Juyo (selected; blocked by armor)");
+				} else {
+					Sprintf(buf,	"Juyo (active)");
+				}
+			} else {
+				if(uarm && !(is_light_armor(uarm))){
+					Sprintf(buf,	"Juyo (blocked by armor)");
+				} else {
+					Sprintf(buf,	"Juyo");
+				}
+			}
+			any.a_int = FFORM_JUYO;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		end_menu(tmpwin,	"Choose fighting style:");
+
+		how = PICK_ONE;
+		n = select_menu(tmpwin, how, &selected);
+		destroy_nhwindow(tmpwin);
+		
+		if(n <= 0 || u.fightingForm == selected[0].item.a_int){
+			return 0;
+		} else {
+			u.fightingForm = selected[0].item.a_int;
+			return 0;
+		}
 	}
 }
 
