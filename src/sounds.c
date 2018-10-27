@@ -2043,11 +2043,12 @@ const char *prompt;
 	add_menu(tmpwin, NO_GLYPH, &any,
 		's', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-	Sprintf(buf, "??????");
-	any.a_int = MOUNTAIN;	/* must be non-zero */
+	/*Sprintf(buf, "??????");
+	any.a_int = MOUNTAIN;	
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'E', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
+		*/
 	end_menu(tmpwin, prompt);
 
 	how = PICK_ONE;

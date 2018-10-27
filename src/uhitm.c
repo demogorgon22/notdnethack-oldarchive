@@ -2208,7 +2208,7 @@ defaultvalue:
 			Your("hands surge!");
 			
 		}
-		if(u.umystic & FORCE_PUNCH && u.uen >= 5){
+		if(u.umystic & FORCE_PUNCH && u.uen >= 5 && !rn2(2)){
 			u.uen -= 5;
 			flags.botl = 1;
 			pline("%s is thrown backwards by the force of your blow!",Monnam(mon));

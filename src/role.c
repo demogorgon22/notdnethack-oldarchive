@@ -260,7 +260,7 @@ const struct Role roles[] = {
 	{  1, 4,  0, 1,  0, 2 },10,	/* Energy */
 	10, 8,-2, 0,  9, A_WIS, SPE_TURN_UNDEAD, -1000
 },
-{	{"Monk", 0}, {
+{	{"Mystic", 0}, {
 	{"Candidate",         0},
 	{"Novice",            0},
 	{"Initiate",          0},

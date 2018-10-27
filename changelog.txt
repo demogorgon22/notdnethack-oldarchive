@@ -82,6 +82,29 @@ Anachrononaut changes
 		another monster.
 		Start with wood stove and 5 waters. Need to probably eat some
 		wood for nutrition.
+Monk changes
+	Renamed Mystic
+	Can set attack styles with #style (blocked by metal gloves)
+		Surge punch 
+			5 pw to do 3 + d(5) damage per barehanded hit
+		Force punch
+			5 pw to do a big pushback 50% of hits
+			Unlock level 4
+		Spirit punch
+			3x3 magic explosion 6d3 with punch, centered on
+			target, 15 pw
+			Unlock level 10
+		Flicker punch
+			3 pw
+			Unlock level 8
+			Works like ataru somersaults but flavored as warping
+			instead
+		Absortive strikes
+			Halved dmg but regains dmg pw, this can't be on with other modes
+			Unlock level 2
+		Chi Healing
+			Drains 1 pw per turn to heal 1 hp
+			Unlock level 6
 Skill changes
 	Grand master martial arts gives extra kick attack
 	AT_KICK for player acts as if you ctrl+D kicked
@@ -174,11 +197,12 @@ Dungeon changes
 		Dlvl4 is now a village of friendlies of your race
 			4 different variants that race helps select
 		Talk to the travelling wizard to open a portal to a branch
-		Five branches with unique prizes and enemies
+		Four branches with unique prizes and enemies
 			Ice Caves
 			Black Forest
 			Gnomish Mines
 			Dismal Swamp
+		Go play and find out!
 	Replaced Sokoban branch with Lokoban
 		Levels aren't as much about solving puzzles as they are
 			being cool

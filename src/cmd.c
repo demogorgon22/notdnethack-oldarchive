@@ -1184,9 +1184,9 @@ dofightingform()
 		}
 		if(u.ulevel >= 2){
 			if(u.umystic & ABSORBATIVE_PUNCH) {
-				Sprintf(buf,	"Absorbative Punch (active)");
+				Sprintf(buf,	"Absorbative Strike (active)");
 			} else {
-				Sprintf(buf,	"Absorbative Punch");
+				Sprintf(buf,	"Absorbative Strike");
 			}
 			any.a_int = ABSORBATIVE_PUNCH;	/* must be non-zero */
 			add_menu(tmpwin, NO_GLYPH, &any,
@@ -1256,7 +1256,8 @@ dofightingform()
 			else 
 				u.umystic |= selected[0].item.a_int;
 			if(selected[0].item.a_int == ABSORBATIVE_PUNCH){
-				u.umystic = ABSORBATIVE_PUNCH;
+				if(u.umystic & ABSORBATIVE_PUNCH)
+					u.umystic = ABSORBATIVE_PUNCH;
 			} else if(u.umystic & ABSORBATIVE_PUNCH){
 				u.umystic &= ~ABSORBATIVE_PUNCH;
 			}
