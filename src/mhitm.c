@@ -1,5 +1,3 @@
-/*	SCCS Id: @(#)mhitm.c	3.4	2003/01/02	*/
-/* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
 /* NetHack may be freely redistributed.  See license for details. */
 
 #include "hack.h"
@@ -394,6 +392,7 @@ mattackm(magr, mdef)
 				res[i] = MM_HIT;
 				if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 		    } else res[i] = MM_MISS;
+		    mon_ranged_gazeonly = 0;
 		    if (mdef->mhp < 1) res[i] = MM_DEF_DIED;
 		    if (magr->mhp < 1) res[i] = MM_AGR_DIED;
 		    break;
@@ -414,6 +413,7 @@ mattackm(magr, mdef)
 					res[i] = MM_HIT;
 					if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 				} else res[i] = MM_MISS;
+		    		mon_ranged_gazeonly = 0;
 				if (mdef->mhp < 1) res[i] = MM_DEF_DIED;
 				if (magr->mhp < 1) res[i] = MM_AGR_DIED;
 				break;
@@ -509,6 +509,7 @@ meleeattack:
 		}
 		if (strike) {
 		    res[i] = hitmm(magr, mdef, mattk);
+		    	mon_ranged_gazeonly = 0;
 			if(res[i] && magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 		    if((mdef->data == &mons[PM_BLACK_PUDDING] || mdef->data == &mons[PM_BROWN_PUDDING])
 		       && otmp && otmp->obj_material == IRON
@@ -526,6 +527,7 @@ meleeattack:
 			if(mattk->aatyp == AT_DEVA && !DEADMONSTER(mdef)){
 				int deva = 1;
 				while(!DEADMONSTER(mdef) && tmp > (dieroll = rnd(20+i+(deva++)*2))) res[i] = hitmm(magr, mdef, mattk);
+		    		mon_ranged_gazeonly = 0;
 			}
 		} else
 		    missmm(magr, mdef, mattk);
@@ -536,6 +538,7 @@ meleeattack:
 		if (strike){
 		    res[i] = hitmm(magr, mdef, mattk);
 //			if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
+		    mon_ranged_gazeonly = 0;
 		}
 		break;
 
@@ -553,6 +556,7 @@ meleeattack:
 			res[i] = MM_HIT;
 			if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 		} else res[i] = MM_MISS;
+		mon_ranged_gazeonly = 0;
 		if (mdef->mhp < 1) res[i] = MM_DEF_DIED;
 		if (magr->mhp < 1) res[i] = MM_AGR_DIED;
 		break;
@@ -563,6 +567,7 @@ meleeattack:
 			res[i] = MM_HIT;
 			if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 		} else res[i] = MM_MISS;
+		mon_ranged_gazeonly = 0;
 		if (mdef->mhp < 1) res[i] = MM_DEF_DIED;
 		if (magr->mhp < 1) res[i] = MM_AGR_DIED;
 		break;
@@ -579,6 +584,7 @@ meleeattack:
 						if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 					} else res[i] = MM_MISS;
 				}
+		    		mon_ranged_gazeonly = 0;
 				if (mdef->mhp < 1){
 					res[i] = MM_DEF_DIED;
 					break;
@@ -629,6 +635,7 @@ meleeattack:
 	    case AT_EXPL:
 		if (distmin(magr->mx,magr->my,mdef->mx,mdef->my) > 1) break;
 		res[i] = explmm(magr, mdef, mattk);
+		mon_ranged_gazeonly = 0;
 		if(res[i] && magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 		if (is_fern_spore(magr->data)) spore_dies(magr);
 		if (res[i] == MM_MISS) { /* cancelled--no attack */
@@ -654,6 +661,7 @@ meleeattack:
 		else {
 		    if ((strike = (tmp > rnd(20+i)))){
 				res[i] = gulpmm(magr, mdef, mattk);
+		    		mon_ranged_gazeonly = 0;
 				if(magr->mtame && canseemon(magr)) u.petattacked = TRUE;
 		    } else
 				missmm(magr, mdef, mattk);
@@ -765,6 +773,7 @@ struct monst *mdef;
 		if (dist2(magr->mx, magr->my, mdef->mx, mdef->my) > POLE_LIM ||
 			!m_cansee(magr, mdef->mx, mdef->my))
 	    	return MM_MISS;	/* Out of range, or intervening wall */
+		    mon_ranged_gazeonly = 0;
 
 		if (vis) {
 			onm = xname(otmp);
@@ -785,6 +794,7 @@ struct monst *mdef;
 	 */
 	if (!mlined_up(magr, mdef, FALSE))
 	    return MM_MISS;
+	mon_ranged_gazeonly = 0;
 
 	skill = objects[otmp->otyp].oc_skill;
 	mwep = MON_WEP(magr);		/* wielded weapon */

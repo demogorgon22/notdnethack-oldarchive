@@ -1023,6 +1023,7 @@ struct monst *mtmp;
 	    if (dist2(mtmp->mx, mtmp->my, mtmp->mux, mtmp->muy) > POLE_LIM ||
 		    !couldsee(mtmp->mx, mtmp->my))
 		return;	/* Out of range, or intervening wall */
+	    	mon_ranged_gazeonly = 0;
 		
 		if(mtmp->mux != u.ux || mtmp->muy != u.uy){
 			if(canseemon(mtmp)){
@@ -1067,6 +1068,7 @@ struct monst *mtmp;
 		(URETREATING(x,y) &&
 			rn2(BOLT_LIM - distmin(x,y,mtmp->mux,mtmp->muy))))
 	    return;
+	mon_ranged_gazeonly = 0;
 
 	skill = objects[otmp->otyp].oc_skill;
 	mwep = MON_WEP(mtmp);		/* wielded weapon */

@@ -801,12 +801,14 @@ mattacku(mtmp)
 				    missmu(mtmp, (tmp == j), mattk);
 			    } else
 				wildmiss(mtmp, mattk);
+		    	mon_ranged_gazeonly = 0;
 			}
 			if(mdat == &mons[PM_DEMOGORGON] && sum[i]){
 				mtmp->mvar2 = mtmp->mvar2+1;
 				if(!range2 && mtmp->mvar2>=2){
 					struct attack rend = {AT_HUGS, AD_SHRD, 3, 12};
 					sum[i] = hitmu(mtmp, &rend);
+					mon_ranged_gazeonly = 0;
 					mtmp->mvar2=0;
 				}
 			}
@@ -825,12 +827,14 @@ mattacku(mtmp)
 				    missmu(mtmp, (tchtmp == j), mattk);
 			    } else
 				wildmiss(mtmp, mattk);
+		    	mon_ranged_gazeonly = 0;
 			}
 			if(mdat == &mons[PM_DEMOGORGON] && sum[i]){
 				mtmp->mvar2 = mtmp->mvar2+1;
 				if(!range2 && mtmp->mvar2>=2){
 					struct attack rend = {AT_HUGS, AD_SHRD, 3, 12};
 					sum[i] = hitmu(mtmp, &rend);
+		    			mon_ranged_gazeonly = 0;
 					mtmp->mvar2=0;
 				}
 			}
@@ -847,12 +851,14 @@ mattacku(mtmp)
 				    missmu(mtmp, (tchtmp == j), mattk);
 			    } else
 					wildmiss(mtmp, mattk);
+		    	mon_ranged_gazeonly = 0;
 			}
 			if(mdat == &mons[PM_DEMOGORGON] && sum[i]){
 				mtmp->mvar2 = mtmp->mvar2+1;
 				if(!range2 && mtmp->mvar2>=2){
 					struct attack rend = {AT_HUGS, AD_SHRD, 3, 12};
 					sum[i] = hitmu(mtmp, &rend);
+		    			mon_ranged_gazeonly = 0;
 					mtmp->mvar2=0;
 				}
 			}
@@ -861,8 +867,10 @@ mattacku(mtmp)
 		case AT_HUGS:	/* automatic if prev two attacks succeed */
 			/* Note: if displaced, prev attacks never succeeded */
 			if((!range2 && i>=2 && sum[i-1] && sum[i-2])
-							|| mtmp == u.ustuck)
+							|| mtmp == u.ustuck){
 				sum[i]= hitmu(mtmp, mattk);
+		    		mon_ranged_gazeonly = 0;
+			}
 		break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		case AT_GAZE:	/* can affect you either ranged or not */
@@ -888,7 +896,10 @@ mattacku(mtmp)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		case AT_EXPL:	/* automatic hit if next to, and aimed at you */
-			if(!range2) sum[i] = explmu(mtmp, mattk, foundyou);
+			if(!range2){
+				sum[i] = explmu(mtmp, mattk, foundyou);
+		    		mon_ranged_gazeonly = 0;
+			}
 			if (is_fern_spore(mdat)) spore_dies(mtmp);
 		break;
 
@@ -917,6 +928,7 @@ mattacku(mtmp)
 					     is_whirly(mtmp->data) ?
 						"rushing noise" : "splat");
 			   }
+		    	   mon_ranged_gazeonly = 0;
 			}
 			break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -945,6 +957,7 @@ mattacku(mtmp)
 					     is_whirly(mtmp->data) ?
 						"rushing noise" : "splat");
 			   }
+		    	   mon_ranged_gazeonly = 0;
 			}
 			break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -955,7 +968,10 @@ mattacku(mtmp)
 				|| (mdat == &mons[PM_CERBERUS])
 			) flags.drgn_brth = 1;
 			if(mdat == &mons[PM_MAMMON]) flags.mamn_brth = 1;
-			if(range2) sum[i] = breamu(mtmp, mattk);
+			if(range2){
+				sum[i] = breamu(mtmp, mattk);
+		    		mon_ranged_gazeonly = 0;
+			}
 			flags.drgn_brth = 0;
 			flags.mamn_brth = 0;
 			/* Note: breamu takes care of displacement */
@@ -965,7 +981,10 @@ mattacku(mtmp)
 		case AT_SPIT:
 			if(mdat == &mons[PM_MOTHER_LILITH])
 				if(mtmp->mcan) mtmp->mcan=0;
-			if(range2) sum[i] = spitmu(mtmp, mattk);
+			if(range2){
+				sum[i] = spitmu(mtmp, mattk);
+		    		mon_ranged_gazeonly = 0;
+			}
 			/* Note: spitmu takes care of displacement */
 		break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -975,6 +994,7 @@ mattacku(mtmp)
 			if((mattk->adtyp != AD_SHDW || range2) && lined_up(mtmp)){
 				if (canseemon(mtmp)) pline("%s shoots at you!", Monnam(mtmp));
 				for(n = d(mattk->damn, mattk->damd); n > 0; n--) sum[i] = firemu(mtmp, mattk);
+		    		mon_ranged_gazeonly = 0;
 			/* Note: firemu takes care of displacement */
 			}
 		} break;
@@ -1014,6 +1034,7 @@ mattacku(mtmp)
 			if(lined_up(mtmp) && dist2(mtmp->mx,mtmp->my,mtmp->mux,mtmp->muy) <= BOLT_LIM*BOLT_LIM){
 				if (foundyou) sum[i] = hitmu(mtmp, mattk);
 				else wildmiss(mtmp, mattk);
+		    		mon_ranged_gazeonly = 0;
 			}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 		case AT_LNCK:
@@ -1029,12 +1050,14 @@ mattacku(mtmp)
 							missmu(mtmp, (tmp == j), mattk);
 					} else
 						wildmiss(mtmp, mattk);
+		    			mon_ranged_gazeonly = 0;
 				}
 				if(mdat == &mons[PM_DEMOGORGON] && sum[i]){
 					mtmp->mvar2 = mtmp->mvar2+1;
 					if(!range2 && mtmp->mvar2>=2){
 						struct attack rend = {AT_HUGS, AD_SHRD, 3, 12};
 						sum[i] = hitmu(mtmp, &rend);
+		    				mon_ranged_gazeonly = 0;
 						mtmp->mvar2=0;
 					}
 				}
@@ -1055,12 +1078,14 @@ mattacku(mtmp)
 				    missmu(mtmp, (tchtmp == j), mattk);
 			    } else
 				wildmiss(mtmp, mattk);
+		    		mon_ranged_gazeonly = 0;
 			}
 			if(mdat == &mons[PM_DEMOGORGON] && sum[i]){
 				mtmp->mvar2 = mtmp->mvar2+1;
 				if(!range2 && mtmp->mvar2>=2){
 					struct attack rend = {AT_HUGS, AD_SHRD, 3, 12};
 					sum[i] = hitmu(mtmp, &rend);
+		    			mon_ranged_gazeonly = 0;
 					mtmp->mvar2=0;
 				}
 			}
@@ -1102,19 +1127,23 @@ mattacku(mtmp)
 					if(otmp && ((is_lightsaber(otmp) && otmp->lamplit) || arti_shining(otmp))){
 						if(tchtmp > (j = dieroll = rnd(20+i*2))){
 							sum[i] = hitmu(mtmp, mattk);
+		    					mon_ranged_gazeonly = 0;
 							if(mattk->aatyp == AT_DEVA && sum[i]){
 								deva = 1;
 								while(tchtmp > (j = dieroll = rnd(20+i+(deva++)*2))) sum[i] = hitmu(mtmp, mattk);
 							}
 						} else missmu(mtmp, (tchtmp == j), mattk);
+		    				mon_ranged_gazeonly = 0;
 					} else {
 						if(tmp > (j = dieroll = rnd(20+i*2))){
 							sum[i] = hitmu(mtmp, mattk);
+		    					mon_ranged_gazeonly = 0;
 							if(mattk->aatyp == AT_DEVA && sum[i]){
 								deva = 1;
 								while(tmp > (j = dieroll = rnd(20+i+(deva++)*2))) sum[i] = hitmu(mtmp, mattk);
 							}
 						} else missmu(mtmp, (tmp == j), mattk);
+		    				mon_ranged_gazeonly = 0;
 					}
 					/* KMH -- Don't accumulate to-hit bonuses */
 					if (otmp){
