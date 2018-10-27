@@ -1217,7 +1217,6 @@ dofightingform()
 				incntlet, 0, ATR_NONE, buf,
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-
 		}
 		if(u.ulevel >= 8){
 			if(u.umystic & FLICKER_PUNCH) {
@@ -1230,7 +1229,6 @@ dofightingform()
 				incntlet, 0, ATR_NONE, buf,
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
-
 		}
 		if(u.ulevel >= 10){
 			if(u.umystic & SPIRIT_PUNCH) {
@@ -1257,6 +1255,11 @@ dofightingform()
 				u.umystic &= ~(selected[0].item.a_int);
 			else 
 				u.umystic |= selected[0].item.a_int;
+			if(selected[0].item.a_int == ABSORBATIVE_PUNCH){
+				u.umystic = ABSORBATIVE_PUNCH;
+			} else if(u.umystic & ABSORBATIVE_PUNCH){
+				u.umystic &= ~ABSORBATIVE_PUNCH;
+			}
 			
 			return 0;
 		}

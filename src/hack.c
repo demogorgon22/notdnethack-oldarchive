@@ -1230,10 +1230,10 @@ domove()
 					You("somersault to a new location!");
 					teleds(cc.x, cc.y, FALSE);
 				}
-			} else if(u.umystic & FLICKER_PUNCH && u.uen >= 5){
+			} else if(!uwep && !uswapwep && u.umystic & FLICKER_PUNCH && u.uen >= 3){
 				coord cc;
 				if(!u.utrap && tt_findadjacent(&cc, mtmp) && (cc.x != u.ux || cc.y != u.uy)){
-					u.uen -= 5;
+					u.uen -= 3;
 					flags.botl = 1;
 					You("warp to a new location!");
 					teleds(cc.x, cc.y, FALSE);
