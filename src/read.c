@@ -48,6 +48,7 @@ doread()
 			&& !(scroll->oclass == SCROLL_CLASS)
 			&& !(scroll->oclass == SPBOOK_CLASS)
 			&& !arti_mandala(scroll)
+			&& scroll->oartifact != ART_ROD_OF_THE_ELVISH_LORDS
 		) || scroll->otyp==LIGHTSABER
 	){
 		if(scroll->oartifact == ART_ROD_OF_SEVEN_PARTS){

@@ -1044,7 +1044,8 @@ mattacku(mtmp)
 		case AT_5SQR:
 			if(distmin(mtmp->mx, mtmp->my, mtmp->mux, mtmp->muy) <= 5 && (!MON_WEP(mtmp) || mtmp->mconf || Conflict || 
 					mattk->adtyp == AD_STAR || mattk->adtyp == AD_BLUD || mattk->adtyp == AD_SHDW || 
-					!touch_petrifies(youracedata))) {
+					!touch_petrifies(youracedata))
+					&& couldsee(mtmp->mx,mtmp->my)) {
 			    if (foundyou) {
 				if(tchtmp > (j = rnd(20+i*2))) {
 				    if (mattk->aatyp != AT_KICK ||

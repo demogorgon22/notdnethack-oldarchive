@@ -2875,19 +2875,23 @@ struct monst *magr,	/* monster that is currently deciding where to move */
 	}
 
 	/* elves vs. orcs */
-	if(is_elf(ma) && (is_orc(md) || is_ogre(md) || is_undead_mon(mdef)) && !is_undead_mon(magr))
+	if(is_elf(ma) && (is_orc(md) || is_ogre(md) || is_undead_mon(mdef))
+				&&	!(is_orc(ma) || is_ogre(ma) || is_undead_mon(magr)))
 		return ALLOW_M|ALLOW_TM;
 	/* and vice versa */
-	if(is_elf(md) && (is_orc(ma) || is_ogre(ma) || is_undead_mon(magr)) && !is_undead_mon(mdef))
+	if(is_elf(md) && (is_orc(ma) || is_ogre(ma) || is_undead_mon(magr))
+				&&	!(is_orc(md) || is_ogre(md) || is_undead_mon(mdef)))
 		return ALLOW_M|ALLOW_TM;
 
 	/* dwarves vs. orcs */
-	if(is_dwarf(ma) && (is_orc(md) || is_ogre(md) || is_troll(md)) && !is_undead_mon(magr))
+	if(is_dwarf(ma) && (is_orc(md) || is_ogre(md) || is_troll(md))
+					&&!(is_orc(ma) || is_ogre(ma) || is_troll(ma) || is_undead_mon(magr)))
 		return ALLOW_M|ALLOW_TM;
 	/* and vice versa */
-	if(is_dwarf(md) && (is_orc(ma) || is_ogre(ma) || is_troll(ma)) && !is_undead_mon(mdef))
-		return ALLOW_M|ALLOW_TM;
-	
+	if(is_dwarf(md) && (is_orc(ma) || is_ogre(ma) || is_troll(ma))
+					&&!(is_orc(md) || is_ogre(md) || is_troll(md) || is_undead_mon(mdef)))
+		return ALLOW_M|ALLOW_TM;	
+
 	/* salamanders vs. efreeti */
 	if(is_salamander(ma) && (is_efreeti(md) && !is_undead_mon(magr)) && (flags.questprogress >= 1 || !Pantheon_if(PM_SALAMANDER)))
 		return ALLOW_M|ALLOW_TM;
