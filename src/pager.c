@@ -1861,6 +1861,7 @@ get_description_of_damage_type(uchar id)
 	case AD_NUDZ: return "mirror blast";
 	case AD_WHIS: return "whispers from the void";
 	case AD_BOLT: return "fire blaster bolts";
+	case AD_CLKW: return "fire bolts";
 	default:
 			impossible("bug in get_description_of_damage_type(%d)", id);
 			return "<MISSING DESCRIPTION, THIS IS A BUG>";

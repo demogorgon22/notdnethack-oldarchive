@@ -169,8 +169,8 @@ ENDMAP
 # Dungeon Description
 
 BRANCH:(03,03,72,17),(14,04,61,16)
-PORTAL:(05,03,05,03),(00,00,00,00),"out1"
 PORTAL:(00,20,00,20),(00,00,00,00),"lethe-b"
+PORTAL:(05,03,05,03),(00,00,00,00),"out1"
 
 DOOR:closed,(20,07)
 DOOR:closed,(20,10)
