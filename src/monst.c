@@ -3221,7 +3221,7 @@ then fill new spaces with our spawn!
 	MR_STONE|MR_POISON|MR_SICK, 0,
 	MM_BREATHLESS /*MM*/, MT_STALK|MT_COLLECT /*MT*/,
 	MB_HUMANOID /*MB*/, MG_VBLUNT /*MG*/,
-	MA_CLOCK /*MA*/,  MV_NORMAL /*MV*/, HI_COPPER),
+	MA_CLOCK|MA_UNLIVING /*MA*/,  MV_NORMAL /*MV*/, HI_COPPER),
 #ifdef SPLITMON_1
 };
 #endif
