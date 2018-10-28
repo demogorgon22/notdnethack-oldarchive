@@ -2789,6 +2789,9 @@ struct monst *magr,	/* monster that is currently deciding where to move */
 	if(magr->mtame && mdef->mtame) return 0L;
 	
 	if(!mon_can_see_mon(magr, mdef)) return 0L;
+		
+	if(magr->mtame && mdef->mpeaceful && !u.uevent.uaxus_foe && md == &mons[PM_AXUS])
+		return 0L;
 	
 	if(ma == &mons[PM_DREADBLOSSOM_SWARM]){
 		if(!(is_fey(md) || is_plant(md))) return ALLOW_M|ALLOW_TM;
@@ -3961,6 +3964,8 @@ boolean was_swallowed;			/* digestion */
 		   || mdat == &mons[PM_VECNA]
 //		   || mdat == &mons[PM_UNICORN_OF_AMBER]
 		   || mdat == &mons[PM_NIGHTMARE]
+		   || mdat == &mons[PM_CHROMATIC_DRAGON]
+		   || mdat == &mons[PM_PLATINUM_DRAGON]
 //		   || mdat == &mons[PM_PINK_UNICORN]
 		   )
 		return TRUE;

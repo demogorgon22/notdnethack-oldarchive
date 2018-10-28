@@ -511,6 +511,9 @@ struct you {
 	struct skills weapon_skills[P_NUM_SKILLS];
 	boolean twoweap;		/* KMH -- Using two-weapon combat */
 	int divetimer;			/* how long you can stay under water */
+
+	int role_variant;	/*Records what variant of your role you are.*/
+
 	int umystic;	/*Monk mystic attacks active*/
 #define SURGE_PUNCH		0x0001
 #define FORCE_PUNCH		0x0002

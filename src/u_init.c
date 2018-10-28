@@ -1597,6 +1597,7 @@ u_init()
 	u.ukinghill = 0;
 	u.protean = 0;
 	u.divetimer = (ACURR(A_CON))/3;
+	u.role_variant = 0;
 	
 	u.uhouse = 0;
 	u.start_house = 0;
@@ -1831,7 +1832,9 @@ u_init()
 		else skill_add(Skill_Neu_Ana);
 	break;
 	case PM_BARBARIAN:
+		u.role_variant = TWO_HANDED_SWORD;
 		if (rn2(100) >= 50) {	/* see above comment */
+		    u.role_variant = BATTLE_AXE;
 		    Barbarian[B_MAJOR].trotyp = BATTLE_AXE;
 		    Barbarian[B_MINOR].trotyp = SHORT_SWORD;
 		}
