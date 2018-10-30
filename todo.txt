@@ -2,16 +2,11 @@ whispering faction mindless_mon?
 fix versioning
 barb beat self to shit to drive monsters insane
 caveman/gnome tinker patch?
-prevent from livelogging spirit kills
 make acu summon level u up if u can then
 call acuup and acudown on poly newform
 dont secrete lava on stairs or ladders
-Racial two levels
-	dwarf - fight trolls, get digout, broad pick, invoke for dynamite spam
 Pimp out hfd ranger?
-fix astral crash lol
 Elves ride fighting monsters
-racial gloves more common earlier
 so much acu crap, fix altar messages for other gods, returning items is pretty broken 
 special imbuement levels for getting new spell schools
 look into crom minion issue for barvamp
@@ -102,3 +97,4 @@ Mystic class monk refactor
 	Some sort of energy form unlocked at a certain level OR
 	A form that scales with XP lvl
 	
+fix salamander balance with attack routine

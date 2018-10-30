@@ -650,10 +650,12 @@ void
 uwepgone()
 {
 	if (uwep) {
-		spearoff(uwep);
-		if (artifact_light(uwep) && uwep->lamplit) {
-		    end_burn(uwep, FALSE);
-		    if (!Blind) pline("%s glowing.", Tobjnam(uwep, "stop"));
+		if(!(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 20)){
+			spearoff(uwep);
+			if (artifact_light(uwep) && uwep->lamplit) {
+			    end_burn(uwep, FALSE);
+			    if (!Blind) pline("%s glowing.", Tobjnam(uwep, "stop"));
+			}
 		}
 		setworn((struct obj *)0, W_WEP);
 		unweapon = TRUE;
