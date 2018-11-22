@@ -224,6 +224,13 @@ Dungeon changes
 		Clockwork Trooper
 			Crossbow blaster
 			Serious armor
+	Neutral Quest changes
+		Portal to skip outlands section from the gatetwon if you
+		choose to
+		Actually disply level name for gatetown
+	Chaotic Quest changes
+		Maps fall apart the more time you spend on them, this makes it
+		much harder
 	Added grass
 		green .
 		Can be burned up by fire

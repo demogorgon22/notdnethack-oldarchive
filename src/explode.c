@@ -578,8 +578,8 @@ boolean yours; /* is it your fault (for killing monsters) */
 			else monkilled(mtmp, "", (int)adtyp);
 		} else if (type != 169 && !flags.mon_moving && yours) setmangry(mtmp);
 		else if(type == 169){
-			if(!mtmp->mtame && !(mtmp->data->geno & G_UNIQ)){
-				mtmp->mpeaceful = TRUE;
+			if(!mtmp->mtame && !(mtmp->data->geno & G_UNIQ) && !rn2(5)){
+				mtmp->mpeaceful = 1;
 			}	
 		}
 		doredraw();

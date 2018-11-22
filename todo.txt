@@ -97,4 +97,3 @@ Mystic class monk refactor
 	Some sort of energy form unlocked at a certain level OR
 	A form that scales with XP lvl
 	
-fix salamander balance with attack routine

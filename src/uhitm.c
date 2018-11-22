@@ -651,10 +651,12 @@ register struct monst *mtmp;
 		if (Upolyd 
 			|| Race_if(PM_VAMPIRE) 
 			|| Race_if(PM_CHIROPTERAN) 
-			|| (Race_if(PM_SALAMANDER) && u.ulevel > 19)
 			|| (!uwep && Race_if(PM_YUKI_ONNA))
 		){
 			keepattacking = hmonas(mtmp, youracedata, tmp, weptmp, tchtmp);
+			attacksmade = 1;
+		} else if(Race_if(PM_SALAMANDER) && u.ulevel >= 10){
+			keepattacking = hmonas(mtmp, &mons[PM_SALAMANDER_PRISONER], tmp, weptmp, tchtmp);
 			attacksmade = 1;
 		} else {
 			keepattacking = hitum(mtmp, weptmp, youmonst.data->mattk);
