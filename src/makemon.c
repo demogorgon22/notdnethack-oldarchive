@@ -5600,7 +5600,7 @@ register int	mmflags;
 				mtmp->mvar2 = 0;
 				mtmp->mvar3 = 0;
 				if (anymon){
-					if(u.uevent.udemigod) m_initlgrp(mtmp, 0, 0);
+					if(u.uevent.invoked) m_initlgrp(mtmp, 0, 0);
 					else mtmp->mvar3 = 1; //Set to 1 to initiallize
 				}
 			} else if(mtmp->data == &mons[PM_ARCADIAN_AVENGER]){
@@ -5990,7 +5990,26 @@ register int	mmflags;
 	} else if (mndx == PM_VLAD_THE_IMPALER) {
 		mitem = CANDELABRUM_OF_INVOCATION;
 	} else if (mndx == PM_CROESUS) {
-		mitem = TWO_HANDED_SWORD;
+		struct obj *otmp;
+		otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
+		otmp->obj_material = GOLD;
+		fix_object(otmp);
+		(void) mpickobj(mtmp,otmp);
+		otmp = mksobj(PLATE_MAIL, TRUE, FALSE);
+		otmp->obj_material = GOLD;
+		fix_object(otmp);
+		(void) mpickobj(mtmp,otmp);
+		otmp = mksobj(GAUNTLETS, TRUE, FALSE);
+		otmp->obj_material = GOLD;
+		fix_object(otmp);
+		(void) mpickobj(mtmp,otmp);
+		otmp = mksobj(LOW_BOOTS, TRUE, FALSE);
+		otmp->obj_material = GOLD;
+		fix_object(otmp);
+		(void) mpickobj(mtmp,otmp);
+		otmp = mksobj(AMULET_OF_REFLECTION, TRUE, FALSE);
+		otmp->obj_material = GOLD;
+		fix_object(otmp);
 	} else if (ptr->msound == MS_NEMESIS && !(Race_if(PM_DROW) && !Role_if(PM_NOBLEMAN)) ) {
 		flags.made_bell = TRUE;
 		mitem = BELL_OF_OPENING;
@@ -6101,7 +6120,7 @@ register int	mmflags;
 		curhouse = 0;
 		undeadfaction = 0;
 	}
-	if ((ptr->mflagst & MT_WAITMASK) && !(mmflags & MM_NOWAIT) && !u.uevent.udemigod) {
+	if ((ptr->mflagst & MT_WAITMASK) && !(mmflags & MM_NOWAIT) && !u.uevent.invoked) {
 		if (ptr->mflagst & MT_WAITFORU)
 			mtmp->mstrategy |= STRAT_WAITFORU;
 		if (ptr->mflagst & MT_CLOSE)
@@ -7271,7 +7290,7 @@ register struct permonst *ptr;
 	if (ptr->msound == MS_NEMESIS)	return FALSE;
 	
 	if (always_peaceful(ptr)) return TRUE;
-	if(!u.uevent.udemigod && mndx==PM_UVUUDAUM && !(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz))) return TRUE;
+	if(!u.uevent.invoked && mndx==PM_UVUUDAUM && !(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz))) return TRUE;
 	
 	if(ual == A_VOID) return FALSE;
 	

@@ -568,7 +568,8 @@ test_twoweapon()
 		)
 	) {
 		otmp = bimanual(uwep,youracedata) ? uwep : uswapwep;
-		pline("%s isn't one-handed.", Yname2(otmp));
+		if(otmp) pline("%s isn't one-handed.", Yname2(otmp));
+		else You_cant("fight two-handed while wielding this.");
 	} else if (uarms)
 		You_cant("use two weapons while wearing a shield.");
 	else if (uswapwep && uswapwep->otyp == ARM_BLASTER && uarmg && is_metal(uarmg))

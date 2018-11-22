@@ -1030,7 +1030,7 @@ mcalcdistress()
 	    if (minliquid(mtmp)) continue;
 	}
 
-	if(mtmp->data == &mons[PM_HEZROU]){
+	if(mtmp->data == &mons[PM_HEZROU] && !Is_illregrd(&u.uz)){
 		flags.cth_attk=TRUE;//state machine stuff.
 		create_gas_cloud(mtmp->mx+rn2(3)-1, mtmp->my+rn2(3)-1, rnd(3), rnd(3)+1);
 		flags.cth_attk=FALSE;
@@ -1639,7 +1639,7 @@ movemon()
 	for(mtmp = fmon; mtmp; mtmp = mtmp->nmon){
 		//Weeping angel step 1
 		if(is_weeping(mtmp->data)){
-			if(mtmp->mvar3 && u.uevent.udemigod){
+			if(mtmp->mvar3 && u.uevent.invoked){
 				mtmp->mvar3 = 0; //Quantum Lock status will be reset below.
 				m_initgrp(mtmp, 0, 0, 10);
 			}
@@ -1756,7 +1756,7 @@ movemon()
 		mtmp->mpeaceful = 0;
 	}
 	if(mtmp->data == &mons[PM_UVUUDAUM]){
-		if(u.uevent.udemigod || (Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz))){ 
+		if(u.uevent.invoked || (Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz))){ 
 			if(mtmp->mpeaceful){
 				pline("%s ceases its meditation...", Amonnam(mtmp));
 				mtmp->mpeaceful = 0;
@@ -1771,7 +1771,7 @@ movemon()
 	if(mtmp->data == &mons[PM_DREAD_SERAPH] && 
 		mtmp->mhp == mtmp->mhpmax && 
 		!(mtmp->mstrategy&STRAT_WAITMASK) && 
-		!(u.uevent.udemigod || (Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)))
+		!(u.uevent.invoked || (Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)))
 			
 	){
 		//go back to sleep
@@ -2543,7 +2543,7 @@ mfndpos(mon, poss, info, flag)
 	poolok = is_flyer(mdat) || is_clinger(mdat) ||
 		 (is_swimmer(mdat) && !wantpool);
 	lavaok = is_flyer(mdat) || is_clinger(mdat) || likes_lava(mdat);
-	quantumlock = (is_weeping(mdat) && !u.uevent.udemigod);
+	quantumlock = (is_weeping(mdat) && !u.uevent.invoked);
 	thrudoor = ((flag & (ALLOW_WALL|BUSTDOOR)) != 0L);
 	if (flag & ALLOW_DIG) {
 	    struct obj *mw_tmp;
@@ -3969,7 +3969,7 @@ boolean was_swallowed;			/* digestion */
 //		   || mdat == &mons[PM_PINK_UNICORN]
 		   )
 		return TRUE;
-//	if(In_hell(&u.uz) || In_endgame(&u.uz)) //u.uevent.udemigod || 
+//	if(In_hell(&u.uz) || In_endgame(&u.uz)) //u.uevent.invoked || 
 //		return FALSE;
 	
 	if(bigmonst(mdat) || mdat == &mons[PM_LIZARD]) return TRUE;

@@ -1245,9 +1245,9 @@ struct monst *mtmp;
 			  ((attacktype_fordmg(mtmp->data, AT_MMGC, AD_ANY))->adtyp == AD_OONA) )
 				&& mlined_up(mtmp, mtmp2, FALSE)
 			  )
-			|| (attacktype(mtmp->data, AT_LRCH) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) < 2)
-			|| (attacktype(mtmp->data, AT_LNCK) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) < 2)
-			|| (attacktype(mtmp->data, AT_5SQR) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) < 6)
+			|| (attacktype(mtmp->data, AT_LRCH) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) <= 2)
+			|| (attacktype(mtmp->data, AT_LNCK) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) <= 2)
+			|| (attacktype(mtmp->data, AT_5SQR) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) <= 5)
 			|| (attacktype(mtmp->data, AT_GAZE) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) < BOLT_LIM)
 			|| (attacktype_fordmg(mtmp->data, AT_MAGC, AD_SPEL) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) < BOLT_LIM)
 			|| (attacktype_fordmg(mtmp->data, AT_MAGC, AD_CLRC) && distmin(mtmp2->mx,mtmp2->my,mtmp->mx,mtmp->my) < BOLT_LIM)
@@ -1286,9 +1286,9 @@ struct monst *mtmp;
 			  ((attacktype_fordmg(mtmp->data, AT_MMGC, AD_ANY))->adtyp == AD_OONA) )
 				&& lined_up(mtmp)
 			  )
-			|| (attacktype(mtmp->data, AT_LRCH) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) < 2)
-			|| (attacktype(mtmp->data, AT_LNCK) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) < 2)
-			|| (attacktype(mtmp->data, AT_5SQR) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) < 6)
+			|| (attacktype(mtmp->data, AT_LRCH) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) <= 2)
+			|| (attacktype(mtmp->data, AT_LNCK) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) <= 2)
+			|| (attacktype(mtmp->data, AT_5SQR) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) <= 5)
 			|| (attacktype(mtmp->data, AT_GAZE) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) < BOLT_LIM)
 			|| (attacktype_fordmg(mtmp->data, AT_MAGC, AD_SPEL) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) < BOLT_LIM)
 			|| (attacktype_fordmg(mtmp->data, AT_MAGC, AD_CLRC) && distmin(mtmp->mux,mtmp->muy,mtmp->mx,mtmp->my) < BOLT_LIM)
@@ -1627,7 +1627,7 @@ register struct attack *mattk;
 				if(mattk->adtyp == AD_SHDW){
 					struct trap *ttmp2;
 					m_throw(mtmp, mtmp->mux + (-sgn(tbx)) + xadj, mtmp->muy + (-sgn(tby)) + yadj, sgn(tbx), sgn(tby),
-						1, qvr,TRUE);
+						1, qvr,FALSE);
 					ttmp2 = maketrap(mtmp->mux, mtmp->muy, WEB);
 					if (mtmp->mux == u.ux && mtmp->muy == u.uy && ttmp2) {
 						pline_The("webbing sticks to you. You're caught!");
@@ -1641,10 +1641,10 @@ register struct attack *mattk;
 					}
 				} else if(mattk->adtyp == AD_PEST){
 					m_throw(mtmp, mtmp->mux + (-sgn(tbx)) + xadj, mtmp->muy + (-sgn(tby)) + yadj, sgn(tbx), sgn(tby),
-						1, qvr,TRUE);
+						1, qvr,FALSE);
 				} else {
 					m_throw(mtmp, mtmp->mx + xadj, mtmp->my + yadj, sgn(tbx), sgn(tby),
-						BOLT_LIM + rngmod, qvr,TRUE);
+						BOLT_LIM + rngmod, qvr,FALSE);
 				}
 				if(mtmp->mux != u.ux || mtmp->muy != u.uy){
 					//figures out you aren't where it thought you were

@@ -842,7 +842,8 @@ boolean female;
 	for (i = 0; grownups[i][0] >= LOW_PM; i++)
 		if(montype == grownups[i][0] && (
 			!((mons[grownups[i][1]].mflagsb)&(MB_FEMALE|MB_MALE)) ||
-			!((mons[grownups[i][0]].mflagsb)&(MB_FEMALE|MB_MALE)) ||
+			((mons[grownups[i][1]].mflagsb)&(MB_NEUTER)) ||
+			((mons[grownups[i][0]].mflagsb)&(MB_NEUTER)) ||
 			(female && ((mons[grownups[i][1]].mflagsb)&(MB_FEMALE))) ||
 			(!female && ((mons[grownups[i][1]].mflagsb)&(MB_MALE)))
 		)) return grownups[i][1];
@@ -860,7 +861,8 @@ boolean female;
 	for (i = 0; grownups[i][0] >= LOW_PM; i++)
 		if(montype == grownups[i][0] && (
 			!((mons[grownups[i][1]].mflagsb)&(MB_FEMALE|MB_MALE)) ||
-			!((mons[grownups[i][0]].mflagsb)&(MB_FEMALE|MB_MALE)) ||
+			((mons[grownups[i][1]].mflagsb)&(MB_NEUTER)) ||
+			((mons[grownups[i][0]].mflagsb)&(MB_NEUTER)) ||
 			(female && ((mons[grownups[i][1]].mflagsb)&(MB_FEMALE))) ||
 			(!female && ((mons[grownups[i][1]].mflagsb)&(MB_MALE)))
 		)) monvalue = grownups[i][1];

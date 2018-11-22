@@ -189,7 +189,7 @@ WEAPON("droven short sword", "short sword", /*Needs encyc entry*/
 WEAPON("orcish short sword", "crude short sword",
 	0, 0, 0,  3, 30, 10,  5,  10, -1, P,   P_SHORT_SWORD, IRON, CLR_BLACK),
 WEAPON("dwarvish short sword", "broad short sword",
-	0, 0, 0,  2, 35, 10,  8,  7, 0, P,   P_SHORT_SWORD, IRON, HI_METAL),
+	0, 0, 0,  2, 35, 10,  8,  7, 0, P|S,   P_SHORT_SWORD, IRON, HI_METAL),
 WEAPON("scimitar", "curved sword",
 	0, 0, 0, 14, 40, 15,  8,  8, 0, S,   P_SCIMITAR, IRON, HI_METAL),
 WEAPON("high-elven warsword", "runed curved sword",

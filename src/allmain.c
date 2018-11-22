@@ -690,7 +690,7 @@ moveloop()
 				if(mtmp->data == &mons[PM_JUIBLEX]) flags.slime_level=1;
 				if(mtmp->data == &mons[PM_PALE_NIGHT] || mtmp->data == &mons[PM_DREAD_SERAPH] || mtmp->data == &mons[PM_LEGION]) flags.walky_level=1;
 				if(mtmp->data == &mons[PM_ORCUS] || mtmp->data == &mons[PM_NAZGUL]) flags.shade_level=1;
-				if(mtmp->data == &mons[PM_DREAD_SERAPH] && (mtmp->mstrategy & STRAT_WAITMASK) && (u.uevent.udemigod || (Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)))){
+				if(mtmp->data == &mons[PM_DREAD_SERAPH] && (mtmp->mstrategy & STRAT_WAITMASK) && (u.uevent.invoked || (Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)))){
 					mtmp->mstrategy &= ~STRAT_WAITMASK;
 					pline_The("entire %s is shaking around you!",
 						   In_endgame(&u.uz) ? "plane" : "dungeon");
@@ -807,7 +807,7 @@ moveloop()
 				(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)) ? 35 :
 			    (depth(&u.uz) > depth(&stronghold_level)) ? 50 : 70)
 			){
-				if (u.uevent.udemigod && xupstair && rn2(10)) {
+				if (u.uevent.invoked && xupstair && rn2(10)) {
 					(void) makemon((struct permonst *)0, xupstair, yupstair, MM_ADJACENTOK);
 				} //TEAM ATTACKS
 				if(In_sokoban(&u.uz)){

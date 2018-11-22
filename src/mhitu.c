@@ -431,7 +431,7 @@ mattacku(mtmp)
 	if(mtmp->mhp <= 0 || (Underwater && !is_swimmer(mtmp->data)))
 	    return(0);
 	
-	if(!(u.uevent.udemigod) && is_weeping(mtmp->data)) mtmp->movement = 0; /*Only attack once per turn*/
+	if(!(u.uevent.invoked) && is_weeping(mtmp->data)) mtmp->movement = 0; /*Only attack once per turn*/
 	
 	/* If swallowed, can only be affected by u.ustuck */
 	if(u.uswallow) {
@@ -1188,7 +1188,7 @@ mattacku(mtmp)
 		case AT_MMGC:{
 			int temp=0;
 			if(mtmp->data->maligntyp < 0 && Is_illregrd(&u.uz)) break;
-			if(nospellcooldowns(mdat)) mtmp->mspec_used = 0;
+			//if(nospellcooldowns(mdat)) mtmp->mspec_used = 0;
 			
 			if( mdat == &mons[PM_DEMOGORGON] && !range2 && !mtmp->mflee && rn2(6)) break; //cast spells more rarely if he's in melee range
 			if (range2 && mattk->adtyp != AD_SPEL && mattk->adtyp != AD_CLRC && mattk->adtyp != AD_STAR)
@@ -2946,7 +2946,7 @@ dopois:
 	    case AD_WEEP: /*Weeping Angel's attack*/
 		hitmsg(mtmp, mattk);
 		if (uncancelled) {
-			if(!u.uevent.udemigod){
+			if(!u.uevent.invoked){
 				if (Teleport_control || Drain_resistance) {
 					if(flags.verbose) You("feel like you could have lost some potential.");
 				} else {
@@ -4675,7 +4675,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 	    case AD_FIRE:
 		if (!mtmp->mcan && canseemon(mtmp) &&
 			couldsee(mtmp->mx, mtmp->my) &&
-			!is_blind(mtmp) && !mtmp->mspec_used && rn2(5)) {
+			!is_blind(mtmp) &&  rn2(5)) {
 //		    int dmg = d(2,6);
 			int dmg = d((int)mattk->damn, (int)mattk->damd);
 
@@ -4702,7 +4702,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		case AD_COLD:
 		if (!mtmp->mcan && canseemon(mtmp) &&
 			couldsee(mtmp->mx, mtmp->my) &&
-			!is_blind(mtmp) && !mtmp->mspec_used && rn2(5)) {
+			!is_blind(mtmp) &&  rn2(5)) {
 //		    int dmg = d(2,6);
 			int dmg = d((int)mattk->damn, (int)mattk->damd);
 
@@ -4724,7 +4724,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		case AD_ELEC:
 		if (!mtmp->mcan && canseemon(mtmp) &&
 			couldsee(mtmp->mx, mtmp->my) &&
-			!is_blind(mtmp) && !mtmp->mspec_used && rn2(5)) {
+			!is_blind(mtmp) &&  rn2(5)) {
 //		    int dmg = d(2,6);
 			int dmg = d((int)mattk->damn, (int)mattk->damd);
 
@@ -4780,7 +4780,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 		case AD_HALU:
 		if (!mtmp->mcan && canseemon(mtmp) &&
 			couldsee(mtmp->mx, mtmp->my) &&
-			!is_blind(mtmp) && !mtmp->mspec_used && rn2(5)) {
+			!is_blind(mtmp) &&  rn2(5)) {
 			boolean not_affected=0;
 			//int tmp = rn2(12);
 			int tmp = d((int)mattk->damn, (int)mattk->damd);
