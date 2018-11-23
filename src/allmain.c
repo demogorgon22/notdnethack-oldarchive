@@ -620,8 +620,8 @@ moveloop()
 				unbind(SEAL_SHIRO,TRUE);
 			}
 			if(In_cha(&u.uz) && !rn2(10)){
-				int x = rnd(COLNO);
-				int y = rnd(ROWNO);
+				int x = rn2(COLNO);
+				int y = rn2(ROWNO);
 				if(!IS_FURNITURE(levl[x][y].typ) && !t_at(x,y) && !(u.ux == x && u.uy == y)){
 					int type;
 					switch(rn2(5)){
@@ -645,6 +645,9 @@ moveloop()
 						break;
 					}
 					levl[x][y].typ = type;
+					newsym(x,y);
+					if(cansee(x,y))
+						pline("The dungeon around you is crumbling away!");
 				}
 			}
 ////////////////////////////////////////////////////////////////////////////////////////////////
