@@ -1,6 +1,6 @@
 local.mk
 
-src/dnethack
+src/notdnethack
 util/recover
 util/makedefs
 util/dlb

@@ -2439,6 +2439,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 
 	if(otmp->oartifact == ART_LIMITED_MOON && magr == &youmonst){
 		*dmgptr *= ((double)u.uen/u.uenmax);
+		if(u.uen >= ((int)(.3*u.uenmax + 3))) u.uen -= 3;
 		// if(u.uen >= 10) u.uen -= 10;
 	}
 	
@@ -3721,8 +3722,8 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			if(otmp->oartifact == ART_STORMBRINGER && dieroll <= 2){
 				*dmgptr += 8;
 				int leveldrain = *dmgptr/4;
-				if(!is_silent_mon(mdef)) pline("%s cries out in pain and despair and terror.", Monnam(mdef));
 				if(*dmgptr > mdef->mhpmax-1){
+					if(!is_silent_mon(mdef)) pline("%s cries out in pain and despair and terror.", Monnam(mdef));
 					if ((mdef->mhpmax-1)/2){
 						if(youattack) healup((mdef->mhpmax-1)/2, 0, FALSE, FALSE);
 						else {

@@ -934,6 +934,7 @@ int x;
 			(uarm && uarm->otyp == POWER_ARMOR && uarm->lamplit) ||
 			(uwep && uwep->oartifact == ART_SCEPTRE_OF_MIGHT) || 
 			(uwep && uwep->oartifact == ART_PEN_OF_THE_VOID && uwep->ovar1&SEAL_YMIR && mvitals[PM_ACERERAK].died > 0) ||
+			(uwep && uwep->oartifact == ART_STORMBRINGER) ||
 			(uwep && uwep->oartifact == ART_OGRESMASHER) ||
 			(uswapwep && uswapwep->oartifact == ART_OGRESMASHER)
 		) return(125);
@@ -946,6 +947,7 @@ int x;
 		if (
 			(uwep && uwep->oartifact == ART_OGRESMASHER) ||
 			(uswapwep && uswapwep->oartifact == ART_OGRESMASHER) ||
+			(uwep && uwep->oartifact == ART_STORMBRINGER) ||
 			(uarmg && uarmg->oartifact == ART_GREAT_CLAWS_OF_URDLEN)
 		) return(25);
 		if(Race_if(PM_ORC)){

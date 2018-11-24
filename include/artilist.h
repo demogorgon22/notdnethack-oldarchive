@@ -62,7 +62,7 @@ A("Stormbringer",		RUNESWORD,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	DRLI(5,2),	DRLI(0,0),	NO_CARY,	
 	0, A_CHAOTIC, NON_PM, NON_PM, 8000L, 
-	SPFX2_BLDTHRST,0,0),
+	SPFX2_SHINING|SPFX2_BLDTHRST,0,0),
 /*
  *	Two problems:  1) doesn't let trolls regenerate heads,
  *	2) doesn't give unusual message for 2-headed monsters (but
