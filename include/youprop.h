@@ -184,7 +184,7 @@
 #define Hunger			(HHunger || EHunger)
 
 
-/*** Vision and senses ***/
+/*** Visionoand senses ***/
 #define HSee_invisible		u.uprops[SEE_INVIS].intrinsic
 #define ESee_invisible		u.uprops[SEE_INVIS].extrinsic
 #define See_invisible		(HSee_invisible || ESee_invisible || \
@@ -229,8 +229,14 @@
 #define EDetect_monsters	u.uprops[DETECT_MONSTERS].extrinsic
 #define Detect_monsters		(HDetect_monsters || EDetect_monsters || u.specialSealsActive&SEAL_NUMINA)
 
+#define HWeldproof	u.uprops[WELDPROOF].intrinsic
+#define EWeldproof	u.uprops[WELDPROOF].extrinsic
+#define Weldproof	(HWeldproof || EWeldproof || \
+					 is_demon(youracedata) || is_undead(youracedata) || (u.ulycn >= LOW_PM) ||\
+					 (u.specialSealsActive&SEAL_ACERERAK)\
+					)
 
-/*** Appearance and behavior ***/
+ /***Appearance and behavior ***/
 #define Adornment		u.uprops[ADORNED].extrinsic
 
 #define HInvis			u.uprops[INVIS].intrinsic

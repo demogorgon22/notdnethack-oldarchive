@@ -927,7 +927,7 @@ int thrown;
 	char yourbuf[BUFSZ];
 	char unconventional[BUFSZ];	/* substituted for word "attack" in msg */
 	char saved_oname[BUFSZ];
-	int unarmedMult = Race_if(PM_HALF_DRAGON) ? 3 : 1;
+	int unarmedMult =  Race_if(PM_HALF_DRAGON) ? 3 : (!uarmg && u.sealsActive&SEAL_ECHIDNA) ? 2 : 1;;
 	if(uarmg && uarmg->oartifact == ART_GREAT_CLAWS_OF_URDLEN) unarmedMult += 2;
 	if(uarmg && uarmg->otyp == KNUCKLE_DUSTERS) unarmedMult = 3;
 

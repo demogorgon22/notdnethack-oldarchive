@@ -3780,7 +3780,7 @@ int tx,ty;
 				  /*////////////////////////////////*/
 				 /* Do a light sacrificing routine */
 				/*////////////////////////////////*/
-				if (your_race(&mons[otmp->corpsenm])) {
+				if (your_race(&mons[otmp->corpsenm]) && u.ualign.type != A_VOID) {
 					/* Human sacrifice on a chaotic or unaligned altar */
 					/* is equivalent to demon summoning */
 					pline_The("%s blood covers the %s!", urace.adj, surface(tx,ty));
@@ -3887,7 +3887,7 @@ int tx,ty;
 				if(!Blind) You("notice metal wires sticking out of the ground within the seal.");
 				if(u.sealCounts < numSlots){
 					if(!Blind) pline("In fact, there are wires sticking up all around you.");
-					if(!Blind) pline("Shreaks and screems echo down from whence the wires come.");
+					if(!Blind) pline("Shrieks and screams echo down from whence the wires come.");
 					else You_hear("screaming!");
 					if(Role_if(PM_ANACHRONOUNBINDER)){
 						makemon(&mons[PM_MARIONETTE], tx, ty, MM_ADJACENTOK);
@@ -3896,7 +3896,7 @@ int tx,ty;
 						bindspirit(ep->ward_id);
 						return 0;
 					}
-					pline("You feel sharp pains in your elbowes and knees!");
+					pline("You feel sharp pains in your elbows and knees!");
 					if(!Blind) pline("It seems that you, are but a puppet.");
 					bindspirit(ep->ward_id);
 					u.sealTimeout[MARIONETTE-FIRST_SEAL] = moves + bindingPeriod;

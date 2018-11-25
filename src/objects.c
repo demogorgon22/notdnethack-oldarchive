@@ -295,9 +295,9 @@ WEAPON("club", (char *)0,
 WEAPON("quarterstaff", "staff",
 	0, 0, 1, 10, 40,  5,  6,  6, 0, B,   P_QUARTERSTAFF, WOOD, HI_WOOD),
 WEAPON("khakkhara", "monk's staff", /*Needs encyc entry*//*Needs tile*/
-	0, 0, 1,  2, 120,  5,  6,  4, 0, B|P,   P_QUARTERSTAFF, METAL, HI_SILVER),
+	0, 1, 1,  2, 120,  50,  6,  4, 0, B|P,   P_QUARTERSTAFF, METAL, HI_SILVER),
 WEAPON("bar", (char *)0,
-	1, 1, 1, 0, 400,  10,  8,  6, -10, B,   P_QUARTERSTAFF, METAL, HI_METAL),
+	1, 0, 1, 0, 400,  10,  8,  6, -10, B,   P_QUARTERSTAFF, METAL, HI_METAL),
 /* two-piece */
 WEAPON("aklys", "thonged club",
 	0, 0, 0,  8, 15,  4,  6,  3, 0, B,   P_CLUB, IRON, HI_METAL),

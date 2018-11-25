@@ -62,6 +62,7 @@
 
 /* used by welded(), and also while wielding */
 #define will_weld(optr)		((optr)->cursed \
+				&& !Weldproof \
 				&& (erodeable_wep(optr) \
 				   || (optr)->otyp == TIN_OPENER))
 
@@ -942,7 +943,9 @@ int
 welded(obj)
 register struct obj *obj;
 {
-	if (obj && obj == uwep && will_weld(obj)) {
+	if (obj && obj == uwep 
+		&& will_weld(obj) && Weldproof
+	) {
 		obj->bknown = TRUE;
 		return 1;
 	}
