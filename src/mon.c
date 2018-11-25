@@ -3788,7 +3788,7 @@ boolean was_swallowed;			/* digestion */
 		}
 		else if(mdat->mattk[i].adtyp == AD_GROW || (mdat==&mons[PM_QUINON] 
 		        && mdat->mattk[i].adtyp == AD_STUN)){//horrid quinon kludge
-			struct monst *mtmp;
+			struct monst *mtmp, *mtmp2;
 			struct permonst *mdat1, **child, **growto;
 			int i = 0;
 			int chain = FALSE;
@@ -3854,7 +3854,8 @@ boolean was_swallowed;			/* digestion */
 				for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 					mdat1 = mtmp->data;
 					if(mdat1==&mons[PM_AXUS]){
-						makemon(&mons[PM_MONOTON], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY|MM_NOCOUNTBIRTH);
+						mtmp2 = makemon(&mons[PM_MONOTON], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY|MM_NOCOUNTBIRTH);
+						if(mtmp2) mtmp2->mclone = 1;
 						break; //break special for loop
 					}
 				}
@@ -3877,7 +3878,8 @@ boolean was_swallowed;			/* digestion */
 							for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 								mdat1 = mtmp->data;
 								if(mdat1==&mons[PM_AXUS]){
-									makemon(child[i], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY);
+									mtmp2 = makemon(child[i], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY);
+									if(mtmp2) mtmp2->mclone = 1;
 									break; //break special for loop
 								}
 							}
@@ -3890,7 +3892,8 @@ boolean was_swallowed;			/* digestion */
 						mdat1 = mtmp->data;
 						if(mdat1==&mons[PM_AXUS]){
 							chain = FALSE;
-							makemon(growto[i], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY);
+							mtmp2 = makemon(growto[i], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY);
+							if(mtmp2) mtmp2->mclone = 1;
 //							makemon(&mons[PM_MONOTON], mtmp->mx, mtmp->my,MM_ADJACENTOK|MM_ANGRY);
 							break; //break special for loop
 						}
