@@ -309,9 +309,6 @@ void
 acuup(){
 	if(u.ulevel == 4){
 		You_feel("psionic!");
-	} else if(u.ulevel == 7){//magic number
-		You("are able to echolate with your psionic pulses!");
-		youracedata->mflagsv |= MV_ECHOLOCATE;
 	} else if(u.ulevel == 10){
 		You_feel("able to control your altitude with your mind.");
 		You("begin flying!");
@@ -331,9 +328,6 @@ void
 acudown(){
 	if(u.ulevel == 3){
 		You_feel("unpsionic.");
-	} else if(u.ulevel == 6){//magic number
-		You("can no longer echolocate!");
-		youracedata->mflagsv &= ~MV_ECHOLOCATE;
 	} else if(u.ulevel == 9){
 		You_feel("less in control of your altitude.");
 		youracedata->mflagsm &= ~MM_FLY;

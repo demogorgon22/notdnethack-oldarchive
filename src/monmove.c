@@ -1036,7 +1036,7 @@ register struct monst *mtmp;
 	}
 	
 	if((is_drow(mtmp->data) || mtmp->data == &mons[PM_LUGRIBOSSK] || mtmp->data == &mons[PM_MAANZECORIAN] || mtmp->data == &mons[PM_TENEBROUS])
-		&& (!mtmp->mpeaceful || darksight(youracedata))
+		&& (!mtmp->mpeaceful || Darksight)
 		&& (levl[mtmp->mx][mtmp->my].lit == 1 || viz_array[mtmp->my][mtmp->mx]&TEMP_LIT1)
 		&& !mtmp->mcan && mtmp->mspec_used < 4
 		&& !(mtmp->data->maligntyp < 0 && Is_illregrd(&u.uz))

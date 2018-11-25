@@ -737,7 +737,7 @@ register int fd;
 
 	/* Success! */
 	welcome(FALSE);
-	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 7) youracedata->mflagsv |= MV_ECHOLOCATE;//begone magic nmbers
+//	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 7) youracedata->mflagsv |= MV_ECHOLOCATE;//begone magic nmbers
 	if(Role_if(PM_ANACHRONOUNBINDER) && u.ulevel >= 10) youracedata->mflagsm |= MM_FLY;//begone magic nmbers      welcome(FALSE);
 	return(1);
 }
