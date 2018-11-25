@@ -203,7 +203,7 @@
 #define AD_CRYS		147 /*throw crystal*/ 
 #define AD_WHIS		148 /*whisper your darkest fears*/
 #define AD_BOLT		149 /*fire explosive bolts*/
-#define AD_CLKW		150 /*fire explosive bolts*/
+#define AD_CLKW		150 /*fire crossbow bolts*/
 
 
 

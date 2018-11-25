@@ -1479,6 +1479,11 @@ physical:{
 		}
 		}break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	    case AD_ALIG:
+		    if (vis) pline("%s is realigned!",
+				    Monnam(mdef));
+	    	
+	    break;
 	    case AD_FIRE:
 		if (cancelled) {
 		    tmp = 0;
@@ -1733,6 +1738,25 @@ physical:{
 		}
 		tmp = (mattk->adtyp == AD_STON ? 0 : 1);
 		break;
+	    case AD_RNBW:
+		    if (vis) pline("%s looks %sconfused.",
+				    Monnam(mdef), mdef->mconf ? "more " : "");
+		    mdef->mconf = 1;
+		    mdef->mstrategy &= ~STRAT_WAITFORU;
+	    break;
+	    case AD_YANK:
+		    if (vis) pline("%s is ripped by wires!",
+				    Monnam(mdef));
+	    break;
+	    case AD_NUDZ:
+		explode(mdef->mx,mdef->my,8/*Phys*/, tmp, TOOL_CLASS, HI_SILVER);
+	    break;
+	    case AD_WHIS:
+		    if (vis) pline("%s goes %sinsane.",
+				    Monnam(mdef), mdef->mcrazed ? "more " : "");
+		    mdef->mcrazed = 1;
+		
+	    break;
 	    case AD_ABDC:
 	    case AD_TLPT:
 		if (!cancelled && tmp < mdef->mhp && !tele_restrict(mdef)) {
