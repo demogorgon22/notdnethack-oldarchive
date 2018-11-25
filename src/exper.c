@@ -309,10 +309,6 @@ void
 acuup(){
 	if(u.ulevel == 4){
 		You_feel("psionic!");
-	} else if(u.ulevel == 10){
-		You_feel("able to control your altitude with your mind.");
-		You("begin flying!");
-		youracedata->mflagsm |= MM_FLY;
 	} else if(u.ulevel == 12){
 		You("are now able to craze monsters with your mind!");
 	} else if(u.ulevel == 15){
@@ -328,10 +324,6 @@ void
 acudown(){
 	if(u.ulevel == 3){
 		You_feel("unpsionic.");
-	} else if(u.ulevel == 9){
-		You_feel("less in control of your altitude.");
-		youracedata->mflagsm &= ~MM_FLY;
-		float_down(0L, 0L);
 	} else if(u.ulevel == 11){
 		You_feel("less in mental control.");
 	} else if(u.ulevel == 14){

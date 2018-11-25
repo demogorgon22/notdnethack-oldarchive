@@ -356,10 +356,10 @@
 #define HFlying			u.uprops[FLYING].intrinsic
 #define EFlying			u.uprops[FLYING].extrinsic
 #ifdef STEED
-# define Flying			(EFlying || HFlying || is_flyer(youracedata) || \
+# define Flying			(EFlying || (HFlying && !Upolyd) || is_flyer(youracedata) || \
 				 (u.usteed && is_flyer(u.usteed->data)))
 #else
-# define Flying			(EFlying || HFlying || is_flyer(youracedata))
+# define Flying			(EFlying || (HFlying &&!Upolyd) || is_flyer(youracedata))
 #endif
 	/* May touch surface; does not override any others */
 
