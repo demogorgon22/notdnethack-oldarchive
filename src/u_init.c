@@ -2197,6 +2197,8 @@ u_init()
 				u.ualignbase[A_CURRENT] = u.ualignbase[A_ORIGINAL] =
 					u.ualign.type = A_NEUTRAL; /* Males are neutral */
 				flags.initalign = 1; // 1 == neutral
+			} else if(Role_if(PM_ANACHRONONAUT)){
+				u.umartial = TRUE;
 			}
 		}
 	    /* Drow can recognize all droven objects */
