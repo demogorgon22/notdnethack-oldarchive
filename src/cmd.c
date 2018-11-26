@@ -2560,7 +2560,7 @@ int final;
 	dump("", "Final attributes");
 
 	if (u.uevent.uhand_of_elbereth) {
-	    static const char * const hofe_titles[27] = {
+	    static const char * const hofe_titles[36] = {
 				/* Default */
 				"the Arm of the Law",		 /*01*/
 				"the Envoy of Balance",		 /*02*/
@@ -2597,8 +2597,20 @@ int final;
 				"the Sword of Selvetarm",	 /*25*/
 				"the Hand of Keptolo",		 /*26*/
 				"the Hammer of Ghaunadaur",	 /*27*/
+				/* Ranger */
+				"the High %s of Apollo",	 /*28*/
+				"the High %s of Latona",	 /*29*/
+				"the High %s of Diana",	 	 /*30*/
+				/* Gonome Ranger */
+				"the Great Slave-Vassal of Kurtulmak",	 /*31*/
+				"the Thane of Garl Glittergold",	 /*32*/
+				"the Claw of Urdlen",	 	 /*33*/
+				/*Healer*/
+				"the Hand of Athena",		 /*34*/
+				"the Messenger of Hermes",	 /*35*/
+				"the Glory of Poseidon",	 /*36*/
 				
-				/* uhand_of_elbereth max == 31 */
+				/* uhand_of_elbereth max == 63 */
 	    };
 	    if(Role_if(PM_EXILE)) dump(youwere,"the Emissary of Elements");
 	    else if(Pantheon_if(PM_PIRATE) || Role_if(PM_PIRATE)) dump(youwere,"the Pirate King");

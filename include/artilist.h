@@ -608,6 +608,12 @@ A("Mirrorbright",	ROUNDSHIELD,/*adapted from Slash'em*/
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	CONFLICT, A_CHAOTIC, NON_PM, NON_PM, 4000L, //needs message
 	0,0,WSFX_PLUSSEV),
+A("Aegis",	ROUNDSHIELD, /*Perseus's shield, needs encyc entry*/
+	(SPFX_RESTR|SPFX_REFLECT|SPFX_HPHDAM),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	AEGIS, A_LAWFUL, NON_PM, NON_PM, 4000L,
+	0,0,WSFX_PLUSSEV),
 
 A("The Shield of the All-Seeing", ORCISH_SHIELD, /*Needs encyc entry*/
 	(SPFX_RESTR|SPFX_SEEK|SPFX_SEARCH|SPFX_WARN), 0,
@@ -927,6 +933,18 @@ A("Veil of Latona",	CLOAK_OF_INVISIBILITY, /*Needs encyc entry*/
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	NO_ATTK,	DFNS(AD_MAGM),	CARY(AD_DRLI),
 	0, A_NEUTRAL, PM_RANGER, NON_PM, 1000L,
+	0,0,0),
+A("Hermes's Sandals",	FLYING_BOOTS,
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	0, A_NEUTRAL, NON_PM, NON_PM, 4000L,
+	0,0,WSFX_PLUSSEV),
+ A("Poseidon's Trident",	TRIDENT,
+	(SPFX_NOGEN|SPFX_RESTR), 0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	PHYS(3,0),	NO_DFNS,	NO_CARY,	
+	WATER, A_CHAOTIC, NON_PM, NON_PM, 1500L, 
 	0,0,0),
 A("Smoking Mirror",	SPEAR,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_DEFN|SPFX_REFLECT),0,
