@@ -147,7 +147,6 @@ STATIC_OVL struct Jitem ObscureJapanese_items[] = {
 	{ WAR_HAT, "jingasa" },
 	{ GAUNTLETS_OF_FUMBLING, "kote of fumbling" },
 	{ GAUNTLETS_OF_POWER, "kote of power" },
-	{ GLAIVE, "naginata" },
 	{ GUISARME, "kamayari" },
 	{ HALBERD, "bisento" },
 	{ HELMET, "kabuto" },
@@ -183,7 +182,6 @@ STATIC_OVL struct Jitem Japanese_items[] = {
 	{ WAR_HAT, "jingasa" },
 	{ GAUNTLETS_OF_FUMBLING, "kote of fumbling" },
 	{ GAUNTLETS_OF_POWER, "kote of power" },
-	{ GLAIVE, "naginata" },
 	{ HELMET, "kabuto" },
 	{ KNIFE, "shito" },
 	{ GLOVES, "yugake" },
@@ -2475,7 +2473,6 @@ struct alt_spellings {
 	{ "gunyoki", FOOD_RATION },
 	{ "kote of fumbling", GAUNTLETS_OF_FUMBLING },
 	{ "kote of power", GAUNTLETS_OF_POWER },
-	{ "naginata", GLAIVE },
 	{ "kamayari", GUISARME },
 	{ "bisento", HALBERD },
 	{ "kabuto", HELMET },
@@ -2515,6 +2512,7 @@ struct alt_spellings {
 	{ "armored black dress", NOBLE_S_DRESS },
 	{ "droven dress", NOBLE_S_DRESS },
 	{ "armored boots", ARMORED_BOOTS },
+	{ "fossil dark", CHUNK_OF_FOSSILE_DARK },
 	{ (const char *)0, 0 },
 };
 

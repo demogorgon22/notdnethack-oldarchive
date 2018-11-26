@@ -180,7 +180,7 @@ WEAPON("moon axe", "two-handed axe", /*Needs encyc entry*//*Needs tile*/
 WEAPON("short sword", (char *)0,
 	1, 0, 0,  8, 30, 10,  6,  8, 0, P,   P_SHORT_SWORD, IRON, HI_METAL),
 WEAPON("vibroblade", "gray short sword", /*Needs encyc entry*//*Needs tile*/
-	1, 0, 0,  0, 20, 10,  6,  8, 0, P,   P_SHORT_SWORD, PLASTIC, CLR_GRAY),
+	1, 0, 0,  0, 5, 10,  6,  8, 0, P,   P_SHORT_SWORD, PLASTIC, CLR_GRAY),
 WEAPON("elven short sword", "runed short sword",
 	0, 0, 0,  2,  2, 10,  7,  7, 2, P,   P_SHORT_SWORD, WOOD, HI_WOOD),
 WEAPON("droven short sword", "short sword", /*Needs encyc entry*/
@@ -236,11 +236,13 @@ WEAPON("spetum", "forked polearm",
 	0, 0, 1,  5, 50,  5,  6,  6, 0, P,   P_POLEARMS, IRON, HI_METAL),
 						/* +1 small, +d6 large */
 WEAPON("glaive", "single-edged polearm",
-	0, 0, 1,  8, 75,  6,  6, 10, 0, S,   P_POLEARMS, IRON, HI_METAL),
+	0, 0, 1,  7, 75,  6,  6, 10, 0, S,   P_POLEARMS, IRON, HI_METAL),
+WEAPON("naginata", "samurai-sword polearm",
+	0, 0, 1,  1, 75, 90,  8, 10, 1, S,   P_POLEARMS, IRON, HI_METAL),
 WEAPON("lance", (char *)0,
 	1, 0, 0,  4,180, 10,  6,  8, 0, P,   P_LANCE, IRON, HI_METAL),
 WEAPON("force pike", "long gray spear",/*Needs tile*/
-	0, 0, 0,  0,180, 10,  6,  8, 2, P|S,   P_LANCE, METAL, CLR_GRAY),
+	0, 0, 0,  0,30, 10,  6,  8, 2, P|S,   P_LANCE, METAL, CLR_GRAY),
 WEAPON("elven lance", "runed lance", /*Needs encyc entry*//*Needs tile*/
 	0, 0, 0,  0, 11, 10,  8,  8, 2, P,   P_LANCE, WOOD, HI_WOOD),
 WEAPON("droven lance", "lance", /*Needs encyc entry*//*Needs tile*/
@@ -295,9 +297,9 @@ WEAPON("club", (char *)0,
 WEAPON("quarterstaff", "staff",
 	0, 0, 1, 10, 40,  5,  6,  6, 0, B,   P_QUARTERSTAFF, WOOD, HI_WOOD),
 WEAPON("khakkhara", "monk's staff", /*Needs encyc entry*//*Needs tile*/
-	0, 1, 1,  2, 120,  50,  6,  4, 0, B|P,   P_QUARTERSTAFF, METAL, HI_SILVER),
+	0, 0, 1,  2, 120,  50,  6,  4, 0, B|P,   P_QUARTERSTAFF, METAL, HI_SILVER),
 WEAPON("bar", (char *)0,
-	1, 0, 1, 0, 400,  10,  8,  6, -10, B,   P_QUARTERSTAFF, METAL, HI_METAL),
+	1, 1, 1, 0, 400,  10,  8,  6, -10, B,   P_QUARTERSTAFF, METAL, HI_METAL),
 /* two-piece */
 WEAPON("aklys", "thonged club",
 	0, 0, 0,  8, 15,  4,  6,  3, 0, B,   P_CLUB, IRON, HI_METAL),
@@ -334,19 +336,19 @@ GUN("gun", "unfamiliar gun",					0,  0, 0,  25,  250, 10,  3, -1, WP_BULLET, IRO
 GUN("long gun", "unfamiliar long gun",			0,  1, 0,  30,  150, 22, -1,  1, WP_BULLET, IRON, P_FIREARM, HI_METAL),/*Needs tile*/
 GUN("heavy gun", "unfamiliar heavy gun",		0,  1, 0, 100, 2000, 20,  8, -4, WP_BULLET, IRON, P_FIREARM, HI_METAL),/*Needs tile*/
  /*Needs encyc entry*/
-GUN("hand blaster", "hard black handmirror",		0,  0, 0,  12, 1000, 10,  1,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_BLACK), /*Needs tile*/
-GUN("arm blaster",  "hard white bracer", 	   		0,  0, 0,  45, 4500, 15,  6,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_WHITE), /*Needs tile*/
-GUN("mass-shadow pistol",  "rectangular device",	0,  0, 0,  25, 4500, 10,  1,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_GRAY), /*Needs tile*/
-GUN("cutting laser","hard tan lozenge",    			0,  0, 0,  10, 1000,  3, -1,  3,WP_BLASTER, PLASTIC, P_FIREARM, CLR_YELLOW), /*Needs tile*/
+GUN("hand blaster", "hard black handmirror",		0,  0, 0,  2, 1000, 10,  1,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_BLACK), /*Needs tile*/
+GUN("arm blaster",  "hard white bracer", 	   		0,  0, 0,  8, 4500, 15,  6,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_WHITE), /*Needs tile*/
+GUN("mass-shadow pistol",  "rectangular device",	0,  0, 0,  4, 4500, 10,  1,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_GRAY), /*Needs tile*/
+GUN("cutting laser","hard tan lozenge",    			0,  0, 0,  1, 1000,  3, -1,  3,WP_BLASTER, PLASTIC, P_FIREARM, CLR_YELLOW), /*Needs tile*/
 
 GUN("flamethrower", "tank with long tube",	0,  0, 0,  45, 3000, 15,  1,  0,WP_BLASTER, METAL, P_FIREARM, CLR_ORANGE), /*Needs tile*/
-GUN("raygun", "hard handle ending in glassy disks",	0,  0, 0,  45, 3000, 15,  1,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_BRIGHT_CYAN), /*Needs tile*/
+GUN("raygun", "hard handle ending in glassy disks",	0,  0, 0,  8, 3000, 15,  1,  0,WP_BLASTER, PLASTIC, P_FIREARM, CLR_BRIGHT_CYAN), /*Needs tile*/
 BULLET("bullet", "pellet",
 	0,  0,   1,   5, 8, 6, 0, WP_BULLET,   P,   METAL, -P_FIREARM, HI_METAL),/*Needs tile*/
 BULLET("silver bullet", "silver pellet",
 	0,  0,   1,  15, 8, 6, 0, WP_BULLET,   P, SILVER, -P_FIREARM, HI_SILVER),/*Needs tile*/
 BULLET("shotgun shell", "red tube",
-	0,  0,   1,  10,12, 6, 0,  WP_SHELL,   P,   METAL, -P_FIREARM, CLR_RED),/*Needs tile*/
+	0,  0,   1,  10,12, 6, 10,  WP_SHELL,   P,   METAL, -P_FIREARM, CLR_RED),/*Needs tile*/
 BULLET("frag grenade", "green spheriod",
 	0,  0,   5, 350, 2, 2, 0,  WP_GRENADE, B,   IRON, -P_FIREARM, CLR_GREEN),/*Needs tile*/
 BULLET("gas grenade", "lime spheriod",

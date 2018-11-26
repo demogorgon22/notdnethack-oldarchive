@@ -63,7 +63,7 @@ new_light_source(x, y, range, type, id)
 {
     light_source *ls;
 
-    if (range > MAX_RADIUS || range < 1) {
+    if (range > MAX_RADIUS || range < 0) {
 	impossible("new_light_source:  illegal range %d", range);
 	return;
     }
@@ -171,7 +171,7 @@ do_light_sources(cs_rows)
             }
         }
 
-	if (ls->flags & LSF_SHOW) {
+	if ((ls->flags & LSF_SHOW) && ls->range > 0) {
 		if((ls->type == LS_OBJECT && Is_darklight_source(((struct obj *)(ls->id)))) ||
 			(ls->type == LS_MONSTER && Is_darklight_monster(((struct monst *)(ls->id))->data))
 		){

@@ -1773,6 +1773,8 @@ begin_burn(obj, already_lit)
 			turns = 1;
 			if(obj->cobj && obj->cobj->oartifact == obj->oartifact && arti_light(obj->cobj)) 
 				radius = (obj->cobj->blessed ? 3 : (obj->cobj->cursed ? 1 : 2));
+			else if(obj->cobj && obj->cobj->otyp == JET) /*'mirrored' lightsaber*/ 
+								radius = 0;
     	    else radius = 1;
 		break;
 	    case POWER_ARMOR:

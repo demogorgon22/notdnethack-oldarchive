@@ -1591,6 +1591,7 @@ hitmu(mtmp, mattk)
 				(is_pole(uwep) && 
 					uwep->otyp != AKLYS && 
 					uwep->otyp != FORCE_PIKE && 
+					uwep->otyp != NAGINATA && 
 					uwep->oartifact != ART_WEBWEAVER_S_CROOK && 
 					uwep->oartifact != ART_HEARTCLEAVER && 
 					uwep->oartifact != ART_SOL_VALTIVA && 
@@ -3644,6 +3645,8 @@ dopois:
 				y = rn2(3)-1;
 				explode(mtmp->mx+x, mtmp->my+y, 8, dmg, -1, rn2(EXPL_MAX));		//-1 is unspecified source. 8 is physical
 			}
+			if(DEADMONSTER(mtmp))
+				return 2;
 			dmg=0;
 		} break;
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -4287,6 +4290,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 	char buf[BUFSZ];
 	if(mtmp->data->maligntyp < 0 && Is_illregrd(&u.uz)) return 0;
 	if(ward_at(u.ux,u.uy) == HAMSA) return 0;
+	if(ublindf && ublindf->oartifact == ART_EYES_OF_THE_OVERWORLD) return 0;
 	if(mattk->adtyp == AD_RGAZ){
 		attack_type = gazeattacks[rn2(SIZE(gazeattacks))];	//flat random member of gazeattacks
 	}
