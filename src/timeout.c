@@ -7,9 +7,8 @@
 
 STATIC_DCL void NDECL(stoned_dialogue);
 STATIC_DCL void NDECL(golded_dialogue);
-#ifdef CONVICT
+STATIC_DCL void NDECL(gillyweed_dialogue);
 STATIC_DCL void NDECL(phasing_dialogue);
-#endif /* CONVICT */
 STATIC_DCL void NDECL(vomiting_dialogue);
 STATIC_DCL void NDECL(choke_dialogue);
 STATIC_DCL void NDECL(slime_dialogue);
@@ -69,7 +68,17 @@ golded_dialogue()
 	exercise(A_DEX, FALSE);
 }
 
-#ifdef CONVICT
+STATIC_OVL void
+gillyweed_dialogue()
+{
+    if (HMagical_breathing == 15) {
+        Your("gills are beginning to disappear.");
+        stop_occupation();
+    } else if (HMagical_breathing == 1) {
+        Your("gills are gone.");
+        stop_occupation();
+    }
+}
 STATIC_OVL void
 phasing_dialogue()
 {
@@ -89,7 +98,6 @@ phasing_dialogue()
         stop_occupation();
     }
 }
-#endif /* CONVICT */
 
 /* He is getting sicker and sicker prior to vomiting */
 static NEARDATA const char * const vomiting_texts[] = {
@@ -386,6 +394,7 @@ nh_timeout()
 			u.luckturn = moves;
 	    }
 	}
+    if(HMagical_breathing) gillyweed_dialogue();
 #ifdef CONVICT
     if(Phasing) phasing_dialogue();
 #endif /* CONVICT */

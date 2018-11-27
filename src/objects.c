@@ -982,6 +982,7 @@ FOOD("severed hand",         0, 1,  0, 0, FLESH,  40, CLR_BROWN),/*Needs tile*/
 
 /* fruits & veggies */
 FOOD("kelp frond",           0, 1,  1, 0, VEGGY,  30, CLR_GREEN),
+FOOD("gillyweed",           0, 1,  1, 0, VEGGY,  30, CLR_GREEN),
 FOOD("eucalyptus leaf",      3, 1,  1, 0, VEGGY,  30, CLR_GREEN),
 /*Forbidden by Eve starts here:*/
 FOOD("apple",               15, 1,  2, 0, VEGGY,  50, CLR_RED),

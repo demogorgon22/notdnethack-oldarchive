@@ -2556,6 +2556,31 @@ register struct obj *otmp;
 		}
 		if(!otmp->cursed) heal_legs();
 		break;
+	    case GILLYWEED:{
+		long timeLength = 200 + rnd(50);
+		if( !(HSwimming) || !(HMagical_breathing)) {
+			You_feel("gills develop on your neck.");
+		}
+		if( (HSwimming & TIMEOUT) + timeLength < TIMEOUT) {
+			// long timer = max((HCold_resistance & TIMEOUT), (long)(nutval*multiplier));
+			long timer = (HSwimming & TIMEOUT) + timeLength;
+			HSwimming &= ~TIMEOUT; //wipe old timer, leaving higher bits in place
+			HSwimming |= timer; //set new timer
+		}
+		else{
+			HSwimming |= TIMEOUT; //set timer to max value
+		}
+		if( (HMagical_breathing & TIMEOUT) + timeLength < TIMEOUT) {
+			// long timer = max((HCold_resistance & TIMEOUT), (long)(nutval*multiplier));
+			long timer = (HMagical_breathing & TIMEOUT) + timeLength;
+			HMagical_breathing &= ~TIMEOUT; //wipe old timer, leaving higher bits in place
+			HMagical_breathing |= timer; //set new timer
+		}
+		else{
+			HMagical_breathing |= TIMEOUT; //set timer to max value
+		}
+	    }
+	    break;
 	    case EGG:
 		if (touch_petrifies(&mons[otmp->corpsenm])) {
 		    if (!Stone_resistance &&

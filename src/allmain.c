@@ -624,7 +624,9 @@ moveloop()
 				int y = rn2(ROWNO);
 				if(levl[x][y].typ == POOL || levl[x][y].typ == TREE){
 					if(cansee(x,y)) pline("You see swamp gas rise from the marshy fen.");
+					flags.cth_attk = 1;//make it not players fault :(
 					(void) create_gas_cloud(x, y, 2,4);
+					flags.cth_attk = 0;
 				}
 			}
 			if(In_cha(&u.uz) && !rn2(10)){
