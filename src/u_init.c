@@ -2814,6 +2814,7 @@ register struct trobj *trop;
 			obj = mksobj(otyp, TRUE, FALSE);
 			if(obj->otyp == POT_BLOOD) 
 				obj->corpsenm = PM_HUMAN;
+			if(obj->oclass == WEAPON_CLASS || obj->oclass == ARMOR_CLASS && obj->blessed && Race_if(PM_VAMPIRE)) obj->blessed = 0;
 			if(obj->oclass == WEAPON_CLASS || obj->oclass == ARMOR_CLASS) obj->objsize = youracedata->msize;
 			if(obj->oclass == ARMOR_CLASS){
 				if(is_suit(obj)) obj->bodytypeflag = (youracedata->mflagsb&MB_BODYTYPEMASK);

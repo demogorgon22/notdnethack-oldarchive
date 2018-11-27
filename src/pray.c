@@ -1486,7 +1486,7 @@ gcrownu()
 
     /* enhance weapon regardless of alignment or artifact status */
     if (ok_wep(obj)) {
-		bless(obj);
+		if(!Race_if(PM_VAMPIRE)) bless(obj);
 		obj->oeroded = obj->oeroded2 = 0;
 		obj->oerodeproof = TRUE;
 		obj->bknown = obj->rknown = TRUE;
@@ -1585,7 +1585,7 @@ pleased(g_align)
 				Sprintf(repair_buf, " and %s now as good as new",
 					otense(uwep, "are"));
 
-			if (uwep->cursed) {
+			if (uwep->cursed && !Weldproof) {
 				uncurse(uwep);
 				uwep->bknown = TRUE;
 				if (!Blind)
@@ -1594,7 +1594,7 @@ pleased(g_align)
 				else You_feel("the power of %s over your %s.",
 				u_gname(), xname(uwep));
 				*repair_buf = '\0';
-			} else if (!uwep->blessed) {
+			} else if (!uwep->blessed && !Race_if(PM_VAMPIRE)) {
 				bless(uwep);
 				uwep->bknown = TRUE;
 				if (!Blind)
@@ -2611,6 +2611,7 @@ dosacrifice()
 		if (otmp) {
 		    if (otmp->spe < 0) otmp->spe = 0;
 		    if (otmp->cursed) uncurse(otmp);
+		    if (otmp->blessed && Race_if(PM_VAMPIRE)) otmp->blessed = 0;
 		    otmp->oerodeproof = TRUE;
 		    dropy(otmp);
 		    at_your_feet("An object");
@@ -3455,6 +3456,14 @@ aligntyp alignment;
 					break;
 			    return; /* Nothing to do! */
 		    }
+		    if(Race_if(PM_VAMPIRE)){
+		    	otmp->oerodeproof = 1;
+			 Your("%s %s.",
+			       what ? what :
+			       (const char *)aobjnam (otmp, "softly glow"),
+			       hcolor(NH_GOLDEN));
+			return;
+		    } 
 		    bless(otmp);
 		    otmp->bknown = TRUE;
 		    if (!Blind)

@@ -626,7 +626,7 @@ struct monst *mon;
 	otmp = obj->nobj;
 	/* the Amulet, invocation tools, and Rider corpses resist even when
 	   artifacts and ordinary objects are given 0% resistance chance */
-	if (obj_resists(obj, 0, 0)) {
+	if (TRUE || obj_resists(obj, 0, 0)) {
 	    obj_extract_self(obj);
 	    mdrop_obj(mon, obj, FALSE);
 	}
