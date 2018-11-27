@@ -82,6 +82,21 @@ pass_one(bg_typ, fg_typ)
 		    if(get_map(i+dirs[dr*2], j+dirs[(dr*2)+1], bg_typ)
 								== fg_typ)
 			count++;
+		if(In_archipelago(&u.uz)){
+
+		switch(count) {
+		  case 0 : /* death */
+		  case 1 :
+		  case 2:
+			  levl[i][j].typ = bg_typ;
+			  break;
+		  case 5:
+			  levl[i][j].typ = fg_typ;
+			  break;
+		  default:
+			  break;
+		  }
+		} else {
 
 		switch(count) {
 		  case 0 : /* death */
@@ -98,6 +113,7 @@ pass_one(bg_typ, fg_typ)
 		  default:
 			  break;
 		  }
+		}
 	    }
 }
 

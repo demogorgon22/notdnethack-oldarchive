@@ -2014,6 +2014,7 @@ E struct permonst *NDECL(qt_montype);
 E struct permonst *NDECL(icecaves_montype);
 E struct permonst *NDECL(blackforest_montype);
 E struct permonst *NDECL(dismalswamp_montype);
+E struct permonst *NDECL(archipelago_montype);
 E struct permonst *NDECL(chaos_montype);
 E struct permonst *NDECL(neutral_montype);
 E struct permonst *NDECL(law_montype);

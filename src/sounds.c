@@ -653,7 +653,13 @@ static const char *branch_info[] ={
 	"It is rumored there is a kobold fortress deep in The Dismal Swamp.",
 	"There is a temple deep in The Dismal Swamp.",
 	"The beasts of The Dismal Swamp include armored kobolds.",
-	"The kobolds of The Dismal Swamp are said to have hoarded treasure."
+	"The kobolds of The Dismal Swamp are said to have hoarded treasure.",
+	/* Archipelago*/
+	"The Archipelago is full of a magical plant.",
+	"There is said to be a town holding back water in The Archipelago.",
+	"A strange beast lurks far into The Archipelago.",
+	"The Archipelago's waters contain lost treasure.",
+	"Sailors have drowned in The Archipelago."
 };
 
 
@@ -764,6 +770,9 @@ boolean chatting;
 				break;
 				case DISMAL_SWAMP:
 					dnum = dismalswamp_dnum;
+				break;
+				case ARCHIPELAGO:
+					dnum = archipelago_dnum;
 				break;
 				default:
 					dnum = ice_dnum;
@@ -2043,14 +2052,12 @@ const char *prompt;
 	add_menu(tmpwin, NO_GLYPH, &any,
 		's', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-	/*Sprintf(buf, "??????");
-	any.a_int = MOUNTAIN;	
+	Sprintf(buf, "The Archipelago");
+	any.a_int = ARCHIPELAGO;	
 	add_menu(tmpwin, NO_GLYPH, &any,
-		'E', 0, ATR_NONE, buf,
+		'a', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
-		*/
 	end_menu(tmpwin, prompt);
-
 	how = PICK_ONE;
 	n = select_menu(tmpwin, how, &selected);
 	destroy_nhwindow(tmpwin);

@@ -21,6 +21,7 @@ RNDLEVEL:	"villag" "O" @ (4, 0) 4
 BRANCH:		"The Ice Caves" @ (4, 0) portal
 BRANCH:		"The Dismal Swamp" @ (4, 0) portal
 BRANCH:		"The Black Forest" @ (4, 0) portal
+BRANCH:		"The Archipelago" @ (4, 0) portal
 %REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
 CHAINBRANCH:	"Vlad's Tower" "oracle" + (0,0) no_up up
@@ -149,6 +150,16 @@ DESCRIPTION:	mazelike
 LEVEL:	"dsbog" "T" @ (-2, 0) 
 LEVELDESC:	town
 LEVEL:	"dsboss" "B" @ (-1, 0) 
+ENTRY:		1
+#
+#	The archipelago
+#
+DUNGEON:	"The Archipelago" "A" (5, 0)
+ALIGNMENT:	neutral
+DESCRIPTION:	mazelike
+LEVEL:	"leveetwn" "T" @ (-2, 0) 
+LEVELDESC:	town
+LEVEL:	"arcboss" "B" @ (-1, 0) 
 ENTRY:		1
 # Law Quest
 

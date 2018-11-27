@@ -6332,6 +6332,9 @@ rndmonst()
 	else if (In_dismalswamp(&u.uz)){
 		if(rn2(10)) return dismalswamp_montype();
 	}
+	else if (In_archipelago(&u.uz)){
+		if(rn2(10)) return archipelago_montype();
+	}
 	else if (In_neu(&u.uz) && 
 		(Is_rlyeh(&u.uz) ||  Is_sumall(&u.uz) || Is_gatetown(&u.uz))){
 	    if(!in_mklev) return neutral_montype();

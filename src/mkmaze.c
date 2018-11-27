@@ -768,6 +768,28 @@ register const char *s;
 				}
 			}
 		}
+		if(In_archipelago(&u.uz)){
+			for(x = 0; x<COLNO; x++){
+				for(y = 0; y<ROWNO; y++){
+					if(t_at(x,y)) (void) mksobj_at(GILLYWEED, x, y, TRUE, FALSE);
+					if(levl[x][y].typ == MOAT){
+						if(!rn2(200)){
+							if(Is_leveetwn_level(&u.uz)){
+								levl[x][y].typ = ROOM;
+							} else {
+								otmp = mksobj_at(CHEST, x, y, TRUE, FALSE);
+								if(!rn2(5)) otmp->obj_material = GOLD;
+								
+							}
+						}
+
+					}
+					if(levl[x][y].typ == ROOM && !rn2(10) && !Is_leveetwn_level(&u.uz)){
+						levl[x][y].typ = TREE;
+					}
+				}
+			}
+		}
 		if(In_adventure_branch(&u.uz) && dunlev(&u.uz) == 1){
 			branch *br = dungeon_branch("Vlad's Tower");
 			br->end1 = u.uz;
@@ -815,6 +837,22 @@ register const char *s;
 						}
 						if(levl[x][y].typ == ROOM){
 							if(!rn2(2)) levl[x][y].typ = GRASS;
+						}
+					}
+				}
+
+			}
+			if(u.ubranch == ARCHIPELAGO){
+				for(x = 21; x<COLNO; x++){
+					for(y = 0; y<ROWNO; y++){
+						if(levl[x][y].typ == ROOM && rn2(5) && !m_at(x,y)){
+							levl[x][y].typ = MOAT;
+						}
+						if(levl[x][y].typ == CORR){
+							levl[x][y].typ = MOAT;
+						}
+						if(levl[x][y].typ == TREE){
+							levl[x][y].typ = ROOM;
 						}
 					}
 				}

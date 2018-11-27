@@ -610,6 +610,24 @@ qt_montype()
 }
 
 struct permonst *
+archipelago_montype()
+{
+	int chance = rn2(100);
+	if(chance < 10)
+		return &mons[PM_PARROT];
+	if(chance < 30)
+		return &mons[PM_MONKEY];
+	if(chance < 40)
+		return &mons[PM_WATER_MOCCASIN];
+	if(chance < 60)
+		return &mons[PM_JELLYFISH];
+	if(chance < 90)
+		return mkclass(S_LIZARD, G_NOHELL);
+	if(chance < 100)
+		return mkclass(S_SNAKE, G_NOHELL);
+
+}
+struct permonst *
 dismalswamp_montype()
 {
 	int chance = rn2(100);

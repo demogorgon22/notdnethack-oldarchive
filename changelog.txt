@@ -40,6 +40,8 @@ Artifacts
 Vampire changes
 	Can #monster to turn into a vampire bat or to rehumanize from any form
 		at no cost.
+	Starting inventory respects hating holy.
+	God respects hating holy.
 Healer changes
 	No longer start with quarterstaff
 	Start with +1 crossbow and some syringes

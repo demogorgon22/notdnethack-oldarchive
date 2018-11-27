@@ -490,7 +490,7 @@ struct you {
 #define BLACK_FOREST	2
 #define GNOMISH_MINES	3
 #define DISMAL_SWAMP	4
-#define MOUNTAIN	5
+#define ARCHIPELAGO	5
 	uchar 	wimage;		/* to record if you have the image of a Weeping Angel in your mind */
 	int uinvault;
 	struct monst *ustuck;

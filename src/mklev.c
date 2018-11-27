@@ -677,6 +677,9 @@ makelevel()
 	    } else if (In_dismalswamp(&u.uz)) {
 		    makemaz("dsfill");
 		    return;
+	    } else if (In_archipelago(&u.uz)) {
+		    makemaz("arcfill");
+		    return;
 	    } else if (In_quest(&u.uz)) {
 		    char	fillname[9];
 		    s_level	*loc_lev;
@@ -945,7 +948,7 @@ mineralize()
 	    for (y = 1; y < (ROWNO - 1); y++)
 		if ((levl[x][y].typ == POOL && !rn2(10)) ||
 			(levl[x][y].typ == MOAT && !rn2(30)))
-		    (void) mksobj_at(KELP_FROND, x, y, TRUE, FALSE);
+		    (void) mksobj_at((In_archipelago(&u.uz) && !rn2(5))?GILLYWEED:KELP_FROND, x, y, TRUE, FALSE);
 
 	/* determine if it is even allowed;
 	   almost all special levels are excluded */
