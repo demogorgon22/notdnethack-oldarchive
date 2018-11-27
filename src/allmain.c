@@ -619,6 +619,14 @@ moveloop()
 				useup(otmp);
 				unbind(SEAL_SHIRO,TRUE);
 			}
+			if(In_dismalswamp(&u.uz) && !rn2(50)){
+				int x = rn2(COLNO);
+				int y = rn2(ROWNO);
+				if(levl[x][y].typ == POOL || levl[x][y].typ == TREE){
+					if(cansee(x,y)) pline("You see swamp gas rise from the marshy fen.");
+					(void) create_gas_cloud(x, y, 2,4);
+				}
+			}
 			if(In_cha(&u.uz) && !rn2(10)){
 				int x = rn2(COLNO);
 				int y = rn2(ROWNO);
@@ -638,7 +646,7 @@ moveloop()
 							type = DEADTREE;
 						break;
 						case 4:
-							type = STONE;
+							type = CORR;
 						break;
 						default:
 							type = STONE;
