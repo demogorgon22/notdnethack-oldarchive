@@ -613,10 +613,14 @@ struct permonst *
 archipelago_montype()
 {
 	int chance = rn2(100);
-	if(chance < 10)
+	if(chance < 10){
+		if(Is_arcboss_level(&u.uz)) return &mons[PM_JELLYFISH];
 		return &mons[PM_PARROT];
-	if(chance < 30)
+	}
+	if(chance < 30){
+		if(Is_arcboss_level(&u.uz)) return &mons[PM_JELLYFISH];
 		return &mons[PM_MONKEY];
+	}
 	if(chance < 40)
 		return &mons[PM_WATER_MOCCASIN];
 	if(chance < 60)

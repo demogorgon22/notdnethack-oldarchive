@@ -686,6 +686,7 @@ struct level_map {
 	{ "iceboss",	&iceboss_level },
 	
 	{ "leveetwn",	&leveetwn_level },
+	{ "arcboss",	&arcboss_level },
 
 	{ "minetn",     &minetown_level },
 #ifdef RECORD_ACHIEVE

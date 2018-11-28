@@ -784,7 +784,7 @@ register const char *s;
 						}
 
 					}
-					if(levl[x][y].typ == ROOM && !rn2(10) && !Is_leveetwn_level(&u.uz)){
+					if(levl[x][y].typ == ROOM && !rn2(10) && !Is_leveetwn_level(&u.uz) && !Is_arcboss_level(&u.uz)){
 						levl[x][y].typ = TREE;
 					}
 				}

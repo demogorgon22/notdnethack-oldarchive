@@ -4920,6 +4920,8 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 					else if(tmon->data == &mons[PM_LONG_SINUOUS_TENTACLE]) ltnt++;
 				} else if(mtmp->data == &mons[PM_KETO]){
 					if(tmon->data == &mons[PM_WIDE_CLUBBED_TENTACLE]) ltnt++;
+				}else if(mtmp->data == &mons[PM_ARCHIPELAGO_ANCIENT]){
+					if(tmon->data == &mons[PM_DEEP_SEA_TENTACLE]) ltnt++;
 				}
 			}
 			if(mtmp->data == &mons[PM_WATCHER_IN_THE_WATER]){
@@ -4931,6 +4933,10 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 			} else if(mtmp->data == &mons[PM_KETO]){
 				if(ltnt<2){
 					makemon(&mons[PM_WIDE_CLUBBED_TENTACLE], mtmp->mx, mtmp->my, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
+				}
+			} else if(mtmp->data == &mons[PM_ARCHIPELAGO_ANCIENT]){
+				if(ltnt<2){
+					makemon(&mons[PM_DEEP_SEA_TENTACLE], mtmp->mx, mtmp->my, MM_ADJACENTOK|MM_ADJACENTSTRICT|MM_NOCOUNTBIRTH);
 				}
 			}
 		}break;

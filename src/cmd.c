@@ -937,6 +937,7 @@ lavify(){
 	losehp(u.uhp/2,"overexertion",KILLED_BY);
 	pline("Lava seeps from your pores!");
 	levl[u.ux][u.uy].typ = LAVAPOOL;
+	u.uinwater = 0;
 	return 1;
 
 	

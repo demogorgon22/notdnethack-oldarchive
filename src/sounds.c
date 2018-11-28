@@ -656,8 +656,8 @@ static const char *branch_info[] ={
 	"The kobolds of The Dismal Swamp are said to have hoarded treasure.",
 	/* Archipelago*/
 	"The Archipelago is full of a magical plant.",
-	"There is said to be a town holding back water in The Archipelago.",
-	"A strange beast lurks far into The Archipelago.",
+	"There is said to be a leveetown in The Archipelago.",
+	"A strange beast lurks far into The Archipelago, deep under the sea.",
 	"The Archipelago's waters contain lost treasure.",
 	"Sailors have drowned in The Archipelago."
 };
@@ -1999,6 +1999,9 @@ humanoid_sound:
 		}
 		verbl_msg = mtmp->mpeaceful ? soldier_pax_msg[rn2(3)]
 					    : soldier_foe_msg[rn2(3)];
+		if(Is_leveetwn_level(&u.uz)){
+			verbl_msg = "Do not break down the wall. It is the only thing keeping out the water.";
+		}
 	    }
 	    break;
 	case MS_RIDER:

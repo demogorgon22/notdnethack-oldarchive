@@ -378,21 +378,25 @@
 # define Swimming	(((HSwimming || ESwimming || \
 				 is_swimmer(youracedata) || \
 				 Is_waterlevel(&u.uz) || \
+				 carrying_art(ART_GILLYSTONE) || \
 				 u.sealsActive&SEAL_ENKI) && !Punished && inv_weight() < 0) || \
 				 (u.usteed && is_swimmer(u.usteed->data)))
 # define NoburdSwimming	(((HSwimming || ESwimming || \
 				 is_swimmer(youracedata) || \
 				 Is_waterlevel(&u.uz) || \
+				 carrying_art(ART_GILLYSTONE) || \
 				 u.sealsActive&SEAL_ENKI) && !Punished) || \
 				 (u.usteed && is_swimmer(u.usteed->data)))
 #else
 # define Swimming	((HSwimming || ESwimming || \
 				 is_swimmer(youracedata) || \
 				 Is_waterlevel(&u.uz) || \
+				 carrying_art(ART_GILLYSTONE) || \
 				 u.sealsActive&SEAL_ENKI) && !Punished && inv_weight() < 0)
 # define NoburdSwimming	((HSwimming || ESwimming || \
 				 is_swimmer(youracedata) || \
 				 Is_waterlevel(&u.uz) || \
+				 carrying_art(ART_GILLYSTONE) || \
 				 u.sealsActive&SEAL_ENKI) && !Punished)
 #endif
 	/* Get wet, don't go under water unless if amphibious */
@@ -401,12 +405,14 @@
 #define EMagical_breathing	u.uprops[MAGICAL_BREATHING].extrinsic
 #define Amphibious		(HMagical_breathing || EMagical_breathing || \
 				 u.sealsActive&SEAL_ASTAROTH || \
+				 carrying_art(ART_GILLYSTONE) || \
 				 (u.divetimer > 0 && u.usubwater) || \
 				 amphibious(youracedata))
 	/* Get wet, may go under surface */
 
 #define Breathless		(HMagical_breathing || EMagical_breathing || \
 				 u.sealsActive&SEAL_ASTAROTH || \
+				 carrying_art(ART_GILLYSTONE) || \
 				 breathless(youracedata))
 
 //define Underwater		(u.uinwater)

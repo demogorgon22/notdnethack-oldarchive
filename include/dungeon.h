@@ -203,6 +203,7 @@ typedef struct branch {
 #define Is_nemesis(x)		(on_level(x, &nemesis_level))
 #define Is_knox(x)		(on_level(x, &knox_level))
 #define Is_leveetwn_level(x)     (on_level(x, &leveetwn_level))
+#define Is_arcboss_level(x)     (on_level(x, &arcboss_level))
 #define Is_minetown_level(x)     (on_level(x, &minetown_level))
 #define Is_mineend_level(x)     (on_level(x, &mineend_level))
 #define Is_sokoend_level(x)     (on_level(x, &sokoend_level))

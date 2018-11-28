@@ -1753,9 +1753,10 @@ boolean pick;
 		if (!is_pool(u.ux,u.uy)) {
 			if (Is_waterlevel(&u.uz))
 				You("pop into an air bubble.");
-			else if (is_lava(u.ux, u.uy))
-				You("leave the water...");	/* oops! */
-			else
+			else if (is_lava(u.ux, u.uy)){
+				if(likes_lava(youracedata)) You("swim into lava.");
+				else You("leave the water...");	/* oops! */
+			}else
 				You("are on solid %s again.",
 				    is_ice(u.ux, u.uy) ? "ice" : "land");
 		}

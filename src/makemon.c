@@ -2704,6 +2704,11 @@ register struct monst *mtmp;
 		} else if(mm == PM_CHANGED) {
 			if(!rn2(10)) (void)mongets(mtmp, HAND_BLASTER);
 			else (void)mongets(mtmp, STILETTO);
+		} else if (mm == PM_ARCHIPELAGO_ANCIENT){
+			otmp = mksobj(EMERALD, TRUE, FALSE);
+			otmp = oname(otmp, artiname(ART_GILLYSTONE));
+			(void) mpickobj(mtmp,otmp);
+			
 		} else if(mm == PM_DEEP_ONE || mm == PM_DEEPER_ONE) {
 		 if(Role_if(PM_ANACHRONONAUT) && In_quest(&u.uz)){
 		    switch (rn2(3)) {

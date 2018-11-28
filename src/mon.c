@@ -2167,6 +2167,16 @@ mon_can_see_mon(looker, lookie)
 		}
 		//may still be able to feel target adjacent
 	}
+	if(looker->data == &mons[PM_DEEP_SEA_TENTACLE]){
+		struct monst *keto;
+		for(keto = fmon; keto; keto = keto->nmon) if(keto->data == &mons[PM_ARCHIPELAGO_ANCIENT]) break;
+		if(keto){
+			looker->mux = keto->mux;
+			looker->muy = keto->muy;
+			if(mon_can_see_mon(keto, lookie)) return TRUE;
+		}
+		//may still be able to feel target adjacent
+	}
 	
 	if(looker->data == &mons[PM_DANCING_BLADE]){
 		struct monst *surya;
@@ -2314,6 +2324,12 @@ mon_can_see_you(looker)
 	if(looker->data == &mons[PM_WIDE_CLUBBED_TENTACLE]){
 		struct monst *keto;
 		for(keto = fmon; keto; keto = keto->nmon) if(keto->data == &mons[PM_KETO]) break;
+		if(keto && mon_can_see_you(keto)) return TRUE;
+		//may still be able to feel target adjacent
+	}
+	if(looker->data == &mons[PM_DEEP_SEA_TENTACLE]){
+		struct monst *keto;
+		for(keto = fmon; keto; keto = keto->nmon) if(keto->data == &mons[PM_ARCHIPELAGO_ANCIENT]) break;
 		if(keto && mon_can_see_you(keto)) return TRUE;
 		//may still be able to feel target adjacent
 	}
@@ -2528,6 +2544,9 @@ mfndpos(mon, poss, info, flag)
 	if(mdat == &mons[PM_WIDE_CLUBBED_TENTACLE]){
 		for(witw = fmon; witw; witw = witw->nmon) if(witw->data == &mons[PM_KETO]) break;
 	}
+	if(mdat == &mons[PM_DEEP_SEA_TENTACLE]){
+		for(witw = fmon; witw; witw = witw->nmon) if(witw->data == &mons[PM_ARCHIPELAGO_ANCIENT]) break;
+	}
 	
 	if(mdat == &mons[PM_DANCING_BLADE]){
 		for(madjacent = fmon; madjacent; madjacent = madjacent->nmon) if(madjacent->m_id == mon->mvar1) break;
@@ -2611,7 +2630,7 @@ nexttry:	/* eels prefer the water, but if there is no water nearby,
 		) if(x + xdir[(int)mon->mvar1] != nx || 
 			   y + ydir[(int)mon->mvar1] != ny 
 			) continue;
-		if((mdat == &mons[PM_WATCHER_IN_THE_WATER] || mdat == &mons[PM_KETO]) && 
+		if((mdat == &mons[PM_WATCHER_IN_THE_WATER] || mdat == &mons[PM_KETO]) || mdat == &mons[PM_ARCHIPELAGO_ANCIENT] && 
 			distmin(nx, ny, mon->mux, mon->muy) <= 3 && 
 			dist2(nx, ny, mon->mux, mon->muy) <= dist2(mon->mx, mon->my, mon->mux, mon->muy)) continue;
 		if((mdat == &mons[PM_WATCHER_IN_THE_WATER]) && 
@@ -3624,7 +3643,8 @@ boolean was_swallowed;			/* digestion */
 				struct monst *mtmp, *mtmp2;
 				for (mtmp = fmon; mtmp; mtmp = mtmp2){
 					mtmp2 = mtmp->nmon;
-					if(mtmp->data == &mons[PM_SWARM_OF_SNAKING_TENTACLES] || mtmp->data == &mons[PM_LONG_SINUOUS_TENTACLE] || mtmp->data == &mons[PM_WIDE_CLUBBED_TENTACLE]){
+					if(mtmp->data == &mons[PM_SWARM_OF_SNAKING_TENTACLES] || mtmp->data == &mons[PM_LONG_SINUOUS_TENTACLE] || 
+							mtmp->data == &mons[PM_WIDE_CLUBBED_TENTACLE]| mtmp->data == &mons[PM_DEEP_SEA_TENTACLE]){
 						if (DEADMONSTER(mtmp)) continue;
 						mtmp->mhp = -10;
 						monkilled(mtmp,"",AD_DRLI);
