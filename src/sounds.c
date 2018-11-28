@@ -1010,7 +1010,8 @@ asGuardian:
 					}
 				}
 			}
-			make_stunned(HStun + mtmp->mhp/10, TRUE);
+			if(!mtmp->mpeaceful)
+				make_stunned(HStun + mtmp->mhp/10, TRUE);
 		}
 	}break;
 	case MS_TRUMPET:{
