@@ -1109,7 +1109,6 @@ god_minions(gptr)
 			// //should always be subbed out for something else
 		// break;
 		case PM_BARBARIAN:
-			pline("im a barb");
 			if(galign == A_LAWFUL) return Langels;
 			if(galign == A_NEUTRAL) return NElemen;
 			return Cdemons;
