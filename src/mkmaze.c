@@ -778,7 +778,10 @@ register const char *s;
 								levl[x][y].typ = ROOM;
 							} else {
 								otmp = mksobj_at(CHEST, x, y, TRUE, FALSE);
-								if(!rn2(5)) otmp->obj_material = GOLD;
+								if(!rn2(5)){
+									otmp->obj_material = GOLD;
+									fix_object(otmp);
+								}
 								
 							}
 						}
