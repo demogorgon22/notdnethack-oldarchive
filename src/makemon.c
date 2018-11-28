@@ -443,8 +443,7 @@ register struct monst *mtmp;
 			case PM_TENGU:
 				if((Role_if(PM_SAMURAI) && In_quest(&u.uz)) || !rn2(20)){
 					if(mtmp->female){
-						otmp = mksobj(TWO_HANDED_SWORD, TRUE, FALSE);
-						otmp = oname(otmp, artiname(ART_SOL_VALTIVA));
+						otmp = mksobj(NAGINATA, TRUE, FALSE);
 						otmp->oerodeproof = TRUE;
 						otmp->blessed = FALSE;
 						otmp->cursed = FALSE;

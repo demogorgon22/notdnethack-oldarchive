@@ -154,7 +154,7 @@ Salamander race
 	Can reach expert in spear
 	Requires special snakeleg body armour
 	Cannot wear boots or even kick things
-	Unlock full salamander attack routine at lvl 20
+	Unlock a salamander attack routine at lvl 10
 	Spear multishot bonus
 	Cannot eat monsters that are too close to amphibians without
 		cannibalism penalty
