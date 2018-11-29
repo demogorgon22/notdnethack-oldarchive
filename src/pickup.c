@@ -1549,7 +1549,7 @@ int x, y;
 #endif
 			You("cannot reach the %s.", surface(x, y));
 		return FALSE;
-	} else if (is_pool(x, y) || is_lava(x, y)) {
+	} else if ((is_pool(x, y) && !u.usubwater) || is_lava(x, y)) {
 		/* at present, can't loot in water even when Underwater */
 		You("cannot loot things that are deep in the %s.",
 		    is_lava(x, y) ? "lava" : "water");
