@@ -2004,6 +2004,12 @@ boolean new_game;	/* false => restoring an old game */
 		pline("Use #monster to adjust your clockspeed.");
 		You("do not heal naturally. Use '.' to attempt repairs.");
 	}
+	else if(Race_if(PM_CLOCKWORK_AUTOMATON)){
+		pline("Use #monster to secrete lava.");
+	} 
+	else if(Role_if(PM_SALAMANDER)){
+		pline("Use #style to change your combat style.");
+	}	
 	else if(Race_if(PM_INCANTIFIER)){
 		pline("Incantifiers eat magic, not food, and do not heal naturally.");
 	}
