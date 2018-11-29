@@ -2888,6 +2888,28 @@ struct obj *weapon;
 	return bonus;
 }
 
+
+
+void
+item_skills(){
+	struct obj *obj;
+	int skill;
+	/* Set skill for all weapons in inventory to be basic */
+	if(!Role_if(PM_EXILE)) for (obj = invent; obj; obj = obj->nobj) {
+	    skill = weapon_type(obj);
+	    if (skill != P_NONE && !(obj->oclass != WEAPON_CLASS && skill == P_SLING))
+			OLD_P_SKILL(skill) = Role_if(PM_PIRATE) ? P_SKILLED : P_BASIC;
+	}
+	for (skill = 0; skill < P_NUM_SKILLS; skill++) {
+	    if (!OLD_P_RESTRICTED(skill)) {
+		if (OLD_P_MAX_SKILL(skill) < OLD_P_SKILL(skill)) {
+		    impossible("item_skills: curr > max: %s", P_NAME(skill));
+		    OLD_P_MAX_SKILL(skill) = OLD_P_SKILL(skill);
+		}
+		P_ADVANCE(skill) = practice_needed_to_advance(OLD_P_SKILL(skill)-1);
+	    }
+	}
+}
 /*
  * Initialize weapon skill array for the game.  Start by setting all
  * skills to restricted, then set the skill for every weapon the
@@ -2942,12 +2964,6 @@ const struct def_skill *class_skill;
 		P_ADVANCE(skill) = 0;
 	}
 
-	/* Set skill for all weapons in inventory to be basic */
-	if(!Role_if(PM_EXILE)) for (obj = invent; obj; obj = obj->nobj) {
-	    skill = weapon_type(obj);
-	    if (skill != P_NONE)
-			OLD_P_SKILL(skill) = Role_if(PM_PIRATE) ? P_SKILLED : P_BASIC;
-	}
 
 	/* set skills for magic */
 	if (Role_if(PM_HEALER) || Role_if(PM_MONK)) {
@@ -2999,7 +3015,7 @@ const struct def_skill *class_skill;
 	 */
 	for (skill = 0; skill < P_NUM_SKILLS; skill++) {
 	    if (!OLD_P_RESTRICTED(skill)) {
-		if (OLD_P_MAX_SKILL(skill) < OLD_P_SKILL(skill) && !(skill == P_SPEAR && Race_if(PM_SALAMANDER)) ) {
+		if (OLD_P_MAX_SKILL(skill) < OLD_P_SKILL(skill)) {
 		    impossible("skill_init: curr > max: %s", P_NAME(skill));
 		    OLD_P_MAX_SKILL(skill) = OLD_P_SKILL(skill);
 		}

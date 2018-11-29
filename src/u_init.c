@@ -524,8 +524,8 @@ static struct trobj StoneToFlesh[] = {
 static struct trobj Gnome_Invent[] = {
 	{ POTION_VAPORIZER, 5, TOOL_CLASS, 1, 0 },
 	{ ALCHEMY_KIT, 0, TOOL_CLASS, 1, 0 },
-	{ POT_EXCAVATION, 0, TOOL_CLASS, 1, 0 },
-	{ POT_FORCE, 0, TOOL_CLASS, 1, 0 },
+	{ POT_EXCAVATION, 0, POTION_CLASS, 1, 0 },
+	{ POT_FORCE, 0, POTION_CLASS, 1, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
 static struct trobj SleepPotions[] = {
@@ -2246,7 +2246,6 @@ u_init()
     }break;
 
 	case PM_DWARF:{
-		struct obj* otmp;
 	    /* Dwarves can recognize all dwarvish objects */
 	    knows_object(DWARVISH_SPEAR);
 	    knows_object(DWARVISH_SHORT_SWORD);
@@ -2255,16 +2254,6 @@ u_init()
 	    knows_object(DWARVISH_MITHRIL_COAT);
 	    knows_object(DWARVISH_CLOAK);
 	    knows_object(DWARVISH_ROUNDSHIELD);
-		otmp = mksobj(CLUB, TRUE, FALSE);
-		otmp->spe = otmp->cursed = otmp->blessed = 0;
-		if(Role_if(PM_EXILE)) otmp->dknown = otmp->rknown = otmp->sknown = 1;
-		else otmp->dknown = otmp->bknown = otmp->rknown = otmp->sknown = 1;
-		addinv(otmp);
-		otmp = mksobj(KNIFE, TRUE, FALSE);
-		otmp->spe = otmp->cursed = otmp->blessed = 0;
-		if(Role_if(PM_EXILE)) otmp->dknown = otmp->rknown = otmp->sknown = 1;
-		else otmp->dknown = otmp->bknown = otmp->rknown = otmp->sknown = 1;
-		addinv(otmp);
 		u.wardsknown |= WARD_TOUSTEFNA;
 		u.wardsknown |= WARD_DREPRUN;
 		u.wardsknown |= WARD_VEIOISTAFUR;
@@ -2336,6 +2325,20 @@ u_init()
 	    break;
 	default:	/* impossible */
 		break;
+	}
+	item_skills();
+	if(Race_if(PM_DWARF)){
+		struct obj* otmp;
+		otmp = mksobj(CLUB, TRUE, FALSE);
+		otmp->spe = otmp->cursed = otmp->blessed = 0;
+		if(Role_if(PM_EXILE)) otmp->dknown = otmp->rknown = otmp->sknown = 1;
+		else otmp->known = otmp->dknown = otmp->bknown = otmp->rknown = otmp->sknown = 1;
+		addinv(otmp);
+		otmp = mksobj(KNIFE, TRUE, FALSE);
+		otmp->spe = otmp->cursed = otmp->blessed = 0;
+		if(Role_if(PM_EXILE)) otmp->dknown = otmp->rknown = otmp->sknown = 1;
+		else otmp->known = otmp->dknown = otmp->bknown = otmp->rknown = otmp->sknown = 1;
+		addinv(otmp);
 	}
 
 	if (discover)
