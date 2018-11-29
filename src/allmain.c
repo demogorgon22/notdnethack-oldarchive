@@ -2004,10 +2004,10 @@ boolean new_game;	/* false => restoring an old game */
 		pline("Use #monster to adjust your clockspeed.");
 		You("do not heal naturally. Use '.' to attempt repairs.");
 	}
-	else if(Race_if(PM_CLOCKWORK_AUTOMATON)){
-		pline("Use #monster to secrete lava.");
+	else if(Race_if(PM_SALAMANDER)){
+		pline("Use #monster to secrete and throw lava.");
 	} 
-	else if(Role_if(PM_SALAMANDER)){
+	else if(Role_if(PM_MONK)){
 		pline("Use #style to change your combat style.");
 	}	
 	else if(Race_if(PM_INCANTIFIER)){
