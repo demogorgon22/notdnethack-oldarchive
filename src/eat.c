@@ -2784,14 +2784,6 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	if (!(otmp = floorfood("eat", 0))) return 0;
 	if (check_capacity((char *)0)) return 0;
 	
-	if((otmp->otyp == CORPSE || (otmp->otyp == TIN && otmp->spe != 1)) && your_race(&mons[otmp->corpsenm])
-		&& !CANNIBAL_ALLOWED() && (u.ualign.record >= 20 || ACURR(A_WIS) >= 20 || u.ualign.record >= rnd(20-ACURR(A_WIS)))
-	){
-		char buf[BUFSZ];
-		Sprintf(buf, "You feel a deep sense of kinship to %s!  Eat %s anyway?",
-			the(xname(otmp)), (otmp->quan == 1L) ? "it" : "one");
-		if (yn_function(buf,ynchars,'n')=='n') return 0;
-	}
 	
 	if (u.uedibility || u.sealsActive&SEAL_BUER || goodsmeller(youracedata)) {
 		int res = edibility_prompts(otmp);
@@ -2821,6 +2813,14 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	    /* let them eat rings */
 	    You_cant("eat %s you're wearing.", something);
 	    return 0;
+	}
+	if((otmp->otyp == CORPSE || (otmp->otyp == TIN && otmp->spe != 1)) && your_race(&mons[otmp->corpsenm])
+		&& !CANNIBAL_ALLOWED() && (u.ualign.record >= 20 || ACURR(A_WIS) >= 20 || u.ualign.record >= rnd(20-ACURR(A_WIS)))
+	){
+		char buf[BUFSZ];
+		Sprintf(buf, "You feel a deep sense of kinship to %s!  Eat %s anyway?",
+			the(xname(otmp)), (otmp->quan == 1L) ? "it" : "one");
+		if (yn_function(buf,ynchars,'n')=='n') return 0;
 	}
 	if (is_metallic(otmp) &&
 	    u.umonnum == PM_RUST_MONSTER && otmp->oerodeproof) {
