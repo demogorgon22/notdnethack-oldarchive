@@ -2999,7 +2999,7 @@ const struct def_skill *class_skill;
 	 */
 	for (skill = 0; skill < P_NUM_SKILLS; skill++) {
 	    if (!OLD_P_RESTRICTED(skill)) {
-		if (OLD_P_MAX_SKILL(skill) < OLD_P_SKILL(skill)) {
+		if (OLD_P_MAX_SKILL(skill) < OLD_P_SKILL(skill) && !(skill == P_SPEAR && Race_if(PM_SALAMANDER)) ) {
 		    impossible("skill_init: curr > max: %s", P_NAME(skill));
 		    OLD_P_MAX_SKILL(skill) = OLD_P_SKILL(skill);
 		}
