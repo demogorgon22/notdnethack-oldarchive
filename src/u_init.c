@@ -3018,6 +3018,14 @@ register struct trobj *trop;
 #ifdef GOLDOBJ
 		}
 #endif
+		if(obj->opoisoned && u.ualign.type == A_LAWFUL) obj->opoisoned = 0;
+		if(objects[otyp].oc_material != obj->obj_material){
+			if((obj->obj_material == SILVER && hates_silver(youracedata)) ||
+				(obj->obj_material == IRON && hates_iron(youracedata))){
+					obj->obj_material = objects[otyp].oc_material;
+			
+			}
+		}
 		/* defined after setting otyp+quan + blessedness */
 		obj->owt = weight(obj);
 		obj = addinv(obj);
