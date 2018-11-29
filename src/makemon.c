@@ -5954,6 +5954,10 @@ register int	mmflags;
 				mtmp->mhpmax = 3*mtmp->mhpmax;
 				mtmp->mhp = mtmp->mhpmax;
 			}
+			if(mndx == PM_BABY_WHITE_DRAGON && In_icecaves(&u.uz)){
+				mtmp->mhpmax = mtmp->mhpmax/3;
+				mtmp->mhp = mtmp->mhpmax;
+			}
 		break;
 		case S_PLANT:
 			if(mndx == PM_RAZORVINE){
@@ -6387,16 +6391,16 @@ rndmonst()
 		//else continue to random generation
 	}
 	else if (In_icecaves(&u.uz)){
-		if(rn2(10)) return icecaves_montype();
+		if(rn2(4)) return icecaves_montype();
 	}
 	else if (In_blackforest(&u.uz)){
 		if(rn2(4)) return blackforest_montype();
 	}
 	else if (In_dismalswamp(&u.uz)){
-		if(rn2(10)) return dismalswamp_montype();
+		if(rn2(4)) return dismalswamp_montype();
 	}
 	else if (In_archipelago(&u.uz)){
-		if(rn2(10)) return archipelago_montype();
+		if(rn2(4)) return archipelago_montype();
 	}
 	else if (In_neu(&u.uz) && 
 		(Is_rlyeh(&u.uz) ||  Is_sumall(&u.uz) || Is_gatetown(&u.uz))){

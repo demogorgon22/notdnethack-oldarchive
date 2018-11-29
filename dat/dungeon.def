@@ -111,56 +111,56 @@ LEVEL:		"fakewiz3" "G" @ (-12,9)
 #
 #	The Mines of the Gnomes of Zurich.
 #
-DUNGEON:	"The Gnomish Mines" "M" (5, 0)
+DUNGEON:	"The Gnomish Mines" "M" (9, 1)
 ALIGNMENT:	lawful
 DESCRIPTION:	mazelike
-RNDLEVEL:	"minetn" "T" @ (-2, 1) 7
+RNDLEVEL:	"minetn" "T" @ (4, 1) 7
 LEVELDESC:	town
 RNDLEVEL:	"minend" "E" @ (-1, 0) 4
-ENTRY:          1
+ENTRY:          2
 
 #
 #	The ice caves
 #
-DUNGEON:	"The Ice Caves" "I" (5, 0)
+DUNGEON:	"The Ice Caves" "I" (9,1)
 ALIGNMENT:	lawful
 DESCRIPTION:	mazelike
-LEVEL:	"icetown" "T" @ (-2, 0) 
+LEVEL:	"icetown" "T" @ (4, 0) 
 LEVELDESC:	town
 LEVEL:	"iceboss" "B" @ (-1, 0) 
-ENTRY:		1
+ENTRY:		2
 
 #
 #	The black forest
 #
-DUNGEON:	"The Black Forest" "B" (5, 0)
+DUNGEON:	"The Black Forest" "B" (9, 1)
 ALIGNMENT:	chaotic
 DESCRIPTION:	mazelike
-LEVEL:	"bftemple" "T" @ (-2, 0) 
+LEVEL:	"bftemple" "T" @ (4, 0) 
 LEVELDESC:	town
 LEVEL:	"bfboss" "B" @ (-1, 0) 
-ENTRY:		1
+ENTRY:		2
 
 #
 #	The dismal swamp 
 #
-DUNGEON:	"The Dismal Swamp" "S" (5, 0)
+DUNGEON:	"The Dismal Swamp" "S" (9, 1)
 ALIGNMENT:	chaotic
 DESCRIPTION:	mazelike
-LEVEL:	"dsbog" "T" @ (-2, 0) 
+LEVEL:	"dsbog" "T" @ (4, 0) 
 LEVELDESC:	town
 LEVEL:	"dsboss" "B" @ (-1, 0) 
-ENTRY:		1
+ENTRY:		2
 #
 #	The archipelago
 #
-DUNGEON:	"The Archipelago" "A" (5, 0)
+DUNGEON:	"The Archipelago" "A" (9, 1)
 ALIGNMENT:	neutral
 DESCRIPTION:	mazelike
-LEVEL:	"leveetwn" "T" @ (-2, 0) 
+LEVEL:	"leveetwn" "T" @ (4, 0) 
 LEVELDESC:	town
 LEVEL:	"arcboss" "B" @ (-1, 0) 
-ENTRY:		1
+ENTRY:		2
 # Law Quest
 
 DUNGEON:		"Law Quest" "L" (13, 0)

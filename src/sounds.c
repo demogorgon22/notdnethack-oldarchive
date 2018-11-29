@@ -780,7 +780,7 @@ boolean chatting;
 				break;
 			}
 			verbalize("I must leave now!");
-			portal = mkportal(landings[dungeon_topology.village_variant][0], landings[dungeon_topology.village_variant][1], dnum, 1);
+			portal = mkportal(landings[dungeon_topology.village_variant][0], landings[dungeon_topology.village_variant][1], dnum, 2);
 			portal->tseen = 1;
 			mongone(mtmp);
 			You_hear("a woosh!");
