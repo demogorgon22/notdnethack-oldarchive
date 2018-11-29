@@ -2921,7 +2921,7 @@ const struct def_skill *class_skill;
 	for (skill = 0; skill < P_NUM_SKILLS; skill++) {
 	    if (!OLD_P_RESTRICTED(skill)) {
 		if (OLD_P_MAX_SKILL(skill) < OLD_P_SKILL(skill)) {
-		    impossible("skill_init: curr > max: %s", P_NAME(skill));
+		    impossible("skill_add: curr > max: %s", P_NAME(skill));
 		    OLD_P_MAX_SKILL(skill) = OLD_P_SKILL(skill);
 		}
 		P_ADVANCE(skill) = practice_needed_to_advance(OLD_P_SKILL(skill)-1);
