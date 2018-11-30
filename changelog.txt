@@ -1,4 +1,4 @@
-Added acu role
+Added acu (Illithanachronounbinder) role
 	Unlocks at levels
 		1
 			tentacle attack
@@ -24,6 +24,8 @@ Added acu role
 	God is fallen and cannot pray or sacrifice
 	Has extra levels after Astral Plane and must rescue god
 	Full spirit spoiler coming when someone writes one
+		Please, someone, write one maybe?
+			Include like artifacts they have too, yeah
 	Lots of new artifacts added dropped by spirits
 	Summoning rituals are the same as binder however Dantalion can be
 		summoned anywhere and Chupoclops only needs a poison corpse

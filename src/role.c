@@ -219,7 +219,7 @@ const struct Role roles[] = {
 	{"Void Voider",       0},
 	{"Telekinetic",     0},
 	{"Keeper of the Gate",    0} },
-	"Ilsensine", "Crom", "the Devil",	/* ahahah */
+	"Ilsensine", "Water", "Resistance",	/* ahahah */
 	"Acu", "The Elder Pool", "The Far Reach",
 	PM_ANACHRONOUNBINDER, NON_PM, PM_BRAIN_GOLEM,
 	PM_ULITHARID, PM_MINDLESS_THRALL, PM_MENZOBERRANZAN,
@@ -1098,7 +1098,6 @@ god_minions(gptr)
 		}
 	}
 	//pline("%d",role);
-	
 	if(role != -1) switch(role){
 		case PM_ARCHEOLOGIST:
 			if(galign == A_LAWFUL) return LArc;

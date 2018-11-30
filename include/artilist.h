@@ -445,6 +445,13 @@ A("The Lifehunt Scythe",			SCYTHE, /*Needs encyc entry*/
 	INVIS, A_CHAOTIC, NON_PM, NON_PM, 4000L, 
 	SPFX2_STLTH,0,0),
 
+A("Digout", DWARVISH_MATTOCK,
+	(SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	BOMB, A_NONE, NON_PM, NON_PM, 9999L, 
+	0, SPFX3_NOCNT, WSFX_PLUSSEV),
+
 A("The Holy Moonlight Sword",		LONG_SWORD, /*Needs encyc entry*/
 	(SPFX_RESTR),0, //Becomes two sizes larger when lit, likely requiring two hands
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
@@ -1536,7 +1543,7 @@ A("Memory", DAGGER,
 	0, SPFX3_NOCNT, 0),
 
 A("Jack's Torch",			CLUB, /*Needs encyc entry*/
-	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN),0,
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK|SPFX_DEFN),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	FIRE(4,1),	NO_DFNS,	FIRE(0,0),
 	0, A_NONE, NON_PM, NON_PM, 9999L, 
@@ -1573,7 +1580,7 @@ A("Simurgh's Feather", FEATHER,
 A("Touch of the Void", GAUNTLETS_OF_DEXTERITY,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK|SPFX_DRLI|SPFX_DEFN),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
-	DRLI(1,1),	DRLI(0,0),	NO_CARY,
+	DRLI(1,0),	DRLI(0,0),	NO_CARY,
 	0, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT, WSFX_PLUSSEV),
 
@@ -1584,12 +1591,6 @@ A("The Plates of the Near Void", CRYSTAL_PLATE_MAIL,//half weight
 	PHASING, A_NONE, NON_PM, NON_PM, 9999L, 
 	0, SPFX3_NOCNT, WSFX_PLUSSEV),
 
-A("Digout", DWARVISH_MATTOCK,
-	(SPFX_NOGEN|SPFX_RESTR),0,
-	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/, /*Needs encyc entry*/
-	NO_ATTK,	NO_DFNS,	NO_CARY,
-	BOMB, A_NONE, NON_PM, NON_PM, 9999L, 
-	0, SPFX3_NOCNT, WSFX_PLUSSEV),
 
 A("Genocide", TWO_HANDED_SWORD, /*Needs encyc entry, somehow*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK),0,
