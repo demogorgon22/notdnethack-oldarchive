@@ -74,19 +74,7 @@ Take in the medusa commits after they are actually playtested and bugs are found
 Mystic class monk refactor
 	Can create synthetic armor and weapon with magic
 	Different attack bitfield
-		Surge punch 
-			uses pw to do extra magic dmg with bare hands
-		Force punch
-			pw for pushback
-		Spirit punch
-			3x3 magic explosion with punch, centered on target, a lot of pw
-		Flicker punch
-			Does that lightsaber skill thing where you jump around	
-		Absortive strikes
-			Halved dmg but regains pw, this can't be on with other modes
-	Can set with #monster and some sort of menu
 	Get MR and teleport control earlier?
-	Premium heart blocks special mystic punches
 	Can regen pw faster while standing on or near certain sources?
 	Can absorb magic attacks for more pw?
 	Early teleport control and/or teleportation?
