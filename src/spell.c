@@ -2301,6 +2301,10 @@ spiriteffects(power, atme)
 		case PWR_WALKER_OF_THRESHOLDS:{
 			coord cc;
 			int cancelled;
+			if(Is_astralevel(&u.uz)){
+				pline("You cannot walk among the thresholds of the gods.");
+				return 0;
+			}
 		    cc.x = u.ux;
 		    cc.y = u.uy;
 		    pline("To which doorway do you wish to travel?");
