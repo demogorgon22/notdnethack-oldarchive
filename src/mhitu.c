@@ -634,6 +634,9 @@ mattacku(mtmp)
 /*	Special demon/minion handling code */
 	if(!mtmp->cham && (is_demon(mdat) || is_minion(mdat)) && !range2
 	   && mtmp->data != &mons[PM_OONA]
+	   && mtmp->data != &mons[PM_AHAZU]
+	   && mtmp->data != &mons[PM_BALAM]
+	   && mtmp->data != &mons[PM_PAIMON]
 	   && mtmp->data != &mons[PM_BALROG]
 	   && mtmp->data != &mons[PM_DURIN_S_BANE]
 	   && mtmp->data != &mons[PM_SUCCUBUS]
