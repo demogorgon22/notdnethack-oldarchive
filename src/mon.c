@@ -3367,8 +3367,22 @@ register struct monst *mtmp;
 	}
 	if(mtmp->iswiz) wizdead();
 	if(mtmp->data->msound == MS_NEMESIS) nemdead();        
+	int mndx = monsndx(mtmp->data);
+	if(mndx >= PM_AHAZU && mndx <= PM_YMIR){
+		if(mndx<PM_MUNINN)
+			unbind(sealKey[(mndx-PM_AHAZU)],FALSE);
+		else
+			unbind(sealKey[(mndx-PM_AHAZU)-1],FALSE);
+	}
 #ifdef RECORD_ACHIEVE
-	if(mtmp->data == &mons[PM_LUCIFER]){
+	if(mtmp->data->geno & G_UNIQ && mvitals[monsndx(mtmp->data)].died == 1 && (mndx <= PM_AHAZU && mndx >= PM_YMIR || !rn2(7))){
+		char buf[BUFSZ];
+		buf[0]='\0';
+		if(nonliving(mtmp->data)) Sprintf(buf,"destroyed %s",noit_nohalu_mon_nam(mtmp));
+		else Sprintf(buf,"killed %s",noit_nohalu_mon_nam(mtmp));
+		livelog_write_string(buf);
+	}
+	else if(mtmp->data == &mons[PM_LUCIFER]){
 		achieve.killed_lucifer = 1;
 	}
 	else if(mtmp->data == &mons[PM_ASMODEUS]){
@@ -3403,12 +3417,6 @@ boolean was_swallowed;			/* digestion */
 	if(mdat == &mons[PM_ILLURIEN_OF_THE_MYRIAD_GLIMPSES] && !(u.uevent.ukilled_illurien)){
 		u.uevent.ukilled_illurien = 1;
 		u.ill_cnt = rn1(1000, 250);
-	}
-	if(mndx >= PM_AHAZU && mndx <= PM_YMIR){
-		if(mndx<PM_MUNINN)
-			unbind(sealKey[(mndx-PM_AHAZU)],FALSE);
-		else
-			unbind(sealKey[(mndx-PM_AHAZU)-1],FALSE);
 	}
 	if(mdat == &mons[PM_ORCUS] && !Role_if(PM_ANACHRONOUNBINDER)){
 		struct engr *oep = engr_at(mon->mx,mon->my);
@@ -3447,12 +3455,6 @@ boolean was_swallowed;			/* digestion */
 	else if (mdat == &mons[PM_CHAOS] && mvitals[PM_CHAOS].died == 1) {
 		if(Hallucination) livelog_write_string("perpetuated an asinine paradigm");
 		else livelog_write_string("destroyed Chaos");
-	} else if(mdat->geno & G_UNIQ && mvitals[monsndx(mdat)].died == 1 && (mndx <= PM_AHAZU && mndx >= PM_YMIR || !rn2(7))){
-		char buf[BUFSZ];
-		buf[0]='\0';
-		if(nonliving(mdat)) Sprintf(buf,"destroyed %s",noit_nohalu_mon_nam(mon));
-		else Sprintf(buf,"killed %s",noit_nohalu_mon_nam(mon));
-		livelog_write_string(buf);
 	}
 	if(Role_if(PM_ANACHRONONAUT) && mon->mpeaceful && In_quest(&u.uz) && Is_qstart(&u.uz)){
 		if(mdat == &mons[PM_TROOPER]){
