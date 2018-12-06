@@ -1790,7 +1790,7 @@ int objPos;
 		    return;
 		}
 
-		if (!IS_SOFT(levl[bhitpos.x][bhitpos.y].typ) &&
+		if ((!IS_SOFT(levl[bhitpos.x][bhitpos.y].typ) || obj->otyp == LAVA_BALL) &&
 			breaktest(obj)) {
 			int dmg, dsize = spiritDsize(), sx, sy;
 			struct monst *msmon;
