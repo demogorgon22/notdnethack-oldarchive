@@ -724,7 +724,8 @@ boolean chatting;
 		if(u.ubranch){
 			verbalize("%s",branch_info[rn2(5) + ((u.ubranch-1)*5)]);
 		} else {
-			verbalize("%s",branch_info[rn2(SIZE(branch_info))]);
+			if(rn2(4)) verbalize("%s",branch_info[rn2(SIZE(branch_info))]);
+			else verbalize("You should talk to the Travelling Wizard.");
 		}
 		return 1;
 	}
