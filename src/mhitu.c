@@ -1430,7 +1430,7 @@ struct attack *mattk;
 		  Monnam(mtmp),
 		  (mattk->adtyp == AD_WRAP) ?
 			"slips off of" : "grabs you, but cannot hold onto",
-		  obj->greased ? "greased" : obj->oartifact?"blood dripping":"slippery",
+		  obj->greased ? "greased" : obj->oartifact==ART_CROWN_OF_BERITH?"blood dripping":"slippery",
 		  /* avoid "slippery slippery cloak"
 		     for undiscovered oilskin cloak */
 		  (obj->greased || objects[obj->otyp].oc_name_known) ?

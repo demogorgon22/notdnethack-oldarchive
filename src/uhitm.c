@@ -2633,7 +2633,7 @@ struct attack *mattk;
 		mattk->adtyp == AD_WRAP ?
 			"slip off of" : "grab, but cannot hold onto",
 		s_suffix(mon_nam(mdef)),
-		obj->greased ? "greased" :obj->oartifact?"blood dripping": "slippery",
+		obj->greased ? "greased" :obj->oartifact==ART_CROWN_OF_BERITH?"blood dripping": "slippery",
 		/* avoid "slippery slippery cloak"
 		   for undiscovered oilskin cloak */
 		(obj->greased || objects[obj->otyp].oc_name_known) ?
