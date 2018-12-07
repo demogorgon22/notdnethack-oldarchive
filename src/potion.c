@@ -1662,12 +1662,14 @@ boolean your_fault;
 		    	if(bigmonst(mon->data)) mhurtle(mon, u.dx, u.dy, 1);
 		   	 else mhurtle(mon, u.dx, u.dy, obj->blessed?10:7);
 		    }
-		    mon->mhp -= d(4,6);
-		    if (mon->mhp < 1) {
-			if (your_fault)
-			    killed(mon);
-			else
-			    monkilled(mon, "", AD_FIRE);
+		    if(!(mon->mhp <= 0 || migrating_mons)){
+		    	mon->mhp -= d(4,6);
+		    	if (mon->mhp < 1) {
+		    	    if (your_fault)
+		    	        killed(mon);
+		    	    else
+		    	        monkilled(mon, "", AD_PHYS);
+		    	}
 		    }
 	break;
 	case POT_EXCAVATION:
