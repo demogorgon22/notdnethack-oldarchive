@@ -777,15 +777,36 @@ register const char *s;
 							if(Is_leveetwn_level(&u.uz)){
 								levl[x][y].typ = ROOM;
 							} else {
-								otmp = mksobj_at(CHEST, x, y, TRUE, FALSE);
+								struct obj *box;
+								box = mksobj_at(CHEST, x, y, TRUE, FALSE);
 								if(!rn2(5)){
-									otmp->obj_material = GOLD;
-									fix_object(otmp);
+									box->obj_material = GOLD;
+									fix_object(box);
 								}
+								switch(rnd(5)){
+									case 1:
+										otmp = mksobj(HELMET,TRUE,FALSE);
+									break;
+									case 2:
+										otmp = mksobj(GAUNTLETS,TRUE,FALSE);
+									break;
+									case 3:
+										otmp = mksobj(rn2(4)?CHAIN_MAIL:PLATE_MAIL,TRUE,FALSE);
+									break;
+									case 4:
+										otmp = mksobj(rn2(3)?BUCKLER:KITE_SHIELD,TRUE,FALSE);
+									break;
+									case 5:
+										otmp = mksobj(rn2(3)?LOW_BOOTS:HIGH_BOOTS,TRUE,FALSE);
+									break;
+									default:
+										otmp = mksobj(rn2(3)?LOW_BOOTS:HIGH_BOOTS,TRUE,FALSE);
+									break;
+								}
+								add_to_container(box,otmp);
 								
 							}
 						}
-
 					}
 					if(levl[x][y].typ == ROOM && !rn2(10) && !Is_leveetwn_level(&u.uz) && !Is_arcboss_level(&u.uz)){
 						levl[x][y].typ = TREE;

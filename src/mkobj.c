@@ -179,27 +179,6 @@ struct obj *box;
 		for (tprob = rnd(100); (tprob -= iprobs->iprob) > 0; iprobs++)
 		    ;
 		if (!(otmp = mkobj(iprobs->iclass, TRUE))) continue;
-
-		if(In_archipelago(&u.uz) && rn2(2)){
-			switch(rnd(5)){
-				case 1:
-					otmp = mksobj(HELMET,TRUE,FALSE);
-				break;
-				case 2:
-					otmp = mksobj(GAUNTLETS,TRUE,FALSE);
-				break;
-				case 3:
-					otmp = mksobj(rn2(4)?CHAIN_MAIL:PLATE_MAIL,TRUE,FALSE);
-				break;
-				case 4:
-					otmp = mksobj(rn2(3)?BUCKLER:KITE_SHIELD,TRUE,FALSE);
-				break;
-				case 5:
-					otmp = mksobj(rn2(3)?LOW_BOOTS:HIGH_BOOTS,TRUE,FALSE);
-				break;
-			}
-
-		}
 		/* handle a couple of special cases */
 		if (otmp->oclass == COIN_CLASS) {
 		    /* 2.5 x level's usual amount; weight adjusted below */
@@ -219,6 +198,7 @@ struct obj *box;
 			    otmp->otyp = rnd_class(WAN_LIGHT, WAN_LIGHTNING);
 		}
 	    }
+	    //pline("%s",xname(otmp));
 	    (void) add_to_container(box, otmp);
 	}
 }
