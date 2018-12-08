@@ -1989,7 +1989,7 @@ boolean new_game;	/* false => restoring an old game */
 	  Hello((struct monst *) 0), plname, buf, urace.adj,
 	  (currentgend && urole.name.f) ? urole.name.f : urole.name.m);
 	if(iflags.dnethack_start_text){
-	pline("Press Ctrl^W or type #ward to engrave a warding sign.");
+	//pline("Press Ctrl^W or type #ward to engrave a warding sign.");
 	if(Role_if(PM_PIRATE)) You("can swim! Type #swim while swimming on the surface to dive down to the bottom.");
 	else if(Role_if(PM_EXILE)){
 		pline("Press Ctrl^E or type #seal to engrave a seal of binding.");
@@ -2007,6 +2007,9 @@ boolean new_game;	/* false => restoring an old game */
 	else if(Race_if(PM_SALAMANDER)){
 		pline("Use #monster to secrete and throw lava.");
 	} 
+	else if (Role_if(PM_ANACHRONONAUT) && Race_if(PM_CLOCKWORK_AUTOMATON)){
+		pline("Use f to fire from your power suit.");	
+	}
 	else if(Role_if(PM_MONK)){
 		pline("Use #style to change your combat style.");
 	}	
