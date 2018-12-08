@@ -4341,6 +4341,12 @@ wisp_shdw_dhit2:
 			missum(mon, mattk);
 	break;
 	case AT_KICK:
+		if ((uwep || (u.twoweap && uswapwep) || uarmg) && !uarmf &&
+			mattk->adtyp != AD_STAR && mattk->adtyp != AD_BLUD && mattk->adtyp != AD_SHDW && 
+			(touch_petrifies(mon->data) ||
+			 mon->data == &mons[PM_MEDUSA])){
+				break;
+		}
 		kick_monster(mon->mx,mon->my);
 	break;
 	case AT_HITS:
