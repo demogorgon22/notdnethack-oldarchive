@@ -1139,7 +1139,7 @@ register const char *let,*word;
 			 (otmp->oclass == CHAIN_CLASS && 
 				(otyp == IRON_CHAIN || otyp == SHEAF_OF_HAY)
 			 ) ||
-		     (otmp->oclass != POTION_CLASS &&
+		     (otmp->oclass == POTION_CLASS &&
 		     /* only applicable potion is oil, and it will only
 			be offered as a choice when already discovered */
 		     (otyp != POT_OIL || !otmp->dknown ||
