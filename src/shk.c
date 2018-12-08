@@ -2629,6 +2629,10 @@ register boolean dummy;
 		obj->no_charge = 0;
 		return;
 	}
+	
+/* normally bill_p gets set up whenever you enter the shop, but obj
+       might be going onto the bill because hero just snagged it with
+       a grappling hook from outside without ever having been inside */
 
 	bct = ESHK(shkp)->billct;
 	bp = &(ESHK(shkp)->bill_p[bct]);
