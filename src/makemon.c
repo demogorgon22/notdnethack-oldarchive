@@ -5545,7 +5545,7 @@ register int	mmflags;
 		} else if(!rn2(100)){
 			undeadfaction = ZOMBIFIED;
 			unsethouse = TRUE;
-			m_initlgrp(mtmp, mtmp->mx, mtmp->my);
+			m_initsgrp(mtmp, mtmp->mx, mtmp->my);
 		}
 	}
 	if(undeadfaction){
