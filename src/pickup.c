@@ -1439,38 +1439,49 @@ boolean telekinesis;	/* not picking it up directly by hand */
  *
  * Gold never reaches this routine unless GOLDOBJ is defined.
  */
+
 struct obj *
 pick_obj(otmp)
 struct obj *otmp;
 {
-	obj_extract_self(otmp);
-	if (!u.uswallow && otmp != uball && costly_spot(otmp->ox, otmp->oy)) {
-	    char saveushops[5], fakeshop[2];
+    struct obj *result;
+    int ox = otmp->ox, oy = otmp->oy;
+    boolean robshop = (!u.uswallow && otmp != uball && costly_spot(ox, oy));
 
-	    /* addtobill cares about your location rather than the object's;
-	       usually they'll be the same, but not when using telekinesis
-	       (if ever implemented) or a grappling hook */
-	    Strcpy(saveushops, u.ushops);
-	    fakeshop[0] = *in_rooms(otmp->ox, otmp->oy, SHOPBASE);
-	    fakeshop[1] = '\0';
-	    Strcpy(u.ushops, fakeshop);
-	    /* sets obj->unpaid if necessary */
-	    addtobill(otmp, TRUE, FALSE, FALSE);
-		if(otmp->shopOwned && !(otmp->unpaid)){ /* shop stock is outside shop */
-			if(otmp->sknown && !(otmp->ostolen) ) otmp->sknown = FALSE; /*don't automatically know that you found a stolen item.*/
-			otmp->ostolen = TRUE; /* object was apparently stolen by someone (not necessarily the player) */
-		}
-	    Strcpy(u.ushops, saveushops);
-	    /* if you're outside the shop, make shk notice */
-	    if (!index(u.ushops, *fakeshop))
-		remote_burglary(otmp->ox, otmp->oy);
-	}
-	if (otmp->no_charge)	/* only applies to objects outside invent */
-	    otmp->no_charge = 0;
-	newsym(otmp->ox, otmp->oy);
-	return addinv(otmp);	/* might merge it with other objects */
+    obj_extract_self(otmp);
+    newsym(ox, oy);
+
+    /* for shop items, addinv() needs to be after addtobill() (so that
+       object merger can take otmp->unpaid into account) but before
+       remote_robbery() (which calls rob_shop() which calls setpaid()
+       after moving costs of unpaid items to shop debt; setpaid()
+       calls clear_unpaid() for lots of object chains, but 'otmp' isn't
+       on any of those between obj_extract_self() and addinv(); for
+       3.6.0, 'otmp' remained flagged as an unpaid item in inventory
+       and triggered impossible() every time inventory was examined) */
+    if (robshop) {
+        char saveushops[5], fakeshop[2];
+
+        /* addtobill cares about your location rather than the object's;
+           usually they'll be the same, but not when using telekinesis
+           (if ever implemented) or a grappling hook */
+        Strcpy(saveushops, u.ushops);
+        fakeshop[0] = *in_rooms(ox, oy, SHOPBASE);
+        fakeshop[1] = '\0';
+        Strcpy(u.ushops, fakeshop);
+        /* sets obj->unpaid if necessary */
+        addtobill(otmp, TRUE, FALSE, FALSE);
+        Strcpy(u.ushops, saveushops);
+        robshop = otmp->unpaid && !index(u.ushops, *fakeshop);
+    }
+
+    result = addinv(otmp);
+    /* if you're taking a shop item from outside the shop, make shk notice */
+    if (robshop)
+        remote_burglary(ox, oy);
+
+    return result;
 }
-
 /*
  * prints a message if encumbrance changed since the last check and
  * returns the new encumbrance value (from near_capacity()).
