@@ -1433,6 +1433,7 @@ d_level *lev;
 	else if(In_neu(lev)){
 		return lev->dlevel < sum_of_all_level.dlevel;
 	} else if(Is_arcadia_woods(lev)) return TRUE;
+	else if(Is_village_level(lev) && dungeon_topology.village_variant != CAVE_VILLAGE) return TRUE;
 	else if(In_cha(lev)) {
 		return on_level(lev, &chaosf_level) || on_level(lev, &chaoss_level);
 	}
@@ -1460,6 +1461,8 @@ d_level *lev;
 		}
 	}
 	else if(Is_sunsea(lev)) return TRUE;
+	else if(Is_village_level(lev) && dungeon_topology.village_variant == CAVE_VILLAGE) return TRUE;
+	else if(In_icecaves(lev)) return TRUE;
 	else if(In_neu(lev)){
 		return lev->dlevel >= sum_of_all_level.dlevel;
 	}
