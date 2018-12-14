@@ -2008,6 +2008,7 @@ mbag_explodes(obj, depthin)
     struct obj *obj;
     int depthin;
 {
+	return FALSE;
     /* these won't cause an explosion when they're empty */
     if ((obj->otyp == WAN_CANCELLATION || obj->otyp == BAG_OF_TRICKS) &&
 	    obj->spe <= 0)
@@ -2130,7 +2131,7 @@ register struct obj *obj;
 	}
 
 	/* boxes, boulders, and big statues can't fit into any container */
-	if (obj->otyp == ICE_BOX || Is_box(obj) || is_boulder(obj) ||
+	if (obj->otyp == ICE_BOX || Is_box(obj) || is_boulder(obj) || obj->otyp == BAG_OF_HOLDING ||
 		(obj->otyp == STATUE && bigmonst(&mons[obj->corpsenm]))) {
 		/*
 		 *  xname() uses a static result array.  Save obj's name
