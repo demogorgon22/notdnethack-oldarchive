@@ -4948,7 +4948,7 @@ retry:
 					     Weightless || u.uinwater ?
 						   "slip" : "drop")),
 				       (const char *)0);
-	    u.ublesscnt += rn1(100,50);  /* the gods take notice */
+	    //u.ublesscnt += rn1(100,50);  /* the gods take notice */
 	}
 }
 
