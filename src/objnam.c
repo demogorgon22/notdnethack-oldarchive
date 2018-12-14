@@ -3661,6 +3661,8 @@ typfnd:
 			typ == PLASTEEL_ARMOR ||
 			typ == JUMPSUIT ||
 			typ == BODYGLOVE ||
+			typ == POWER_ARMOR ||
+			typ == KNUCKLE_DUSTERS ||
 			typ == PLASTEEL_GAUNTLETS ||
 			typ == PLASTEEL_BOOTS ||
 			(typ >= SENSOR_PACK && typ <= HYPOSPRAY_AMPULE) ||
