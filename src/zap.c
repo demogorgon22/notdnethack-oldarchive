@@ -4057,7 +4057,7 @@ buzz(type,nd,sx,sy,dx,dy,range,flat)
 							)
 						) ||
 						(uarm && (uarm->otyp == SILVER_DRAGON_SCALE_MAIL || uarm->otyp == SILVER_DRAGON_SCALES || uarm->otyp == JUMPSUIT)) ||
-						(uarms && (uarms->otyp == SILVER_DRAGON_SCALE_SHIELD) || uarms->oartifact == ART_ITLACHIAYAQUE) ||
+						(uarms && (uarms->otyp == SILVER_DRAGON_SCALE_SHIELD || uarms->oartifact == ART_ITLACHIAYAQUE)) ||
 						(uwep && uwep->oartifact == ART_DRAGONLANCE)
 				)) {
 					if (!Blind) {
