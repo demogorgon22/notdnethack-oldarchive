@@ -1911,7 +1911,6 @@ get_description_of_monster_type(struct monst * mtmp, char * description)
 	char temp_buf[BUFSZ] = "";
 	char main_temp_buf[BUFSZ] = "";
 	struct permonst * ptr = mtmp->data;
-
 	char name[BUFSZ] = "";
 	Strcat(name, ptr->mname);
 	if (mtmp->mfaction == ZOMBIFIED)		Strcat(name, " zombie");
@@ -1920,7 +1919,7 @@ get_description_of_monster_type(struct monst * mtmp, char * description)
 	else if (mtmp->mfaction == WHISPERING) Strcat(name, " of whispers");
 
 	temp_buf[0] = '\0';
-	sprintf(temp_buf, "Accessing Pokedex entry for %s... ", (!Upolyd || ((int)ptr < NUMMONS)) ? name : "this weird creature");
+	sprintf(temp_buf, "Accessing entry for %s... ", (!Upolyd || ((int)ptr < NUMMONS)) ? name : "this weird creature");
 	strcat(description, temp_buf);
 
 	strcat(description, "\n");
@@ -2029,6 +2028,103 @@ get_description_of_monster_type(struct monst * mtmp, char * description)
 		strcat(main_temp_buf, temp_buf);
 		strcat(main_temp_buf, "\n");
 		strcat(description, main_temp_buf);
+	}
+	if(wizard && FALSE){
+		char wiz_buf[BUFSZ] = "";
+		char wiz_temp_buf[BUFSZ] = "";
+		strcat(wiz_buf,"\nDebug monster data:\n");
+		sprintf(wiz_temp_buf,"	mnum: %d\n", mtmp->mnum);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	movement: %d\n", mtmp->movement);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	m_lev: %d\n", mtmp->m_lev);
+		strcat(wiz_buf, wiz_temp_buf);
+		/*malign*/
+		sprintf(wiz_temp_buf,"	mx: %d\n", mtmp->mx);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	my: %d\n", mtmp->my);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mux: %d\n", mtmp->mux);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	muy: %d\n", mtmp->muy);
+		strcat(wiz_buf, wiz_temp_buf);
+		/*mtrack*/
+		sprintf(wiz_temp_buf,"	mhp: %d\n", mtmp->mhp);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mhpmax: %d\n", mtmp->mhpmax);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mappearance: %d\n", mtmp->mappearance);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	m_ap_type: %d\n", mtmp->m_ap_type);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mtame: %d\n", mtmp->mtame);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mpeacetime: %d\n", mtmp->mpeacetime);
+		strcat(wiz_buf, wiz_temp_buf);
+		/*mintrinsic*/
+		/*mextrinsic*/
+		sprintf(wiz_temp_buf,"	mspec_used: %d\n", mtmp->mspec_used);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mstdy: %d\n", mtmp->mstdy);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	ustdym: %d\n", mtmp->ustdym);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mstr: %d, mdex: %d, mcon: %d, mint: %d, mwis: %d, mcha: %d\n", mtmp->mstr, mtmp->mdex, mtmp->mcon, mtmp->mint, mtmp->mwis, mtmp->mcha);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mferal: %d\n", mtmp->mferal);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	female: %d\n", mtmp->female);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	minvis: %d\n", mtmp->minvis);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	invis_blkd: %d\n", mtmp->invis_blkd);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	perminvis: %d\n", mtmp->perminvis);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	cham: %d\n", mtmp->cham);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mundetected: %d\n", mtmp->mundetected);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mcan: %d\n", mtmp->mcan);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mburied: %d\n", mtmp->mburied);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mspeed: %d\n", mtmp->mspeed);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	permspeed: %d\n", mtmp->permspeed);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mrevived: %d\n", mtmp->mrevived);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mavenge: %d\n", mtmp->mavenge);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mflee: %d\n", mtmp->mflee);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mfleetim: %d\n", mtmp->mfleetim);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mcrazed: %d\n", mtmp->mcrazed);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mberserk: %d\n", mtmp->mberserk);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mcansee: %d\n", mtmp->mcansee);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mblinded: %d\n", mtmp->mblinded);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mcanhear: %d\n", mtmp->mcanhear);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mdeafened: %d\n", mtmp->mdeafened);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mcanmove: %d\n", mtmp->mcanmove);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mfrozen: %d\n", mtmp->mfrozen);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mnotlaugh: %d\n", mtmp->mnotlaugh);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	mlaughing: %d\n", mtmp->mlaughing);
+		strcat(wiz_buf, wiz_temp_buf);
+		sprintf(wiz_temp_buf,"	msleeping: %d\n", mtmp->msleeping);
+		strcat(wiz_buf, wiz_temp_buf);
+		strcat(description, wiz_buf);
+
 	}
 	return description;
 }

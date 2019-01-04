@@ -96,7 +96,7 @@ extern int NDECL(dodeepswim); /**/
 extern int NDECL(dotalk); /**/
 extern int NDECL(docast); /**/
 extern int NDECL(dovspell); /**/
-extern int NDECL(reorder_spirit_powers); /**/
+extern void NDECL(reorder_spirit_powers); /**/
 extern int NDECL(dotele); /**/
 extern int NDECL(dountrap); /**/
 extern int NDECL(dounmaintain); /**/

@@ -1778,6 +1778,7 @@ E const char *NDECL(rndobjnam);
 E char *FDECL(dowhatdoes_core,(CHAR_P, char *));
 E int NDECL(dohelp);
 E int NDECL(dohistory);
+E void NDECL(reorder_spirit_powers);
 E void FDECL(checkfile, (char *,struct permonst *,BOOLEAN_P,BOOLEAN_P));
 
 /* ### pcmain.c ### */

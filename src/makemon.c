@@ -6386,7 +6386,7 @@ rndmonst()
 	}
 
 	if (u.uz.dnum == quest_dnum && (ptr = qt_montype()) != 0){
-		if((int)ptr < 0) return (struct permonst *) 0;
+		if((int)(intptr_t)ptr < 0) return (struct permonst *) 0;
 	    else if(Role_if(PM_ANACHRONONAUT) || rn2(7)) return ptr;
 		//else continue to random generation
 	}
