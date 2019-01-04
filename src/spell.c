@@ -3887,7 +3887,6 @@ boolean atme;
 	case SPE_DETECT_TREASURE:
 	case SPE_RESTORE_ABILITY:
 		if (role_skill >= P_SKILLED || overload_percent >= 100) pseudo->blessed = 1;
-	break;
 	case SPE_DETECT_MONSTERS:
 	case SPE_LEVITATION:
 		/* high skill yields effect equivalent to blessed potion */
