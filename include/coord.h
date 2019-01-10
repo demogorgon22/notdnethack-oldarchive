@@ -14,4 +14,11 @@ struct seekspot {
 	boolean found;
 };
 
+/*struct clist{
+	xchar x,y;
+	boolean alive;
+	struct clist *next;
+};*/
+
+
 #endif /* COORD_H */

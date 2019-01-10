@@ -20,6 +20,108 @@ STATIC_DCL void NDECL(do_positionbar);
 extern const int monstr[];
 
 STATIC_OVL void
+do_conway()
+{
+	for(int x=0; x<COLNO; x++){
+		for(int y=0; y<ROWNO; y++){
+			int neighbors = find_neighbors(x,y,POOL);	
+			if(levl[x][y].typ == POOL && (neighbors < 2 || neighbors > 3)){
+				levl[x][y].alive = 1; 
+			}	
+			else if(neighbors == 3 && levl[x][y].typ != POOL){
+				levl[x][y].alive = 2; 
+			}
+
+		}
+	}
+	for(int x=0; x<COLNO; x++){
+		for(int y=0; y<ROWNO; y++){
+			if(levl[x][y].typ == STAIRS || levl[x][y].typ == LADDER ) continue;
+			if(levl[x][y].alive == 2){
+				levl[x][y].typ = POOL;
+				levl[x][y].alive = 0;
+				unblock_point(x,y);
+				levl[x][y].lit = 1;
+				newsym(x,y);
+			} else if(levl[x][y].alive == 1){
+				levl[x][y].typ = ROOM;
+				levl[x][y].alive = 0;
+				unblock_point(x,y);
+				levl[x][y].lit = 1;
+				newsym(x,y);
+			}
+
+
+		}
+	}
+	
+}
+/*
+STATIC_OVL void
+do_conway()
+{
+	coord found[2000];
+	//pline("%d",sizeof(found));
+	struct clist *firstCoord;
+	struct clist *current = firstCoord;
+	struct clist *newNode;
+	for(int x=0; x<COLNO; x++){
+		for(int y=0; y<ROWNO; y++){
+			int neighbors = find_neighbors(x,y,POOL);	
+			if(neighbors < 2 || neighbors > 3){
+				current->x = x;
+				current->y = y;
+				current->alive = FALSE;
+				newNode = (struct clist*)malloc(sizeof(struct clist));
+				current->next = newNode;
+				current = newNode;
+			}	
+			else if(neighbors == 3 && levl[x][y].typ != POOL){
+				current->x = x;
+				current->y = y;
+				current->alive = FALSE;
+				newNode = (struct clist*)malloc(sizeof(struct clist));
+				current->next = newNode;
+				current = newNode;
+				
+			}
+
+		}
+	}
+	current = firstCoord;
+	while(current->next){
+		if(current->alive) levl[current->x][current->y].typ = POOL;
+		else levl[current->x][current->y].typ = ROOM;
+		current = current->next;
+	}
+	
+}*/
+int find_neighbors(x,y,type)
+	int x;
+	int y;
+	int type;
+{
+	int count = 0;
+	if(x > 0){
+		if(y > 0 && levl[x-1][y-1].typ == type) count++;
+		if(levl[x-1][y].typ == type) count++;
+		if(y < ROWNO-1 && levl[x-1][y+1].typ == type) count++;
+	}
+	if(y > 0 && levl[x][y-1].typ == type) count++;
+	if(y < ROWNO-1 && levl[x][y+1].typ == type) count++;
+	if(x < COLNO-1){
+		if(y > 0 && levl[x+1][y-1].typ == type) count++;
+		if(levl[x+1][y].typ == type) count++;
+		if(y < ROWNO-1 && levl[x+1][y+1].typ == type) count++;
+
+	}
+	return count;
+}
+
+
+
+
+STATIC_OVL void
 digcrater(mtmp)
 	struct monst *mtmp;
 {
@@ -655,7 +757,7 @@ moveloop()
 					flags.cth_attk = 0;
 				}
 			}
-			if(In_cha(&u.uz) && !rn2(10)){
+			/*if(In_cha(&u.uz) && !rn2(10)){
 				int x = rn2(COLNO);
 				int y = rn2(ROWNO);
 				if(!IS_FURNITURE(levl[x][y].typ) && !t_at(x,y) && !(u.ux == x && u.uy == y)){
@@ -685,7 +787,9 @@ moveloop()
 					if(cansee(x,y))
 						pline("The dungeon around you is crumbling away!");
 				}
-			}
+			}*/
+			if(In_cha(&u.uz))
+				do_conway();
 ////////////////////////////////////////////////////////////////////////////////////////////////
 			//These artifacts may need to respond to what monsters have done.
 			///If the player no longer meets the kusanagi's requirements (ie, they lost the amulet)
