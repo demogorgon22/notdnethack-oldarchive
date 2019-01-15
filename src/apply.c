@@ -2326,7 +2326,7 @@ register struct obj *obj;
 	if(tunnels(&mons[corpse->corpsenm])) potion |= PT_EXCAV;
 	if(strongmonst(&mons[corpse->corpsenm])) potion |= PT_FORCE;
 	if(has_mind_blast(&mons[corpse->corpsenm]) || is_mind_flayer(&mons[corpse->corpsenm])) potion |= PT_INSANE;
-	if(is_unicorn(&mons[corpse->corpsenm])) potion |= PT_LUCK;
+	if(is_unicorn(&mons[corpse->corpsenm]) || corpse->corpsenm == PM_LEPRECHAUN) potion |= PT_LUCK;
 	pot = mksobj(POT_WATER,FALSE,FALSE);
 	if(potion&PT_PHASE)
 		pot = mksobj(POT_PHASING,FALSE,FALSE);
