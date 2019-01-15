@@ -386,7 +386,7 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 
 	exercise(A_CON, FALSE);
 
-	if ((Breathless || (!Strangled && !rn2(20))) && !Race_if(PM_INCANTIFIER) && !magivorous(youracedata)) {
+	if (!Race_if(PM_INCANTIFIER) && !magivorous(youracedata)) {
 		/* choking by eating AoS doesn't involve stuffing yourself */
 		if (food && food->otyp == AMULET_OF_STRANGULATION) {
 			You("choke, but recover your composure.");
@@ -397,47 +397,11 @@ choke(food)	/* To a full belly all food is bad. (It.) */
 		nomovemsg = 0;
 		vomit();
 	} else {
-	 if(Race_if(PM_INCANTIFIER)){
-		killer_format = KILLED_BY;
-		You("absorb too much energy and explode.");
-		killer = Hallucination ? "amateur-hour horseshit" : "absorbing too much energy and exploding"; //8-bit theater
-		You("die...");
-		done(DISINTEGRATED);
-		explode(u.ux, u.uy, 0, u.uhpmax/2, MON_EXPLODE, EXPL_MAGICAL);
-		u.uhp = u.uhpmax/2;
-		pline("You reform!");
-		morehungry(u.uenmax/2);	/* lifesaved */
-	 } else if(magivorous(youracedata)){
 		You("absorb too much energy and then vomit up a rainbow!");
 		morehungry(1000);	/* you just got *very* sick! */
+		explode(u.ux, u.uy, 0, u.uhpmax/2, MON_EXPLODE, EXPL_MAGICAL);
 		nomovemsg = 0;
 		vomit();
-	 } else {
-		killer_format = KILLED_BY_AN;
-		/*
-		 * Note all "killer"s below read "Choked on %s" on the
-		 * high score list & tombstone.  So plan accordingly.
-		 */
-		if(food) {
-			You("choke over your %s.", foodword(food));
-			if (food->oclass == COIN_CLASS) {
-				killer = "a very rich meal";
-			} else {
-				killer = food_xname(food, FALSE);
-				if (food->otyp == CORPSE &&
-				    (mons[food->corpsenm].geno & G_UNIQ)) {
-				    if (!type_is_pname(&mons[food->corpsenm]))
-					killer = the(killer);
-				    killer_format = KILLED_BY;
-				}
-			}
-		} else {
-			You("choke over it.");
-			killer = "quick snack";
-		}
-		You("die...");
-		done(CHOKING);
-	 }
 	}
 }
 
@@ -3902,12 +3866,12 @@ register int num;
 		    if(!uclockwork) choke(occupation == opentin ? tin.tin : (struct obj *)0);
 			else{
 				Your("mainspring is wound too tight!");
-				Your("clockwork breaks apart!");
+				/*Your("clockwork breaks apart!");
 				killer_format = KILLED_BY;
 				killer = "overwinding";
 				done(OVERWOUND);
 				victual.piece = 0;
-				victual.mon = 0;
+				victual.mon = 0;*/
 				return;
 			}
 		/* no reset_eat() */
@@ -4137,12 +4101,14 @@ windclock()
     return 0;
   }else if(victual.canchoke && u.uhunger >= u.uhungermax && !Race_if(PM_INCANTIFIER)) {
     Your("mainspring is wound too tight!");
+    /*
     Your("clockwork breaks apart!");
     killer_format = KILLED_BY;
     killer = "overwinding";
     done(OVERWOUND);
     victual.piece = 0;
     victual.mon = 0;
+    */
     return 0;
   }
   else if (u.uhunger >= u.uhungermax * 3/4 && !victual.fullwarn && !Race_if(PM_INCANTIFIER)) {
