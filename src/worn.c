@@ -129,7 +129,6 @@ long mask;
 				for(p = 0; p < SIZE(GRAY_RES); p++) u.uprops[GRAY_RES[p]].extrinsic = u.uprops[GRAY_RES[p]].extrinsic & ~wp->w_mask;
 			} else if(oobj->otyp == RED_DRAGON_SCALES || oobj->otyp == RED_DRAGON_SCALE_MAIL || oobj->otyp == RED_DRAGON_SCALE_SHIELD){
 				for(p = 0; p < SIZE(RED_RES); p++) u.uprops[RED_RES[p]].extrinsic = u.uprops[RED_RES[p]].extrinsic & ~wp->w_mask;
-				if(!u.uprops[FLYING].intrinsic &&  !u.uprops[FLYING].extrinsic && !(youracedata->mflagsm&MM_FLY)) You("stop flying.");
 			}
 			
 			if(oobj->oartifact == ART_CHROMATIC_DRAGON_SCALES){
@@ -150,11 +149,6 @@ long mask;
 				for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic & ~wp->w_mask;
 			}else if(oobj->oartifact == ART_STONE_MASK){
 				for(p = 0; p < SIZE(SHIRO_PROPS); p++) u.uprops[SHIRO_PROPS[p]].extrinsic = u.uprops[SHIRO_PROPS[p]].extrinsic & ~wp->w_mask;
-				if(!u.uprops[INVIS].intrinsic &&  !u.uprops[INVIS].extrinsic){
-					if(!u.uprops[SEE_INVIS].intrinsic &&  !u.uprops[SEE_INVIS].extrinsic) pline("Suddenly you can see yourself.");
-					else pline("Suddenly you can no longer see through yourself.");
-				}
-				if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("sure are noisy.");
 			}else if(oobj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
 				for(p = 0; p < SIZE(YMIR_PROPS); p++) u.uprops[YMIR_PROPS[p]].extrinsic = u.uprops[YMIR_PROPS[p]].extrinsic & ~wp->w_mask;
 			}
@@ -194,7 +188,6 @@ long mask;
 				} else if(obj->otyp == GRAY_DRAGON_SCALES || obj->otyp == GRAY_DRAGON_SCALE_MAIL || obj->otyp == GRAY_DRAGON_SCALE_SHIELD){
 					for(p = 0; p < SIZE(GRAY_RES); p++) u.uprops[GRAY_RES[p]].extrinsic = u.uprops[GRAY_RES[p]].extrinsic | wp->w_mask;
 				} else if(obj->otyp == RED_DRAGON_SCALES || obj->otyp == RED_DRAGON_SCALE_MAIL || obj->otyp == RED_DRAGON_SCALE_SHIELD){
-					if(!u.uprops[FLYING].intrinsic &&  !u.uprops[FLYING].extrinsic && !(youracedata->mflagsm&MM_FLY)) You("begin flying!");
 					for(p = 0; p < SIZE(RED_RES); p++) u.uprops[RED_RES[p]].extrinsic = u.uprops[RED_RES[p]].extrinsic | wp->w_mask;
 				}
 				
@@ -215,11 +208,6 @@ long mask;
 				} else if(obj->oartifact == ART_TALISMAN_OF_BUER){
 					for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic | wp->w_mask;
 				} else if(obj->oartifact == ART_STONE_MASK){
-					if(!u.uprops[INVIS].intrinsic &&  !u.uprops[INVIS].extrinsic){
-						if(!u.uprops[SEE_INVIS].intrinsic &&  !u.uprops[SEE_INVIS].extrinsic) pline("Suddenly you cannot see yourself.");
-						else pline("Suddenly you can see through yourself.");
-					}
-					if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("walk very quietly.");
 					for(p = 0; p < SIZE(SHIRO_PROPS); p++) u.uprops[SHIRO_PROPS[p]].extrinsic = u.uprops[SHIRO_PROPS[p]].extrinsic | wp->w_mask;
 				} else if(obj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
 					for(p = 0; p < SIZE(YMIR_PROPS); p++) u.uprops[YMIR_PROPS[p]].extrinsic = u.uprops[YMIR_PROPS[p]].extrinsic | wp->w_mask;
@@ -300,11 +288,6 @@ register struct obj *obj;
 			for(p = 0; p < SIZE(BUER_PROPS); p++) u.uprops[BUER_PROPS[p]].extrinsic = u.uprops[BUER_PROPS[p]].extrinsic & ~wp->w_mask;
 		} else if(obj->oartifact == ART_STONE_MASK){
 			for(p = 0; p < SIZE(SHIRO_PROPS); p++) u.uprops[SHIRO_PROPS[p]].extrinsic = u.uprops[SHIRO_PROPS[p]].extrinsic & ~wp->w_mask;
-			if(!u.uprops[INVIS].intrinsic &&  !u.uprops[INVIS].extrinsic){
-				if(!u.uprops[SEE_INVIS].intrinsic &&  !u.uprops[SEE_INVIS].extrinsic) pline("Suddenly you can see yourself.");
-				else pline("Suddenly you can no longer see through yourself.");
-			}
-			if(!u.uprops[STEALTH].intrinsic &&  !u.uprops[STEALTH].extrinsic) You("sure are noisy.");
 		}else if(obj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
 			for(p = 0; p < SIZE(YMIR_PROPS); p++) u.uprops[YMIR_PROPS[p]].extrinsic = u.uprops[YMIR_PROPS[p]].extrinsic & ~wp->w_mask;
 		}
