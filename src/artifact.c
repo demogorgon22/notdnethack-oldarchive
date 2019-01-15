@@ -2719,7 +2719,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				!spec_dbon_applies ? "hits" : otmp->oartifact == ART_ILLITHID_STAFF?"brain sucks":"mentally drains",
 				hittee, !spec_dbon_applies ? '.' : '!');
 		if(spec_dbon_applies && realizes_damage && otmp->oartifact != ART_ILLITHID_STAFF)
-			if(cancel_monst(mdef, otmp, youattack, FALSE, FALSE,0)) pline_The("%s %s %s %s%c", "sparkling", "blade",
+			if(cancel_monst(mdef, otmp, youattack, FALSE, FALSE,0)) pline_The("%s %s %s %s%c", "sparkling", otmp->oartifact==ART_ELDER_CEREBRAL_FLUID?"crystal":"blade",
 				"cancels",
 				hittee, '!');
 		messaged = realizes_damage;
