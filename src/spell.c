@@ -4082,6 +4082,7 @@ dovspell()
 			       SPELLMENU_VIEW, &splnum, &overload_percent, FALSE)) {
 		Sprintf(qbuf, "Reordering spells; swap '%c' with",
 			spellet(splnum));
+		flags.noOverload = TRUE;
 		if (!dospellmenu(qbuf, splnum, &othnum, &overload_percent, FALSE)) break;
 
 		spl_tmp = spl_book[splnum];
@@ -4183,6 +4184,8 @@ boolean describe;
 	char buf[BUFSZ];
 	menu_item *selected;
 	anything any;
+	boolean noOverload = flags.noOverload;
+	flags.noOverload = FALSE;
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
 	any.a_void = 0;		/* zero out all bits */
@@ -4232,7 +4235,7 @@ boolean describe;
 			'!', 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
 	}
-	if(!*overload_percent && splaction != SPELLMENU_VIEW && Role_if(PM_WIZARD)){
+	if(!*overload_percent && splaction != SPELLMENU_VIEW && !noOverload && Role_if(PM_WIZARD)){
 		Sprintf(buf, "Overload a spell instead");
 		any.a_int = -2;					/* must be non-zero */
 		add_menu(tmpwin, NO_GLYPH, &any,

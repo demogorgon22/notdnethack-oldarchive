@@ -61,6 +61,7 @@ struct flag {
 	boolean  mv;
 	boolean  bypasses;	/* bypass flag is set on at least one fobj */
 	boolean  nap;		/* `timed_delay' option for display effects */
+	boolean	 noOverload;	/*Bad overloading kludge*/
 	boolean  nopick;	/* do not pickup objects (as when running) */
 	boolean  null;		/* OK to send nulls to the terminal */
 #ifdef MAC
