@@ -1150,9 +1150,9 @@ dofightingform()
 		if(uwep || uswapwep){
 			pline("You must not be wielding any weapons to use mystic combat.");
 			return 0;
-		} else if (uarmg && is_metallic(uarmg)){
-			pline("Your metal gloves block your power.");
-			return 0;
+		} else if (uarmg && is_metallic(uarmg) && u.ulevel < 18){
+			pline("Your metal gloves partially block your power.");
+			//return 0;
 		}
 	} else {
 		if(!(uwep && is_lightsaber(uwep))){

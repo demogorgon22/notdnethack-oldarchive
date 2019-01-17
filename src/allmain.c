@@ -1436,9 +1436,11 @@ moveloop()
 				}
 			}
 		    if(u.umystic & CHI_HEALING && u.uen > 0 && u.uhp < u.uhpmax){
-			    u.uen--;
-			    u.uhp++;
-			    flags.botl = 1;
+			    if(u.ulevel >= 18 || !(uarmg && is_metal(uarmg))?TRUE:rn2(2)){
+			    	u.uen--;
+			    	u.uhp++;
+			   	flags.botl = 1;
+			    }
 		    }
 		    /* moving around while encumbered is hard work */
 		    if (wtcap > MOD_ENCUMBER && u.umoved) {

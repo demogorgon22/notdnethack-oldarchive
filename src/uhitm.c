@@ -2205,40 +2205,42 @@ defaultvalue:
 	// pline("Damage: %d",tmp);
 	
 	if(!uwep && !uswapwep){
-		if(u.umystic & ABSORBATIVE_PUNCH){
-			tmp /= 2;
-			u.uen += tmp;
-			if(u.uen > u.uenmax) u.uen = u.uenmax;
-			flags.botl = 1;
+		if((u.ulevel >= 18 || !(uarmg && is_metal(uarmg)))?TRUE:rn2(2)){
+			if(u.umystic & ABSORBATIVE_PUNCH){
+				tmp /= 2;
+				u.uen += tmp;
+				if(u.uen > u.uenmax) u.uen = u.uenmax;
+				flags.botl = 1;
 
-		}
-		if(u.umystic & SURGE_PUNCH && u.uen >= 5){
-			u.uen -= 5;
-			flags.botl = 1;
-			tmp += rnd(5) + 3;
-			Your("hands surge!");
-			
-		}
-		if(u.umystic & FORCE_PUNCH && u.uen >= 5 && !rn2(2)){
-			u.uen -= 5;
-			flags.botl = 1;
-			pline("%s is thrown backwards by the force of your blow!",Monnam(mon));
-			hittxt = TRUE;
-			if(bigmonst(mon->data)) mhurtle(mon, u.dx, u.dy, 10);
-			else mhurtle(mon, u.dx, u.dy, 10);
-			if(mon->mhp <= 0 || migrating_mons == mon) return TRUE;
+			}
+			if(u.umystic & SURGE_PUNCH && u.uen >= 5){
+				u.uen -= 5;
+				flags.botl = 1;
+				tmp += rnd(5) + 3;
+				Your("hands surge!");
+				
+			}
+			if(u.umystic & FORCE_PUNCH && u.uen >= 5 && !rn2(2)){
+				u.uen -= 5;
+				flags.botl = 1;
+				pline("%s is thrown backwards by the force of your blow!",Monnam(mon));
+				hittxt = TRUE;
+				if(bigmonst(mon->data)) mhurtle(mon, u.dx, u.dy, 10);
+				else mhurtle(mon, u.dx, u.dy, 10);
+				if(mon->mhp <= 0 || migrating_mons == mon) return TRUE;
 
-		}
-		if(u.umystic & SPIRIT_PUNCH && u.uen >= 15){
-			u.uen -= 15;
-			explode(mon->mx, mon->my,
-				10,
-				d(3,6), 0,
-				EXPL_MAGICAL);
-			flags.botl = 1;
-			if(DEADMONSTER(mon))
-				return FALSE;
+			}
+			if(u.umystic & SPIRIT_PUNCH && u.uen >= 15){
+				u.uen -= 15;
+				explode(mon->mx, mon->my,
+					10,
+					d(3,6), 0,
+					EXPL_MAGICAL);
+				flags.botl = 1;
+				if(DEADMONSTER(mon))
+					return FALSE;
 
+			}
 		}
 	}
 	if(obj && Is_spear(obj) && obj->ovar1 == CHUNK_OF_FOSSILE_DARK){
