@@ -37,6 +37,10 @@ Added acu (Illithanachronounbinder) role
 Artifacts
 	Digout - Dwarvish Mattock that on invoke places random lit dynamite
 		across level
+	Scalpel of Life and Death (by Chris) - Scalpel, first healer sac gift,
+		double damage to undead in life form and double damage to
+		living in life form. Invoke to toggle form and use a special
+		attack, death withers, life ressurects.
 	
 
 Vampire changes

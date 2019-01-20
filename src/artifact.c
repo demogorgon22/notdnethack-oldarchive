@@ -2442,6 +2442,18 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 		if(u.uen >= ((int)(.3*u.uenmax + 3))) u.uen -= 3;
 		// if(u.uen >= 10) u.uen -= 10;
 	}
+	if(otmp->oartifact == ART_SCALPEL_OF_LIFE_AND_DEATH && magr == &youmonst){
+		if(otmp->ovar1 == COMMAND_LIFE){
+			if(is_undead(mdef->data)){
+				*dmgptr *= 2;
+			}
+		}
+		if(otmp->ovar1 == COMMAND_DEATH){
+			if(!nonliving(mdef->data)){
+				*dmgptr *= 2;
+			}
+		}
+	}
 	
 	if (otmp->oartifact == ART_ICONOCLAST && is_angel(mdef->data) ) *dmgptr += 9;
 

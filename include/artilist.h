@@ -237,6 +237,15 @@ A("Mjollnir",			WAR_HAMMER,		/* Mjo:llnir */
 	0, A_NEUTRAL, PM_VALKYRIE, NON_PM, 4000L, 
 	SPFX2_ELEC,0,0),
 
+/* Healer */
+/* TODO 2x vs living */
+A("Scalpel of Life and Death",	SCALPEL,
+	(SPFX_RESTR), 0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	LIFE_DEATH,	A_NEUTRAL, PM_HEALER, NON_PM, 1500L,
+	0,0,0),
+
 A("the Pen of the Void",	ATHAME,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_ATTK), 0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
@@ -1904,14 +1913,6 @@ A("The Striped Shirt of the Falsely Accused", STRIPED_SHIRT,
 	0, A_NONE, PM_CONVICT, NON_PM, 0L,
 	0,0,0),
 
-/* Healer */
-/* TODO 2x vs living */
-A("Scalpel of Life and Death",	SCALPEL,
-	(SPFX_NOGEN|SPFX_RESTR), 0,
-	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
-	NO_ATTK,	NO_DFNS,	NO_CARY,
-	LIFE_DEATH,	A_NONE, PM_HEALER, NON_PM, 0L,
-	0,0,WSFX_PLUSSEV),
 
 A("The Gauntlets of the Healing Hand",	GAUNTLETS_OF_DEXTERITY,
 	(SPFX_NOGEN|SPFX_RESTR), 0,
