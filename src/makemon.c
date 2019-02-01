@@ -6077,6 +6077,11 @@ register int	mmflags;
 		otmp = mksobj(AMULET_OF_REFLECTION, TRUE, FALSE);
 		otmp->obj_material = GOLD;
 		fix_object(otmp);
+	} else if (mndx == PM_LADY_OF_PAIN) {
+		struct obj *otmp;
+		otmp = mksobj(UNIVERSAL_KEY, TRUE, FALSE);
+		otmp = oname(otmp, artiname(ART_CAGE_KEY));
+		(void) mpickobj(mtmp,otmp);
 	} else if (ptr->msound == MS_NEMESIS && !(Race_if(PM_DROW) && !Role_if(PM_NOBLEMAN)) ) {
 		flags.made_bell = TRUE;
 		mitem = BELL_OF_OPENING;

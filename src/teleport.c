@@ -76,6 +76,9 @@ unsigned gpflags;
 	    }
 	    if (passes_walls(mdat) && may_passwall(x,y)) return TRUE;
 	}
+	if(Is_sigil(&u.uz) && levl[x][y].typ == AIR){
+	    return FALSE;
+	}
 	if (!ACCESSIBLE(levl[x][y].typ)) {
 		if (!(is_pool(x,y) && ignorewater)) return FALSE;
 	}

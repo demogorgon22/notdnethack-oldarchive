@@ -2718,6 +2718,9 @@ nexttry:	/* eels prefer the water, but if there is no water nearby,
 			if(flag & NOTONL) continue;
 			info[cnt] |= NOTONL;
 		}
+		if(levl[nx][ny].typ == AIR && Is_sigil(&u.uz) && !is_flyer(mon->data)){
+			continue;
+		}
 		if (levl[nx][ny].typ == CLOUD && Is_lolth_level(&u.uz) && !(nonliving_mon(mon) || breathless_mon(mon) || resists_poison(mon))) {
 			if(!(flag & ALLOW_TRAPS)) continue;
 			info[cnt] |= ALLOW_TRAPS;

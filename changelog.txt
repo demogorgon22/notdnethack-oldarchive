@@ -41,6 +41,11 @@ Artifacts
 		double damage to undead in life form and double damage to
 		living in life form. Invoke to toggle form and use a special
 		attack, death withers, life ressurects.
+	Silver key - 
+		No longer branchport on invoke and no more tlpt control when
+		held.
+	Cage key-
+		Invoke for branchport, tlpt control when held.
 	
 
 Vampire changes
@@ -237,6 +242,10 @@ Dungeon changes
 		Portal to skip outlands section from the gatetwon if you
 		choose to
 		Actually disply level name for gatetown
+		Move final alhoon to the level with the sword of the deeps.
+		Branch to spire from the spire in the outlands.
+		At the top is the sigil with stores and the lady of pain who
+		carries the Cage key.
 	Chaotic Quest changes
 		Maps fall apart the more time you spend on them, this makes it
 		much harder

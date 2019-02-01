@@ -1,5 +1,4 @@
 MAZE: "sigil",' '
-FLAGS: noteleport
 GEOMETRY: center, center
 #0          1         2   	  3	      4	    5		  6	      7
 #0123456789012345678901234567890123456789012345678901234567890123456789012345
@@ -47,8 +46,9 @@ MONSTER:'@',"peasant",random,peaceful
 MONSTER:'@',"peasant",random,peaceful
 MONSTER:'@',"peasant",random,peaceful
 MONSTER:'@',"peasant",random,peaceful
-MONSTER:'@',"Lady",random,peaceful
+MONSTER:'@',"Lady of Pain",random,peaceful
 REGION:(49,18,53,19),lit,"book shop"
+#OBJECT:'(',"universal key",place[2], uncursed,0,"The  Key"
 
 MAZE: "stairs2",' '
 FLAGS: noteleport

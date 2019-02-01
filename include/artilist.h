@@ -867,11 +867,18 @@ A("The Hand-Mirror of Cthylla", MIRROR, /*from the works of HP Lovecraft*/
 	0,0,0),  /*polymorph control*/
 
 A("The Silver Key", UNIVERSAL_KEY, /*from the works of HP Lovecraft*/
-	(SPFX_NOGEN|SPFX_RESTR), (SPFX_EREGEN|SPFX_TCTRL),
+	(SPFX_NOGEN|SPFX_RESTR), (SPFX_EREGEN),
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	0,	A_NEUTRAL, NON_PM, NON_PM, 5000L, 
+	0,SPFX3_PCTRL,0),  /*polymorph control*/
+
+A("The Cage Key", UNIVERSAL_KEY, 
+	(SPFX_NOGEN|SPFX_RESTR), (SPFX_TCTRL),
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	CREATE_PORTAL,	A_NEUTRAL, NON_PM, NON_PM, 5000L, 
-	0,SPFX3_PCTRL,0),  /*polymorph control*/
+	0,0,0),  /*polymorph control*/
 
 /*//////////Artifact Books///////////*/
 A("The Book of Lost Names", SPE_SECRETS, /*Needs encyc entry*/
