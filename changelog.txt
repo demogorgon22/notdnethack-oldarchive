@@ -97,7 +97,7 @@ Anachrononaut changes
 		wood for nutrition.
 Monk changes
 	Renamed Mystic
-	Can set attack styles with #style (blocked by metal gloves)
+	Can set attack styles with #style (limited by metal gloves)
 		Surge punch 
 			5 pw to do 3 + d(5) damage per barehanded hit
 		Force punch
