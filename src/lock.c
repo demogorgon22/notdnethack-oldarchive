@@ -199,7 +199,7 @@ forcelock()	/* try to force a locked chest */
 	You("succeed in forcing the lock.");
 	xlock.box->olocked = 0;
 	if(!(u.sealsActive&SEAL_OTIAX)) xlock.box->obroken = 1;
-	if(!xlock.picktyp && !(u.sealsActive&SEAL_OTIAX) && !rn2(3)) {
+	if(!xlock.picktyp && !(u.sealsActive&SEAL_OTIAX) && !rn2(3) && !xlock.box->oartifact) {
 	    struct monst *shkp;
 	    boolean costly;
 	    long loss = 0L;

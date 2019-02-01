@@ -1646,6 +1646,7 @@ register struct obj *obj;
 		wt =  (int)(wt * 1.5); //225
 	} else if(obj->oartifact == ART_TREASURY_OF_PROTEUS){
 		wt =  50; /* Same as a crystal ball (ie, the Orb of Weight) */
+		obj->otrapped = 0;
 	} else if(obj->oartifact == ART_PLATES_OF_THE_NEAR_VOID){
 		wt = 125;//half weight
 	} else if(obj->obj_material != objects[obj->otyp].oc_material){
