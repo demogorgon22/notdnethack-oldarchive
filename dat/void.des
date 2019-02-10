@@ -382,7 +382,7 @@ MAP
 8|LLLLLLLLLLLLLL...LLLLLLLLLLLLLLLLL|..---..---........---..|LLLLLLL|#####|LL
 9|LLLLLLLLLLLLL.....LLLLLLLLLLLLLLLL|.--...--...------...--.|LLLLLLL|#####|LL
 0|LLLLLLLLLLLL.......LLLLLLLLLLLLLLL|.|..---..---....---..|.|LLLLLLL-------LL
-1|LLLLLLLLLLLL......................|.|.--...--........--.|.|LLLLLLLLLLLLLLLL
+1|LLLLLLLLLLLL......................S.|.--...--........--.|.|LLLLLLLLLLLLLLLL
 2|LLLLLLLLLLLL.......LLLLLLLLLLLLLLL|.|.--....-........--.|.|LLLLLLLLLLLLLLLL
 3|LLLLLLLLLLLLL.....LLLLLLLLLLLLLLLL|.|..----.S.....----..|.|LLLLLLLLLLLLLLLL
 4|LLLLLLLLLLLLLL...LLLLLLLLLLLLLLLLL|.--....---...---....--.|LLLLLLLLLLLLLLLL
@@ -404,7 +404,7 @@ NON_PASSWALL:(00,00,75,20)
 DOOR:locked,(51,04)
 # entire tower in a region, constrains monster migration?
 REGION:(24,00,60,20),unlit,"ordinary",unfilled
-ENGRAVING:(16,11),burn,"If you got out here in a normal game without abusing magic whistle pet engulf or enexto I wanna hear about it."
+ENGRAVING:(16,11),burn,"-_\  |_|\--|  \|--|_||\ _-  |\-"
 
 MONSTER:'@',"Numina",(49,12)
 

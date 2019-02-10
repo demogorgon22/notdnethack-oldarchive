@@ -939,6 +939,7 @@ lavify(){
 	pline("Lava seeps from your pores!");
 	levl[u.ux][u.uy].typ = LAVAPOOL;
 	u.uinwater = 0;
+	unblock_point(u.ux,u.uy);
 	return 1;
 
 	

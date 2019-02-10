@@ -1304,6 +1304,7 @@ boolean your_fault;
 			levl[u.ux][u.uy].typ = LAVAPOOL;
 			del_engr_ward_at(u.ux, u.uy);
 			if (!(Levitation || Flying)) (void) lava_effects();
+			unblock_point(u.ux,u.uy);
 			newsym(u.ux, u.uy);
 		}
 	break;
