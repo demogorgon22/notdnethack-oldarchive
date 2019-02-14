@@ -1141,13 +1141,16 @@ boolean at_stairs, falling, portal;
 	/* Prevent the player from going past the first quest level unless
 	 * (s)he has been given the go-ahead by the leader.
 	 */
-	if (on_level(&u.uz, &qstart_level) && !newdungeon && !ok_to_quest() && !flags.stag && FALSE) {
+	if (on_level(&u.uz, &qstart_level) && !newdungeon && !ok_to_quest() && !flags.stag) {
 		pline("A mysterious force prevents you from descending.");
 		return;
 	}
 	/*Can't move on in spirit land until the dead are dead*/
 	if (In_void(&u.uz) && (!no_spirits() || !u.uhave.amulet)) {
 		pline("A mysterious force prevents you from %s.",up?"ascending":"descending");
+		if(!no_spirits()){
+			pline("There is too much life here.");
+		}
 		return;
 	}
 	// if (on_level(&u.uz, &nemesis_level) && !(quest_status.got_quest) && flags.stag) {
