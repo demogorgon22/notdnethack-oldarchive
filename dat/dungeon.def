@@ -22,7 +22,6 @@ BRANCH:		"The Ice Caves" @ (4, 0) portal
 BRANCH:		"The Dismal Swamp" @ (4, 0) portal
 BRANCH:		"The Black Forest" @ (4, 0) portal
 BRANCH:		"The Archipelago" @ (4, 0) portal
-%REINCARNATION LEVEL:		"rogue" "R" @ (15, 4)
 LEVEL:		"oracle" "O" @ (5, 5)
 CHAINBRANCH:	"Vlad's Tower" "oracle" + (0,0) no_up up
 LEVALIGN:	neutral
