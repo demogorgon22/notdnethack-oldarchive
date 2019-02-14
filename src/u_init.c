@@ -2824,6 +2824,10 @@ register struct trobj *trop;
 				else if(is_helmet(obj)) obj->bodytypeflag = (youracedata->mflagsb&MB_HEADMODIMASK);
 				else if(is_shirt(obj)) obj->bodytypeflag = (youracedata->mflagsb&MB_HUMANOID) ? MB_HUMANOID : (youracedata->mflagsb&MB_BODYTYPEMASK);
 			}
+			if(Is_spear(obj) && Role_if(PM_CAVEMAN)){
+				obj->obj_material = WOOD;
+				fix_object(obj);
+			}
 			if(obj->otyp == BULLWHIP && Race_if(PM_DROW) && flags.initgend){
 				obj->otyp = VIPERWHIP;
 				obj->obj_material = SILVER;
