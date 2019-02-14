@@ -1439,6 +1439,10 @@ d_level *lev;
 	else if(Is_village_level(lev) && dungeon_topology.village_variant != CAVE_VILLAGE) return TRUE;
 	else if(In_cha(lev)) {
 		return on_level(lev, &chaosf_level) || on_level(lev, &chaoss_level);
+	} else if(In_blackforest(&u.uz)){
+		return TRUE;
+	} else if(In_dismalswamp(&u.uz)){
+		return TRUE;
 	}
 	return FALSE;
 }

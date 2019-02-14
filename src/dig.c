@@ -1961,6 +1961,7 @@ register int zx, zy, digdepth;
 			pline_The("beam bounces off the %s and hits the %s.",
 			      (u.ux == xdnladder || u.ux == xupladder) ?
 			      "ladder" : "stairs", ceiling(u.ux, u.uy));
+		    if(In_outdoors(&u.uz)) return;
 		    You("loosen a rock from the %s.", ceiling(u.ux, u.uy));
 		    pline("It falls on your %s!", body_part(HEAD));
 		    losehp(rnd((uarmh && is_hard(uarmh)) ? 2 : 6),
