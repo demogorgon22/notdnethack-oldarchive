@@ -1482,6 +1482,13 @@ A("Gillystone", EMERALD, /*Needs encyc entry*/
 	0,	A_NONE, NON_PM, NON_PM, 500L, 
 	0,SPFX3_NOCNT,0),
 
+A("Kroo's Ring", RIN_ALACRITY, /*Needs encyc entry*/
+	(SPFX_NOGEN|SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	0,	A_NONE, NON_PM, NON_PM, 500L, 
+	MAJ_RUMOR,SPFX3_NOCNT,0),
+
 A("The Eye of Vecna", EYEBALL,
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_HSPDAM),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,

@@ -687,6 +687,12 @@ struct level_map {
 	{ "icetown",	&icetown_level },
 	{ "iceboss",	&iceboss_level },
 	
+	{ "bftemple",	&bftemple_level },
+	{ "bfboss",	&bfboss_level },
+	
+	{ "dsbog",	&dsbog_level },
+	{ "dsboss",	&dsboss_level },
+
 	{ "leveetwn",	&leveetwn_level },
 	{ "arcboss",	&arcboss_level },
 

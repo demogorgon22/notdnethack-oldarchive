@@ -346,7 +346,11 @@ struct obj **obj2;
 	}
 
 #ifdef RECORD_ACHIEVE
-	if(obj->otyp == LUCKSTONE && obj->record_achieve_special) {
+	if(obj->otyp == LUCKSTONE && obj->record_achieve_special ||
+			obj->oartifact == ART_GILLYSTONE ||
+			obj->oartifact == ART_POPLAR_PUNISHER ||
+			obj->oartifact == ART_ABOMINABLE_VEIL ||
+			obj->oartifact == ART_KROO_S_RING) {
 			achieve.get_luckstone = 1;
 			(*obj2)->record_achieve_special = 0;
 	} else if((obj->otyp == AMULET_OF_REFLECTION ||

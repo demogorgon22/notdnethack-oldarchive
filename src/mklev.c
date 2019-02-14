@@ -648,7 +648,7 @@ makelevel()
 	oinit();	/* assign level dependent obj probabilities */
 	clear_level_structures();
 	
-	if(Is_minetown_level(&u.uz)) livelog_write_string("entered Minetown for the first time");
+	if(Is_advtown_level(&u.uz)) livelog_write_string("entered the adventure town for the first time");
 
 	{
 	    register s_level *slev = Is_special(&u.uz);

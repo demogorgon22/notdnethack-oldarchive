@@ -3168,6 +3168,12 @@ register struct monst *mtmp;
 			(void)mongets(mtmp, BUCKLER);
 			m_initthrow(mtmp, CROSSBOW_BOLT, 36);
 			m_initthrow(mtmp, DART, 36);
+		} else if(ptr == &mons[PM_KROO_THE_KOBOLD_KING]){
+			struct obj *otmp = mksobj(RIN_ALACRITY, TRUE, FALSE); 
+			otmp = oname(otmp, artiname(ART_KROO_S_RING));
+			otmp->blessed = FALSE;
+			otmp->cursed = FALSE;
+			(void) mpickobj(mtmp,otmp);
 		} else {
 			if (!rn2(4)) m_initthrow(mtmp, DART, 12);
 			else if(!rn2(3)) (void)mongets(mtmp, SHORT_SWORD);
