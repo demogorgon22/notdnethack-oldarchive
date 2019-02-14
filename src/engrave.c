@@ -1262,6 +1262,8 @@ register int x, y;
 	    what = "sky";
 	else if (Underwater)
 	    what = "water's surface";
+	else if(In_outdoors(&u.uz))
+		what = "sky";
 	else if ((IS_ROOM(lev->typ) && !Is_earthlevel(&u.uz)) ||
 		 IS_WALL(lev->typ) || IS_DOOR(lev->typ) || lev->typ == SDOOR)
 	    what = "ceiling";
