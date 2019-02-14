@@ -729,7 +729,7 @@ boolean chatting;
 		}
 		return 1;
 	}
-	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : ptr->msound) {
+	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : mtmp->isshk ? MS_SELL:ptr->msound) {
 	case MS_PORTAL:{
 			if(!Is_village_level(&u.uz) || u.ubranch){
 				pline("%s mumbles about the village.",Monnam(mtmp));
