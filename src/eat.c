@@ -1991,16 +1991,20 @@ eatcorpse(otmp)		/* called when a corpse is selected as food */
 		You("have a very bad case of stomach acid."); /* not body_part() */
 		losehp(rnd(15), "acidic corpse", KILLED_BY_AN);
 	} if (freezing(&mons[mnum]) && !Cold_resistance) {
+		/*
 		tp++;
-		You("feel your stomach freeze!"); /* not body_part() */
+		You("feel your stomach freeze!"); 
 		losehp(rnd(12) + rnd(12), "cryonic corpse", KILLED_BY_AN);
+		*/
 	} if (burning(&mons[mnum]) && !Fire_resistance) {
+		/*
 		tp++;
-		You("feel your stomach boil!"); /* not body_part() */
+		You("feel your stomach boil!"); 
 		morehungry(200);
 		nomovemsg = 0;
 		vomit();
 		losehp(rnd(20), "boiling hot corpse", KILLED_BY_AN);
+		*/
 	} if (poisonous(&mons[mnum]) && rn2(5)) {
 		tp++;
 		pline("Ecch - that must have been poisonous!");
