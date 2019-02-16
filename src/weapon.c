@@ -202,7 +202,7 @@ struct monst *mon;
 /*	Put weapon vs. monster type "to hit" bonuses in below:	*/
 
 	/* Blessed weapons used against undead or demons */
-	if (Is_weapon && otmp->blessed &&
+	if (Is_weapon && otmp->blessed && mon &&
 	   (holy_damage(mon))){
 		if(otmp->oartifact == ART_EXCALIBUR) tmp += 7; //Quite holy
 		else tmp += 2;
@@ -888,7 +888,7 @@ int spec;
 		){
 			bonus += rnd(10);
 		}
-	    if (otmp->blessed && (holy_damage(mon))){
+	    if (otmp->blessed && mon && (holy_damage(mon))){
 			if(otmp->oartifact == ART_EXCALIBUR) bonus += d(3,7); //Quite holy
 			else if(otmp->oartifact == ART_LANCE_OF_LONGINUS)
 				bonus += d(3,7); //Quite holy
