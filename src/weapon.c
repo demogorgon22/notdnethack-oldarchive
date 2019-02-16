@@ -202,7 +202,7 @@ struct monst *mon;
 /*	Put weapon vs. monster type "to hit" bonuses in below:	*/
 
 	/* Blessed weapons used against undead or demons */
-	if (Is_weapon && otmp->blessed &&
+	if (Is_weapon && otmp->blessed && mon &&
 	   (holy_damage(mon))){
 		if(otmp->oartifact == ART_EXCALIBUR) tmp += 7; //Quite holy
 		else tmp += 2;
@@ -882,8 +882,18 @@ int spec;
 		if(otmp->oartifact == ART_PEN_OF_THE_VOID){
 			tmp += pendamage(otmp, mon);
 		}
+<<<<<<< HEAD
 	
 	    if (otmp->blessed && (holy_damage(mon))){
+=======
+		if(otmp->oartifact == ART_ROD_OF_SEVEN_PARTS 
+			&& !otmp->blessed && !otmp->cursed
+			&& (is_undead_mon(mon) || is_demon(ptr) || hates_unholy(ptr))
+		){
+			bonus += rnd(10);
+		}
+	    if (otmp->blessed && mon && (holy_damage(mon))){
+>>>>>>> c30dcf6b... Fix segfault probably.
 			if(otmp->oartifact == ART_EXCALIBUR) bonus += d(3,7); //Quite holy
 			else if(otmp->otyp == KHAKKHARA) bonus += d(rnd(3),4);
 			else if(otmp->otyp == VIPERWHIP) bonus += d(otmp->ostriking+1,4);
