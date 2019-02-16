@@ -249,6 +249,7 @@ Dungeon changes
 	Chaotic Quest changes
 		Maps fall apart the more time you spend on them, this makes it
 		much harder
+	The rogue level is missing
 	Added grass
 		green .
 		Can be burned up by fire
