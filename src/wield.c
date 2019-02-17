@@ -945,7 +945,7 @@ welded(obj)
 register struct obj *obj;
 {
 	if (obj && obj == uwep 
-		&& will_weld(obj) && Weldproof
+		&& will_weld(obj) && !Weldproof
 	) {
 		obj->bknown = TRUE;
 		return 1;
