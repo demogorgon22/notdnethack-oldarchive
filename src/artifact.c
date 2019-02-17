@@ -27,7 +27,7 @@ extern boolean notonhead;	/* for long worms */
 const static int AHRIMAN_PROPS[] = {AD_FIRE, AD_DRLI, AD_DRST};
 
 //duplicates of other functions, created due to problems with the linker
-STATIC_DCL void NDECL(cast_protection);
+STATIC_DCL void NDECL(cast_arti_protection);
 STATIC_DCL int NDECL(throweffect);
 STATIC_DCL void FDECL(awaken_monsters,(int));
 
@@ -4181,7 +4181,7 @@ arti_invoke(obj)
 			}
 			else if(u.dz < 0){
 				pline("Silence Wall!");
-				cast_protection();
+				cast_arti_protection();
 			}
 #ifdef PARANOID
 			else if(u.dz > 0 ){
@@ -5193,7 +5193,7 @@ arti_invoke(obj)
 				if( (obj->spe > 6) ){
 					exercise(A_WIS, TRUE);
 					n=u.ulevel/5 + 1;
-					cast_protection();
+					cast_arti_protection();
 					while(n--) {
 						pm = &mons[summons[d(1,7)]];
 						mtmp = makemon(pm, u.ux, u.uy, MM_EDOG|MM_ADJACENTOK|NO_MINVENT|MM_NOCOUNTBIRTH);
@@ -6047,8 +6047,8 @@ arti_invoke(obj)
         } break;
         case PROTECT: {
           if(uarmg && uarmg->oartifact == ART_GAUNTLETS_OF_THE_DIVINE_DI){
-            cast_protection();
-            if(!u.ublesscnt) cast_protection();
+            cast_arti_protection();
+            if(!u.ublesscnt) cast_arti_protection();
           } else You_feel("that you should be wearing %s", the(xname(obj)));
         } break;
         case TRAP_DET: {
@@ -8382,7 +8382,7 @@ throweffect()
 }
 
 STATIC_OVL void
-cast_protection()
+cast_arti_protection()
 {
 	int loglev = 0;
 	int l = u.ulevel;

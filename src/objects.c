@@ -1051,6 +1051,7 @@ POTION("elements", "rainbow",            1, 0,          0, 300,  CLR_WHITE),
 POTION("insanity", "frothing",            1, 0,          0, 300,  CLR_MAGENTA),
 POTION("luck", "clover",            1, 0,          0, 300,  CLR_GREEN),
 POTION("phasing", "ethereal",            1, 0,          0, 300,  CLR_BLACK),
+POTION("protection", "viscous",            1, 0,          0, 300,  CLR_BRIGHT_BLUE),
 #undef POTION
 
 /* scrolls ... */

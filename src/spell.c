@@ -40,7 +40,6 @@ STATIC_DCL void FDECL(describe_spell, (int));
 STATIC_DCL int FDECL(percent_success, (int));
 STATIC_DCL int NDECL(throwspell);
 STATIC_DCL int NDECL(throwgaze);
-STATIC_DCL void NDECL(cast_protection);
 STATIC_DCL boolean FDECL(sightwedge, (int,int, int,int, int,int));
 STATIC_DCL void FDECL(spell_backfire, (int));
 STATIC_DCL const char *FDECL(spelltypemnemonic, (int));
@@ -1314,8 +1313,9 @@ int booktype;
 	return (objects[booktype].oc_skill);
 }
 
-STATIC_OVL void
-cast_protection()
+void
+cast_protection(casttype)
+int casttype;
 {
 	int loglev = 0;
 	int l = u.ulevel;
@@ -1368,11 +1368,19 @@ cast_protection()
 			      an(hgolden));
 	    }
 	    u.uspellprot += gain;
-	    u.uspmtime =
-			P_SKILL(spell_skilltype(SPE_PROTECTION)) == P_EXPERT ? 30:
-			P_SKILL(spell_skilltype(SPE_PROTECTION)) == P_SKILLED ? 20: 
-			P_SKILL(spell_skilltype(SPE_PROTECTION)) == P_BASIC ? 15: 10;
-		u.usptime = u.uspmtime;
+	    if(!casttype){
+		    u.uspmtime =
+				P_SKILL(spell_skilltype(SPE_PROTECTION)) == P_EXPERT ? 30:
+				P_SKILL(spell_skilltype(SPE_PROTECTION)) == P_SKILLED ? 20: 
+				P_SKILL(spell_skilltype(SPE_PROTECTION)) == P_BASIC ? 15: 10;
+			u.usptime = u.uspmtime;
+	    } else {
+		    u.uspmtime =
+				casttype == 3 ? 30:
+				casttype == 2 ? 20: 
+				casttype == 1 ? 15: 1;
+			u.usptime = u.uspmtime;
+	    }
 	    find_ac();
 	} else {
 	    Your("skin feels warm for a moment.");
@@ -3936,7 +3944,7 @@ boolean atme;
 		break;
 	case SPE_PROTECTION:
 		for(int i = -1;i < overload_percent/100;i++){
-			cast_protection();
+			cast_protection(0);
 		}
 		break;
 	case SPE_JUMPING:

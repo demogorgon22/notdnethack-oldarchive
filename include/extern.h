@@ -25,6 +25,7 @@ E void NDECL(stop_occupation);
 E void NDECL(display_gamewindows);
 E void NDECL(newgame);
 E void FDECL(welcome, (BOOLEAN_P));
+E int FDECL(find_neighbors, (int,int,int));
 #if defined(RECORD_REALTIME) || defined(REALTIME_ON_BOTL)
 E time_t NDECL(get_realtime);
 #endif
@@ -868,6 +869,7 @@ E boolean FDECL(in_town, (int,int));
 E void FDECL(check_special_room, (BOOLEAN_P));
 E int NDECL(dopickup);
 E void NDECL(lookaround);
+E void NDECL(sigilfloat);
 E int NDECL(monster_nearby);
 E void FDECL(nomul, (int, const char *));
 E void FDECL(unmul, (const char *));
@@ -2309,6 +2311,7 @@ E int NDECL(learn);
 E int FDECL(study_book, (struct obj *));
 E boolean FDECL(spell_maintained, (int));
 E void FDECL(spell_maintain, (int));
+E void FDECL(cast_protection, (int));
 E void FDECL(spell_unmaintain, (int));
 E void NDECL(run_maintained_spells);
 E void FDECL(book_disappears, (struct obj *));

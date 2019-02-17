@@ -1124,6 +1124,9 @@ as_extra_healing:
 			You("loosen up a little bit.");
 		}
 	break;
+	case POT_PROTECTION:
+		cast_protection(otmp->blessed?3:!otmp->cursed?2:1);
+	break;
 	default:
 		impossible("What a funny potion! (%u)", otmp->otyp);
 		return(0);
@@ -1654,6 +1657,7 @@ boolean your_fault;
 			if(!DEADMONSTER(mon)){
 				minliquid(mon);
 			}
+			unblock_point(mon->mx,mon->my);
 			newsym(mon->mx, mon->my);
 		}
 		break;
@@ -1974,6 +1978,9 @@ register struct obj *obj;
 		break;
 	case POT_ELEMENTS:
 		elemental_resistance(obj, 5L);
+		break;
+	case POT_PROTECTION:
+		cast_protection(4);
 		break;
 	case POT_INSANITY:
 		You_feel("strange thoughts bubbling up.");
