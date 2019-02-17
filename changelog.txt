@@ -136,6 +136,7 @@ Gnome changes
 		Phasing make phasing
 		Tunnelers make excavation
 		Acidic make acid
+		Thick hided make protection
 	Unique potions
 		Potion of lava
 			Does 4d6 fire damage and leaves a pool of lava when thrown
@@ -153,6 +154,9 @@ Gnome changes
 		Potion of phasing
 			Gives 50+rnd(100)|30+rnd(100)|30 turns of phasing
 			based on B|U|C	
+		Potion of protection
+			Not sure how protection works but im not sure.
+			BUC matters
 
 Elf changes
 	Can ride ridable monsters without a saddle
