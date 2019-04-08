@@ -46,6 +46,7 @@ Artifacts
 		held.
 	Cage key-
 		Invoke for branchport, tlpt control when held.
+	Hunting Horn - Play different notes on it to set it to different modes
 	
 
 Vampire changes
@@ -53,6 +54,14 @@ Vampire changes
 		at no cost.
 	Starting inventory respects hating holy.
 	God respects hating holy.
+Bard changes
+	Add a first sac gift,Hunting horn. Play different notes on it to set
+	it to different modes.
+		None
+		Enchanting
+		Plenty
+		Cancelling
+		Summoning
 Healer changes
 	No longer start with quarterstaff
 	Start with +1 crossbow and some syringes

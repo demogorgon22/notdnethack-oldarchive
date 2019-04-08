@@ -1838,6 +1838,9 @@ struct obj *instr;
 	break;
     case SNG_NOTES:
 	getlin("What tune are you playing? [what 5 notes]", buf);
+	if(instr->oartifact == ART_HUNTING_HORN){
+		instr->ovar1 = buf[0] + buf[1] + buf[2] + buf[3] + buf[4];
+	}
 	break;
     case SNG_PASSTUNE:
 	    Strcpy(buf, tune);

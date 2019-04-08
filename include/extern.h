@@ -43,6 +43,7 @@ E void NDECL(unleash_all);
 E boolean NDECL(next_to_u);
 E struct obj *FDECL(get_mleash, (struct monst *));
 E void FDECL(check_leash, (XCHAR_P,XCHAR_P));
+E void FDECL(use_magic_whistle, (struct obj *));
 E boolean FDECL(um_dist, (XCHAR_P,XCHAR_P,XCHAR_P));
 E boolean FDECL(snuff_candle, (struct obj *));
 E boolean FDECL(snuff_lit, (struct obj *));

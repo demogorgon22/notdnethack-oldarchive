@@ -297,6 +297,12 @@ A("The Rod of Lordly Might", MACE, /*Needs encyc entry*/
 	LORDLY,	A_LAWFUL, PM_NOBLEMAN, NON_PM, 4000L, 
 	0,SPFX3_ENGRV,0), 
 
+A("Hunting Horn",	TOOLED_HORN,
+	(SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	PHYS(5,8),	NO_DFNS,	NO_CARY,
+	0,		A_NEUTRAL, PM_BARD, NON_PM, 5000L,
+	0,0,0),
 /*
  *	Magicbane is a bit different!  Its magic fanfare
  *	unbalances victims in addition to doing some damage.
@@ -307,6 +313,7 @@ A("Magicbane",			ATHAME, /*Needs encyc entry*/
 	STUN(3,4),	DFNS(AD_MAGM),	NO_CARY,	
 	0, A_NEUTRAL, PM_WIZARD, NON_PM, 3500L, 
 	SPFX2_SILVERED,0,0),
+
 
 
 /*//////////Double Damage Artifacts//////////*/

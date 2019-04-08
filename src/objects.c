@@ -800,6 +800,11 @@ OBJECT(OBJ("Amulet of Yendor",	/* note: description == name */
 		BITS(kn,mrg,chg,0,mgc,chg,0,0,0,0,0,P_NONE,mat), \
 		0, TOOL_CLASS, prob, 0, \
 		wt, cost, 0, 0, 0, 0, wt, color )
+#define WTOOL(name,desc,kn,mrg,mgc,chg,prob,wt,cost,mat,color,typ,hitbon,sdam,ldam) \
+	OBJECT( OBJ(name,desc), \
+		BITS(kn,mrg,chg,0,mgc,chg,0,0,0,0,hitbon,typ,mat), \
+		0, TOOL_CLASS, prob, 0, \
+		wt, cost, sdam, ldam, 0, WP_GENERIC, wt, color )
 #define CONTAINER(name,desc,kn,mgc,chg,prob,wt,cost,mat,color) \
 	OBJECT( OBJ(name,desc), \
 		BITS(kn,0,chg,1,mgc,chg,0,0,0,0,0,P_NONE,mat), \
@@ -906,7 +911,7 @@ TOOL("potion vaporizer", "strange pipe",0, 0, 1, 1,  0,  3,  10, METAL, HI_METAL
 /* "If tin whistles are made out of tin, what do they make foghorns out of?" */
 TOOL("wooden flute", "flute",   0, 0, 0, 0,   4,  5,  12, WOOD, HI_WOOD),
 TOOL("magic flute", "flute",    0, 0, 1, 1,   2,  5,  36, WOOD, HI_WOOD),
-TOOL("tooled horn", "horn",     0, 0, 0, 0,   5, 18,  15, BONE, CLR_WHITE),
+WTOOL("tooled horn", "horn",     0, 0, 0, 0,   5, 18,  15, BONE, CLR_WHITE,P_CLUB,WHACK,3,0),
 TOOL("frost horn", "horn",      0, 0, 1, 1,   2, 18,  50, BONE, CLR_WHITE),
 TOOL("fire horn", "horn",       0, 0, 1, 1,   2, 18,  50, BONE, CLR_WHITE),
 TOOL("horn of plenty", "horn",  0, 0, 1, 1,   2, 18,  50, BONE, CLR_WHITE),

@@ -1141,6 +1141,26 @@ plus:
             if(COMMAND_LIFE == obj->ovar1) Sprintf(eos(bp), " (life)");
             if(COMMAND_DEATH  == obj->ovar1) Sprintf(eos(bp), " (death)");
         }
+	if(obj->oartifact == ART_HUNTING_HORN){
+		switch(obj->ovar1%5){
+			default:
+				Sprintf(eos(bp), " (none)");
+			break;
+			case 1:
+				Sprintf(eos(bp), " (cancelling)");
+			break;
+			case 2:
+				Sprintf(eos(bp), " (enchanting)");
+			break;
+			case 3:
+				Sprintf(eos(bp), " (plenty)");
+			break;
+			case 4:
+				Sprintf(eos(bp), " (summoning)");
+			break;
+
+		}
+	}
 //#ifdef FIREARMS
 	if(obj->otyp == STICK_OF_DYNAMITE) {
 	    if (obj->lamplit) Strcat(bp, " (lit)");

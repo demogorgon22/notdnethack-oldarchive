@@ -2701,6 +2701,53 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 			}
 		}
 	}
+	if(youattack && otmp->oartifact == ART_HUNTING_HORN){
+		switch(otmp->ovar1%5){
+			case 1:{
+				boolean notCancelled = TRUE;
+				if(!mdef->mcan) notCancelled = TRUE; 
+		    		(void) cancel_monst(mdef, otmp, TRUE, TRUE, FALSE,0);
+				if(mdef->mcan && notCancelled && canseemon(mdef)) 
+					pline("Glittering lights surround %s and are drawn into %s.",mon_nam(mdef),xname(otmp));
+			       }
+				
+			break;
+			case 2:
+				if(!rn2(10) && otmp->spe < 7 && u.ulevel/3 > otmp->spe){
+					otmp->spe++;
+					pline("Your weapon has become more perfect!");
+				}
+			break;
+			case 3:
+				if(!rn2(10)){
+		    			struct obj *food;
+					food = mkobj(FOOD_CLASS, FALSE);
+					if (food->otyp == FOOD_RATION)
+					    food = mksobj(TRIPE_RATION,FALSE,TRUE);
+					pline("Some food spills out of your %s.",xname(otmp));
+					food->blessed = otmp->blessed;
+					food->cursed = otmp->cursed;
+					food->owt = weight(food);
+		    			food = hold_another_object(food, u.uswallow ?
+					       "Oops!  %s out of your reach!" :
+						(Weightless ||
+						 Is_waterlevel(&u.uz) ||
+						 levl[u.ux][u.uy].typ < IRONBARS ||
+						 levl[u.ux][u.uy].typ >= ICE) ?
+						       "Oops!  %s away from you!" :
+						       "Oops!  %s to the floor!",
+						       The(aobjnam(food, "slip")),
+						       (const char *)0);
+			
+				}
+
+			break;
+			case 4:
+				if(!rn2(2)) use_magic_whistle(otmp);
+			break;
+		}
+		pline("%ld",otmp->ovar1);
+	}
 	if(youattack && otmp->oartifact == ART_SHADOWLOCK && u.specialSealsActive&SEAL_NUDZIARTH && !rn2(4)){
 		int dsize = spiritDsize();
 		explode(mdef->mx, mdef->my,8/*Phys*/, d(5,dsize), WEAPON_CLASS, EXPL_DARK); //Obsidian Glass
@@ -6329,16 +6376,6 @@ arti_invoke(obj)
 	case BOMB:{//The goal is to hide dynamite random places on level and light it
 		pline("Fire in the hole!");
 		struct obj* otmp;
-		/*for (int x = 0; x < COLNO; x++) {
-			for (int y = 0; y < ROWNO; y++) {
-				if(!rn2(100)){
-					//make and light a red stick
-					otmp = mksobj_at(STICK_OF_DYNAMITE,x,y,TRUE,FALSE);
-					otmp->quan = (obj->spe > 0)?obj->spe:1;
-					begin_burn(otmp,FALSE);	
-				}
-			}
-		}*/
 		for(int i = 0; i < 5 + obj->spe; i++){
 			otmp = mksobj_at(STICK_OF_DYNAMITE,rn2(COLNO),rn2(ROWNO),TRUE,FALSE);
 			otmp->quan = (obj->spe > 0)?obj->spe:1;
@@ -6401,7 +6438,7 @@ arti_invoke(obj)
 						if(!mtmp->mcan) notCancelled = TRUE; 
 		    				(void) cancel_monst(mtmp, obj, TRUE, TRUE, FALSE,0);
 						if(mtmp->mcan && notCancelled && canseemon(mtmp)) 
-							pline("Glittering lights surround %s and are drawn into %s",mon_nam(mtmp),xname(obj));
+							pline("Glittering lights surround %s and are drawn into %s.",mon_nam(mtmp),xname(obj));
 					}
 				}
 			} break;

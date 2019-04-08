@@ -2140,7 +2140,7 @@ u_init()
 	     */
 	    if (Role_if(PM_PRIEST) || Role_if(PM_WIZARD)) {
 		static int trotyp[] = {
-		    WOODEN_FLUTE, TOOLED_HORN, WOODEN_HARP,
+		    WOODEN_FLUTE, WOODEN_HARP,
 		    BELL, BUGLE, LEATHER_DRUM
 		};
 		Instrument[0].trotyp = trotyp[rn2(SIZE(trotyp))];
@@ -3068,7 +3068,7 @@ register struct trobj *trop;
 			otyp == TIN_OPENER || otyp == FLINT || otyp == ROCK) {
 		    if (is_ammo(obj) || is_missile(obj)) {
 			if (!uquiver) setuqwep(obj);
-		    } else if (!uwep) setuwep(obj);
+		    } else if (!uwep && !(Role_if(PM_BARD) && is_weptool(obj))) setuwep(obj);
 		    else if (!uswapwep) setuswapwep(obj);
 		}
 		if (obj->oclass == SPBOOK_CLASS &&

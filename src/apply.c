@@ -23,7 +23,6 @@ STATIC_DCL int FDECL(use_towel, (struct obj *));
 STATIC_DCL boolean FDECL(its_dead, (int,int,int *,struct obj*));
 STATIC_DCL int FDECL(use_stethoscope, (struct obj *));
 STATIC_DCL void FDECL(use_whistle, (struct obj *));
-STATIC_DCL void FDECL(use_magic_whistle, (struct obj *));
 STATIC_DCL void FDECL(use_leash, (struct obj *));
 STATIC_DCL int FDECL(use_mirror, (struct obj *));
 STATIC_DCL void FDECL(use_candelabrum, (struct obj *));
@@ -606,7 +605,7 @@ struct obj *obj;
 	}
 }
 
-STATIC_OVL void
+void
 use_magic_whistle(obj)
 struct obj *obj;
 {
@@ -4248,6 +4247,38 @@ struct obj *obj;
 	char carveelet;
 	struct obj *carvee;
 	struct obj *otmp;
+	//struct obj *corpse;
+	//boolean tried_skin = FALSE;
+	//if(Role_if(PM_RANGER)){
+	//	if(yn("Attempt to skin something?")){
+	//		if ((corpse = floorfood("skin", 2))){
+	//				tried_skin = TRUE;
+	//				if (touch_petrifies(&mons[corpse->corpsenm])
+	//					&& !Stone_resistance && !uarmg) {
+	//				    char kbuf[BUFSZ];
+	//				    if (poly_when_stoned(youracedata))
+	//					You("touch %s without wearing gloves.",
+	//						an(mons[corpse->corpsenm].mname));
+	//				    else {
+	//					pline("Touching %s without wearing gloves is a fatal mistake...",
+	//						an(mons[corpse->corpsenm].mname));
+	//					Sprintf(kbuf, "touching %s without gloves",
+	//						an(mons[corpse->corpsenm].mname));
+	//				    }
+	//				    instapetrify(kbuf);
+	//				} else {
+	//					if (is_rider(&mons[corpse->corpsenm])) {
+	//						(void) revive_corpse(corpse, REVIVE_MONSTER);
+	//					} else {
+	//						if(is_animal(&mons[corpse->corpsenm]) && ){
+	//							
+	//						}
+	//					}
+	//				}
+	//		}
+	//	}
+	//}
+	//if(tried_skin) return 1;
 	multi = 0;		/* moves consumed */
 	nomovemsg = (char *)0;	/* occupation end message */
 
