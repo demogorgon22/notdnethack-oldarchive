@@ -2746,7 +2746,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				if(!rn2(2)) use_magic_whistle(otmp);
 			break;
 		}
-		pline("%ld",otmp->ovar1);
+		//pline("%ld",otmp->ovar1);
 	}
 	if(youattack && otmp->oartifact == ART_SHADOWLOCK && u.specialSealsActive&SEAL_NUDZIARTH && !rn2(4)){
 		int dsize = spiritDsize();
