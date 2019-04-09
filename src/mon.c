@@ -3378,7 +3378,7 @@ register struct monst *mtmp;
 			unbind(sealKey[(mndx-PM_AHAZU)-1],FALSE);
 	}
 #ifdef RECORD_ACHIEVE
-	if(mtmp->data->geno & G_UNIQ && mvitals[monsndx(mtmp->data)].died == 1 && (mndx <= PM_AHAZU && mndx >= PM_YMIR || !rn2(7))){
+	if(mtmp->data->geno & G_UNIQ && mvitals[monsndx(mtmp->data)].died == 1 && (!rn2(5) || (mndx < PM_AHAZU || mndx > PM_YMIR))){
 		char buf[BUFSZ];
 		buf[0]='\0';
 		if(nonliving(mtmp->data)) Sprintf(buf,"destroyed %s",noit_nohalu_mon_nam(mtmp));
