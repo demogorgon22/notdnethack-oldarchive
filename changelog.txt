@@ -34,7 +34,7 @@ Added acu (Illithanachronounbinder) role
 	
 
 
-Artifacts
+Some of the new artifacts
 	Digout - Dwarvish Mattock that on invoke places random lit dynamite
 		across level
 	Scalpel of Life and Death (by Chris) - Scalpel, first healer sac gift,
