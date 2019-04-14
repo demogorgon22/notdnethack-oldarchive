@@ -2225,7 +2225,7 @@ int thrown;
 	else if (mon->mtame && mon->mcanmove &&
 			(!is_animal(mon->data)) && (!mindless_mon(mon)) &&
 			!(launcher && ammo_and_launcher(obj, launcher)) &&
-			!obj->otyp==PSIONIC_PULSE
+			!(obj->otyp==PSIONIC_PULSE)
 	) {
 		// if (could_use_item(mon, obj, TRUE)) {
 			pline("%s catches %s.", Monnam(mon), the(xname(obj)));

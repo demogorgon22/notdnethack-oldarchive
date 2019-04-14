@@ -1806,6 +1806,10 @@ summon_alien:
       }
      case RAISE_DEAD:
      {
+       if(mtmp->mtame) {
+	       dmg = 0;
+	       break;
+       }
        coord mm;
        register int x, y;
        pline("%s raised the dead!", mtmp ? Monnam(mtmp) : "Something");
@@ -3576,6 +3580,7 @@ int spellnum;
 						else mpet->mpeaceful = mpet->mtame = 0;
 						mpet->mvanishes = yours ? (u.ulevel+rnd(u.ulevel)) : mtmp ? (mtmp->m_lev+rnd(mtmp->m_lev)) : d(2,20);
 						set_malign(mpet);
+						newsym(mpet->mx,mpet->my);
 						count++;
 						break;
 					}
