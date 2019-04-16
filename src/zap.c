@@ -4313,8 +4313,11 @@ boolean *shopdamage;
 		if (cansee(x,y)) newsym(x,y);
 	    }
 	    if(IS_GRASS(lev->typ)){
-		if(cansee(x,y)) pline("The grass burns away!");
 		lev->typ = ROOM;
+		if(cansee(x,y)) {
+			pline("The grass burns away!");
+			newsym(x,y);
+		}
 	    }
 	    if(is_ice(x, y)) {
 		melt_ice(x, y);
