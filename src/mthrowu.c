@@ -596,6 +596,18 @@ m_throw(mon, x, y, dx, dy, range, obj, verbose)
 				otmp->owt = weight(otmp);
 				doredraw();
 			}
+		} else if(isok(bhitpos.x+dx,bhitpos.y+dy) && IS_TREES(room->typ) && may_dig(bhitpos.x+dx,bhitpos.y+dy) && singleobj && 
+			(singleobj->otyp == LASER_BEAM)){
+			struct obj *otmp;
+			if(cansee(bhitpos.x+dx,bhitpos.y+dy)) pline("The %s disintegrates the tree!", xname(singleobj));
+			if (*in_rooms(bhitpos.x+dx,bhitpos.y+dy,SHOPBASE)) {
+				add_damage(bhitpos.x+dx,bhitpos.y+dy, !flags.mon_moving ? 200L : 0L);
+				shopwall = TRUE;
+			}
+			if(!flags.mon_moving) watch_dig((struct monst *)0, bhitpos.x+dx,bhitpos.y+dy, TRUE);
+			room->typ = ROOM;
+			unblock_point(bhitpos.x+dx,bhitpos.y+dy); /* vision */
+			newsym(bhitpos.x+dx,bhitpos.y+dy);
 		} else if(isok(bhitpos.x+dx,bhitpos.y+dy) && IS_ROCK(room->typ) && may_dig(bhitpos.x+dx,bhitpos.y+dy) && singleobj && 
 			(singleobj->otyp == LASER_BEAM)
 		) {
