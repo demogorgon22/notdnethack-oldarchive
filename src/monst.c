@@ -6252,7 +6252,7 @@ is a red right hand
 	SIZ(WT_HUMAN, 400, 0, MS_HUMANOID, MZ_HUMAN), 0, 0,
 	0 /*MM*/, MT_COLLECT|MT_MAGIC /*MT*/,
 	MB_HUMANOID|MB_STRONG /*MB*/, MG_NOPOLY|MG_INFRAVISIBLE /*MG*/,
-	MA_HUMAN /*MA*/,  MV_NORMAL /*MV*/, HI_DOMESTIC),
+	MA_MAGIC|MA_HUMAN /*MA*/,  MV_NORMAL /*MV*/, HI_DOMESTIC),
 
  /*Spirits of the gate*/   
     
