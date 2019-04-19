@@ -2801,7 +2801,7 @@ register struct trobj *trop;
 {
 	struct obj *obj;
 	int otyp, i;
-
+	if(Race_if(PM_SYMBIOTE)) return;
 	while (trop->trclass) {
 		if (trop->trotyp != UNDEF_TYP) {
 			otyp = (int)trop->trotyp;

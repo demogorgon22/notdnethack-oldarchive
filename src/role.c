@@ -277,7 +277,7 @@ const struct Role roles[] = {
 	PM_GRAND_MASTER, PM_ABBOT, PM_MASTER_KAEN,
 	PM_EARTH_ELEMENTAL, PM_XORN, S_ELEMENTAL, S_XORN,
 	ART_EYES_OF_THE_OVERWORLD,
-	MA_MAGIC|MA_HUMAN|MA_CLOCK|MA_DRAGON|MA_FEY, ROLE_MALE|ROLE_FEMALE |
+	MA_ET|MA_MAGIC|MA_HUMAN|MA_CLOCK|MA_DRAGON|MA_FEY, ROLE_MALE|ROLE_FEMALE |
 	  ROLE_LAWFUL|ROLE_NEUTRAL|ROLE_CHAOTIC,
 	/* Str Int Wis Dex Con Cha */
 	{  10,  7,  8,  8,  7,  7 },
@@ -874,7 +874,7 @@ const struct Race races[] = {
 	{  1, 0,  1, 0,  1, 0 },	/* Energy */
 	NIGHTVISION2
 },
-{	"salamander", "salamandic", "Sala-broship", "Sal",
+{	"salamander", "salamandic", "sala-broship", "Sal",
 	{0, 0},
 	PM_SALAMANDER, NON_PM, PM_HUMAN_MUMMY, PM_ZOMBIE,
 	ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
@@ -882,6 +882,19 @@ const struct Race races[] = {
 	/*    Str     Int Wis Dex Con Cha */
 	{      3,      3,  3,  3,  3,  3 },//add lava swimming and fire attack
 	{ STR19(19),  18, 18, 18, 18, 15 },//and more
+	/* Init   Lower  Higher */
+	{  2, 0,  1, 0,  0, 1 },	/* Hit points */
+	{  0, 0,  0, 0,  0, 0 },	/* Energy */
+	NORMALNIGHTVIS
+},
+{	"symbiote", "symbiotic", "symbioship", "Sym",
+	{0, 0},
+	PM_SYMBIOTE, NON_PM, PM_HUMAN_MUMMY, PM_ZOMBIE,
+	ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
+	MA_ET, 0, MA_GNOME|MA_DWARF,
+	/*    Str     Int Wis Dex Con Cha */
+	{      3,      3,  3,  3,  3,  3 },
+	{ 12,  25, 25, 25, 12, 15 },//and more
 	/* Init   Lower  Higher */
 	{  2, 0,  1, 0,  0, 1 },	/* Hit points */
 	{  0, 0,  0, 0,  0, 0 },	/* Energy */

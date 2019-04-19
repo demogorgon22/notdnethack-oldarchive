@@ -1904,6 +1904,7 @@ E void NDECL(rehumanize);
 E int FDECL(dobreathe, (struct permonst *));
 E int NDECL(doelementalbreath);
 E int NDECL(dospit);
+E int NDECL(take_host);
 E int NDECL(doremove);
 E int NDECL(dospinweb);
 E int NDECL(dosummon);

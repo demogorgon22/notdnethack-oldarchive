@@ -366,7 +366,7 @@
 /* The hero's glyph when seen as a monster.
  */
 #define hero_glyph \
-	monnum_to_glyph((Upolyd || !iflags.showrace) ? u.umonnum : \
+	monnum_to_glyph(((Upolyd || !iflags.showrace ) && !(Race_if(PM_SYMBIOTE) && !Upolyd)) ? u.umonnum : \
 	                (flags.female && urace.femalenum != NON_PM) ? urace.femalenum : \
 	                urace.malenum)
 

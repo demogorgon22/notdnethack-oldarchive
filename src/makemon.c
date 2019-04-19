@@ -5581,6 +5581,7 @@ register int	mmflags;
 			break;
 		case S_SPIDER:
 		case S_SNAKE:
+			if(mtmp->data == &mons[PM_SYMBIOTE]) break;
 			if(in_mklev)
 			    if(x && y)
 				(void) mkobj_at(0, x, y, TRUE);

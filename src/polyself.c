@@ -459,8 +459,10 @@ int	mntmp;
 			flags.female ? "female " : "male ",
 		    mons[mntmp].mname);
 	} else {
-		if (u.umonnum != mntmp)
-			You("turn into %s!", an(mons[mntmp].mname));
+		if (u.umonnum != mntmp){
+			if(flags.implanting) You("take the %s as host!",mons[mntmp].mname);
+			else You("turn into %s!", an(mons[mntmp].mname));
+		}
 		else
 			You_feel("like a new %s!", mons[mntmp].mname);
 	}
@@ -561,6 +563,7 @@ int	mntmp;
 		u.mtimedone = u.mtimedone * u.ulevel / mlvl;
 #endif
 	}
+	if(flags.implanting) u.mtimedone = 100000;
 
 	if (uskin && mntmp != armor_to_dragon(uskin->otyp))
 		skinback(FALSE);

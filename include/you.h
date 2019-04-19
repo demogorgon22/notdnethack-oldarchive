@@ -372,6 +372,8 @@ struct you {
 #define MATTK_LAVA 26
 #define MATTK_SPLASH 27
 #define MATTK_ARRW 28
+#define MATTK_TAKE_HOST 29
+#define MATTK_LEAVE_HOST 30
 	struct attribs	macurr,		/* for monster attribs */
 			mamax;		/* for monster attribs */
 	int ulycn;			/* lycanthrope type */

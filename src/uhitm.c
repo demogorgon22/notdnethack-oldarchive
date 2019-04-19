@@ -652,6 +652,7 @@ register struct monst *mtmp;
 			|| Race_if(PM_VAMPIRE) 
 			|| Race_if(PM_CHIROPTERAN) 
 			|| (!uwep && Race_if(PM_YUKI_ONNA))
+			|| Race_if(PM_SYMBIOTE)
 		){
 			keepattacking = hmonas(mtmp, youracedata, tmp, weptmp, tchtmp);
 			attacksmade = 1;
@@ -2204,7 +2205,7 @@ defaultvalue:
 	/*Now apply damage*/
 	// pline("Damage: %d",tmp);
 	
-	if(!uwep && !uswapwep){
+	if(!uwep && !uswapwep && !nohands(youracedata)){
 		if((u.ulevel >= 18 || !(uarmg && is_metal(uarmg)))?TRUE:rn2(2)){
 			if(u.umystic & ABSORBATIVE_PUNCH){
 				tmp /= 2;

@@ -702,6 +702,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(youracedata == &mons[PM_SYMBIOTE]){
+		Sprintf(buf, "Take Host");
+		any.a_int = MATTK_TAKE_HOST;	/* must be non-zero */
+		incntlet = 'T';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(u.umonnum == PM_GREMLIN){
 		Sprintf(buf, "Replicate");
 		any.a_int = MATTK_REPL;	/* must be non-zero */
@@ -908,6 +917,8 @@ domonability()
 	break;
 	case MATTK_ARRW: return poly_arrow();
 	break;
+	case MATTK_TAKE_HOST: return take_host();
+	break;
 	}
 	return 0;
 }
@@ -941,12 +952,46 @@ lavify(){
 	u.uinwater = 0;
 	unblock_point(u.ux,u.uy);
 	return 1;
-
-	
-
-
 }
 
+int
+take_host(){
+	coord cc;
+	int cancelled;
+	cc.x = u.ux;
+	cc.y = u.uy;
+	pline("Select a monster to take as a host.");
+	cancelled = getpos(&cc, TRUE, "the desired position");
+	struct monst *mon = m_at(cc.x, cc.y);
+	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 9 || u.ux == cc.x && u.uy == cc.y || (!mon || !polyok(mon->data) || !canseemon(mon) || mindless_mon(mon)))){
+		if(dist2(u.ux,u.uy,cc.x,cc.y) > 9) You("cannot reach that far.");
+		else if (mon && (mindless_mon(mon) || !polyok(mon->data))) pline("%s is not a valid host.", Monnam(mon));
+		cancelled = getpos(&cc, TRUE, "the desired position");
+		mon = m_at(cc.x,cc.y);
+	}
+	if(mon && !DEADMONSTER(mon) && !mindless_mon(mon) && polyok(mon->data)) {
+		if(mon->m_lev > u.ulevel){
+			if(rn2((mon->m_lev - u.ulevel)/5 +1)){
+				pline("You fail to overtake the mind of %s.",mon_nam(mon));
+				return 1;
+			}
+		}
+		flags.implanting = 1;
+		polymon(monsndx(mon->data)); 
+		flags.implanting = 0;
+		int uoldx = u.ux;
+		int uoldy = u.uy;
+		u.mh = mon->mhp;
+		u.mhmax = mon->mhpmax;
+		mongone(mon);
+		u.ux = mon->mx;
+		u.uy = mon->my;
+		newsym(u.ux,u.uy);
+		newsym(uoldx,uoldy);
+
+	}
+	return 1;
+}
 int
 poly_arrow(){
 	if(!getdir((char *)0)) return 0;
