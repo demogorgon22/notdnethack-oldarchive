@@ -684,7 +684,7 @@ struct level_map {
 	
 	{ "sigil",	&sigil_level },
 
-	{ "icetown",	&icetown_level },
+	{ "icetwn",	&icetown_level },
 	{ "iceboss",	&iceboss_level },
 	
 	{ "bftemple",	&bftemple_level },

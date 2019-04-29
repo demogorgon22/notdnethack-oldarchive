@@ -1024,6 +1024,7 @@ dospit()
 	if (!getdir((char *)0)) return(0);
 	otmp = mksobj(u.umonnum==PM_COBRA ? BLINDING_VENOM 
 									  : (u.umonnum==PM_SPROW || u.umonnum==PM_DRIDER) ? BALL_OF_WEBBING 
+									  : (u.umonnum==PM_WHITE_NAGA) ? SNOWBALL 
 									  : (youracedata==&mons[PM_SALAMANDER])? LAVA_BALL:ACID_VENOM,
 			TRUE, FALSE);
 	//if(youracedata==&mons[PM_SALAMANDER]) otmp = mksobj(LAVA_BALL,TRUE,FALSE);

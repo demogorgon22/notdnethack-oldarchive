@@ -674,8 +674,10 @@ icecaves_montype()
 {
 	int chance = rn2(100);
 	if(chance < 10)
-		return &mons[PM_WINTER_WOLF_CUB];
+		return &mons[PM_CHILL_BUG];
 	if(chance < 30)
+		return &mons[PM_WHITE_NAGA_HATCHLING];
+	if(chance < 45)
 		return &mons[PM_BABY_WHITE_DRAGON];
 	if(chance < 60)
 		return &mons[PM_BLUE_JELLY];
@@ -684,7 +686,7 @@ icecaves_montype()
 	if(chance < 90)
 		return &mons[PM_ICE_VORTEX];
 	if(chance < 100)
-		return &mons[PM_FREEZING_SPHERE];
+		return &mons[PM_WHITE_NAGA];
 }
 
 struct permonst *

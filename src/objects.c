@@ -1337,6 +1337,9 @@ OBJECT(OBJ("acid venom", "splash of venom"),
 OBJECT(OBJ("lava ball", "splash of lava"),
 		BITS(1,1,0,0,0,0,0,1,0,0,0,P_NONE,LIQUID), 0,
 		VENOM_CLASS,  0, 0,	 1,  0,  10,  10, 0, 0,	 0, CLR_RED),
+OBJECT(OBJ("snowball", (char *)0),/*Needs tile*/
+		BITS(1,1,0,0,0,0,0,1,0,0,0,P_NONE,LIQUID), 0,
+		VENOM_CLASS,  0, 0,	 1,  0,  6,  6, 0, 0,	 0, CLR_WHITE),
 OBJECT(OBJ("ball of webbing", (char *)0),/*Needs tile*/
 		BITS(1,1,0,0,0,0,0,1,0,0,0,P_NONE,LIQUID), 0,
 		VENOM_CLASS,  0, 0,	 1,  0,  6,  6, 0, 0,	 0, CLR_WHITE),

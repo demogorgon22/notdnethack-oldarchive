@@ -347,6 +347,7 @@ mount_steed(mtmp, force)
 		!strncmp(s, "riding ", 7))
 		/* ... and for "riding boots" */
 		chance += 10;
+	//pline("%d must be ge %d",chance,MAXULEV/2+5);
 	if (!force && ((otmp && otmp->cursed) || chance < rnd(MAXULEV/2+5))) {
 	    if (Levitation) {
 			pline("%s slips away from you.", Monnam(mtmp));

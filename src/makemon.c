@@ -5566,13 +5566,6 @@ register int	mmflags;
 	else mtmp->mpeaceful = (mmflags & MM_ANGRY) ? FALSE : (peace_minded(ptr) && !is_derived_undead_mon(mtmp));
 	
 	switch(ptr->mlet) {
-		case S_DOG:
-			if(In_icecaves(&u.uz) && mndx == PM_WINTER_WOLF_CUB){
-				mtmp->mhp = d(2,5);
-				mtmp->mhpmax = mtmp->mhp;
-				mtmp->mcan = 1;
-			}
-			break;
 		case S_MIMIC:
 			set_mimic_sym(mtmp);
 			break;

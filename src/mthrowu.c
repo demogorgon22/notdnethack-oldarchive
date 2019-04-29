@@ -48,6 +48,7 @@ boolean burn;
 {
 	const char *onm, *knm;
 	boolean is_acid;
+	boolean is_snow;
 	int kprefix = KILLED_BY_AN;
 	char onmbuf[BUFSZ], knmbuf[BUFSZ];
 
@@ -67,6 +68,7 @@ boolean burn;
 	onm = (obj && obj_is_pname(obj)) ? the(name) :
 			    (obj && obj->quan > 1L) ? name : an(name);
 	is_acid = (obj && obj->otyp == ACID_VENOM);
+	is_snow = (obj && obj->otyp == SNOWBALL);
 
 	if(uwep && is_lightsaber(uwep) && uwep->lamplit && P_SKILL(weapon_type(uwep)) >= P_BASIC){
 		if(P_SKILL(FFORM_SHII_CHO) >= P_BASIC){
@@ -124,6 +126,14 @@ boolean burn;
 			pline("It doesn't seem to hurt you.");
 		else {
 			if (is_acid) pline("It burns!");
+			if (Half_physical_damage) dam = (dam+1) / 2;
+			losehp(dam, knm, kprefix);
+			exercise(A_STR, FALSE);
+		}
+		if (is_snow && Cold_resistance)
+			pline("It doesn't seem to hurt you.");
+		else {
+			if (is_acid) pline("It freezes!");
 			if (Half_physical_damage) dam = (dam+1) / 2;
 			losehp(dam, knm, kprefix);
 			exercise(A_STR, FALSE);
@@ -278,6 +288,7 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 			else if(objects[otmp->otyp].oc_skill != P_NONE) use_skill(objects[otmp->otyp].oc_skill,1);
 		}
 	    if (otmp->otyp == ACID_VENOM && resists_acid(mtmp)) damage = 0;
+	    if (otmp->otyp == SNOWBALL && resists_cold(mtmp)) damage = 0;
 	    if (ismimic) seemimic(mtmp);
 	    mtmp->msleeping = 0;
 	    if (vis) hit(distant_name(otmp,mshot_xname), mtmp, exclam(damage));
@@ -434,6 +445,16 @@ boolean verbose;  /* give message(s) even when you can't see what happened */
 		} else {
 		    if (vis) pline_The("acid burns %s!", mon_nam(mtmp));
 		    else if (verbose) pline("It is burned!");
+		}
+	    }
+	    if (otmp->otyp == SNOWBALL && cansee(mtmp->mx,mtmp->my)) {
+		if (resists_cold(mtmp)) {
+		    if (vis || verbose)
+			pline("%s is unaffected.", Monnam(mtmp));
+		    damage = 0;
+		} else {
+		    if (vis) pline_The("cold freezes %s!", mon_nam(mtmp));
+		    else if (verbose) pline("It is frozen!");
 		}
 	    }
 	    mtmp->mhp -= damage;
@@ -1531,6 +1552,10 @@ register struct attack *mattk;
 				otmp = mksobj(ACID_VENOM, TRUE, FALSE);
 				if(mattk->damn && mattk->damd) otmp->ovar1 = d(mattk->damn,mattk->damd);
 			break;
+		    case AD_COLD:
+				otmp = mksobj(SNOWBALL, TRUE, FALSE);
+				if(mattk->damn && mattk->damd) otmp->ovar1 = d(mattk->damn,mattk->damd);
+			break;
 		}
 		if(!rn2(BOLT_LIM-distmin(mtmp->mx,mtmp->my,mtmp->mux,mtmp->muy))) {
 //		    if (canseemon(mtmp))
@@ -1601,6 +1626,10 @@ register struct attack *mattk;
 				/* fall through */
 		    case AD_ACID:
 			otmp = mksobj(ACID_VENOM, TRUE, FALSE);
+			if(mattk->damn && mattk->damd) otmp->ovar1 = d(mattk->damn,mattk->damd);
+			break;
+		    case AD_COLD:
+			otmp = mksobj(SNOWBALL, TRUE, FALSE);
 			if(mattk->damn && mattk->damd) otmp->ovar1 = d(mattk->damn,mattk->damd);
 			break;
 		}

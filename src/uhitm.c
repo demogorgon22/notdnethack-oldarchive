@@ -1843,6 +1843,23 @@ int thrown;
 						hittxt = TRUE;
 						get_dmg_bonus = FALSE;
 					break;
+					case SNOWBALL: /* thrown (or spit) */
+						if (resists_cold(mon)) {
+							Your("snow hits %s harmlessly.",
+								mon_nam(mon));
+							tmp = 0;
+						} else {
+							Your("snow freezes %s!", mon_nam(mon));
+							tmp = dmgval(obj, mon, 0);
+							tmp += tmp * u.ulevel/10;
+							if(obj && ((is_lightsaber(obj) && obj->lamplit) || arti_shining(obj))) phasearmor = TRUE;
+						}
+						if (thrown) obfree(obj, (struct obj *)0);
+						else useup(obj);
+						obj = (struct obj *) 0;
+						hittxt = TRUE;
+						get_dmg_bonus = FALSE;
+					break;
 
 					default:
 defaultvalue:
