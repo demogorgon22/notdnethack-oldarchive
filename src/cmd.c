@@ -962,6 +962,10 @@ take_host(){
 	cc.y = u.uy;
 	pline("Select a monster to take as a host.");
 	cancelled = getpos(&cc, TRUE, "the desired position");
+	if(invent) {
+		Your("inventory must be empty to take a host.");
+		return 0;
+	}
 	struct monst *mon = m_at(cc.x, cc.y);
 	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 9 || u.ux == cc.x && u.uy == cc.y || (!mon || !polyok(mon->data) || !canseemon(mon) || mindless_mon(mon)))){
 		if(dist2(u.ux,u.uy,cc.x,cc.y) > 9) You("cannot reach that far.");
@@ -983,12 +987,31 @@ take_host(){
 		int uoldy = u.uy;
 		u.mh = mon->mhp;
 		u.mhmax = mon->mhpmax;
+		struct obj *otmp;
+		struct obj *otmp2;
+		if(invent) impossible("Taking a host but has an inventory?");
+		else {
+			while((otmp = mon->minvent)){
+    				if (otmp->owornmask) {
+    				    /* perform worn item handling if the monster is still alive */
+    				    if (mon->mhp > 0) {
+    				        mon->misc_worn_check &= ~otmp->owornmask;
+    				        update_mon_intrinsics(mon, otmp, FALSE, TRUE);
+    				     /* obj_no_longer_held(obj); -- done by place_object */
+    				        if (otmp->owornmask & W_WEP) setmnotwielded(mon, otmp);
+    				    }
+    				    otmp->owornmask = 0L;
+    				}
+				pick_obj(otmp);
+			}
+		}
+		mon->minvent = (struct obj * ) 0;
 		mongone(mon);
 		u.ux = mon->mx;
 		u.uy = mon->my;
 		newsym(u.ux,u.uy);
 		newsym(uoldx,uoldy);
-
+		u.uhost = mon;
 	}
 	return 1;
 }

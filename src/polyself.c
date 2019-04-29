@@ -114,6 +114,7 @@ const char *fmt, *arg;
 	}
 
 	newsym(u.ux,u.uy);
+	leave_host();
 
 	You(fmt, arg);
 	/* check whether player foolishly genocided self while poly'd */
@@ -401,6 +402,76 @@ boolean forcecontrol;
 	if (is_pool(u.ux,u.uy) && was_floating && !(Levitation || Flying) &&
 		!breathless(youmonst.data) && !amphibious(youmonst.data) &&
 		!Swimming) drown();
+}
+
+
+
+void
+leave_host()
+{
+	struct monst *mtmp;
+	struct obj *otmp;
+	struct obj *otmp2;
+	mtmp = u.uhost;
+	//mtmp->nmon = fmon;
+	//fmon = mtmp;
+	mtmp->mhp = u.mh+1;
+	mtmp->mhpmax = u.mhmax;
+	u.uhost = 0;
+	if (Punished){
+		unpunish();
+	}
+	for(otmp = invent;otmp;otmp=otmp->nobj){
+		if(otmp->owornmask){
+			if(otmp->owornmask&W_ARMC){
+				(void)Cloak_off();
+			}
+			else if(otmp->owornmask&W_ARM){
+				(void)Armor_gone();
+			}
+			else if(otmp->owornmask&W_ARMU){
+				(void)Shirt_off();
+			}
+			else if(otmp->owornmask&W_ARMH){
+				(void)Helmet_off();
+			}
+			else if(otmp->owornmask&W_ARMG){
+				(void)Gloves_off();
+			}
+			else if(otmp->owornmask&W_ARMF){
+				(void)Boots_off();
+			}
+			else if(otmp->owornmask&W_ARMS){
+				(void)Shield_off();
+			}
+			else if(otmp->owornmask&W_WEP){
+				setuwep((struct obj *)0);
+			}
+			else if(otmp->owornmask&W_SWAPWEP){
+				setuswapwep((struct obj *)0);
+			}
+			else if(otmp->owornmask&W_QUIVER){
+				setuqwep((struct obj *)0);
+			}
+			else if (otmp->owornmask&W_AMUL){
+				Amulet_off();
+			}
+			else if (otmp->owornmask&W_RING){
+				Ring_gone(otmp);
+			}
+			else if (otmp->owornmask&W_TOOL){
+				Blindf_off(otmp);
+			}
+			else otmp->owornmask = 0;
+		}
+		freeinv(otmp);
+	}
+	invent = (struct obj *) 0;
+	if(mtmp->mhp <= 0)
+		mongone(fmon);
+	else rloc_to(mtmp,u.ux,u.uy);
+
+
 }
 
 /* (try to) make a mntmp monster out of the player */
@@ -834,7 +905,7 @@ void
 rehumanize()
 {
 	/* You can't revert back while unchanging */
-	if (Unchanging && (u.mh < 1)) {
+	if (Unchanging && (u.mh < 1) && !u.uhost) {
 		killer_format = NO_KILLER_PREFIX;
 		killer = "killed while stuck in creature form";
 		done(DIED);

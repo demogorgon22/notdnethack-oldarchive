@@ -503,6 +503,7 @@ struct you {
 	long ugallop;
 	int urideturns;
 #endif
+	struct monst *uhost;
 	int	umortality;		/* how many times you died */
 	int ugrave_arise; /* you die and become something aside from a ghost */
 	time_t	ubirthday;		/* real world time when game began */

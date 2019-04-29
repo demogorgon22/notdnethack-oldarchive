@@ -528,8 +528,10 @@ bot2()
 #endif
         Sprintf(nb = eos(nb), " Br:%d", u.divetimer);
         Sprintf(nb = eos(nb), " AC:%-2d", (u.uac + u.ustdy));
-	if (Upolyd)
+	if (Upolyd && !u.uhost)
 		Sprintf(nb = eos(nb), " HD:%d", mons[u.umonnum].mlevel);
+	else if(u.uhost)
+		Sprintf(nb = eos(nb), " HD:%d", u.uhost->m_lev);
 #ifdef EXP_ON_BOTL
 	else if(flags.showexp)
 		Sprintf(nb = eos(nb), " Xp:%u/%-1ld", u.ulevel,u.uexp);
