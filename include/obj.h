@@ -406,12 +406,18 @@ struct obj {
 			 objects[otmp->otyp].oc_armcat == ARM_SHIRT)
 #define is_suit(otmp)	(otmp->oclass == ARMOR_CLASS && \
 			 objects[otmp->otyp].oc_armcat == ARM_SUIT)
+/*
 #define is_light_armor(otmp)	((otmp)->otyp == DWARVISH_MITHRIL_COAT || (otmp)->otyp == ELVEN_MITHRIL_COAT || \
 			(otmp)->otyp == JUMPSUIT || (otmp)->otyp == LEATHER_JACKET || (otmp)->otyp == ELVEN_TOGA || (otmp)->otyp == BLACK_DRESS)
 #define is_medium_armor(otmp)	((otmp)->otyp == BRONZE_PLATE_MAIL || (otmp)->otyp == DROVEN_CHAIN_MAIL || \
 			(otmp)->otyp == CHAIN_MAIL || (otmp)->otyp == SCALE_MAIL || (otmp)->otyp == STUDDED_LEATHER_ARMOR || \
 			(otmp)->otyp == LEATHER_ARMOR || (otmp)->otyp == BANDED_MAIL || (otmp)->otyp == NOBLE_S_DRESS || \
 			(otmp)->otyp == PLASTEEL_ARMOR || (otmp)->otyp == HIGH_ELVEN_PLATE || Is_dragon_mail(otmp))
+			*/
+#define is_light_armor(otmp) (otmp->owt <= 50 )
+
+#define is_medium_armor(otmp) ((otmp->owt > 50 && otmp->owt <= 150) || Is_dragon_mail(otmp))
+
 #define is_elven_armor(otmp)	((otmp)->otyp == ELVEN_HELM\
 				|| (otmp)->otyp == HIGH_ELVEN_HELM\
 				|| (otmp)->otyp == HIGH_ELVEN_GAUNTLETS\
