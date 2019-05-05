@@ -224,6 +224,12 @@ struct obj *wep;
 			case AGATE:
 				u.uprops[FREE_ACTION].extrinsic |= W_WEP;
 			break;
+			case GARNET:
+				EFire_resistance |= W_WEP;
+			break;
+			case BLUE_FLUORITE:
+				ESleep_resistance |= W_WEP;
+			break;
 		}
 	    }
 	    if (artifact_light(wep) && !wep->lamplit) {
@@ -699,6 +705,12 @@ struct obj *obj;
 			break;
 			case AGATE:
 				u.uprops[FREE_ACTION].extrinsic &= ~W_WEP;
+			break;
+			case GARNET:
+				EFire_resistance &= ~W_WEP;
+			break;
+			case BLUE_FLUORITE:
+				ESleep_resistance &= ~W_WEP;
 			break;
 
 		}

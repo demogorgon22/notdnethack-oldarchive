@@ -293,13 +293,15 @@ Spear changes
 		Amber
 			Slow monster
 		Jet
-			Protection - shrouds you in a black mist
+			Protection - shrouds you in a black mist (more
+			protection based on enchant)
 		Opal
 			Reflection
 		Chrysoberyl
 			Disease resistance
 		Garnet
 			Fire
+			Fire resistance
 		Amethyst
 			Telepathy
 		Jasper
@@ -308,6 +310,7 @@ Spear changes
 			Pacification 1/20 attacks
 		Blue Fluorite
 			Sleeping attack 1/10
+			Sleep Resistance
 		White Fluorite
 			Energy Regen
 		Green Fluorite
