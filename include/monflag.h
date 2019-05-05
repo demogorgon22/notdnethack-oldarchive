@@ -57,6 +57,7 @@
 #define MS_TRUMPET	47	/* Archon's trumpet */
 #define MS_CLOCK	48	/* Clockwork */
 #define MS_PORTAL	49	/* Offer portal options */
+#define MS_SMITH	50	/* Smithery */
 
 
 #define MR_FIRE		0x001	/* 1 resists fire */

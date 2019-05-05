@@ -695,10 +695,10 @@ struct obj *obj;
 				ETelepat &= ~W_WEP;
 			break;
 			case WHITE_FLUORITE:
-				EEnergy_regeneration &= ~!W_WEP;
+				EEnergy_regeneration &= ~W_WEP;
 			break;
 			case AGATE:
-				u.uprops[FREE_ACTION].extrinsic &= ~!W_WEP;
+				u.uprops[FREE_ACTION].extrinsic &= ~W_WEP;
 			break;
 
 		}

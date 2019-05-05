@@ -2285,6 +2285,7 @@ E int FDECL(P_RESTRICTED, (int));
 E boolean FDECL(spiritSkill, (int));
 E boolean FDECL(roleSkill, (int));
 E int FDECL(domonnoise,(struct monst *, BOOLEAN_P));
+E int FDECL(dosmithmenu, (const char *));
 #ifdef USER_SOUNDS
 E int FDECL(add_sound_mapping, (const char *));
 E void FDECL(play_sound_for_message, (const char *));

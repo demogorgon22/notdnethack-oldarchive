@@ -730,6 +730,15 @@ boolean chatting;
 		return 1;
 	}
 	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : mtmp->isshk ? MS_SELL:ptr->msound) {
+	
+
+	case MS_SMITH:{
+		int seenSeals = countCloseSigns(mtmp);			
+		int selection = dosmithmenu("Are you interesting in a service?");
+
+
+		break;
+	}
 	case MS_PORTAL:{
 			if(!Is_village_level(&u.uz) || u.ubranch){
 				pline("%s mumbles about the village.",Monnam(mtmp));
@@ -2061,6 +2070,44 @@ const char *prompt;
 	any.a_int = ARCHIPELAGO;	
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'a', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	end_menu(tmpwin, prompt);
+	how = PICK_ONE;
+	n = select_menu(tmpwin, how, &selected);
+	destroy_nhwindow(tmpwin);
+	return (n > 0) ? selected[0].item.a_int : 0;
+}
+
+int
+dosmithmenu(prompt)
+const char *prompt;
+{
+	winid tmpwin;
+	int n, how;
+	char buf[BUFSZ];
+	menu_item *selected;
+	anything any;
+
+	tmpwin = create_nhwindow(NHW_MENU);
+	start_menu(tmpwin);
+	any.a_void = 0;		/* zero out all bits */
+
+	Sprintf(buf, "Services: ");
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+	Sprintf(buf, "Shrink Armor");
+	any.a_int = ICE_CAVES;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		's', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Grow Armor");
+	any.a_int = BLACK_FOREST;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'g', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Repair Armor");
+	any.a_int = GNOMISH_MINES;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'r', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	end_menu(tmpwin, prompt);
 	how = PICK_ONE;
