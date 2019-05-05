@@ -5654,7 +5654,6 @@ int mnum;
        such into ordinary eggs rather than forbidding them outright */
     if (mnum == PM_SCORPIUS) mnum = PM_SCORPION;
 	else if(mnum == PM_ANCIENT_NAGA) mnum = rn2(PM_GUARDIAN_NAGA_HATCHLING - PM_RED_NAGA_HATCHLING + 1) + PM_RED_NAGA_HATCHLING;
-	else if(mnum == PM_SERPENT_MAN_OF_YOTH) mnum = rn2(PM_COBRA - PM_GARTER_SNAKE + 1) + PM_GARTER_SNAKE;
 	else if(mnum == PM_HUNTING_HORROR) mnum = PM_BABY_LONG_WORM;
 	else if(mnum == PM_SMAUG) mnum = PM_BABY_RED_DRAGON;
 	
