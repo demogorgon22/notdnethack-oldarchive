@@ -735,6 +735,9 @@ boolean chatting;
 	case MS_SMITH:{
 		int seenSeals = countCloseSigns(mtmp);			
 		int selection = dosmithmenu("Are you interesting in a service?");
+		switch(selection){
+	
+		}
 
 
 		break;
