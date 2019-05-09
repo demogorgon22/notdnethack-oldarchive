@@ -750,7 +750,9 @@ newsym(x,y)
 	 */
 	/* lev->waslit = (darksight(youracedata) || catsight(youracedata)) ? 0 : (lev->lit!=0);	*/ /* remember lit condition */
 	lev->waslit = 0; /* hack? */
-	if (reg != NULL && ACCESSIBLE(lev->typ)) {
+	if (reg != NULL && (ACCESSIBLE(lev->typ) || 
+			(reg->glyph == cmap_to_glyph(S_cloud) && 
+			 (IS_POOL(lev->typ) || lev->typ == LAVAPOOL)))) {
 	    show_region(reg,x,y);
 	    return;
 	}

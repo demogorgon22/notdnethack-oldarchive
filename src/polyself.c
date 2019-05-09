@@ -114,7 +114,7 @@ const char *fmt, *arg;
 	}
 
 	newsym(u.ux,u.uy);
-	leave_host();
+	if(u.uhost) leave_host();
 
 	You(fmt, arg);
 	/* check whether player foolishly genocided self while poly'd */
