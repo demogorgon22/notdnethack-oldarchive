@@ -204,6 +204,7 @@ OBJECT: '[',random,(18,14)
 OBJECT: '[',random,(18,14)
 OBJECT: '!',random,(18,14)
 OBJECT: '!',random,(18,14)
+MONSTER: '@', "armorsmith", random, peaceful
 MONSTER: 'k', "kobold", random, hostile
 MONSTER: 'k', "kobold", random, hostile
 MONSTER: 'k', "kobold", random, hostile

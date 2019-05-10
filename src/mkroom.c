@@ -1846,8 +1846,14 @@ struct mkroom *croom; /* NULL == choose random room */
 			i--;
 	    }
 	}
+	boolean madeSmith = FALSE;
 	for(pos.x=sroom->lx; pos.x <= sroom->hx; pos.x++){
 		for(pos.y=sroom->ly; pos.y <= sroom->hy; pos.y++){
+			if(!madeSmith){
+				(void) mkcorpstat(CORPSE, (struct monst *) 0, 
+					&mons[PM_ARMORSMITH], pos.x, pos.y, TRUE);
+				madeSmith = TRUE;
+			}
 			if(!rn2(8)){
 				otmp = mkobj_at(WEAPON_CLASS, pos.x, pos.y, FALSE);
 				if(rn2(3) && (is_rustprone(otmp) || is_flammable(otmp))){

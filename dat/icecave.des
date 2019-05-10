@@ -83,6 +83,8 @@ DOOR:open,(49,3)
 DOOR:open,(49,5)
 DOOR:closed,(49,6)
 
+MONSTER: '@', "armorsmith", (50,5), peaceful
+
 # Secret passageway door
 DOOR:closed,(61,5)
 DOOR:closed,(71,14)

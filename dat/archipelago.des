@@ -61,6 +61,7 @@ STAIR:(30,02),down
 
 REGION:(00,00,32,12),lit,"ordinary"
 MONSTER: '@', "watch captain", (03,09), peaceful
+MONSTER: '@', "armorsmith", (07,10), peaceful
 
 MONSTER: random, random, random
 MONSTER: random, random, random

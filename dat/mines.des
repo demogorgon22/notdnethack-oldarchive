@@ -94,6 +94,7 @@ MONSTER: 'G', "gnome", random
 
 SUBROOM: "ordinary", lit, (15,9), (4,4), "town"
 DOOR: false, closed, north, random
+MONSTER: '@', "armorsmith", random
 #ALTAR:(02,02),align[0],shrine
 #GRAVE: (02,02),random
 MONSTER: 'G', "gnomish wizard", random
@@ -197,6 +198,7 @@ MONSTER: 'G', "gnome", random
 
 SUBROOM: "ordinary", lit, (19,5), (4,4), "town"
 DOOR: false, closed, north, random
+MONSTER: '@', "armorsmith", random
 #ALTAR:(02,02),align[0],shrine
 MONSTER: 'G', "gnomish wizard", random
 MONSTER: 'G', "gnomish wizard", random
@@ -254,6 +256,7 @@ DOOR: false,closed,north,random
 
 SUBROOM:"ordinary",lit,(10,2),(3,4),"town"
 DOOR: false,closed,east,random
+MONSTER: '@', "armorsmith", random
 #ALTAR:(1,1),align[0],shrine
 MONSTER: 'G', "gnomish wizard", random
 MONSTER: 'G', "gnomish wizard", random
@@ -337,6 +340,7 @@ DOOR: false,closed,south,random
 
 SUBROOM:"ordinary",lit,(11,3),(5,4),"town"
 DOOR: false,closed,south,random
+MONSTER: '@', "armorsmith", random
 #ALTAR:(2,1),align[0],shrine
 MONSTER: 'G', "gnomish wizard", random
 MONSTER: 'G', "gnomish wizard", random
@@ -499,6 +503,7 @@ OBJECT: '`', "statue", (38,15), "gnome king", 1
 REGION:(29,02,33,04),lit,"ordinary"
 DOOR:closed,(31,05)
 #ALTAR:(31,03),align[0],shrine
+MONSTER: '@', "armorsmith", (31,03)
 
 
 # "Bustling Town" by Kelly Bailey
@@ -537,6 +542,7 @@ REGION:(23,1,25,3),lit,"shop"
 REGION:(22,12,24,13),lit,"food shop"
 REGION:(31,12,36,14),lit,"ordinary"
 #ALTAR:(35,13),align[0],shrine
+MONSTER: '@', "armorsmith", (35,13)
 
 DOOR:closed,(5,2)
 DOOR:locked,(4,8)
@@ -663,6 +669,7 @@ DOOR: false, closed, west, random
 
 SUBROOM: "ordinary", lit, (24,6), (4,4), "town"
 DOOR: false, closed, west, random
+MONSTER: '@', "armorsmith", random
 #ALTAR:(02,01),align[0],shrine
 MONSTER: 'G', "gnomish wizard", random
 MONSTER: 'G', "gnomish wizard", random

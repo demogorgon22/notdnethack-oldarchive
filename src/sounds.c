@@ -17,6 +17,8 @@ int FDECL(dobinding,(int, int));
 int FDECL(doportalmenu,(const char *));
 
 static const char tools[] = { TOOL_CLASS, 0 };
+static const char models[] = { TOOL_CLASS, FOOD_CLASS, 0 };
+static const char armors[] = { ARMOR_CLASS, 0 };
 
 #endif /* OVLB */
 
@@ -663,6 +665,49 @@ static const char *branch_info[] ={
 };
 
 
+static boolean
+smith_offer_price(charge, shkp)
+	long charge;
+	struct monst *shkp;
+{
+	char sbuf[BUFSZ];
+
+	/* Ask y/n if player wants to pay */
+        Sprintf(sbuf, "It'll cost you %ld zorkmid%s.  Interested?",
+		charge, plur(charge));
+
+	if ( yn(sbuf) != 'y' ) {
+		verbalize("Alright then.");
+		return(FALSE);
+	}
+
+	/* Player _wants_ to pay, but can he? */
+	/* WAC -- Check the credit:  but don't use check_credit
+	 * since we don't want to charge him for part of it if he can't pay for all 
+	 * of it 
+	 */
+#ifndef GOLDOBJ
+	if (charge > (u.ugold)) {
+#else
+	if (charge > (money_cnt(invent))) {  
+#endif
+		verbalize("You can't quite afford that.");
+		return(FALSE);
+	}
+
+	/* Charge the customer */
+
+#ifndef GOLDOBJ
+	u.ugold -= charge;
+	shkp->mgold += charge;
+#else
+	money2mon(shkp, charge);
+#endif
+	bot();
+
+	return(TRUE);
+}
+
 int
 domonnoise(mtmp, chatting)
 struct monst *mtmp;
@@ -733,13 +778,112 @@ boolean chatting;
 	
 
 	case MS_SMITH:{
+		if(!mtmp->mpeaceful){
+			verbalize("Begone!");
+			break;
+		}
 		int seenSeals = countCloseSigns(mtmp);			
 		int selection = dosmithmenu("Are you interesting in a service?");
+		struct obj *obj;       /* The object to smith      */
+		struct obj *obj2;       /* The object to use    */
+		long charge;
+		long bodytype;
 		switch(selection){
-	
+			case 1: //shrink
+				if ( !(obj = getobj(armors, "have shrunk"))) break;
+				if(obj->owornmask){
+					verbalize("I can't work on armor you are wearing!");
+					break;
+				}
+				if(obj->objsize == MZ_TINY){
+					verbalize("That's already as small as it gets!");
+					break;
+				}
+				charge = 520 * (seenSeals + 1) * (obj->oartifact?2:1);
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				if(!rn2(4) && !obj->oartifact){
+					verbalize("Oops! I broke it.");
+					delobj(obj);
+					break;
+				}
+				if(obj->objsize == MZ_GIGANTIC) obj->objsize == MZ_HUGE; 
+				else obj->objsize--;
+				verbalize("Shrunk her down!");
+				break;
+			case 2://grow armor
+				if ( !(obj = getobj(armors, "have grown"))) break;
+				if(obj->owornmask){
+					verbalize("I can't work on armor you are wearing!");
+					break;
+				}
+				if(obj->objsize == MZ_GIGANTIC){
+					verbalize("That's already as big as it gets!");
+					break;
+				}
+				if ( !(obj2 = getobj(armors, "have combined"))) break;
+				if(obj2->oartifact){
+					verbalize("That's too powerful for me to combine.");
+					break;
+				}
+				if(obj2->otyp != obj->otyp){
+					verbalize("I need an armor of the same type.");
+					break;
+				}
+				charge = 520 * (seenSeals + 1) * (obj->oartifact?2:1);
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				delobj(obj2);
+				if(obj->objsize == MZ_HUGE) obj->objsize == MZ_GIGANTIC; 
+				else obj->objsize++;
+				verbalize("Combined em!");
+				break;
+			case 3://repair armor
+				if ( !(obj = getobj(armors, "have repaired"))) break;
+				if(obj->owornmask){
+					verbalize("I can't work on armor you are wearing!");
+					break;
+				}
+				if(!(obj->oeroded || obj->oeroded2)){
+					verbalize("Can't do anything for that bud.");
+					verbalize("It isn't damaged.");
+					break;
+				}
+				charge = 240 * (seenSeals + 1);
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				obj->oeroded = obj->oeroded2 = 0;
+				verbalize("All good now!");
+				break;
+			case 4: // reshape armor
+				if ( !(obj = getobj(armors, "have reshaped"))) break;
+				if(obj->owornmask){
+					verbalize("I can't work on armor you are wearing!");
+					break;
+				}
+				if(!(is_suit(obj) || is_shirt(obj) || is_helmet(obj))) { 
+					verbalize("I can't reshape that.");
+					break;
+				}
+				if ( !(obj2 = getobj(models, "have used as a model"))) break;
+				if(obj2->otyp != CORPSE && obj2->otyp!=FIGURINE){
+					verbalize("I need a corpse or figurine to use as a model.");
+					break;
+				}
+				if(is_suit(obj) || is_shirt(obj)) { 
+					bodytype = (&mons[obj2->corpsenm])->mflagsb&MB_BODYTYPEMASK;
+				} else if(is_helmet(obj)){
+					bodytype = (&mons[obj2->corpsenm])->mflagsb&MB_HEADMODIMASK;
+				}
+				if(obj->bodytypeflag == bodytype){
+					verbalize("The model is shaped the same as the armor.");
+					break;
+				}
+				charge = 520 * (seenSeals + 1) * (obj->oartifact?2:1);
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				obj->bodytypeflag = bodytype;
+				verbalize("Reshaped!");
+				break;
+			default:
+			break;
 		}
-
-
 		break;
 	}
 	case MS_PORTAL:{
@@ -2098,19 +2242,24 @@ const char *prompt;
 	Sprintf(buf, "Services: ");
 	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 	Sprintf(buf, "Shrink Armor");
-	any.a_int = ICE_CAVES;	/* must be non-zero */
+	any.a_int = 1;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		's', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "Grow Armor");
-	any.a_int = BLACK_FOREST;	/* must be non-zero */
+	any.a_int = 2;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'g', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	Sprintf(buf, "Repair Armor");
-	any.a_int = GNOMISH_MINES;	/* must be non-zero */
+	any.a_int = 3;	/* must be non-zero */
 	add_menu(tmpwin, NO_GLYPH, &any,
 		'r', 0, ATR_NONE, buf,
+		MENU_UNSELECTED);
+	Sprintf(buf, "Reshape Armor");
+	any.a_int = 4;	/* must be non-zero */
+	add_menu(tmpwin, NO_GLYPH, &any,
+		'e', 0, ATR_NONE, buf,
 		MENU_UNSELECTED);
 	end_menu(tmpwin, prompt);
 	how = PICK_ONE;

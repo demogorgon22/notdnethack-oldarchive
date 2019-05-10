@@ -3648,6 +3648,13 @@ register struct	monst	*mtmp;
 				case 4: (void) mongets(mtmp, POT_HEALING);
 				case 5: (void) mongets(mtmp, POT_EXTRA_HEALING);
 		    }
+		} else if (ptr == &mons[PM_ARMORSMITH]) {
+			(void) mongets(mtmp, WAR_HAMMER);
+			(void) mongets(mtmp, CHAIN_MAIL);
+			(void) mongets(mtmp, HELMET);
+			(void) mongets(mtmp, GLOVES);
+			(void) mongets(mtmp, HIGH_BOOTS);
+			(void) mongets(mtmp, LEATHER_CLOAK);
 		} else if (ptr->msound == MS_PRIEST ||
 			quest_mon_represents_role(ptr,PM_PRIEST)) {
 		    (void) mongets(mtmp, rn2(7) ? ROBE :
