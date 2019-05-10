@@ -3378,23 +3378,27 @@ register struct monst *mtmp;
 			unbind(sealKey[(mndx-PM_AHAZU)-1],FALSE);
 	}
 #ifdef RECORD_ACHIEVE
-	if(mtmp->data->geno & G_UNIQ && mvitals[monsndx(mtmp->data)].died == 1 && (!rn2(5) || (mndx < PM_AHAZU || mndx > PM_YMIR))){
+	if(mtmp->data->geno & G_UNIQ && mndx != PM_CHAOS && mvitals[monsndx(mtmp->data)].died == 1 && (!rn2(5) || (mndx < PM_AHAZU || mndx > PM_YMIR))){
 		char buf[BUFSZ];
 		buf[0]='\0';
 		if(nonliving(mtmp->data)) Sprintf(buf,"destroyed %s",noit_nohalu_mon_nam(mtmp));
 		else Sprintf(buf,"killed %s",noit_nohalu_mon_nam(mtmp));
 		livelog_write_string(buf);
 	}
-	else if(mtmp->data == &mons[PM_LUCIFER]){
+	if (mndx == PM_CHAOS && mvitals[PM_CHAOS].died == 1) {
+		if(Hallucination) livelog_write_string("perpetuated an asinine paradigm");
+		else livelog_write_string("destroyed Chaos");
+	}
+	if(mtmp->data == &mons[PM_LUCIFER]){
 		achieve.killed_lucifer = 1;
 	}
-	else if(mtmp->data == &mons[PM_ASMODEUS]){
+	if(mtmp->data == &mons[PM_ASMODEUS]){
 		achieve.killed_asmodeus = 1;
 	}
-	else if(mtmp->data == &mons[PM_DEMOGORGON]){
+	if(mtmp->data == &mons[PM_DEMOGORGON]){
 		achieve.killed_demogorgon = 1;
 	}
-	else if(mtmp->data == &mons[PM_MEDUSA])
+	if(mtmp->data == &mons[PM_MEDUSA])
 		achieve.killed_medusa = 1;
 #endif
 	if(glyph_is_invisible(levl[mtmp->mx][mtmp->my].glyph))
@@ -3454,10 +3458,6 @@ boolean was_swallowed;			/* digestion */
 		u.chokhmah++;
 		u.keter++;
 		return FALSE;
-	}
-	else if (mdat == &mons[PM_CHAOS] && mvitals[PM_CHAOS].died == 1) {
-		if(Hallucination) livelog_write_string("perpetuated an asinine paradigm");
-		else livelog_write_string("destroyed Chaos");
 	}
 	if(Role_if(PM_ANACHRONONAUT) && mon->mpeaceful && In_quest(&u.uz) && Is_qstart(&u.uz)){
 		if(mdat == &mons[PM_TROOPER]){
