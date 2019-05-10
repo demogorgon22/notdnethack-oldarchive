@@ -342,6 +342,9 @@ Helmet_on()
     if (!uarmh) return 0;
     switch(uarmh->otyp) {
 	case FEDORA:
+		if(uarmh->oartifact == ART_FEDORA_OF_THE_INVESTIGATOR)
+			adj_abon(uarmh,uarmh->spe);
+		break;
 	case HELMET:
 	case DROVEN_HELM:
 	case FLACK_HELMET:
@@ -424,6 +427,9 @@ Helmet_off()
 
     switch(uarmh->otyp) {
 	case FEDORA:
+		if(uarmh->oartifact == ART_FEDORA_OF_THE_INVESTIGATOR)
+			adj_abon(uarmh,-(uarmh->spe));
+		break;
 	case HELMET:
 	case DROVEN_HELM:
 	case FLACK_HELMET:
@@ -2946,6 +2952,15 @@ register schar delta;
 			makeknown(uarmh->otyp);
 			ABON(A_INT) += (delta);
 			ABON(A_WIS) += (delta);
+		}
+		flags.botl = 1;
+	}
+	if (uarmh && uarmh == otmp && otmp->oartifact == ART_FEDORA_OF_THE_INVESTIGATOR) {
+		if (delta) {
+			makeknown(uarmh->otyp);
+			ABON(A_INT) += (delta);
+			ABON(A_WIS) += (delta);
+			ABON(A_CHA) += (delta);
 		}
 		flags.botl = 1;
 	}

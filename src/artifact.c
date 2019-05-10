@@ -319,6 +319,9 @@ make_artif:
         if(m == ART_HELM_OF_THE_ARCANE_ARCHER){
 			unrestrict_weapon_skill(P_ATTACK_SPELL);
         }
+	if(m == ART_FEDORA_OF_THE_INVESTIGATOR){
+		otmp->spe = 1;
+	}
 	} else {
 	    /* nothing appropriate could be found; return the original object */
 	    if (by_align) otmp = 0;	/* (there was no original object) */

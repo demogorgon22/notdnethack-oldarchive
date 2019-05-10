@@ -52,6 +52,13 @@ A("Excalibur",			LONG_SWORD,
 	PHYS(20,10),	DRLI(0,0),	NO_CARY,	//Excalibur is a very accurate weapon, a property that almost doesn't matter except for vs high level demons
 	0, A_LAWFUL, PM_KNIGHT, NON_PM, 4000L, //Excalibur does extra blessed damage to demons and undead, +3d7 instead of 1d4
 	0,0,0),
+
+A("Dirge",			LONG_SWORD,
+	(SPFX_NOGEN|SPFX_RESTR|SPFX_DEFN|SPFX_INTEL),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	ACID(5,10),	ACID(0,0),	NO_CARY,	
+	SELF_POISON, A_CHAOTIC, PM_KNIGHT, NON_PM, 4000L,
+	0,0,0),
 /*
  *	Stormbringer only has a 2 because it can drain a level,
  *	providing 8 more.
@@ -81,6 +88,13 @@ A("The Marauder's Map", SCR_MAGIC_MAPPING, /*Needs encyc entry*/
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	NO_ATTK,	NO_DFNS,	NO_CARY,
 	OBJECT_DET,	A_CHAOTIC, PM_PIRATE, NON_PM, 2000L,
+	0,0,0),
+
+A("The Fedora of the Investigator", FEDORA,
+	(SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,//, +spe to Int, Wis, and Cha
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	OBJECT_DET, A_LAWFUL, PM_ARCHEOLOGIST, NON_PM, 2000L,
 	0,0,0),
 
 
@@ -1852,12 +1866,6 @@ A("The Log of the Curator", SPE_BLANK_PAPER,
 	0,0,0),
 
 /* TODO read */
-A("The Fedora of the Investigator", FEDORA,
-	(SPFX_NOGEN|SPFX_RESTR),0,
-	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,//+7 ac, +7+ench to Int, Wis, and Cha
-	NO_ATTK,	DFNS(AD_MAGM),	NO_CARY,//Detects traps
-	OBJECT_DET, A_NONE, PM_ARCHEOLOGIST, NON_PM, 0L,
-	0,0,0),
 
 /* Anachrononaut */
 A("The Force Pike of the Red Guard", FORCE_PIKE,

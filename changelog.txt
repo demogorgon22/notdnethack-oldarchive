@@ -47,6 +47,10 @@ Some of the new artifacts
 	Cage key-
 		Invoke for branchport, tlpt control when held.
 	Hunting Horn - Play different notes on it to set it to different modes
+	Fedora of The Investigator -
+		Arc first sac gift. +enchantment wisdom, intelligence, and
+		charisma.
+	A bunch (maybe 15?) new acu spirit artifacts
 	
 
 Vampire changes
