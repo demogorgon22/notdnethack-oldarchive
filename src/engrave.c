@@ -65,15 +65,9 @@ static const char *random_mesg[] = {
 	
 	"Romanes Eunt Domus", /* Life of Brian */
 	
-	"stth was here", /* First ascender */
-	"allihaveismymind followed stth", /* Second ascender */
-	"Khor followed allihaveismymind", /* Third ascender */
-	"ChrisANG followed Khor", /* Fourth ascender */
-	"FIQ followed ChrisANG", /* Fifth ascender */
-	"Tariru followed FIQ", /* Sixth ascender */
-	"VoiceOfReason followed Tariru", /* Seventh ascender */
-	"Catullus followed VoiceOfReason", /* Eighth ascender */
-	"HBane followed Catullus", /* Ninth ascender */
+	"portkman was here", /* First ascender */
+	"Demo followed porkman", /* Second ascender */
+	 /* Ninth ascender */
 	
 	/* contributed by members of NetHackWiki */
 	"Write down the coordinates, he said.", /* the Submachine series */

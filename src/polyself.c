@@ -187,7 +187,7 @@ newman()
 
 	tmp = u.uhpmax;
 	oldlvl = u.ulevel;
-	u.ulevel = u.ulevel + rn1(5, -2);
+	if(!Role_if(PM_ANACHRONOUNBINDER)) u.ulevel = u.ulevel + rn1(5, -2);
 	if (u.ulevel > 127 || u.ulevel < 1) { /* level went below 0? */
 	    u.ulevel = oldlvl; /* restore old level in case they lifesave */
 	    goto dead;
