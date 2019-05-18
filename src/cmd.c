@@ -711,6 +711,15 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(youracedata == &mons[PM_SYMBIOTE]){
+		Sprintf(buf, "Leave Host");
+		any.a_int = MATTK_LEAVE_HOST;	/* must be non-zero */
+		incntlet = 'e';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(u.umonnum == PM_GREMLIN){
 		Sprintf(buf, "Replicate");
 		any.a_int = MATTK_REPL;	/* must be non-zero */
@@ -918,6 +927,10 @@ domonability()
 	case MATTK_ARRW: return poly_arrow();
 	break;
 	case MATTK_TAKE_HOST: return take_host();
+	break;
+	case MATTK_LEAVE_HOST:
+		rehumanize();
+		return 1;
 	break;
 	}
 	return 0;
