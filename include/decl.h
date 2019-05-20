@@ -700,6 +700,13 @@ struct u_achieve {
 		Bitfield(killed_lucifer,1);		/* Bragging rights */
 		Bitfield(killed_asmodeus,1);		/* Bragging rights */
 		Bitfield(killed_demogorgon,1);		/* Bragging rights */
+        Bitfield(get_kroo,1);        /* ring of kroo get*/
+        Bitfield(get_gilly,1);        /* gillystone get*/
+        Bitfield(get_abominable,1);        /* abominable cloak get*/
+        Bitfield(get_poplar,1);        /* poplar punisher get*/
+        Bitfield(did_demo,1);        /* summoned demogorgon the hard way*/
+        Bitfield(did_unknown,1);        /* ?????????????????*/
+        Bitfield(killed_illurien,1);        /* illurien down */
 };
 
 E struct u_achieve achieve;

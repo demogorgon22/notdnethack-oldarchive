@@ -1019,7 +1019,9 @@ take_host(){
 			}
 		}
 		mon->minvent = (struct obj * ) 0;
+		flags.implanting = 1;
 		mongone(mon);
+		flags.implanting = 0;
 		u.ux = mon->mx;
 		u.uy = mon->my;
 		newsym(u.ux,u.uy);

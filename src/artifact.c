@@ -6456,6 +6456,7 @@ arti_invoke(obj)
 					pline("Ancient knowledge flows from the Elder Cerebral Fluid embedded in the Illithid Staff!");
 					pline("The knowledge begins to form into a dome around the whispering altar to the void.");
 					pline("Bright lights flash and suddenly the altar rebuilds into a staircase.");
+					achieve.did_unknown = 1;
 					sstairs.sx = u.ux;
 					sstairs.sy = u.uy;
 					assign_level(&sstairs.tolev, &sacris_level);

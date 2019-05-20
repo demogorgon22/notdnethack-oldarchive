@@ -412,11 +412,11 @@ leave_host()
 	struct monst *mtmp;
 	struct obj *otmp;
 	struct obj *otmp2;
-	mtmp = u.uhost;
+	mtmp = makemon(u.uhost->data,u.ux,u.uy,NO_MINVENT | MM_NOCOUNTBIRTH);
 	//mtmp->nmon = fmon;
 	//fmon = mtmp;
-	mtmp->mhp = u.mh+1;
-	mtmp->mhpmax = u.mhmax;
+	//mtmp->mhp = u.mh+1;
+	//mtmp->mhpmax = u.mhmax;
 	u.uhost = 0;
 	if (Punished){
 		unpunish();

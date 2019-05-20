@@ -351,8 +351,25 @@ struct obj **obj2;
 			obj->oartifact == ART_POPLAR_PUNISHER ||
 			obj->oartifact == ART_ABOMINABLE_VEIL ||
 			obj->oartifact == ART_KROO_S_RING) {
-			achieve.get_luckstone = 1;
+			switch(obj->oartifact){
+			case ART_GILLYSTONE: 
+				achieve.get_gilly = 1;
+				break;
+			case ART_POPLAR_PUNISHER: 
+				achieve.get_poplar = 1;
+				break;
+			case ART_ABOMINABLE_VEIL: 
+				achieve.get_abominable = 1;
+				break;
+			case ART_KROO_S_RING: 
+				achieve.get_kroo = 1;
+				break;
+			default:
+				achieve.get_luckstone = 1;
+				break;
+			}
 			(*obj2)->record_achieve_special = 0;
+			livelog_write_string("completed Adventure Branch");
 	} else if((obj->otyp == AMULET_OF_REFLECTION ||
 			   obj->otyp == BAG_OF_HOLDING ||
 			   obj->otyp == LOKOBAN_TROPHY) &&

@@ -83,6 +83,7 @@ STATIC_DCL int FDECL(score_wanted,
 #endif
 #ifdef RECORD_ACHIEVE
 STATIC_DCL long FDECL(encodeachieve, (void));
+STATIC_DCL char * FDECL(encodeachieveX, (void));
 #endif
 STATIC_DCL long FDECL(encode_xlogflags, (void));
 #ifdef NO_SCAN_BRACK
@@ -323,6 +324,7 @@ struct toptenentry *tt;
 
 #ifdef RECORD_ACHIEVE
   (void)fprintf(rfile, SEP "achieve=0x%lx", encodeachieve());
+  (void)fprintf(rfile, SEP "achieveX=%s", encodeachieveX());
   {
 	long dnethachievements = 0L;
 	int i,keys=0;
@@ -1080,14 +1082,33 @@ encodeachieve(void)
   if(achieve.get_book)           r |= 1L << 3;
   if(achieve.perform_invocation) r |= 1L << 4;
   if(achieve.get_amulet)         r |= 1L << 5;
-  if(In_endgame(&u.uz))          r |= 1L << 6;
-  if(Is_astralevel(&u.uz))       r |= 1L << 7;
+  if(In_endgame(&u.uz) || In_void(&u.uz))          r |= 1L << 6;
+  if(Is_astralevel(&u.uz) || In_void(&u.uz))       r |= 1L << 7;
   if(achieve.ascended)           r |= 1L << 8;
   if(achieve.get_luckstone)      r |= 1L << 9;
   if(achieve.finish_sokoban)     r |= 1L << 10;
   if(achieve.killed_medusa)      r |= 1L << 11;
   
   return r;
+}
+
+char encoded_achievements[BUFSZ];
+char * encodeachieveX(void)
+{
+
+  encoded_achievements[0] = '\0';
+
+  if(achieve.get_kroo)   sprintf(eos(encoded_achievements), "%s,", "get_kroo");
+  if(achieve.get_poplar)   sprintf(eos(encoded_achievements), "%s,", "get_poplar");
+  if(achieve.get_abominable)   sprintf(eos(encoded_achievements), "%s,", "get_abominable");
+  if(achieve.get_gilly)   sprintf(eos(encoded_achievements), "%s,", "get_gilly");
+  if(achieve.did_demo)   sprintf(eos(encoded_achievements), "%s,", "did_demo");
+  if(achieve.did_unknown)   sprintf(eos(encoded_achievements), "%s,", "did_unknown");
+  if(achieve.killed_illurien)   sprintf(eos(encoded_achievements), "%s,", "killed_illurien");
+
+  int len;
+  if ((len=strlen(encoded_achievements))) { encoded_achievements[len-1] = '\0'; }
+  return encoded_achievements;
 }
 #endif
 

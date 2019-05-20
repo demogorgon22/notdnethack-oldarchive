@@ -2774,6 +2774,7 @@ dopray()
 			pline("The destructive energy of Hethradiah merges with that of Aameul.");
 			pline("Beneath you, the stone and the altar begin to boil.");
 			makemon(&mons[PM_DEMOGORGON],u.ux,u.uy,MM_ADJACENTOK);
+			achieve.did_demo = 1;
 			levl[u.ux][u.uy].typ = LAVAPOOL;
 			spoteffects(TRUE);
 			doredraw();

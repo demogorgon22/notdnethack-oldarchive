@@ -3389,6 +3389,11 @@ register struct monst *mtmp;
 		if(Hallucination) livelog_write_string("perpetuated an asinine paradigm");
 		else livelog_write_string("destroyed Chaos");
 	}
+	if(mndx == PM_ILLURIEN_OF_THE_MYRIAD_GLIMPSES && !(u.uevent.ukilled_illurien)){
+		u.uevent.ukilled_illurien = 1;
+		u.ill_cnt = rn1(1000, 250);
+		achieve.killed_illurien = 1;
+	}
 	if(mtmp->data == &mons[PM_LUCIFER]){
 		achieve.killed_lucifer = 1;
 	}
@@ -3420,10 +3425,6 @@ boolean was_swallowed;			/* digestion */
 		(void) mksobj_at(BELL_OF_OPENING, mon->mx, mon->my, TRUE, FALSE);
 		flags.made_bell = TRUE;
 		if(mdat == &mons[PM_ECLAVDRA]) return FALSE;
-	}
-	if(mdat == &mons[PM_ILLURIEN_OF_THE_MYRIAD_GLIMPSES] && !(u.uevent.ukilled_illurien)){
-		u.uevent.ukilled_illurien = 1;
-		u.ill_cnt = rn1(1000, 250);
 	}
 	if(mdat == &mons[PM_ORCUS] && !Role_if(PM_ANACHRONOUNBINDER)){
 		struct engr *oep = engr_at(mon->mx,mon->my);
