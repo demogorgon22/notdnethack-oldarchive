@@ -2110,13 +2110,19 @@ boolean new_game;	/* false => restoring an old game */
 		pline("Use #monster to adjust your clockspeed.");
 		You("do not heal naturally. Use '.' to attempt repairs.");
 	}
-	else if(Race_if(PM_SALAMANDER)){
+	if(Race_if(PM_SALAMANDER)){
 		pline("Use #monster to secrete and throw lava.");
 	} 
-	else if(Role_if(PM_MONK)){
+	if(Role_if(PM_MONK)){
 		pline("Use #style to change your combat style.");
 	}	
-	else if(Race_if(PM_INCANTIFIER)){
+	if(Role_if(PM_ANACHRONOUNBINDER)){
+		pline("Use #monster to use your psychic powers.");
+		pline("Press Ctrl^E or type #seal to engrave a seal of binding.");
+		pline("#chat to a fresh seal to contact the spirit beyond.");
+		pline("You must summon spirits to gain xlvl.");
+	}	
+	if(Race_if(PM_INCANTIFIER)){
 		pline("Incantifiers eat magic, not food, and do not heal naturally.");
 	}
 	if (Role_if(PM_ANACHRONONAUT) && Race_if(PM_CLOCKWORK_AUTOMATON)){
