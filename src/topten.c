@@ -1115,7 +1115,7 @@ char * encodeachieveX(void)
 	if(achieve.killed_demogorgon)     sprintf(eos(encoded_achievements), "%s,", "killed_demogorgon");
 	if(keys >= 1)	sprintf(eos(encoded_achievements), "%s,", "one_key");
 	if(keys >= 3)	sprintf(eos(encoded_achievements), "%s,", "three_keys");
-	if(keys == 9)	sprintf(eos(encoded_achievements), "%s,", "nine_keys");
+	//if(keys == 9)	sprintf(eos(encoded_achievements), "%s,", "nine_keys");
 	if(achieve.made_potions == 511) sprintf(eos(encoded_achievements), "%s,", "anarcho_alchemist");
 	if(achieve.used_smith) sprintf(eos(encoded_achievements), "%s,", "used_smith");
 	if(achieve.max_punch) sprintf(eos(encoded_achievements), "%s,", "max_punch");

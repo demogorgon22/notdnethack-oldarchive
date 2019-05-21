@@ -159,6 +159,10 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 	sal_abil[] = { {	1, &(HFire_resistance), "cool", "warmer" },
 		     {	 0, 0, 0, 0 } },
+	sym_abil[] = { {	1, &(HPoison_resistance), "", "" },
+		     {	 1, &(HSick_resistance), "", "" },
+		     {	 1, &(HRegeneration), "", "" },
+		     {	 0, 0, 0, 0 } },
 
 	yki_abil[] = { {	1, &(HCold_resistance), "", "" },
 		     {  11, &(HFire_resistance), "cool", "warmer" },
@@ -791,6 +795,7 @@ int oldlevel, newlevel;
 	case PM_VAMPIRE:		rabil = vam_abil;	break;
 	case PM_HALF_DRAGON:	rabil = hlf_abil;	break;
 	case PM_SALAMANDER:	rabil = sal_abil;	break;
+	case PM_SYMBIOTE:	rabil = sym_abil;	break;
 	case PM_YUKI_ONNA:		rabil = yki_abil;	break;
 	case PM_HUMAN:
 	case PM_DWARF:
