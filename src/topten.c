@@ -1110,7 +1110,7 @@ char * encodeachieveX(void)
 	if(achieve.did_unknown)   sprintf(eos(encoded_achievements), "%s,", "did_unknown");
 	if(achieve.killed_illurien)   sprintf(eos(encoded_achievements), "%s,", "killed_illurien");
 	if(achieve.get_skey && achieve.get_ckey)   sprintf(eos(encoded_achievements), "%s,", "pain_duo");
-	if(achieve.killed_lucifer)     sprintf(eos(encoded_achievements), "%s,", "killed_lucifer");
+	//if(achieve.killed_lucifer)     sprintf(eos(encoded_achievements), "%s,", "killed_lucifer");
 	if(achieve.killed_asmodeus)     sprintf(eos(encoded_achievements), "%s,", "killed_asmodeus");
 	if(achieve.killed_demogorgon)     sprintf(eos(encoded_achievements), "%s,", "killed_demogorgon");
 	if(keys >= 1)	sprintf(eos(encoded_achievements), "%s,", "one_key");
