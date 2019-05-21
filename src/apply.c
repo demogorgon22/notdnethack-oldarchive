@@ -2328,20 +2328,29 @@ register struct obj *obj;
 	if(has_mind_blast(&mons[corpse->corpsenm]) || is_mind_flayer(&mons[corpse->corpsenm])) potion |= PT_INSANE;
 	if(is_unicorn(&mons[corpse->corpsenm]) || corpse->corpsenm == PM_LEPRECHAUN) potion |= PT_LUCK;
 	pot = mksobj(POT_WATER,FALSE,FALSE);
-	if(potion&PT_PHASE)
-		pot = mksobj(POT_PHASING,FALSE,FALSE);
-	if(potion&PT_INSANE)
+	if(potion&PT_INSANE){
 		pot = mksobj(POT_INSANITY,FALSE,FALSE);
-	if(potion&PT_LUCK)
+		achieve.made_potions |= PT_INSANE;
+	}
+	if(potion&PT_LUCK){
 		pot = mksobj(POT_LUCK,FALSE,FALSE);
-	if(potion&PT_EXCAV)
+		achieve.made_potions |= PT_LUCK;
+	}
+	if(potion&PT_EXCAV){
 		pot = mksobj(POT_EXCAVATION,FALSE,FALSE);
+		achieve.made_potions |= PT_EXCAV;
+	}
+	if(potion&PT_PHASE){
+		pot = mksobj(POT_PHASING,FALSE,FALSE);
+		achieve.made_potions |= PT_PHASE;
+	}
 	if(pot->otyp == POT_WATER && potion){
 		pchosen = (1 << rn2(PT_PHASE));
 		while(!(potion&pchosen)){
 			pchosen = (1 << rn2(PT_PHASE));
 		}
 //		pline("pchosen: %ld",pchosen);
+		achieve.made_potions |= pchosen;
 		switch(pchosen){
 			case PT_ELEM:
 				pot = mksobj(POT_ELEMENTS,FALSE,FALSE);

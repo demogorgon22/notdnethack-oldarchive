@@ -325,6 +325,7 @@ struct toptenentry *tt;
 #ifdef RECORD_ACHIEVE
   (void)fprintf(rfile, SEP "achieve=0x%lx", encodeachieve());
   (void)fprintf(rfile, SEP "achieveX=%s", encodeachieveX());
+/*
   {
 	long dnethachievements = 0L;
 	int i,keys=0;
@@ -338,7 +339,7 @@ struct toptenentry *tt;
 	  if(keys >= 3)					 dnethachievements |= 1L << 4;//10
 	  if(keys == 9)  				 dnethachievements |= 1L << 5;//20
   (void)fprintf(rfile, SEP "dnetachieve=0x%lx", dnethachievements);
-  }
+  }*/
 #endif
 
 #ifdef RECORD_REALTIME
@@ -1095,20 +1096,35 @@ encodeachieve(void)
 char encoded_achievements[BUFSZ];
 char * encodeachieveX(void)
 {
-
-  encoded_achievements[0] = '\0';
-
-  if(achieve.get_kroo)   sprintf(eos(encoded_achievements), "%s,", "get_kroo");
-  if(achieve.get_poplar)   sprintf(eos(encoded_achievements), "%s,", "get_poplar");
-  if(achieve.get_abominable)   sprintf(eos(encoded_achievements), "%s,", "get_abominable");
-  if(achieve.get_gilly)   sprintf(eos(encoded_achievements), "%s,", "get_gilly");
-  if(achieve.did_demo)   sprintf(eos(encoded_achievements), "%s,", "did_demo");
-  if(achieve.did_unknown)   sprintf(eos(encoded_achievements), "%s,", "did_unknown");
-  if(achieve.killed_illurien)   sprintf(eos(encoded_achievements), "%s,", "killed_illurien");
-
-  int len;
-  if ((len=strlen(encoded_achievements))) { encoded_achievements[len-1] = '\0'; }
-  return encoded_achievements;
+	encoded_achievements[0] = '\0';
+	
+	int i,keys=0;
+	for(i=0;i<9;i++){
+		if((achieve.get_keys >> i) & 1) keys++;
+	}
+	if(achieve.get_kroo)   sprintf(eos(encoded_achievements), "%s,", "get_kroo");
+	if(achieve.get_poplar)   sprintf(eos(encoded_achievements), "%s,", "get_poplar");
+	if(achieve.get_abominable)   sprintf(eos(encoded_achievements), "%s,", "get_abominable");
+	if(achieve.get_gilly)   sprintf(eos(encoded_achievements), "%s,", "get_gilly");
+	if(achieve.did_demo)   sprintf(eos(encoded_achievements), "%s,", "did_demo");
+	if(achieve.did_unknown)   sprintf(eos(encoded_achievements), "%s,", "did_unknown");
+	if(achieve.killed_illurien)   sprintf(eos(encoded_achievements), "%s,", "killed_illurien");
+	if(achieve.get_skey && achieve.get_ckey)   sprintf(eos(encoded_achievements), "%s,", "pain_duo");
+	if(achieve.killed_lucifer)     sprintf(eos(encoded_achievements), "%s,", "killed_lucifer");
+	if(achieve.killed_asmodeus)     sprintf(eos(encoded_achievements), "%s,", "killed_asmodeus");
+	if(achieve.killed_demogorgon)     sprintf(eos(encoded_achievements), "%s,", "killed_demogorgon");
+	if(keys >= 1)	sprintf(eos(encoded_achievements), "%s,", "one_key");
+	if(keys >= 3)	sprintf(eos(encoded_achievements), "%s,", "three_keys");
+	if(keys == 9)	sprintf(eos(encoded_achievements), "%s,", "nine_keys");
+	if(achieve.made_potions == 511) sprintf(eos(encoded_achievements), "%s,", "anarcho_alchemist");
+	if(achieve.used_smith) sprintf(eos(encoded_achievements), "%s,", "used_smith");
+	if(achieve.max_punch) sprintf(eos(encoded_achievements), "%s,", "max_punch");
+	if(achieve.garnet_spear) sprintf(eos(encoded_achievements), "%s,", "garnet_spear");
+	if(achieve.half_overload) sprintf(eos(encoded_achievements), "%s,", "half_overload");
+	
+	int len;
+	if ((len=strlen(encoded_achievements))) { encoded_achievements[len-1] = '\0'; }
+	return encoded_achievements;
 }
 #endif
 

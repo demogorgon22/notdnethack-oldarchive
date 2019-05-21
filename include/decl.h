@@ -707,6 +707,12 @@ struct u_achieve {
         Bitfield(did_demo,1);        /* summoned demogorgon the hard way*/
         Bitfield(did_unknown,1);        /* ?????????????????*/
         Bitfield(killed_illurien,1);        /* illurien down */
+        Bitfield(get_ckey,1);        /* Cage key get */
+        Bitfield(half_overload,1);        /* Overloaded to the half */
+        Bitfield(max_punch,1);        /* Mystic punched to the max */
+        Bitfield(used_smith,1);        /* Used a blacksmith's service */
+        Bitfield(garnet_spear,1);        /* Used a garnet tip spear*/
+        Bitfield(made_potions,9);        /* Alchemy kit */
 };
 
 E struct u_achieve achieve;

@@ -1492,6 +1492,7 @@ int thrown;
 						if (!rn2(4)) (void) destroy_mitem(mon, POTION_CLASS, AD_FIRE);
 						if (!rn2(4)) (void) destroy_mitem(mon, SCROLL_CLASS, AD_FIRE);
 						if (!rn2(7)) (void) destroy_mitem(mon, SPBOOK_CLASS, AD_FIRE);
+						achieve.garnet_spear = 1;
 					break;
 					case TOUCHSTONE:
 						if(!thrown && !rn2(5)){
@@ -2224,6 +2225,7 @@ defaultvalue:
 	
 	if(!uwep && !uswapwep && !nohands(youracedata)){
 		if((u.ulevel >= 18 || !(uarmg && is_metal(uarmg)))?TRUE:rn2(2)){
+			if(u.umystic & (FORCE_PUNCH | SURGE_PUNCH | SPIRIT_PUNCH | FLICKER_PUNCH) && u.uen >= 25) achieve.max_punch = 1;
 			if(u.umystic & ABSORBATIVE_PUNCH){
 				tmp /= 2;
 				u.uen += tmp;

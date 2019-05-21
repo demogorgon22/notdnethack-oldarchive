@@ -1096,7 +1096,7 @@ as_extra_healing:
 	case POT_EXCAVATION:
 		pline("A hole digs out in your stomach!");	
 		losehp(d(3,6),
-				    "potion of excavtion", KILLED_BY_AN);
+				    "potion of excavation", KILLED_BY_AN);
 	break;
 	case POT_ELEMENTS:
 		elemental_resistance(otmp,otmp->blessed ? 5000L : otmp->cursed ? 5L : 250L);
@@ -1109,7 +1109,7 @@ as_extra_healing:
 
 	break;
 	case POT_LUCK:
-		You_feel("%s",otmp->blessed?"very lucky":otmp->cursed?"unlucky":"lucky");
+		You_feel("%s",otmp->blessed?"very lucky.":otmp->cursed?"unlucky.":"lucky.");
 		change_luck(otmp->blessed?3:otmp->cursed?-3:1);
 	break;
 	case POT_PHASING:

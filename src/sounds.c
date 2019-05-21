@@ -788,6 +788,7 @@ boolean chatting;
 		struct obj *obj2;       /* The object to use    */
 		long charge;
 		long bodytype;
+		boolean made_purchase = FALSE;
 		switch(selection){
 			case 1: //shrink
 				if ( !(obj = getobj(armors, "have shrunk"))) break;
@@ -809,6 +810,7 @@ boolean chatting;
 				if(obj->objsize == MZ_GIGANTIC) obj->objsize == MZ_HUGE; 
 				else obj->objsize--;
 				verbalize("Shrunk her down!");
+				made_purchase = TRUE;
 				break;
 			case 2://grow armor
 				if ( !(obj = getobj(armors, "have grown"))) break;
@@ -835,6 +837,7 @@ boolean chatting;
 				if(obj->objsize == MZ_HUGE) obj->objsize == MZ_GIGANTIC; 
 				else obj->objsize++;
 				verbalize("Combined em!");
+				made_purchase = TRUE;
 				break;
 			case 3://repair armor
 				if ( !(obj = getobj(armors, "have repaired"))) break;
@@ -851,6 +854,7 @@ boolean chatting;
 				if (smith_offer_price(charge, mtmp) == FALSE) break;
 				obj->oeroded = obj->oeroded2 = 0;
 				verbalize("All good now!");
+				made_purchase = TRUE;
 				break;
 			case 4: // reshape armor
 				if ( !(obj = getobj(armors, "have reshaped"))) break;
@@ -880,10 +884,12 @@ boolean chatting;
 				if (smith_offer_price(charge, mtmp) == FALSE) break;
 				obj->bodytypeflag = bodytype;
 				verbalize("Reshaped!");
+				made_purchase = TRUE;
 				break;
 			default:
 			break;
 		}
+		if(made_purchase) achieve.used_smith = 1;
 		break;
 	}
 	case MS_PORTAL:{

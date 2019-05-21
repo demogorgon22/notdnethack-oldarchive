@@ -4273,6 +4273,7 @@ boolean describe;
 		//if (!strcmp(buf,"\033")) {      /* cancelled */    
 			if(atoi(buf) >= 0 && atoi(buf) <= overloadcap){
 				*overload_percent = atoi(buf);
+				if(*overload_percent >= 150) achieve.half_overload = 1;
 				return dospellmenu(prompt, splaction, spell_no, overload_percent, FALSE);
 			}
 		//}

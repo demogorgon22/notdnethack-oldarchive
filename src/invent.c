@@ -329,6 +329,8 @@ struct obj **obj2;
 //ifdef RECORD_ACHIEVE Record_achieve now mission-critical for Binder, so....
 		} else if(obj->oartifact == ART_SILVER_KEY){
 			achieve.get_skey = TRUE;
+		} else if(obj->oartifact == ART_CAGE_KEY){
+			achieve.get_ckey = TRUE;
 		} else if(obj->oartifact >= ART_FIRST_KEY_OF_LAW && obj->oartifact <= ART_THIRD_KEY_OF_NEUTRALITY){
 			achieve.get_keys |= (1 << (obj->oartifact - ART_FIRST_KEY_OF_LAW));
 //endif
