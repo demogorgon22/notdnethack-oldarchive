@@ -1,17 +1,18 @@
 achieveXname,name,description,iconUrl
-get_kroo,Kroo's Bling,Acquire the dismal swamp completion prize.,
-get_poplar,Punishing Poplars,Acquire the black forest completion prize.,
-get_abominable,Snowplow,Acquire the ice caves completion prize.,
-get_gilly,Gillywhatnow,Acquire the archipelago completion prize.,
-did_demo,Aameul & Hethradiah,Summon demogorgon with the forbidden ritual.,
-did_unknown,An Unknown Ritual,Perform the ritual of an unknown god.,
-pain_duo,Duo of Pain,Acquire both the silver key and the cage key.,
-killed_asmodeus,Asmodown,Kill Asmodeus.,
-killed_demogorgon,Demogorgone,Kill Demogorgon.,
-one_key,One Key,Acquire an alignment key.,
-three_keys,Three Keys,Acquire three alignment keys.,
-anarcho_alchemist,Anarcho-Alchemist,Make every unique alchemy kit potion in a single game.,
-used_smith,If The Shoe Fits...,Pay for an armorsmith service.,
-max_punch,Not Pulling Punches,Land a punch with all 4 offensive mystic powers active.,
-garnet_spear,Garnet Rod,Land a hit with a garnet tipped spear.,
-half_overload,Chernobyl,Cast a spell 150% overloaded or higher.,
+get_kroo,Kroo's Bling,Acquire the dismal swamp completion prize.,https://i.imgur.com/OxO68zN.png
+get_poplar,Punishing Poplars,Acquire the black forest completion prize.,https://i.imgur.com/aCbnwmm.png
+get_abominable,Snowplow,Acquire the ice caves completion prize.,https://i.imgur.com/yloDVZw.png
+get_gilly,Gillywhatnow,Acquire the archipelago completion prize.,https://i.imgur.com/RmJM7No.png
+did_demo,Aameul & Hethradiah,Summon demogorgon with the forbidden ritual.,https://i.imgur.com/yuleD8e.png
+did_unknown,An Unknown Ritual,Perform the ritual of an unknown god.,https://i.imgur.com/NhAgDcx.png
+killed_illurien,Angry Librarian,Kill Illurien of the Myriad Glimpses.,https://junethack.net/archive/2018/icons/4-oracle-consult.png
+pain_duo,Duo of Pain,Acquire both the silver key and the cage key.,https://i.imgur.com/xOoXxZg.png
+killed_asmodeus,Asmodown,Kill Asmodeus.,https://junethack.net/archive/2018/icons/m-killed-asmodeus.png
+killed_demogorgon,Demogorgone,Kill Demogorgon.,https://junethack.net/archive/2018/icons/m-killed-demogorgon.png
+one_key,One Key,Acquire an alignment key.,https://junethack.net/archive/2018/icons/m-one-key.png
+three_keys,Three Keys,Acquire three alignment keys.,https://junethack.net/archive/2018/icons/m-three-keys.png
+anarcho_alchemist,Anarcho-Alchemist,Make every unique alchemy kit potion in a single game.,https://i.imgur.com/DVoZOVY.png
+used_smith,If The Shoe Fits...,Pay for an armorsmith service.,https://junethack.net/archive/2018/icons/m-sam.png
+max_punch,Not Pulling Punches,Land a punch with all 4 offensive mystic powers active.,https://i.imgur.com/kbZkRkq.png
+garnet_spear,Garnet Rod,Land a hit with a garnet tipped spear.,https://i.imgur.com/KbSm8vW.png
+half_overload,Chernobyl,Cast a spell 150% overloaded or higher.,https://i.imgur.com/j9qYRKt.png
