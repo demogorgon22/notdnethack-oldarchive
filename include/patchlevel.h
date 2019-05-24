@@ -15,7 +15,7 @@
    Incremented to 3.11 with the introduction Anachrononauts.
    Incremented to 3.12 with the introduction Magic chests, scrolls of antimagic, resistance, and consecration, YARevison to chaos quest, beter resistance-from-diet, and lightsaber forms.
 */
-#define VERSION_MINOR	04
+#define VERSION_MINOR	05
 /*
  * PATCHLEVEL is updated for each release.
  *
@@ -38,7 +38,7 @@
  * 3.15.0: Begin edging away from WtW again.  Added another round of pet improvements, including #wait and #come commands.
  * 3.15.1: Added derived undead, spell maintainance, a couple of neutral artifacts.
  */
-#define PATCHLEVEL	8
+#define PATCHLEVEL	24
 /*
  * Incrementing EDITLEVEL can be used to force invalidation of old bones
  * and save files.
