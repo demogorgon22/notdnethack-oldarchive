@@ -5006,7 +5006,7 @@ int  typ, fatal, opoistype;
 		}
 	}
 	if(opoistype & OPOISON_ACID){
-		if(Poison_resistance) {
+		if(Acid_resistance) {
 			pline_The("acidic coating doesn't seem to affect you.");
 		} else {
 			/* suppress killer prefix if it already has one */
@@ -5819,7 +5819,7 @@ register boolean silent;
 		if (DEADMONSTER(mtmp)) continue;
 		if((mtmp->data == &mons[PM_WATCHMAN] ||
 			       mtmp->data == &mons[PM_WATCH_CAPTAIN])
-					&& mtmp->mpeaceful) {
+					&& mtmp->mpeaceful &&!mtmp->mtame) {
 			ct++;
 			if(cansee(mtmp->mx, mtmp->my) && mtmp->mcanmove) {
 				if (distu(mtmp->mx, mtmp->my) == 2) nct++;

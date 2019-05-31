@@ -1391,6 +1391,7 @@ struct obj	*sobj;
 
 		for(mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
 		    if (DEADMONSTER(mtmp)) continue;
+		    if (mindless_mon(mtmp)) continue;
 		    if(cansee(mtmp->mx,mtmp->my)) {
 			if(confused || sobj->cursed) {
 			    mtmp->mflee = mtmp->mfrozen = mtmp->msleeping = 0;
@@ -2885,7 +2886,10 @@ create_particular()
 			set_malign(mtmp);
 		    }
 		}
-		if (mtmp) madeany = TRUE;
+		if (mtmp) {
+			madeany = TRUE;
+			newsym(mtmp->mx,mtmp->my);
+		}
 	    }
 	}
 	return madeany;
