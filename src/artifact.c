@@ -163,7 +163,7 @@ hack_artifacts()
 	artilist[ART_HELM_OF_THE_DARK_LORD].otyp = find_vhelm();
 	/* Remove flag from the non-matching first gift */
 	if(Pantheon_if(PM_BARBARIAN)){
-		pline("%d",u.role_variant);
+		//pline("%d",u.role_variant);
 		if(u.role_variant == TWO_HANDED_SWORD){
 			artilist[ART_CLEAVER].role = NON_PM;
 			artilist[ART_ATLANTEAN_ROYAL_SWORD].role = PM_BARBARIAN;
