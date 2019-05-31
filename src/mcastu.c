@@ -2689,6 +2689,9 @@ int spellnum;
                spellnum == CLONE_WIZ || spellnum == SUMMON_ANGEL || 
 			   spellnum == SUMMON_ALIEN || spellnum == SUMMON_DEVIL))
 	    return TRUE;
+	//Raised dead would be hostile to the player
+	if(mtmp->mtame && spellnum == RAISE_DEAD) 
+		return TRUE;
        /* angels can't be summoned in Gehennom */
        if (spellnum == SUMMON_ANGEL && (In_hell(&u.uz)))
 	    return TRUE;
@@ -2945,8 +2948,10 @@ int spellnum;
 								!mtmp->mcansee || !mtmp->mcanmove || 
 								!mtmp->msleeping || mtmp->mstun || 
 								mtmp->mconf || mtmp->permspeed == MSLOW))
+	return TRUE;
 	/* don't summon monsters if it doesn't think you're around */
 #ifndef TAME_SUMMONING
+	if(mtmp->mtame){
         if (spellnum == SUMMON_MONS)
 	    return TRUE;
         if (spellnum == SUMMON_ANGEL)
@@ -2957,6 +2962,7 @@ int spellnum;
 	    return TRUE;
         if (spellnum == INSECTS)
 	    return TRUE;
+	}
 #endif
 	/* blindness spell on blinded player */
 	if ((!haseyes(mdef->data) || mdef->mblinded) && spellnum == BLIND_YOU)
@@ -3568,12 +3574,12 @@ int spellnum;
 						if ((mpet = makemon(&mons[makeindex], 
 									  bypos.x, bypos.y, 
 						  (yours || mattk->mtame) ? MM_EDOG :
-													NO_MM_FLAGS)) != 0
+													MM_NOCOUNTBIRTH|NO_MINVENT)) != 0
 						);
 						else /* GENOD? */
 							mpet = makemon((struct permonst *)0,
 														bypos.x, bypos.y, (yours || mattk->mtame) ? MM_EDOG :
-													NO_MM_FLAGS);
+													MM_NOCOUNTBIRTH|NO_MINVENT);
 						mpet->msleeping = 0;
 						if (yours || mattk->mtame) initedog(mpet);
 						else if (mattk->mpeaceful) mpet->mpeaceful = 1;

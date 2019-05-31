@@ -3019,6 +3019,7 @@ register struct trobj *trop;
 			    obj->spe = trop->trspe;
 			if (trop->trbless != UNDEF_BLESS)
 			    obj->blessed = trop->trbless;
+
 #ifdef GOLDOBJ
 		}
 #endif
@@ -3028,6 +3029,24 @@ register struct trobj *trop;
 				(obj->obj_material == IRON && hates_iron(youracedata))){
 					obj->obj_material = objects[otyp].oc_material;
 			
+			}
+		}
+		if(hates_holy(youracedata)){
+			if(obj->blessed){
+				obj->blessed = 0;
+				obj->cursed = 1;
+			}
+		}
+		if(hates_silver(youracedata)){
+			if(obj->obj_material == SILVER){
+				obj->obj_material = GOLD;
+				fix_object(obj);
+			}
+		}
+		if(hates_iron(youracedata)){
+			if(obj->obj_material == IRON){
+				obj->obj_material = MITHRIL;
+				fix_object(obj);
 			}
 		}
 		/* defined after setting otyp+quan + blessedness */

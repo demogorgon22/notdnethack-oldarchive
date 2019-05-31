@@ -1434,6 +1434,7 @@ static const NEARDATA short hwep[] = {
 	  KATANA/*1d10/1d12*/,
 	  HIGH_ELVEN_WARSWORD/*1d10/1d10*/,
 	  CRYSKNIFE/*1d10/1d10*/, 
+	  VIPERWHIP/*2d4/2d3/poison*/,
 	  DROVEN_SHORT_SWORD/*1d9/1d9*/, 
 	  DWARVISH_SPEAR/*1d9/1d9*/, 
 	  SCYTHE/*2d4*/, 
@@ -2223,11 +2224,9 @@ int enhance_skill(boolean want_dump)
 
 	    Strcpy(buf, (to_advance > 0) ? "Pick a skill to advance:" :
 					   "Current skills:");
-#ifdef WIZARD
-	    if (wizard && !speedy)
+	    if (!speedy)
 		Sprintf(eos(buf), "  (%d slot%s available)",
 			u.weapon_slots, plur(u.weapon_slots));
-#endif
 #ifdef DUMP_LOG
 	    if (want_dump) {
 		dump("","");
@@ -2430,6 +2429,9 @@ struct obj *weapon;
 			case P_BASIC:       bonus =  0; break;
 			case P_SKILLED:     bonus =  2; break;
 			case P_EXPERT:      bonus =  5; break;
+			//For use with martial-arts
+			case P_MASTER:		bonus =  7; break;
+			case P_GRAND_MASTER: bonus = 9; break;
 		}
     } else if (type == P_TWO_WEAPON_COMBAT) {
 		skill = P_SKILL(P_TWO_WEAPON_COMBAT);
@@ -2715,6 +2717,9 @@ struct obj *weapon;
 			case P_BASIC:	bonus =  0; break;
 			case P_SKILLED:	bonus =  2; break;
 			case P_EXPERT:	bonus =  5; break;
+			//For use with martial-arts
+			case P_MASTER:		bonus =  7; break;
+			case P_GRAND_MASTER: bonus = 9; break;
 		}
 	} else if (type == P_TWO_WEAPON_COMBAT) {
 		skill = P_SKILL(P_TWO_WEAPON_COMBAT);

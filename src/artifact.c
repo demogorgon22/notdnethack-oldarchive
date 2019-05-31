@@ -85,7 +85,6 @@ static boolean artiexist[1+NROFARTIFACTS+1];
 /* and a discovery list for them (no dummy first entry here) */
 STATIC_OVL int artidisco[NROFARTIFACTS];
 
-STATIC_DCL void NDECL(hack_artifacts);
 STATIC_DCL boolean FDECL(attacks, (int,struct obj *));
 
 
@@ -116,7 +115,7 @@ int x;
 
 /* handle some special cases; must be called after u_init() 
 	Uh, it isn't, it's called BEFORE u_init. See allmain */
-STATIC_OVL void
+void
 hack_artifacts()
 {
 	struct artifact *art;
@@ -162,12 +161,25 @@ hack_artifacts()
 	artilist[ART_VESTMENT_OF_HELL].otyp = find_opera_cloak();
 	artilist[ART_CROWN_OF_THE_SAINT_KING].otyp = gcircletsa;
 	artilist[ART_HELM_OF_THE_DARK_LORD].otyp = find_vhelm();
-	/* Remove Barbarian flag from the non-matching first gift */
-	if(Role_if(PM_BARBARIAN)){
+	/* Remove flag from the non-matching first gift */
+	if(Pantheon_if(PM_BARBARIAN)){
+		pline("%d",u.role_variant);
 		if(u.role_variant == TWO_HANDED_SWORD){
 			artilist[ART_CLEAVER].role = NON_PM;
-		} else {
+			artilist[ART_ATLANTEAN_ROYAL_SWORD].role = PM_BARBARIAN;
+		} else if(u.role_variant == BATTLE_AXE){
 			artilist[ART_ATLANTEAN_ROYAL_SWORD].role = NON_PM;
+			artilist[ART_CLEAVER].role = PM_BARBARIAN;
+		} else {
+			if(rn2(2)){
+				u.role_variant = TWO_HANDED_SWORD;
+				artilist[ART_CLEAVER].role = NON_PM;
+				artilist[ART_ATLANTEAN_ROYAL_SWORD].role = PM_BARBARIAN;
+			} else { //Priest with this pantheon
+				u.role_variant = BATTLE_AXE;
+				artilist[ART_ATLANTEAN_ROYAL_SWORD].role = NON_PM;
+				artilist[ART_CLEAVER].role = PM_BARBARIAN;
+			}
 		}
 	}
 	
@@ -2534,56 +2546,56 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 				nmon = tmpm->nmon;
 				if(DEADMONSTER(tmpm) || resists_fire(tmpm)) continue;
 				if((mdef->data->mflagsa & tmpm->data->mflagsa) != 0 || mdef->data == tmpm->data){
-					genoburn = d(4,4);
-					if(tmpm->mhp < genoburn+4){
+					genoburn = d(6,6);
+					if(tmpm->mhp < genoburn+6){
 						tmpm->mhp = 1;
 						if(youattack){
 							explode(tmpm->mx, tmpm->my,
 								1, //1 = AD_FIRE, explode uses nonstandard damage type flags...
-								d(4,4), 0,
+								d(6,6), 0,
 								EXPL_FIERY);
 						}
 						else{
 							explode(tmpm->mx, tmpm->my,
 								31, //1 = AD_FIRE, explode uses nonstandard damage type flags...
-								d(4,4), 0,
+								d(6,6), 0,
 								EXPL_FIERY);
 						}
 					} else tmpm->mhp -= genoburn;
 				}
 			}
 			if(!DEADMONSTER(mdef) && !resists_fire(mdef)){
-				if(mdef->mhp < *dmgptr+4){
+				if(mdef->mhp < *dmgptr+6){
 					mdef->mhp = 1;
 					if(youattack){
 						explode(mdef->mx, mdef->my,
 							1, //1 = AD_FIRE, explode uses nonstandard damage type flags...
-							d(4,4), 0,
+							d(6,6), 0,
 							EXPL_FIERY);
 					}
 					else{
 						explode(mdef->mx, mdef->my,
 							31, //1 = AD_FIRE, explode uses nonstandard damage type flags...
-							d(4,4), 0,
+							d(6,6), 0,
 							EXPL_FIERY);
 					}
 				}
 			}
 			if((your_race(mdef->data) || mdef->data == youracedata) && !Fire_resistance){
-				genoburn = d(4,4);
-				if(Upolyd ? (u.mh < genoburn+4) : (u.uhp < genoburn+4)){
+				genoburn = d(6,6);
+				if(Upolyd ? (u.mh < genoburn+6) : (u.uhp < genoburn+6)){
 					if(Upolyd) u.mh = 1;
 					else u.uhp = 1;
 					if(youattack){
 						explode(u.ux, u.uy,
 							1, //1 = AD_FIRE, explode uses nonstandard damage type flags...
-							d(4,4), 0,
+							d(6,6), 0,
 							EXPL_FIERY);
 					}
 					else{
 						explode(u.ux, u.uy,
 							31, //1 = AD_FIRE, explode uses nonstandard damage type flags...
-							d(4,4), 0,
+							d(6,6), 0,
 							EXPL_FIERY);
 					}
 				} else losehp(genoburn, "burning from within", KILLED_BY);
