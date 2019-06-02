@@ -371,7 +371,7 @@ struct obj **obj2;
 				break;
 			}
 			(*obj2)->record_achieve_special = 0;
-			livelog_write_string("completed Adventure Branch");
+			//livelog_write_string("completed Adventure Branch");
 	} else if((obj->otyp == AMULET_OF_REFLECTION ||
 			   obj->otyp == BAG_OF_HOLDING ||
 			   obj->otyp == LOKOBAN_TROPHY) &&
