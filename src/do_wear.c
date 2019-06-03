@@ -2016,7 +2016,7 @@ find_ac()
 	if(uarm){
 		if(uarm->oartifact == ART_STEEL_SCALES_OF_KURTULMAK) uac -= ARM_BONUS(uarm)*2;
 		else uac -= ARM_BONUS(uarm);
-		if(uarm->otyp == POWER_ARMOR && uarm->lamplit && !uarm->obroken) uac -= 10; 
+		if(uarm->otyp == POWER_ARMOR && uarm->lamplit && !uarm->obroken) uac -= 13; 
 		if(uarm->otyp == CRYSTAL_PLATE_MAIL) uac -= uarm->spe;
 	}
 	if(uarmc){
