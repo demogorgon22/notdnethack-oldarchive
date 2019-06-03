@@ -376,3 +376,5 @@ General changes
 		BUC of contents patch
 	Half dragon and incantifier are no longer player monsters, idk why
 		they even were in the first place.
+	Displacing pets onto portals, holes, level teleporters, or trapdoors
+	does not count as abuse 
