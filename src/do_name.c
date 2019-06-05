@@ -674,7 +674,7 @@ const char *name;
 			 * while doing an in-place swap of the actual objects.
 			 */
 			freeinv_core(obj);
-			addinv_core1(obj);
+			addinv_core1(&obj);
 			addinv_core2(obj);
 		}
 	}

@@ -1617,7 +1617,7 @@ no_unwear:
 	     * while doing an in-place swap of the actual objects.
 	     */
 	    freeinv_core(obj);
-	    addinv_core1(otmp);
+	    addinv_core1(&otmp);
 	    addinv_core2(otmp);
 	}
 
