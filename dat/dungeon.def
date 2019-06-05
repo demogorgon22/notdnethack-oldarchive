@@ -162,7 +162,7 @@ LEVEL:	"arcboss" "B" @ (-1, 0)
 ENTRY:		2
 # Law Quest
 
-DUNGEON:		"Law Quest" "L" (13, 0)
+DUNGEON:		"Law Quest" "L" (14, 0)
 DESCRIPTION:    mazelike
 ALIGNMENT:      lawful
 ENTRY:		-1
@@ -174,11 +174,12 @@ LEVEL:		"arcfort" "none" @ (5,0)
 LEVEL:		"arcward" "G" @ (6,0)
 LEVEL:		"arcadia3" "F" @ (7,0)
 LEVEL:		"arcadia2" "E" @ (8,0)
-LEVEL:		"arcadia1" "D" @ (9,0)
-LEVEL:		"illregrd" "none" @ (10,0)
-LEVEL:		"path3" "C" @ (11,0)
-LEVEL:		"path2" "B" @ (12,0)
-LEVEL:		"path1" "A" @ (13,0)
+LEVEL:		"arcadia0" "K" @ (9,0)
+LEVEL:		"arcadia1" "D" @ (10,0)
+LEVEL:		"illregrd" "none" @ (11,0)
+LEVEL:		"path3" "C" @ (12,0)
+LEVEL:		"path2" "B" @ (13,0)
+LEVEL:		"path1" "A" @ (14,0)
 
 #LEVEL:		"tower9" "P" @ (2,0)
 #LEVEL:		"tower8" "O" @ (3,0)

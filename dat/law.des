@@ -1037,6 +1037,83 @@ REGION:(71,00,75,20),  lit,"ordinary"
 REGION:(36,10,36,10),  lit,"ordinary"
 
 ##Arcadian Road
+MAZE: "arcadia0",' '
+FLAGS: shortsighted
+
+GEOMETRY: center, center
+#0          1         2   	  3	      4	    5		  6	      7
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+MAP
+0T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+1 T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+2T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+3 T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+4T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+5 T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+6T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+7 T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+8T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+9 T T T T T T T T T T T T T T T T T T T T T T T...T T T T T T T T T T T T T T
+0T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
+1 T T T T T T T T T T T T T T T T T T T T T T T . T T T T T T T T T T T T T T
+2T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+3 T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+4T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+5 T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+6T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+7 T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+8T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.
+9 T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T T
+0----------------------------------------------------------------------------
+ENDMAP
+#0123456789012345678901234567890123456789012345678901234567890123456789012345
+#0          1         2   	  3	      4	    5		  6	      7
+PORTAL:(47,0,47,0),(00,00,00,00),"arcadia1"
+NON_DIGGABLE:(00,00,75,20)
+NON_PASSWALL:(00,00,75,20)
+REGION:(00,00,75,20),  lit,"ordinary"
+
+MAZEWALK:(01,10),east
+
+MONSTER:'a',"soldier ant",random
+MONSTER:'a',"soldier ant",random
+MONSTER:'a',"soldier ant",random
+MONSTER:'a',"soldier ant",random
+
+MONSTER:'a',"soldier ant",random
+MONSTER:'a',"soldier ant",random
+MONSTER:'a',"soldier ant",random
+MONSTER:'a',"soldier ant",random
+
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+MONSTER:'a',random,random
+
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+OBJECT:random,random,random
+##Arcadian Road
 MAZE: "arcadia1",' '
 FLAGS: shortsighted
 
@@ -1064,12 +1141,13 @@ MAP
 7 T T T T T T T T T T T T T T T T T T T T T T T . T T T T T T T T T T T T T T
 8T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
 9 T T T T T T T T T T T T T T T T T T T T T T T . T T T T T T T T T T T T T T
-0----------------------------------------------------------------------------
+0T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.T.....T.T.T.T.T.T.T.T.T.T.T.T.T.
 ENDMAP
 #0123456789012345678901234567890123456789012345678901234567890123456789012345
 #0          1         2   	  3	      4	    5		  6	      7
 STAIR: (02,02,30,19),(0,0,0,0),down
 PORTAL:(75,11,75,11),(00,00,00,00),"arcadia2"
+PORTAL:(47,20,47,20),(00,00,00,00),"arcadia0"
 NON_DIGGABLE:(00,00,75,20)
 NON_PASSWALL:(00,00,75,20)
 REGION:(00,00,75,20),  lit,"ordinary"
