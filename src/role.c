@@ -219,7 +219,7 @@ const struct Role roles[] = {
 	{"Void Voider",       0},
 	{"Telekinetic",     0},
 	{"Keeper of the Gate",    0} },
-	"Ilsensine", "Water", "Resistance",	/* ahahah */
+	"_Ilsensine", "Water", "Resistance",	/* ahahah */
 	"Acu", "The Elder Pool", "The Far Reach",
 	PM_ANACHRONOUNBINDER, NON_PM, PM_BRAIN_GOLEM,
 	PM_ULITHARID, PM_MINDLESS_THRALL, PM_MENZOBERRANZAN,
@@ -653,8 +653,8 @@ const char *ElfPriestLgod = "Manwe Sulimo",
 		   *ElfPriestNgod = "Mandos",
 		   *ElfPriestCgod = "Lorien"; /* Elven */
 
-const char *AnachrononautLgod = "Ilsensine",
-		   *AnachrononautLgodEnd = "Ilsensine the Banished One";
+const char *AnachrononautLgod = "_Ilsensine",
+		   *AnachrononautLgodEnd = "_Ilsensine the Banished One";
 
 const char *getAnachrononautLgod(){return AnachrononautLgod;}
 const char *getAnachrononautLgodEnd(){return AnachrononautLgodEnd;}
