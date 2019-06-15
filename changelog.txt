@@ -90,14 +90,20 @@ Anachrononaut changes
 		Grenade launcher and nades
 		Fireproof armor
 		Flamethrower
+			Fires a fire ray 1 square away from the chosen
+			direction that does small 3x3 4d6 fire bursts
+			at each section of the ray.
+			Uses a charge system and uses 1 charge per spew
 	Grenade launchers multishot with skill lvl now.
 	Fabber sequence a bit different now.
 	Power armor - 
-		When on +2 movement points, 25 str, -16 ac, carries its
-		own weight and +100 carry cap. When off -6 ac, weighs 500.
+		When on +2 movement points, 25 str, -19 ac, carries its
+		own weight and +100 carry cap. 
+		When off -6 ac, weighs 500.
 		Can fire 1d(2+spe/2) blaster bolts from it.
 		Is made of metal so hinders spellcasting.
 		Cannot squeeze around boulders or do tight corners while worn.
+		Must be charged, wearing it while on and firing lower charge.
 	Clockwork ana -
 		Starts with silver armor/weapons and is made of silver.
 		Silver knuckle dusters, allow you to attack barehanded as a
