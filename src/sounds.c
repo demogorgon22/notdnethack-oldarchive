@@ -4534,7 +4534,7 @@ int tx,ty;
 	case SIMURGH:{
 		if(u.sealTimeout[SIMURGH-FIRST_SEAL] < moves){
 			//Spirit requires that her seal be drawn outside.
-			if(In_outdoors(&u.uz)){
+			if(In_outdoors(&u.uz) || levl[u.ux][u.uy].typ == GRASS){
 				if(u.spiritSummons&SEAL_SIMURGH){
 					You("have already released this spirit from the void.");
 					return 0;
