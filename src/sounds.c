@@ -4350,7 +4350,7 @@ int tx,ty;
 					vision_recalc(2);	/* unsee old position */
 					vision_full_recalc = 1;
 					spoteffects(FALSE);
-					if(Role_if(PM_ANACHRONOUNBINDER)){/*currently no way to do this short of drawing the seal then deranking like 15 levels*/
+					if(Role_if(PM_ANACHRONOUNBINDER)){
 						makemon(&mons[PM_OSE], tx, ty, MM_ADJACENTOK);
 						u.spiritSummons |= SEAL_OSE;
 						u.sealsKnown &= ~(SEAL_OSE);
@@ -4384,6 +4384,13 @@ int tx,ty;
 					pline("though to be honest %s is about average among %s you have known.",u.osepro,makeplural(u.osegen));
 					if(!rn2(20)) pline("The %s's eyes open, and you have a long negotiation before achieving a good pact.", u.osegen);
 					else pline("You know that this is Ose, despite never having met.");
+					if(Role_if(PM_ANACHRONOUNBINDER)){
+						makemon(&mons[PM_OSE], tx, ty, MM_ADJACENTOK);
+						u.spiritSummons |= SEAL_OSE;
+						u.sealsKnown &= ~(SEAL_OSE);
+						bindspirit(ep->ward_id);
+						return 0;
+					}		
 					bindspirit(ep->ward_id);
 					u.sealTimeout[OSE-FIRST_SEAL] = moves + bindingPeriod;
 				}
