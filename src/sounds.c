@@ -4328,6 +4328,7 @@ int tx,ty;
 	}break;
 	case OSE:{
 		if(u.sealsActive & SEAL_OSE && Role_if(PM_ANACHRONOUNBINDER)) u.sealsActive &= ~SEAL_OSE;
+		if(Role_if(PM_ANACHRONOUNBINDER)) u.spiritSummons |= SEAL_OSE;
 		if(u.sealTimeout[OSE-FIRST_SEAL] < moves){
 			//Spirit requires that its seal be drawn underwater.
 			if(IS_POOL(levl[tx][ty].typ) && IS_POOL(levl[u.ux][u.uy].typ) && u.uinwater && Underwater){ 
