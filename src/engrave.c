@@ -65,8 +65,9 @@ static const char *random_mesg[] = {
 	
 	"Romanes Eunt Domus", /* Life of Brian */
 	
-	"portkman was here", /* First ascender */
+	"porkman was here", /* First ascender */
 	"Demo followed porkman", /* Second ascender */
+	"lapis followed Demo", /* Third ascender */
 	 /* Ninth ascender */
 	
 	/* contributed by members of NetHackWiki */
