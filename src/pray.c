@@ -2219,7 +2219,7 @@ dosacrifice()
 						adjalign(10);
 						pline("The Void collapses as you and Ilsensine are launched toward the heavens.");
 						pline("The Gate closes behind you, no longer able to hold the spirits of the enslaved.");
-						pline("With the amulet's power Ilsensine is restored to his former glory.");
+						pline("With the amulet's power Ilsensine is restored to her former glory.");
 						You("are blessed by Ilsensine's flowing tentacles and dubbed Maanzecorian.");
 						pline("As time moves at the blink of an eye you watch the Illithid Empire return to power.");
 						done(ASCENDED);

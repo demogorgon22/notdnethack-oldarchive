@@ -1704,7 +1704,7 @@ int objPos;
 				 obj->oartifact == ART_KHAKKHARA_OF_THE_MONKEY ||
 				 obj->oartifact == ART_DART_OF_THE_ASSASSIN ||
 				 obj->oartifact == ART_WINDRIDER ||
-				 (Role_if(PM_ANACHRONOUNBINDER) && obj->obj_material != LIQUID && u.ulevel >= 20 )//dirty magic number
+				 (Role_if(PM_ANACHRONOUNBINDER) && obj->oartifact != ART_BLACK_ARROW && obj->obj_material != LIQUID && u.ulevel >= 20 )//dirty magic number
 			  )
 		) {
 		    /* we must be wearing Gauntlets of Power to get here *///haha i see why chris left this in, its funny
