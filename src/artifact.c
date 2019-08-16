@@ -6458,7 +6458,7 @@ arti_invoke(obj)
 				}
 			} break;
 			case COMMAND_ELDER:
-				if(Is_astralevel(&u.uz) && a_align(u.ux,u.uy) == A_NEUTRAL){
+				if(Is_astralevel(&u.uz) && a_align(u.ux,u.uy) == A_NEUTRAL && u.uhave.amulet){
 					pline("Ancient knowledge flows from the Elder Cerebral Fluid embedded in the Illithid Staff!");
 					pline("The knowledge begins to form into a dome around the high altar to the void.");
 					pline("Bright lights flash and suddenly the altar expands into a large hole.");
