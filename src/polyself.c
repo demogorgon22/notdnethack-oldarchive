@@ -409,12 +409,13 @@ boolean forcecontrol;
 void
 leave_host()
 {
-	struct monst *mtmp;
 	struct obj *otmp;
-	struct obj *otmp2;
-	mtmp = makemon(u.uhost->data,u.ux,u.uy,NO_MINVENT | MM_NOCOUNTBIRTH);
+	//mtmp = makemon(u.uhost->data,u.ux,u.uy,NO_MINVENT | MM_NOCOUNTBIRTH);
 	//mtmp->nmon = fmon;
 	//fmon = mtmp;
+	(void) mkcorpstat(CORPSE, (struct monst *) 0, 
+		u.uhost->data, u.ux, u.uy, TRUE);
+	if(u.mh) You("inject your host with a deadly venom!");
 	//mtmp->mhp = u.mh+1;
 	//mtmp->mhpmax = u.mhmax;
 	u.uhost = 0;
@@ -464,12 +465,12 @@ leave_host()
 			}
 			else otmp->owornmask = 0;
 		}
-		freeinv(otmp);
+		dropx(otmp);
 	}
-	invent = (struct obj *) 0;
-	if(mtmp->mhp <= 0)
-		mongone(fmon);
-	else rloc_to(mtmp,u.ux,u.uy);
+	//invent = (struct obj *) 0;
+	//if(mtmp->mhp <= 0)
+	//	mongone(fmon);
+	//else rloc_to(mtmp,u.ux,u.uy);
 
 
 }
@@ -525,7 +526,7 @@ int	mntmp;
 	if (dochange) {
 		flags.female = !flags.female;
 		You("%s %s%s!",
-		    (u.umonnum != mntmp) ? "turn into a" : "feel like a new",
+		    (flags.implanting)?"take over a":(u.umonnum != mntmp) ? "turn into a" : "feel like a new",
 		    (is_male(&mons[mntmp]) || is_female(&mons[mntmp])) ? "" :
 			flags.female ? "female " : "male ",
 		    mons[mntmp].mname);

@@ -711,7 +711,7 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
-	if(youracedata == &mons[PM_SYMBIOTE]){
+	if(Race_if(PM_SYMBIOTE) && youracedata != &mons[PM_SYMBIOTE]){
 		Sprintf(buf, "Leave Host");
 		any.a_int = MATTK_LEAVE_HOST;	/* must be non-zero */
 		incntlet = 'e';
