@@ -191,6 +191,7 @@ struct flag {
 #define ATTACK_MODE_FIGHT_ALL 'f'
  
 struct instance_flags {
+	boolean debug_fuzzer;  /* fuzz testing */
 	char attack_mode;         /* attack, refrain or ask to attack monsters */
 	boolean  cbreak;	/* in cbreak mode, rogue format */
 #ifdef CURSES_GRAPHICS
