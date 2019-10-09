@@ -288,6 +288,10 @@ boolean forcecontrol;
 	boolean isvamp = (is_vampire(youracedata));
 	boolean hasmask = (ublindf && ublindf->otyp==MASK && polyok(&mons[ublindf->corpsenm]));
 	boolean was_floating = (Levitation || Flying);
+	if(Race_if(PM_SYMBIOTE)){
+		You("shudder.");
+		return;
+	}
 	if(!Polymorph_control && !forcecontrol && !draconian && !iswere && !isvamp && !hasmask && !(u.specialSealsActive&SEAL_ALIGNMENT_THING)) {
 	    if (rn2(20) > ACURR(A_CON)) {
 		You("%s", shudder_for_moment);
@@ -488,6 +492,10 @@ int
 polymon(mntmp)	/* returns 1 if polymorph successful */
 int	mntmp;
 {
+	if(Race_if(PM_SYBMIOTE) && !flags.implanting){
+		You("shudder");
+	       	return 0;
+	}
 	boolean sticky = sticks(youmonst.data) && u.ustuck && !u.uswallow,
 		was_blind = !!Blind, dochange = FALSE;
 	boolean could_pass_walls = Passes_walls;
