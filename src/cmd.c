@@ -1023,10 +1023,40 @@ take_host(){
 				pick_obj(otmp);
 			}
 		}
+		/* clean up mon */
 		mon->minvent = (struct obj * ) 0;
-		flags.implanting = 1;
-		mongone(mon);
-		flags.implanting = 0;
+		if (mon->mleashed) m_unleash(mon, FALSE);
+	    	/* to prevent an infinite relobj-flooreffects-hmon-killed loop */
+		mon->mtrapped = 0;
+		if (emits_light(mon->data))
+	    		del_light_source(LS_MONSTER, (genericptr_t)mon, FALSE);
+		unstuck(mon);
+		remove_monster(mon->mx, mon->my);
+		fill_pit(mon->mx, mon->my);
+		if(mon->isshk) shkgone(mon);
+		if(mon->wormno) wormgone(mon);
+		//iflags.purge_monsters++;
+		/*remove mon from list*/
+		struct monst *mtmp;
+		boolean found = FALSE;
+		mtmp = fmon;
+		if(fmon == mon){
+			pline("fmon is mon");
+			fmon = fmon->nmon;
+			found = TRUE;
+		} else {
+			while(mtmp->nmon){
+				if(mtmp->nmon == mon){
+					pline("mon is in chain");
+					found = TRUE;
+					mtmp->nmon = mtmp->nmon->nmon;
+					break;
+				}
+				mtmp = mtmp->nmon;
+			}
+		}
+		if(!found) panic("Host taken but not found in monster list?");
+		mon->nmon = (struct monst * ) 0;
 		u.ux = mon->mx;
 		u.uy = mon->my;
 		newsym(u.ux,u.uy);
