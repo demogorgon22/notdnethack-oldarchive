@@ -999,6 +999,7 @@ take_host(){
 				return 1;
 			}
 		}
+		u.uundetected = 0;
 		flags.implanting = 1;
 		polymon(monsndx(mon->data)); 
 		flags.implanting = 0;
