@@ -56,7 +56,6 @@ STATIC_DCL void NDECL(warn_effects);
 #ifndef OVLB
 STATIC_VAR int cham_to_pm[];
 #else
-STATIC_DCL struct obj *FDECL(make_corpse,(struct monst *));
 STATIC_DCL void FDECL(m_detach, (struct monst *, struct permonst *));
 STATIC_DCL void FDECL(lifesaved_monster, (struct monst *));
 
@@ -225,7 +224,7 @@ STATIC_VAR int cham_to_pm[] = {
  * G_NOCORPSE set in order to prevent wishing for one, finding tins of one,
  * etc....
  */
-STATIC_OVL struct obj *
+struct obj *
 make_corpse(mtmp)
 register struct monst *mtmp;
 {

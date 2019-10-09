@@ -985,7 +985,7 @@ take_host(){
 		return 0;
 	}
 	struct monst *mon = m_at(cc.x, cc.y);
-	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 9 || u.ux == cc.x && u.uy == cc.y || (!mon || !polyok(mon->data) || !canseemon(mon) || mindless_mon(mon)))){
+	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 9 || u.ux == cc.x && u.uy == cc.y || (!mon || !polyok(mon->data) || mindless_mon(mon)))){
 		if(dist2(u.ux,u.uy,cc.x,cc.y) > 9) You("cannot reach that far.");
 		else if (mon && (mindless_mon(mon) || !polyok(mon->data))) pline("%s is not a valid host.", Monnam(mon));
 		cancelled = getpos(&cc, TRUE, "the desired position");
@@ -1041,13 +1041,11 @@ take_host(){
 		boolean found = FALSE;
 		mtmp = fmon;
 		if(fmon == mon){
-			pline("fmon is mon");
 			fmon = fmon->nmon;
 			found = TRUE;
 		} else {
 			while(mtmp->nmon){
 				if(mtmp->nmon == mon){
-					pline("mon is in chain");
 					found = TRUE;
 					mtmp->nmon = mtmp->nmon->nmon;
 					break;
