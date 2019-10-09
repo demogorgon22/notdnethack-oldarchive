@@ -687,6 +687,8 @@ int mode;
 		;	/* do nothing */
 	    else if (can_ooze(&youmonst)) {
 		if (mode == DO_MOVE) You("ooze under the door.");
+	    } else if (slithy(youracedata) && verysmall(youracedata)) {
+		if (mode == DO_MOVE) You("slither under the door.");
 	    } else if (tunnels(youracedata) && !needspick(youracedata)) {
 		/* Eat the door. */
 		if (mode == DO_MOVE && still_chewing(x,y)) return FALSE;
