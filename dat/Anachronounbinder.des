@@ -93,6 +93,7 @@ ENGRAVING:(53,7),burn,"Paimon's fights nearly require magic resistance. Her staf
 ENGRAVING:(51,8),burn,"Simurgh's bright light will blind you and her talon's tear but her feather brings help."
 ENGRAVING:(52,8),burn,"Tenebrous will take you down a level."
 ENGRAVING:(53,8),burn,"Fear Ymir. When you do him in name his staff 'The Illithid Staff'"
+ENGRAVING:(53,9),burn,"Ose does pose a threat of lethe."
 
 MONSTER:';',"illithid larva",(66,10),peaceful
 MONSTER:';',"illithid larva",(66,12),peaceful
