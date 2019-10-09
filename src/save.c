@@ -328,6 +328,7 @@ register int fd, mode;
 	}
 	saveobjchn(fd, migrating_objs, mode);
 	savemonchn(fd, migrating_mons, mode);
+	savemonchn(fd, u.uhost,mode);
 	if (release_data(mode)) {
 	    invent = 0;
 	    migrating_objs = 0;

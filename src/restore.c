@@ -438,6 +438,7 @@ unsigned int *stuckid, *steedid;	/* STEED */
 	for(i=0;i<10;i++) magic_chest_objs[i] = restobjchn(fd, FALSE, FALSE);
 	migrating_objs = restobjchn(fd, FALSE, FALSE);
 	migrating_mons = restmonchn(fd, FALSE);
+	u.uhost = restmonchn(fd, FALSE);
 	mread(fd, (genericptr_t) mvitals, sizeof(mvitals));
 
 	/* this comes after inventory has been loaded */
