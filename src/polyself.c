@@ -115,8 +115,7 @@ const char *fmt, *arg;
 
 	newsym(u.ux,u.uy);
 	if(u.uhost) leave_host();
-
-	You(fmt, arg);
+	else You(fmt, arg);
 	/* check whether player foolishly genocided self while poly'd */
 	if (is_playermon_genocided()) {
 	    /* intervening activity might have clobbered genocide info */
@@ -418,10 +417,11 @@ leave_host()
 		u.uhost->data, u.ux, u.uy, TRUE);*/
 	u.uhost->mx = u.ux;
 	u.uhost->my = u.uy;
+	Your("host, the %s dies!",mon_nam(u.uhost));
 	if(corpse_chance(u.uhost,(struct monst *)0,FALSE)){
 		make_corpse(u.uhost);	
 	}
-	if(u.mh) You("inject your host with a deadly venom!");
+	//if(u.mh) You("inject your host with a deadly venom!");
 	//mtmp->mhp = u.mh+1;
 	//mtmp->mhpmax = u.mhmax;
 	free(u.uhost);
