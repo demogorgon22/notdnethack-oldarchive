@@ -4348,6 +4348,7 @@ boolean describe;
 	
 	if(!(u.wardsknown & (WARD_TOUSTEFNA|WARD_DREPRUN|WARD_OTTASTAFUR|WARD_KAUPALOKI|WARD_VEIOISTAFUR|WARD_THJOFASTAFUR) )){
 		You("can't think of anything to carve.");
+		destroy_nhwindow(tmpwin);
 		return 0;
 	}
 	Sprintf(buf, "Known Magical Staves");

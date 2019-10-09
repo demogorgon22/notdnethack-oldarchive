@@ -781,6 +781,7 @@ domonability()
 	if(!atleastone){
 		if(Upolyd) pline("Any special ability you may have is purely reflexive.");
 		else You("don't have a special ability in your normal form!");
+		destroy_nhwindow(tmpwin);
 		return 0;
 	}
 	
