@@ -410,6 +410,7 @@ void
 leave_host()
 {
 	struct obj *otmp;
+	struct obj *otmp2;
 	//mtmp = makemon(u.uhost->data,u.ux,u.uy,NO_MINVENT | MM_NOCOUNTBIRTH);
 	//mtmp->nmon = fmon;
 	//fmon = mtmp;
@@ -422,7 +423,8 @@ leave_host()
 	if (Punished){
 		unpunish();
 	}
-	for(otmp = invent;otmp;otmp=otmp->nobj){
+	for(otmp = invent; otmp; otmp = otmp2) {
+	    	otmp2 = otmp->nobj;
 		if(otmp->owornmask){
 			if(otmp->owornmask&W_ARMC){
 				(void)Cloak_off();

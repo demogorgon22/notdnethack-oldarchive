@@ -493,6 +493,8 @@ panic VA_DECL(const char *, str)
 	    raw_print(buf);
 	    paniclog("panic", buf);
 	}
+	int *a;
+	*a = 10;
 	NH_abort(); /*actually just die here*/
 }
 
