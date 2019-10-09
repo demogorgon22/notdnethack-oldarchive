@@ -145,7 +145,7 @@ const struct Role roles[] = {
 	PM_SHAMAN_KARNOV, PM_NEANDERTHAL, PM_CHROMATIC_DRAGON,
 	PM_BUGBEAR, PM_HILL_GIANT, S_HUMANOID, S_GIANT,
 	ART_CHROMATIC_DRAGON_SCALES,
-	MA_HUMAN|MA_DWARF|MA_GNOME|MA_DRAGON|MA_ANIMAL, ROLE_MALE|ROLE_FEMALE |
+	MA_REPTILIAN|MA_HUMAN|MA_DWARF|MA_GNOME|MA_DRAGON|MA_ANIMAL, ROLE_MALE|ROLE_FEMALE |
 	  ROLE_LAWFUL|ROLE_NEUTRAL,
 	/* Str Int Wis Dex Con Cha */
 	{  10,  7,  7,  7,  8,  6 },
@@ -877,7 +877,7 @@ const struct Race races[] = {
 {	"salamander", "salamandic", "sala-broship", "Sal",
 	{0, 0},
 	PM_SALAMANDER, NON_PM, PM_HUMAN_MUMMY, PM_ZOMBIE,
-	ROLE_MALE|ROLE_FEMALE | ROLE_CHAOTIC,
+	ROLE_MALE|ROLE_FEMALE | ROLE_NEUTRAL |ROLE_CHAOTIC,
 	MA_REPTILIAN, 0, MA_GNOME|MA_DWARF,
 	/*    Str     Int Wis Dex Con Cha */
 	{      3,      3,  3,  3,  3,  3 },//add lava swimming and fire attack
