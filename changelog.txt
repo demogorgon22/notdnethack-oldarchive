@@ -179,6 +179,20 @@ Gnome changes
 
 Elf changes
 	Can ride ridable monsters without a saddle
+Symbiote race
+	Chaotic evil
+	Can slither under doors
+	Cannot pick up items or do anything that requires hands
+	Cannot polymorph
+	Poison res, sickness res, and regeneration
+	No starting inventory
+	Can use #monster to take monsters as host or leave
+	Can swim in water.
+	Can survive without air.
+	Can hide under items.
+	Other perks of being tiny.
+	No weapon attack.
+	Bite attack.
 Salamander race
 	Can secrete a pool of lava at the cost of halving hp
 	Can fling balls of lava that do extra dmg based on xp lvl from pools

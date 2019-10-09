@@ -981,8 +981,9 @@ take_host(){
 	pline("Select a monster to take as a host.");
 	cancelled = getpos(&cc, TRUE, "the desired position");
 	if(invent) {
-		Your("inventory must be empty to take a host.");
-		return 0;
+		force_drop_all();
+		//Your("inventory must be empty to take a host.");
+		//return 0;
 	}
 	struct monst *mon = m_at(cc.x, cc.y);
 	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 9 || u.ux == cc.x && u.uy == cc.y || (!mon || !polyok(mon->data) || mindless_mon(mon)))){

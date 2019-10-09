@@ -1905,6 +1905,7 @@ E void NDECL(change_sex);
 E void FDECL(polyself, (BOOLEAN_P));
 E int FDECL(polymon, (int));
 E void NDECL(rehumanize);
+E void NDECL(force_drop_all);
 E void NDECL(leave_host);
 E int FDECL(dobreathe, (struct permonst *));
 E int NDECL(doelementalbreath);

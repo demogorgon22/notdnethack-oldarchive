@@ -410,29 +410,10 @@ boolean forcecontrol;
 
 
 void
-leave_host()
+force_drop_all()
 {
 	struct obj *otmp;
 	struct obj *otmp2;
-	//mtmp = makemon(u.uhost->data,u.ux,u.uy,NO_MINVENT | MM_NOCOUNTBIRTH);
-	//mtmp->nmon = fmon;
-	//fmon = mtmp;
-	/*(void) mkcorpstat(CORPSE, (struct monst *) 0, 
-		u.uhost->data, u.ux, u.uy, TRUE);*/
-	u.uhost->mx = u.ux;
-	u.uhost->my = u.uy;
-	Your("host, the %s dies!",mon_nam(u.uhost));
-	if(corpse_chance(u.uhost,(struct monst *)0,FALSE)){
-		make_corpse(u.uhost);	
-	}
-	//if(u.mh) You("inject your host with a deadly venom!");
-	//mtmp->mhp = u.mh+1;
-	//mtmp->mhpmax = u.mhmax;
-	free(u.uhost);
-	u.uhost = (struct monst *)0;
-	if (Punished){
-		unpunish();
-	}
 	for(otmp = invent; otmp; otmp = otmp2) {
 	    	otmp2 = otmp->nobj;
 		if(otmp->owornmask){
@@ -479,10 +460,36 @@ leave_host()
 		}
 		dropx(otmp);
 	}
+}
+
+
+void
+leave_host()
+{
+	//mtmp = makemon(u.uhost->data,u.ux,u.uy,NO_MINVENT | MM_NOCOUNTBIRTH);
+	//mtmp->nmon = fmon;
+	//fmon = mtmp;
+	/*(void) mkcorpstat(CORPSE, (struct monst *) 0, 
+		u.uhost->data, u.ux, u.uy, TRUE);*/
+	u.uhost->mx = u.ux;
+	u.uhost->my = u.uy;
+	Your("host, the %s dies!",mon_nam(u.uhost));
+	if(corpse_chance(u.uhost,(struct monst *)0,FALSE)){
+		make_corpse(u.uhost);	
+	}
+	//if(u.mh) You("inject your host with a deadly venom!");
+	//mtmp->mhp = u.mh+1;
+	//mtmp->mhpmax = u.mhmax;
+	free(u.uhost);
+	u.uhost = (struct monst *)0;
+	if (Punished){
+		unpunish();
+	}
 	//invent = (struct obj *) 0;
 	//if(mtmp->mhp <= 0)
 	//	mongone(fmon);
 	//else rloc_to(mtmp,u.ux,u.uy);
+	force_drop_all();
 
 
 }
@@ -492,7 +499,7 @@ int
 polymon(mntmp)	/* returns 1 if polymorph successful */
 int	mntmp;
 {
-	if(Race_if(PM_SYBMIOTE) && !flags.implanting){
+	if(Race_if(PM_SYMBIOTE) && !flags.implanting){
 		You("shudder");
 	       	return 0;
 	}
