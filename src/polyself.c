@@ -555,7 +555,7 @@ int	mntmp;
 		    mons[mntmp].mname);
 	} else {
 		if (u.umonnum != mntmp){
-			if(flags.implanting) You("take the %s as host!",mons[mntmp].mname);
+			if(flags.implanting) You("take the %s as a host!",mons[mntmp].mname);
 			else You("turn into %s!", an(mons[mntmp].mname));
 		}
 		else
