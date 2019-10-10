@@ -1018,7 +1018,10 @@ take_host(){
     				        mon->misc_worn_check &= ~otmp->owornmask;
     				        update_mon_intrinsics(mon, otmp, FALSE, TRUE);
     				     /* obj_no_longer_held(obj); -- done by place_object */
-    				        if (otmp->owornmask & W_WEP) setmnotwielded(mon, otmp);
+    				        if (otmp->owornmask & W_WEP) {
+						setmnotwielded(mon, otmp);
+						MON_NOWEP(mon);
+					}
     				    }
     				    otmp->owornmask = 0L;
     				}
