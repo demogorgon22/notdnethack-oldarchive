@@ -982,8 +982,6 @@ take_host(){
 	cancelled = getpos(&cc, TRUE, "the desired position");
 	if(invent) {
 		force_drop_all();
-		//Your("inventory must be empty to take a host.");
-		//return 0;
 	}
 	struct monst *mon = m_at(cc.x, cc.y);
 	while(cancelled >= 0 &&(dist2(u.ux,u.uy,cc.x,cc.y) > 9 || u.ux == cc.x && u.uy == cc.y || (!mon || !polyok(mon->data) || mindless_mon(mon)))){
@@ -993,6 +991,10 @@ take_host(){
 		mon = m_at(cc.x,cc.y);
 	}
 	if(mon && !DEADMONSTER(mon) && !mindless_mon(mon) && polyok(mon->data)) {
+		if(Confusion && rn2(20)){
+			Your("head is spinning too much to take a host.");
+			return 1;
+		}
 		if(mon->m_lev > u.ulevel){
 			if(rn2((mon->m_lev - u.ulevel)/5 +1)){
 				pline("You fail to overtake the mind of %s.",mon_nam(mon));

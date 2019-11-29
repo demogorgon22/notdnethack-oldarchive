@@ -477,6 +477,7 @@ leave_host()
 	if(corpse_chance(u.uhost,(struct monst *)0,FALSE)){
 		make_corpse(u.uhost);	
 	}
+	make_confused(itimeout_incr(HConfusion, 5), FALSE);
 	//if(u.mh) You("inject your host with a deadly venom!");
 	//mtmp->mhp = u.mh+1;
 	//mtmp->mhpmax = u.mhmax;
