@@ -776,6 +776,20 @@ boolean chatting;
 	}
 	switch (mtmp->mfaction == SKELIFIED ? MS_BONES : is_silent_mon(mtmp) ? MS_SILENT : mtmp->isshk ? MS_SELL:ptr->msound) {
 	
+	case MS_TAT:{
+		if(!mtmp->mpeaceful){
+			verbalize("I'm gonna tat my fists on your face!");
+			break;
+		}
+		int seenSeals = countCloseSigns(mtmp);			
+		int selection = dotatmenu("Trying to get a sick tat?");
+		long charge;
+		boolean made_purchase = FALSE;
+		switch(selection){
+		}
+		if(made_purchase) achieve.used_smith = 1;
+		break;
+	}
 
 	case MS_SMITH:{
 		if(!mtmp->mpeaceful){
@@ -2231,6 +2245,125 @@ const char *prompt;
 	return (n > 0) ? selected[0].item.a_int : 0;
 }
 
+#define is_croesus_valid uarm && uarm->obj_material == GOLD && uarmh && uarmh->obj_material == GOLD && \
+		uarmf && uarmf->obj_material == GOLD && uarmg && uarmg->obj_material == GOLD
+
+int
+dotatmenu(prompt)
+const char *prompt;
+{
+	winid tmpwin;
+	int n, how;
+	char buf[BUFSZ];
+	char *name;
+	menu_item *selected;
+	anything any;
+
+	tmpwin = create_nhwindow(NHW_MENU);
+	start_menu(tmpwin);
+	any.a_void = 0;		/* zero out all bits */
+
+	Sprintf(buf, "Tattoos: ");
+	add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+	if(!(u.utats & TAT_HOURGLASS) && (Role_if(PM_ANACHRONONAUT) || Role_if(PM_ANACHRONOUNBINDER))){
+		Sprintf(buf, tat_to_name(TAT_HOURGLASS));
+		any.a_int = TAT_HOURGLASS;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'g', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_FALCHION) && (uwep && is_slashing(uwep))){
+		Sprintf(buf, tat_to_name(TAT_FALCHION));
+		any.a_int = TAT_FALCHION;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'f', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_KESTREL) && ((uwep && objects[uwep->otyp].oc_skill == P_BOW) || Role_if(PM_RANGER))){
+		Sprintf(buf, tat_to_name(TAT_KESTREL));
+		any.a_int = TAT_KESTREL;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'k', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_BULWARK)){
+		Sprintf(buf, tat_to_name(TAT_BULWARK));
+		any.a_int = TAT_BULWARK;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'b', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_FOUNTAIN)){
+		Sprintf(buf, tat_to_name(TAT_FOUNTAIN));
+		any.a_int = TAT_FOUNTAIN;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'f', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_CROESUS) && is_croesus_valid){
+		Sprintf(buf, tat_to_name(TAT_CROESUS));
+		any.a_int = TAT_CROESUS;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'c', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_UNKNOWN) && u.regifted == 5){
+		Sprintf(buf, tat_to_name(TAT_UNKNOWN));
+		any.a_int = TAT_UNKNOWN;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			's', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_WILLOW) && u.ubranch == BLACK_FOREST){
+		Sprintf(buf, tat_to_name(TAT_WILLOW));
+		any.a_int = TAT_WILLOW;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'w', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	if(!(u.utats & TAT_HAMMER) && u.sealsActive & SEAL_ASTAROTH){
+		Sprintf(buf, tat_to_name(TAT_HAMMER));
+		any.a_int = TAT_HAMMER;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'h', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
+	end_menu(tmpwin, prompt);
+	how = PICK_ONE;
+	n = select_menu(tmpwin, how, &selected);
+	destroy_nhwindow(tmpwin);
+	return (n > 0) ? selected[0].item.a_int : 0;
+}
+
+const char *tat_to_name(int tat){
+	switch(tat){
+		case TAT_HOURGLASS:
+			return "Hourglass";
+		case TAT_FALCHION:
+			return "Falchion";
+		case TAT_KESTREL:
+			return "Kestrel";
+		case TAT_BULWARK:
+			return "Bulwark";
+		case TAT_FOUNTAIN:
+			return "Fountain";
+		case TAT_CROESUS:
+			return "Croesus Family Crest";
+		case TAT_UNKNOWN:
+			return "Blasphemous Shapes";
+		case TAT_WILLOW:
+			return "Weeping Willow";
+		case TAT_HAMMER:
+			return "Bronze Hammer";
+		default:
+			impossible("tat_to_name: unknown tat?");
+			return "Unknown Tat?";
+	}
+}
+
+
+
+
 int
 dosmithmenu(prompt)
 const char *prompt;
@@ -2273,6 +2406,8 @@ const char *prompt;
 	destroy_nhwindow(tmpwin);
 	return (n > 0) ? selected[0].item.a_int : 0;
 }
+
+
 
 int
 dotalk()

@@ -58,6 +58,7 @@
 #define MS_CLOCK	48	/* Clockwork */
 #define MS_PORTAL	49	/* Offer portal options */
 #define MS_SMITH	50	/* Smithery */
+#define MS_TAT		51	/* Tattoos service */
 
 
 #define MR_FIRE		0x001	/* 1 resists fire */

@@ -493,6 +493,16 @@ struct you {
 #define GNOMISH_MINES	3
 #define DISMAL_SWAMP	4
 #define ARCHIPELAGO	5
+	int	utats; /*Used to store Fell's tattoo information*/
+#define TAT_HOURGLASS	0x0001
+#define TAT_FALCHION	0x0002
+#define TAT_KESTREL	0x0004
+#define TAT_BULWARK	0x0008
+#define TAT_FOUNTAIN	0x0010
+#define TAT_CROESUS	0x0020
+#define TAT_UNKNOWN	0x0040
+#define TAT_WILLOW	0x0080
+#define TAT_HAMMER	0x0100
 	uchar 	wimage;		/* to record if you have the image of a Weeping Angel in your mind */
 	int uinvault;
 	struct monst *ustuck;
