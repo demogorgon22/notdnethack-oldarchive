@@ -301,6 +301,28 @@ Dungeon changes
 		Branch to spire from the spire in the outlands.
 		At the top is the sigil with stores and the lady of pain who
 		carries the Cage key.
+			At the sigil is also Fell, the tattoo master who sells
+			tats.
+				hourglass - for ana's and acu increases speed
+				by 1, $5000
+				falchion - just gives +1 inc dmg intrinsic,
+				for those who wield a slashing weapon, $4000
+				kestrel - for those wielding a bow or rangers,
+				1/20 of the time another random multishot with
+				any item, $5000
+				bulwark - for anyone, +1 ac, $2000
+				fountain - 1/30 pw regen boost, for all, $4000
+				Croesus family crest - gold weighs nothing,
+				for someone wearing all gold
+				chest,gloves,boot,helm, $50000
+				Blasphemous shapes - required for the unknown
+				ending. must have u.regifted be 5, grants
+				intrinsic polymorphitis, $10000
+				Willow - if you chose the forest adventure
+				branch, small curse resistance chance (1/20),
+				$6000
+				Hammer - if you have astaroth bound, grease is
+				half as likely of wearing off, $6000
 	Chaotic Quest changes
 		Maps fall apart the more time you spend on them, this makes it
 		much harder
