@@ -781,13 +781,81 @@ boolean chatting;
 			verbalize("I'm gonna tat my fists on your face!");
 			break;
 		}
-		int seenSeals = countCloseSigns(mtmp);			
+		double discount = countCloseSigns(mtmp) ?0.5:1;
+		if(discount < 1)
+			verbalize("Dope body mods!");
 		int selection = dotatmenu("Trying to get a sick tat?");
 		long charge;
 		boolean made_purchase = FALSE;
 		switch(selection){
+			case TAT_HOURGLASS:
+				charge = (int) 5000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("like time is moving a little slower.");
+				break;
+			case TAT_FALCHION:
+				charge = (int) 4000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				u.udaminc++;
+				You_feel("more ready for battle.");
+				break;
+			case TAT_KESTREL:
+				charge = (int) 5000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("more ready to hunt.");
+				break;
+			case TAT_BULWARK:
+				charge = (int) 2500 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				u.ublessed++;
+				You_feel("safer.");
+				break;
+			case TAT_FOUNTAIN:
+				charge = (int) 4000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("the flow of tour energy increase.");
+				break;
+			case TAT_CROESUS:
+				charge = (int) 50000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("your coin purse's weight vanish.");
+				break;
+			case TAT_UNKNOWN:
+				charge = (int) 10000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				u.uprops[POLYMORPH].intrinsic |= FROMOUTSIDE;
+				Your("shape feels less certain.");
+				break;
+			case TAT_WILLOW:
+				charge = (int) 6000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("like you have a little helper.");
+				break;
+			case TAT_HAMMER:
+				charge = (int) 6000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("greasy.");
+				break;
 		}
-		if(made_purchase) achieve.used_smith = 1;
+		//if(made_purchase) achieve.used_smith = 1;
 		break;
 	}
 
@@ -2297,7 +2365,7 @@ const char *prompt;
 		Sprintf(buf, tat_to_name(TAT_FOUNTAIN));
 		any.a_int = TAT_FOUNTAIN;	/* must be non-zero */
 		add_menu(tmpwin, NO_GLYPH, &any,
-			'f', 0, ATR_NONE, buf,
+			'o', 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
 	}
 	if(!(u.utats & TAT_CROESUS) && is_croesus_valid){
@@ -2338,7 +2406,7 @@ const char *prompt;
 const char *tat_to_name(int tat){
 	switch(tat){
 		case TAT_HOURGLASS:
-			return "Hourglass";
+			return "Cracked Hourglass";
 		case TAT_FALCHION:
 			return "Falchion";
 		case TAT_KESTREL:

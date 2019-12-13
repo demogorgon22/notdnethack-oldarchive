@@ -385,6 +385,10 @@ rndcurse()			/* curse a few inventory items at random! */
 	    You(mal_aura, "the languid tentacles");
 	    return;
 	}
+	if(u.utats & TAT_WILLOW && !rn2(20)){
+		You_feel("your weeping willow tattoo lend you some help!");
+		return;
+	}
 	for(otmp = invent; otmp; otmp=otmp->nobj){
 		if(otmp->oartifact == ART_HELPING_HAND && rn2(20)){
 			You_feel("something lend you some help!");

@@ -1026,6 +1026,7 @@ moveloop()
 			if(!Upolyd && Race_if(PM_HALF_DRAGON)) moveamt = (moveamt*2)/3;
 			if(uarmf && uarmf->otyp == STILETTOS && !Flying && !Levitation) moveamt = (moveamt*5)/6;
 			if(uarm && uarm->otyp == POWER_ARMOR && uarm->lamplit) moveamt += 2;
+			if(u.utats & TAT_HOURGLASS) moveamt++;
 			
 			if(u.sealsActive&SEAL_EURYNOME && IS_POOL(levl[u.ux][u.uy].typ)){
 				if (Very_fast) {	/* speed boots or potion */
@@ -1474,6 +1475,7 @@ moveloop()
 				if(Role_if(PM_PRIEST)) reglevel += 6;
 				if(Role_if(PM_VALKYRIE)) reglevel += 3;
 				if(Role_if(PM_MONK)) reglevel += 3;
+				if(u.utats & TAT_FOUNTAIN) reglevel += 3;
 				if(u.uen < u.uenmax && (Role_if(PM_WIZARD)) && uarmh && uarmh->otyp == CORNUTHAUM){
 					reglevel += uarmh->spe;
 				}

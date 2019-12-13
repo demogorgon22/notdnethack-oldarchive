@@ -152,6 +152,8 @@ int thrown;
 		multishot++;
 		if(u.ulevel> 10) multishot++;
 	    }
+	    if(u.utats & TAT_KESTREL && !rn2(20))
+		    multishot++;
 		/*Increase skill related rof for heavy machine gun*/
 		if(launcher && launcher->otyp == HEAVY_MACHINE_GUN) multishot *= 2;
 		

@@ -2656,6 +2656,7 @@ inv_weight()
 	   mustn't add its weight in twice under that circumstance */
 	wt = (otmp && otmp->oclass == COIN_CLASS) ? 0 :
 		(int)((u.ugold + 50L) / 100L);
+	if(u.utats & TAT_CROESUS) wt = 0;
 #endif
 	while (otmp) {
 		//Correct artifact weights before adding them.  Because that code isn't being run.
