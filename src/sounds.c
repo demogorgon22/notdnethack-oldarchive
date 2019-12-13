@@ -815,7 +815,6 @@ boolean chatting;
 				if (smith_offer_price(charge, mtmp) == FALSE) break;
 				u.utats |= selection;
 				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
-				u.ublessed++;
 				You_feel("safer.");
 				break;
 			case TAT_FOUNTAIN:

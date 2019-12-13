@@ -2036,6 +2036,7 @@ find_ac()
 	}
 	if(uarmg) uac -= ARM_BONUS(uarmg);
 	if(uarmu) uac -= ARM_BONUS(uarmu);
+	if(u.utats & TAT_BULWARK) uac -= 1;
 	
     static int cbootsd = 0;
     if (!cbootsd) cbootsd = find_cboots();
