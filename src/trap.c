@@ -1745,8 +1745,8 @@ boolean
 spire_fall_mon(mtmp)
 register struct monst *mtmp;
 {
-		if(Is_sigil(&u.uz) && levl[mtmp->mx][mtmp->my].typ == AIR){
-			pline("%s falls from the spire!",Monnam(mtmp));
+		if(Is_sigil(&u.uz) && levl[mtmp->mx][mtmp->my].typ == AIR && (!is_flyer(mtmp->data) && !is_floater(mtmp->data))){
+			if(canseemon(mtmp)) pline("%s falls from the spire!",Monnam(mtmp));
 			migrate_to_level(mtmp, ledger_no(&spire_level),
 				      	      MIGR_RANDOM, (coord *)0);	
 			return TRUE;
