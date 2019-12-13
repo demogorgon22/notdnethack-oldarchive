@@ -1606,10 +1606,11 @@ domove()
 			pnambuf);
 		    break;
 		case 1:		/* trapped */
-		//case 3:		/* changed levels */
 		    /* there's already been a trap message, reinforce it */
 		    abuse_dog(mtmp);
 		    adjalign(-3);
+		    break;
+		case 3:		/* changed levels */
 		    break;
 		case 2:
 		    /* it may have drowned or died.  that's no way to

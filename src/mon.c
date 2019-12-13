@@ -1789,6 +1789,7 @@ movemon()
 	}
 
 	if (minliquid(mtmp)) continue;
+	if (spire_fall_mon(mtmp)) continue;
 
 	/* continue if the monster died fighting */
 	if (!mtmp->iswiz && !is_blind(mtmp)) {
