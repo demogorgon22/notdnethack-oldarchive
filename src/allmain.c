@@ -1601,6 +1601,21 @@ moveloop()
 	      /******************************************/
 	     /* once-per-hero-took-time things go here */
 	    /******************************************/
+
+		struct obj *obj, *nobj;
+	    	for (obj = fobj; obj; obj = obj->nobj) {
+			if(Is_sigil(&u.uz) && levl[obj->ox][obj->oy].typ == AIR){
+				if(obj->otyp == AMULET_OF_YENDOR) continue;
+				if(cansee(obj->ox,obj->oy)) pline("%s falls from the spire.",The(xname(obj)));
+				obj_extract_self(obj);
+				add_to_migration(obj);
+				newsym(obj->ox,obj->oy);
+				obj->ox = spire_level.dnum;
+				obj->oy = spire_level.dlevel;
+				obj->owornmask = (long)MIGR_RANDOM;
+			}
+		}
+
 		if(u.ustdy > 0) u.ustdy -= 1;
 		
 		for (mtmp = fmon; mtmp; mtmp = nxtmon){
