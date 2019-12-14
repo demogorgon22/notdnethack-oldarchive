@@ -853,6 +853,13 @@ boolean chatting;
 				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
 				You_feel("greasy.");
 				break;
+			case TAT_SPEARHEAD:
+				charge = (int) 15000 * discount;
+				if (smith_offer_price(charge, mtmp) == FALSE) break;
+				u.utats |= selection;
+				pline("%s tattoos a %s onto you.",Monnam(mtmp),tat_to_name(selection));
+				You_feel("like breaking rocks.");
+				break;
 		}
 		//if(made_purchase) achieve.used_smith = 1;
 		break;
@@ -2395,6 +2402,13 @@ const char *prompt;
 			'h', 0, ATR_NONE, buf,
 			MENU_UNSELECTED);
 	}
+	if(!(u.utats & TAT_SPEARHEAD) && (Race_if(PM_SALAMANDER) && !Role_if(PM_CAVEMAN))){
+		Sprintf(buf, tat_to_name(TAT_SPEARHEAD));
+		any.a_int = TAT_SPEARHEAD;	/* must be non-zero */
+		add_menu(tmpwin, NO_GLYPH, &any,
+			'p', 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+	}
 	end_menu(tmpwin, prompt);
 	how = PICK_ONE;
 	n = select_menu(tmpwin, how, &selected);
@@ -2422,6 +2436,8 @@ const char *tat_to_name(int tat){
 			return "Weeping Willow";
 		case TAT_HAMMER:
 			return "Bronze Hammer";
+		case TAT_SPEARHEAD:
+			return "Spearhead";
 		default:
 			impossible("tat_to_name: unknown tat?");
 			return "Unknown Tat?";

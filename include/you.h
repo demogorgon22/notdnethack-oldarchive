@@ -503,7 +503,8 @@ struct you {
 #define TAT_UNKNOWN	0x0040
 #define TAT_WILLOW	0x0080
 #define TAT_HAMMER	0x0100
-#define NUM_TATS	9
+#define TAT_SPEARHEAD	0x0200
+#define NUM_TATS	10
 	uchar 	wimage;		/* to record if you have the image of a Weeping Angel in your mind */
 	int uinvault;
 	struct monst *ustuck;

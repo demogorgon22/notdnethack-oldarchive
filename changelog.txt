@@ -323,6 +323,8 @@ Dungeon changes
 				$6000
 				Hammer - if you have astaroth bound, grease is
 				half as likely of wearing off, $6000
+				Spearhead - only for non caveman salamanders,
+				teaches flintknapping
 	Chaotic Quest changes
 		Maps fall apart the more time you spend on them, this makes it
 		much harder
