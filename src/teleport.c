@@ -858,6 +858,14 @@ level_tele()
 	    You_feel("very disoriented for a moment.");
 	    return;
 	}
+	if(In_spire(&u.uz) && !Is_sigil(&u.uz)){
+		//All roads lead to rome
+		You_feel("reoriented.");
+	    	schedule_goto(&sigil_level, FALSE, FALSE, 0, (char *)0, (char *)0);
+		return;
+
+
+	}
 	if ((Teleport_control && !Stunned)
 #ifdef WIZARD
 	   || wizard

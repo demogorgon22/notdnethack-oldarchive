@@ -159,6 +159,7 @@ typedef struct branch {
 #define Is_sumall(x)		(on_level(x,&sum_of_all_level))
 #define Is_rlyeh(x)			(on_level(x, &rlyeh_level))
 #define Is_sigil(x)			(on_level(x, &sigil_level))
+#define In_spire(x)			((x)->dnum == spire_dnum)
 
 #define Is_valley(x)		(on_level(x, &valley_level))
 
