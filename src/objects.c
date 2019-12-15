@@ -872,6 +872,10 @@ TOOL("lokoban trophy", (char *)0, /*Needs encyc entry*//*Needs tile*/
 								0, 0, 1, 0,   0, 15, 5000, GOLD,CLR_YELLOW),
 TOOL("hypospray", "hammer-shaped device", /*Needs encyc entry*//*Needs tile*/
 								0, 0, 1, 0,   0, 15, 500, PLASTIC,CLR_GRAY),
+
+TOOLMASK("night vision goggles", "strange goggles", CATSIGHT,/*Needs tile*/
+								0, 0, 1, 0,   0, 15, 200, GLASS, CLR_GREEN),
+
 TOOL("hypospray ampule", "hard grey bottle", /*Needs encyc entry*//*Needs tile*/
 								0, 0, 1, 0,   0,  1,  50, PLASTIC,CLR_GRAY),
 TOOL("mask", (char *)0,			1, 0, 0, 0,  10, 10,  80, LEATHER, CLR_WHITE),

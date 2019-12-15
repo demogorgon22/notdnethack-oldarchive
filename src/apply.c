@@ -5105,6 +5105,7 @@ doapply()
 	else if(obj->oartifact == ART_AEGIS) res = swap_aegis(obj);
 	else switch(obj->otyp){
 	case BLINDFOLD:
+	case NIGHT_VISION_GOGGLES:
 	case LENSES:
 	case R_LYEHIAN_FACEPLATE:
 	case MASK:

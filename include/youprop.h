@@ -137,7 +137,7 @@
 								!(viz_array[u.uy][u.ux]&TEMP_DRK2)\
 						&& !(ublindf && (ublindf->otyp == LENSES || ublindf->otyp == MASK)) && !Is_waterlevel(&u.uz)))))
 #define Blinded			u.uprops[BLINDED].intrinsic
-#define Blindfolded		(ublindf && ublindf->otyp != LENSES && ublindf->otyp != MASK)
+#define Blindfolded		(ublindf && ublindf->otyp != LENSES && ublindf->otyp != MASK && ublindf->otyp != NIGHT_VISION_GOGGLES)
 		/* ...means blind because of a cover */
 #define NoLightBlind	((Blinded || Blindfolded || !haseyes(youracedata)) && \
 		 !(u.sealsActive&SEAL_DANTALION && !((uarm && uarm->obj_material != GLASS) || (uarmu && uarmu->obj_material != GLASS))) && \

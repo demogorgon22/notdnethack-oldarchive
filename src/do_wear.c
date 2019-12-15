@@ -1123,6 +1123,7 @@ Blindf_on(otmp)
 register struct obj *otmp;
 {
 	boolean already_blind = Blind, changed = FALSE;
+	boolean already_catsight = Catsight;
 
 	if (otmp == uwep)
 	    setuwep((struct obj *) 0);
@@ -1132,7 +1133,10 @@ register struct obj *otmp;
 	    setuqwep((struct obj *) 0);
 	setworn(otmp, W_TOOL);
 	on_msg(otmp);
-
+	if (Catsight && !already_catsight){
+	    changed = TRUE;
+	    if (flags.verbose) You("can see in the dark!");
+	}
 	if (Blind && !already_blind) {
 	    changed = TRUE;
 	    if (flags.verbose) You_cant("see any more.");
@@ -1156,11 +1160,17 @@ Blindf_off(otmp)
 register struct obj *otmp;
 {
 	boolean was_blind = Blind, changed = FALSE;
+	boolean was_catsight = Catsight;
 
 	takeoff_mask &= ~W_TOOL;
 	setworn((struct obj *)0, otmp->owornmask);
 	off_msg(otmp);
 
+	if (!Catsight) {
+	    if (was_catsight) {
+		    changed = TRUE;
+	    } 
+	}
 	if (Blind) {
 	    if (was_blind) {
 		/* "still cannot see" makes no sense when removing lenses
@@ -1870,7 +1880,7 @@ doputon()
 				already_wearing(something);
 			return(0);
 		}
-		if (otmp->otyp != MASK && otmp->otyp != R_LYEHIAN_FACEPLATE && 
+		if (otmp->otyp != MASK && otmp->otyp != R_LYEHIAN_FACEPLATE && otmp->otyp != NIGHT_VISION_GOGGLES &&
 			otmp->otyp != BLINDFOLD && otmp->otyp != TOWEL && otmp->otyp != LENSES
 		) {
 			You_cant("wear that!");

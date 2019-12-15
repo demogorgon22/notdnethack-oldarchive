@@ -2321,6 +2321,7 @@ const char *oldstr;
 
 			if (!BSTRCMP(bp, p-6, "gloves") ||
 			    !BSTRCMP(bp, p-6, "lenses") ||
+			    !BSTRCMP(bp, p-7, "goggles") ||
 			    !BSTRCMP(bp, p-5, "shoes") ||
 				!BSTRCMPI(bp, p-13, "versus curses") ||
 				!BSTRCMP(bp, p-6, "scales") ||
