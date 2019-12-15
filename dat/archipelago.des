@@ -41,19 +41,19 @@ MONSTER: random, random, random
 MAZE: "leveetwn", '}'
 GEOMETRY:center,center
 MAP
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
-P-------------------------------P
-P|.......|.......|.......|...|.|P
-P|.......|.......|.......|...|.|P
-P|.......|.......|.......|...|.|P
-P|-+-----------+---+-------+--.|P
-P|.............................|P
-P|.....{.............----------|P
-P|...................|.........|P
-P|..........{........+.........|P
-P|...................|.........|P
-P-------------------------------P
-PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP.
+P-------------------------------P}
+P|.......|.......|.......|...|.|P}
+P|.......|.......|.......|...|.|P}
+P|.......|.......|.......|...|.|P}
+P|-+-----------+---+-------+--.|P}
+P|.............................|P}
+P|.....{.............----------|P}
+P|...................|.........|P}
+P|..........{........+.........|P}
+P|...................|.........|P}
+P-------------------------------P}
+PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP}
 ENDMAP
 
 STAIR:(02,10),up
@@ -62,6 +62,12 @@ STAIR:(30,02),down
 REGION:(00,00,32,12),lit,"ordinary"
 MONSTER: '@', "watch captain", (03,09), peaceful
 MONSTER: '@', "armorsmith", (07,10), peaceful
+TRAP:"teleport",(33,00)
+
+OBJECT:'%',"gillyweed",random
+OBJECT:'%',"gillyweed",random
+OBJECT:'%',"gillyweed",random
+OBJECT:'%',"gillyweed",random
 
 MONSTER: random, random, random
 MONSTER: random, random, random
