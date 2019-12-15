@@ -30,6 +30,7 @@ Added acu (Illithanachronounbinder) role
 	Summoning rituals are the same as binder however Dantalion can be
 		summoned anywhere and Chupoclops only needs a poison corpse
 	While summoned spirit is alive you have its active and passive powers.
+		Using an effigy removes the effect of this.
 	Can only have one spirit monster summoned alive at a time usually.
 	
 

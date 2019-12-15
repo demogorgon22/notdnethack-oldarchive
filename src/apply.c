@@ -5547,6 +5547,11 @@ doapply()
 			if (curo->cursed) uncurse(curo);
 		}
 		if(Punished) unpunish();
+		if(Role_if(PM_ANACHRONOUNBINDER)){
+			u.sealsActive = 0;
+			u.sealCounts = 0;
+			The("spirits of the land no longer walk with you.");
+		}
 		
 		if(u.wimage >= 10){
 			u.wimage = 0;
