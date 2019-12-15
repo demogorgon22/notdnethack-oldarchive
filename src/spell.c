@@ -4022,7 +4022,7 @@ throwspell()
 	    u.dx = 0;
 	    u.dy = 0;
 	    return 1;
-	} else if (!cansee(cc.x, cc.y) || IS_STWALL(levl[cc.x][cc.y].typ)) {
+	} else if (IS_STWALL(levl[cc.x][cc.y].typ)) {
 	    Your("mind fails to lock onto that location!");
 	    return 0;
 	} else {
