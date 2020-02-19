@@ -69,6 +69,21 @@ static struct trobj Anachrononaut_Hu[] = {
 	{ PROTEIN_PILL, 0, FOOD_CLASS, 10, 0 },
 	{ 0, 0, 0, 0, 0 }
 };
+static struct trobj Anachrononaut_Hlf[] = {
+	{ AUTO_SHOTGUN,  3, WEAPON_CLASS, 1, 0 },
+	{ SHOTGUN_SHELL, 3, WEAPON_CLASS, 100, 0 },
+	{ HEALING_GRENADE, 2, WEAPON_CLASS, 30, 0 },
+	{ CUTTING_LASER,  0, WEAPON_CLASS, 1, 0 },
+	{ FORCE_ARMOR, 0, ARMOR_CLASS, 1, 0 },
+	{ HELMET, 0, ARMOR_CLASS, 1, 0 },
+	{ GAUNTLETS, 0, ARMOR_CLASS, 1, 0 },
+	{ ARMORED_BOOTS, 0, ARMOR_CLASS, 1, 0 },
+	{ CLOAK_OF_PROTECTION, 1, ARMOR_CLASS, 1, 0 },
+	{ BULLET_FABBER, 0, TOOL_CLASS, 1, 0 },
+	{ POWER_PACK, 0, TOOL_CLASS, 5, 0 },
+	{ PROTEIN_PILL, 0, FOOD_CLASS, 10, 0 },
+	{ 0, 0, 0, 0, 0 }
+};
 static struct trobj Anachrononaut_Clk[] = {
 	{ POWER_ARMOR, 0, ARMOR_CLASS, 1, 0 },
 	{ BODYGLOVE, 0, ARMOR_CLASS, 1, 0 },
@@ -1774,6 +1789,7 @@ u_init()
 		else if(Race_if(PM_INCANTIFIER)) ini_inv(Anachrononaut_Inc);
 		else if(Race_if(PM_VAMPIRE)) ini_inv(Anachrononaut_Vam);
 		else if(Race_if(PM_DWARF)) ini_inv(Anachrononaut_Dw);
+		else if(Race_if(PM_HALF_DRAGON)) ini_inv(Anachrononaut_Hlf);
 		else if(Race_if(PM_SALAMANDER)) ini_inv(Anachrononaut_Sal);
 		else if(Race_if(PM_CLOCKWORK_AUTOMATON)){
 			ini_inv(Anachrononaut_Clk);
@@ -2747,6 +2763,8 @@ u_init()
 			flags.HDbreath = AD_ACID;
 		break;
 	}
+	if(Role_if(PM_ANACHRONONAUT) && Race_if(PM_HALF_DRAGON))
+	       flags.HDbreath = AD_DISN;
 	/* Fix up the alignment quest nemesi */
 	mons[PM_OONA].mcolor = (u.oonaenergy == AD_FIRE) ? CLR_RED 
 						 : (u.oonaenergy == AD_COLD) ? CLR_CYAN 
@@ -2843,6 +2861,10 @@ register struct trobj *trop;
 			}
 			if(obj->otyp == HEAVY_MACHINE_GUN && Role_if(PM_ANACHRONONAUT) && Race_if(PM_DWARF)){
 				obj->obj_material = MITHRIL;
+				fix_object(obj);
+			}
+			if(Role_if(PM_ANACHRONONAUT) && Race_if(PM_HALF_DRAGON) && obj->oclass == ARMOR_CLASS && obj->otyp != FORCE_ARMOR ){
+				obj->obj_material = COPPER;
 				fix_object(obj);
 			}
 			if(obj->otyp == SPLINT_MAIL && Role_if(PM_SAMURAI)){

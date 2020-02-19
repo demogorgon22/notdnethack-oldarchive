@@ -47,7 +47,8 @@
 #define HDisint_resistance	u.uprops[DISINT_RES].intrinsic
 #define EDisint_resistance	u.uprops[DISINT_RES].extrinsic
 #define Disint_resistance	(HDisint_resistance || EDisint_resistance || \
-				 species_resists_disint(&youmonst) || u.sealsActive&SEAL_ORTHOS)
+				 species_resists_disint(&youmonst) || u.sealsActive&SEAL_ORTHOS || \
+				 (Race_if(PM_HALF_DRAGON) && flags.HDbreath == AD_DISN))
 
 #define HShock_resistance	u.uprops[SHOCK_RES].intrinsic
 #define EShock_resistance	u.uprops[SHOCK_RES].extrinsic
