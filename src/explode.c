@@ -885,6 +885,9 @@ int n, p;
     } else if ((obj)->otyp == GAS_GRENADE) { \
 	delquan = dp((obj)->quan, 10); \
 	no_gas += delquan; \
+    } else if ((obj)->otyp == HEALING_GRENADE) { \
+	delquan = dp((obj)->quan, 10); \
+	no_heal += delquan; \
     } else if ((obj)->otyp == STICK_OF_DYNAMITE) { \
 	delquan = (obj)->quan; \
 	no_fiery += (obj)->quan * 2; \
@@ -895,12 +898,12 @@ int n, p;
 	delquan = 0
 
 struct grenade_callback {
-    ExplodeRegion *fiery_area, *gas_area, *dig_area;
+    ExplodeRegion *fiery_area, *gas_area, *dig_area, *heal_area;
     boolean isyou;
 };
 
 STATIC_DCL void FDECL(grenade_effects, (struct obj *,XCHAR_P,XCHAR_P,
-	ExplodeRegion *,ExplodeRegion *,ExplodeRegion *,BOOLEAN_P));
+	ExplodeRegion *,ExplodeRegion *,ExplodeRegion *,ExplodeRegion *,BOOLEAN_P));
 
 STATIC_DCL int
 grenade_fiery_callback(data, x, y)
@@ -912,7 +915,7 @@ int x, y;
     if (is_accessible) {
 	add_location_to_explode_region(gc->fiery_area, x, y);
 	grenade_effects((struct obj *)0, x, y,
-		gc->fiery_area, gc->gas_area, gc->dig_area, gc->isyou);
+		gc->fiery_area, gc->gas_area, gc->dig_area, gc->heal_area, gc->isyou);
     }
     return !is_accessible;
 }
@@ -930,6 +933,18 @@ int x, y;
 }
 
 STATIC_DCL int
+grenade_heal_callback(data, x, y)
+genericptr_t data;
+int x, y;
+{
+    int is_accessible = ZAP_POS(levl[x][y].typ);
+    struct grenade_callback *gc = (struct grenade_callback *)data;
+    if (is_accessible)
+	add_location_to_explode_region(gc->heal_area, x, y);
+    return !is_accessible;
+}
+
+STATIC_DCL int
 grenade_dig_callback(data, x, y)
 genericptr_t data;
 int x, y;
@@ -941,10 +956,10 @@ int x, y;
 }
 
 STATIC_DCL void
-grenade_effects(source, x, y, fiery_area, gas_area, dig_area, isyou)
+grenade_effects(source, x, y, fiery_area, gas_area, dig_area, heal_area, isyou)
 struct obj *source;
 xchar x, y;
-ExplodeRegion *fiery_area, *gas_area, *dig_area;
+ExplodeRegion *fiery_area, *gas_area, *dig_area, *heal_area;
 boolean isyou;
 {
     int i, r;
@@ -954,7 +969,7 @@ boolean isyou;
      * Note: These count explosive charges in arbitary units. Grenades
      *       are counted as 1 and sticks of dynamite as 2 fiery and 1 dig.
      */
-    int no_gas = 0, no_fiery = 0, no_dig = 0;
+    int no_gas = 0, no_fiery = 0, no_dig = 0, no_heal = 0;
     int delquan;
     boolean shielded = FALSE, redraw;
     struct grenade_callback gc;
@@ -964,6 +979,8 @@ boolean isyou;
 	    no_gas += source->quan;
 	else if (source->otyp == FRAG_GRENADE)
 	    no_fiery += source->quan;
+	else if (source->otyp == HEALING_GRENADE)
+	    no_heal += source->quan;
 	else if (source->otyp == STICK_OF_DYNAMITE) {
 	    no_fiery += source->quan * 2;
 	    no_dig += source->quan;
@@ -1018,6 +1035,7 @@ boolean isyou;
     gc.fiery_area = fiery_area;
     gc.gas_area = gas_area;
     gc.dig_area = dig_area;
+    gc.heal_area = heal_area;
     gc.isyou = isyou;
     if (no_gas) {
 	/* r = floor(log2(n))+1 */
@@ -1036,6 +1054,15 @@ boolean isyou;
 	    no_fiery /= 2;
 	}
 	xpathto(r, x, y, grenade_fiery_callback, (genericptr_t)&gc);
+    }
+    if (no_heal) {
+	/* r = floor(log2(n))+1 */
+	r = 0;
+	while(no_heal) {
+	    r++;
+	    no_heal /= 2;
+	}
+	xpathto(r, x, y, grenade_heal_callback, (genericptr_t)&gc);
     }
     if (no_dig) {
 	/* r = floor(log2(n))+1 */
@@ -1062,13 +1089,14 @@ int dest;
     int i, ztype;
     boolean shop_damage = FALSE;
     int ox, oy;
-    ExplodeRegion *fiery_area, *gas_area, *dig_area;
+    ExplodeRegion *fiery_area, *gas_area, *dig_area, *heal_area;
     struct trap *trap;
     
     fiery_area = create_explode_region();
     gas_area = create_explode_region();
     dig_area = create_explode_region();
-    grenade_effects(obj, x, y, fiery_area, gas_area, dig_area, isyou);
+    heal_area = create_explode_region();
+    grenade_effects(obj, x, y, fiery_area, gas_area, dig_area, heal_area, isyou);
     if (fiery_area->nlocations) {
 	ztype = isyou ? ZT_SPELL(ZT_FIRE) : -ZT_SPELL(ZT_FIRE);
 	do_explode(x, y, fiery_area, ztype, d(3,6), WEAPON_CLASS,
@@ -1101,6 +1129,12 @@ int dest;
 	  EXPL_NOXIOUS, dest, isyou);
     }
     free_explode_region(gas_area);
+    if (heal_area->nlocations) {
+	//ztype = isyou ? ZT_SPELL(ZT_POISON_GAS) : -ZT_SPELL(ZT_POISON_GAS);
+	do_explode(x, y, heal_area, 169, -d(3,6), WEAPON_CLASS,
+	  EXPL_LIME, dest, isyou);
+    }
+    free_explode_region(heal_area);
     if (shop_damage) pay_for_damage("damage", FALSE);
 }
 

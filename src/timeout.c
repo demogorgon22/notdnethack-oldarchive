@@ -836,7 +836,8 @@ long timeout;
 			    uqwepgone();
 			    stop_occupation();
 			}
-		    	losehp(d(2,5), "carrying live explosives", KILLED_BY);
+		    	if(bomb && bomb->otyp != HEALING_GRENADE)
+				losehp(d(2,5), "carrying live explosives", KILLED_BY);
 		    	break;
 		    case OBJ_FLOOR:
 			underwater = is_pool(x, y);

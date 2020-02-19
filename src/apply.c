@@ -5697,6 +5697,7 @@ doapply()
 	case NUKE:
 	case FRAG_GRENADE:
 	case GAS_GRENADE:
+	case HEALING_GRENADE:
 		if (!obj->oarmed) {
 			You("arm %s.", yname(obj));
 			arm_bomb(obj, TRUE);

@@ -2235,7 +2235,7 @@ STATIC_OVL NEARDATA const struct o_range o_ranges[] = {
 //#ifdef FIREARMS
 	{ "firearm", 	WEAPON_CLASS, PISTOL, AUTO_SHOTGUN },
 	{ "gun", 	WEAPON_CLASS, PISTOL, AUTO_SHOTGUN },
-	{ "grenade", 	WEAPON_CLASS, FRAG_GRENADE, GAS_GRENADE },
+	{ "grenade", 	WEAPON_CLASS, FRAG_GRENADE, GAS_GRENADE},
 //#endif
 #ifdef WIZARD
 	{ "venom",	VENOM_CLASS,  BLINDING_VENOM, ACID_VENOM },

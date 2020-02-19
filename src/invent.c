@@ -1152,6 +1152,7 @@ register const char *let,*word;
 		      otyp != ASSAULT_RIFLE &&
 		      otyp != ARM_BLASTER &&
 		      otyp != FRAG_GRENADE &&
+		      otyp != HEALING_GRENADE &&
 		      otyp != GAS_GRENADE &&
 		      otyp != STICK_OF_DYNAMITE &&
 		      !Is_spear(otmp) &&

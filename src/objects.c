@@ -351,6 +351,8 @@ BULLET("shotgun shell", "red tube",
 	0,  0,   1,  10,12, 6, 10,  WP_SHELL,   P,   METAL, -P_FIREARM, CLR_RED),/*Needs tile*/
 BULLET("frag grenade", "green spheriod",
 	0,  0,   5, 350, 2, 2, 0,  WP_GRENADE, B,   IRON, -P_FIREARM, CLR_GREEN),/*Needs tile*/
+BULLET("healing grenade", "blue spheriod",
+	0,  0,   5, 350, 2, 2, 0,  WP_GRENADE, B,   IRON, -P_FIREARM, CLR_BLUE),/*Needs tile*/
 BULLET("gas grenade", "lime spheriod",
 	0,  0,   2, 350, 2, 2, 0,  WP_GRENADE, B,   IRON, -P_FIREARM, CLR_BRIGHT_GREEN),/*Needs tile*/
 BULLET("rocket", "firework",
