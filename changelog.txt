@@ -95,6 +95,16 @@ Anachrononaut changes
 			direction that does small 3x3 4d6 fire bursts
 			at each section of the ray.
 			Uses a charge system and uses 1 charge per spew
+	New half dragon ana race, healer/support.
+		Autoshotgun/shells
+		Stack of healing grenades that explode into burst AOE healing
+		and can pacify enemies
+		Bronze armor
+		Disintegration breath and resistance
+		Force armor
+			provides -3 ac
+			all enmies get mhurtled back when they hit you (and
+			stunned)
 	Grenade launchers multishot with skill lvl now.
 	Fabber sequence a bit different now.
 	Night vision goggles
