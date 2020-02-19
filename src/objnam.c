@@ -3234,6 +3234,7 @@ boolean from_user;
 	   strncmpi(bp, "potion vaporizer", 16) &&
 	   strncmpi(bp, "studded leather arm", 19) &&
 	   strncmpi(bp, "power arm", 9) &&
+	   strncmpi(bp, "force arm", 9) &&
 	   strncmpi(bp, "leather arm", 11) &&
 	   strncmpi(bp, "tooled horn", 11) &&
 	   strncmpi(bp, "food ration", 11) &&

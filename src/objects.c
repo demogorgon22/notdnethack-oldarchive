@@ -529,8 +529,8 @@ ARMOR("plasteel armor", "hard white armor", /*Needs encyc entry*//*Needs tile*/
 	0, 0, 1, 0,	 0, 5, 100,  500, 4, 3, ARM_SUIT, PLASTIC, CLR_WHITE),
 ARMOR("power armor", "strange metal armor", /*Needs encyc entry*//*Needs tile*/
 	0, 0, 1, 0,	 0, 3, 500,  5000, 4, 3, ARM_SUIT, METAL, CLR_MAGENTA),
-// ARMOR("force armor", "gemstone-adorned clothing",
-	// 0, 0, 1, 0,	 0, 5,  50, 1000, 9, 3, ARM_SUIT, GEMSTONE, CLR_BRIGHT_GREEN),
+ARMOR("force armor", "gemstone-adorned clothing",
+	 0, 0, 1, 0,	 0, 5,  50, 1000, 7, 3, ARM_SUIT, GEMSTONE, CLR_BRIGHT_GREEN),
 ARMOR("splint mail", (char *)0,
 	1, 0, 1, 0,	62, 5, 200,  80,  4, 1, ARM_SUIT, IRON, HI_METAL),
 ARMOR("banded mail", (char *)0,

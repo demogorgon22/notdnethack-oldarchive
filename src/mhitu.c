@@ -723,6 +723,10 @@ mattacku(mtmp)
 	    mattk = getmattk(mdat, i, sum, &alt_attk);
 	    if (u.uswallow && (mattk->aatyp != AT_ENGL && mattk->aatyp != AT_ILUR))
 			continue;
+	    if(flags.mon_done){
+			flags.mon_done = FALSE;
+			break;
+	    }
 		
 		if(mtmp->mfaction == ZOMBIFIED || mtmp->mfaction == SKELIFIED || mtmp->mfaction == CRYSTALFIED){
 			if(mattk->aatyp == AT_SPIT 
@@ -1307,6 +1311,7 @@ mattacku(mtmp)
 		}
 	    /* sum[i] == 0: unsuccessful attack */
 	}
+	flags.mon_done = FALSE;
 	if(mdat == &mons[PM_DEMOGORGON]){ 
 		mtmp->mvar1 = 0;
 		mtmp->mvar2 = 0;
@@ -8342,6 +8347,20 @@ register struct attack *mattk;
 		attack(mtmp);
 		flags.forcefight = FALSE;
 		if(DEADMONSTER(mtmp)) return 2;
+	}
+	if(uarm && uarm->otyp == FORCE_ARMOR){
+		if(mtmp->mhp > tmp){
+			pline("%s is thrown back by your armor's forcefield!",Monnam(mtmp));
+			int mdx=0, mdy=0;
+			if(mtmp->mux - mtmp->mx < 0) mdx = -1;
+			else if(mtmp->mux - mtmp->mx > 0) mdx = +1;
+			if(mtmp->muy - mtmp->my < 0) mdy = -1;
+			else if(mtmp->muy - mtmp->my > 0) mdy = +1;
+			mhurtle(mtmp, -mdx, -mdy, 3 + max(rn2(uarm->spe),1));
+			mtmp->mstun = TRUE;
+			flags.mon_done = TRUE;
+			if (DEADMONSTER(mtmp)) return 2;
+		}
 	}
 	
     assess_dmg:
