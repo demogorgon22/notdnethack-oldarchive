@@ -507,8 +507,12 @@ unsigned int stuckid, steedid;	/* STEED */
 	if (stuckid) {
 		for (mtmp = fmon; mtmp; mtmp = mtmp->nmon)
 			if (mtmp->m_id == stuckid) break;
-		if (!mtmp) panic("Cannot find the monster ustuck.");
-		u.ustuck = mtmp;
+		if (!mtmp) {
+			impossible("Cannot find the monster ustuck.");
+			u.ustuck = 0;
+		} else {
+			u.ustuck = mtmp;
+		}
 	}
 #ifdef STEED
 	if (steedid) {
