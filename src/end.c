@@ -1160,7 +1160,7 @@ die:
 		if(how == ESCAPED) Strcat(kilbuf, " with an Unknown God");
 	}
 	if(Role_if(PM_ANACHRONOUNBINDER) && Is_ilsensine(&u.uz)){
-		if(how == ASCENDED) Strcat(kilbuf, ", having saved Ilsensine and restoring the Illithid Empire");
+		if(how == ASCENDED) Strcat(kilbuf, ", having saved Ilsensine and restored the Illithid Empire");
 	}
 
 	    Sprintf(pbuf, "%s %s the %s...", Goodbye(), plname,
