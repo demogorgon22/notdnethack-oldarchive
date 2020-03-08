@@ -773,6 +773,7 @@ void
 illur_intervene()
 {
 	if(Is_astralevel(&u.uz)) return;
+	if(In_void(&u.uz)) return;
 	switch (rnd(4)) {
 	    case 1:	
 	    case 2:
@@ -782,7 +783,7 @@ illur_intervene()
 			aggravate();
 		break;
 	    case 4:
-			if(!In_void(&u.uz)) illur_resurrect();
+			illur_resurrect();
 		break;
 	}
 }
