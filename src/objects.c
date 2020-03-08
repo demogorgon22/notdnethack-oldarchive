@@ -1326,7 +1326,7 @@ OBJECT(OBJ("hellfire component", (char *)0), BITS(1,1,0,0,0,0,0,0,0,0,WHACK,P_NO
 		CHAIN_CLASS,    0, 0,    1,  0,  1,  1, 0, 0,   20, CLR_ORANGE),
 						/* +1 both l & s */
 OBJECT(OBJ("feather", (char *)0), BITS(1,0,0,0,0,0,0,0,0,0,WHACK,P_NONE,VEGGY), 0,
-		CHAIN_CLASS,	0, 0,  120,  0,  4,  4, 0, 0,  200, CLR_BRIGHT_GREEN),
+		CHAIN_CLASS,	0, 0,  1,  0,  4,  4, 0, 0,  200, CLR_BRIGHT_GREEN),
 OBJECT(OBJ("rope of entangling", (char *)0), BITS(1,0,0,0,0,0,0,0,0,0,WHACK,P_NONE,VEGGY), 0,
 		CHAIN_CLASS,	0, 0,  120,  0,  4,  4, 0, 0,  200, CLR_BROWN),
 OBJECT(OBJ("iron bands", (char *)0), BITS(1,0,0,0,0,0,0,0,0,0,WHACK,P_NONE,IRON), 0,
