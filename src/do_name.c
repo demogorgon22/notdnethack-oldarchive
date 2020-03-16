@@ -615,7 +615,7 @@ const char *name;
 		else if(obj->oartifact == ART_SOULMIRROR) obj->obj_material = MITHRIL;
 		else if(obj->oartifact == ART_SUNSWORD) obj->obj_material = GOLD;
 		else if(obj->oartifact == ART_SODE_NO_SHIRAYUKI) obj->obj_material = SILVER;
-		else if(obj->oartifact == ART_TOBIUME) obj->obj_material = METAL;
+		//else if(obj->oartifact == ART_TOBIUME) obj->obj_material = METAL;
 		else if(obj->oartifact == ART_LIFEHUNT_SCYTHE) obj->obj_material = DRAGON_HIDE;
 		else if(obj->oartifact == ART_HOLY_MOONLIGHT_SWORD) obj->obj_material = METAL;
 		else if(obj->oartifact == ART_BLADE_SINGER_S_SPEAR) obj->obj_material = SILVER;

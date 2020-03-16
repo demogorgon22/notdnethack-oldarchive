@@ -432,7 +432,7 @@ A("Sode no Shirayuki",		KATANA,
 	ICE_SHIKAI, A_LAWFUL, NON_PM, NON_PM, 8000L,/*Sode no Shirayuki gains x2 ice damage after using the third dance.*/
 	0,0,0), /*however, it only keeps it for a few rounds, and the other dances are attack magic. */
 
-A("Tobiume",		LONG_SWORD,
+A("Tobiume",		CRYSTAL_SWORD,
 	(SPFX_RESTR|SPFX_ATTK),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	FIRE(1,1),	FIRE(0,0),	NO_CARY,/*Tobiume is an awkward weapon.  It loses 3 damage vs large and 2 vs small*/

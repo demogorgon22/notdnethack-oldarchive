@@ -29,6 +29,17 @@ Cool bard? artifact that is a super useful weapon or tool or something but can i
 divine ac/10 chances to resist beheading
 add some cool nitrohack shit idk
 implement failed ceremorph on acu quest
+Barb balance patch
+	remove the bonus weapon attacks
+	add togglable #styles that unlock with xlvl
+	Brawn
+		con is applied as an addition strength bonus, only receive half of hp bonus from con
+	Zealous Whirlwind
+		attacks hit all squares around the player but confusion is applied with every attack
+	Rage
+		get two attacks per turn but hp regen is disabled
+	
+
 The village
 	dlvl 4?
 	Special level with a bunch of peaceful of your race.
