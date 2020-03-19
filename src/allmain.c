@@ -2018,6 +2018,13 @@ newgame()
 	 * makedog() will fail when it calls makemon().
 	 *			- ucsfcgl!kneller
 	 */
+
+	/*
+	 * Init game with special conditions for puzzle mode
+	 * */
+	init_puzzle();
+
+
 	if(MON_AT(u.ux, u.uy)) mnexto(m_at(u.ux, u.uy));
 	(void) makedog();
 	docrt();

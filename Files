@@ -81,7 +81,7 @@ steal.c         steed.c         teleport.c      timeout.c       topten.c
 track.c         trap.c          u_init.c        uhitm.c         vault.c
 version.c       vision.c        weapon.c        were.c          wield.c
 windows.c       wizard.c        worm.c          worn.c          write.c
-zap.c
+zap.c		puzzle.c
 
 sys/amiga:
 (files for Amiga versions)

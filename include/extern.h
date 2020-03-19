@@ -1998,6 +1998,10 @@ E void NDECL(angry_priest);
 E void NDECL(clearpriests);
 E void FDECL(restpriest, (struct monst *,BOOLEAN_P));
 
+
+/* ### puzzle.c ### */
+E void NDECL(init_puzzle);
+
 /* ### quest.c ### */
 
 E void NDECL(onquest);

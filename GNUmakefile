@@ -8,6 +8,8 @@ GAMELIBS = -lncurses
 
 CPPFLAGS += -Iinclude
 CPPFLAGS += -DDLB
+CFLAGS += -l json-c
+LDFLAGS += $(shell pkg-config --libs json-c)
 
 .DELETE_ON_ERROR:
 
@@ -41,7 +43,7 @@ SRCOBJ = allmain.o alloc.o apply.o artifact.o attrib.o ball.o bones.o	\
          mon.o mondata.o monmove.o monst.o monstr.o mplayer.o		\
          mthrowu.o muse.o music.o o_init.o objects.o objnam.o		\
          options.o pager.o pickup.o pline.o polyself.o potion.o		\
-         pray.o priest.o quest.o questpgr.o read.o recover.o rect.o	\
+         pray.o priest.o puzzle.o quest.o questpgr.o read.o recover.o rect.o	\
          region.o restore.o rip.o rnd.o role.o rumors.o save.o shk.o	\
          shknam.o sit.o sounds.o sp_lev.o spell.o steal.o steed.o	\
          teleport.o tile.o timeout.o topten.o track.o trap.o u_init.o	\
