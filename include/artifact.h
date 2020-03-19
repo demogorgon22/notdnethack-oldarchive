@@ -344,6 +344,7 @@ struct artifact {
 #define SMOKE_MIRROR        (LAST_PROP+70)/*Only use on stuff where ovar1 is the point*/
 #define AEGIS           (LAST_PROP+71)
 #define WATER           (LAST_PROP+72)
+#define SHATTER_TOGGLE           (LAST_PROP+73)
 
 #define MASTERY_ARTIFACT_LEVEL 20
 

@@ -568,7 +568,7 @@ arti_shattering(obj)
 struct obj *obj;
 {
     return (obj && (
-		(obj->oartifact && spec_ability2(obj, SPFX2_SHATTER)) ||
+		(obj->oartifact && spec_ability2(obj, SPFX2_SHATTER) && !obj->ovar1) ||
 		(is_lightsaber(obj) && obj->lamplit)
 	));
 }
@@ -3999,6 +3999,12 @@ arti_invoke(obj)
 	    (void) pet_detect_and_tame(obj);
 	    break;
 	  }
+	case SHATTER_TOGGLE:{
+		if(obj->ovar1) pline("%s will now shatter weapons.",xname(obj));
+		else pline("%s will no longer shatter weapons.",xname(obj));
+		obj->ovar1 = !obj->ovar1;
+		break;
+	}
 	case HEALING: {
 	    int healamt = (u.uhpmax + 1 - u.uhp) / 2;
 	    long creamed = (long)u.ucreamed;
