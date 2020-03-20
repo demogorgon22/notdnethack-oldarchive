@@ -541,7 +541,7 @@ struct you {
 #define CHI_HEALING		0x0004
 #define SPIRIT_PUNCH		0x0008
 #define FLICKER_PUNCH		0x0010
-#define ABSORBATIVE_PUNCH	0x0020
+#define ABSORPTIVE_PUNCH	0x0020
 #define ENERGY_FORM		0x0040
 
 	long	wardsknown;	/* known wards */

@@ -2266,7 +2266,7 @@ defaultvalue:
 	if(!thrown && !uwep && !uswapwep && !nohands(youracedata)){
 		if((u.ulevel >= 18 || !(uarmg && is_metal(uarmg)))?TRUE:rn2(2)){
 			if(u.umystic & (FORCE_PUNCH | SURGE_PUNCH | SPIRIT_PUNCH | FLICKER_PUNCH) && u.uen >= 25) achieve.max_punch = 1;
-			if(u.umystic & ABSORBATIVE_PUNCH){
+			if(u.umystic & ABSORPTIVE_PUNCH){
 				tmp /= 2;
 				u.uen += tmp;
 				if(u.uen > u.uenmax) u.uen = u.uenmax;

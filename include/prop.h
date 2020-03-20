@@ -90,7 +90,8 @@
 #define CARCAP			NECROSPELLS+1
 #define WELDPROOF		CARCAP+1
 #define NULLMAGIC		WELDPROOF+1
-#define LAST_PROP		(NULLMAGIC)
+#define NOPROP			NULLMAGIC+1
+#define LAST_PROP		(NOPROP)
 
 /*** Where the properties come from ***/
 /* Definitions were moved here from obj.h and you.h */

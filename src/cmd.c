@@ -1310,7 +1310,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 3){
+		if(u.ulevel >= 3 || u.ubarb & BRAWN){
 			if(u.ubarb & BRAWN) {
 				Sprintf(buf,	"Brawn (active)");
 			} else {
@@ -1322,7 +1322,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 6){
+		if(u.ulevel >= 6 || u.ubarb & BERSERK){
 			if(u.ubarb & BERSERK) {
 				Sprintf(buf,	"Berserk (active)");
 			} else {
@@ -1334,7 +1334,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 9){
+		if(u.ulevel >= 9 || u.ubarb & RAGE){
 			if(u.ubarb & RAGE) {
 				Sprintf(buf,	"Rage (active)");
 			} else {
@@ -1346,7 +1346,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 12){
+		if(u.ulevel >= 12 || u.ubarb & ZEALOUS_WHIRLWIND){
 			if(u.ubarb & ZEALOUS_WHIRLWIND) {
 				Sprintf(buf,	"Zealous Whirlwind (active)");
 			} else {
@@ -1389,19 +1389,19 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 2){
-			if(u.umystic & ABSORBATIVE_PUNCH) {
-				Sprintf(buf,	"Absorbative Strike (active)");
+		if(u.ulevel >= 2 || u.umystic & ABSORPTIVE_PUNCH){
+			if(u.umystic & ABSORPTIVE_PUNCH) {
+				Sprintf(buf,	"Absorptive Strike (active)");
 			} else {
-				Sprintf(buf,	"Absorbative Strike");
+				Sprintf(buf,	"Absorptive Strike");
 			}
-			any.a_int = ABSORBATIVE_PUNCH;	/* must be non-zero */
+			any.a_int = ABSORPTIVE_PUNCH;	/* must be non-zero */
 			add_menu(tmpwin, NO_GLYPH, &any,
 				incntlet, 0, ATR_NONE, buf,
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 4){
+		if(u.ulevel >= 4 || u.umystic & FORCE_PUNCH){
 			if(u.umystic & FORCE_PUNCH) {
 				Sprintf(buf,	"Force Punch (active)");
 			} else {
@@ -1413,7 +1413,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 6){
+		if(u.ulevel >= 6 || u.umystic & CHI_HEALING){
 			if(u.umystic & CHI_HEALING) {
 				Sprintf(buf,	"Chi Healing (active)");
 			} else {
@@ -1425,7 +1425,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 8){
+		if(u.ulevel >= 8 || u.umystic & FLICKER_PUNCH){
 			if(u.umystic & FLICKER_PUNCH) {
 				Sprintf(buf,	"Flicker Punch (active)");
 			} else {
@@ -1437,7 +1437,7 @@ dofightingform()
 				MENU_UNSELECTED);
 			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
 		}
-		if(u.ulevel >= 10){
+		if(u.ulevel >= 10 || u.umystic & SPIRIT_PUNCH){
 			if(u.umystic & SPIRIT_PUNCH) {
 				Sprintf(buf,	"Spirit Punch (active)");
 			} else {
@@ -1462,11 +1462,11 @@ dofightingform()
 				u.umystic &= ~(selected[0].item.a_int);
 			else 
 				u.umystic |= selected[0].item.a_int;
-			if(selected[0].item.a_int == ABSORBATIVE_PUNCH){
-				if(u.umystic & ABSORBATIVE_PUNCH)
-					u.umystic = ABSORBATIVE_PUNCH;
-			} else if(u.umystic & ABSORBATIVE_PUNCH){
-				u.umystic &= ~ABSORBATIVE_PUNCH;
+			if(selected[0].item.a_int == ABSORPTIVE_PUNCH){
+				if(u.umystic & ABSORPTIVE_PUNCH)
+					u.umystic = ABSORPTIVE_PUNCH;
+			} else if(u.umystic & ABSORPTIVE_PUNCH){
+				u.umystic &= ~ABSORPTIVE_PUNCH;
 			}
 			
 			return 0;

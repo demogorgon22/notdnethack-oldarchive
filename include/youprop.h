@@ -32,6 +32,8 @@
 				 species_resists_fire(&youmonst) || (Race_if(PM_HALF_DRAGON) && flags.HDbreath == AD_FIRE) ||\
 				 ward_at(u.ux,u.uy) == SIGIL_OF_CTHUGHA || u.sealsActive&SEAL_FAFNIR)
 
+#define HNo_prop		u.uprops[NOPROP].intrinsic
+
 #define HCold_resistance	u.uprops[COLD_RES].intrinsic
 #define ECold_resistance	u.uprops[COLD_RES].extrinsic
 #define Cold_resistance		(HCold_resistance || ECold_resistance || (Race_if(PM_HALF_DRAGON) && flags.HDbreath == AD_COLD) ||\
