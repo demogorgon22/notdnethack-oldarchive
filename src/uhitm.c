@@ -671,11 +671,16 @@ register struct monst *mtmp;
 			if(keepattacking && u.ulevel ==30 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
 				keepattacking = hitum(mtmp, weptmp-30, youmonst.data->mattk);
 		}
-		if(Role_if(PM_BARBARIAN) && !Upolyd){
+		static struct attack weaponattack[] = 
+		{
+			{AT_WEAP,AD_PHYS,0,0},
+			{0,0,0,0}
+		};
+		if(Role_if(PM_BARBARIAN) && uwep){
 			if(keepattacking && u.ubarb & RAGE && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
-				keepattacking = hitum(mtmp, weptmp, youmonst.data->mattk);
+				keepattacking = hitum(mtmp, weptmp, weaponattack);
 			if(keepattacking && u.ulevel >= 15 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
-				keepattacking = hitum(mtmp, weptmp-10, youmonst.data->mattk);
+				keepattacking = hitum(mtmp, weptmp-15, weaponattack);
 		}
 		if(uwep && u.ubarb & ZEALOUS_WHIRLWIND){
 			You("spin in a circle swinging your %s!",xname(uwep));
@@ -683,11 +688,6 @@ register struct monst *mtmp;
 			int clockwisey[8] = {-1,-1, 0, 1, 1, 1, 0,-1};
 			int i,j;
 			struct monst *mon;
-			static struct attack whirlwindattack[] = 
-			{
-				{AT_WEAP,AD_PHYS,0,0},
-				{0,0,0,0}
-			};
 			for(i=0;i<8;i++)
 					if(clockwisex[i] == u.dx && clockwisey[i] == u.dy)
 						break;
@@ -697,7 +697,7 @@ register struct monst *mtmp;
 				else mon = m_at(u.ux+clockwisex[(i+j)%8], u.uy+clockwisey[(i+j)%8]);
 				if(mon && !mon->mtame){
 					find_to_hit_rolls(mon,&tmp,&weptmp,&tchtmp);
-					hmonwith(mon, tmp, weptmp, tchtmp, whirlwindattack, 1);
+					hmonwith(mon, tmp, weptmp, tchtmp, weaponattack, 1);
 				}
 			}
 			You_feel("dizzy.");
