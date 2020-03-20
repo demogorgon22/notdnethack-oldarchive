@@ -93,7 +93,7 @@ Barbarian changes
 		attacks hit targeted enemy again, and all squares around the player but confusion is applied with every attack
 	Rage
 		xlvl 9
-		get two attacks per turn but all hp regen is disabled
+		get another attack per turn but all passive hp regen is disabled
 	Bloodlust
 		xlvl 1
 		deal +d(lvl) dmg with each attack with half of it reflected back. If this would kill you, deal u.hp-1
