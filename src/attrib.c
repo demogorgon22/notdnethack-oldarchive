@@ -44,7 +44,11 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 
 	bar_abil[] = { {	 1, &(HPoison_resistance), "", "" },
+		     {   3, &(HNo_prop), "able to brawn up", "unable to brawn up" },
+		     {   6, &(HNo_prop), "able to go berserk", "unable to go bersek" },
 		     {   7, &(HFast), "quick", "slow" },
+		     {   9, &(HNo_prop), "able to fly into a rage", "unable to fly into a rage" },
+		     {   12, &(HNo_prop), "able to spin with your weapon", "unable to spin with your weapon" },
 		     {  15, &(HStealth), "stealthy", "" },
 		     {	 0, 0, 0, 0 } },
 #ifdef BARD
