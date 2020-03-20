@@ -666,18 +666,43 @@ register struct monst *mtmp;
 		if(uwep && uwep->oartifact == ART_QUICKSILVER){
 			if(keepattacking && u.ulevel > 10 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
 				keepattacking = hitum(mtmp, weptmp-10, youmonst.data->mattk);
-			if(keepattacking && u.ulevel > 20 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
-				keepattacking = hitum(mtmp, weptmp-20, youmonst.data->mattk);
+			if(keepattacking && u.ulevel > 14 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
+				keepattacking = hitum(mtmp, weptmp-10, youmonst.data->mattk);
 			if(keepattacking && u.ulevel ==30 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
 				keepattacking = hitum(mtmp, weptmp-30, youmonst.data->mattk);
 		}
 		if(Role_if(PM_BARBARIAN) && !Upolyd){
-			if(keepattacking && u.ulevel >= 10 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
+			if(keepattacking && u.ubarb & RAGE && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
+				keepattacking = hitum(mtmp, weptmp, youmonst.data->mattk);
+			if(keepattacking && u.ulevel >= 15 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
 				keepattacking = hitum(mtmp, weptmp-10, youmonst.data->mattk);
-			if(keepattacking && u.ulevel >= 20 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
-				keepattacking = hitum(mtmp, weptmp-20, youmonst.data->mattk);
-			if(keepattacking && u.ulevel == 30 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
-				keepattacking = hitum(mtmp, weptmp-30, youmonst.data->mattk);
+		}
+		if(uwep && u.ubarb & ZEALOUS_WHIRLWIND){
+			You("spin in a circle swinging your %s!",xname(uwep));
+			int clockwisex[8] = { 0, 1, 1, 1, 0,-1,-1,-1};
+			int clockwisey[8] = {-1,-1, 0, 1, 1, 1, 0,-1};
+			int i,j;
+			struct monst *mon;
+			static struct attack whirlwindattack[] = 
+			{
+				{AT_WEAP,AD_PHYS,0,0},
+				{0,0,0,0}
+			};
+			for(i=0;i<8;i++)
+					if(clockwisex[i] == u.dx && clockwisey[i] == u.dy)
+						break;
+			for(j=8;j>=1;j--){
+				if(u.ustuck && u.uswallow)
+					mon = u.ustuck;
+				else mon = m_at(u.ux+clockwisex[(i+j)%8], u.uy+clockwisey[(i+j)%8]);
+				if(mon && !mon->mtame){
+					find_to_hit_rolls(mon,&tmp,&weptmp,&tchtmp);
+					hmonwith(mon, tmp, weptmp, tchtmp, whirlwindattack, 1);
+				}
+			}
+			You_feel("dizzy.");
+			make_confused(itimeout_incr(HConfusion, rnd(5)+3), FALSE);
+
 		}
 		if(Role_if(PM_ANACHRONOUNBINDER) && !Upolyd && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp ){
 			static struct attack tentattack[] = 
@@ -1469,6 +1494,11 @@ int thrown;
 					hittxt = TRUE;
 				}
 			}
+			if(!rn2(2) && u.ubarb & BERSERK && !mon->mflee){
+				You("attack agressively.");
+				mon->mstun = TRUE;
+				monflee(mon, d(2,3), TRUE, TRUE);
+			}
 			if(obj && Is_spear(obj)){
 				if(!rn2(20) && !objects[obj->ovar1].oc_name_known)
 					objects[obj->ovar1].oc_name_known = 1;
@@ -2222,6 +2252,16 @@ defaultvalue:
 	
 	/*Now apply damage*/
 	// pline("Damage: %d",tmp);
+	
+	
+	if(!thrown && u.ubarb & BLOODLUST){
+		int udam = rnd(u.ulevel);
+		tmp += udam;
+		udam = udam/2;
+		if(Half_physical_damage) udam = udam/2;
+		losehp(min(udam,u.uhp-1), "overzealous combat", KILLED_BY);
+		You("attack recklessly.");
+	}
 	
 	if(!thrown && !uwep && !uswapwep && !nohands(youracedata)){
 		if((u.ulevel >= 18 || !(uarmg && is_metal(uarmg)))?TRUE:rn2(2)){

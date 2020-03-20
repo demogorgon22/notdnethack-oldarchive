@@ -1870,6 +1870,22 @@ struct obj *otmp;
 	}
 	
 	if(u.sealsActive&SEAL_DANTALION) bonus += max(0,(ACURR(A_INT)-10)/2);
+
+	if(u.ubarb & BRAWN){
+		int con = ACURR(A_CON);
+		if (con < 6) bonus += -6+con;
+		else if (con < 16) bonus += 0;
+		else if (con < 18) bonus += 1;
+		else if (con == 18) bonus += 2;		
+		else if (con < 21) bonus += 3;		
+		else if (con < 22) bonus += 4;		
+		else if (con < 23) bonus += 5;		
+		else if (con < 24) bonus += 6;
+		else if (con < 25) bonus += 7;
+		else bonus += 8;
+
+	}
+
 	return bonus;
 }
 
@@ -1902,6 +1918,21 @@ int otyp;
 	}
 	
 	if(u.sealsActive&SEAL_DANTALION) bonus += max(0,(ACURR(A_INT)-10)/2);
+	
+	if(u.ubarb & BRAWN){
+		int con = ACURR(A_CON);
+		if (con < 6) bonus += -6+con;
+		else if (con < 16) bonus += 0;
+		else if (con < 18) bonus += 1;
+		else if (con == 18) bonus += 2;		
+		else if (con < 21) bonus += 3;		
+		else if (con < 22) bonus += 4;		
+		else if (con < 23) bonus += 5;		
+		else if (con < 24) bonus += 6;
+		else if (con < 25) bonus += 7;
+		else bonus += 8;
+
+	}
 	return bonus;
 }
 

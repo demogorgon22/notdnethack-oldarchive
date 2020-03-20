@@ -80,6 +80,26 @@ Caveman changes
 	Can apply rocks to knap soft stones into spear points 
 		which can be attached to their spear.
 	Sceptre of Might is now a bone spear
+Barbarian changes
+	No longer receive 3 extra attacks with xlvl up.
+	Receive an extra attack at -10 tohit at xlvl 15.
+	Toggalable passive abilities unlock with xlvl
+	Can have as many active as you'd like
+	Brawn
+		xlvl 3
+		con is applied as an additional strength bonus, only receive half of hp bonus from con
+	Zealous Whirlwind
+		xlvl 12
+		attacks hit targeted enemy again, and all squares around the player but confusion is applied with every attack
+	Rage
+		xlvl 9
+		get two attacks per turn but all hp regen is disabled
+	Bloodlust
+		xlvl 1
+		deal +d(lvl) dmg with each attack with half of it reflected back. If this would kill you, deal u.hp-1
+	Berserk
+		xlvl 6
+		Enemies have a 50% chance of fleeing and being stunned when hit in combat, but act as aggravate monster
 Binder changes
 	Crowning grants expert with dagger
 Anachrononaut changes

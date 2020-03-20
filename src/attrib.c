@@ -926,6 +926,8 @@ conplus(con)
 	else if (con == 25) conplus = 7;
 	else conplus = 4;
 	
+	if(u.ubarb & BRAWN) conplus = conplus/2;
+
 	return conplus;
 }
 

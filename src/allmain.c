@@ -1358,11 +1358,11 @@ moveloop()
 					if(u.mh < u.mhmax){
 						if (u.mh < 1)
 							rehumanize();
-						if(Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)){
+						if((Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)) && !(u.ubarb & RAGE)){
 							flags.botl = 1;
 							u.mh++;
 						}
-						if(!nonliving(youracedata) && !Race_if(PM_INCANTIFIER) && (wtcap < MOD_ENCUMBER || !u.umoved) && 
+						if(!nonliving(youracedata) && !(u.ubarb & RAGE) && !Race_if(PM_INCANTIFIER) && (wtcap < MOD_ENCUMBER || !u.umoved) && 
 							(!uwep || uwep->oartifact != ART_ATMA_WEAPON || !uwep->lamplit || Drain_resistance || !rn2(4))
 						){
 							flags.botl = 1;
@@ -1374,11 +1374,11 @@ moveloop()
 						if(u.mh > u.mhmax) u.mh = u.mhmax;
 					}
 				} else if (u.uhp < u.uhpmax){
-					if(Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)){
+					if((Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)) && !(u.ubarb & RAGE)){
 						flags.botl = 1;
 						u.uhp++;
 					}
-					if(!nonliving(youracedata) && !Race_if(PM_INCANTIFIER) && (wtcap < MOD_ENCUMBER || !u.umoved) && 
+					if(!nonliving(youracedata) && !(u.ubarb & RAGE) && !Race_if(PM_INCANTIFIER) && (wtcap < MOD_ENCUMBER || !u.umoved) && 
 						(!uwep || uwep->oartifact != ART_ATMA_WEAPON || !uwep->lamplit || Drain_resistance || !rn2(4))
 					){
 						int reglevel = u.ulevel + (((int) ACURR(A_CON)) - 10)/2;
@@ -1403,7 +1403,7 @@ moveloop()
 					if(u.uhp < u.uhpmax / 3) u.uhp++;
 					if(u.uhp < u.uhpmax / 4) u.uhp++;
 				}
-				if(u.sealsActive&SEAL_BUER){
+				if(u.sealsActive&SEAL_BUER && !(u.ubarb & RAGE)){
 					int dsize = spiritDsize(), regenrate = dsize/5, remainderrate = dsize%5;
 					if(Upolyd && u.mh < u.mhmax){
 						if(!uwep || uwep->oartifact != ART_ATMA_WEAPON || !uwep->lamplit || Drain_resistance){

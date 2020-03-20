@@ -1278,6 +1278,8 @@ dofightingform()
 			pline("Your metal gloves partially block your power.");
 			//return 0;
 		}
+	} else if(Role_if(PM_BARBARIAN)){ 
+	
 	} else {
 		if(!(uwep && is_lightsaber(uwep))){
 			pline("You don't know any special fighting styles for use in this situation.");
@@ -1293,7 +1295,86 @@ dofightingform()
 	tmpwin = create_nhwindow(NHW_MENU);
 	start_menu(tmpwin);
 	any.a_void = 0;		/* zero out all bits */
-	if(Role_if(PM_MONK) && !uwep){
+	if(Role_if(PM_BARBARIAN)){
+		Sprintf(buf,	"Known Styles");
+		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
+		if(TRUE){
+			if(u.ubarb & BLOODLUST) {
+				Sprintf(buf,	"Bloodlust (active)");
+			} else {
+				Sprintf(buf,	"Bloodlust");
+			}
+			any.a_int = BLOODLUST;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(u.ulevel >= 3){
+			if(u.ubarb & BRAWN) {
+				Sprintf(buf,	"Brawn (active)");
+			} else {
+				Sprintf(buf,	"Brawn");
+			}
+			any.a_int = BRAWN;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(u.ulevel >= 6){
+			if(u.ubarb & BERSERK) {
+				Sprintf(buf,	"Berserk (active)");
+			} else {
+				Sprintf(buf,	"Berserk");
+			}
+			any.a_int = BERSERK;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(u.ulevel >= 9){
+			if(u.ubarb & RAGE) {
+				Sprintf(buf,	"Rage (active)");
+			} else {
+				Sprintf(buf,	"Rage");
+			}
+			any.a_int = RAGE;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		if(u.ulevel >= 12){
+			if(u.ubarb & ZEALOUS_WHIRLWIND) {
+				Sprintf(buf,	"Zealous Whirlwind (active)");
+			} else {
+				Sprintf(buf,	"Zealous Whirlwind");
+			}
+			any.a_int = ZEALOUS_WHIRLWIND;	/* must be non-zero */
+			add_menu(tmpwin, NO_GLYPH, &any,
+				incntlet, 0, ATR_NONE, buf,
+				MENU_UNSELECTED);
+			incntlet = (incntlet != 'z') ? (incntlet+1) : 'A';
+		}
+		end_menu(tmpwin,	"Choose fighting style:");
+		how = PICK_ONE;
+		n = select_menu(tmpwin, how, &selected);
+		destroy_nhwindow(tmpwin);
+			
+		if(n <= 0){
+			return 0;
+		} else {
+			if(u.ubarb & selected[0].item.a_int) 
+				u.ubarb &= ~(selected[0].item.a_int);
+			else 
+				u.ubarb |= selected[0].item.a_int;
+			return 0;
+		}
+
+	
+	} else if(Role_if(PM_MONK) && !uwep){
 		Sprintf(buf,	"Known Forms");
 		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 		if(TRUE){
@@ -1390,8 +1471,8 @@ dofightingform()
 			
 			return 0;
 		}
-	}
-	if(uwep && is_lightsaber(uwep) && P_SKILL(weapon_type(uwep)) >= P_BASIC){
+	} 
+	else if(uwep && is_lightsaber(uwep) && P_SKILL(weapon_type(uwep)) >= P_BASIC){
 		Sprintf(buf,	"Known Forms");
 		add_menu(tmpwin, NO_GLYPH, &any, 0, 0, ATR_BOLD, buf, MENU_UNSELECTED);
 		if(P_SKILL(FFORM_SHII_CHO) >= P_BASIC){

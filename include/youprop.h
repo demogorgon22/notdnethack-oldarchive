@@ -318,7 +318,7 @@
 
 #define HAggravate_monster	u.uprops[AGGRAVATE_MONSTER].intrinsic
 #define EAggravate_monster	u.uprops[AGGRAVATE_MONSTER].extrinsic
-#define Aggravate_monster	(HAggravate_monster || EAggravate_monster || u.specialSealsActive&SEAL_ALIGNMENT_THING)
+#define Aggravate_monster	(HAggravate_monster || EAggravate_monster || u.specialSealsActive&SEAL_ALIGNMENT_THING || u.ubarb & BERSERK)
 
 #define HConflict		u.uprops[CONFLICT].intrinsic
 #define EConflict		u.uprops[CONFLICT].extrinsic

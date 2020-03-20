@@ -33,11 +33,21 @@ Barb balance patch
 	remove the bonus weapon attacks
 	add togglable #styles that unlock with xlvl
 	Brawn
-		con is applied as an addition strength bonus, only receive half of hp bonus from con
+		xlvl 3
+		con is applied as an additional strength bonus, only receive half of hp bonus from con
 	Zealous Whirlwind
-		attacks hit all squares around the player but confusion is applied with every attack
+		xlvl 12
+		attacks hit targeted enemy again, and all squares around the player but confusion is applied with every attack
 	Rage
-		get two attacks per turn but hp regen is disabled
+		xlvl 9
+		get two attacks per turn but all hp regen is disabled
+	Bloodlust
+		xlvl 1
+		deal +d(lvl) dmg with each attack with half of it reflected back. If this would kill you, deal u.hp-1
+	Berserk
+		xlvl 6
+		Enemies have a 50% chance of fleeing and being stunned when hit in combat, but act as aggravate monster
+		
 	
 
 The village

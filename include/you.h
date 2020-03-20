@@ -529,6 +529,12 @@ struct you {
 
 	int role_variant;	/*Records what variant of your role you are.*/
 
+	int ubarb; /*barb fighting styles*/
+#define BRAWN			0x0001
+#define RAGE			0x0002
+#define ZEALOUS_WHIRLWIND	0x0004
+#define BLOODLUST		0x0008
+#define BERSERK 		0x0010
 	int umystic;	/*Monk mystic attacks active*/
 #define SURGE_PUNCH		0x0001
 #define FORCE_PUNCH		0x0002
