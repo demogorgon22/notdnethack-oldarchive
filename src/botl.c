@@ -449,6 +449,8 @@ char *buf;
 	else if (In_endgame(&u.uz))
 		Sprintf(buf,
 			Is_astralevel(&u.uz) ? "Astral Plane " : "End Game ");
+	else if(Is_nowhere(&u.uz))
+		Sprintf(buf,"Nowhere ");
 	else if (In_void(&u.uz)){
 		Sprintf(buf,
 		 	Is_nearvoid(&u.uz)?"The Gate ":Is_nearvoid2(&u.uz)?"The Near Void ":Is_alignvoid(&u.uz)?"The Alignment Void ":Is_farvoid(&u.uz)?"The Far Void ":Is_ilsensine(&u.uz)?"The Lost Void ":"??? ");

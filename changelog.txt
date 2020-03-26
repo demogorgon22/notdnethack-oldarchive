@@ -229,6 +229,7 @@ Etherealoid race
 	Cannot see normally
 	Cannot wear armor
 	Flys
+	Receives displacement at xlvl 7
 	Gains +1 ac per experience level
 	Has xray vision radius = 3 + xplvl/7 floored
 	Has an addtional 1d6 shadow engulf attack
