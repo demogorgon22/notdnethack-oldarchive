@@ -2139,7 +2139,7 @@ boolean new_game;	/* false => restoring an old game */
 	if(Role_if(PM_MONK) || Role_if(PM_BARBARIAN)){
 		pline("Use #style to change your combat style.");
 	}	
-	if(Role_if(PM_ETHEREALOID)){
+	if(Race_if(PM_ETHEREALOID)){
 		pline("Use #monster to phase in and out.");
 	}
 	if(Role_if(PM_ANACHRONOUNBINDER)){
