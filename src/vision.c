@@ -630,7 +630,7 @@ vision_recalc(control)
 	 * Set the IN_SIGHT bit for xray and night vision.
 	 */
 	if(Race_if(PM_ETHEREALOID)){
-		u.xray_range = 3;
+		u.xray_range = 3 + u.ulevel/7;
 	}
 	else if(u.sealsActive&SEAL_ORTHOS){
 		oldxray = u.xray_range;

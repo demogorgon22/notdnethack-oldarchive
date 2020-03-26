@@ -165,6 +165,8 @@ const struct innate {
 		     {	 0, 0, 0, 0 } },
 	
 	eth_abil[] = { {	1, &(HUnchanging), "", "" },
+		     {	 1, &(HStone_resistance), "", "" },
+		     {	 1, &(HDisint_resistance), "", "" },
 		     {	 0, 0, 0, 0 } },
 
 	hlf_abil[] = { {	14, &(HFlying), "wings sprout from your back", "your wings shrivel and die" },

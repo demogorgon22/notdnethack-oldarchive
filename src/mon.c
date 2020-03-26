@@ -4683,9 +4683,14 @@ cleanup:
 	}
 	
 	/* give experience points */
-	tmp = experience(mtmp, (int)mvitals[mndx].died + 1);
-	more_experienced(tmp, 0);
-	newexplevel();		/* will decide if you go up */
+	if(!Race_if(PM_ETHEREALOID) || rn2(2)){
+		tmp = experience(mtmp, (int)mvitals[mndx].died + 1);
+		more_experienced(tmp, 0);
+		newexplevel();		/* will decide if you go up */
+	} else {
+		healup(max(tmp/8,5),0,FALSE,FALSE);
+		You("absorb some of the %s!",mon_nam(mtmp));
+	}
 
 	/* adjust alignment points */
 	if (mtmp->m_id == quest_status.leader_m_id &&!is_derived_undead_mon(mtmp)) {

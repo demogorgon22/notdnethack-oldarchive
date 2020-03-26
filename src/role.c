@@ -821,7 +821,7 @@ const struct Race races[] = {
 	{  2, 0,  3, 0,  3, 0 },	/* Energy */
 	NIGHTVISION3
 },
-{	"etheraloid", "etheraloidic", "etheraloid-kind", "Eth",
+{	"etherealoid", "etherealoidic", "etherealoid-kind", "Eth",
 	{0,0},
 	PM_ETHEREALOID, NON_PM, PM_HUMAN_MUMMY, PM_ZOMBIE,
 	ROLE_MALE|ROLE_FEMALE | ROLE_NEUTRAL,

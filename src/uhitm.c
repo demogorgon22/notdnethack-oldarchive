@@ -653,6 +653,7 @@ register struct monst *mtmp;
 			|| Race_if(PM_CHIROPTERAN) 
 			|| (!uwep && Race_if(PM_YUKI_ONNA))
 			|| Race_if(PM_SYMBIOTE)
+			|| Race_if(PM_ETHEREALOID)
 		){
 			keepattacking = hmonas(mtmp, youracedata, tmp, weptmp, tchtmp);
 			attacksmade = 1;
@@ -3877,6 +3878,10 @@ register struct attack *mattk;
 			    mdef->mblinded = dam;
 			}
 			dam = 0;
+			break;
+		    case AD_SHDW:
+			    pline("%s is hurt by your phasing body!",
+				  Monnam(mdef));
 			break;
 		    case AD_ELEC:
 			if (rn2(2)) {
