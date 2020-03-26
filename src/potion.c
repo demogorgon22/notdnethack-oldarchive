@@ -1304,7 +1304,7 @@ boolean your_fault;
 		    losehp(d(obj->cursed ? 4 : 2, obj->blessed ? 6 : 8),
 				    "potion of lava", KILLED_BY_AN);
 		}
-		if(IS_LAVABLE(levl[u.ux][u.uy].typ)){
+		if(!Is_nowhere(&u.uz) && IS_LAVABLE(levl[u.ux][u.uy].typ)){
 			levl[u.ux][u.uy].typ = LAVAPOOL;
 			del_engr_ward_at(u.ux, u.uy);
 			if (!(Levitation || Flying)) (void) lava_effects();

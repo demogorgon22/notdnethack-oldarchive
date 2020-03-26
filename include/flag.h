@@ -58,6 +58,7 @@ struct flag {
 	boolean  flaming;		/* for use with flamethrower, indicates that flamethrower is throwing */
 	boolean  flame;		/* for use with flamethrower, indicates that it is flame, not explosion */
 	boolean	 implanting; /*used for the time while you as a symbiote are implanting into a monster*/
+	boolean  phasing; /* Etherealoid phasing in or out*/
 	
 	boolean	 mon_done; /*used as a kludge to stop monsters that have been mhurtled away from continuing to attack*/
 	boolean  move;

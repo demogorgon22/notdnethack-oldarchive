@@ -1275,7 +1275,7 @@ xchar x, y;	/* location */
 	}
 
 	if (br->type == BR_PORTAL) {
-	    if(!Is_village_level(&u.uz)) mkportal(x, y, dest->dnum, dest->dlevel);
+	    if(!(Is_village_level(&u.uz) || Is_nowhere(&u.uz))) mkportal(x, y, dest->dnum, dest->dlevel);
 	} else if ((make_stairs || In_adventure_branch(&u.uz)) && !Is_nearvoid(&u.uz)) {
 	    sstairs.sx = x;
 	    sstairs.sy = y;

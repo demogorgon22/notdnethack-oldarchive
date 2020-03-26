@@ -1086,6 +1086,7 @@ boolean at_stairs, falling, portal;
 	boolean new = FALSE;	/* made a new level? */
 	struct monst *mtmp;
 	char whynot[BUFSZ];
+	if(Is_nowhere(&u.uz) && !flags.phasing) return;
 
 	if (dunlev(newlevel) > dunlevs_in_dungeon(newlevel))
 		newlevel->dlevel = dunlevs_in_dungeon(newlevel);
@@ -1183,7 +1184,7 @@ boolean at_stairs, falling, portal;
 	u.uinwater = 0;
 	u.usubwater = 0;
 	u.uundetected = 0;	/* not hidden, even if means are available */
-	keepdogs(FALSE);
+	if(!Is_nowhere(newlevel)) keepdogs(FALSE);
 	if (u.uswallow)				/* idem */
 		u.uswldtim = u.uswallow = 0;
 	recalc_mapseen(); /* recalculate map overview before we leave the level */
@@ -1666,6 +1667,7 @@ int portal_flag;
 const char *pre_msg, *post_msg;
 {
 	int typmask = 0100;		/* non-zero triggers `deferred_goto' */
+	if(Is_nowhere(&u.uz) && !flags.phasing) return;
 
 	/* destination flags (`goto_level' args) */
 	if (at_stairs)	 typmask |= 1;

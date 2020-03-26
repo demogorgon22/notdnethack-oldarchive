@@ -2180,6 +2180,9 @@ struct obj	*sobj;
 	} else if(In_void(&u.uz)){
 		pline("Whispers begin to form into an altar but suddenly blow away.");
 	break;
+	} else if(Is_nowhere(&u.uz)){
+		pline("Nothing happens.");
+	break;
 	} else if(Is_sanctum(&u.uz)){
 		pline("This place is much too unholy for the scroll to work.");
 	break;

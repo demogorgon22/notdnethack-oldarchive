@@ -178,6 +178,12 @@ struct mask_properties {
 	struct skills mask_skills[P_NUM_SKILLS];
 };
 
+struct old_lev{
+	struct d_level uz;
+	xchar ux;
+	xchar uy;	
+};
+
 /*** Unified structure specifying race information ***/
 
 struct Race {
@@ -296,6 +302,9 @@ struct you {
 
 	int	 uhunger;	/* refd only in eat.c and shk.c */
 	int	 uhungermax;/*  */
+
+	struct old_lev old_lev; /*used for etheraloid phasing in/out*/
+	
 #define YouHunger	(Race_if(PM_INCANTIFIER) ? u.uen : u.uhunger)
 #define DEFAULT_HMAX	2000
 	unsigned uhs;		/* hunger state - see eat.c */
@@ -374,6 +383,8 @@ struct you {
 #define MATTK_ARRW 28
 #define MATTK_TAKE_HOST 29
 #define MATTK_LEAVE_HOST 30
+#define MATTK_PHASE_OUT 31
+#define MATTK_PHASE_IN 32
 	struct attribs	macurr,		/* for monster attribs */
 			mamax;		/* for monster attribs */
 	int ulycn;			/* lycanthrope type */

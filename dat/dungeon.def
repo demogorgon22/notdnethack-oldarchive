@@ -22,6 +22,7 @@ BRANCH:		"The Ice Caves" @ (4, 0) portal
 BRANCH:		"The Dismal Swamp" @ (4, 0) portal
 BRANCH:		"The Black Forest" @ (4, 0) portal
 BRANCH:		"The Archipelago" @ (4, 0) portal
+BRANCH:		"Nowhere" @ (4, 0) portal
 LEVEL:		"oracle" "O" @ (5, 5)
 CHAINBRANCH:	"Vlad's Tower" "oracle" + (0,0) no_up up
 LEVALIGN:	neutral
@@ -106,6 +107,13 @@ LEVALIGN:		chaotic
 LEVEL:		"fakewiz1" "E" @ (-12,9)
 LEVEL:		"fakewiz2" "F" @ (-12,9)
 LEVEL:		"fakewiz3" "G" @ (-12,9)
+
+
+##
+DUNGEON:        "Nowhere" "none" (1, 0)
+ALIGNMENT:      neutral
+DESCRIPTION:    mazelike
+LEVEL:          "nowhere" "none" @ (1, 0)
 
 #
 #	The Mines of the Gnomes of Zurich.

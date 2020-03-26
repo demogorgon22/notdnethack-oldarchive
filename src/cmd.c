@@ -724,6 +724,24 @@ domonability()
 			MENU_UNSELECTED);
 		atleastone = TRUE;
 	}
+	if(Race_if(PM_ETHEREALOID) && !Is_nowhere(&u.uz)){
+		Sprintf(buf, "Phase out");
+		any.a_int = MATTK_PHASE_OUT;	/* must be non-zero */
+		incntlet = 'o';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
+	if(Race_if(PM_ETHEREALOID) && Is_nowhere(&u.uz)){
+		Sprintf(buf, "Phase in");
+		any.a_int = MATTK_PHASE_IN;	/* must be non-zero */
+		incntlet = 'i';
+		add_menu(tmpwin, NO_GLYPH, &any,
+			incntlet, 0, ATR_NONE, buf,
+			MENU_UNSELECTED);
+		atleastone = TRUE;
+	}
 	if(u.umonnum == PM_GREMLIN){
 		Sprintf(buf, "Replicate");
 		any.a_int = MATTK_REPL;	/* must be non-zero */
@@ -936,6 +954,20 @@ domonability()
 	case MATTK_LEAVE_HOST:
 		rehumanize();
 		return 1;
+	break;
+	case MATTK_PHASE_OUT:
+		You("phase out of reality.");
+		flags.phasing = FALSE;
+		u.old_lev.uz = u.uz;
+		u.old_lev.ux = u.ux;
+		u.old_lev.uy = u.uy;
+		goto_level(&nowhere_level, FALSE, FALSE, FALSE);	
+	break;
+	case MATTK_PHASE_IN:
+		You("phase back into reality.");
+		flags.phasing = TRUE;
+		goto_level(&u.old_lev.uz, FALSE, FALSE, FALSE);	
+		flags.phasing = FALSE;
 	break;
 	}
 	return 0;

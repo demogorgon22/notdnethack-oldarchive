@@ -5189,7 +5189,8 @@ register int	mmflags;
 	boolean randmonst = !ptr;
 	unsigned gpflags = (mmflags & MM_IGNOREWATER) ? MM_IGNOREWATER : 0;
 	boolean unsethouse = FALSE;
-	
+
+	if(Is_nowhere(&u.uz)) return 0;	
 	if(Race_if(PM_DROW) && in_mklev && Is_qstart(&u.uz) && 
 		(ptr == &mons[PM_SPROW] || ptr == &mons[PM_DRIDER] || ptr == &mons[PM_CAVE_LIZARD] || ptr == &mons[PM_LARGE_CAVE_LIZARD])
 	)

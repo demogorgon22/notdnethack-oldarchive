@@ -683,6 +683,8 @@ struct level_map {
 	{ "sanctum",	&sanctum_level },
 	
 	{ "sigil",	&sigil_level },
+	
+	{ "nowhere",	&nowhere_level },
 
 	{ "icetwn",	&icetown_level },
 	{ "iceboss",	&iceboss_level },
