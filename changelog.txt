@@ -214,6 +214,35 @@ Gnome changes
 
 Elf changes
 	Can ride ridable monsters without a saddle
+Etherealoid race
+	True neutral
+	Is large
+	Phases through walls
+	Resists Disintegration
+	Resists Stoning
+	Has unchanging
+	Passive hp regeneration is blocked
+	Unbreathing
+	Unliving
+	Does not hunger
+	Cannot eat
+	Cannot see normally
+	Cannot wear armor
+	Flys
+	Gains +1 ac per experience level
+	Has xray vision radius = 3 + xplvl/7 floored
+	Has an addtional 1d6 shadow engulf attack
+	Can #monster to phase out/phase in
+		phasing out takes you to "the nowhere"
+		effectively a special level with undiggable stone all over
+		monsters cannot spawn or go here
+		the terrain cannot be changed
+		amulet or planes block access
+		Cannot teleport or warp out of the nowhere, must phase back in
+		to leave
+	XP lvl is effectively gained at half the rate
+	50% of the time killing a monster will heal you for a 1/8 of the xp it
+	would have provided, or 5 hp if that is larger
 Symbiote race
 	Chaotic evil
 	Can slither under doors
