@@ -163,6 +163,9 @@ const struct innate {
 			 {	11, &(HCold_resistance), "the chill of the grave", "the warmth of life" },
 		     {	 21, &(HPolymorph_control), "in control", "out of control" },
 		     {	 0, 0, 0, 0 } },
+	
+	eth_abil[] = { {	1, &(HUnchanging), "", "" },
+		     {	 0, 0, 0, 0 } },
 
 	hlf_abil[] = { {	14, &(HFlying), "wings sprout from your back", "your wings shrivel and die" },
 		     {	 0, 0, 0, 0 } },
@@ -803,6 +806,7 @@ int oldlevel, newlevel;
 	case PM_INCANTIFIER:	rabil = inc_abil;	break;
 	case PM_VAMPIRE:		rabil = vam_abil;	break;
 	case PM_HALF_DRAGON:	rabil = hlf_abil;	break;
+	case PM_ETHEREALOID:	rabil = eth_abil;	break;
 	case PM_SALAMANDER:	rabil = sal_abil;	break;
 	case PM_SYMBIOTE:	rabil = sym_abil;	break;
 	case PM_YUKI_ONNA:		rabil = yki_abil;	break;

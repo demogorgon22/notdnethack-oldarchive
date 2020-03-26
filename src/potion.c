@@ -482,7 +482,8 @@ peffects(otmp)
 		    make_sick(0L, (char *) 0, TRUE, SICK_ALL);
 
 		    /* You feel refreshed */
-		    if(Race_if(PM_INCANTIFIER)) u.uen += 50 + rnd(50);
+		    if(Race_if(PM_ETHEREALOID)) healup(50+rnd(50),0,FALSE,FALSE); 
+		    else if(Race_if(PM_INCANTIFIER)) u.uen += 50 + rnd(50);
 		    else u.uhunger += 50 + rnd(50);
 			
 			if(u.uhunger > u.uhungermax) u.uhunger = u.uhungermax;
@@ -503,7 +504,7 @@ peffects(otmp)
 		} else {
 			if(!otmp->blessed && !otmp->cursed) {
 				pline("This tastes like water.");
-				if(!Race_if(PM_INCANTIFIER)) u.uhunger += rnd(10);
+				if(!(Race_if(PM_INCANTIFIER) || Race_if(PM_ETHEREALOID))) u.uhunger += rnd(10);
 				
 				if(u.uhunger > u.uhungermax) u.uhunger = u.uhungermax;
 		    
@@ -601,9 +602,9 @@ peffects(otmp)
 		    make_confused(itimeout_incr(HConfusion, d(3,8)), FALSE);
 		/* the whiskey makes us feel better */
 		if (!otmp->odiluted) healup(u.ulevel, 0, FALSE, FALSE);
-		if(!Race_if(PM_INCANTIFIER) && !uclockwork) u.uhunger += 130 + 10 * (2 + bcsign(otmp));
+		if(!Race_if(PM_INCANTIFIER) && !uclockwork && !Race_if(PM_ETHEREALOID)) u.uhunger += 130 + 10 * (2 + bcsign(otmp));
 		newuhs(FALSE);
-		if (!uclockwork){
+		if (!uclockwork && !Race_if(PM_ETHEREALOID)){
 			if(u.uhunger > u.uhungermax){
 				u.uhunger = u.uhungermax - d(2,20);
 				vomit();
@@ -675,7 +676,7 @@ peffects(otmp)
 			  otmp->odiluted ? "reconstituted " : "",
 			  fruitname(TRUE));
 		if (otmp->otyp == POT_FRUIT_JUICE) {
-		    if(!Race_if(PM_INCANTIFIER) && !uclockwork) u.uhunger += (otmp->odiluted ? 40 : 100) + 10 * (2 + bcsign(otmp));
+		    if(!Race_if(PM_INCANTIFIER) && !uclockwork && !Race_if(PM_ETHEREALOID)) u.uhunger += (otmp->odiluted ? 40 : 100) + 10 * (2 + bcsign(otmp));
             if(u.uhunger > u.uhungermax) u.uhunger = u.uhungermax;
 		    newuhs(FALSE);
 		    break;

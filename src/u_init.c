@@ -2835,6 +2835,10 @@ register struct trobj *trop;
 				    break;
 				}
 			}
+			if(Race_if(PM_ETHEREALOID) && objects[otyp].oc_class == ARMOR_CLASS){
+				trop++;
+				continue;	
+			}
 			obj = mksobj(otyp, TRUE, FALSE);
 			if(obj->otyp == POT_BLOOD) 
 				obj->corpsenm = PM_HUMAN;

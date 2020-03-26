@@ -47,7 +47,23 @@ Barb balance patch
 	Berserk
 		xlvl 6
 		Enemies have a 50% chance of fleeing and being stunned when hit in combat, but act as aggravate monster
-		
+Etherealoid race
+	Xray vision, phasing, unchanging
+	+xlvl AC
+	Cannot wear armor
+	Gains an engulf attack at some xlvl
+	Gain effective size as you level up?
+	Does not hunger
+	HP does not regenerate naturally, or from regeneration magic
+	Can #monster to phase out/phase in
+		phasing out takes you to "the nowhere"
+		effectively a special level with undiggable stone all over
+		monsters cannot spawn or go here
+		the terrain cannot be changed
+		amulet or planes block access
+		Cannot teleport or warp out of the nowhere
+	XP lvl is effectively gained at half the rate
+	50% of the time killing a monster will heal you for a fraction of the xp it would have provided
 	
 
 The village

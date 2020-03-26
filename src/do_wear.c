@@ -1536,7 +1536,8 @@ boolean noisy;
     }
 	
 	if(is_whirly(youracedata) || noncorporeal(youracedata)){
-		Your("body can't support clothing.");
+		if(noisy) Your("body can't support clothing.");
+		return 0;
 	}
 
     if (is_helmet(otmp)) {
@@ -2131,6 +2132,7 @@ find_ac()
 		uac -= (u.ulevel+1)/3;
 		uac -= (u.ulevel+2)/3;
 	} else if(Race_if(PM_HALF_DRAGON)) uac -= (u.ulevel)/3;
+	else if(Race_if(PM_ETHEREALOID)) uac -= u.ulevel;
 	if(u.specialSealsActive&SEAL_COSMOS) uac -= spiritDsize();
 	if(u.sealsActive&SEAL_ECHIDNA) uac -= max((ACURR(A_CON)-10)/2, 0);
 	if(u.specialSealsActive&SEAL_DAHLVER_NAR && !Upolyd) uac -=  min(u.ulevel/2,(u.uhpmax - u.uhp)/10);

@@ -2724,7 +2724,12 @@ doeat()		/* generic "eat" command funtion (see cmd.c) */
 	int incbalancevar = 5;
 	
 	boolean dont_start = FALSE;
-	
+
+
+	if(Race_if(PM_ETHEREALOID)){
+			pline("As an etherealoid, you are incapable of eating.");
+			return 0;
+	}	
 	if(uclockwork){
 		long uUpgrades = (u.clockworkUpgrades&(WOOD_STOVE|MAGIC_FURNACE|HELLFIRE_FURNACE|SCRAP_MAW));
 		if(!uUpgrades){

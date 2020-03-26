@@ -1374,7 +1374,7 @@ moveloop()
 						if(u.mh > u.mhmax) u.mh = u.mhmax;
 					}
 				} else if (u.uhp < u.uhpmax){
-					if((Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)) && !(u.ubarb & RAGE)){
+					if((Regeneration || (likes_lava(youracedata) && levl[u.ux][u.uy].typ == LAVAPOOL)) && !(u.ubarb & RAGE || Race_if(PM_ETHEREALOID))){
 						flags.botl = 1;
 						u.uhp++;
 					}
@@ -1403,7 +1403,7 @@ moveloop()
 					if(u.uhp < u.uhpmax / 3) u.uhp++;
 					if(u.uhp < u.uhpmax / 4) u.uhp++;
 				}
-				if(u.sealsActive&SEAL_BUER && !(u.ubarb & RAGE)){
+				if(u.sealsActive&SEAL_BUER && !(u.ubarb & RAGE || Race_if(PM_ETHEREALOID))){
 					int dsize = spiritDsize(), regenrate = dsize/5, remainderrate = dsize%5;
 					if(Upolyd && u.mh < u.mhmax){
 						if(!uwep || uwep->oartifact != ART_ATMA_WEAPON || !uwep->lamplit || Drain_resistance){
