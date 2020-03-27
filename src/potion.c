@@ -1060,7 +1060,7 @@ as_extra_healing:
 				  "The %s liquid stirs memories of home." :
 				  "The %s blood tastes delicious.",
 				  otmp->odiluted ? "watery" : "thick");
-				if (!otmp->cursed && !Race_if(PM_INCANTIFIER) && !uclockwork)
+				if (!otmp->cursed && !Race_if(PM_INCANTIFIER) && !uclockwork && !Race_if(PM_ETHEREALOID))
 					lesshungry((otmp->odiluted ? 1 : 2) *
 						(otmp->blessed ? mons[(otmp)->corpsenm].cnutrit*1.5/5 : mons[(otmp)->corpsenm].cnutrit/5 ));
 			}
@@ -1069,7 +1069,7 @@ as_extra_healing:
 		    violated_vegetarian();
 			u.uconduct.unvegan++;
 		    pline("Ugh.  That was vile.");
-		    if(!uclockwork && !Race_if(PM_INCANTIFIER)){
+		    if(!uclockwork && !Race_if(PM_INCANTIFIER) && !Race_if(PM_ETHEREALOID)){
 				make_vomiting(Vomiting+d(10,8), TRUE);
 				if (!otmp->cursed)
 				lesshungry((otmp->odiluted ? 1 : 2) *
