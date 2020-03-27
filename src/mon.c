@@ -3495,10 +3495,13 @@ boolean was_swallowed;			/* digestion */
 			}
 		}
 		if(!mtmp){
+			struct monst **mmtmp;
+			mmtmp = &migrating_mons;
 			for (mtmp = migrating_mons; mtmp; mtmp = mtmp2){
 				mtmp2 = mtmp->nmon;
 				if(mtmp->data == &mons[PM_HUNGRY_DEAD]){
 					if(mon->mvar1 == (long)mtmp->m_id){
+						*mmtmp = mtmp->nmon;
 						mon_arrive(mtmp, TRUE);
 						if(mtmp->mhp > 0){
 							mtmp->mhp = 0;
@@ -3507,6 +3510,7 @@ boolean was_swallowed;			/* digestion */
 						break;
 					}
 				}
+				mmtmp = &(mtmp->nmon);
 			}
 		}
 	}
