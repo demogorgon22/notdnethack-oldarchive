@@ -956,18 +956,24 @@ domonability()
 		return 1;
 	break;
 	case MATTK_PHASE_OUT:
+		if(In_endgame(&u.uz) || u.uhave.amulet){
+			pline("A mysterious force prevents you from phasing out.");
+			return 0;
+		}
 		You("phase out of reality.");
 		flags.phasing = FALSE;
 		u.old_lev.uz = u.uz;
 		u.old_lev.ux = u.ux;
 		u.old_lev.uy = u.uy;
 		goto_level(&nowhere_level, FALSE, FALSE, FALSE);	
+		return 0;
 	break;
 	case MATTK_PHASE_IN:
 		You("phase back into reality.");
 		flags.phasing = TRUE;
 		goto_level(&u.old_lev.uz, FALSE, FALSE, FALSE);	
 		flags.phasing = FALSE;
+		return 0;
 	break;
 	}
 	return 0;
