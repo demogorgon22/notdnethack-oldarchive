@@ -4689,7 +4689,7 @@ cleanup:
 		newexplevel();		/* will decide if you go up */
 	} else {
 		healup(max(tmp/8,5),0,FALSE,FALSE);
-		if(sensemon(mtmp) || canseemon(mtmp)) You("absorb some of %s!",The(mon_nam(mtmp)));
+		if(sensemon(mtmp) || canseemon(mtmp)) You("absorb some of %s!",mon_nam(mtmp));
 	}
 
 	/* adjust alignment points */
