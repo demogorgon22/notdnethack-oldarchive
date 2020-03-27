@@ -3767,6 +3767,7 @@ gethungry()	/* as time goes by - called by moveloop() and domove() */
 {
 	int hungermod = 1;
 	if (u.uinvulnerable || u.spiritPColdowns[PWR_PHASE_STEP] >= moves+20) return;	/* you don't feel hungrier */
+	if (Race_if(PM_ETHEREALOID)) return;
 	
 	if(u.usleep) hungermod *= 10; /* slow metabolic rate while asleep */
 	/* Convicts can last twice as long at hungry and below */
