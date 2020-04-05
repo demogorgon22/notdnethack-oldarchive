@@ -896,8 +896,8 @@ const struct Race races[] = {
 	{      3,      3,  3,  3,  3,  3 },//add lava swimming and fire attack
 	{ STR19(19),  18, 18, 18, 18, 15 },//and more
 	/* Init   Lower  Higher */
-	{  2, 0,  1, 0,  0, 1 },	/* Hit points */
-	{  0, 0,  0, 0,  0, 0 },	/* Energy */
+	{  2, 0,  2, 0,  0, 2 },	/* Hit points */
+	{  1, 0,  1, 0,  1, 0 },	/* Energy */
 	NORMALNIGHTVIS
 },
 {	"symbiote", "symbiotic", "symbioship", "Sym",
@@ -910,7 +910,7 @@ const struct Race races[] = {
 	{ 12,  25, 25, 25, 12, 15 },//and more
 	/* Init   Lower  Higher */
 	{  2, 0,  1, 0,  0, 1 },	/* Hit points */
-	{  0, 0,  0, 0,  0, 0 },	/* Energy */
+	{  1, 0,  1, 0,  1, 0 },	/* Energy */
 	NORMALNIGHTVIS
 },
 {	"vampire", "vampiric", "vampirehood", "Vam",
