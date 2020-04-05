@@ -966,7 +966,7 @@ domonability()
 		u.old_lev.ux = u.ux;
 		u.old_lev.uy = u.uy;
 		goto_level(&nowhere_level, FALSE, FALSE, FALSE);	
-		return 0;
+		return 1;
 	break;
 	case MATTK_PHASE_IN:
 		You("phase back into reality.");

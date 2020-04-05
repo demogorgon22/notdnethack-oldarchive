@@ -3848,7 +3848,8 @@ void
 morehungry(num)	/* called after vomiting and after performing feats of magic */
 register int num;
 {
-	if(Race_if(PM_INCANTIFIER)) u.uen -= num;
+	if(Race_if(PM_ETHEREALOID)) return;
+	else if(Race_if(PM_INCANTIFIER)) u.uen -= num;
 	else u.uhunger -= num;
 	newuhs(TRUE);
 }
