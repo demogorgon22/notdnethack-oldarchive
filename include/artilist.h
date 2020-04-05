@@ -556,7 +556,7 @@ A("Spineseeker",	SHORT_SWORD, /*Needs encyc entry*/
 	SPFX_RESTR,0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
 	PHYS(1,6),	NO_DFNS,	NO_CARY,
-	0, A_CHAOTIC, NON_PM, NON_PM, 1200L,
+	INVIS, A_CHAOTIC, PM_ROGUE, NON_PM, 1200L,
 	SPFX2_STLTH,0,0),
 
 A("Quicksilver",	FLAIL, /*Needs encyc entry*/
