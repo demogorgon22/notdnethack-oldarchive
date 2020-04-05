@@ -768,7 +768,7 @@ register const char *s;
 					if(levl[x][y].typ == TREE){
 						if(rn2(5)) levl[x][y].typ = POOL;
 					}
-					if(levl[x][y].typ == ROOM){
+					if(levl[x][y].typ == SOIL){
 						if(!rn2(2)) levl[x][y].typ = GRASS;
 					}
 				}
@@ -868,6 +868,7 @@ register const char *s;
 						}
 						if(levl[x][y].typ == ROOM){
 							if(!rn2(2)) levl[x][y].typ = GRASS;
+							else levl[x][y].typ = SOIL;
 						}
 					}
 				}

@@ -7,7 +7,7 @@
 #	specific levels as defined below.
 #
 MAZE: "dsfill" , ' '
-INIT_MAP: '.' , 'T' , true , true , random , false
+INIT_MAP: 'e' , 'T' , true , true , random , false
 NOMAP
 #
 STAIR: random, up
@@ -47,22 +47,22 @@ MAP
 TT---------TTT---TTTTT---TTTTTT---TTTTTT---TTTT---TTTT---TTTT---TTTTTT------
 TT|.......|----.-------.--------.--------.------.------.------.-------|....|
 TT|........................................................................|
-TT|.......|----.-------GG-------.--------.------.------.------.-------|....|
-TT---------TTT---TTTTTTGGGTTTTT---TTTTTT---TTTT---TTTT---TTTT---TTTTTT------
-TTTTTTTTTTTTTTTTTTTTGGGGGGGGTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTGGGTTTTTTT
-TTTTTTTTTTTTTTTTTTGGGGGGGGGGGGGTTTTTTTT...TT.........TTTTTTTTTTTTGGGGGG...TT
-TTTTTTTTTTTTTTTTGGGGGGGGGGGGGGGG.TTTTTT..............TTTTTTTTTTTGGGGGGGGG..T
-TTTTTTTTTTTTTTGGTGGGGGGGGGGGGGGGG.........TT...................GGGGGGGGGGGGT
-TTTTTTTTTTTGGGGGGTGTTTTTTTGGGGGGGG....TTTTTT.........TTTTTTTTTGGGGGGGGGGGGGG
-TTTTTTTGGGGGGGGGTTTTTTTTTTT..GGGGGTG...TTTTTTTTT+TTTTTTTTTTTGGGGGGGGGGGGGGGG
-TTGGGGGGGGGGGTTTTT.TTTTTTTTT...GGTGGGGGTTTTTTTTT.TTTTTTTTTGGTGGGGGGGGGGGGGGG
-GGGGGGGGGGGTTTT....TTTTTTTTTT....GGGGGGGGGGGTTTT.TTTTTGGGGGGGTGGGGGGGG....TT
-GGGGGGGGGGTTT...TTTTTTT..TTTTT.TTTGGGGGGGGGGGGGGGGGGGGGGGGGGGGTG..TTTTTT.TTT
-GGGGGGGGGTTT..TTTTTT......TTTT..TT.GGGGGGGGGGGGGGGGGGGGGGGGGG....TTTTT....TT
-TTGGGGTTTT...TTTTT..........TTT.TTT.GGGGGGGGGGGGGGGGGGGGGGTTTT.TTTTTTT..TTTT
-TTTTTT.....T.TTTT...............TTT.GGGGGGGGGGGGGGGGGGGGGTT....+.....T....TT
-TTTTTT.TTTTT...TT............TTTT....GGGGGGGGGGGGGGGGGGGGT.....T.....TT....T
-TTTTTTTTTTTTTT....TT..............TT....GGGGGGGGGGGGGGGGTTT....T.....T.....T
+TT|.......|----.-------ee-------.--------.------.------.------.-------|....|
+TT---------TTT---TTTTTTeeeTTTTT---TTTTTT---TTTT---TTTT---TTTT---TTTTTT------
+TTTTTTTTTTTTTTTTTTTTeeeeeeeeTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTeeeTTTTTTT
+TTTTTTTTTTTTTTTTTTeeeeeeeeeeeeeTTTTTTTTeeeTT.........TTTTTTTTTTTTeeeeeeeeeTT
+TTTTTTTTTTTTTTTTeeeeeeeeeeeeeeeeeTTTTTTeeeee.........TTTTTTTTTTTeeeeeeeeeeeT
+TTTTTTTTTTTTTTeeTeeeeeeeeeeeeeeeeeeeeeeeeeTT.........eeeeeeeeeeeeeeeeeeeeeeT
+TTTTTTTTTTTeeeeeeTeTTTTTTTeeeeeeeeeeeeTTTTTT.........TTTTTTTTTeeeeeeeeeeeeee
+TTTTTTTeeeeeeeeeTTTTTTTTTTTeeeeeeeTeeeeTTTTTTTTT+TTTTTTTTTTTeeeeeeeeeeeeeeee
+TTeeeeeeeeeeeTTTTTeTTTTTTTTTeeeeeTeeeeeTTTTTTTTTeTTTTTTTTTeeTeeeeeeeeeeeeeee
+eeeeeeeeeeeTTTTeeeeTTTTTTTTTTeeeeeeeeeeeeeeeTTTTeTTTTTeeeeeeeTeeeeeeeeeeeeTT
+eeeeeeeeeeTTTeeeTTTTTTTeeTTTTTeTTTeeeeeeeeeeeeeeeeeeeeeeeeeeeeTeeeTTTTTTeTTT
+eeeeeeeeeTTTeeTTTTTTeeeeeeTTTTeeTTeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeTTTTTeeeeTT
+TTeeeeTTTTeeeTTTTTeeeeeeeeeeTTTeTTTeeeeeeeeeeeeeeeeeeeeeeeTTTTeTTTTTTTeeTTTT
+TTTTTTeeeeeTeTTTTeeeeeeeeeeeeeeeTTTeeeeeeeeeeeeeeeeeeeeeeTTeeee+.....TeeeeTT
+TTTTTTeTTTTTeeeTTeeeeeeeeeeeeTTTTeee.eeeeeeeeeeeeeeeeeeeeTeeeeeT.....TTeeeeT
+TTTTTTTTTTTTTTeeeeTTeeeeeeeeeeeeeeTTeeeeeeeeeeeeeeeeeeeeTTTeeeeT.....TeeeeeT
 TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 ENDMAP
 
