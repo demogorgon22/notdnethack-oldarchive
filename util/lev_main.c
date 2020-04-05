@@ -526,6 +526,7 @@ char c;
 			      return(GRASS);
 		  case 'G'  : 
 			      return(GRASS);
+		  case 's'  : return(SAND);
 		  case 'W'  : return(WATER);
 		  case 'T'	: return (TREE);
 		  case 'F'	: return (IRONBARS);	/* Fe = iron */

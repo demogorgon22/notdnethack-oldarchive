@@ -1616,6 +1616,7 @@ register const char *str;
 	    strcmp(str, "molten lava") &&
 	    strcmp(str, "iron bars") &&
 	    strcmp(str, "grass") &&
+	    strcmp(str, "sand") &&
 	    strcmp(str, "ice")) {
 		if (index(vowels, *str) &&
 		    strncmp(str, "one-", 4) &&
@@ -3557,6 +3558,12 @@ srch:
 		if (!BSTRCMP(bp, p-5, "grass")) {  /* also matches "wild grass" */
 			levl[u.ux][u.uy].typ = GRASS;
 			pline("A patch of grass.");
+			newsym(u.ux, u.uy);
+			return &zeroobj;
+		}
+		if (!BSTRCMP(bp, p-4, "sand")) {
+			levl[u.ux][u.uy].typ = SAND;
+			pline("A patch of sand.");
 			newsym(u.ux, u.uy);
 			return &zeroobj;
 		}

@@ -66,6 +66,7 @@ enum {
     ALTAR,
     ICE,
     GRASS,
+    SAND,
     DRAWBRIDGE_DOWN,
     AIR,
     CLOUD,
@@ -101,6 +102,7 @@ enum {
 #define IS_DRAWBRIDGE(typ) ((typ) == DRAWBRIDGE_UP || (typ) == DRAWBRIDGE_DOWN)
 #define IS_FURNITURE(typ) ((typ) >= STAIRS && (typ) <= ALTAR)
 #define IS_GRASS(typ)	((typ) == GRASS)
+#define IS_SAND(typ)	((typ) == SAND)
 #define IS_AIR(typ)	((typ) == AIR || (typ) == CLOUD)
 #define IS_SOFT(typ)	((typ) == AIR || (typ) == CLOUD || IS_POOL(typ))
 #define IS_LAVABLE(typ)	((!IS_ALTAR(typ) && typ != STAIRS && typ != LADDER))
@@ -151,6 +153,8 @@ enum {
     S_pool,
     S_ice,
     S_grass,
+    S_litsand,
+    S_drksand,
     S_lava,
     S_vodbridge,
     S_hodbridge,

@@ -251,6 +251,8 @@ unsigned *ospecial;
 				if(offset >= S_litroom && offset <= S_dnladder){
 					color = offset == S_litroom ? CLR_GRAY : CLR_BLACK;
 				}
+				if(offset == S_litsand) color = CLR_WHITE;
+				if(offset == S_drksand) color = CLR_BLACK;
 				if(offset >= S_vwall && offset <= S_trwall){
 					color = CLR_ORANGE;
 				}

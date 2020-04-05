@@ -232,6 +232,7 @@ bad_location(x, y, lx, ly, hx, hy)
 		   (Is_waterlevel(&u.uz) && levl[x][y].typ == MOAT) ||
 	       levl[x][y].typ == ROOM || 
 	       levl[x][y].typ == GRASS || 
+	       levl[x][y].typ == SAND || 
 	       levl[x][y].typ == AIR)));
 }
 
@@ -875,12 +876,14 @@ register const char *s;
 					for(y = 0; y<ROWNO; y++){
 						if(levl[x][y].typ == ROOM && rn2(5) && !m_at(x,y)){
 							levl[x][y].typ = MOAT;
+						} else if(levl[x][y].typ == ROOM){
+							levl[x][y].typ = SAND;
 						}
 						if(levl[x][y].typ == CORR){
 							levl[x][y].typ = MOAT;
 						}
 						if(levl[x][y].typ == TREE){
-							levl[x][y].typ = ROOM;
+							levl[x][y].typ = SAND;
 						}
 					}
 				}
@@ -1180,12 +1183,13 @@ mazexy(cc)	/* find random point in generated corridors,
 	    cc->x = 3 + 2*rn2((x_maze_max>>1) - 1);
 	    cc->y = 3 + 2*rn2((y_maze_max>>1) - 1);
 	    cpt++;
-	} while (cpt < 100 && levl[cc->x][cc->y].typ !=
+	} while (cpt < 100 && (levl[cc->x][cc->y].typ !=
 #ifdef WALLIFIED_MAZE
 		 ROOM
 #else
 		 CORR
 #endif
+		 && levl[cc->x][cc->y].typ != SAND)
 		);
 	if (cpt >= 100) {
 		register int x, y;
@@ -1200,6 +1204,7 @@ mazexy(cc)	/* find random point in generated corridors,
 #else
 			    CORR
 #endif
+		 || levl[cc->x][cc->y].typ == SAND
 			   ) return;
 		    }
 		panic("mazexy: can't find a place!");

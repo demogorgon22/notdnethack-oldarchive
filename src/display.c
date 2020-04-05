@@ -183,6 +183,8 @@ magic_map_background(x, y, show)
 	    glyph = cmap_to_glyph(S_drkroom);
 	else if (lev->typ == CORR && glyph == cmap_to_glyph(S_litcorr))
 	    glyph = cmap_to_glyph(S_corr);
+	else if (lev->typ == SAND && glyph == cmap_to_glyph(S_litsand))
+	    glyph = cmap_to_glyph(S_drksand);
     }
     if (level.flags.hero_memory)
 	lev->glyph = glyph;
@@ -309,6 +311,9 @@ unmap_object(x, y)
 	if (!lev->waslit && lev->glyph == cmap_to_glyph(S_litroom) &&
 							    lev->typ == ROOM)
 	    lev->glyph = cmap_to_glyph(S_drkroom);
+	else if (!lev->waslit && lev->glyph == cmap_to_glyph(S_litsand) &&
+							    lev->typ == SAND)
+	    lev->glyph = cmap_to_glyph(S_drksand);
     } else
 	levl[x][y].glyph = cmap_to_glyph(S_stone);	/* default val */
 }
@@ -625,6 +630,9 @@ feel_location(x, y)
 	if (lev->typ == ROOM &&
 		    lev->glyph == cmap_to_glyph(S_litroom) && !lev->waslit)
 	    show_glyph(x,y, lev->glyph = cmap_to_glyph(S_drkroom));
+	else if (lev->typ == SAND &&
+		    lev->glyph == cmap_to_glyph(S_litsand) && !lev->waslit)
+	    show_glyph(x,y, lev->glyph = cmap_to_glyph(S_drksand));
 	else if (lev->typ == CORR &&
 		    lev->glyph == cmap_to_glyph(S_litcorr) && !lev->waslit)
 	    show_glyph(x,y, lev->glyph = cmap_to_glyph(S_corr));
@@ -686,6 +694,9 @@ echo_location(x, y)
 		if (lev->typ == ROOM &&
 				lev->glyph == cmap_to_glyph(S_litroom) && !lev->waslit)
 			show_glyph(x,y, lev->glyph = cmap_to_glyph(S_drkroom));
+		else if (lev->typ == SAND &&
+				lev->glyph == cmap_to_glyph(S_litsand) && !lev->waslit)
+			show_glyph(x,y, lev->glyph = cmap_to_glyph(S_drksand));
 		else if (lev->typ == CORR &&
 				lev->glyph == cmap_to_glyph(S_litcorr) && !lev->waslit)
 			show_glyph(x,y, lev->glyph = cmap_to_glyph(S_corr));
@@ -842,6 +853,8 @@ newsym(x,y)
 	else if (!lev->waslit) {
 	    if (lev->glyph == cmap_to_glyph(S_litcorr) && lev->typ == CORR)
 		show_glyph(x, y, lev->glyph = cmap_to_glyph(S_corr));
+	    else if (lev->glyph == cmap_to_glyph(S_litsand) && lev->typ == SAND)
+		show_glyph(x, y, lev->glyph = cmap_to_glyph(S_drksand));
 	    else if (lev->glyph == cmap_to_glyph(S_litroom) && lev->typ == ROOM)
 		show_glyph(x, y, lev->glyph = cmap_to_glyph(S_drkroom));
 	    else
@@ -1711,6 +1724,9 @@ back_to_glyph(x,y)
 	case LAVAPOOL:		idx = S_lava;	  break;
 	case ICE:		idx = S_ice;      break;
 	case GRASS:		idx = S_grass;    break;
+	case SAND:
+	    idx = (!cansee(x,y) && !ptr->waslit) ? S_drksand : S_litsand;
+	    break;
 	case AIR:		idx = S_air;	  break;
 	case CLOUD:		idx = S_cloud;	  break;
 	case WATER:		idx = S_water;	  break;
@@ -1825,7 +1841,7 @@ static const char *type_names[MAX_TYPE] = {
 	"MOAT",		"WATER",	"DRAWBRIDGE_UP","LAVAPOOL",
 	"DEADTREE", "DOOR",		"CORR",		"ROOM",		"STAIRS",
 	"LADDER",	"FOUNTAIN",	"THRONE",	"SINK",
-	"ALTAR",	"ICE",		"GRASS",	"DRAWBRIDGE_DOWN","AIR",
+	"ALTAR",	"ICE",		"GRASS",	"SAND",	"DRAWBRIDGE_DOWN","AIR",
 	"CLOUD"
 };
 

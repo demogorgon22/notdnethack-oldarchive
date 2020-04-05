@@ -1218,8 +1218,9 @@ find_branch_room(mp)
 	    if (!somexy(croom, mp))
 		impossible("Can't place branch!");
 	} while(occupied(mp->x, mp->y) ||
-	    (levl[mp->x][mp->y].typ != CORR && levl[mp->x][mp->y].typ != ROOM && 
-	     (In_icecaves(&u.uz)?levl[mp->x][mp->y].typ != ICE:TRUE)));
+	    (levl[mp->x][mp->y].typ != CORR && levl[mp->x][mp->y].typ != ROOM &&
+	    levl[mp->x][mp->y].typ != SAND && 
+	    levl[mp->x][mp->y].typ != ICE));
     }
     return croom;
 }

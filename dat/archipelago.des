@@ -7,7 +7,7 @@
 #	specific levels as defined below.
 #
 MAZE: "arcfill" , ' '
-INIT_MAP: '.' , '}' , true , false , lit , false
+INIT_MAP: 's' , '}' , true , false , lit , false
 NOMAP
 #
 STAIR: random, up
