@@ -3022,6 +3022,8 @@ char *buf;
 	    dfeature = "pool of water";
 	else if (IS_GRASS(ltyp))
 	    cmap = S_grass;				/* "grass" */
+	else if (IS_SOIL(ltyp))
+	    cmap = S_litsoil;				/* "soil" */
 	else if (IS_SAND(ltyp))
 	    cmap = S_litsand;				/* "sand" */
 #ifdef SINKS

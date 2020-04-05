@@ -1218,9 +1218,11 @@ find_branch_room(mp)
 	    if (!somexy(croom, mp))
 		impossible("Can't place branch!");
 	} while(occupied(mp->x, mp->y) ||
-	    (levl[mp->x][mp->y].typ != CORR && levl[mp->x][mp->y].typ != ROOM &&
-	    levl[mp->x][mp->y].typ != SAND && 
-	    levl[mp->x][mp->y].typ != ICE));
+	    (levl[mp->x][mp->y].typ != CORR && levl[mp->x][mp->y].typ != ROOM
+	    && levl[mp->x][mp->y].typ != SAND 
+	    && levl[mp->x][mp->y].typ != SOIL
+	    && levl[mp->x][mp->y].typ != GRASS
+	    && levl[mp->x][mp->y].typ != ICE));
     }
     return croom;
 }

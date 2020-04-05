@@ -2509,10 +2509,12 @@ doengrave()
 				((otmp->otyp != ATHAME && !spec_ability3(otmp, SPFX3_ENGRV)) || otmp->cursed)) {
 				if(levl[u.ux][u.uy].typ == GRASS 
 				|| levl[u.ux][u.uy].typ == SAND
+				|| levl[u.ux][u.uy].typ == SOIL
 				) multi = -(len/2);
 				else multi = -len;
 				if(otmp->otyp == CRYSTAL_SWORD  
 				|| levl[u.ux][u.uy].typ == GRASS
+				|| levl[u.ux][u.uy].typ == SOIL
 				|| levl[u.ux][u.uy].typ == SAND) maxelen = len;
 				else maxelen = ((otmp->spe + 3) * 2) + 1;
 				/* -2 = 3, -1 = 5, 0 = 7, +1 = 9, +2 = 11
@@ -2523,6 +2525,7 @@ doengrave()
 				 */
 				if(otmp->otyp != CRYSTAL_SWORD 
 				&& levl[u.ux][u.uy].typ != GRASS
+				&& levl[u.ux][u.uy].typ != SOIL
 				&& levl[u.ux][u.uy].typ != SAND){
 					Your("%s dull.", aobjnam(otmp,	"get"));
 					if (otmp->unpaid) {
@@ -2882,9 +2885,14 @@ doward()
 		    case WAN_SLEEP:
 		    case WAN_DEATH:
 			if (!Blind) {
-			   Sprintf(post_engr_text,
-				  	"The bugs on the %s stop moving!",
-				   surface(u.ux, u.uy));
+				if(levl[u.ux][u.uy].typ == GRASS && otmp->otyp == WAN_DEATH){
+					Sprintf(post_engr_text, "The grass withers and dies!");
+					levl[u.ux][u.uy].typ = SOIL;
+				} else {
+			   		Sprintf(post_engr_text,
+				  		"The bugs on the %s stop moving!",
+					surface(u.ux, u.uy));
+				}
 			}
 			break;
 
@@ -2945,6 +2953,8 @@ doward()
 			Strcpy(post_engr_text,
 				Blind ?	"You feel the wand heat up." :
 					"Flames fly from the wand.");
+			if(levl[u.ux][u.uy].typ == GRASS)
+				levl[u.ux][u.uy].typ = SOIL;
 			break;
 		    case WAN_LIGHTNING:
 			ptext = TRUE;
@@ -2993,6 +3003,8 @@ doward()
 						make_blinded((long)rnd(50),FALSE);
 						if (!Blind) Your1(vision_clears);
 					}
+					if(levl[u.ux][u.uy].typ == GRASS)
+						levl[u.ux][u.uy].typ = SOIL;
 					return 1;
 				} else {
 					ptext = TRUE;
@@ -3002,12 +3014,17 @@ doward()
 							"A brilliant beam shoots from the raygun.");
 						doblind = TRUE;
 					}
+					if(levl[u.ux][u.uy].typ == GRASS)
+						levl[u.ux][u.uy].typ = SOIL;
 				}
 			} else if(otmp->altmode == ZT_DEATH && otmp->ovar1 >= 10){
 				otmp->ovar1 -= 10;
 				ptext = TRUE;
 				if (!Blind) {
-				   Sprintf(post_engr_text,
+					if(levl[u.ux][u.uy].typ == GRASS){
+						 Sprintf(post_engr_text, "The grass withers and dies!");
+						 levl[u.ux][u.uy].typ = SOIL;
+				   	} else Sprintf(post_engr_text,
 					   "The bugs on the %s stop moving!",
 					   surface(u.ux, u.uy));
 				}
@@ -3018,6 +3035,8 @@ doward()
 				Strcpy(post_engr_text,
 					Blind ? "You feel the raygun heat up." :
 						"A heat ray shoots from the raygun.");
+				if(levl[u.ux][u.uy].typ == GRASS)
+					levl[u.ux][u.uy].typ = SOIL;
 			} else if(otmp->ovar1 >= 1){
 				otmp->ovar1 -= 1;
 				ptext = TRUE;

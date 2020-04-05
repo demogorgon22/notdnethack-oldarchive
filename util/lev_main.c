@@ -524,6 +524,7 @@ char c;
 		  case 'I'  : return(ICE);
 		  case ','  : 
 			      return(GRASS);
+		  case 'e'  : return(SOIL);
 		  case 'G'  : 
 			      return(GRASS);
 		  case 's'  : return(SAND);

@@ -232,6 +232,7 @@ bad_location(x, y, lx, ly, hx, hy)
 		   (Is_waterlevel(&u.uz) && levl[x][y].typ == MOAT) ||
 	       levl[x][y].typ == ROOM || 
 	       levl[x][y].typ == GRASS || 
+	       levl[x][y].typ == SOIL || 
 	       levl[x][y].typ == SAND || 
 	       levl[x][y].typ == AIR)));
 }
@@ -729,7 +730,7 @@ register const char *s;
 					if(levl[x][y].typ == TREE){
 						if(!rn2(2)) levl[x][y].typ = DEADTREE;
 					}
-					if(levl[x][y].typ == ROOM){
+					if(levl[x][y].typ == SOIL){
 						if(!rn2(10)) levl[x][y].typ = CLOUD;
 						if(!rn2(500)){
 							switch(rn2(6)){
@@ -813,7 +814,7 @@ register const char *s;
 							}
 						}
 					}
-					if(levl[x][y].typ == ROOM && !rn2(10) && !Is_leveetwn_level(&u.uz) && !Is_arcboss_level(&u.uz)){
+					if(levl[x][y].typ == SAND && !rn2(10) && !Is_leveetwn_level(&u.uz) && !Is_arcboss_level(&u.uz)){
 						levl[x][y].typ = TREE;
 					}
 				}
@@ -850,6 +851,7 @@ register const char *s;
 						}
 						if(levl[x][y].typ == ROOM){
 							if(!rn2(10)) levl[x][y].typ = CLOUD;
+							else levl[x][y].typ = SOIL;
 						}
 					}
 				}
@@ -1189,7 +1191,9 @@ mazexy(cc)	/* find random point in generated corridors,
 #else
 		 CORR
 #endif
-		 && levl[cc->x][cc->y].typ != SAND)
+		 && levl[cc->x][cc->y].typ != SAND
+		 && levl[cc->x][cc->y].typ != SOIL
+		 )
 		);
 	if (cpt >= 100) {
 		register int x, y;
@@ -1205,6 +1209,7 @@ mazexy(cc)	/* find random point in generated corridors,
 			    CORR
 #endif
 		 || levl[cc->x][cc->y].typ == SAND
+		 || levl[cc->x][cc->y].typ == SOIL
 			   ) return;
 		    }
 		panic("mazexy: can't find a place!");
