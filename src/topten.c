@@ -1121,6 +1121,7 @@ char * encodeachieveX(void)
 	if(achieve.max_punch) sprintf(eos(encoded_achievements), "%s,", "max_punch");
 	if(achieve.garnet_spear) sprintf(eos(encoded_achievements), "%s,", "garnet_spear");
 	if(achieve.half_overload) sprintf(eos(encoded_achievements), "%s,", "half_overload");
+	if(achieve.inked_up) sprintf(eos(encoded_achievements), "%s,", "inked_up");
 	
 	int len;
 	if ((len=strlen(encoded_achievements))) { encoded_achievements[len-1] = '\0'; }

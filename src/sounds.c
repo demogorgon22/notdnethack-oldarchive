@@ -786,7 +786,7 @@ boolean chatting;
 			verbalize("Dope body mods!");
 		int selection = dotatmenu("Trying to get a sick tat?");
 		long charge;
-		boolean made_purchase = FALSE;
+		int original_tats = u.utats;
 		switch(selection){
 			case TAT_HOURGLASS:
 				charge = (int) 5000 * discount;
@@ -861,7 +861,7 @@ boolean chatting;
 				You_feel("like breaking rocks.");
 				break;
 		}
-		//if(made_purchase) achieve.used_smith = 1;
+		if(original_tats != u.utats) achieve.inked_up = 1;
 		break;
 	}
 

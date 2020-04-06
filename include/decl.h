@@ -718,6 +718,7 @@ struct u_achieve {
         Bitfield(used_smith,1);        /* Used a blacksmith's service */
         Bitfield(garnet_spear,1);        /* Used a garnet tip spear*/
         Bitfield(made_potions,9);        /* Alchemy kit */
+        Bitfield(inked_up,1);        /* Fell tat */
 };
 
 E struct u_achieve achieve;
