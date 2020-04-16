@@ -672,6 +672,18 @@ register struct monst *mtmp;
 			if(keepattacking && u.ulevel ==30 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp && (!attacklimit || attacksmade++ < attacklimit) ) 
 				keepattacking = hitum(mtmp, weptmp-30, youmonst.data->mattk);
 		}
+		if(uarmh && uarmh->oartifact == ART_PIRATE_KING_S_CROWN && !uarmh->ovar1 && !DEADMONSTER(mtmp) && m_at(x, y) == mtmp) {
+			keepattacking = hmonas(mtmp, &mons[PM_PIRATE_MONKEY], tmp, weptmp, tchtmp);
+			struct monst *mon;
+			mon = makemon(&mons[rn2(2)?PM_PARROT:PM_PIRATE_MONKEY], u.ux, u.uy, MM_EDOG|MM_ADJACENTOK|MM_NOCOUNTBIRTH|NO_MINVENT);
+			if(mon){
+				pline("%s comes to your aid!",Amonnam(mon));
+				initedog(mon);
+				mon->mvanishes = 10;
+				newsym(mon->mx,mon->my);
+			}
+
+		}
 		static struct attack weaponattack[] = 
 		{
 			{AT_WEAP,AD_PHYS,0,0},

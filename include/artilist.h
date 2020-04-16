@@ -524,6 +524,13 @@ A("The Blade Dancer's Dagger",		DAGGER, /*Needs encyc entry*/
 	SING_SPEAR, A_NONE, NON_PM, NON_PM, 1500L, 
 	SPFX2_DANCER,SPFX3_NOCNT,0),
 
+A("Reaver",			SCIMITAR, /*Needs encyc entry*/
+	(SPFX_RESTR),0,
+	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
+	PHYS(5,8),	NO_DFNS,	NO_CARY,
+	THEFT_TYPE, A_CHAOTIC, NON_PM, NON_PM, 6000L,
+	SPFX2_STEAL, 0, 0 ),
+
 A("The Limb of the Black Tree",			CLUB, /*Needs encyc entry*/
 	(SPFX_RESTR|SPFX_ATTK|SPFX_DEFN),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
@@ -930,12 +937,12 @@ A("Clarent",			LONG_SWORD, /*quote (sorta)*/
 	LEADERSHIP,	A_LAWFUL, PM_KNIGHT, NON_PM, 4000L, 
 	SPFX2_DIG,0,0), 
 
-A("Reaver",			SCIMITAR, /*Needs encyc entry*/
+A("The Pirate King's Crown",		HELMET, /*Needs encyc entry*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL),0,
 	0 /*Monster Symbol*/, 0 /*MM*/, 0 /*MT*/, 0 /*MB*/, 0 /*MG*/, 0 /*MA*/, 0 /*MV*/,
-	PHYS(5,8),	NO_DFNS,	NO_CARY,
-	THEFT_TYPE, A_CHAOTIC, PM_PIRATE, NON_PM, 6000L,
-	SPFX2_STEAL, 0, 0 ),
+	NO_ATTK,	NO_DFNS,	NO_CARY,
+	THEFT_TOGGLE, A_CHAOTIC, PM_PIRATE, NON_PM, 6000L,
+	0, SPFX3_MANDALA, WSFX_PLUSSEV ),
 
 A("The Bow of Skadi",	BOW, /*Needs encyc entry*/
 	(SPFX_NOGEN|SPFX_RESTR|SPFX_INTEL|SPFX_ATTK), 0,

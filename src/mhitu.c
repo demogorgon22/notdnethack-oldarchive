@@ -2757,13 +2757,14 @@ dopois:
 ///////////////////////////////////////////////////////////////////////////////////////////
 	    case AD_SGLD:
 		hitmsg(mtmp, mattk);
-		if (youracedata->mlet == mdat->mlet || u.sealsActive&SEAL_ANDROMALIUS) break;
+		if (youracedata->mlet == mdat->mlet || u.sealsActive&SEAL_ANDROMALIUS
+				|| (uarmh && uarmh->oartifact == ART_PIRATE_KING_S_CROWN)) break;
 		if(!mtmp->mcan) stealgold(mtmp);
 		break;
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 	    case AD_SITM:
-			if(u.sealsActive&SEAL_ANDROMALIUS) break;
+			if(u.sealsActive&SEAL_ANDROMALIUS || (uarmh && uarmh->oartifact == ART_PIRATE_KING_S_CROWN)) break;
 			hitmsg(mtmp, mattk);
 			if (mtmp->mcan) break;
 			switch (steal(mtmp, buf, FALSE, TRUE)) {
@@ -2790,7 +2791,7 @@ dopois:
 			boolean engring = FALSE;
 			if (!engagering4) engagering4 = find_engagement_ring();
 			if ( (uleft && uleft->otyp == engagering4) || (uright && uright->otyp == engagering4)) engring = TRUE;
-			if(u.sealsActive&SEAL_ANDROMALIUS) break;
+			if(u.sealsActive&SEAL_ANDROMALIUS || (uarmh && uarmh->oartifact == ART_PIRATE_KING_S_CROWN)) break;
 //pline("test string!");
 			if(mdat == &mons[PM_DEMOGORGON]){
 				buf[0] = '\0';
@@ -4326,7 +4327,7 @@ gazemu(mtmp, mattk)	/* monster gazes at you */
 				boolean engring = FALSE;
 				if (!engagering5) engagering5 = find_engagement_ring();
 				if ( (uleft && uleft->otyp == engagering5) || (uright && uright->otyp == engagering5)) engring = TRUE;
-				if(u.sealsActive&SEAL_ANDROMALIUS) break;
+				if(u.sealsActive&SEAL_ANDROMALIUS || (uarmh && uarmh->oartifact == ART_PIRATE_KING_S_CROWN)) break;
 				if(distu(mtmp->mx,mtmp->my) > 1 ||
 					mtmp->mcan ||
 					Blind ||

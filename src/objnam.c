@@ -1228,6 +1228,10 @@ plus:
 			if(Is_dragon_mail(obj)) Sprintf(eos(bp), " (mail)");
 			if(Is_dragon_scales(obj)) Sprintf(eos(bp), " (scales)");
 		}
+        if(obj->oartifact == ART_PIRATE_KING_S_CROWN){
+            if(!obj->ovar1) Strcat(prefix, "glimmering ");
+       	    else Strcat(prefix, "dull ");
+        }
         if(obj->oartifact == ART_PRISMATIC_DRAGON_PLATE){
           if(GRAY_DRAGON_SCALE_MAIL == obj->otyp)
             Sprintf(eos(bp), " (gray)");
@@ -2352,6 +2356,7 @@ const char *oldstr;
 			   !BSTRCMPI(bp, p-7, "Annulus") || /* Ring */
 			   !BSTRCMPI(bp, p-5, "Aegis") || 	/* shield */
 			   !BSTRCMPI(bp, p-8, "Longinus") || 	/* spear */
+			   !BSTRCMPI(bp, p-7, "Proteus") || /* chest */
 			   !BSTRCMPI(bp, p-13, "Water Flowers") || 	/* boots */
 			   !BSTRCMPI(bp, p-14, "Dwarvish Lords") || /* axe */
 			   !BSTRCMPI(bp, p-12, "Elvish Lords") || /* mace */
@@ -3119,6 +3124,7 @@ boolean from_user;
 	if (strncmpi(bp, "ninja-to", 8)) /* not the "ninja" rank */
 	if (strncmpi(bp, "rogue gear-spirits", 18)) /* not the "rogue" monster */
 	if (strncmpi(bp, "master key", 10)) /* not the "master" rank */
+	if (strncmpi(bp, "pirate king's crown", 19)) /* not the "pirate" role */
 	if (strncmpi(bp, "scroll of stinking cloud", 24)) /* not the "stinking cloud" monster */
 	if (strncmpi(bp, "rod of lordly might", 19)) /* not the "lord" rank */
 	if (strncmpi(bp, "magenta", 7)) /* not the "mage" rank */

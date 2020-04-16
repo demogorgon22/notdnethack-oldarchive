@@ -728,8 +728,8 @@ gcrownu()
     already_exists = in_hand = FALSE;	/* lint suppression */
 	if( Pantheon_if(PM_PIRATE) || Role_if(PM_PIRATE) ){
 		u.uevent.uhand_of_elbereth = 2; /* Alignment of P King is treated as neutral */
-		in_hand = (uwep && uwep->oartifact == ART_REAVER);
-		already_exists = exist_artifact(SCIMITAR, artiname(ART_REAVER));
+		in_hand = FALSE;
+		already_exists = exist_artifact(HELMET, artiname(ART_PIRATE_KING_S_CROWN));
 		verbalize("Hurrah for our Pirate King!");
 		livelog_write_string("became the Pirate King");
 	} else if((Pantheon_if(PM_VALKYRIE) || Role_if(PM_VALKYRIE)) && flags.initgend){
@@ -1185,18 +1185,19 @@ gcrownu()
 			Your("%s rings with the sound of waves!", xname(obj));
 			obj->dknown = TRUE;
 		} else if (!already_exists) {
-			obj = mksobj(SCIMITAR, FALSE, FALSE);
-			obj = oname(obj, artiname(ART_REAVER));
+			int type = find_gcirclet();
+			if(type == HELM_OF_OPPOSITE_ALIGNMENT) type = HELMET;
+			obj = mksobj(type, FALSE, FALSE);
+			obj = oname(obj, artiname(ART_PIRATE_KING_S_CROWN));
 			obj->spe = 1;
-			at_your_feet("A sword");
+			at_your_feet("A crown");
 			dropy(obj);
 			u.ugifts++;
 		}
-		/* acquire Reaver's skill regardless of weapon or gift, 
-			although pirates are already good at using scimitars */
-		expert_weapon_skill(P_SCIMITAR);
-		if (obj && obj->oartifact == ART_REAVER)
-			discover_artifact(ART_REAVER);
+		/*Grant expert in the type of weapon you are wielding*/
+		if(uwep) expert_weapon_skill(objects[uwep->otyp].oc_skill);
+		if (obj && obj->oartifact == ART_PIRATE_KING_S_CROWN)
+			discover_artifact(ART_PIRATE_KING_S_CROWN);
 	} else if ((Pantheon_if(PM_VALKYRIE) || Role_if(PM_VALKYRIE)) && flags.initgend) {
 		if (class_gift != STRANGE_OBJECT) {
 			;		/* already got bonus above for some reason */
@@ -2818,6 +2819,7 @@ dopray()
 	    if (u.ualign.record <= 0) u.ualign.record = 1;
 	    u.ugangr[Align2gangr(u.ualign.type)] = 0;
 	    if(p_type < 2) p_type = 3;
+	    gcrownu();
 	}
     }
 #endif

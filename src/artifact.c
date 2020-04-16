@@ -160,6 +160,8 @@ hack_artifacts()
 	artilist[ART_MANTLE_OF_HEAVEN].otyp = find_cope();
 	artilist[ART_VESTMENT_OF_HELL].otyp = find_opera_cloak();
 	artilist[ART_CROWN_OF_THE_SAINT_KING].otyp = gcircletsa;
+	if(gcircletsa != HELM_OF_OPPOSITE_ALIGNMENT)
+		artilist[ART_PIRATE_KING_S_CROWN].otyp = gcircletsa;
 	artilist[ART_HELM_OF_THE_DARK_LORD].otyp = find_vhelm();
 	/* Remove flag from the non-matching first gift */
 	if(Pantheon_if(PM_BARBARIAN)){
@@ -3044,7 +3046,7 @@ int dieroll; /* needed for Magicbane and vorpal blades */
 	}
 	if(arti_steal(otmp)){
 	 if(youattack){
-	  if(mdef->minvent && (Role_if(PM_PIRATE) || !rn2(10) ) ){
+	  if(mdef->minvent && (Role_if(PM_PIRATE) || !rn2(2) ) ){
 		struct obj *otmp2;
 		long unwornmask;
 
@@ -4942,6 +4944,17 @@ arti_invoke(obj)
 			if(yn("Switch to autopickup mode")) obj->ovar1 = 1;
 		} else {
 			if(yn("Switch to interactive mode")) obj->ovar1 = 0;
+		}
+	break;
+	case THEFT_TOGGLE:
+		if(!obj->ovar1){
+			obj->ovar1 = 1;
+			Your("%s stops glimmering.",xname(obj));
+			You_feel("less greedy.");
+		} else {
+			obj->ovar1 = 0;
+			Your("%s glimmers.",xname(obj));
+			You_feel("greedy.");
 		}
 	break;
 	case SHADOW_FLARE:

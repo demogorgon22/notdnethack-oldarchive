@@ -345,6 +345,7 @@ struct artifact {
 #define AEGIS           (LAST_PROP+71)
 #define WATER           (LAST_PROP+72)
 #define SHATTER_TOGGLE           (LAST_PROP+73)
+#define THEFT_TOGGLE           (LAST_PROP+74)
 
 #define MASTERY_ARTIFACT_LEVEL 20
 

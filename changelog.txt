@@ -102,6 +102,21 @@ Barbarian changes
 		Enemies have a 50% chance of fleeing and being stunned when hit in combat, but act as aggravate monster
 Binder changes
 	Crowning grants expert with dagger
+Pirate changes
+	Replace crowning gift with the Pirate King's Crown
+		Can be enchanted to +7
+		When worn adds an extra theft attack (can be toggled on and
+		off with invoke)
+		Base item is either the circlet, or a helmet if the circlet is
+		opposite alignment.
+		Enchant is applied to charisma
+		Prevents theft
+		When glimmering, pirate monkeys and parrot 10 turn temp pets
+		will come to your aid.
+	Treasury of proteus now makes its contents weightless. Have fun
+	storing infinite artifacts and polyfodder.
+	Reaver is now a random artifact anybody can find and its theft chance
+	for non pirates has been upped.
 Anachrononaut changes
 	Ana quest enemies wont spawn with create monster.
 	Ana quest 
