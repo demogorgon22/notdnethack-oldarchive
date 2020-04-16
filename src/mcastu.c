@@ -2344,7 +2344,7 @@ ray:
 				if((cmon->mhp += d(n,8)) > cmon->mhpmax)
 					cmon->mhp = cmon->mhpmax;
 				if (canseemon(cmon))
-					pline("%s looks better.", Monnam(mtmp));
+					pline("%s looks better.", Monnam(cmon));
 			}
 		}
 		if(mtmp->mtame && ((Upolyd && u.mh<u.mhmax) || (!Upolyd && u.uhp < u.uhpmax)) && dist2(x,y,u.ux,u.uy) <= 3*3+1){
@@ -2381,7 +2381,7 @@ ray:
 				if((cmon->mhp += d(n,8)) > cmon->mhpmax)
 					cmon->mhp = cmon->mhpmax;
 				if (canseemon(cmon))
-					pline("%s looks better.", Monnam(mtmp));
+					pline("%s looks better.", Monnam(cmon));
 			}
 		}
 		if(mtmp->mtame && ((Upolyd && u.mh<u.mhmax) || (!Upolyd && u.uhp < u.uhpmax)) && dist2(x,y,u.ux,u.uy) <= 3*3+1){
@@ -3801,7 +3801,7 @@ int spellnum;
 				if((cmon->mhp += d(n,8)) > cmon->mhpmax)
 					cmon->mhp = cmon->mhpmax;
 				if (canseemon(cmon))
-					pline("%s looks better.", Monnam(mtmp));
+					pline("%s looks better.", Monnam(cmon));
 			}
 		}
 		if((yours || mattk->mtame) && ((Upolyd && u.mh<u.mhmax) || (!Upolyd && u.uhp < u.uhpmax)) && dist2(x,y,u.ux,u.uy) <= 3*3+1){
@@ -3839,7 +3839,7 @@ int spellnum;
 				if((cmon->mhp += d(n,8)) > cmon->mhpmax)
 					cmon->mhp = cmon->mhpmax;
 				if (canseemon(cmon))
-					pline("%s looks better.", Monnam(mtmp));
+					pline("%s looks better.", Monnam(cmon));
 			}
 		}
 		if(!yours && mattk->mtame && ((Upolyd && u.mh<u.mhmax) || (!Upolyd && u.uhp < u.uhpmax)) && dist2(x,y,u.ux,u.uy) <= 3*3+1){
