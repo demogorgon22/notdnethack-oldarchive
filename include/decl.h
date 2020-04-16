@@ -719,6 +719,7 @@ struct u_achieve {
         Bitfield(garnet_spear,1);        /* Used a garnet tip spear*/
         Bitfield(made_potions,9);        /* Alchemy kit */
         Bitfield(inked_up,1);        /* Fell tat */
+        Bitfield(new_races,1);        /* Ascended a new race */
 };
 
 E struct u_achieve achieve;

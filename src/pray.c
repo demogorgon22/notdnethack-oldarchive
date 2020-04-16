@@ -2208,6 +2208,8 @@ dosacrifice()
 				if(Is_sacris(&u.uz) || Is_ilsensine(&u.uz)){
 					if(uamul == otmp) Amulet_off();
 					u.uevent.ascended = 1;
+					if(Race_if(PM_SALAMANDER) || Race_if(PM_SYMBIOTE) || Race_if(PM_ETHEREALOID))
+						achieve.new_races = 1;
 					if(carried(otmp)) useup(otmp); /* well, it's gone now */
 					else useupf(otmp, 1L);
 					You("offer the Amulet of Yendor to %s...", a_gname());
@@ -2237,6 +2239,8 @@ dosacrifice()
 			/* The final Test.	Did you win? */
 			if(uamul == otmp) Amulet_off();
 			u.uevent.ascended = 1;
+			if(Race_if(PM_SALAMANDER) || Race_if(PM_SYMBIOTE) || Race_if(PM_ETHEREALOID))
+				achieve.new_races = 1;
 			if(carried(otmp)) useup(otmp); /* well, it's gone now */
 			else useupf(otmp, 1L);
 			You("offer the Amulet of Yendor to %s...", a_gname());
@@ -2257,6 +2261,8 @@ dosacrifice()
 #ifdef RECORD_ACHIEVE
 					achieve.ascended = 1;
 #endif
+					if(Race_if(PM_SALAMANDER) || Race_if(PM_SYMBIOTE) || Race_if(PM_ETHEREALOID))
+						achieve.new_races = 1;
 					pline("An invisible choir sings, and you are bathed in radiance...");
 					godvoice(altaralign, "Congratulations, mortal!");
 					display_nhwindow(WIN_MESSAGE, FALSE);
@@ -2293,6 +2299,8 @@ dosacrifice()
 #ifdef RECORD_ACHIEVE
 					achieve.ascended = 1;
 #endif
+					if(Race_if(PM_SALAMANDER) || Race_if(PM_SYMBIOTE) || Race_if(PM_ETHEREALOID))
+						achieve.new_races = 1;
 					pline("From the threshold of the Gate, you look back at the world");
 					pline("You don't know what awaits you in the Void,");
 					pline("but whatever happens, the way shall remain open behind you,");
