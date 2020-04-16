@@ -2827,7 +2827,6 @@ dopray()
 	    if (u.ualign.record <= 0) u.ualign.record = 1;
 	    u.ugangr[Align2gangr(u.ualign.type)] = 0;
 	    if(p_type < 2) p_type = 3;
-	    gcrownu();
 	}
     }
 #endif
