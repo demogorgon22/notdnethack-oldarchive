@@ -277,7 +277,7 @@ struct obj *otmp;
 	    if (mtmp->data != &mons[PM_PESTILENCE]) {
 		wake = FALSE;		/* wakeup() makes the target angry */
 		int heal = d(6, otyp == SPE_EXTRA_HEALING ? 8 : 4);
-		if(otmp->oclass = SPBOOK_CLASS) heal += (float)heal*((float)otmp->ovar1/(float)200);
+		if(otmp->oclass == SPBOOK_CLASS) heal += (float)heal*((float)otmp->ovar1/(float)200);
 		mtmp->mhp += heal;
 		if (mtmp->mhp > mtmp->mhpmax)
 		    mtmp->mhp = mtmp->mhpmax;
