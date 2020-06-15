@@ -404,7 +404,7 @@ typedef long glyph_t;
 #define DUMP_LOG        /* Dump game end information to a file */
 #ifndef DUMP_FN
 #define DUMP_FN "/dgldir/userdata/%n/notdnethack/dumplog/%t"      /* Fixed dumpfile name, if you want
-//#define DUMP_FN "/tmp/dmp/%t"      /* Fixed dumpfile name, if you want
+//#define DUMP_FN "/tmp/dmp/%t"       Fixed dumpfile name, if you want
                                    * to prevent definition by users */
 #endif
 #ifndef DUMPMSGS
