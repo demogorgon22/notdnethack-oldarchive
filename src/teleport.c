@@ -720,7 +720,7 @@ tele()
 			return;	/* abort */
 		    /* possible extensions: introduce a small error if
 		       magic power is low; allow transfer to solid rock */
-		    if (controlledteleok(cc.x, cc.y, FALSE)) {
+		    if (controlledteleok(cc.x, cc.y)) {
 			teleds(cc.x, cc.y, FALSE);
 			return;
 		    }
