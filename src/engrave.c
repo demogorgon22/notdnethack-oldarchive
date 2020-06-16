@@ -68,6 +68,7 @@ static const char *random_mesg[] = {
 	"porkman was here", /* First ascender */
 	"Demo followed porkman", /* Second ascender */
 	"lapis followed Demo", /* Third ascender */
+	"Tangles followed lapis", /* Fourth ascender */
 	 /* Ninth ascender */
 	
 	/* contributed by members of NetHackWiki */
