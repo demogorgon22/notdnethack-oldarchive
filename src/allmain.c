@@ -580,7 +580,7 @@ moveloop()
 				u.usubwater = 0;
 			} else if(Is_waterlevel(&u.uz) && !u.usubwater && is_3dwater(u.ux, u.uy)){
 				Your("%s goes under water!", body_part(HEAD));
-				if(!Breathless) You("can't breath.");
+				if(!Breathless) You("can't breathe.");
 				u.usubwater = 1;
 			}
 ////////////////////////////////////////////////////////////////////////////////////////////////
