@@ -445,7 +445,7 @@ Spear changes
 		Chrysoberyl
 			Disease resistance
 		Garnet
-			Fire
+			2x Fire dmg
 			Fire resistance
 		Amethyst
 			Telepathy
@@ -472,7 +472,7 @@ Spear changes
 		Loadstone
 			Heavy and steals items. 1/2 of time
 		Touchstone
-			Probing + d5 extra dmg
+			1/5 chance of Probing + d5 study stack
 		Fossile dark
 			2x dmg drain xp
 Spell changes

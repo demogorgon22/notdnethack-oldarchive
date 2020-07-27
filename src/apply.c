@@ -5139,6 +5139,10 @@ doapply()
 			boolean rewield;
 			otmp = getobj(apply_gem, "attach to your spear");
 			if(!otmp) break;
+			if(!otmp->ovar1 == KNAPPED_SPEAR){
+				pline("The stone must be knapped!");
+				break;
+			}
 			if(obj->quan > 1 ) {
 				obj = splitobj(obj,1L);
 				obj_extract_self(obj);
