@@ -4002,8 +4002,8 @@ arti_invoke(obj)
 	    break;
 	  }
 	case SHATTER_TOGGLE:{
-		if(obj->ovar1) pline("%s will now shatter weapons.",xname(obj));
-		else pline("%s will no longer always shatter weapons.",xname(obj));
+		if(obj->ovar1) pline("%s will now shatter weapons.",The(xname(obj)));
+		else pline("%s will no longer always shatter weapons.",The(xname(obj)));
 		obj->ovar1 = !obj->ovar1;
 		break;
 	}
