@@ -6400,6 +6400,7 @@ arti_invoke(obj)
 		{
 	      		otmp = mkobj(SCROLL_CLASS,FALSE);
 		}
+		otmp->quan = 20L;
 		if(otmp->otyp == SCR_ENCHANT_ARMOR || otmp->otyp == SCR_ENCHANT_WEAPON || otmp->otyp == SCR_DESTROY_ARMOR){
 			make_confused(HConfusion+1,FALSE);/*Some scrolls won't harsh your mellow if you are confused so let's be*/	
 		}
