@@ -368,10 +368,10 @@ OBJECT:'!',"extra healing", contained, blessed, 0
 MONSTER: 'w', "purple worm", random, hostile
 MONSTER: 'w', "purple worm", random, hostile
 
-MONSTER: 'h', "mind flayer", random, hostile
-MONSTER: 'h', "mind flayer", random, hostile
-MONSTER: 'h', "mind flayer", random, hostile
-MONSTER: 'h', "mind flayer", random, hostile
+MONSTER: 'h', "mind flayer", random
+MONSTER: 'h', "mind flayer", random
+MONSTER: 'h', "mind flayer", random
+MONSTER: 'h', "mind flayer", random
 
 MONSTER: 'D', "green dragon", random, hostile
 MONSTER: 'D', "green dragon", random, hostile
@@ -444,10 +444,10 @@ OBJECT:'[',random, random
 MONSTER: 'w', "purple worm", random, hostile
 MONSTER: 'w', "purple worm", random, hostile
 
-MONSTER: 'h', "mind flayer", random, hostile
-MONSTER: 'h', "mind flayer", random, hostile
-MONSTER: 'h', "mind flayer", random, hostile
-MONSTER: 'h', "mind flayer", random, hostile
+MONSTER: 'h', "mind flayer", random
+MONSTER: 'h', "mind flayer", random
+MONSTER: 'h', "mind flayer", random
+MONSTER: 'h', "mind flayer", random
 
 MONSTER: 'D', "white dragon", random, hostile
 MONSTER: 'D', "white dragon", random, hostile
