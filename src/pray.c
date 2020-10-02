@@ -389,7 +389,7 @@ register int trouble;
 			goto decurse;
 		    }
 		    if (Upolyd && nohands(youracedata)) {
-			if (!Unchanging) {
+			if (!Unchanging && !Race_if(PM_SYMBIOTE)) {
 			    Your("shape becomes uncertain.");
 			    rehumanize();  /* "You return to {normal} form." */
 			} else if ((otmp = unchanger()) != 0 && otmp->cursed) {
@@ -397,7 +397,7 @@ register int trouble;
 			    goto decurse;
 			}
 		    }
-		    if (nohands(youracedata) || !freehand())
+		    if ((nohands(youracedata) || !freehand()) && !Race_if(PM_SYMBIOTE))
 			impossible("fix_worst_trouble: couldn't cure hands.");
 		    break;
 	    case TROUBLE_CURSED_BLINDFOLD:
