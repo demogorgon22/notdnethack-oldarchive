@@ -814,7 +814,7 @@ register const char *s;
 							}
 						}
 					}
-					if(levl[x][y].typ == SAND && !rn2(10) && !Is_leveetwn_level(&u.uz) && !Is_arcboss_level(&u.uz)){
+					if(levl[x][y].typ == SAND && !t_at(x,y)  && !OBJ_AT(x,y)  && !rn2(10) && !Is_leveetwn_level(&u.uz) && !Is_arcboss_level(&u.uz)){
 						levl[x][y].typ = TREE;
 					}
 				}
