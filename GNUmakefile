@@ -1,6 +1,6 @@
 GAMEDIR = notdnethackdir
 
-CFLAGS = -g
+CFLAGS = -g -fcommon
 
 GAMELIBS = -lncurses
 
