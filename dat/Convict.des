@@ -405,7 +405,7 @@ OBJECT[50%]: '0', "heavy iron ball", random
 MAZE:"Con-filb",' '
 FLAGS:hardfloor
 INIT_MAP: '#' , ' ', true, true, unlit, true
-MESSAGE: "This appears to be a prison level that is still under construction"
+MESSAGE: "This appears to be a prison level that is still under construction."
 NOMAP
 #
 STAIR: random, up
