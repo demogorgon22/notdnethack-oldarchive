@@ -2678,7 +2678,7 @@ nextclass:
 	end_menu(win, (char *) 0);
 
 	n = select_menu(win, want_reply ? PICK_ONE : PICK_NONE, &selected);
-	if (n > 0) {
+	if (selected && n > 0) {
 	    ret = selected[0].item.a_char;
 	    if (out_cnt) *out_cnt = selected[0].count;
 	    free((genericptr_t)selected);
