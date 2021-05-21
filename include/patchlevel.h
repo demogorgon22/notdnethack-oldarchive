@@ -3,7 +3,7 @@
 /* NetHack may be freely redistributed.  See license for details. */
 
 /* NetHack 3.4.3, notdNethack version 3.15.1 */
-#define VERSION_MAJOR	2020
+#define VERSION_MAJOR	2021
 /* Started at 3.4.3, for the nethack version. Incremented straight 
    to 3.6 with the advent of the Noble role, counting the initial
    release as 3.5 (with Pirate already in, I think?).
@@ -15,7 +15,7 @@
    Incremented to 3.11 with the introduction Anachrononauts.
    Incremented to 3.12 with the introduction Magic chests, scrolls of antimagic, resistance, and consecration, YARevison to chaos quest, beter resistance-from-diet, and lightsaber forms.
 */
-#define VERSION_MINOR	4
+#define VERSION_MINOR	5
 /*
  * PATCHLEVEL is updated for each release.
  *
@@ -38,7 +38,7 @@
  * 3.15.0: Begin edging away from WtW again.  Added another round of pet improvements, including #wait and #come commands.
  * 3.15.1: Added derived undead, spell maintainance, a couple of neutral artifacts.
  */
-#define PATCHLEVEL	16
+#define PATCHLEVEL	21
 /*
  * Incrementing EDITLEVEL can be used to force invalidation of old bones
  * and save files.
@@ -46,7 +46,7 @@
 #define EDITLEVEL	0
 
 #define COPYRIGHT_BANNER_A \
-"notdNethack, Copyright 2017-2019"
+"notdNethack, Copyright 2017-2021"
 
 #define COPYRIGHT_BANNER_B \
 "    Based on NetHack, Copyright 1985-2003 by Stichting Mathematisch"
