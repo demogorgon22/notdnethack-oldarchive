@@ -180,7 +180,7 @@ boolean talk;
     }
 	
 	/* fix house setting */
-	if(is_drow(mon->data)){
+	if(mon && is_drow(mon->data)){
 		int faction = god_faction(gptr);
 		struct obj *otmp;
 
