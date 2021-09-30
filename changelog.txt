@@ -315,7 +315,7 @@ Salamander Convict and Rogue quest
 		Eviler djinni that cast some fire based and other spells and
 			wield scimitars and they are meaner.
 	Efreet Merchant
-		More dangerous but no whip and less firey than overseer
+		More dangerous but no whip and less fiery than overseer
 	Efreet Guardian
 		A slammer and a half of an efreet. Beware.
 	Various fire plane enemies
